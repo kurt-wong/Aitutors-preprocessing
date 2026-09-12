@@ -115,10 +115,41 @@ def extract_json(text):
     raise ValueError(f"JSON 解析失败: {last_err}")
 
 
+def rel_out(f, root):
+    """R24-A2:路径归属计算。startswith 判断有前缀混淆陷阱
+    （'Ocr-markdown2' 会绕过 'Ocr-markdown' 导致 relative_to 崩整批），必须 try/except。"""
+    try:
+        return f.relative_to(root)
+    except ValueError:
+        return Path(f.name)
+
+
 def number_lines(text):
     lines = text.splitlines()
     numbered = "\n".join(f"[L{i+1:04d}] {l}" for i, l in enumerate(lines))
     return lines, numbered
+
+
+INTERVAL_ROLES = ("stem_lines", "options_lines", "answer_lines", "explanation_lines",
+                  "extra_lines", "material_lines", "questions_lines")
+
+
+def clamp_intervals(man, n_lines):
+    """确定性行号兜底（R24-A3/R7）：越界截断到 [1, n_lines]，倒置交换。
+    LLM 偶发多报/写反行号 → 锚点错乱（C10 不配对）。返回修复记录列表。"""
+    notes = []
+    for u in man.get("units", []):
+        for role in INTERVAL_ROLES:
+            v = u.get(role)
+            if isinstance(v, list) and len(v) == 2 and all(isinstance(x, int) for x in v):
+                s2 = max(1, min(v[0], n_lines))
+                e2 = max(1, min(v[1], n_lines))
+                if s2 > e2:
+                    s2, e2 = e2, s2
+                if [s2, e2] != v:
+                    u[role] = [s2, e2]
+                    notes.append(f"{u.get('unit_id')}/{role}: 越界/倒置行号 {v} → [{s2},{e2}]")
+    return notes
 
 
 PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版试卷的 OCR Markdown（每行前有行号 [Lxxxx]）。
@@ -476,20 +507,8 @@ def process_file(src_path: Path, log):
             u["question_numbers"] = [nxt]
             fix_notes.append(f"{u.get('unit_id')}: 原缺题号，自动补 {nxt}")
             nxt += 1
-    # 确定性兜底：行号越界截断 + 倒置归一化（LLM 偶发多报/写反 → 锚点错乱，C10 不配对）
-    _ROLES = ("stem_lines", "options_lines", "answer_lines", "explanation_lines",
-              "extra_lines", "material_lines", "questions_lines")
-    for u in man.get("units", []):
-        for role in _ROLES:
-            v = u.get(role)
-            if isinstance(v, list) and len(v) == 2 and all(isinstance(x, int) for x in v):
-                s2 = max(1, min(v[0], len(lines)))
-                e2 = max(1, min(v[1], len(lines)))
-                if s2 > e2:
-                    s2, e2 = e2, s2
-                if [s2, e2] != v:
-                    u[role] = [s2, e2]
-                    fix_notes.append(f"{u.get('unit_id')}/{role}: 越界/倒置行号 {v} → [{s2},{e2}]")
+    # 确定性兜底：行号越界截断 + 倒置归一化（逻辑见 clamp_intervals，可单测）
+    fix_notes.extend(clamp_intervals(man, len(lines)))
 
     issues, summary = validate_manifest(man, len(lines), lines)
     summary.setdefault("warnings", []).extend(fix_notes)
@@ -500,10 +519,7 @@ def process_file(src_path: Path, log):
     for w in summary.get("warnings", [])[:10]:
         log(f"    ~ {w}")
 
-    try:
-        rel = src_path.relative_to(SRC_ROOT)
-    except ValueError:
-        rel = Path(src_path.name)
+    rel = rel_out(src_path, SRC_ROOT)
     write_outputs(OUT_ROOT / rel.parent, src_path.stem, lines, man,
                   issues, summary, src_path.name, src_path)
     return {"file": str(src_path), "issues": issues, **summary,
@@ -610,10 +626,7 @@ def main():
     # 断点续跑分流：已有 manifest 的跳过，其余进入 todo
     todo = []
     for i, f in enumerate(files):
-        try:
-            rel = f.relative_to(SRC_ROOT)
-        except ValueError:
-            rel = Path(f.name)
+        rel = rel_out(f, SRC_ROOT)
         manifest_path = OUT_ROOT / rel.parent / f"{f.stem}.manifest.json"
         if args.resume and manifest_path.exists():
             log(f"===== [{i+1}/{len(files)}] {f.name} —— 已有输出，跳过 =====")

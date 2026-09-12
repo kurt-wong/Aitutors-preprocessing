@@ -465,4 +465,29 @@
 **结论**：R24 审查主体成立，复审补 1 项修复（计账）+ 1 项标注（大 prompt 上限未验证）。QC 38/50 保持。
 
 ---
+
+## R26 · 2026-09-12 · 固化测试套件 + CI(响应 ChatGPT 第一轮审查)
+
+**背景**:ChatGPT 审查确认仓库缺少可重复自动化测试体系(High)。R24/R25 的对抗性审查测试全部是一次性脚本,证据有效但不可重复。
+
+**交付**:
+1. **可测性重构**:提取 `clamp_intervals` / `rel_out` 为模块级函数;三个 fixer 加 `--out` / `--log` 参数(测试隔离,不触碰生产审计日志);
+2. **pytest 套件 27 用例**(全离线,零 LLM 依赖):
+   - `test_extract_json.py` 4 例(C2 固化)
+   - `test_interval_guard.py` 8 例(A3/A4/R7 固化:越界/倒置/怪值/正常)
+   - `test_anchor.py` 5 例(A3/B1 固化:锚点顺序/嵌套/分离)
+   - `test_path_safety.py` 3 例(A2 固化:路径前缀混淆)
+   - `test_qc_contract.py` 4 例(B1 固化:C12 三种场景 + 合成卷过 QC)
+   - `test_fix_contracts.py` 3 例(修复层三元契约:生效/幂等/不触无关)
+3. **conftest.py**:合成试卷 fixture(32 行,覆盖题前图/共享材料/独立答案/详解),`make_repo()` 生成与生产同构的完整产物;
+4. **CI**:`.github/workflows/ci.yml` — push/PR 自动跑 pytest;
+5. **pytest.ini**:禁用 cacheprovider(DSH 沙箱限制),basetemp 固定到仓库内。
+
+**测试过程中发现并修复**:
+- 测试断言 bug ×3(锚点顺序方向反、regex 无捕获组、切片 vs 源文件混淆)——均为测试代码自身问题,非生产代码缺陷;
+- `.pytest_tmp` 目录被沙箱拒绝访问(rmtree WinError 5)→ 改用 `.pytest_work` 自管目录。
+
+**结果**:27/27 PASS,0.51s。CI 就绪。
+
+---
 <!-- 新一轮记录从此行下方追加，R{n} 递增，附 YYYY-MM-DD HH:MM 时间戳 -->

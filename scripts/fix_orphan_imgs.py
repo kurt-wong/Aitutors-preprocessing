@@ -39,11 +39,17 @@ GAP_MAX = 6
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--out", help="切片目录(默认 reslice-batch-C)")
+    ap.add_argument("--log", help="审计日志路径(默认 data/bug18_orphan_img_fix_log.json)")
     args = ap.parse_args()
+    if args.log:
+        global LOG
+        LOG = Path(args.log)
+    batch = Path(args.out) if args.out else BATCH
 
     records = []
     n_merge = n_keep = 0
-    for mf in sorted(BATCH.rglob("*.manifest.json")):
+    for mf in sorted(batch.rglob("*.manifest.json")):
         with io.open(str(mf), encoding="utf-8", newline="") as f:
             man = json.load(f)
         src = Path(man["source_file"])

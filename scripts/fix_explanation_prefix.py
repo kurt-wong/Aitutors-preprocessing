@@ -33,7 +33,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true")
     ap.add_argument("--out", help="切片目录(默认 reslice-batch-C)")
+    ap.add_argument("--log", help="审计日志路径(默认 data/bug17_explanation_fix_log.json)")
     args = ap.parse_args()
+    if args.log:
+        global LOG
+        LOG = Path(args.log)
 
     records = []
     n_fix = n_keep = n_skip_mark = 0
