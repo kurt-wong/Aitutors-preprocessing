@@ -1,0 +1,414 @@
+{
+ "pac_version": 1,
+ "note": "Production Adversarial Corpus 第一轮选样(用户批准:目标26份,本轮PDF类22份);OCR 重跑输入 = pdf 字段;md_baseline = 历史 OCR 产物,仅作漂移对比基线,不作流水线输入",
+ "blocked_categories": [
+  {
+   "category": "C3 DOCX",
+   "status": "BLOCKED",
+   "reason": "OCR 服务只吃 PDF;DOCX→PDF 归一路径未确认(用户裁定本轮缩范围只跑 PDF 类)"
+  },
+  {
+   "category": "C4 JPG/PNG 图像",
+   "status": "BLOCKED",
+   "reason": "original 树独立 JPG/PNG 各仅 1 张;图像输入现实以扫描 PDF 承载(已由 C2 覆盖)"
+  }
+ ],
+ "samples": [
+  {
+   "sample_id": "pac-c01-01",
+   "category": "C1 原生文本PDF",
+   "hazard_evidence": "基础路径:会考卷疑为数字原生排版,测 OCR 服务对文本层 PDF 的行为",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2018北京春季高中会考数学（教师版）(1).pdf",
+    "sha256": "3b87f19f2e212c63f9afc1c159982ecb16fd0da5f36e7745ce5b66e9c46b1fdc",
+    "pages": 15,
+    "text_chars_total": 9962,
+    "pages_with_text": 15,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\会考\\数学\\2018北京春季高中会考数学（教师版）(1).md",
+    "sha256": "934dec78dde333d21342f3f9419f524bb68e92645914c3d3db9cf482a282f176",
+    "lines": 749
+   }
+  },
+  {
+   "sample_id": "pac-c01-02",
+   "category": "C1 原生文本PDF",
+   "hazard_evidence": "基础路径:合格考数学,含 \\d+ \\. 序号头形态",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2021北京高中合格考数学（第二次）（教师版）(1).pdf",
+    "sha256": "f5bb86eb4b2f9b33d8d250225001870270ac2b23896ae93eb819d24bc3ac9b94",
+    "pages": 8,
+    "text_chars_total": 5231,
+    "pages_with_text": 8,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\合格考\\数学\\2021北京高中合格考数学（第二次）（教师版）(1).md",
+    "sha256": "c345e653c9fc1954053f00c18c0f053dc3c0fc1d76772c81e822ad5184f25d72",
+    "lines": 261
+   }
+  },
+  {
+   "sample_id": "pac-c02-01",
+   "category": "C2 扫描PDF",
+   "hazard_evidence": "图片版=图像页扫描件;物理图题 + 扫描噪声双暴露",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2021北京房山高一（下）期中物理（教师版）（图片版）(1).pdf",
+    "sha256": "2aa28b062c3d6004877ce7f99c4aa458270f5e1564138039ca7997da7db13d23",
+    "pages": 11,
+    "text_chars_total": 0,
+    "pages_with_text": 0,
+    "text_layer": "scanned"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京房山高一（下）期中物理（教师版）（图片版）(1).md",
+    "sha256": "83602e31f540409bece9f5e39545cc99441d278c0d962bc2a165f147363ceedd",
+    "lines": 508
+   }
+  },
+  {
+   "sample_id": "pac-c02-02",
+   "category": "C2 扫描PDF",
+   "hazard_evidence": "图片版=图像页扫描件;答案版卷面,答案区绑定 + 扫描噪声",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2021北京昌平高一（下）期末历史（图片版）（答案版）(1).pdf",
+    "sha256": "f176c217bfd8b6ee95f670b8f914e30d869bb06b7e24ae8170db200a0ca578cc",
+    "pages": 10,
+    "text_chars_total": 0,
+    "pages_with_text": 0,
+    "text_layer": "scanned"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高一\\历史\\2021北京昌平高一（下）期末历史（图片版）（答案版）(1).md",
+    "sha256": "56e20ca5177eb3db6b316a8a032a20753b28af211e1364b99abded791b241d54",
+    "lines": 429
+   }
+  },
+  {
+   "sample_id": "pac-c05-01",
+   "category": "C5 数学LaTeX",
+   "hazard_evidence": "pilot 已知:pilot 曾修 Q8 图文错序、Q9 配图漂移;含 \\d+ \\. 形态",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2018北京五十六中高二（下）期中数学（理）（教师版）(1).pdf",
+    "sha256": "6f7070a1d14ac66cfcd00e9af44fb77526eb36aa7fe2c676cc69fe2321ad48f2",
+    "pages": 6,
+    "text_chars_total": 4986,
+    "pages_with_text": 6,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2018北京五十六中高二（下）期中数学（理）（教师版）(1).md",
+    "sha256": "e386a570debae50e85e19d255faabb1ad0f051c220b4abfb7c7b54d9646516c3",
+    "lines": 259
+   }
+  },
+  {
+   "sample_id": "pac-c05-02",
+   "category": "C5 数学LaTeX",
+   "hazard_evidence": "pilot 已知:公式/图形密集,ANSWER_IN_TABLE",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2021北京八十中高三考前练习数学（教师版）(1).pdf",
+    "sha256": "652701fc3979926cfdc13bed3f986ab34bcf703391202adf567e319b7180b642",
+    "pages": 12,
+    "text_chars_total": 10473,
+    "pages_with_text": 12,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2021北京八十中高三考前练习数学（教师版）(1).md",
+    "sha256": "43c62cc73142c78419f874b6a02f738b312f667436f66e1e3aaa725d849ca69a",
+    "lines": 404
+   }
+  },
+  {
+   "sample_id": "pac-c06-01",
+   "category": "C6 化学图片题",
+   "hazard_evidence": "pilot 已知:裸 LaTeX 18+2、丢图×2(曾 PDF 文本层回填);\\d+ \\. 形态",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2019北京交大附中高三（上）12月月考化学含答案(1).pdf",
+    "sha256": "b988d36f7ae4f22a76179f13398ae8cb36d8ee43e1aaa5553dc96078a2819419",
+    "pages": 12,
+    "text_chars_total": 9100,
+    "pages_with_text": 12,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2019北京交大附中高三（上）12月月考化学含答案(1).md",
+    "sha256": "c794851b529f90033a8306e672b3dd7d9a11459b907ad764b5759eb043baf048",
+    "lines": 465
+   }
+  },
+  {
+   "sample_id": "pac-c06-02",
+   "category": "C6 化学图片题",
+   "hazard_evidence": "batch-C 已知:实验装置图密集卷",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2022北京首都师大附中高一12月月考化学（教师版）(1).pdf",
+    "sha256": "185bba11de372e998686f5535d37797ee26452fe5286365cfd4647d255872574",
+    "pages": 15,
+    "text_chars_total": 14172,
+    "pages_with_text": 15,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京首都师大附中高一12月月考化学（教师版）(1).md",
+    "sha256": "ec5b6d9c7344d28dc1ac4d0f64b10dbef435b1e4c516c7b773e5c803e0bdbcdd",
+    "lines": 641
+   }
+  },
+  {
+   "sample_id": "pac-c07-01",
+   "category": "C7 答案解析混排",
+   "hazard_evidence": "BUG-17 家族实证卷:answer_lines 落在题干复述块(Q2/Q9/Q19)",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2021北京四中高一（上）期中生物（教师版）.pdf",
+    "sha256": "fc1153f7fa56e014851e3b96b9e6e2b5af6513786a62ab901d29c14317e21226",
+    "pages": 29,
+    "text_chars_total": 25265,
+    "pages_with_text": 29,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2021北京四中高一（上）期中生物（教师版）.md",
+    "sha256": "167cd45bc2426d760474bd78fc63e14af94fc89dad295d5ed95214d3aeb875fe",
+    "lines": 1454
+   }
+  },
+  {
+   "sample_id": "pac-c07-02",
+   "category": "C7 答案解析混排",
+   "hazard_evidence": "pilot 已知:Q20(3) 伪标题 ##;详解与答案混排",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2020北京西城高三（上）期末生物含答案(1).pdf",
+    "sha256": "72cda6291f5ecd4f4a0a3a0b8c7ec869d7c560ad1be7810bb2f9a41e48d103a1",
+    "pages": 12,
+    "text_chars_total": 9371,
+    "pages_with_text": 12,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高三\\生物\\2020北京西城高三（上）期末生物含答案(1).md",
+    "sha256": "d220beff8d3da38abff45bc02ead811e95f4876508b02736ab6c14cc57358c9c",
+    "lines": 510
+   }
+  },
+  {
+   "sample_id": "pac-c08-01",
+   "category": "C8 跨页题",
+   "hazard_evidence": "pilot 已知:36 题长卷,完形/阅读跨页概率高;页分隔符 --- 承载跨页连续性",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2021北京丰台高三二模英语（教师版）(1).pdf",
+    "sha256": "ae9421ac538121736f2edbe6a937d735643f1f7e7e3c96ec38bd3da162eaeb8a",
+    "pages": 13,
+    "text_chars_total": 26999,
+    "pages_with_text": 13,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高三\\英语\\2021北京丰台高三二模英语（教师版）(1).md",
+    "sha256": "28dbcebcd8f7d4e8680b79340405e74cfff860f85500768f75a27e73c3851275",
+    "lines": 537
+   }
+  },
+  {
+   "sample_id": "pac-c08-02",
+   "category": "C8 跨页题",
+   "hazard_evidence": "batch-C 卷;图表+材料跨页;含 \\d+ \\. 形态",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2021北京东城高三二模地理（教师版）(1).pdf",
+    "sha256": "495eee2b79583e09f17e1ddbe78994a1fbfe9087bc47a7d51f6cb46192c32004",
+    "pages": 12,
+    "text_chars_total": 4861,
+    "pages_with_text": 12,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高三\\地理\\2021北京东城高三二模地理（教师版）(1).md",
+    "sha256": "66da763268e55f4dd89452a67a5e0e2cd1869c0d0bd588a0c3c5d78b33db1088",
+    "lines": 389
+   }
+  },
+  {
+   "sample_id": "pac-c09-01",
+   "category": "C9 多section同号",
+   "hazard_evidence": "BUG-22 原形态实证卷:大题内 1-9 被当全卷题号,答案区实键 26-34",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2020北京高中合格考化学（第一次）（教师版）(1).pdf",
+    "sha256": "7a0b52cb42bcb77b377eefab92626c49ac9a3837e2d5fcdfb54ee456285c7e37",
+    "pages": 20,
+    "text_chars_total": 12853,
+    "pages_with_text": 20,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\合格考\\化学\\2020北京高中合格考化学（第一次）（教师版）(1).md",
+    "sha256": "f6b13d6ab3491d7cc43b694951a66488d014653c3cdf194338b4ce6ecac4fe61",
+    "lines": 819
+   }
+  },
+  {
+   "sample_id": "pac-c09-02",
+   "category": "C9 多section同号",
+   "hazard_evidence": "batch-C 卷:Q86-essay→96 唯一 basis=explicit 用例;汇编多 section",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2019北京三十五中新高一分班考试英语含答案(1).pdf",
+    "sha256": "666ccbef9f8996cc53311c3f6a2d40cecedd5d2ba122629166f5069a2980e671",
+    "pages": 11,
+    "text_chars_total": 19011,
+    "pages_with_text": 11,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高一\\英语\\2019北京三十五中新高一分班考试英语含答案(1).md",
+    "sha256": "3e7b4a3f4af7f0014e8f3d3c78fd393b1ba4d5443372383c7987bda9fa4b3e9c",
+    "lines": 550
+   }
+  },
+  {
+   "sample_id": "pac-c10-01",
+   "category": "C10 题图分离",
+   "hazard_evidence": "pilot 已知:IMAGE_DANGLING;高考难度物理图题密集",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2021北京石景山高三一模物理（教师版）(1).pdf",
+    "sha256": "43ff77a8da83ab9e20d6c42a7ca900b67ddd05450ed3ac5481074d45f5dc54db",
+    "pages": 11,
+    "text_chars_total": 7614,
+    "pages_with_text": 11,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2021北京石景山高三一模物理（教师版）(1).md",
+    "sha256": "d635d730b86419c4f4f01a03774657113a2bfc2645f35880dca8184b985b4c97",
+    "lines": 413
+   }
+  },
+  {
+   "sample_id": "pac-c10-02",
+   "category": "C10 题图分离",
+   "hazard_evidence": "batch-C 卷:物理图题 + 解析混排",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2022北京首都师大附中高三9月月考物理（教师版）(1).pdf",
+    "sha256": "00c4e924f57674ec0f2f7ff935b2fb300677123c0253fbd71bfadbf6d6675164",
+    "pages": 19,
+    "text_chars_total": 11332,
+    "pages_with_text": 19,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2022北京首都师大附中高三9月月考物理（教师版）(1).md",
+    "sha256": "15af99a1d0ba1c3bbd1748081ab86099dce4917ed47762b0c366e18885cd9329",
+    "lines": 840
+   }
+  },
+  {
+   "sample_id": "pac-c11-01",
+   "category": "C11 OCR行融合",
+   "hazard_evidence": "BUG-24/OCR LIMITATION 实证卷:L324 标题与 1.【答案】B 行融合;keep 三方裁决挂起件(独立事项)",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2021北京三十一中高一（下）期中化学（教师版）(1).pdf",
+    "sha256": "e38a8e8243bab96a931beef5fd16352a73ed4c4d5e4fba86462b5927891571d5",
+    "pages": 13,
+    "text_chars_total": 9626,
+    "pages_with_text": 13,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京三十一中高一（下）期中化学（教师版）(1).md",
+    "sha256": "fddfeb898f7f897c1f7b50011ceeb9ba2de31cc9336c45d46f10ad16c8d15c8a",
+    "lines": 560
+   }
+  },
+  {
+   "sample_id": "pac-c11-02",
+   "category": "C11 OCR行融合",
+   "hazard_evidence": "融合实证:L137 分节标题+题1+【答案】B 三重行融合(全语料融合形态扫描命中)",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2023北京一六一中高二3月月考数学（教师版）(1).pdf",
+    "sha256": "c6db2d092fb684617657fa965430a59bd027b751b7cf8173b0bc04840640dcbe",
+    "pages": 12,
+    "text_chars_total": 12261,
+    "pages_with_text": 12,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2023北京一六一中高二3月月考数学（教师版）(1).md",
+    "sha256": "deb2e458a3b8e959f83eea0591b27553d46459750438dfb3846e7d62799fe856",
+    "lines": 522
+   }
+  },
+  {
+   "sample_id": "pac-c12-01",
+   "category": "C12 OCR错号",
+   "hazard_evidence": "BUG-25 台账锚定:L266/L274 两条 ### 26 \\. 【答案】 转义点形态",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2018北京临川学校高二（下）期中政治含答案(1).pdf",
+    "sha256": "5c962de7f4aaf1647a7f951e8b0ff16eb1d85d6d39283cd16f99306b3f55ca9d",
+    "pages": 8,
+    "text_chars_total": 8245,
+    "pages_with_text": 8,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高二\\政治\\2018北京临川学校高二（下）期中政治含答案(1).md",
+    "sha256": "2d26b5504f4750659ecf529b293ac485ac318ac11481aab5eacccb406bc66589",
+    "lines": 308
+   }
+  },
+  {
+   "sample_id": "pac-c12-02",
+   "category": "C12 OCR错号",
+   "hazard_evidence": "BUG-25 台账锚定:L445/L461 两条 ### NN \\. 【解析】 转义点形态",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2018北京东城高二（下）期末物理（教师版）(1).pdf",
+    "sha256": "0aa03b3375387f6def9334ba5918e56a3e090445d1168571e24bb460c17b78fc",
+    "pages": 11,
+    "text_chars_total": 6862,
+    "pages_with_text": 11,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2018北京东城高二（下）期末物理（教师版）(1).md",
+    "sha256": "7c57d94aa7ab23089341ced22c8a349828a20301b13d09b815d51c7392de8163",
+    "lines": 475
+   }
+  },
+  {
+   "sample_id": "pac-c13-01",
+   "category": "C13 composite",
+   "hazard_evidence": "pilot 已知:复合题最密集(16 个);FIG_REF_NO_IMAGE",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2019北京人大附中高一（上）期中地理含答案.pdf",
+    "sha256": "5da33ddf1b4fad1d2e15a41c61fc01d8fe54f72c81623b0acd465b74fa41073a",
+    "pages": 12,
+    "text_chars_total": 6072,
+    "pages_with_text": 10,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2019北京人大附中高一（上）期中地理含答案.md",
+    "sha256": "8f7e272314f6c0474fea9dfe16c8bf1aa0063ec4e65bf0999b2fab447db59283",
+    "lines": 581
+   }
+  },
+  {
+   "sample_id": "pac-c13-02",
+   "category": "C13 composite",
+   "hazard_evidence": "pilot 已知:阅读复合题嵌套 + material 边界曾需人工修",
+   "pdf": {
+    "path": "D:\\Project\\Papers\\maintainess\\PDF\\2020北京石景山高一（上）期末语文含答案.pdf",
+    "sha256": "478fd91a8897c170e1cfe1c5ad6c477ed7c7d6720487092d5454bc66cf9c10c9",
+    "pages": 21,
+    "text_chars_total": 24436,
+    "pages_with_text": 20,
+    "text_layer": "native_text"
+   },
+   "md_baseline": {
+    "path": "D:\\Project\\Papers\\Ocr-markdown\\高一\\语文\\2020北京石景山高一（上）期末语文含答案.md",
+    "sha256": "7e17b99890d1be61932aed24f124865e900d171e3717fe5e250ac1c462f882e8",
+    "lines": 635
+   }
+  }
+ ]
+}
