@@ -849,3 +849,26 @@
 | 补 | B-04 "issues 非空仍写产物" | 🟡 证据类型=代码位置(write_outputs 无条件调用),非运行时测试(LLM 路径不可离线触发)——如实标注,不冒充运行证据 |
 
 **发现汇总**:2 个新问题——**BUG-27**(契约词表不一致+explicit 游离,文档层,已勘误)与 **D-02 计数不准**(9 非 10,已勘误);1 项披露补全(stress10/test-v21 裁决入账);R41 其余全部结论经独立重测维持,其中 V4/V6/V7/V10 由抽样/模拟/旧基线**升级为穷举/真实 check/新 HEAD**。套件 108 passed + 1 xfailed。
+
+---
+
+## R43(2026-09-13):R42 用户裁定落盘 + 审查循环正式收口 + Gate 攻击序调整与首攻面立项
+
+**用户裁定 R42:🟢 ACCEPTED(明确验收,无需再对 R41 做重复性审查)**。裁定要点原样入库:
+
+1. **总体**:R41 实质结论 🟢 维持;"R41 报告完全无错误" ❌ 明确不成立;BUG-26 🟢 CLOSED(mutation-sensitive + mutation locality evidence:"恰好 2 条新测试 FAIL + 邻近 9 条保持"给出耦合边界证据);BUG-27 🟢 CLOSED(契约文档问题,未为让测试绿而改数据 = 正确处理);D-02 🟢 CLOSED WITH ERRATUM(正式口径 **9 个文件 / 10 个引用点**,文件数与引用位置数不得混为一谈)。
+2. **证据升级被点名为 R42 最大价值**:模拟→真实 `qc.check()`(这才真正证明"BUG-26 修复没有改变已有 QC 判定结果")、抽样→穷举(结论升级为 **VERIFIED — defined scope exhaustive**,口径必须保持 "defined scope = 80 份当前目标工件",**不得外推为"对任意未来输入均确定性"**)、旧 HEAD→新 HEAD(fresh checkout 精确表述 = "当前 HEAD 在缺失相应 corpus 时 fresh checkout 可重复且全部 skip 均有明确 corpus 缺失原因",**不得简化为"全部测试通过"**,因 17 个是 skipped)、字段存在性→值域审计。
+3. **审查递归终止(R42 最重要节点)**:R37→R42 六轮已过,"再攻击上一轮报告有没有说错"易进入审查递归——**现在转换攻击对象:不要再审查审查报告,开始审查系统**。R42 定义为 Identity/SectionLocator/Recompile/QC Stability 的**最后一次审查闭环**,除非出现新反证,不再做 R43/R44 式报告审查。
+4. **系统现状分账**:Deterministic Core(Identity v2 + SectionLocator + BUG-24/25 + migration + QC/recompile stability)🟢 已非常接近冻结;Real-world Input(真实 OCR/LLM 行为)🟡 仍是主要未知区域;System Readiness 🟡 正式启动。
+5. **Gate 攻击序调整(用户排序,非按我列出的顺序)**:**第一优先级 = 真实 OCR + 真实 LLM → annotation → Resolver → Compiler → Gate 的端到端生产链验证**——当前大量证据证明的是 deterministic post-processing,而生产入口是 OCR + LLM 语义批注 + 真实源噪声,前半段真实行为证据明显弱于后半段;但**不能一上来大规模跑**,第一轮不追求数量,先建 **Production Adversarial Corpus**(13 类:原生文本 PDF/扫描 OCR PDF/DOCX/图像/数学 LaTeX/化学图题/答案解析混排/跨页题/多 section 同号/题图分离/OCR 行融合/OCR 错号/composite 复杂题),每样本记录 source→OCR→annotation→resolver→compiler→gate→final disposition **全 stage 轨迹,不只看终局 PASS/FAIL**。**第二优先级 = BUG-11/14/15 数据卫生**(注意:历史 BUG 不得自动视为当前 BUG,正确做法 = 历史 BUG → 构造当前版本针对性 detector → 跑完整目标 corpus → PASS/FAIL/PENDING_REVIEW)。**第三优先级 = D-02 硬编码根治**(定性为工程卫生/可维护性,不是当前最大系统正确性风险;最终目标是 environment portability invariant,覆盖面含路径/配置/模型/provider/token/临时目录/输出目录/日志/fixture,不是一次 grep)。**第四 = 全链路失败状态传播**。
+6. **三十一中化学 keep**:不插入 System Readiness 主线——它是 specific semantic adjudication,System Readiness 是 system-wide operational correctness;独立裁决、并行处理,除非最终暴露通用 identity/section 规则缺陷,否则不得作为整体 readiness 前置条件。
+7. **basis 值域**:正式登记为 **DESIGN DECISION / CONTRACT ENFORCEMENT CANDIDATE**(非 BUG-28);决策矩阵:closed-set=是 / 需要机器校验=是 / 现在直接改=**否** / 立项=是 / 重定义 Identity 语义=不需要 / 新增自动 PASS/FAIL 逻辑=不应该 / migration 视非法历史值情况决定。**批准进入下一阶段 Contract Enforcement Decision,但不允许在当前 Identity 冻结基线中偷偷加入**;若 Frozen Spec 未明确封闭域,先修 Spec 再决定代码行为;若批准实施,测试最低覆盖 valid/invalid/missing/null/empty/case/whitespace/unknown-future,尤其 `"explicit "`/`"Explicit"`/`"EXPLICIT"` 是否允许必须由契约明确规定。决策矩阵原文已登记 `question_identity_design.md` §10.7。
+
+**本轮执行(纯记账 + 立项,零生产代码变更)**:
+
+1. `question_identity_design.md` 新增 §10.7:审查闭环收口 + basis 值域 CONTRACT ENFORCEMENT CANDIDATE 完整决策矩阵;
+2. `status.md`:一句话现状/当前阶段改写为 Gate 攻击序四条;basis 候选行 + Gate 首攻面行入风险表;R42 行改 ACCEPTED 并按用户限定口径补精确表述(defined scope / fresh checkout 措辞);
+3. 事实盘点(为对抗语料选样提供依据,零 LLM 成本):`original` 树源格式 = **PDF 38,893 / DOCX 30,254 / DOC 207 / PPTX 164**(独立 JPG/PNG 仅各 1,"图像输入"类须以扫描 PDF 承载);OCR 生产队列 `maintainess\PDF` = **12,707 份纯 PDF**(守护进程 PaddleOCR-VL-1.6,aistudio API,日额度 20,000 页;`data/ocr_page_usage.json` 停留在 2026-09-10 used 6639,队列守护由用户手动启动);Ocr-markdown 学科树现存 高一 884/高三 798/高二 594/高考真题 599/未分类 145/auto-annotated-v6 1434 等;
+4. Gate 首攻面设计稿落盘 `production_adversarial_corpus_design.md`(13 类覆盖、选样纪律、全 stage 轨迹 schema、成本估算);**启动须用户批准样本量与成本预算**。
+
+**结果**:R42 裁定全部入库,"审查审查"阶段正式终止;下一工作轮 = Gate 首攻面(Production Adversarial Corpus),待用户批准预算。套件状态不变(108 passed + 1 xfailed,本轮零代码变更)。

@@ -328,3 +328,11 @@ schema:`identity_version:2` + 顶层 `sections[{id,title,ordinal,start_line,end_
 - **R38 审查 🟢 ACCEPTED**;**BUG-24 🟢 CLOSED**(B24-01~08 全部成立);**BUG-25(`\.` 转义点 8 例)🟢 FIX VERIFIED**;**4 例残留 🟡 ACCEPTED KNOWN LIMITATION**(3 straddle + 1 OCR 行融合,非 BUG,不得并入 BUG-24 的 closed 结论);**R37"全语料 0 误升"主张 ❌ RETRACTED**(被 R38 穷举复核证伪,正确口径:提交范围 13 行 0 误升;全语料 840 行含 4 例已知残留)。
 - **审计规则 🟢 ESTABLISHED**:全称命题必须由全称验证支撑,抽样验证只支持抽样范围内结论——已正式写入 `review_protocol.md`(规则 1;readiness claim 三列规则 2 同轮建立)。
 - **冻结候选基线**:`7f37be9 / R38` 定为 **Identity v2 + SectionLocator 冻结候选基线**。Identity 层自本基线起**不再扩展规则**;下一阶段为 **System Readiness Gate**(BUG-11/14/15、OCR 覆盖与真实 OCR 行为、image recovery、真实 LLM 输入输出稳定性、preprocessing→Resolver 契约消费),每个 readiness claim 按 review_protocol 规则 2 三列举证,禁止"局部 PASS → 系统 PASS"。resolver 允许离线契约级设计,必须消费 v2、不得重新发明 identity。
+
+### 10.7 R42/R43 追加:审查闭环收口 + basis 值域 CONTRACT ENFORCEMENT CANDIDATE 登记(2026-09-13 用户裁定)
+
+- **审查闭环收口**:R42 🟢 ACCEPTED(用户裁定),定义为 **Identity / SectionLocator / Recompile / QC Stability 的最后一次审查闭环**;除非出现新反证,不再做"审查审查报告"轮次,攻击目标转向真实生产输入与完整系统链路。BUG-27 🟢 CLOSED(契约文档遗漏,非数据错误);D-02 🟢 CLOSED WITH ERRATUM(正式口径:**9 个文件,10 个引用点**)。
+- **basis 值域机器校验**登记为 **DESIGN DECISION / CONTRACT ENFORCEMENT CANDIDATE**(非 BUG-28,非缺陷)。当前事实:契约词表已统一为 6 值 `answer_key|shift|keep|printed_as_is|explicit|unverified`;`check_identity` **不做值域校验**——任意字符串的 basis 理论上可进入系统而不被拒。
+- **用户决策矩阵(原样登记,实施须正式批准)**:basis 是否 closed-set → **是**;是否需要机器校验 → **是**;是否现在直接改 → **否**;是否立项 → **是**;是否需重新定义 Identity 语义 → **不需要**;是否应增加新的自动 PASS/FAIL 逻辑 → **不应该**;是否需要 migration → 视非法历史值情况决定。
+- **裁定理由**:值域校验是数据契约完整性检查,不是新的身份判定规则;但它会把 `invalid basis` 从"可能继续流通"变成"明确 FAIL/PENDING_REVIEW",因此必须经正式批准,**不允许在当前 Identity 冻结基线中偷偷加入**。前置条件:若 Frozen Spec 未明确封闭域,先修 Spec 再决定代码行为。
+- **若批准实施,测试覆盖最低要求(用户指定)**:valid / invalid / missing / null / empty string / case variation / whitespace variation / unknown future value,尤其 `"explicit "`、`"Explicit"`、`"EXPLICIT"` 是否允许必须由契约明确规定——否则重蹈"文档六值、代码六值、字符串规范未冻结"覆辙。
