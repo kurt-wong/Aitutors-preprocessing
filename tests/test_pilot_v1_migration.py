@@ -100,6 +100,7 @@ def test_no_illegal_pass():
 
 # ── 验收 6:不改变既有正确 identity(对照迁移前事实快照)──────────────────
 def test_fact_preservation_against_snapshot():
+    _pilot_mds()  # 语料 gitignored:CI 等无语料环境必须 skip,不得只看快照存在
     if not FACTS.exists():
         pytest.skip("迁移前事实快照不在本 checkout")
     snap = json.loads(FACTS.read_text(encoding="utf-8"))["files"]
