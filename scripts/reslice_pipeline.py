@@ -211,6 +211,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    "unit_id": "Q1",
    "unit_type": "standalone_question",
    "section": "一、选择题",
+   "printed_number": "1",
    "question_numbers": [1],
    "original_question_type": "single_choice|multiple_choice|fill_in|short_answer|essay|cloze|reading|grammar_fill|vocabulary_fill|seven_to_five|reading_expression|true_false",
    "stem_lines": [起始行号, 结束行号],
@@ -223,6 +224,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    "unit_id": "U2-5",
    "unit_type": "composite_question",
    "section": "三、阅读理解",
+   "printed_number": "2",
    "question_numbers": [2,3,4,5],
    "original_question_type": "reading",
    "material_lines": [起始行号, 结束行号],
@@ -246,14 +248,18 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
 - 所有题目必须出现且只出现在一个单元里；题号连续覆盖全卷。
 - 试卷末尾的标题行、页眉页脚不纳入。
 - 综合题的 question_numbers 填这道大题本身的题号（如完形填空是第11题就填 [11]）。
-- 【题号身份规则(R31,BUG-22 修复)】question_numbers 是入库题目身份,必须是全卷唯一编号:
+- 【题号身份规则(R33 审查后 v2.3)】question_numbers 是入库题目身份,必须是全卷唯一编号:
   * 试卷各分节依次编号(单选 1-25 后非选择题印刷"1.-9.")时,后续分节必须归一到全卷编号:
     以答案区键位为准——答案区"26.【答案】…"表明非选择题第1题实为全卷第26题,填 [26];
     答案区无明确键位时,按前面分节已出现的最大题号顺延(选择题到25,则非选择题"1."填26)。
   * 选考模块("请在以下三个模块试题中任选一个模块作答")各模块内印刷题号本来相同,
-    保留印刷题号,但必须用 section 字段区分模块。
+    question_numbers 保留印刷题号,但必须用 section 字段区分模块。
   * 每个单元必须输出 "section" 字段:所属分节标题(如"二、非选择题""《有机化学基础》模块试题"
     "考点2 物质的检验、分离和提纯"),无分节时填 null。
+  * 每个单元必须输出 "printed_number" 字段:卷面实际印刷的题号原文(字符串,如"1""26"),
+    与 question_numbers 分开记录——印刷题号是源事实,入库题号是归一化结果,二者不同必须
+    都能查到(非选择题印刷"1."而入库 26 时,printed_number="1", question_numbers=[26])。
+    卷面无印刷题号(如作文)填 null,绝不允许把入库题号直接抄作印刷题号。
 - 教师用书/专题汇编中每个例题组各自从 1 编号是真实形态:保留印刷题号,用 section 字段标识例题组。
 - 卷末作文等若没有印刷题号，按全卷顺序顺延编号（如前一题是 43 就填 44）。
 - 只输出一个合法 JSON 对象本身：不要任何解释文字，字符串内不要未转义的换行或引号，
@@ -471,7 +477,7 @@ def compile_anchor(lines, man, src_name, src_path, model=DEFAULT_MODEL):
             reg(rg, f"<!-- META:{t}:start:{n} -->", f"<!-- META:{t}:end:{n} -->", t)
 
     out = ["<!-- META:annotation:start -->",
-           f"<!-- META:doc:source={src_name}, model={model}, prompt=reslice-pilot-v2.2 -->",
+           f"<!-- META:doc:source={src_name}, model={model}, prompt=reslice-pilot-v2.3 -->",
            "<!-- META:annotation:end -->"]
     for i, ln in enumerate(lines, 1):
         # 开锚点：unit 先开（外层包络先行）；闭锚点：角色先闭、unit 后关，
@@ -498,13 +504,19 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
     manifest = {
         "source_file": str(src_path),
         "model": model,
-        "annotation_meta": {"prompt_version": "reslice-pilot-v2.2",
+        "annotation_meta": {"prompt_version": "reslice-pilot-v2.3",
                             "validation_issues": issues,
                             "warnings": summary.get("warnings", [])},
         "units": man["units"],
     }
+    # QuestionIdentity v2(R34):身份字段随 manifest 落盘,write_outputs
+    # 不得自组装丢弃(否则回填/校验建立的身份在重编译时被静默洗掉)。
+    for k in ("identity_version", "sections"):
+        if k in man:
+            manifest[k] = man[k]
     (out_dir / f"{stem}.manifest.json").write_text(
-        json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
+        json.dumps(manifest, ensure_ascii=False, indent=1),
+        encoding="utf-8", newline="\n")
 
 
 def process_file(src_path: Path, log):

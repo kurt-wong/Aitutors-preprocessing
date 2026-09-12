@@ -57,6 +57,7 @@
 ### BUG-22 · 大题内编号被当全卷题号 → 题号重复归属（8/50 真实产物）　🟡（Phase 1 关闭 / 建模 OPEN）
 - **状态（第五轮审查分层裁定,R32 记账）**：Prompt defect 🟢 CLOSED / QC detection 🟢 CLOSED / batch-C migration 🟢 CLOSED / **resolver identity model 🟡 OPEN** / **V3 canonical identity integration 🟡 OPEN**。系统性根因(QuestionIdentity 未进入 resolver 正式模型)的修复设计见 `question_identity_design.md`(R32 设计评审稿),实现属 Phase 2 实施任务。
 - **⚠ R33 更正(2026-09-12)**:"QC detection 🟢 CLOSED" 需限定口径——回迁突变实测 scoped C13 对 BUG-22 原始回归形态(跨分节重号)漏放 6/7,检测能力实际有洞,已登记 **BUG-23**;R31 的"C13 残留 0"结论只证明存量已修,不证明守卫仍有效。
+- **⚠ R34 状态重述(第五轮审查裁定,正式执行)**:撤销"QC detection CLOSED"——**存量问题已修复;检测守卫直到 BUG-23 关闭前不得宣称 detection closed**。R34 BUG-23 已修复(v2 守卫真实数据 7/7 复拦)后,状态为:原始 prompt defect 🟢 / batch-C 存量 🟢已迁移 / C13 最终检测器 🟢(v2,含回迁突变复验)/ **Resolver Identity 🟡 等 resolver 消费 v2 模型**(preprocessing 侧身份模型已落地,resolver/IR 集成属下游)。v1 历史产物(pilot 等)仍走旧语义,回填列为后续任务。
 - **发现**：第三轮审查（R29）指示专攻"结构合法但语义错误"；`scripts/semantic_probe.py` 对 batch-C 50 份真实 LLM 产物零成本测量,P15 报警经人工逐条分诊确证。
 - **确证证据**：① 合格考化学（第一次）：选择题 Q1-Q9 与非选择题 N1-N9 **题号 1-9 各双重归属**（非选择题卷面用大题内编号"1.-9.",答案区实键 26-34,N1→26…N9→34 逐条对上）；② 全量普查：**8/50 文件（16%）**含重复题号。
 - **根因(R31 确诊,R32 定性升级)**：不止"模型缺维度"——**prompt v2.1 第 247 行明确指示"分节各自从 1 编号…按原样照抄题号即可"。正式定性:Prompt Contract 与下游 Identity Contract 不一致(Prompt Specification Defect),LLM 是正确遵循,不是模型理解错误。**
@@ -70,7 +71,8 @@
 - **教训**：**"QC 全绿"≠"切分正确"**;而修复此类缺陷时**必须先辨认合法重号形态**,否则全局唯一性检查会把真实的选考模块/汇编结构误判为错误——检测器的假阳性与假阴性同样致命。
 
 ### BUG-23 · scoped C13 对 BUG-22 回归形态失去守卫(跨分节 canonical 重号漏放)　🔴（语义/QC 守卫漏洞）
-- **状态**：待修复(修复依赖 QuestionIdentity basis/keep 模型,并入 Phase 2 实施;已用 xfail(strict) 测试锁定修复义务)
+- **状态**：✅ 修复(2026-09-12 R34,Phase 2 实施;正式定名 **C13 Guard Soundness Failure:Scoped Identity 被错误当成合法性证明**)
+- **修复(R34)**：QuestionIdentity v2(`scripts/question_identity.py`,QC/回填/resolver 共用同一验证):**划分语义**——非 keep 持有者之间 canonical 全卷唯一;keep 为**个体豁免**(会考化学实测:选择题 1 与选考模块 keep 1 天然同号,故不能要求"重复各方全 keep"),但每个 keep 必须携带可回源证据(`basis_evidence` 含 L{行号} 且界内),证据不足 → PENDING_REVIEW(证据不足 ≠ 非法,三态裁决);同分节重复永远 FAIL。batch-C 50 份确定性回填 v2(`phase2_identity_backfill.py`,0 fail);**真实数据回迁突变复验:A3 保留 section 7/7 全拦(修复前 1/7)、A4 缺 section 8/8 显式告警(修复前 0/8)**(`data/phase2_adversarial_review_r34.json`)。原 xfail 修复义务测试已转正(`test_bug22_cross_section_regression_is_flagged`)。
 - **登记**：2026-09-12(R33,Phase 2 设计对抗性审查)
 - **发现**:`scripts/phase2_adversarial_probe.py` A3 回迁突变——把 R31 迁移的 7 份真实产物题号全部回退到 old 值(BUG-22 原始形态:选择题与非选择题各自从 1 编号),跑**生产** `reslice_qc.check()`:**保留 section 字段时仅 1/7 被拦**(唯一命中是博雅语文,回退后恰成同分节重复);**删除 section 字段则 7/7 全拦**。
 - **根因**：C13 身份键 = (section, 题号),跨分节同号一律放行。但 BUG-22 的原始形态**恰恰是跨分节重号**(选择 1-9 vs 非选择 1-9)——R31 的 scoped 升级在区分"合法重号(选考/汇编)"与"非法重号(BUG-22)"时,把"分节不同"当成了合法性充分条件,而真正判据应是**是否存在显式 keep 依据**。Prompt v2.2 修复后新产物靠 prompt 约束不复发,但 QC 层面对 section 标注数据已无回归检测能力——一旦 prompt 或模型再退化,缺陷将静默通过。

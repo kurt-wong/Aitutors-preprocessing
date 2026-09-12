@@ -73,7 +73,10 @@ def test_c13_same_section_duplicate_reported(workdir):
 
 
 def test_c13_cross_section_duplicate_allowed(workdir):
-    """R31 审查升级:选考模块/汇编的分节重编号是合法形态——不同 section 同号不得报 C13。"""
+    """v1 存量语义(R31 scoped,无 identity_version 的历史产物口径):
+    不同 section 同号不报 C13。⚠ 该语义已被 R33 证伪为无守卫(BUG-23),
+    仅保用于未回填的 v1 产物;v2 语义(非 keep 全卷唯一+keep 证据豁免)
+    见 test_question_identity_phase2.py,新产物一律走 v2。"""
     from conftest import SYNTH_MAN
     man = json.loads(json.dumps(SYNTH_MAN))
     for u in man["units"]:
@@ -89,7 +92,8 @@ def test_c13_cross_section_duplicate_allowed(workdir):
 
 
 def test_c13_scoped_identity_passes_qc(workdir):
-    """R31:带 section 的合法分节重编号(选考模块)经 write_outputs 产物 QC 必须 PASS。"""
+    """v1 存量语义:带 section 的分节重编号经 write_outputs 产物 QC PASS
+    (历史口径;v2 口径需 keep+证据,见 test_question_identity_phase2)。"""
     from conftest import SYNTH_MAN
     man = json.loads(json.dumps(SYNTH_MAN))
     for u in man["units"]:

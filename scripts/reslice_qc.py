@@ -8,8 +8,13 @@
   C5 源文件的图片引用全部被带入切片（无丢失）
   C6 源文件的表格行全部被带入切片
   C7 卷面指令不出现（本大题共X小题/答题卡提示）
-  C13 题号身份唯一性:身份键=(section,题号),同分节重复归属必报(大题内编号冲突)；
-      不同分节同号合法(选考模块/教师用书汇编的真实编号形态)。无 section 字段时按全卷题号判定。
+  C13 题号身份(R34 QuestionIdentity v2,BUG-23 修复):非 keep 持有者之间
+      canonical 全卷唯一;keep 持有者个体豁免但必须携带可回源证据
+      (basis_evidence 含 L{行号} 且在界内);同分节重复永远 FAIL。
+      v1 存量(无 identity_version)保留 R31 scoped 语义((section,题号)
+      同节重复报/跨节放行)。
+  C14 缺 section 不得静默 PASS(v2):产生 identity_scope_missing 复核项。
+  裁决三态:FAIL(issues 非空)/ PENDING_REVIEW(review_notes 非空)/ PASS。
 输出 reslice_pilot_qc.json + 汇总
 """
 import json
@@ -19,6 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from prereview_check import normalize_qnum, parse_answer_tables, parse_range_answers  # noqa: E402
+import question_identity as qi  # noqa: E402
 
 ROOT = Path(r"D:\Project\Papers")
 OUT_ROOT = ROOT / "Ocr-markdown/resliced-pilot"
@@ -198,24 +204,37 @@ def check(md_path: Path):
             issues.append(f"C11 详解区首行与题干首行相似{ratio:.2f}(原题复述未剥离): {u.get('unit_id')}")
             break  # 每份报一次即可
 
-    # C13 题号身份唯一性(Scoped Question Identity,R30 探针实测 8/50 真实产物
-    #   "大题内编号/分卷重编号"被当全卷题号 → 题库入库双重归属;R31 审查升级:
-    #   重号并非总是错误——选考模块("任选一个模块作答")与教师用书汇编的分节内
-    #   编号本来就会重复。身份键 = (section, 题号):同分节重复必报;不同分节
-    #   同号合法。unit 无 section 字段时退化为全卷题号(R30 行为,存量数据口径)。
+    # C13/C14 题号身份(R34 QuestionIdentity v2,BUG-23 guard soundness 修复)。
+    #   v2(identity_version>=2):canonical 全卷唯一;唯一豁免=重复各方全部
+    #   basis=="keep" 且证据可回源(question_identity.check_identity,与回填/
+    #   resolver 共用同一验证,杜绝各处自行推断合法性)。
+    #   v1 存量(无 identity_version):保留 R31 scoped 语义——身份键=
+    #   (section,题号),同分节重复必报,跨分节同号放行;无 section 退化全卷。
+    #   ⚠ v1 跨分节放行已被 R33 回迁突变证明对 BUG-22 无守卫(BUG-23),
+    #   仅用于未回填的历史产物;新产物一律 v2。
     from collections import Counter
-    ident = Counter()
-    for u in man["units"]:
-        sec = u.get("section") or ""
-        for n in (u.get("question_numbers") or []):
-            ident[(sec, n)] += 1
-    dups = sorted((s or "∅", n) for (s, n), c in ident.items() if c > 1)
-    if dups:
-        issues.append(f"C13 题号身份冲突(同分节重复归属): {dups[:10]}")
+    reviews = []
+    if (man.get("identity_version") or 1) >= 2:
+        fails, reviews = qi.check_identity(man, len(src_lines_all))
+        issues.extend(fails)
+    else:
+        ident = Counter()
+        for u in man["units"]:
+            sec = u.get("section") or ""
+            for n in (u.get("question_numbers") or []):
+                ident[(sec, n)] += 1
+        dups = sorted((s or "∅", n) for (s, n), c in ident.items() if c > 1)
+        if dups:
+            issues.append(f"C13 题号身份冲突(同分节重复归属): {dups[:10]}")
 
+    verdict = ("FAIL" if issues
+               else "PENDING_REVIEW" if reviews
+               else "PASS")
     return {"file": str(md_path), "units": len(man["units"]),
             "questions": len(man_nums), "issues": issues,
-            "verdict": "PASS" if not issues else "FAIL"}
+            "review_notes": reviews,
+            "identity_version": man.get("identity_version") or 1,
+            "verdict": verdict}
 
 
 def main():
@@ -232,12 +251,15 @@ def main():
     result_path.write_text(
         json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     npass = sum(1 for r in results if r["verdict"] == "PASS")
-    print(f"=== 重切回归：{npass}/{len(results)} PASS ===")
+    nrev = sum(1 for r in results if r["verdict"] == "PENDING_REVIEW")
+    print(f"=== 重切回归:{npass}/{len(results)} PASS(PENDING_REVIEW {nrev}) ===")
     for r in results:
-        mark = "PASS" if r["verdict"] == "PASS" else "FAIL"
+        mark = {"PASS": "PASS", "PENDING_REVIEW": "REVIEW"}.get(r["verdict"], "FAIL")
         print(f"[{mark}] {Path(r['file']).name}  units={r['units']} 题={r['questions']}")
         for i in r["issues"]:
             print(f"    ! {i}")
+        for i in r.get("review_notes") or []:
+            print(f"    ? {i}")
 
 
 if __name__ == "__main__":

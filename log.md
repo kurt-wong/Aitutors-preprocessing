@@ -655,3 +655,30 @@
 **教训**:**守卫升级必须做回迁突变验证**——修完缺陷要把缺陷形态重新注入真实产物跑守卫,证明"新检测器仍拦得住原始缺陷"。R31 只验证了"C13 残留 0"(存量已修),没验证"C13 还拦得住 BUG-22"(守卫有效性),这是检测器换键时的系统性验证盲区;已写入 BUG-23 教训。
 
 **结果**:设计 v0.1 判定存在 1 个被真实数据证伪的不变量 + 3 个未实现/不可实现项,全部修订并留痕;BUG-23 登记;套件 **46 passed + 2 xfailed**。Phase 2 实施前置条件收敛:先验收 v0.2 设计,再实施。
+
+## R34 · Phase 2 实施:QuestionIdentity v2 四项一体落地,BUG-23 修复(2026-09-12)
+
+**输入**:第五轮审查对 R33 的验收——v0.2 设计方向 🟢 通过,附 4 项实施条件(basis 字段 / SectionLocator schema / C13 升级且 BUG-22 回迁突变从 XFAIL 转正 / 存量确定性回填),冻结验收标准 P2-01~P2-08,三方向测试纪律(非法 FAIL / 合法 PASS / 证据不足 PENDING_REVIEW)。核心设计裁定:**Identity 与 Legitimacy 分离;QC 只验证已建立的语义事实,不做语义推理**。
+
+**实施语义修正(落地时发现的真实边界)**:"canonical 全卷唯一 + keep 豁免"不能要求"重复各方全部 keep"——会考化学实测选择题 1-25 与选考模块 keep 1-3 天然同号。裁定为**划分语义**:非 keep 持有者之间全卷唯一(BUG-22 回归 = 两个非 keep 跨节重号 → FAIL);keep 为个体豁免但必须带可回源证据(`basis_evidence` 含 L{行号} 且界内),证据不足 → PENDING_REVIEW;同分节重复永远 FAIL。
+
+**落地组件**:
+1. `scripts/question_identity.py`:共用身份模型(构建 + 验证),QC/回填/resolver 同一实现,杜绝各处自行推断合法性;`build_section_locators`(ordinal+span,同名标题按出现次序消歧,复用 R31 迁移脚本踩平过的标题规则)、`assign_identity`(按位置分配,绝不以 unit_id 为键)、`check_identity`(三态)。
+2. `reslice_qc.py` C13/C14 v2 + 裁决三态 FAIL/PENDING_REVIEW/PASS;v1 存量(无 identity_version)保留 R31 scoped 语义。
+3. `reslice_pipeline.py`:Prompt v2.3(printed_number 必填,源事实与入库编号分离,禁止把入库题号抄作印刷题号);**write_outputs 修复实施中抓到的真缺陷——自组装 manifest 会把 identity 字段静默洗掉**。
+4. `scripts/phase2_identity_backfill.py`:零 LLM 确定性回填,basis 取自 R31 审计过的 PLAN,printed 取 migration report old 值或题干首行解析,解析不出 = null+unknown(禁止猜测);落盘前 check_identity fail 即拒写。
+
+**存量回填结果(batch-C 50 份)**:50/50 apply,**0 fail / 0 review**,612 个 SectionLocator;printed provenance:source_line 948(63.9%)/ migration_report 134 / unknown 402(27.1%,全部 printed=null);basis:printed_as_is 948 / keep 93 / shift 31 / answer_key 9 / explicit 1 / unverified 402。回填后 QC(`reslice_batch_c_qc_r34.json`):**38 PASS / 0 PENDING_REVIEW / 12 FAIL**——与 R31 PASS 集完全一致,零回归。
+
+**验收证据(P2-01~P2-08 全绿,`tests/test_question_identity_phase2.py` + 复跑探针 `data/phase2_adversarial_review_r34.json`)**:
+- **P2-03 关键复验:BUG-22 回迁突变在真实产物上保留 section 7/7 全拦**(修复前 1/7);
+- **P2-05:A4 缺 section 8/8 显式告警**(修复前 0/8);
+- P2-04 反方向同时成立:合法 keep 93 单元零误杀(回填 0 fail);同分节 keep 重复仍 FAIL;
+- 第三方向:fake keep / 越界证据 → PENDING_REVIEW(证据不足 ≠ 非法);变异校验三连(空证据/越界/双非 keep)全部被拦截;
+- BUG-22 回迁突变测试从 strict xfail 转正为普通通过用例(审查要求的"XFAIL → 转正"达成)。
+
+**实施中测试抓到的生产缺陷(测试先行的价值)**:write_outputs 洗 identity 字段(已修);PRINTED_LINE 正则要求数字后必有空格导致"26.【答案】"解析不出(已修)。
+
+**已知残留(不隐瞒)**:v1 历史产物(pilot 16 份等)仍走旧语义,回填列为后续任务;unverified 402 单元 printed 无证据(多为综合题多号单元),显式 unknown 不猜;basis_evidence 的语义充分性需 Phase 3 对抗语料覆盖(PENDING_REVIEW 通道即为此)。
+
+**结果**:BUG-23 关闭;BUG-22 状态重述(撤销 detection CLOSED,待 BUG-23 修复后 C13 检测器 🟢、Resolver Identity 🟡 等下游消费);套件 **64 passed + 1 xfailed**。

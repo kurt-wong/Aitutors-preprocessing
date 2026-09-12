@@ -1,8 +1,9 @@
-# QuestionIdentity 第一性原理设计(R32 提出 / R33 对抗性审查修订)
+# QuestionIdentity 第一性原理设计(R32 提出 / R33 对抗审查修订 / R34 实施落地)
 
-> 状态:🟡 设计评审稿 v0.2,未实现。本文档不改任何生产代码;实现属 Phase 2 实施任务,须在本设计被验收后进行。
+> 状态:🟢 v0.3 已实施(R34)。四项一体全部落地:basis 字段、SectionLocator schema、C13 升级、存量确定性回填;P2-01~P2-08 全部有真实测试(见 §9)。
 > 输入:第五轮审查对 R31(`e3e4e47`)的裁决——Phase 1 PASS,BUG-22 分层关闭(Prompt/QC/迁移 🟢,resolver identity 模型 🟡),下一步优先进入 Phase 2。
-> R33:对本设计开启对抗性审查,全部可测声称落到真实 batch-C 产物上的生产代码突变测量(`scripts/phase2_adversarial_probe.py` → `data/phase2_adversarial_review.json`)。**原 v0.1 不变量 1 被真实数据证伪,已修订**;各声称的裁定见 §5.1。
+> R33:对抗性审查,v0.1 不变量 1 被回迁突变证伪(登记 BUG-23),修订为 v0.2。
+> R34:按第五轮审查冻结的 4 项实施条件 + P2-01~P2-08 验收标准实施;裁决三态(FAIL/PENDING_REVIEW/PASS)落地。
 > 原则:每个设计决定必须回指真实试卷证据,不允许"为了让系统简单"而篡改源事实。
 
 ---
@@ -211,3 +212,55 @@ Phase 2 验收后,Phase 3 不写普通 fixture,建专门对抗语料,每条 fixt
 - R31 三坑(unit_id 重复 / 同名标题消歧 / `[答案]` 字符类误伤"方案"):见 `log.md` R31 条目与 `tests/test_bug22_migration.py`;
 - 选考模块合法重号:会考化学 2018 三模块印刷均 1–3;汇编独立编号:专题十六;
 - OCR 丢字:地理 U13-14 "14."→"4."(`log.md` resolver 入库前置清单)。
+
+---
+
+## 9. R34 实施记录与 P2 验收证据
+
+### 9.1 实施语义修正(实施中发现并当场裁定的一处边界)
+
+v0.2 的"canonical 全卷唯一 + keep 豁免"在真实数据上遇到:**会考化学选择题 1-25 与选考模块 keep 1-3 天然同号**——豁免不能要求"重复各方全部 keep"。裁定为**划分语义**:
+
+- **非 keep 持有者之间**必须全卷唯一(BUG-22 回归形态 = 两个非 keep 跨节重号 → FAIL);
+- **keep 为个体豁免**(可与非 keep 同号),但每个 keep 必须携带可回源证据(`basis_evidence` 含 `L{行号}` 且在源文件界内),否则 PENDING_REVIEW;
+- 同分节重复永远 FAIL,keep 不能救。
+
+### 9.2 落地形态
+
+| 组件 | 位置 |
+|---|---|
+| 共用身份模型(构建+验证,杜绝各处自行推断合法性) | `scripts/question_identity.py` |
+| C13/C14 v2 + 三态裁决 | `scripts/reslice_qc.py`(v1 存量保留 R31 scoped 语义) |
+| 存量确定性回填(零 LLM,默认 dry-run) | `scripts/phase2_identity_backfill.py` |
+| manifest 落盘不丢身份字段(实施中抓到的真缺陷:write_outputs 自组装洗掉 identity 字段) | `scripts/reslice_pipeline.py` write_outputs |
+| Prompt v2.3(printed_number 必填,源事实与入库编号分离) | `scripts/reslice_pipeline.py` |
+
+schema:`identity_version:2` + 顶层 `sections[{id,title,ordinal,start_line,end_line,occurrence,derived?}]`;单元 `section_ref / printed_number / printed_provenance / basis / basis_evidence`。
+
+### 9.3 存量回填结果(batch-C 50 份,`data/phase2_identity_backfill_report.json`)
+
+- 50/50 apply,check_identity **0 fail / 0 review**;共建 612 个 SectionLocator;
+- printed provenance:**source_line 948(63.9%)/ migration_report 134 / unknown 402(27.1%)**——unknown 一律 printed=null,禁止猜测回填;
+- basis:printed_as_is 948 / keep 93 / shift 31 / answer_key 9 / explicit 1 / unverified 402;
+- 回填后 batch-C QC(`data/reslice_batch_c_qc_r34.json`):**38 PASS / 0 PENDING_REVIEW / 12 FAIL**(与 R31 PASS 集完全一致,零回归;12 份 FAIL 均为既有 C3/C5/C6/C7/C9 缺陷)。
+
+### 9.4 P2-01~P2-08 验收证据(冻结标准逐条)
+
+| ID | 证据 | 结果 |
+|---|---|---|
+| P2-01 | `test_p2_01_unique_canonical_passes` | ✅ |
+| P2-02 | `test_p2_02_keep_duplicate_with_evidence_allowed` + `test_p2_02_keep_colliding_with_non_keep_allowed`(划分语义) | ✅ |
+| P2-03 | `test_p2_03_bug22_regression_caught` + 真实数据回迁突变 `phase2_adversarial_review_r34.json` A3:**7/7 全拦**(修复前 1/7) | ✅ |
+| P2-04 | `test_p2_04_legal_local_numbering_not_falsely_flagged` + `test_p2_04_keep_cannot_excuse_same_section_duplicate`;真实 keep 93 单元零误杀(回填 0 fail) | ✅ |
+| P2-05 | `test_p2_05_missing_section_not_silently_passing`;真实 A4:**8/8 显式告警**(修复前 0/8) | ✅ |
+| P2-06 | `test_p2_06_section_locator_disambiguates_duplicate_titles` + `test_p2_06b`(同名标题 ordinal/span 消歧;跨节同印刷号仍需 keep) | ✅ |
+| P2-07 | `test_p2_07_printed_unknown_not_guessed` + `test_p2_07_backfill_marks_unknown_provenance`(>1000 单元普查:unknown→null) | ✅ |
+| P2-08 | `test_p2_08_duplicate_unit_ids_no_collision`(专题十六同 unit_id 按位置分配,回填 0 fail) | ✅ |
+| 第三方向(证据不足) | `test_fake_keep_without_evidence_pending_review` / `test_keep_evidence_line_out_of_bounds_pending_review` → PENDING_REVIEW,不误判非法 | ✅ |
+| 变异校验 | `test_mutation_sanity_keep_evidence_is_enforced[-1/-2/-3]`(空证据/越界证据/双非 keep 重号三处破坏均被拦截) | ✅ |
+
+### 9.5 已知残留(不隐瞒)
+
+- **v1 存量语义保留**:无 `identity_version` 的历史产物(pilot 16 份、归档)仍走 R31 scoped 旧路径,该路径对 BUG-22 回归无守卫(BUG-23 语义仅 v2 生效)。batch-C 已全部回填 v2;pilot 回填列为后续任务。
+- unverified 402 单元(27.1%)printed 缺证据:多为综合题(多题号单元,无单一印刷号)与题干首行非题号的单元;按设计显式标 unknown,不猜。
+- `basis_evidence` 的行号存在性可机器验证,**语义充分性**(证据是否真的证明局部编号)仍需人工/Phase 3 对抗语料覆盖——PENDING_REVIEW 通道就是为此存在。

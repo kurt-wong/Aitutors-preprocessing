@@ -30,7 +30,9 @@ import reslice_qc  # noqa: E402  生产 QC,突变测试必须打真代码
 ROOT = Path(r"D:\Project\Papers")
 BATCH = ROOT / "Ocr-markdown/reslice-batch-C"
 MIG = ROOT / "data/bug22_migration_report.json"
-OUT = ROOT / "data/phase2_adversarial_review.json"
+OUT = Path(r"D:\Project\Papers\data\phase2_adversarial_review.json")
+if len(sys.argv) > 1:
+    OUT = Path(sys.argv[1])
 
 
 def manifests():
@@ -84,12 +86,13 @@ def main():
         "files_fully_covered": sum(1 for x in a1 if x["units"] == x["with_section"]),
         "files_zero_section": sum(1 for x in a1 if x["with_section"] == 0)}
 
-    # ---- A2 scoped 不变量普查(真实数据) ----
+    # ---- A2 scoped 不变量普查(真实数据;v2 按 section_ref,同名标题
+    #      occurrence 由 locator 区分——title 仅展示,不得作身份键) ----
     viol = []
     for p, man in all_mans:
         ident = Counter()
         for u in man.get("units") or []:
-            sec = u.get("section") or ""
+            sec = (u.get("section_ref") or u.get("section") or "")
             for n in (u.get("question_numbers") or []):
                 ident[(sec, n)] += 1
         d = sorted(str(k) for k, c in ident.items() if c > 1)
@@ -115,10 +118,11 @@ def main():
                     n_reverted += 1
         assert n_reverted == len(f["changes"]), (md_path.name, n_reverted, len(f["changes"]))
         with_sec = run_check_in_tmp(man, md_path)
-        # 对照组:同样回退 + 删除 section
+        # 对照组:同样回退 + 删除 section/section_ref
         man2 = json.loads(json.dumps(man))
         for u in man2["units"]:
             u.pop("section", None)
+            u.pop("section_ref", None)
         no_sec = run_check_in_tmp(man2, md_path)
         a3.append({
             "file": str(md_path.relative_to(ROOT)),
@@ -142,8 +146,10 @@ def main():
         man2 = json.loads(json.dumps(man))
         for u in man2["units"]:
             u.pop("section", None)
+            u.pop("section_ref", None)
         res = run_check_in_tmp(man2, md_path)
-        warn = [i for i in res["issues"] if re.search(r"section|分节|缺.*节", i)]
+        warn = [i for i in (res["issues"] + (res.get("review_notes") or []))
+                if re.search(r"section|scope_missing|C14|分节|缺.*节", i)]
         a4.append({"file": str(p.relative_to(ROOT)),
                    "issues": len(res["issues"]), "section_warnings": warn})
         if len(a4) >= 8:

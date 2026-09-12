@@ -1,0 +1,336 @@
+{
+ "generated_by": "scripts/phase2_adversarial_probe.py",
+ "design_doc": "question_identity_design.md",
+ "probes": {
+  "A1_section_coverage": {
+   "files": 50,
+   "units_total": 1484,
+   "units_with_section": 1470,
+   "pct": 99.1,
+   "files_fully_covered": 49,
+   "files_zero_section": 0
+  },
+  "A2_scoped_invariant_real": {
+   "violations": [],
+   "pass": true
+  },
+  "A3_bug22_regression_mutation": {
+   "files": [
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\化学\\2018北京春季高中会考化学（教师版）(1).md",
+     "units_reverted": 6,
+     "mode": [
+      "shift"
+     ],
+     "c13_with_section": [
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 1 → ['Q1', 'U-req1', 'U-cl1', 'U-org1', 'U-cp1']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 2 → ['Q2', 'U-req2', 'U-cl2', 'U-org2', 'U-cp2']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 3 → ['Q3', 'U-req3', 'U-cl3', 'U-org3', 'U-cp3']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 4 → ['Q4', 'U-req4']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 5 → ['Q5', 'U-req5']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 6 → ['Q6', 'U-req6']"
+     ],
+     "c13_without_section": [
+      "C13 同分节重复归属: 题号 1 → ['Q1', 'U-req1', 'U-cl1', 'U-org1', 'U-cp1']",
+      "C13 同分节重复归属: 题号 2 → ['Q2', 'U-req2', 'U-cl2', 'U-org2', 'U-cp2']",
+      "C13 同分节重复归属: 题号 3 → ['Q3', 'U-req3', 'U-cl3', 'U-org3', 'U-cp3']",
+      "C13 同分节重复归属: 题号 4 → ['Q4', 'U-req4']",
+      "C13 同分节重复归属: 题号 5 → ['Q5', 'U-req5']",
+      "C13 同分节重复归属: 题号 6 → ['Q6', 'U-req6']"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\地理\\2018北京春季高中会考地理（教师版）(1).md",
+     "units_reverted": 5,
+     "mode": [
+      "shift"
+     ],
+     "c13_with_section": [
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 1 → ['U1-2', 'U-P2-1']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 2 → ['U1-2', 'U-P2-2']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 3 → ['U3-5', 'U-P2-3']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 4 → ['U3-5', 'U-P2-4']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 5 → ['U3-5', 'U-P2-5']"
+     ],
+     "c13_without_section": [
+      "C13 同分节重复归属: 题号 1 → ['U1-2', 'U-P2-1']",
+      "C13 同分节重复归属: 题号 2 → ['U1-2', 'U-P2-2']",
+      "C13 同分节重复归属: 题号 3 → ['U3-5', 'U-P2-3']",
+      "C13 同分节重复归属: 题号 4 → ['U3-5', 'U-P2-4']",
+      "C13 同分节重复归属: 题号 5 → ['U3-5', 'U-P2-5']"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\生物\\2018北京春季高中会考生物（教师版）(1).md",
+     "units_reverted": 10,
+     "mode": [
+      "shift"
+     ],
+     "c13_with_section": [
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 1 → ['Q1', 'Q41']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 2 → ['Q2', 'Q42']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 3 → ['Q3', 'Q43']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 4 → ['Q4', 'Q44']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 5 → ['Q5', 'Q45']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 6 → ['Q6', 'Q46']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 7 → ['Q7', 'Q47']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 8 → ['Q8', 'Q48']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 9 → ['Q9', 'Q49']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 10 → ['Q10', 'Q50']"
+     ],
+     "c13_without_section": [
+      "C13 同分节重复归属: 题号 1 → ['Q1', 'Q41']",
+      "C13 同分节重复归属: 题号 2 → ['Q2', 'Q42']",
+      "C13 同分节重复归属: 题号 3 → ['Q3', 'Q43']",
+      "C13 同分节重复归属: 题号 4 → ['Q4', 'Q44']",
+      "C13 同分节重复归属: 题号 5 → ['Q5', 'Q45']",
+      "C13 同分节重复归属: 题号 6 → ['Q6', 'Q46']",
+      "C13 同分节重复归属: 题号 7 → ['Q7', 'Q47']",
+      "C13 同分节重复归属: 题号 8 → ['Q8', 'Q48']",
+      "C13 同分节重复归属: 题号 9 → ['Q9', 'Q49']",
+      "C13 同分节重复归属: 题号 10 → ['Q10', 'Q50']"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\高一\\英语\\2019北京三十五中新高一分班考试英语含答案(1).md",
+     "units_reverted": 1,
+     "mode": [
+      "explicit"
+     ],
+     "c13_with_section": [
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 86 → ['Q86-essay', 'U86-95']"
+     ],
+     "c13_without_section": [
+      "C13 同分节重复归属: 题号 86 → ['Q86-essay', 'U86-95']"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\语文\\2019北京大学博雅计划模拟语文（教师版）(1).md",
+     "units_reverted": 3,
+     "mode": [
+      "shift"
+     ],
+     "c13_with_section": [
+      "C13 同分节重复归属: 题号 1 → ['U1-10', 'U11', 'U12-14', 'U15']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 2 → ['U1-10', 'U12-14']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 3 → ['U1-10', 'U12-14']"
+     ],
+     "c13_without_section": [
+      "C13 同分节重复归属: 题号 1 → ['U1-10', 'U11', 'U12-14', 'U15']",
+      "C13 同分节重复归属: 题号 2 → ['U1-10', 'U12-14']",
+      "C13 同分节重复归属: 题号 3 → ['U1-10', 'U12-14']"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\合格考\\化学\\2020北京高中合格考化学（第一次）（教师版）(1).md",
+     "units_reverted": 9,
+     "mode": [
+      "answer_key"
+     ],
+     "c13_with_section": [
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 1 → ['Q1', 'N1']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 2 → ['Q2', 'N2']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 3 → ['Q3', 'N3']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 4 → ['Q4', 'N4']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 5 → ['Q5', 'N5']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 6 → ['Q6', 'N6']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 7 → ['Q7', 'N7']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 8 → ['Q8', 'N8']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 9 → ['Q9', 'N9']"
+     ],
+     "c13_without_section": [
+      "C13 同分节重复归属: 题号 1 → ['Q1', 'N1']",
+      "C13 同分节重复归属: 题号 2 → ['Q2', 'N2']",
+      "C13 同分节重复归属: 题号 3 → ['Q3', 'N3']",
+      "C13 同分节重复归属: 题号 4 → ['Q4', 'N4']",
+      "C13 同分节重复归属: 题号 5 → ['Q5', 'N5']",
+      "C13 同分节重复归属: 题号 6 → ['Q6', 'N6']",
+      "C13 同分节重复归属: 题号 7 → ['Q7', 'N7']",
+      "C13 同分节重复归属: 题号 8 → ['Q8', 'N8']",
+      "C13 同分节重复归属: 题号 9 → ['Q9', 'N9']"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\合格考\\英语\\2020北京高中合格考英语（第二次）（教师版）(1).md",
+     "units_reverted": 7,
+     "mode": [
+      "shift"
+     ],
+     "c13_with_section": [
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 1 → ['Q1', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 2 → ['Q2', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 3 → ['U3-8', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 4 → ['U3-8', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 5 → ['U3-8', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 6 → ['U3-8', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 7 → ['U3-8', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 8 → ['U3-8', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 9 → ['U9-11', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 10 → ['U9-11', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 11 → ['U9-11', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 12 → ['U12-14', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 13 → ['U12-14', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 14 → ['U12-14', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 15 → ['U15-17', 'U26-40']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 16 → ['U15-17', 'U41-44']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 17 → ['U15-17', 'U41-44']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 18 → ['U18-20', 'U41-44']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 19 → ['U18-20', 'U41-44']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 20 → ['U18-20', 'U45-48']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 21 → ['U21-25', 'U45-48']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 22 → ['U21-25', 'U45-48']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 23 → ['U21-25', 'U45-48']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 24 → ['U21-25', 'U49-52']",
+      "C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 25 → ['U21-25', 'U49-52']"
+     ],
+     "c13_without_section": [
+      "C13 同分节重复归属: 题号 1 → ['Q1', 'U26-40']",
+      "C13 同分节重复归属: 题号 2 → ['Q2', 'U26-40']",
+      "C13 同分节重复归属: 题号 3 → ['U3-8', 'U26-40']",
+      "C13 同分节重复归属: 题号 4 → ['U3-8', 'U26-40']",
+      "C13 同分节重复归属: 题号 5 → ['U3-8', 'U26-40']",
+      "C13 同分节重复归属: 题号 6 → ['U3-8', 'U26-40']",
+      "C13 同分节重复归属: 题号 7 → ['U3-8', 'U26-40']",
+      "C13 同分节重复归属: 题号 8 → ['U3-8', 'U26-40']",
+      "C13 同分节重复归属: 题号 9 → ['U9-11', 'U26-40']",
+      "C13 同分节重复归属: 题号 10 → ['U9-11', 'U26-40']",
+      "C13 同分节重复归属: 题号 11 → ['U9-11', 'U26-40']",
+      "C13 同分节重复归属: 题号 12 → ['U12-14', 'U26-40']",
+      "C13 同分节重复归属: 题号 13 → ['U12-14', 'U26-40']",
+      "C13 同分节重复归属: 题号 14 → ['U12-14', 'U26-40']",
+      "C13 同分节重复归属: 题号 15 → ['U15-17', 'U26-40']",
+      "C13 同分节重复归属: 题号 16 → ['U15-17', 'U41-44']",
+      "C13 同分节重复归属: 题号 17 → ['U15-17', 'U41-44']",
+      "C13 同分节重复归属: 题号 18 → ['U18-20', 'U41-44']",
+      "C13 同分节重复归属: 题号 19 → ['U18-20', 'U41-44']",
+      "C13 同分节重复归属: 题号 20 → ['U18-20', 'U45-48']",
+      "C13 同分节重复归属: 题号 21 → ['U21-25', 'U45-48']",
+      "C13 同分节重复归属: 题号 22 → ['U21-25', 'U45-48']",
+      "C13 同分节重复归属: 题号 23 → ['U21-25', 'U45-48']",
+      "C13 同分节重复归属: 题号 24 → ['U21-25', 'U49-52']",
+      "C13 同分节重复归属: 题号 25 → ['U21-25', 'U49-52']"
+     ]
+    }
+   ],
+   "caught_with_section": 7,
+   "caught_without_section": 7,
+   "total": 7
+  },
+  "A4_silent_degradation": {
+   "files_tested": 8,
+   "files_with_explicit_warning": 8,
+   "detail": [
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\化学\\2018北京春季高中会考化学（教师版）(1).manifest.json",
+     "issues": 9,
+     "section_warnings": [
+      "C13 同分节重复归属: 题号 1 → ['Q1', 'U-cl1', 'U-org1', 'U-cp1']",
+      "C13 同分节重复归属: 题号 2 → ['Q2', 'U-cl2', 'U-org2', 'U-cp2']",
+      "C13 同分节重复归属: 题号 3 → ['Q3', 'U-cl3', 'U-org3', 'U-cp3']",
+      "C14 identity_scope_missing: 40 个单元缺 section_ref ['Q1', 'Q2', 'Q3', 'Q4', 'Q5']"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\历史\\2018北京夏季高中会考历史（教师版）(1).manifest.json",
+     "issues": 0,
+     "section_warnings": [
+      "C14 identity_scope_missing: 53 个单元缺 section_ref ['Q1', 'Q2', 'Q3', 'Q4', 'Q5']"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\地理\\2018北京春季高中会考地理（教师版）(1).manifest.json",
+     "issues": 0,
+     "section_warnings": [
+      "C14 identity_scope_missing: 25 个单元缺 section_ref ['U1-2', 'U3-5', 'U6-7', 'U8-9', 'U10-12']"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\政治\\2018北京夏季高中会考政治（教师版）(1).manifest.json",
+     "issues": 0,
+     "section_warnings": [
+      "C14 identity_scope_missing: 36 个单元缺 section_ref ['Q1', 'Q2', 'Q3', 'Q4', 'Q5']"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\数学\\2018北京春季高中会考数学（教师版）(1).manifest.json",
+     "issues": 0,
+     "section_warnings": [
+      "C14 identity_scope_missing: 30 个单元缺 section_ref ['Q1', 'Q2', 'Q3', 'Q4', 'Q5']"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\物理\\2018北京春季高中会考物理（教师版）(1).manifest.json",
+     "issues": 0,
+     "section_warnings": [
+      "C14 identity_scope_missing: 22 个单元缺 section_ref ['Q1', 'Q2', 'Q3', 'Q4', 'Q5']"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\生物\\2018北京春季高中会考生物（教师版）(1).manifest.json",
+     "issues": 0,
+     "section_warnings": [
+      "C14 identity_scope_missing: 50 个单元缺 section_ref ['Q1', 'Q2', 'Q3', 'Q4', 'Q5']"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\英语\\2018北京春季高中会考英语（教师版）(1).manifest.json",
+     "issues": 0,
+     "section_warnings": [
+      "C14 identity_scope_missing: 18 个单元缺 section_ref ['Q1', 'Q2', 'Q3', 'Q4', 'Q5-6']"
+     ]
+    }
+   ]
+  },
+  "A5_printed_provenance": {
+   "files_with_changes": 7,
+   "files_total": 50,
+   "units_with_old_value": 41,
+   "units_total": 1484,
+   "pct_units": 2.8
+  },
+  "A6_unit_id_duplication": {
+   "files_with_dup_unit_id": 1,
+   "files_total": 50,
+   "detail": [
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+     "dup_ids": [
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4",
+      "Q5"
+     ],
+     "dup_units": 78
+    }
+   ]
+  },
+  "A7_section_locator_fields": {
+   "all_unit_fields": {
+    "unit_id": 1484,
+    "unit_type": 1484,
+    "question_numbers": 1484,
+    "original_question_type": 1484,
+    "answer_lines": 1484,
+    "explanation_lines": 1484,
+    "section": 1484,
+    "section_ref": 1484,
+    "printed_number": 1484,
+    "printed_provenance": 1484,
+    "basis": 1484,
+    "basis_evidence": 1484,
+    "extra_lines": 1243,
+    "stem_lines": 1242,
+    "options_lines": 1242,
+    "material_lines": 242,
+    "questions_lines": 242,
+    "explanation_lines_note": 1
+   },
+   "locator_like_fields": {
+    "section_ref": 1484
+   },
+   "has_locator": true
+  }
+ },
+ "manifest_count": 50
+}
