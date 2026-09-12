@@ -1,0 +1,1504 @@
+{
+ "round": 1,
+ "date": "2026-09-13",
+ "n": 22,
+ "qc_pass": 18,
+ "qc_fail": 4,
+ "tracks": [
+  {
+   "sample_id": "pac-c01-01",
+   "category": "C1 原生文本PDF",
+   "hazard_evidence": "基础路径:会考卷疑为数字原生排版,测 OCR 服务对文本层 PDF 的行为",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "3b87f19f2e212c63f9afc1c159982ecb16fd0da5f36e7745ce5b66e9c46b1fdc",
+     "pages": 15,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306108516917248",
+     "pages_billed": 15,
+     "duration_s": 0.4,
+     "output_md_sha256": "57272625a184433b7f7cac933f3a2f5710f49920d576252975927ee12a79f4ee"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 18787,
+     "completion_tokens": 5865,
+     "elapsed_s": 379.9,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 30,
+     "identity_version": 2,
+     "sections": 6
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-01"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "抽验",
+    "verdict": "PASS",
+    "notes": "OCR 头部人读正常;QC 0 issue;identity 0 fail"
+   }
+  },
+  {
+   "sample_id": "pac-c01-02",
+   "category": "C1 原生文本PDF",
+   "hazard_evidence": "基础路径:合格考数学,含 \\d+ \\. 序号头形态",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "f5bb86eb4b2f9b33d8d250225001870270ac2b23896ae93eb819d24bc3ac9b94",
+     "pages": 8,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306109957058560",
+     "pages_billed": 8,
+     "duration_s": 0.4,
+     "output_md_sha256": "23eab8a774f8f88e5d43f42cc6b36800188b9288194f61e7eb40d5fea0689309"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 9159,
+     "completion_tokens": 13173,
+     "elapsed_s": 204.3,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 28,
+     "identity_version": 2,
+     "sections": 8
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-02"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "抽验",
+    "verdict": "PASS",
+    "notes": "QC 0 issue;identity 0 fail"
+   }
+  },
+  {
+   "sample_id": "pac-c02-01",
+   "category": "C2 扫描PDF",
+   "hazard_evidence": "图片版=图像页扫描件;物理图题 + 扫描噪声双暴露",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "2aa28b062c3d6004877ce7f99c4aa458270f5e1564138039ca7997da7db13d23",
+     "pages": 11,
+     "text_layer": "scanned"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306112214847488",
+     "pages_billed": 11,
+     "duration_s": 0.5,
+     "output_md_sha256": "31086f124389c375f8892505712b839f8a6e02a16bf9bd044998246bb1cd51a7"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 12932,
+     "completion_tokens": 16018,
+     "elapsed_s": 240.9,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 20,
+     "identity_version": 2,
+     "sections": 12
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c02-01"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "抽验",
+    "verdict": "PASS",
+    "notes": "真扫描件,OCR 输出结构完整(图引/小题);QC 0 issue"
+   }
+  },
+  {
+   "sample_id": "pac-c02-02",
+   "category": "C2 扫描PDF",
+   "hazard_evidence": "图片版=图像页扫描件;答案版卷面,答案区绑定 + 扫描噪声",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "f176c217bfd8b6ee95f670b8f914e30d869bb06b7e24ae8170db200a0ca578cc",
+     "pages": 10,
+     "text_layer": "scanned"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306113931722752",
+     "pages_billed": 10,
+     "duration_s": 0.4,
+     "output_md_sha256": "17bd21d3cea5c1d1e68e547d2e191e15c2f664804e3f1577b84f04ab14a92406"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 11456,
+     "completion_tokens": 20439,
+     "elapsed_s": 592.7,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 32,
+     "identity_version": 2,
+     "sections": 8
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c02-02"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "抽验",
+    "verdict": "PASS",
+    "notes": "真扫描件;QC 0 issue;identity 0 fail"
+   }
+  },
+  {
+   "sample_id": "pac-c05-01",
+   "category": "C5 数学LaTeX",
+   "hazard_evidence": "pilot 已知:pilot 曾修 Q8 图文错序、Q9 配图漂移;含 \\d+ \\. 形态",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "6f7070a1d14ac66cfcd00e9af44fb77526eb36aa7fe2c676cc69fe2321ad48f2",
+     "pages": 6,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306069576998912",
+     "pages_billed": 6,
+     "duration_s": 0.4,
+     "output_md_sha256": "c49d27086f2ee08d386d989efeff1123e4abbd7a7ea874bdc1a56269a570e100"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 7915,
+     "completion_tokens": 3375,
+     "elapsed_s": 55.6,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 20,
+     "identity_version": 2,
+     "sections": 10
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c05-01"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "深度",
+    "verdict": "PASS",
+    "notes": "已知 hazard 卷:新鲜 OCR esc_dot 2→2 复现且 0 误升分节(BUG-25 修复在新数据上成立);QC 0 issue"
+   }
+  },
+  {
+   "sample_id": "pac-c05-02",
+   "category": "C5 数学LaTeX",
+   "hazard_evidence": "pilot 已知:公式/图形密集,ANSWER_IN_TABLE",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "652701fc3979926cfdc13bed3f986ab34bcf703391202adf567e319b7180b642",
+     "pages": 12,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306115123109888",
+     "pages_billed": 12,
+     "duration_s": 0.5,
+     "output_md_sha256": "335d573f30aabc754f397e74e5bbf32645f91774ac36a115d766a8a3c02b3984"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 14595,
+     "completion_tokens": 2448,
+     "elapsed_s": 41.1,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 21,
+     "identity_version": 2,
+     "sections": 15
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c05-02"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "抽验",
+    "verdict": "PASS",
+    "notes": "公式密集卷;QC 0 issue;identity 0 fail"
+   }
+  },
+  {
+   "sample_id": "pac-c06-01",
+   "category": "C6 化学图片题",
+   "hazard_evidence": "pilot 已知:裸 LaTeX 18+2、丢图×2(曾 PDF 文本层回填);\\d+ \\. 形态",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "b988d36f7ae4f22a76179f13398ae8cb36d8ee43e1aaa5553dc96078a2819419",
+     "pages": 12,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306117701197824",
+     "pages_billed": 12,
+     "duration_s": 0.4,
+     "output_md_sha256": "5533b4b68503a96a149392e68861ea30feddd8dfb4918022c6109c32f1d7e1c5"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 16507,
+     "completion_tokens": 3100,
+     "elapsed_s": 50.3,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 19,
+     "identity_version": 2,
+     "sections": 5
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c06-01"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "深度",
+    "verdict": "PASS",
+    "notes": "已知丢图/裸LaTeX 卷:新鲜 OCR esc_dot 1→1 复现;QC 0 issue(当年缺陷未复现,如实记录)"
+   }
+  },
+  {
+   "sample_id": "pac-c06-02",
+   "category": "C6 化学图片题",
+   "hazard_evidence": "batch-C 已知:实验装置图密集卷",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "185bba11de372e998686f5535d37797ee26452fe5286365cfd4647d255872574",
+     "pages": 15,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306119191715840",
+     "pages_billed": 15,
+     "duration_s": 0.4,
+     "output_md_sha256": "f43ced350e5aac8a7e28e7716ddd05d42bf4c766beb8d620e71939036c32808a"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 19243,
+     "completion_tokens": 4842,
+     "elapsed_s": 75.4,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 20,
+     "identity_version": 2,
+     "sections": 21
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c06-02"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "深度",
+    "verdict": "PASS",
+    "notes": "OCR 漂移实证:历史跑答案行为普通行、本次跑 12 处升为 ### 标题(同位置同内容,随机性);下游 QC 仍 0 issue=对结构漂移鲁棒"
+   }
+  },
+  {
+   "sample_id": "pac-c07-01",
+   "category": "C7 答案解析混排",
+   "hazard_evidence": "BUG-17 家族实证卷:answer_lines 落在题干复述块(Q2/Q9/Q19)",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "fc1153f7fa56e014851e3b96b9e6e2b5af6513786a62ab901d29c14317e21226",
+     "pages": 29,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306120623173632",
+     "pages_billed": 29,
+     "duration_s": 0.3,
+     "output_md_sha256": "4ac3b0ed332aa0afa26c50caaca646ad00a63cc3bc0cf9097da141488e2aa526"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 32832,
+     "completion_tokens": 7365,
+     "elapsed_s": 702.3,
+     "validation_issues": [
+      "Q2: 无 answer_lines（题号 [2]）",
+      "Q6: 无 answer_lines（题号 [6]）",
+      "Q8: 无 answer_lines（题号 [8]）",
+      "Q9: 无 answer_lines（题号 [9]）",
+      "Q18: 无 answer_lines（题号 [18]）",
+      "Q19: 无 answer_lines（题号 [19]）",
+      "Q24: 无 answer_lines（题号 [24]）",
+      "Q28: 无 answer_lines（题号 [28]）"
+     ]
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 35,
+     "identity_version": 2,
+     "sections": 16
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "FAIL",
+     "issues": [
+      "C3 第2单元答案区为空",
+      "C3 第6单元答案区为空",
+      "C3 第8单元答案区为空",
+      "C3 第9单元答案区为空",
+      "C3 第18单元答案区为空",
+      "C3 第19单元答案区为空",
+      "C3 第24单元答案区为空",
+      "C3 第28单元答案区为空",
+      "C5 11 个图片行未被任何单元覆盖: ['L457:mgs/img_in_image_box_101_226_299_414.jpg', 'L462:mgs/img_in_image_box_619_224_823_415.jpg', 'L470:mgs/img_in_image_box_100_433_311_594.jpg']",
+      "C11 详解区首行与题干首行相似0.96(原题复述未剥离): Q2"
+     ]
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c07-01"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "深度",
+    "verdict": "FAIL",
+    "notes": "BUG-17 家族如实暴露:8 题 C3 答案区空 + C5 11 图未覆盖 + C11 复述相似 0.96;FAIL 非静默"
+   }
+  },
+  {
+   "sample_id": "pac-c07-02",
+   "category": "C7 答案解析混排",
+   "hazard_evidence": "pilot 已知:Q20(3) 伪标题 ##;详解与答案混排",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "72cda6291f5ecd4f4a0a3a0b8c7ec869d7c560ad1be7810bb2f9a41e48d103a1",
+     "pages": 12,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306122284376064",
+     "pages_billed": 12,
+     "duration_s": 0.4,
+     "output_md_sha256": "2c0214f018fcb5ccee5bc55ac484515d1c8e939c3fd6b15958cd5dfd8e170ed9"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 13363,
+     "completion_tokens": 15647,
+     "elapsed_s": 519.7,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 21,
+     "identity_version": 2,
+     "sections": 8
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c07-02"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "抽验",
+    "verdict": "PASS",
+    "notes": "QC 0 issue;identity 0 fail"
+   }
+  },
+  {
+   "sample_id": "pac-c08-01",
+   "category": "C8 跨页题",
+   "hazard_evidence": "pilot 已知:36 题长卷,完形/阅读跨页概率高;页分隔符 --- 承载跨页连续性",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "ae9421ac538121736f2edbe6a937d735643f1f7e7e3c96ec38bd3da162eaeb8a",
+     "pages": 13,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306123268886528",
+     "pages_billed": 13,
+     "duration_s": 0.5,
+     "output_md_sha256": "3dd4a874757ec698b7bb288dbad4a0f298f916db618af510b8f60e21426d49df"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 13795,
+     "completion_tokens": 12335,
+     "elapsed_s": 184.4,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 9,
+     "identity_version": 2,
+     "sections": 26
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c08-01"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "抽验",
+    "verdict": "PASS",
+    "notes": "9 单元覆盖 44 题号(完形/阅读整块化符合设计);QC 0 issue"
+   }
+  },
+  {
+   "sample_id": "pac-c08-02",
+   "category": "C8 跨页题",
+   "hazard_evidence": "batch-C 卷;图表+材料跨页;含 \\d+ \\. 形态",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "495eee2b79583e09f17e1ddbe78994a1fbfe9087bc47a7d51f6cb46192c32004",
+     "pages": 12,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306125398990848",
+     "pages_billed": 12,
+     "duration_s": 0.3,
+     "output_md_sha256": "b59712b57731bada186b90423bf5b7b44b08ece9c74b9113aa443790555d70af"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 9592,
+     "completion_tokens": 4740,
+     "elapsed_s": 72.2,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 12,
+     "identity_version": 2,
+     "sections": 7
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c08-02"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "抽验",
+    "verdict": "PASS",
+    "notes": "12 单元覆盖 20 题号;QC 0 issue"
+   }
+  },
+  {
+   "sample_id": "pac-c09-01",
+   "category": "C9 多section同号",
+   "hazard_evidence": "BUG-22 原形态实证卷:大题内 1-9 被当全卷题号,答案区实键 26-34",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "7a0b52cb42bcb77b377eefab92626c49ac9a3837e2d5fcdfb54ee456285c7e37",
+     "pages": 20,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306126732607488",
+     "pages_billed": 20,
+     "duration_s": 0.3,
+     "output_md_sha256": "2fa0edf21e5984a240bd1a2bc1ed2d11290b3c3d13fc9749981cfb9df8a4c4c6"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 19828,
+     "completion_tokens": 20792,
+     "elapsed_s": 270.9,
+     "validation_issues": [
+      "Q1: 无 answer_lines（题号 [1]）",
+      "Q2: 无 answer_lines（题号 [2]）",
+      "Q3: 无 answer_lines（题号 [3]）",
+      "Q15: 无 answer_lines（题号 [15]）",
+      "Q22: 无 answer_lines（题号 [22]）",
+      "Q24: 无 answer_lines（题号 [24]）"
+     ]
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 34,
+     "identity_version": 2,
+     "sections": 5
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "FAIL",
+     "issues": [
+      "C3 第1单元答案区为空",
+      "C3 第2单元答案区为空",
+      "C3 第3单元答案区为空",
+      "C3 第15单元答案区为空",
+      "C3 第22单元答案区为空",
+      "C3 第24单元答案区为空"
+     ]
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c09-01"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "深度",
+    "verdict": "FAIL",
+    "notes": "BUG-22 卷:新鲜 LLM 按 prompt v2.3 输出 printed(1-9)与 canonical(答案键 26-34)分离正确,identity 0 fail;6 题 C3 答案区空(源面答案缺失族)→ QC 如实 FAIL"
+   }
+  },
+  {
+   "sample_id": "pac-c09-02",
+   "category": "C9 多section同号",
+   "hazard_evidence": "batch-C 卷:Q86-essay→96 唯一 basis=explicit 用例;汇编多 section",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "666ccbef9f8996cc53311c3f6a2d40cecedd5d2ba122629166f5069a2980e671",
+     "pages": 11,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306127703158784",
+     "pages_billed": 11,
+     "duration_s": 0.2,
+     "output_md_sha256": "b13078a18bc5c5487ce60aa68bb213981791d92e5f86a91fb235f0637c788ca0"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 11762,
+     "completion_tokens": 9631,
+     "elapsed_s": 1079.5,
+     "validation_issues": [
+      "Q96: L422 试卷结构行混入单元区间: 注意事项：1. 不少于 60 词。2. 文中不得出现真实的校名和姓名。"
+     ]
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 35,
+     "identity_version": 2,
+     "sections": 26
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "FAIL",
+     "issues": [
+      "C9 1 处试卷结构行混入单元区间: ['L422:注意事项：1. 不少于 60 词。2. 文中不得出现真实的校名和姓名。']"
+     ]
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c09-02"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "深度",
+    "verdict": "FAIL",
+    "notes": "explicit Q96 卷:C9 结构行混入 L422 注意事项 → FAIL 如实;题号 96 覆盖正确(units=35 题=96)"
+   }
+  },
+  {
+   "sample_id": "pac-c10-01",
+   "category": "C10 题图分离",
+   "hazard_evidence": "pilot 已知:IMAGE_DANGLING;高考难度物理图题密集",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "43ff77a8da83ab9e20d6c42a7ca900b67ddd05450ed3ac5481074d45f5dc54db",
+     "pages": 11,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306128629207040",
+     "pages_billed": 11,
+     "duration_s": 0.2,
+     "output_md_sha256": "7c1373d1252f09645a2b36bba5c82c3d35e2479d5f323bac134942033e77eef1"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 12426,
+     "completion_tokens": 2682,
+     "elapsed_s": 37.8,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 20,
+     "identity_version": 2,
+     "sections": 11
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c10-01"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "深度",
+    "verdict": "PASS",
+    "notes": "IMAGE_DANGLING 卷:新鲜产物 C5=0(未覆盖图检查),当年缺陷未复现,如实记录"
+   }
+  },
+  {
+   "sample_id": "pac-c10-02",
+   "category": "C10 题图分离",
+   "hazard_evidence": "batch-C 卷:物理图题 + 解析混排",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "00c4e924f57674ec0f2f7ff935b2fb300677123c0253fbd71bfadbf6d6675164",
+     "pages": 19,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306129884196864",
+     "pages_billed": 19,
+     "duration_s": 0.6,
+     "output_md_sha256": "e8eb0b8be29578467751d997d71d7d971c2645aad46b37c7fb46e0e58a7db9eb"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 18488,
+     "completion_tokens": 3349,
+     "elapsed_s": 43.4,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 18,
+     "identity_version": 2,
+     "sections": 6
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c10-02"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "深度",
+    "verdict": "PASS",
+    "notes": "OCR 漂移实证第二例:6 处答案行本次升 ### 标题(历史无);QC 仍 0 issue"
+   }
+  },
+  {
+   "sample_id": "pac-c11-01",
+   "category": "C11 OCR行融合",
+   "hazard_evidence": "BUG-24/OCR LIMITATION 实证卷:L324 标题与 1.【答案】B 行融合;keep 三方裁决挂起件(独立事项)",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "e38a8e8243bab96a931beef5fd16352a73ed4c4d5e4fba86462b5927891571d5",
+     "pages": 13,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306132038537216",
+     "pages_billed": 13,
+     "duration_s": 0.2,
+     "output_md_sha256": "4dbc320a366388dd17fbddc792197dcd8db4047b24aa395930d60013940856a4"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 19266,
+     "completion_tokens": 20626,
+     "elapsed_s": 262.6,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 56,
+     "identity_version": 2,
+     "sections": 6
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c11-01"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "深度",
+    "verdict": "PASS",
+    "notes": "三十一中化学:L324 注记分节标题在新鲜 OCR 逐字复现(新 L325,全文偏移 1 行),BUG-24 修复后被正确建模为分节(QC 0 issue,identity 0 fail);keep 三方裁决仍独立挂起,与本链路结果无关"
+   }
+  },
+  {
+   "sample_id": "pac-c11-02",
+   "category": "C11 OCR行融合",
+   "hazard_evidence": "融合实证:L137 分节标题+题1+【答案】B 三重行融合(全语料融合形态扫描命中)",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "c6db2d092fb684617657fa965430a59bd027b751b7cf8173b0bc04840640dcbe",
+     "pages": 12,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306133210640384",
+     "pages_billed": 12,
+     "duration_s": 0.2,
+     "output_md_sha256": "b14b69109995891b0dc43b81998ac7eef15474936ad58d0e3c79d532c244fb0f"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 16484,
+     "completion_tokens": 3365,
+     "elapsed_s": 38.9,
+     "validation_issues": [
+      "Q1: L137 试卷结构行混入单元区间: ### 一、选择题：本大题共 10 道小题，每小题 4 分，共 40 分。在每小"
+     ]
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 19,
+     "identity_version": 2,
+     "sections": 10
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "FAIL",
+     "issues": [
+      "C7 含卷面指令: ['本大题共']",
+      "C9 1 处试卷结构行混入单元区间: ['L137:### 一、选择题：本大题共 10 道小题，每小题 4 分，共 40 分。在每小']"
+     ]
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c11-02"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "深度",
+    "verdict": "FAIL",
+    "notes": "行融合复现:L137 分节标题+题1+【答案】B 三重融合,被 SectionLocator 如实收为 section start(标题文本污染,ACCEPTED OCR LIMITATION 家族),下游 C7/C9 咬住 → FAIL 非静默"
+   }
+  },
+  {
+   "sample_id": "pac-c12-01",
+   "category": "C12 OCR错号",
+   "hazard_evidence": "BUG-25 台账锚定:L266/L274 两条 ### 26 \\. 【答案】 转义点形态",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "5c962de7f4aaf1647a7f951e8b0ff16eb1d85d6d39283cd16f99306b3f55ca9d",
+     "pages": 8,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306134145015808",
+     "pages_billed": 8,
+     "duration_s": 0.2,
+     "output_md_sha256": "d98fde17ccf81f65566d922fb70e8c4437c4de1de76ca7ad354413c3583fcb56"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 9332,
+     "completion_tokens": 14623,
+     "elapsed_s": 182.9,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 27,
+     "identity_version": 2,
+     "sections": 6
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c12-01"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "深度",
+    "verdict": "PASS",
+    "notes": "BUG-25 台账卷:L266/L274 转义点行逐行复现(fuse 3→3),SectionLocator 0 误升(修复在新数据成立);QC 0 issue"
+   }
+  },
+  {
+   "sample_id": "pac-c12-02",
+   "category": "C12 OCR错号",
+   "hazard_evidence": "BUG-25 台账锚定:L445/L461 两条 ### NN \\. 【解析】 转义点形态",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "0aa03b3375387f6def9334ba5918e56a3e090445d1168571e24bb460c17b78fc",
+     "pages": 11,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306135191244800",
+     "pages_billed": 11,
+     "duration_s": 0.2,
+     "output_md_sha256": "1ec2e8a728f52c44505ac96bdec7a18c687b8d39eeb690f307f1ab1a3174ea2a"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 12022,
+     "completion_tokens": 16168,
+     "elapsed_s": 208.4,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 25,
+     "identity_version": 2,
+     "sections": 8
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c12-02"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "深度",
+    "verdict": "PASS",
+    "notes": "BUG-25 台账卷:L445/L461 转义点行复现(esc_dot 2→2),0 误升;QC 0 issue"
+   }
+  },
+  {
+   "sample_id": "pac-c13-01",
+   "category": "C13 composite",
+   "hazard_evidence": "pilot 已知:复合题最密集(16 个);FIG_REF_NO_IMAGE",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "5da33ddf1b4fad1d2e15a41c61fc01d8fe54f72c81623b0acd465b74fa41073a",
+     "pages": 12,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306136663445504",
+     "pages_billed": 12,
+     "duration_s": 0.4,
+     "output_md_sha256": "0bf34c1c78f49562c3247dfb687a62c016d1b2a7e9da1a44101ed3240d6a753b"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 14072,
+     "completion_tokens": 17832,
+     "elapsed_s": 305.4,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 19,
+     "identity_version": 2,
+     "sections": 5
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c13-01"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "抽验",
+    "verdict": "PASS",
+    "notes": "复合题最密卷:19 单元覆盖 34 题号(综合题整块化);QC 0 issue"
+   }
+  },
+  {
+   "sample_id": "pac-c13-02",
+   "category": "C13 composite",
+   "hazard_evidence": "pilot 已知:阅读复合题嵌套 + material 边界曾需人工修",
+   "stages": {
+    "source": {
+     "status": "OK",
+     "pdf_sha256": "478fd91a8897c170e1cfe1c5ad6c477ed7c7d6720487092d5454bc66cf9c10c9",
+     "pages": 21,
+     "text_layer": "native_text"
+    },
+    "ocr": {
+     "status": "OK",
+     "job_id": "92306137751044096",
+     "pages_billed": 21,
+     "duration_s": 0.4,
+     "output_md_sha256": "bd39d337f689e10d3dc20d7c964fb30e608c8a2e3b386cb03e0be41b4f103f81"
+    },
+    "annotation": {
+     "status": "OK",
+     "model": "mimo-x-pro-preview",
+     "prompt_tokens": 22784,
+     "completion_tokens": 22170,
+     "elapsed_s": 297.7,
+     "validation_issues": []
+    },
+    "manifest": {
+     "status": "OK",
+     "units": 10,
+     "identity_version": 2,
+     "sections": 18
+    },
+    "qc": {
+     "status": "OK",
+     "verdict": "PASS",
+     "issues": []
+    },
+    "identity": {
+     "status": "OK",
+     "backfilled": true,
+     "fails": 0,
+     "reviews": 0
+    },
+    "artifact": {
+     "status": "OK",
+     "dir": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c13-02"
+    },
+    "resolver": {
+     "status": "NOT_BUILT"
+    },
+    "compiler": {
+     "status": "NOT_BUILT"
+    },
+    "gate": {
+     "status": "NOT_BUILT"
+    },
+    "admission": {
+     "status": "NOT_BUILT"
+    }
+   },
+   "human_review": {
+    "method": "抽验",
+    "verdict": "PASS",
+    "notes": "语文复合题:10 单元覆盖 20 题号;QC 0 issue;identity 0 fail"
+   }
+  }
+ ]
+}

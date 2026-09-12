@@ -1,0 +1,343 @@
+{
+ "applied": true,
+ "files": [
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-01.md",
+   "units": 30,
+   "sections": 6,
+   "basis": {
+    "printed_as_is": 29,
+    "unverified": 1
+   },
+   "printed_provenance": {
+    "source_line": 29,
+    "unknown": 1
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-02.md",
+   "units": 28,
+   "sections": 8,
+   "basis": {
+    "unverified": 28
+   },
+   "printed_provenance": {
+    "unknown": 28
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c02-01.md",
+   "units": 20,
+   "sections": 12,
+   "basis": {
+    "unverified": 5,
+    "printed_as_is": 15
+   },
+   "printed_provenance": {
+    "unknown": 5,
+    "source_line": 15
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c02-02.md",
+   "units": 32,
+   "sections": 8,
+   "basis": {
+    "printed_as_is": 29,
+    "unverified": 3
+   },
+   "printed_provenance": {
+    "source_line": 29,
+    "unknown": 3
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c05-01.md",
+   "units": 20,
+   "sections": 10,
+   "basis": {
+    "printed_as_is": 14,
+    "unverified": 6
+   },
+   "printed_provenance": {
+    "source_line": 14,
+    "unknown": 6
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c05-02.md",
+   "units": 21,
+   "sections": 15,
+   "basis": {
+    "printed_as_is": 15,
+    "unverified": 6
+   },
+   "printed_provenance": {
+    "source_line": 15,
+    "unknown": 6
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c06-01.md",
+   "units": 19,
+   "sections": 5,
+   "basis": {
+    "unverified": 9,
+    "printed_as_is": 10
+   },
+   "printed_provenance": {
+    "unknown": 9,
+    "source_line": 10
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c06-02.md",
+   "units": 20,
+   "sections": 21,
+   "basis": {
+    "unverified": 4,
+    "printed_as_is": 16
+   },
+   "printed_provenance": {
+    "unknown": 4,
+    "source_line": 16
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c07-01.md",
+   "units": 35,
+   "sections": 16,
+   "basis": {
+    "printed_as_is": 35
+   },
+   "printed_provenance": {
+    "source_line": 35
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c07-02.md",
+   "units": 21,
+   "sections": 8,
+   "basis": {
+    "unverified": 15,
+    "printed_as_is": 6
+   },
+   "printed_provenance": {
+    "unknown": 15,
+    "source_line": 6
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c08-01.md",
+   "units": 9,
+   "sections": 26,
+   "basis": {
+    "unverified": 9
+   },
+   "printed_provenance": {
+    "unknown": 9
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c08-02.md",
+   "units": 12,
+   "sections": 7,
+   "basis": {
+    "unverified": 12
+   },
+   "printed_provenance": {
+    "unknown": 12
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c09-01.md",
+   "units": 34,
+   "sections": 5,
+   "basis": {
+    "printed_as_is": 23,
+    "unverified": 11
+   },
+   "printed_provenance": {
+    "source_line": 23,
+    "unknown": 11
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c09-02.md",
+   "units": 35,
+   "sections": 26,
+   "basis": {
+    "unverified": 14,
+    "printed_as_is": 21
+   },
+   "printed_provenance": {
+    "unknown": 14,
+    "source_line": 21
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c10-01.md",
+   "units": 20,
+   "sections": 11,
+   "basis": {
+    "printed_as_is": 20
+   },
+   "printed_provenance": {
+    "source_line": 20
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c10-02.md",
+   "units": 18,
+   "sections": 6,
+   "basis": {
+    "printed_as_is": 18
+   },
+   "printed_provenance": {
+    "source_line": 18
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c11-01.md",
+   "units": 56,
+   "sections": 6,
+   "basis": {
+    "printed_as_is": 43,
+    "unverified": 13
+   },
+   "printed_provenance": {
+    "source_line": 43,
+    "unknown": 13
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c11-02.md",
+   "units": 19,
+   "sections": 10,
+   "basis": {
+    "printed_as_is": 19
+   },
+   "printed_provenance": {
+    "source_line": 19
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c12-01.md",
+   "units": 27,
+   "sections": 6,
+   "basis": {
+    "unverified": 8,
+    "printed_as_is": 19
+   },
+   "printed_provenance": {
+    "unknown": 8,
+    "source_line": 19
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c12-02.md",
+   "units": 25,
+   "sections": 8,
+   "basis": {
+    "printed_as_is": 22,
+    "unverified": 3
+   },
+   "printed_provenance": {
+    "source_line": 22,
+    "unknown": 3
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c13-01.md",
+   "units": 19,
+   "sections": 5,
+   "basis": {
+    "unverified": 15,
+    "printed_as_is": 4
+   },
+   "printed_provenance": {
+    "unknown": 15,
+    "source_line": 4
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c13-02.md",
+   "units": 10,
+   "sections": 18,
+   "basis": {
+    "printed_as_is": 4,
+    "unverified": 6
+   },
+   "printed_provenance": {
+    "source_line": 4,
+    "unknown": 6
+   },
+   "fail_issues": [],
+   "review_notes": [],
+   "applied": true
+  }
+ ]
+}

@@ -257,3 +257,10 @@
 - **修复**:`derive_summary_path(out)` 与 `derive_run_paths` 同则派生(`--out` → `data/reslice_{目录名}_summary.json`;默认行为保持写 batch-C 路径,生产口径零变化)。
 - **证据**:`tests/test_batch_summary_isolation.py` 3 用例——默认路径不变 / --out 派生隔离 / **集成级**(monkeypatch process_file 真跑 main():summary 落派生路径且 batch-C 文件不存在);**变异验证**(调用点回退硬编码 → 恰 1 条集成测试 FAIL → 备份还原 3 passed)。
 - **教训**:隔离修复必须**穷举账目面**——BUG-21 当时只隔离了 log/result,summary 漏网;"同一次修复里的兄弟路径"是系统性盲区,改路径派生时应 grep 同目录下所有硬编码写盘点。
+
+### BUG-29 · identity 回填报告硬编码写生产账目(BUG-28 家族第二例,不同脚本)　🟢 FIXED(R43 发现并修复)
+- **状态**:🟢 FIXED(Gate 首攻面 PAC v2 回填前发现;`--out` 独立跑必须自带 `--report`)。
+- **发现**:BUG-28 修复后按"账目面穷举"教训 grep 同类硬编码,`phase2_identity_backfill.py` 的回填报告硬编码写 `data/phase2_identity_backfill_report.json`——PAC 回填一跑就会冲掉生产 batch-C 的回填证据工件。
+- **修复**:加 `--report` 选项(默认保持生产路径,生产口径零变化)。
+- **证据**:真实运行验证——PAC 回填 `--out ... --report data/pac_identity_backfill_report.json` 后,生产报告 sha256 前后逐字节不变(True);PAC 22/22 applied / 0 fail。
+- **教训(升级 BUG-28 教训)**:"账目面穷举"不能只看正在改的那个脚本——硬编码生产账目是**跨脚本家族**(BUG-21 log/result → BUG-28 summary → BUG-29 backfill report);readiness 面 D-02 硬编码治理时应把"硬编码证据工件写路径"并入同一扫描面。

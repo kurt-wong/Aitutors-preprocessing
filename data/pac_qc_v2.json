@@ -1,0 +1,223 @@
+[
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-01.md",
+  "units": 30,
+  "questions": 30,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-02.md",
+  "units": 28,
+  "questions": 28,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c02-01.md",
+  "units": 20,
+  "questions": 26,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c02-02.md",
+  "units": 32,
+  "questions": 32,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c05-01.md",
+  "units": 20,
+  "questions": 20,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c05-02.md",
+  "units": 21,
+  "questions": 21,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c06-01.md",
+  "units": 19,
+  "questions": 19,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c06-02.md",
+  "units": 20,
+  "questions": 20,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c07-01.md",
+  "units": 35,
+  "questions": 35,
+  "issues": [
+   "C3 第2单元答案区为空",
+   "C3 第6单元答案区为空",
+   "C3 第8单元答案区为空",
+   "C3 第9单元答案区为空",
+   "C3 第18单元答案区为空",
+   "C3 第19单元答案区为空",
+   "C3 第24单元答案区为空",
+   "C3 第28单元答案区为空",
+   "C5 11 个图片行未被任何单元覆盖: ['L457:mgs/img_in_image_box_101_226_299_414.jpg', 'L462:mgs/img_in_image_box_619_224_823_415.jpg', 'L470:mgs/img_in_image_box_100_433_311_594.jpg']",
+   "C11 详解区首行与题干首行相似0.96(原题复述未剥离): Q2"
+  ],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c07-02.md",
+  "units": 21,
+  "questions": 21,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c08-01.md",
+  "units": 9,
+  "questions": 44,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c08-02.md",
+  "units": 12,
+  "questions": 20,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c09-01.md",
+  "units": 34,
+  "questions": 34,
+  "issues": [
+   "C3 第1单元答案区为空",
+   "C3 第2单元答案区为空",
+   "C3 第3单元答案区为空",
+   "C3 第15单元答案区为空",
+   "C3 第22单元答案区为空",
+   "C3 第24单元答案区为空"
+  ],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c09-02.md",
+  "units": 35,
+  "questions": 96,
+  "issues": [
+   "C9 1 处试卷结构行混入单元区间: ['L422:注意事项：1. 不少于 60 词。2. 文中不得出现真实的校名和姓名。']"
+  ],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c10-01.md",
+  "units": 20,
+  "questions": 20,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c10-02.md",
+  "units": 18,
+  "questions": 18,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c11-01.md",
+  "units": 56,
+  "questions": 56,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c11-02.md",
+  "units": 19,
+  "questions": 19,
+  "issues": [
+   "C7 含卷面指令: ['本大题共']",
+   "C9 1 处试卷结构行混入单元区间: ['L137:### 一、选择题：本大题共 10 道小题，每小题 4 分，共 40 分。在每小']"
+  ],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c12-01.md",
+  "units": 27,
+  "questions": 28,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c12-02.md",
+  "units": 25,
+  "questions": 25,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c13-01.md",
+  "units": 19,
+  "questions": 34,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c13-02.md",
+  "units": 10,
+  "questions": 20,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 2,
+  "verdict": "PASS"
+ }
+]

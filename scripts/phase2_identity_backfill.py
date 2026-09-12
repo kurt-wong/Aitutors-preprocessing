@@ -111,6 +111,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(DEFAULT_OUT))
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--report", default=str(REPORT),
+                    help="回填报告路径。BUG-29(Gate 首攻面发现):报告此前硬编码写 "
+                         "data/phase2_identity_backfill_report.json,任何 --out 独立跑"
+                         "(如 PAC)都会冲掉生产 batch-C 的回填证据工件;独立跑必须自带 --report。")
     args = ap.parse_args()
     mig = json.loads(MIGRATION.read_text(encoding="utf-8"))
     mig_by_file = {Path(f["file"]).name: f["changes"] for f in mig["files"]}
@@ -121,9 +125,9 @@ def main():
         if not md.exists():
             continue
         results.append(backfill_file(md, mig_by_file, apply=args.apply))
-    REPORT.write_text(json.dumps({"applied": args.apply, "files": results},
-                                 ensure_ascii=False, indent=1),
-                      encoding="utf-8", newline="\n")
+    Path(args.report).write_text(json.dumps({"applied": args.apply, "files": results},
+                                            ensure_ascii=False, indent=1),
+                                 encoding="utf-8", newline="\n")
     nfail = sum(1 for r in results if r["fail_issues"])
     napp = sum(1 for r in results if r["applied"])
     nrev = sum(1 for r in results if r["review_notes"])

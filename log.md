@@ -872,3 +872,50 @@
 4. Gate 首攻面设计稿落盘 `production_adversarial_corpus_design.md`(13 类覆盖、选样纪律、全 stage 轨迹 schema、成本估算);**启动须用户批准样本量与成本预算**。
 
 **结果**:R42 裁定全部入库,"审查审查"阶段正式终止;下一工作轮 = Gate 首攻面(Production Adversarial Corpus),待用户批准预算。套件状态不变(108 passed + 1 xfailed,本轮零代码变更)。
+
+---
+
+## R44(2026-09-13):Gate 首攻面第一轮执行——PAC 22 份真实 OCR+LLM 全链跑通 + 2 个新缺陷
+
+**输入**:用户预算裁定(目标 26 份每类 2;OCR 直调 API 单跑;本轮缩范围只跑 PDF 类 → 11 类 × 2 = 22 份,C3 DOCX/C4 图像 BLOCKED 如实声明)。
+
+### 选样(R43 尾完成,过程发现先入账)
+
+22 份全部真实源 + hazard 证据(禁合成),`data/pac_selection.json` 指纹留档(sha256+页数+文本层)。选样测量抓到两个事实:① **"扫描卷"不能靠推定**——首批按印象挑的 2 份"扫描卷"文本层实测均为 native_text,换为队列明示"图片版"且 md 基线在位的真扫描件(实测 scanned);② 全语料融合形态扫描找到第二例融合实证(一六一中数学 L137 三重融合)。**重要事实:22 份中 20 份 hazard 源 PDF 是原生文本层**——行融合/错号等 OCR 缺陷主要来自 PaddleOCR 对数字排版 PDF 的版面解析,不是扫描噪声。
+
+### 全 stage 轨迹(逐样本 `data/pac_track_round1.json`,设计稿 §4 schema 落地)
+
+| stage | 结果 | 证据 |
+|---|---|---|
+| source | 22/22 指纹化 | `pac_selection.json`(293 页) |
+| OCR | **22/22 OK,293 页入账**(与实测页数逐份相等;全局额度 293/20000) | `pac_track_ocr.json` |
+| annotation | **22/22 成功,57.7 万 tokens**(prompt 33.7万+completion 24.1万,低于 82 万预估),18/22 零校验问题 | `reslice_reslice-pac-annotated_result.json` |
+| manifest | 22/22;**pipeline 原生输出是 v1**,经生产同款确定性回填 → 22/22 v2(sections 5–26,0 fail/0 review) | `pac_identity_backfill_report.json` |
+| QC(v2 后) | **18 PASS / 4 FAIL,0 PENDING_REVIEW**;4 FAIL 恰为带 validation_issues 的文件(无静默 PASS,B 面证据) | `pac_qc_v2.json` |
+| identity | 22/22 v2,check_identity 0 fail | 回填报告 + 盘点探针 |
+| artifact | 22×3 工件在位(annotated/manifest/slices) | 目录盘点 66 文件 |
+| resolver/compiler/gate/admission | **NOT_BUILT**(如实,不伪造端到端) | — |
+
+### OCR 漂移量化(D6 首批真实证据,`data/pac_ocr_drift.json`)
+
+- **字节一致 0/22**——同源 PDF 同模型(PaddleOCR-VL-1.6)重跑,产物不字节确定;相似度 0.955–1.000,行数几乎全同(仅 c11-01 560→561);
+- **hazard 形态可复现**:转义点序号头(BUG-25 家族)在 c05-01 2→2、c06-01 1→1、c12-01 2→2、c12-02 2→2 逐行复现(c12 两份与台账行号精确一致);
+- **随机结构漂移实证**:c06-02 历史跑 12 处答案行为普通行、本次跑升为 `###` 标题(c10-02 6 处同理;同位置同内容,并非全升)——**OCR 对答案行的标题化是随机的**;下游 QC 对该漂移 0 issue(鲁棒);注意基线可能被既有 fix 链碰过,漂移数字口径 = "历史产物 vs 今日直跑"。
+
+### 危害面复核(深度 11 份 / 抽验 11 份,逐份记入轨迹 human_review)
+
+- **c12-01/02(BUG-25 台账卷)**:转义点行复现且 **SectionLocator 0 误升**——BUG-25 修复在全新数据上成立;
+- **c11-02(融合卷)**:L137 三重融合被 SectionLocator 如实收为 section start(标题文本污染,ACCEPTED OCR LIMITATION 家族),下游 C7/C9 咬住 → **FAIL 非静默**;
+- **c09-01(BUG-22 卷)**:prompt v2.3 + identity v2 下 printed(1-9)与 canonical(答案键 26-34)分离正确,0 identity fail;6 题源面答案缺失 → QC 如实 FAIL;
+- **c11-01(三十一中化学)**:L324 注记分节标题在新鲜 OCR 逐字复现(偏移 1 行),BUG-24 修复后被正确建模为分节;keep 三方裁决仍独立挂起,不因本链路结果关闭;
+- 4 份 QC FAIL 分诊:c07-01(BUG-17 家族 8 题 C3+C5+C11)、c09-01(6×C3 源面答案缺失)、c09-02(C9 结构行混入)、c11-02(C7/C9 融合后果)——全部是"如实暴露",无一静默转 PASS。
+
+### 新缺陷(账目面,均已在修复后真实验证)
+
+- **BUG-28 🟢 FIXED**:batch summary 硬编码写 `data/reslice_batch_c_summary.json`,--out 独立批量跑会静默冲掉生产 batch-C 证据工件(C-01 家族);修复=`derive_summary_path` 派生;回归 3 用例含集成级(main 真跑),**变异验证**(调用点回退→恰 1 条集成测试 FAIL→还原 3 passed);
+- **BUG-29 🟢 FIXED**:BUG-28 家族第二例——`phase2_identity_backfill.py` 回填报告硬编码;修复=`--report` 选项;真实运行验证生产报告 sha256 前后不变;
+- **Gate 发现(非缺陷,契约事实)**:pipeline 原生输出 v1,v2 依赖回填步骤——fresh 产物在回填前不是 v2,下游若直接消费 pipeline 输出违反 "resolver 只消费 v2" 契约;PAC 按生产同款流程回填后达成 v2。列入 resolver 契约约束与 rollout 流程清单。
+
+### 结果
+
+PAC 第一轮 22 份全链(真实 OCR + 真实 LLM)跑通,轨迹工件完整,FAIL 全部可解释且非静默;OCR 服务链从"零测试"升级为 22 份真实轨迹 + 漂移量化;抓 2 个账目覆盖缺陷(均修复+验证)。套件 **111 passed + 1 xfailed**(BUG-28 回归 +3)。残留:① 人工复核深度不均(hazard 卷深度、PASS 卷抽验,已如实标注,逐题全查留待用户抽查);② C3/C4 类 BLOCKED;③ 第二轮扩样(每类 2 份=26)待第一轮分诊裁定后决定。
