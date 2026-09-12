@@ -312,3 +312,11 @@ schema:`identity_version:2` + 顶层 `sections[{id,title,ordinal,start_line,end_
 
 - 第五轮审查裁定 Identity 层冻结后,按裁定优先级执行 pilot 16 份 v1→v2 确定性迁移(`phase3_pilot_v1_migration.py`,零 LLM;迁移后四条工具级自检 + 违规回滚,**未新增 QC 规则**):15/16 applied、裁决集与 v1 基线零翻转、字节级幂等 15/15、事实快照 389 单元(`data/phase3_pilot_v1_facts.json`)。
 - **BUG-24(OPEN,待用户裁决)**:`_heading_rows` 的 `答案|解析|评分` 整行子串排除器误杀含 note 的真实分节标题(三十一中化学"二、填空题…注意:…答案才计分"),SectionLocator 假阴性 → 同分节重号误判。收窄修复实测牵动 batch-C ≥3 份已提交 v2 产物的 section 划分与 R34/R35 证据链,按冻结令作为独立受审变更上报,不在本轮擅动;且修复后该卷仍需 keep 三方裁决(两个非 keep 跨节重号),不得自动豁免。
+
+### 10.5 R37 追加:SectionLocator 排除器契约(BUG-24 修复,Source structure 层)
+
+- **变更边界(用户冻结)**:只修 `_heading_rows` 的答案/解析/评分排除器,不扩大 Identity 语义、不改 keep 规则、不引入 LLM;`SectionLocator → Identity v2 → C13/C14` 之下零改动。
+- **判定契约(两阶段结构角色识别)**:排除条件从"整行含 marker"收紧为"marker 位于**结构归一化头部**的前 10 字符窗口内"(`question_identity._norm_heading_head`/`_is_answer_heading`)。归一化 = 剥 `#{1,6}` / 第X部分 / 中文数字与印刷题号序号前缀 / 括号装饰符(交替到不动点)。语义:marker 在标题**结构位**(答案区/答案块标题)才排除;marker 在**尾部 note** 的真分节标题("二、填空题(…)注意:…答案才计分。")必须保留。marker 集不变(答案|解析|评分)。
+- **实测边界(3120 卷)**:恢复 848 行、0 行答案内容行误升;残留假阴性 = 纯 topic 词标题(`## 解析几何`,全语料 1 例)——marker 词义歧义,按"不为 1 例扩大规则面"记录为已知边界。
+- **BUG-24 修复后的三十一中化学(两问题分离证明)**:填空题节恢复 → FAIL 理由变为"跨分节重号含多个非 keep"(正确建模),仍拒写——SectionLocator correctness 修复不产生任何 keep/合法性结论。
+- **方法论固化**:凡动 Source structure 层规则——① 先全语料盘点、恢复候选逐条人检;② 先落 before 快照(sections/span/refs/裁决)再改码;③ 以 NEW-OLD 产物比对(而非仅 pytest)收尾;④ 受影响已提交产物全链重生成并证明裁决集零翻转。resolver 消费 v2 时不得重新推导分节,消费的即是本契约的产物。

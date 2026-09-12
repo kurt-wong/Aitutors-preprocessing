@@ -41,6 +41,9 @@ FACTS = ROOT / "data/phase3_pilot_v1_facts.json"
 FACT_KEYS = ("question_numbers", "stem_lines", "answer_lines",
              "explanation_lines", "options_lines")
 
+# --refresh-v2 时的 R36 事实锚点(main 里装载;无快照文件时保持 {})
+FACTS_MAP = {}
+
 
 def facts_of(man):
     """按位置提取内容事实(unit_id 可重复,位置是唯一可信键)。"""
@@ -86,7 +89,7 @@ def verify_post(man, lines, pre_facts):
     return viol
 
 
-def migrate_file(md_path, apply=False):
+def migrate_file(md_path, apply=False, refresh_v2=False):
     man_path = md_path.with_suffix(".manifest.json")
     pre_bytes = man_path.read_bytes()
     pre = json.loads(pre_bytes.decode("utf-8"))
@@ -94,8 +97,20 @@ def migrate_file(md_path, apply=False):
              "pre_identity_version": pre.get("identity_version") or 1}
     pre_facts = facts_of(pre)
     if (pre.get("identity_version") or 1) >= 2:
-        entry["skipped"] = "already_v2"
-        return entry, pre_facts
+        if not refresh_v2:
+            entry["skipped"] = "already_v2"
+            return entry, pre_facts
+        # R37 BUG-24:v2 存量也需随 SectionLocator 修复重刷 sections。
+        # 刷新前必须与 R36 写入的 FACTS 事实快照逐单元一致(防内容漂移被
+        # 重刷掩盖);不一致即拒绝,绝不静默覆盖。
+        snap = FACTS_MAP.get(entry["file"])
+        if snap is None:
+            entry["violations"] = ["R36 FACTS 快照缺该文件,拒绝刷新"]
+            return entry, pre_facts
+        if snap != pre_facts:
+            entry["violations"] = ["内容事实与 R36 FACTS 快照不一致,拒绝刷新"]
+            return entry, pre_facts
+        entry["refresh_v2"] = True
 
     src = Path(pre.get("source_file") or "")
     if not src.exists():
@@ -127,15 +142,25 @@ def migrate_file(md_path, apply=False):
 
 
 def main():
+    global FACTS_MAP
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--refresh-v2", action="store_true",
+                    help="R37 BUG-24:对已 v2 文件重跑回填以刷新 sections"
+                         "(须与 R36 FACTS 快照一致,否则拒写)")
     args = ap.parse_args()
+    if args.refresh_v2:
+        if not FACTS.exists():
+            print("拒绝:R36 FACTS 快照不存在,--refresh-v2 无事实锚点")
+            return
+        FACTS_MAP = json.loads(FACTS.read_text(encoding="utf-8"))["files"]
     results, facts = [], {}
     for p in sorted(PILOT.rglob("*.manifest.json")):
         md = p.with_name(p.name[: -len(".manifest.json")] + ".md")
         if not md.exists():
             continue
-        entry, pre_facts = migrate_file(md, apply=args.apply)
+        entry, pre_facts = migrate_file(md, apply=args.apply,
+                                        refresh_v2=args.refresh_v2)
         results.append(entry)
         if pre_facts is not None:
             facts[entry["file"]] = pre_facts
@@ -149,9 +174,12 @@ def main():
                          encoding="utf-8", newline="\n")
     elif args.apply:
         print(f"事实快照已存在,跳过写入({len(facts)} 份在场)")
-    REPORT.write_text(json.dumps({"applied": args.apply, "files": results},
-                                 ensure_ascii=False, indent=1),
-                      encoding="utf-8", newline="\n")
+    report_path = (ROOT / "data/bug24_pilot_refresh_report.json"
+                   if args.refresh_v2 else REPORT)
+    report_path.write_text(json.dumps(
+        {"applied": args.apply, "refresh_v2": args.refresh_v2,
+         "files": results}, ensure_ascii=False, indent=1),
+        encoding="utf-8", newline="\n")
     napp = sum(1 for r in results if r.get("applied"))
     nviol = sum(1 for r in results if r.get("post_violations")
                 or r.get("violations"))

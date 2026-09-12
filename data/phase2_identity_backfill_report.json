@@ -4,7 +4,7 @@
   {
    "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\会考\\化学\\2018北京春季高中会考化学（教师版）(1).md",
    "units": 40,
-   "sections": 12,
+   "sections": 13,
    "basis": {
     "unverified": 7,
     "printed_as_is": 18,
@@ -39,7 +39,7 @@
   {
    "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\会考\\地理\\2018北京春季高中会考地理（教师版）(1).md",
    "units": 25,
-   "sections": 6,
+   "sections": 7,
    "basis": {
     "unverified": 20,
     "shift": 5
@@ -71,7 +71,7 @@
   {
    "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\会考\\数学\\2018北京春季高中会考数学（教师版）(1).md",
    "units": 30,
-   "sections": 4,
+   "sections": 6,
    "basis": {
     "printed_as_is": 29,
     "unverified": 1
@@ -87,7 +87,7 @@
   {
    "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\会考\\物理\\2018北京春季高中会考物理（教师版）(1).md",
    "units": 22,
-   "sections": 12,
+   "sections": 13,
    "basis": {
     "unverified": 4,
     "printed_as_is": 18
@@ -449,7 +449,7 @@
   {
    "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\历史\\2020北京平谷高一（上）期末历史含答案.md",
    "units": 54,
-   "sections": 6,
+   "sections": 7,
    "basis": {
     "printed_as_is": 47,
     "unverified": 7
@@ -539,7 +539,7 @@
   {
    "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\英语\\2019北京三十五中新高一分班考试英语含答案(1).md",
    "units": 39,
-   "sections": 25,
+   "sections": 26,
    "basis": {
     "unverified": 13,
     "printed_as_is": 25,

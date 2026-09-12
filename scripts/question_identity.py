@@ -34,6 +34,47 @@ SUB_Q = re.compile(r"^\s*[（(]\s*\d{1,3}\s*[）)]|^\s*[①②③④⑤⑥⑦⑧
 LINE_REF = re.compile(r"L(\d+)")
 PRINTED_LINE = re.compile(r"^\s*(\d{1,3})\s*[\.、．]")
 
+# ── BUG-24(R37)分节标题排除器:两阶段结构角色识别 ─────────────────────────
+# 旧缺陷:答案|解析|评分 对**整行**子串匹配 → 标题尾部 note 含"答案"的真实
+# 分节标题被误杀(如三十一中化学 L324 "二、填空题(...)注意:...答案才计分。"
+# → SectionLocator 假阴性 → F1-F11 落进上一节)。
+# 修复(只动 Source structure 层,不动 Identity/keep 语义):先结构归一化
+# (剥 markdown 前缀/第X部分/中文数字与印刷题号序号前缀/括号类装饰符,交替
+# 剥到不动点),再只在归一头部前 10 字符窗口内判 marker:
+#   - 真实分节标题 → 头部是题型名词("填空题(共11题")→ 保留;
+#   - 答案区行("### 9.【答案】C"、"## 【1~10题答案】")→ 剥前缀后头部即
+#     marker → 维持排除。
+# 全语料实测(3120 卷 + reslice 75 源):恢复 848 行,其中 0 行答案内容行;
+# 10899 行维持排除。残留假阴性(诚实边界):纯 topic 词标题("## 解析几何",
+# 全语料 1 例,汇编卷)仍被排除——marker 词义歧义,不为 1 例扩大规则面。
+ANSWER_MARKER = re.compile(r"答案|解析|评分")
+_HASH_PREFIX = re.compile(r"^#{1,6}\s*")
+_PART_PREFIX = re.compile(r"^第[一二三四五]部分\s*")
+_NUM_PREFIX = re.compile(
+    r"^(?:[一二三四五六七八九十]{1,3}\s*[、．.]|\d{1,3}\s*[.、．])\s*")
+_DECOR_PREFIX = re.compile(r"^[\s【】()（）☑√✓*·\-—:：。.、_]+")
+HEAD_WINDOW = 10
+
+
+def _norm_heading_head(s):
+    """BUG-24 结构归一化:剥 markdown/分部/序号前缀与装饰符到不动点,
+    返回用于结构角色判定的标题头部。"""
+    t = _HASH_PREFIX.sub("", s.strip())
+    t = _PART_PREFIX.sub("", t)
+    while True:
+        t2 = _DECOR_PREFIX.sub("", _NUM_PREFIX.sub("", t))
+        if t2 == t:
+            return t
+        t = t2
+
+
+def _is_answer_heading(s):
+    """排除器第二阶段:marker 是否位于结构标题头部(归一后前
+    HEAD_WINDOW 字符)。头部是题型名词、marker 只出现在尾部 note 的
+    真实分节标题必须保留。"""
+    return bool(ANSWER_MARKER.search(_norm_heading_head(s)[:HEAD_WINDOW]))
+
+
 IDENTITY_VERSION = 2
 
 
@@ -43,7 +84,7 @@ def _heading_rows(lines):
     seen = Counter()
     for i, ln in enumerate(lines, 1):
         s = ln.strip()
-        if SECTION_RE.match(s) and not re.search(r"答案|解析|评分", s):
+        if SECTION_RE.match(s) and not _is_answer_heading(s):
             t = re.sub(r"^#{1,4}\s*", "", s)[:40]
             if SUB_Q.match(t):
                 continue

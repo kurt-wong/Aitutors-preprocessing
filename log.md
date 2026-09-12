@@ -710,3 +710,19 @@
 **BUG-24 发现(本轮最重要的负发现,详见 bugs.md)**:三十一中化学被拒写的真实根因不是数据缺陷——L324 `## 二、 填空题…注意:…答案才计分` 是合法分节标题(填空题独立编号 1-11),`_heading_rows` 的 `答案|解析|评分` 排除器对整行子串匹配,标题尾 note 含"答案"→ 填空题节被误杀 → 11 组同分节重号误判。**裁决无翻转(v1 同 FAIL),无非法 PASS**;但按 R35 冻结令**不擅自修**:收窄排除器实测会改变 batch-C ≥3 份已提交 v2 产物的 section 划分(naive 收窄更会把 135 行【解析】误升分节),牵动 R34/R35 证据链,应作为独立受审变更;且即使节被正确建模,该卷仍是两个非 keep 跨节重号,需三方裁决,不能自动豁免。
 
 **结果**:pilot 迁移 15/16 完成并关闭;唯一残留挂 **BUG-24 OPEN(决策点上报)**;套件 **90 passed + 1 xfailed**;生产数据 v1 残留面从 16 份缩至 1 份(且该份 v1/v2 裁决一致 FAIL,无契约撕裂风险)。
+
+## R37 · BUG-24 SectionLocator correctness 修复 + 受影响真实 corpus 全链复验(2026-09-13)
+
+**输入**:用户对 R36 的裁定——pilot migration 🟢 ACCEPTED;BUG-24 🔴 CONFIRMED(deterministic source-structure extraction defect),**应修、现在修、不带进 Resolver 消费**;限定边界:**只修 SectionLocator,不修 Identity**——不得顺手重设计 keep/basis/canonical 语义,不得为了让三十一中化学"过"而自动制造 keep;修复前先锁定历史 corpus 影响面(before 快照),修复后比对 NEW-OLD 而不是只看 pytest;验收标准冻结 B24-01~B24-08。
+
+**执行**:
+
+1. **全语料排除器盘点(改代码前)**:3120 源卷 + reslice-scope 75 源。第一版候选规则(naive 头部窗口 4)过度恢复 4902 行——聚类定位主形态 `### 9. 【答案】C`(归一化未剥印刷题号前缀)与 `###### 【答案】32. A`(六级 # 漏网,SECTION_RE 实际带可选 `#{1,4}\s*` 前缀组);规则迭代到 V2(剥 `#{1,6}` + 序号前缀交替到不动点 + 头部窗口 10)后恢复面收敛到 848 行,reslice-scope 13 行**逐条人检**:6 条真分节标题(A 类,修复目标)+ 7 条源结构标题(benign:参考答案卷 H1 题/解题要求/听力小节),**0 条答案内容行误升**;反向残留假阴性扫描(`解析几何` 类 topic 词)全语料仅 1 例(汇编卷,非提交范围)→ 诚实记录为规则边界,不为 1 例扩规则面。证据 `data/bug24_exclusion_inventory.json`。
+2. **影响面快照(B24 §6 冻结要求)**:`scripts/bug24_locator_snapshot.py` 对 batch-C 50 + pilot 16 记录 manifest sha256 / sections 全量 / 逐单元 section_ref+basis+printed / check_identity fails+reviews → `data/bug24_locator_snapshot_{before,after}.json`;before QC 复现 R34 已提交裁决集**逐文件零差异**(38 PASS/12 FAIL),环境一致性先行验证。
+3. **修复**:`question_identity._heading_rows` 排除器改两阶段(`_norm_heading_head` 结构归一化 + `_is_answer_heading` 头部窗口判定);marker 集不变、不新增 QC 规则、Identity/keep 语义零改动(冻结令边界)。
+4. **全链重跑**:batch-C 回填 50/50 applied(0 fail);迁移工具新增 `--refresh-v2`(v2 存量随 locator 修复重刷 sections,须与 R36 FACTS 事实快照逐单元一致否则拒写,自检违规即回滚)→ pilot 15 refreshed + 三十一中化学被 C13 如实拒写(字节不变)。
+5. **NEW-OLD 比对**:`data/bug24_fix_report.json`——**11 份 manifest 重生成**(batch-C 7:会考化学/地理/数学/物理、巴蜀化学、平谷历史、三十五中英语;pilot 4:人大附中地理、西城生物、石景山语文、石景山一模物理);单元移节最大 54(平谷历史 50 道选择题移入恢复的"一、选择题"节,非选择题回归第二部分——语义抽查正确);**QC 裁决集零翻转**(batch-C 38 PASS/12 FAIL、pilot 15/1 FAIL 逐文件一致);changed 文件 check_identity fails 全部 0→0;二次重跑字节级幂等 66/66。
+6. **三十一中化学(修复的正确结果)**:FAIL 理由从"同分节重复归属"(错误建模)变为"**跨分节重号含多个非 keep**"(正确建模)——填空题节恢复、F1-F11 获得正确 section_ref,**未自动产生 keep**,文件依旧 fail-closed 拒写。SectionLocator correctness 与 Identity legitimacy 两个问题就此在实数据上分离证明。
+7. **验收测试** `tests/test_bug24_section_locator.py` 13/13:B24-01(真题恢复,合成+真实卷双层)/ B24-02(8 条真实答案行回归语料 + 5 条 note-marker 标题 + benign/残留行为锁)/ B24-03(7 份受影响 batch-C 全链 QC)/ B24-04(不自动 keep、仍拒写)/ B24-05(BUG-22 原型仍 FAIL)/ B24-06(既有 PASS 集 53 份零非法翻转)/ B24-07(确定性,合成+真实卷)/ B24-08(Evidence Soundness 路径不变);**变异 sanity** 三类破坏(整行排除回灌缺陷形态 / 窗口归零 / 窗口无限)全被数据区分力拦截。R35 对抗语料 16/16 重跑不回归。
+
+**结果**:BUG-24 🟢 CLOSED(bugs.md 结案);套件 **103 passed + 1 xfailed**;生产数据 v1 残留仍 1 份(三十一中,但其 FAIL 已是正确理由,等待 keep 三方裁决——独立决策点,不由本修复吞并);下一站按用户路线图:**Identity v2 final freeze → system readiness gate(BUG-11/14/15、OCR 覆盖、真实 LLM/OCR 可重复性)→ rollout / Resolver 契约级设计**。
