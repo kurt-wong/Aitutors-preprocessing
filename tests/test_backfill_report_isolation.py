@@ -28,13 +28,18 @@ def test_report_arg_respected_and_default_untouched(workdir, monkeypatch):
     _, _, out_dir = make_repo(workdir)
     custom = workdir / "custom_report.json"
     before = _sha(DEFAULT_REPORT)
-    monkeypatch.setattr(sys, "argv",
-                        ["phase2_identity_backfill.py",
-                         "--out", str(out_dir),
-                         "--report", str(custom)])
-    bf.main()
-    assert custom.exists(), "--report 指定路径未写入"
-    rep = json.loads(custom.read_text(encoding="utf-8"))
-    assert rep["applied"] is False and len(rep["files"]) == 1, rep
-    assert _sha(DEFAULT_REPORT) == before, \
-        "BUG-29 复发:独立跑冲掉了默认报告工件"
+    snapshot = DEFAULT_REPORT.read_bytes()  # 变异自审防护:复发变异会写穿真工件
+    try:
+        monkeypatch.setattr(sys, "argv",
+                            ["phase2_identity_backfill.py",
+                             "--out", str(out_dir),
+                             "--report", str(custom)])
+        bf.main()
+        assert custom.exists(), "--report 指定路径未写入"
+        rep = json.loads(custom.read_text(encoding="utf-8"))
+        assert rep["applied"] is False and len(rep["files"]) == 1, rep
+        assert _sha(DEFAULT_REPORT) == before, \
+            "BUG-29 复发:独立跑冲掉了默认报告工件"
+    finally:
+        # 无论测试成败(含 BUG-29 复发变异故意打穿的场合),恢复真实工件
+        DEFAULT_REPORT.write_bytes(snapshot)
