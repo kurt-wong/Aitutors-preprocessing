@@ -1,0 +1,10 @@
+Q2 题号=[2] answer=None explanation=[584, 586]
+  详解区答案表述: 故D正确
+Q12 题号=[12] answer=None explanation=[648, 648]
+  详解区答案表述: 故A正确
+Q25 题号=[25] answer=None explanation=[728, 732]
+  详解区答案表述: 故C正确
+Q39 题号=[39] answer=None explanation=[820, 820]
+  详解区答案表述: 故A正确
+Q44 题号=[44] answer=None explanation=[848, 850]
+  详解区答案表述: 故B正确

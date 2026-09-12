@@ -1,0 +1,13 @@
+Q29 全部区间: {'stem_lines': [488, 492], 'answer_lines': [2100, 2133], 'explanation_lines': [2102, 2133]}
+Q29 区间末尾 → L496 之间的行(看图是否可能是 Q29 的):
+  L491: 
+  L492: （Ⅱ）线段 AP 长度的最小值为 ___.
+  L493: 
+  L494: ---
+  L495: 
+
+L496 图: img_in_image_box_103_74_321_262.jpg
+Q30 stem 内的图:
+  L501: img_in_image_box_111_413_233_538.jpg
+  L507: img_in_image_box_278_414_397_537.jpg
+  L513: img_in_image_box_109_567_229_690.jpg

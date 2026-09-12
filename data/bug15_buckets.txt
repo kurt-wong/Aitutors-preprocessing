@@ -1,0 +1,35 @@
+=== BUG-15 精确分桶(1476行按唯一类别) ===
+
+## [BLOCK跨行公式块] = 454 行
+  · 2021北京高考真题化学（教师版）(1).md:L1365
+    \end{array} $
+  · 2022北京五十七中高一12月月考数学（教师版）(1).md:L67
+    8. 已知函数  $ f(x)=\begin{cases}-x^{2}+4ax,&x\leq1\ $ 2a+3)x-4a+5,&x>1\end{cases} $，若  $ f(x) $ 在 R 上是增函数，则实数 a 的取值范围是（）
+  · 2021北京高考真题化学（教师版）(1).md:L1667
+     $ \begin{array}{c}
+
+## [SPACE纯间距排版] = 445 行
+  · 2022北京首师附中高二（下）期中数学（教师版）(1).md:L333
+    A.  $ \left(-\frac{1}{\mathrm{e}},\mathrm{e}\right] $ \quad B.  $ \left(-\frac{1}{\mathrm{e}},\mathrm{e}\right) $ \quad C.  $ \left(-\frac{1}{\mathrm{
+  · 2019全国I卷高考真题数学（理）（教师版）(1).md:L105
+    C. $ \frac{x^2}{4}+\frac{y^2}{3}=1 $ \quad D. $ \frac{x^2}{5}+\frac{y^2}{4}=1 $
+  · 2012-2021高考真题数学汇编：集合（2）（教师版）(1).md:L271
+    A.  $ \{4, 8\} $ \quad B.  $ \{0, 2, 6\} $ \quad C.  $ \{0, 2, 6, 10\} $ \quad D.  $ \{0, 2, 4, 6, 8, 10\} $
+
+## [TABLE表格残留] = 349 行
+  · 2019天津高考真题生物（教师版）(1).md:L354
+    <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>指标\n样地</td><td style='text-ali
+  · 2021北京昌平高三二模生物（教师版） (1).md:L371
+    <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td rowspan="3">实验\数量</td><td colspan="4">甲基化类型</td></tr><tr><td style='text-align: c
+  · 2021北京人大附中高一(上)期中化学（教师版）.md:L1007
+    <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>操作</td><td style='text-align: 
+
+## [COMPLEX复杂/OCR烂行] = 228 行
+  · 2020浙江高考真题数学（教师版）(1).md:L618
+    则$$\sin\left(A + \frac{\pi}{3}\right) \in\left(\frac{\sqrt{3}}{2},1\right)\)，$$\sin\left(A + \frac{\pi}{3}\right) + \frac{1}{2} \in\left(\frac{\sqrt{3
+  · 2021北京平谷高三一模数学（教师版）(1).md:L590
+    【解答】解：（Ⅰ）解：因为 $ 1+3=4\notin A $，3-1=2\notin A，故数列0，1，3，5不具有性质P，
+  · 2012-2021高考真题数学汇编：立体几何初步（4）（教师版）(1).md:L549
+    设直线BC₁与直线AB₈夹角为θ，则cosθ=|  $ \frac{\overrightarrow{BC_1}\cdot\overrightarrow{AB_1}}{|\overrightarrow{BC_5}|\cdot|\overrightarrow{AB_1}|} $|=\frac{\sqrt
+
+总计 1476 行

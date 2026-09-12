@@ -1,0 +1,897 @@
+{
+ "summary": {
+  "merge": 0,
+  "keep": 148,
+  "mode": "apply"
+ },
+ "records": [
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\合格考\\英语\\2020北京高中合格考英语（第二次）（教师版）(1).manifest.json",
+   "line": 439,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2020北京高中合格考英语（第"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\合格考\\英语\\2020北京高中合格考英语（第二次）（教师版）(1).manifest.json",
+   "line": 444,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2020北京高中合格考英语（第"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\合格考\\英语\\2020北京高中合格考英语（第二次）（教师版）(1).manifest.json",
+   "line": 449,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2020北京高中合格考英语（第"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\合格考\\英语\\2020北京高中合格考英语（第二次）（教师版）(1).manifest.json",
+   "line": 795,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2020北京高中合格考英语（第"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\政治\\2021北京四十三中高一（上）期中政治（教师版）.manifest.json",
+   "line": 1356,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2021北京四十三中高一（上）"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\生物\\2021北京四中高一（上）期中生物（教师版）.manifest.json",
+   "line": 1265,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2021北京四中高一（上）期中"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\生物\\2021北京四中高一（上）期中生物（教师版）.manifest.json",
+   "line": 1308,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2021北京四中高一（上）期中"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\生物\\2021北京四中高一（上）期中生物（教师版）.manifest.json",
+   "line": 1365,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2021北京四中高一（上）期中"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\生物\\2021北京四中高一（上）期中生物（教师版）.manifest.json",
+   "line": 1371,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2021北京四中高一（上）期中"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\生物\\2021北京四中高一（上）期中生物（教师版）.manifest.json",
+   "line": 1427,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2021北京四中高一（上）期中"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 11,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 17,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 20,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 23,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 26,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 35,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 41,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 47,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 71,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 74,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 77,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 83,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 92,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 110,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 113,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 122,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 125,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 128,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 134,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 137,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 143,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 149,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 155,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 161,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 240,
+   "action": "keep",
+   "preview": "<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td s"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 253,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 258,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 264,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 273,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 279,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 282,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 461,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 464,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 470,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 473,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 479,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 485,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 491,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 537,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 639,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 645,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 648,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 654,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 681,
+   "action": "keep",
+   "preview": "<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td s"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 739,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 796,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 840,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 968,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 979,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "line": 1933,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/1_16_专题十六　化学实验综"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\2017-2019北京高三化学上学期期末汇编：化学实验（教师版）(1).manifest.json",
+   "line": 2080,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三化学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1096,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1120,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1126,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1132,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1154,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1160,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1163,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1193,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1198,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1204,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1229,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1235,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1241,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1270,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1276,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1282,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1306,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1312,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1318,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1343,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1349,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1355,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1386,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1392,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1398,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1423,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1426,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1429,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1454,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1459,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1465,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1490,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1495,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1501,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1530,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1536,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1542,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1567,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1573,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1576,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1601,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1607,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1613,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1644,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1650,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1653,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1685,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1711,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1746,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1752,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1758,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1795,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1801,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1851,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1884,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1938,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1944,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1949,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1978,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1984,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 1990,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2015,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2137,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2143,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2151,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2182,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2188,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2194,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2219,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2225,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2231,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2256,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2262,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2268,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2330,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2336,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 2342,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 3861,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 4952,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "line": 4958,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2017-2019北京高三数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).manifest.json",
+   "line": 690,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2012-2021高考真题数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).manifest.json",
+   "line": 853,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2012-2021高考真题数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).manifest.json",
+   "line": 922,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2012-2021高考真题数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).manifest.json",
+   "line": 1876,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2012-2021高考真题数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).manifest.json",
+   "line": 1917,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2012-2021高考真题数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).manifest.json",
+   "line": 1923,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2012-2021高考真题数学"
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).manifest.json",
+   "line": 2807,
+   "action": "keep",
+   "preview": "<div style=\"text-align: center;\"><img src=\"../../_imgs/2012-2021高考真题数学"
+  }
+ ]
+}

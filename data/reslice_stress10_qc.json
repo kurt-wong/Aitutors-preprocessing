@@ -1,0 +1,74 @@
+[
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-stress10\\高一\\生物\\2021北京丰台高一（上）期末生物（教师版）.md",
+  "units": 43,
+  "questions": 43,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-stress10\\高一\\英语\\2021北京丰台高一（下）期中联考英语（B卷）（教师版）(1).md",
+  "units": 11,
+  "questions": 44,
+  "issues": [
+   "C7 含卷面指令: ['答题卡指定区域']"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-stress10\\高三\\语文\\2020北京海淀高三（上）期末语文含答案(1).md",
+  "units": 10,
+  "questions": 24,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-stress10\\高二\\数学\\2021北京一七一中学高二（上）期中数学（教师版）(1).md",
+  "units": 21,
+  "questions": 21,
+  "issues": [
+   "C3 第6单元答案区为空",
+   "C3 第8单元答案区为空"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-stress10\\高二\\生物\\2019北京101中学高二（下）期中生物含答案(1).md",
+  "units": 21,
+  "questions": 21,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-stress10\\高二\\英语\\2018北京昌平临川学校高二（下）期中英语（教师版）(1).md",
+  "units": 19,
+  "questions": 72,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-stress10\\高考真题\\数学\\2012-2021高考真题数学汇编：空间向量与立体几何（1）（教师版）(1).md",
+  "units": 60,
+  "questions": 60,
+  "issues": [
+   "C10 锚点 answer 不配对: start×60 vs end×59"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-stress10\\高考真题\\数学\\2012-2021高考真题数学汇编：统计与概率（分布列）（3）（教师版）(1).md",
+  "units": 45,
+  "questions": 45,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-stress10\\高考真题\\数学\\2021全国II卷新高考真题数学（教师版）(1).md",
+  "units": 22,
+  "questions": 22,
+  "issues": [
+   "C5 4 个图片行未被任何单元覆盖: ['L396:(1)/img_in_image_box_111_781_311_956.jpg', 'L402:(1)/img_in_image_box_592_773_774_959.jpg', 'L408:1)/img_in_image_box_106_987_275_1138.jpg']"
+  ],
+  "verdict": "FAIL"
+ }
+]

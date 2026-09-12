@@ -1,0 +1,455 @@
+{
+ "source_file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2019北京101中学高二（下）期中生物含答案(1).md",
+ "model": "mimo-x-pro-preview",
+ "annotation_meta": {
+  "prompt_version": "reslice-pilot-v2.1",
+  "validation_issues": [],
+  "warnings": []
+ },
+ "units": [
+  {
+   "unit_id": "Q1",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    1
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    9,
+    9
+   ],
+   "options_lines": [
+    11,
+    17
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q2",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    2
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    19,
+    21
+   ],
+   "options_lines": [
+    24,
+    30
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q3",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    3
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    32,
+    32
+   ],
+   "options_lines": [
+    34,
+    40
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q4",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    4
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    44,
+    44
+   ],
+   "options_lines": [
+    46,
+    52
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q5",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    5
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    54,
+    54
+   ],
+   "options_lines": [
+    56,
+    62
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q6",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    6
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    64,
+    64
+   ],
+   "options_lines": [
+    66,
+    72
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q7",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    7
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    74,
+    76
+   ],
+   "options_lines": [
+    78,
+    84
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q8",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    8
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    86,
+    86
+   ],
+   "options_lines": [
+    88,
+    96
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q9",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    9
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    98,
+    98
+   ],
+   "options_lines": [
+    100,
+    106
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q10",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    10
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    108,
+    110
+   ],
+   "options_lines": [
+    113,
+    119
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q11",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    11
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    121,
+    121
+   ],
+   "options_lines": [
+    123,
+    125
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q12",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    12
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    127,
+    127
+   ],
+   "options_lines": [
+    129,
+    135
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q13",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    13
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    137,
+    137
+   ],
+   "options_lines": [
+    139,
+    145
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q14",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    14
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    147,
+    147
+   ],
+   "options_lines": [
+    149,
+    157
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q15",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    15
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    159,
+    164
+   ],
+   "options_lines": [
+    166,
+    172
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    314,
+    314
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q16",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    16
+   ],
+   "original_question_type": "short_answer",
+   "stem_lines": [
+    178,
+    213
+   ],
+   "options_lines": null,
+   "extra_lines": null,
+   "answer_lines": [
+    320,
+    336
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q17",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    17
+   ],
+   "original_question_type": "short_answer",
+   "stem_lines": [
+    215,
+    225
+   ],
+   "options_lines": null,
+   "extra_lines": null,
+   "answer_lines": [
+    338,
+    346
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q18",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    18
+   ],
+   "original_question_type": "short_answer",
+   "stem_lines": [
+    227,
+    239
+   ],
+   "options_lines": null,
+   "extra_lines": null,
+   "answer_lines": [
+    348,
+    354
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q19",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    19
+   ],
+   "original_question_type": "short_answer",
+   "stem_lines": [
+    241,
+    270
+   ],
+   "options_lines": null,
+   "extra_lines": null,
+   "answer_lines": [
+    356,
+    366
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q20",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    20
+   ],
+   "original_question_type": "short_answer",
+   "stem_lines": [
+    272,
+    292
+   ],
+   "options_lines": null,
+   "extra_lines": null,
+   "answer_lines": [
+    368,
+    374
+   ],
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q21",
+   "unit_type": "standalone_question",
+   "question_numbers": [
+    21
+   ],
+   "original_question_type": "short_answer",
+   "stem_lines": [
+    294,
+    302
+   ],
+   "options_lines": null,
+   "extra_lines": null,
+   "answer_lines": [
+    376,
+    392
+   ],
+   "explanation_lines": null
+  }
+ ]
+}

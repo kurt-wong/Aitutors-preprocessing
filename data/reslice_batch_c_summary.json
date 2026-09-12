@@ -1,0 +1,42 @@
+{
+ "when": "2026-09-12 09:55",
+ "n_files": 2,
+ "n_ok": 2,
+ "n_error": 0,
+ "n_no_issues": 2,
+ "total_src_bytes": 41052,
+ "total_prompt_tokens": 20071,
+ "total_completion_tokens": 17628,
+ "total_llm_seconds": 196,
+ "avg_llm_seconds_per_file": 97.9,
+ "tokens_per_1k_chars": 918.32,
+ "by_tier": {
+  "stress10": {
+   "n": 2,
+   "bytes": 41052,
+   "llm_s": 195.89999999999998,
+   "prompt_tokens": 20071,
+   "completion_tokens": 17628
+  }
+ },
+ "files": [
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\英语\\2018北京昌平临川学校高二（下）期中英语（教师版）(1).md",
+   "tier": "stress10",
+   "elapsed_s": 162.7,
+   "prompt_tokens": 9998,
+   "completion_tokens": 14542,
+   "units": 19,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2019北京101中学高二（下）期中生物含答案(1).md",
+   "tier": "stress10",
+   "elapsed_s": 33.2,
+   "prompt_tokens": 10073,
+   "completion_tokens": 3086,
+   "units": 21,
+   "n_issues": 0
+  }
+ ]
+}

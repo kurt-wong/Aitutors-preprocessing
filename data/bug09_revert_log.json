@@ -1,0 +1,618 @@
+{
+ "when": "2026-09-11 00:45",
+ "bug": "BUG-09",
+ "action": "revert partial-wrap to pre-fix (bare) form",
+ "applied": 93,
+ "skipped": 10,
+ "files": 88,
+ "records": [
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京三十五中高一（下）期中化学（教师版）(1).md",
+   "line": 431,
+   "status": "MISMATCH_SKIP"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京二十中高一（上）期中化学（教师版）.md",
+   "line": 821,
+   "status": "MISMATCH_SKIP"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京二十中高一（上）期中化学（教师版）.md",
+   "line": 845,
+   "status": "MISMATCH_SKIP"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京五中高一（上）第二次月考化学（教师版）(1).md",
+   "line": 47,
+   "status": "MISMATCH_SKIP"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京五中高一（下）期中化学（教师版）(1).md",
+   "line": 503,
+   "status": "MISMATCH_SKIP"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京五十七中高一（上）期中化学（教师版）.md",
+   "line": 409,
+   "status": "MISMATCH_SKIP"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京五十七中高一（上）期中化学（教师版）.md",
+   "line": 915,
+   "status": "MISMATCH_SKIP"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京交大附中高一（上）期中化学（教师版）.md",
+   "line": 862,
+   "status": "MISMATCH_SKIP"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京人大附中高一(上)期中化学（教师版）.md",
+   "line": 825,
+   "status": "MISMATCH_SKIP"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京八中高一（下）期中化学（教师版）(1).md",
+   "line": 236,
+   "status": "MISMATCH_SKIP"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京北师大实验中学高一（上）期末化学（教师版）.md",
+   "line": 684,
+   "from": "+$3H_{2}$\\uparrow，故D错误；",
+   "to": "+3H_{2}\\uparrow，故D错误；"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京北师大实验中学高一（上）期末化学（教师版）.md",
+   "line": 1042,
+   "from": "【答案】①. $Na_{2}SO_{3}$+$H_{2}SO_{4}$=$Na_{2}SO_{4}$+$SO_{2}$\\uparrow+$H_{2}O$ ②. 品红溶液 ③. $SO_{2}$+$2OH^{-}$=$SO_{3}^{2-}$+$H_{2}O$ ④. $I_{2}$+$SO_{2}$+$2H_{2}O$=2HI+$H_{2}SO_{4}$ ⑤. 还原性",
+   "to": "【答案】①. Na_{2}SO_{3}+H_{2}SO_{4}=Na_{2}SO_{4}+SO_{2}\\uparrow+H_{2}O ②. 品红溶液 ③. SO_{2}+2OH^{-}=SO_{3}^{2-}+H_{2}O ④. I_{2}+SO_{2}+2H_{2}O=2HI+H_{2}SO_{4} ⑤. 还原性"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京十三中高一（下）期中化学（教师版）(1).md",
+   "line": 363,
+   "from": "$2CaCO_{3}$+$O_{2}$+$2SO_{2}$=\\underline{\\quad\\quad}\\。",
+   "to": "2CaCO_{3}+O_{2}+2SO_{2}=\\underline{\\quad\\quad}\\。"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京四中高一（上）期末化学（教师版）.md",
+   "line": 384,
+   "from": "<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td rowspan=\"5\">NaOH溶液\\n石蜡油$\\nFeSO_{4}$溶液</td><td style='text-align: center; word-wrap: break-word;'>i</td><td style='text-align: center; word-wrap: break-word;'>2.5</td><td style='text-align: center; word-wrap: break-word;'>15</td><td style='text-align: center; word-wrap: break-word;'>149</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>ii</td><td style='text-align: center; word-wrap: break-word;'>5</td><td style='text-align: center; word-wrap: break-word;'>15</td><td style='text-align: center; word-wrap: break-word;'>138</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>iii</td><td style='text-align: center; word-wrap: break-word;'>10</td><td style='text-align: center; word-wrap: break-word;'>15</td><td style='text-align: center; word-wrap: break-word;'>93</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>iv</td><td style='text-align: center; word-wrap: break-word;'>5</td><td style='text-align: center; word-wrap: break-word;'>25</td><td style='text-align: center; word-wrap: break-word;'>142</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>v</td><td style='text-align: center; word-wrap: break-word;'>5</td><td style='text-align: center; word-wrap: break-word;'>35</td><td style='text-align: center; word-wrap: break-word;'>180</td></tr></table>",
+   "to": "<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td rowspan=\"5\">NaOH溶液\\n石蜡油\\nFeSO_{4}溶液</td><td style='text-align: center; word-wrap: break-word;'>i</td><td style='text-align: center; word-wrap: break-word;'>2.5</td><td style='text-align: center; word-wrap: break-word;'>15</td><td style='text-align: center; word-wrap: break-word;'>149</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>ii</td><td style='text-align: center; word-wrap: break-word;'>5</td><td style='text-align: center; word-wrap: break-word;'>15</td><td style='text-align: center; word-wrap: break-word;'>138</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>iii</td><td style='text-align: center; word-wrap: break-word;'>10</td><td style='text-align: center; word-wrap: break-word;'>15</td><td style='text-align: center; word-wrap: break-word;'>93</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>iv</td><td style='text-align: center; word-wrap: break-word;'>5</td><td style='text-align: center; word-wrap: break-word;'>25</td><td style='text-align: center; word-wrap: break-word;'>142</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>v</td><td style='text-align: center; word-wrap: break-word;'>5</td><td style='text-align: center; word-wrap: break-word;'>35</td><td style='text-align: center; word-wrap: break-word;'>180</td></tr></table>"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京师大附中高一（上）期中化学（教师版）.md",
+   "line": 1124,
+   "from": "2NaCl + $2H_{2}O$ \\xlongequal{通电} $Cl_{2}$ + $H_{2}$ + 2NaOH ②. Cl",
+   "to": "2NaCl + 2H_{2}O \\xlongequal{通电} Cl_{2} + H_{2} + 2NaOH ②. Cl"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京房山高一（上）期末化学（教师版）.md",
+   "line": 345,
+   "from": "6 $Fe^{3+}$ + $2NH_{4}^{+}$ = $6Fe^{2+}$ + $N_{2}$\\uparrow + $8H^{+}$ 和 ___。",
+   "to": "6 Fe^{3+} + 2NH_{4}^{+} = 6Fe^{2+} + N_{2}\\uparrow + 8H^{+} 和 ___。"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京房山高一（上）期末化学（教师版）.md",
+   "line": 443,
+   "from": "（5）10 $Fe^{2+}$ + $2NO_{3}^{-}$ + $12H^{+}$ = $10Fe^{3+}$ + $N_{2}$\\uparrow + $6H_{2}O$（2分）",
+   "to": "（5）10 Fe^{2+} + 2NO_{3}^{-} + 12H^{+} = 10Fe^{3+} + N_{2}\\uparrow + 6H_{2}O（2分）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京房山高一（上）期末化学（教师版）.md",
+   "line": 447,
+   "from": "（1）Cu + $4HNO_{3}$（浓） = Cu($NO_{3}$)_{2} + $2NO_{2}$\\uparrow + $2H_{2}O$（2分）",
+   "to": "（1）Cu + 4HNO_{3}（浓） = Cu(NO_{3})_{2} + 2NO_{2}\\uparrow + 2H_{2}O（2分）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京西城高一（上）期末化学（教师版）.md",
+   "line": 544,
+   "from": "(2) $CaCl_{2}$ + $H_{2}O_{2}$ + $2NH_{3}$ \\cdot $H_{2}O$ + $6H_{2}O$",
+   "to": "(2) CaCl_{2} + H_{2}O_{2} + 2NH_{3} \\cdot H_{2}O + 6H_{2}O"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京一七一中学高一（下）期中化学（教师版） (1).md",
+   "line": 1369,
+   "from": "$N_{2}$ + $3H_{2}$ \\xlongequal{\\quad} $2NH_{3}$",
+   "to": "N_{2} + 3H_{2} \\xlongequal{\\quad} 2NH_{3}"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京东城高一（上）期末化学（教师版）.md",
+   "line": 686,
+   "from": "19. 【分析】用砂纸仔细打磨铝片后，称取质量均为 2.7g 的两块铝片，将其中一铝片迅速放入 120mL 2mol/L NaOH 溶液中，铝和氢氧化钠溶液反应生成偏铝酸钠和氢气，2Al + 2NaOH + $2H_{2}O$ = $2NaAlO_{2}$ + $3H_{2}$\\uparrow，另一铝片在空气中放置一段时间后，再放入等浓度等体积的 NaOH 溶液中，发生的反应为：$Al_{2}O_{3}$ + 2NaOH = $2NaAlO_{2}$ + $H_{2}O$，2Al + 2NaOH + $2H_{2}O$ = $2NaAlO_{2}$ + $3H_{2}$\\uparrow，据此分析判断。",
+   "to": "19. 【分析】用砂纸仔细打磨铝片后，称取质量均为 2.7g 的两块铝片，将其中一铝片迅速放入 120mL 2mol/L NaOH 溶液中，铝和氢氧化钠溶液反应生成偏铝酸钠和氢气，2Al + 2NaOH + 2H_{2}O = 2NaAlO_{2} + 3H_{2}\\uparrow，另一铝片在空气中放置一段时间后，再放入等浓度等体积的 NaOH 溶液中，发生的反应为：Al_{2}O_{3} + 2NaOH = 2NaAlO_{2} + H_{2}O，2Al + 2NaOH + 2H_{2}O = 2NaAlO_{2} + 3H_{2}\\uparrow，据此分析判断。"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京二中高一6月月考化学（教师版）(1).md",
+   "line": 1168,
+   "from": "单位mol $PCl_{5}$ \\rightleftharpoons $PCl_{3}$ + $Cl_{2}$",
+   "to": "单位mol PCl_{5} \\rightleftharpoons PCl_{3} + Cl_{2}"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京五中高一（下）期中化学（教师版） (1).md",
+   "line": 1017,
+   "from": "【答案】①. Cu+$4HNO_{3}$(浓)=Cu($NO_{3}$)_{2}+$2NO_{2}$\\uparrow+$2H_{2}O$ ②. 不合理 ③. 蓝色 ④. 溶液呈绿色与 $Cu^{2+}$浓度无关 ⑤. $H_{2}O_{2}$+$HNO_{2}$=$HNO_{3}$+$H_{2}O$ ⑥. 铜和浓硝酸反应时会生成铜的亚硝酸化合物使溶液呈绿色",
+   "to": "【答案】①. Cu+4HNO_{3}(浓)=Cu(NO_{3})_{2}+2NO_{2}\\uparrow+2H_{2}O ②. 不合理 ③. 蓝色 ④. 溶液呈绿色与 Cu^{2+}浓度无关 ⑤. H_{2}O_{2}+HNO_{2}=HNO_{3}+H_{2}O ⑥. 铜和浓硝酸反应时会生成铜的亚硝酸化合物使溶液呈绿色"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2023北京一七一中高一3月月考化学（教师版）(1).md",
+   "line": 854,
+   "from": "(2）①.$4NH_{3}$+$5O_{2}$\\xlongequal[\\Delta]{催化剂}4NO+$6H_{2}O$ ②.$HNO_{3}$+$NH_{3}$=$NH_{4}NO_{3}$ ③.空气或$O_{2}$",
+   "to": "(2）①.4NH_{3}+5O_{2}\\xlongequal[\\Delta]{催化剂}4NO+6H_{2}O ②.HNO_{3}+NH_{3}=NH_{4}NO_{3} ③.空气或O_{2}"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2023北京一六一中高一（上）期中化学（教师版）.md",
+   "line": 272,
+   "from": "（1）___$NH_{3}$+___$O_{2}$\\xlongequal[\\Delta]{催化剂}NO+___$H_{2}O$，该反应中氧化剂是___，被氧化的元素是___，氧化产物是___。",
+   "to": "（1）___NH_{3}+___O_{2}\\xlongequal[\\Delta]{催化剂}NO+___H_{2}O，该反应中氧化剂是___，被氧化的元素是___，氧化产物是___。"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2023北京一六一中高一（下）期中化学（教师版）(1).md",
+   "line": 653,
+   "from": "$8NH_{3}$+$6NO_{2}$\\xlongequal[一定温度]{催化剂}$7N_{2}$+$12H_{2}O$ Z中NaOH溶液产生倒吸现象 反应后气体分子数减少，Y管中压强小于外压",
+   "to": "8NH_{3}+6NO_{2}\\xlongequal[一定温度]{催化剂}7N_{2}+12H_{2}O Z中NaOH溶液产生倒吸现象 反应后气体分子数减少，Y管中压强小于外压"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2019北京人大附中新高一分班考数学（图片版）（教师版）(1).md",
+   "line": 142,
+   "from": "11. 如图的\\triangle ABC中有一正方形DEFG，其中D在AC上，E、F在AB上，直线AG分别交DE、BC于M、N两点。若\\angle B=$90^{\\circ}$，AB=4，BC=3，EF=1，则BN的长度为何？（）",
+   "to": "11. 如图的\\triangle ABC中有一正方形DEFG，其中D在AC上，E、F在AB上，直线AG分别交DE、BC于M、N两点。若\\angle B=90^{\\circ}，AB=4，BC=3，EF=1，则BN的长度为何？（）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京一零一中学高一（下）期末数学（教师版）(1).md",
+   "line": 123,
+   "from": "②若|f($x_{1}$)|=|f($x_{2}$)|，则$x_{1}$=$x_{2}$+k\\pi (k\\in\\mathbb{Z});",
+   "to": "②若|f(x_{1})|=|f(x_{2})|，则x_{1}=x_{2}+k\\pi (k\\in\\mathbb{Z});"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京东城广渠门中学高一（上）期中数学（教师版）.md",
+   "line": 551,
+   "from": "$2a_{1}$<$a_{1}$+$a_{2}$<$a_{1}$+$a_{3}$<\\ldots<$a_{1}$+$a_{k}$<$a_{2}$+$a_{k}$<$a_{3}$+$a_{k}$<\\ldots<$a_{k-1}$+$a_{k}$<$2a_{k}$，",
+   "to": "2a_{1}<a_{1}+a_{2}<a_{1}+a_{3}<\\ldots<a_{1}+a_{k}<a_{2}+a_{k}<a_{3}+a_{k}<\\ldots<a_{k-1}+a_{k}<2a_{k}，"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京人大附中高一（下）期末数学（教师版）(1).md",
+   "line": 17,
+   "from": "2.（4分）在\\triangle ABC中，角A，B，C的对边分别为a，b，c，若$a^{2}$-ac+$c^{2}$=$b^{2}$，则角B为()",
+   "to": "2.（4分）在\\triangle ABC中，角A，B，C的对边分别为a，b，c，若a^{2}-ac+c^{2}=b^{2}，则角B为()"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京人大附中高一（下）期末数学（教师版）(1).md",
+   "line": 170,
+   "from": "21.（5分）若在\\triangle ABC中，角A，B，C的对边分别为a，b，c，A=$60^{\\circ}$，a=2\\sqrt{6}，b=4，则B=（）",
+   "to": "21.（5分）若在\\triangle ABC中，角A，B，C的对边分别为a，b，c，A=60^{\\circ}，a=2\\sqrt{6}，b=4，则B=（）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京十九中高一（下）期末数学（教师版）(1).md",
+   "line": 35,
+   "from": "6.在\\triangle ABC中，a=3，A=$30^{\\circ}$，则b的取值范围（）",
+   "to": "6.在\\triangle ABC中，a=3，A=30^{\\circ}，则b的取值范围（）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京清华附中高一（下）期中数学（教师版）(1).md",
+   "line": 11,
+   "from": "2.（4分）在\\triangle ABC中，AC=2，BC=3，C=$60^{\\circ}$，则\\triangle ABC的面积为()",
+   "to": "2.（4分）在\\triangle ABC中，AC=2，BC=3，C=60^{\\circ}，则\\triangle ABC的面积为()"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京通州高一（上）期末数学（教师版）.md",
+   "line": 180,
+   "from": "【详解】\\because-$300^{\\circ}$=$60^{\\circ}$-$360^{\\circ}$,-$240^{\\circ}$=$60^{\\circ}$-$300^{\\circ}$,$120^{\\circ}$=$60^{\\circ}$+$60^{\\circ}$,$390^{\\circ}$=$60^{\\circ}$+$330^{\\circ}$",
+   "to": "【详解】\\because-300^{\\circ}=60^{\\circ}-360^{\\circ},-240^{\\circ}=60^{\\circ}-300^{\\circ},120^{\\circ}=60^{\\circ}+60^{\\circ},390^{\\circ}=60^{\\circ}+330^{\\circ}"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一七一中学高一（下）期中数学（教师版）(1).md",
+   "line": 45,
+   "from": "7.（5分）在\\triangle ABC中，C=$60^{\\circ}$，a+2b=8，\\sin A=6\\sin B，则c=（）",
+   "to": "7.（5分）在\\triangle ABC中，C=60^{\\circ}，a+2b=8，\\sin A=6\\sin B，则c=（）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一七一中高一（下）期中数学（教师版）(1).md",
+   "line": 45,
+   "from": "7.（5分）在\\triangle ABC中，C=$60^{\\circ}$，a+2b=8，\\sin A=6\\sin B，则c=（）",
+   "to": "7.（5分）在\\triangle ABC中，C=60^{\\circ}，a+2b=8，\\sin A=6\\sin B，则c=（）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一零一中学高一（下）期中数学（教师版）(1).md",
+   "line": 7,
+   "from": "1. 在\\triangle ABC中，若BC=\\sqrt{2}，AC=2，B=$45^{\\circ}$，则角A等于()",
+   "to": "1. 在\\triangle ABC中，若BC=\\sqrt{2}，AC=2，B=45^{\\circ}，则角A等于()"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一零一中高一（下）期中数学（教师版）(1).md",
+   "line": 7,
+   "from": "1. 在\\triangle ABC中，若BC=\\sqrt{2}，AC=2，B=$45^{\\circ}$，则角A等于()",
+   "to": "1. 在\\triangle ABC中，若BC=\\sqrt{2}，AC=2，B=45^{\\circ}，则角A等于()"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京三十五中高一6月月考数学（教师版）(1).md",
+   "line": 105,
+   "from": "16. 在\\triangle ABC中，角A,B,C的对边分别为a,b,c,a=15,b=10,A=$60^{\\circ}$，则\\cos B=（）",
+   "to": "16. 在\\triangle ABC中，角A,B,C的对边分别为a,b,c,a=15,b=10,A=60^{\\circ}，则\\cos B=（）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京东城高一（下）期末数学（教师版）(1).md",
+   "line": 39,
+   "from": "6. 设\\triangle ABC的内角A,B,C所对的边分别为a,b,c，若a=\\sqrt{3}，b=1，A=$60^{\\circ}$，则B等于（）",
+   "to": "6. 设\\triangle ABC的内角A,B,C所对的边分别为a,b,c，若a=\\sqrt{3}，b=1，A=60^{\\circ}，则B等于（）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京东城高一（下）期末数学（教师版）(1).md",
+   "line": 293,
+   "from": "6. 设\\triangle ABC的内角A,B,C所对的边分别为a,b,c，若a=\\sqrt{3}，b=1，A=$60^{\\circ}$，则B等于（）",
+   "to": "6. 设\\triangle ABC的内角A,B,C所对的边分别为a,b,c，若a=\\sqrt{3}，b=1，A=60^{\\circ}，则B等于（）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京二十五中高一（下）期中数学（教师版）(1).md",
+   "line": 55,
+   "from": "8. 在\\triangle ABC中，角A、B、C的对边分别为a、b、c，若a=1，b=\\sqrt{3}，B=$60^{\\circ}$，则A=（）",
+   "to": "8. 在\\triangle ABC中，角A、B、C的对边分别为a、b、c，若a=1，b=\\sqrt{3}，B=60^{\\circ}，则A=（）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京五中高一3月月考数学（教师版）(1).md",
+   "line": 37,
+   "from": "4. 在\\triangle ABC中，\\angle A=$30^{\\circ}$，AB=\\sqrt{3}，BC=1，则\\angle C等于()",
+   "to": "4. 在\\triangle ABC中，\\angle A=30^{\\circ}，AB=\\sqrt{3}，BC=1，则\\angle C等于()"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京五中高一（下）期中数学（教师版）(1).md",
+   "line": 39,
+   "from": "4. 在\\triangle ABC中，\\angle A=$30^{\\circ}$，AB=\\sqrt{3}，BC=1，则\\angle C等于()",
+   "to": "4. 在\\triangle ABC中，\\angle A=30^{\\circ}，AB=\\sqrt{3}，BC=1，则\\angle C等于()"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2018北京理工大附中分校高一（下）期中物理（教师版）(1).md",
+   "line": 572,
+   "from": "（2）电源的内电压：$U_{内}$=Ir=3\\times1=3V",
+   "to": "（2）电源的内电压：U_{内}=Ir=3\\times1=3V"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京九中高一（上）10月月考物理（教师版）(1).md",
+   "line": 81,
+   "from": "①0~$t_{a}$段火箭的加速度小于$t_{d}$\\sim $t_{b}$段的火箭加速度",
+   "to": "①0~t_{a}段火箭的加速度小于t_{d}\\sim t_{b}段的火箭加速度"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京九中高一（上）10月月考物理（教师版）(1).md",
+   "line": 472,
+   "from": "①0~$t_{a}$段火箭的加速度小于$t_{a}$\\sim $t_{b}$段的火箭加速度",
+   "to": "①0~t_{a}段火箭的加速度小于t_{a}\\sim t_{b}段的火箭加速度"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京广渠门中学高一（上）期中物理（教师版）.md",
+   "line": 557,
+   "from": "【详解】①②．设个力与竖直方向的夹角为\\theta，根据对称性可知，两人对水桶拉力大小相等，根据平衡条件得$2F_{1}$\\cos\\theta=mg",
+   "to": "【详解】①②．设个力与竖直方向的夹角为\\theta，根据对称性可知，两人对水桶拉力大小相等，根据平衡条件得2F_{1}\\cos\\theta=mg"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 2386,
+   "from": "b.$2HNO_{2}$=NO\\uparrow+$NO_{2}$\\uparrow+$H_{2}O$",
+   "to": "b.2HNO_{2}=NO\\uparrow+NO_{2}\\uparrow+H_{2}O"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 2945,
+   "from": "活性 $MnO_{2}$ 样品。($MnO_{2}$+$C_{2}O_{4}^{2-}$+$4H^{+}$=$2CO_{2}$\\uparrow+$Mn^{2+}$+$2H_{2}O$)",
+   "to": "活性 MnO_{2} 样品。(MnO_{2}+C_{2}O_{4}^{2-}+4H^{+}=2CO_{2}\\uparrow+Mn^{2+}+2H_{2}O)"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_8_专题八　化学键　分子和晶体的结构与性质　教师用书PDF.md",
+   "line": 1155,
+   "from": "(4) Zn + $4NH_{3}$ \\cdot $H_{2}O$ \\xlongequal{\\quad} [Zn($NH_{3}$)_{4}]^{2+} + $H_{2}$ \\uparrow + $2OH^{-}$ + $2H_{2}O$",
+   "to": "(4) Zn + 4NH_{3} \\cdot H_{2}O \\xlongequal{\\quad} [Zn(NH_{3})_{4}]^{2+} + H_{2} \\uparrow + 2OH^{-} + 2H_{2}O"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_8_专题八　化学键　分子和晶体的结构与性质　教师用书PDF.md",
+   "line": 1574,
+   "from": "$FeC_{2}O_{4}$ \\cdot $2H_{2}O$ 的结构如图 1 所示。",
+   "to": "FeC_{2}O_{4} \\cdot 2H_{2}O 的结构如图 1 所示。"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2020北京各区高三一二模化学分类汇编--化学基本概念和基本理论含答案(1).md",
+   "line": 8,
+   "from": "<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>选项</td><td style='text-align: center; word-wrap: break-word;'>事实</td><td style='text-align: center; word-wrap: break-word;'>解释</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>向AgCl悬浊液中滴加$Na_{2}S$溶液，白色沉淀变成黑色</td><td style='text-align: center; word-wrap: break-word;'>2AgCl+$S^{2-}$=$Ag_{2}S$+$2Cl^{-}$</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B</td><td style='text-align: center; word-wrap: break-word;'>将水蒸气通过灼热的铁粉，产生可燃性气体</td><td style='text-align: center; word-wrap: break-word;'>2Fe+$3H_{2}O$(g)\\xlongequal{\\Delta}$Fe_{2}O_{3}$+$3H_{2}$</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C</td><td style='text-align: center; word-wrap: break-word;'>向澄清石灰水中滴加少量小苏打溶液，产生白色沉淀</td><td style='text-align: center; word-wrap: break-word;'>$Ca^{2+}$+$OH^{-}$+$HCO_{3}^{-}$=$CaCO_{3}$\\downarrow+$H_{2}O$</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D</td><td style='text-align: center; word-wrap: break-word;'>将$Cl_{2}$通入KBr溶液，无色溶液变黄色</td><td style='text-align: center; word-wrap: break-word;'>$Cl_{2}$+$2Br^{-}$=$2Cl^{-}$+$Br_{2}$</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A A B C D</td><td style='text-align: center; word-wrap: break-word;'></td><td style='text-align: center; word-wrap: break-word;'></td></tr></table>",
+   "to": "<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>选项</td><td style='text-align: center; word-wrap: break-word;'>事实</td><td style='text-align: center; word-wrap: break-word;'>解释</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>向AgCl悬浊液中滴加Na_{2}S溶液，白色沉淀变成黑色</td><td style='text-align: center; word-wrap: break-word;'>2AgCl+S^{2-}=Ag_{2}S+2Cl^{-}</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B</td><td style='text-align: center; word-wrap: break-word;'>将水蒸气通过灼热的铁粉，产生可燃性气体</td><td style='text-align: center; word-wrap: break-word;'>2Fe+3H_{2}O(g)\\xlongequal{\\Delta}Fe_{2}O_{3}+3H_{2}</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C</td><td style='text-align: center; word-wrap: break-word;'>向澄清石灰水中滴加少量小苏打溶液，产生白色沉淀</td><td style='text-align: center; word-wrap: break-word;'>Ca^{2+}+OH^{-}+HCO_{3}^{-}=CaCO_{3}\\downarrow+H_{2}O</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D</td><td style='text-align: center; word-wrap: break-word;'>将Cl_{2}通入KBr溶液，无色溶液变黄色</td><td style='text-align: center; word-wrap: break-word;'>Cl_{2}+2Br^{-}=2Cl^{-}+Br_{2}</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A A B C D</td><td style='text-align: center; word-wrap: break-word;'></td><td style='text-align: center; word-wrap: break-word;'></td></tr></table>"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2021北京朝阳高三二模化学（教师版）(1).md",
+   "line": 424,
+   "from": "②1；11；1；1；$8NO_{2}$\\uparrow；4",
+   "to": "②1；11；1；1；8NO_{2}\\uparrow；4"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2021北京高三（下）综合能力测试化学（教师版）(1).md",
+   "line": 77,
+   "from": "③\\bullet $CH_{3}$ + $Cl_{2}$ \\rightarrow $CH_{3}$ Cl + Cl \\bullet（快反应）④\\bullet $CH_{2}$ + Cl \\bullet \\rightarrow $CH_{2}$ Cl（快反应）",
+   "to": "③\\bullet CH_{3} + Cl_{2} \\rightarrow CH_{3} Cl + Cl \\bullet（快反应）④\\bullet CH_{2} + Cl \\bullet \\rightarrow CH_{2} Cl（快反应）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京东城高三（上）期末化学（教师版）(1).md",
+   "line": 1011,
+   "from": "(5) AgCl + $2NH_{3}$ \\cdot $H_{2}O$ = [Ag($NH_{3}$)_{2}]Cl + $2H_{2}O$",
+   "to": "(5) AgCl + 2NH_{3} \\cdot H_{2}O = [Ag(NH_{3})_{2}]Cl + 2H_{2}O"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京中关村中学高三三模化学（教师版）(1).md",
+   "line": 484,
+   "from": "C. 经计算，溶液中 $K_{2}Cr_{2}O_{7}$ 的物质的量为 0.1mol，但溶液中存在反应 $Cr_{2}O_{7}^{2-}$ + $H_{2}O$ \\rightleftharpoons $2CrO_{4}^{2-}$ + $2H^{+}$，所以 $Cr_{2}O_{7}^{2-}$ 的数目小于 0.$1N_{A}$，C 错误；",
+   "to": "C. 经计算，溶液中 K_{2}Cr_{2}O_{7} 的物质的量为 0.1mol，但溶液中存在反应 Cr_{2}O_{7}^{2-} + H_{2}O \\rightleftharpoons 2CrO_{4}^{2-} + 2H^{+}，所以 Cr_{2}O_{7}^{2-} 的数目小于 0.1N_{A}，C 错误；"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京丰台高三（上）期末化学（教师版） (1).md",
+   "line": 885,
+   "from": "吸收塔1，在100～200℃，$SO_{2}$在活性炭的吸附催化下生成硫酸，即$SO_{2}$和空气在活性炭的吸附催化下转化为硫酸，故该过程的化学方程式为$2SO_{2}$+$O_{2}$+$2H_{2}O$\\xlongequal[100~$200^{\\circ}C$]{活性炭}$2H_{2}SO_{4}$，故答案为：$2SO_{2}$+$O_{2}$+$2H_{2}O$\\xlongequal[100~$200^{\\circ}C$]{活性炭}$2H_{2}SO_{4}$；",
+   "to": "吸收塔1，在100～200℃，SO_{2}在活性炭的吸附催化下生成硫酸，即SO_{2}和空气在活性炭的吸附催化下转化为硫酸，故该过程的化学方程式为2SO_{2}+O_{2}+2H_{2}O\\xlongequal[100~200^{\\circ}C]{活性炭}2H_{2}SO_{4}，故答案为：2SO_{2}+O_{2}+2H_{2}O\\xlongequal[100~200^{\\circ}C]{活性炭}2H_{2}SO_{4}；"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京丰台高三（上）期末化学（教师版） (1).md",
+   "line": 957,
+   "from": "(4) ①. $KIO_{3}$ ②. 12 ③. 214/($N_{A}$ \\times $a^{3}$ \\times $10^{-21}$)",
+   "to": "(4) ①. KIO_{3} ②. 12 ③. 214/(N_{A} \\times a^{3} \\times 10^{-21})"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京二十中高三12月月考化学（教师版）(1).md",
+   "line": 635,
+   "from": "(3) CO (g) + $2H_{2}$(g) \\rightleftharpoons $CH_{3}OH$(g) \\Delta H = -90 kJ/mol",
+   "to": "(3) CO (g) + 2H_{2}(g) \\rightleftharpoons CH_{3}OH(g) \\Delta H = -90 kJ/mol"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京五中高三（上）期中化学（教师版）(1).md",
+   "line": 308,
+   "from": "$SO_{3}$\\rightarrow $SO_{2}$+O，$SO_{3}$+O\\rightarrow $SO_{2}$+$O_{2}$。下列说法合理的是___。",
+   "to": "SO_{3}\\rightarrow SO_{2}+O，SO_{3}+O\\rightarrow SO_{2}+O_{2}。下列说法合理的是___。"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京五十五中高三（上）期中化学（教师版）(1).md",
+   "line": 382,
+   "from": "资料：i. $Fe^{3+}$ + $3S_{2}O_{3}^{2-}$ \\rightleftharpoons Fe($S_{2}O_{3}$)_{3}^{3-}(紫黑色)",
+   "to": "资料：i. Fe^{3+} + 3S_{2}O_{3}^{2-} \\rightleftharpoons Fe(S_{2}O_{3})_{3}^{3-}(紫黑色)"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京朝阳高三（上）期中化学（教师版）(1).md",
+   "line": 701,
+   "from": "(3) CO (g) + $2H_{2}$(g) \\rightleftharpoons $CH_{3}OH$(g) \\Delta H = -90 kJ/mol",
+   "to": "(3) CO (g) + 2H_{2}(g) \\rightleftharpoons CH_{3}OH(g) \\Delta H = -90 kJ/mol"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京顺义高三（上）期末化学（教师版）(1).md",
+   "line": 354,
+   "from": "$Fe^{3+}$ + $SCN^{-}$ \\rightleftharpoons $FeSCN^{2+}$（红色） K = $10^{2.3}$",
+   "to": "Fe^{3+} + SCN^{-} \\rightleftharpoons FeSCN^{2+}（红色） K = 10^{2.3}"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2019北京朝阳高三（上）10月抽样检测数学含答案(1).md",
+   "line": 304,
+   "from": "\\therefore p+q>k+l 推不出“$a_{p}$+$a_{q}$>$a_{k}$+$a_{l}$”；",
+   "to": "\\therefore p+q>k+l 推不出“a_{p}+a_{q}>a_{k}+a_{l}”；"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2019北京朝阳高三（上）10月抽样检测数学含答案(1).md",
+   "line": 310,
+   "from": "\\therefore p+q>k+l 是“$a_{p}$+$a_{q}$>$a_{k}$+$a_{l}$”的既不充分也不必要条件；",
+   "to": "\\therefore p+q>k+l 是“a_{p}+a_{q}>a_{k}+a_{l}”的既不充分也不必要条件；"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2021北京丰台高三一模数学（教师版）(1).md",
+   "line": 706,
+   "from": "\\[M=$\\sum_{i=1}^{n}$\\left|$b_{i}$-$c_{i}$\\right|=\\left($a_{n+1}$+$a_{n+2}$+$a_{2n}$+$a_{1}$+$a_{1}$+$a_{2}$+$a_{2}$\\right)=\\left($a_{1}$+$a_{2}$+$a_{2}$+$a_{1}$+$a_{1}$+$a_{2}$+$a_{2}$\\right)=$a_{1}$+$a_{2}$+$a_{2}$+$a_{1}$+$a_{1}$+$a_{2}$+$a_{2}$+$a_{1}$+$a_{2}$+$a_{1}$+a_{2",
+   "to": "\\[M=\\sum_{i=1}^{n}\\left|b_{i}-c_{i}\\right|=\\left(a_{n+1}+a_{n+2}+a_{2n}+a_{1}+a_{1}+a_{2}+a_{2}\\right)=\\left(a_{1}+a_{2}+a_{2}+a_{1}+a_{1}+a_{2}+a_{2}\\right)=a_{1}+a_{2}+a_{2}+a_{1}+a_{1}+a_{2}+a_{2}+a_{1}+a_{2}+a_{1}+a_{2"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2021北京朝阳高三一模数学（教师版）(1).md",
+   "line": 27,
+   "from": "6.（4分）在\\triangle ABC中，若$a^{2}$-$b^{2}$+$c^{2}$+ac=0，则B=()",
+   "to": "6.（4分）在\\triangle ABC中，若a^{2}-b^{2}+c^{2}+ac=0，则B=()"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2021北京西城高三一模数学（教师版）(1).md",
+   "line": 47,
+   "from": "7.（4分）在\\triangle ABC中，C=$60^{\\circ}$，a+2b=8，\\sin A=6\\sin B，则c=（）",
+   "to": "7.（4分）在\\triangle ABC中，C=60^{\\circ}，a+2b=8，\\sin A=6\\sin B，则c=（）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2021北京师大附中高三（上）期中物理（教师版）(1).md",
+   "line": 689,
+   "from": "【详解】设绳子与竖直方向的夹角为\\theta，由重力和绳子的拉力的合力提供向心力$F_{向}$=mg\\tan\\theta",
+   "to": "【详解】设绳子与竖直方向的夹角为\\theta，由重力和绳子的拉力的合力提供向心力F_{向}=mg\\tan\\theta"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\生物\\2018北京市通州区高三（上）期末生物含答案(1).md",
+   "line": 128,
+   "from": "<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>盐浓度\\n（mmol•$L^{-1}$）</td><td style='text-align: center; word-wrap: break-word;'>最大光合速率\\n（μmol $CO_{2}$•$m^{-2}$•$s^{-1}$）</td><td style='text-align: center; word-wrap: break-word;'>呼吸速率\\n（μmol $CO_{2}$•$m^{-2}$•$s^{-1}$）</td><td style='text-align: center; word-wrap: break-word;'>根相对电导率\\n（%）</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>0</td><td style='text-align: center; word-wrap: break-word;'>31.65</td><td style='text-align: center; word-wrap: break-word;'>1.44</td><td style='text-align: center; word-wrap: break-word;'>27.2</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>100</td><td style='text-align: center; word-wrap: break-word;'>36.59</td><td style='text-align: center; word-wrap: break-word;'>1.37</td><td style='text-align: center; word-wrap: break-word;'>26.9</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>500</td><td style='text-align: center; word-wrap: break-word;'>31.75</td><td style='text-align: center; word-wrap: break-word;'>1.59</td><td style='text-align: center; word-wrap: break-word;'>33.1</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>900</td><td style='text-align: center; word-wrap: break-word;'>14.45</td><td style='text-align: center; word-wrap: break-word;'>2.63</td><td style='text-align: center; word-wrap: break-word;'>71.3</td></tr></table>",
+   "to": "<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>盐浓度\\n（mmol•L^{-1}）</td><td style='text-align: center; word-wrap: break-word;'>最大光合速率\\n（μmol CO_{2}•m^{-2}•s^{-1}）</td><td style='text-align: center; word-wrap: break-word;'>呼吸速率\\n（μmol CO_{2}•m^{-2}•s^{-1}）</td><td style='text-align: center; word-wrap: break-word;'>根相对电导率\\n（%）</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>0</td><td style='text-align: center; word-wrap: break-word;'>31.65</td><td style='text-align: center; word-wrap: break-word;'>1.44</td><td style='text-align: center; word-wrap: break-word;'>27.2</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>100</td><td style='text-align: center; word-wrap: break-word;'>36.59</td><td style='text-align: center; word-wrap: break-word;'>1.37</td><td style='text-align: center; word-wrap: break-word;'>26.9</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>500</td><td style='text-align: center; word-wrap: break-word;'>31.75</td><td style='text-align: center; word-wrap: break-word;'>1.59</td><td style='text-align: center; word-wrap: break-word;'>33.1</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>900</td><td style='text-align: center; word-wrap: break-word;'>14.45</td><td style='text-align: center; word-wrap: break-word;'>2.63</td><td style='text-align: center; word-wrap: break-word;'>71.3</td></tr></table>"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2018北京101中学高二（下）期中化学含答案(1).md",
+   "line": 242,
+   "from": "19. 将粗硅转化成三氯硅烷（$SiHCl_{3}$），进一步反应也可以制得粗硅。其反应为：$SiHCl_{3}$(g)+$H_{2}$(g)\\rightleftharpoons Si(s)+3HCl(g)。不同温度下，$SiHCl_{3}$的平衡转化率随反应物的投料比（反应初始时各反应物的物质的量之比）的变化关系如图所示。下列说法正确的是",
+   "to": "19. 将粗硅转化成三氯硅烷（SiHCl_{3}），进一步反应也可以制得粗硅。其反应为：SiHCl_{3}(g)+H_{2}(g)\\rightleftharpoons Si(s)+3HCl(g)。不同温度下，SiHCl_{3}的平衡转化率随反应物的投料比（反应初始时各反应物的物质的量之比）的变化关系如图所示。下列说法正确的是"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2021北京一五九中高二（上）期中化学（教师版）(1).md",
+   "line": 29,
+   "from": "C. $NH_{3}$\\cdot $H_{2}O$",
+   "to": "C. NH_{3}\\cdot H_{2}O"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2021北京四十四中高二（上）期中化学（教师版）(1).md",
+   "line": 22,
+   "from": "A. NaCl B. NaOH C. $NH_{3}$ \\cdot $H_{2}O$ D. $H_{2}SO_{4}$",
+   "to": "A. NaCl B. NaOH C. NH_{3} \\cdot H_{2}O D. H_{2}SO_{4}"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2022北京一零一中高二10月月考化学（教师版）(1).md",
+   "line": 396,
+   "from": "【点睛】考查影响水的电离平衡的因素分析，K_w是水的离子积常数，常温下，K_w=c(H^+)\\times c(OH^)=$1\\times10^{-14}$，水电离出的c(H^+)=c(OH^)=$1\\times10^{-7}mol$/L；常温下，某溶液中由水电离出来的c(H^+)=1.$0\\times10^{-13}mol$\\cdot $L^{-1}$，说明水的电离被抑制；酸碱对水的电离抑制作用，水解的盐促进水的电离。",
+   "to": "【点睛】考查影响水的电离平衡的因素分析，K_w是水的离子积常数，常温下，K_w=c(H^+)\\times c(OH^)=1\\times10^{-14}，水电离出的c(H^+)=c(OH^)=1\\times10^{-7}mol/L；常温下，某溶液中由水电离出来的c(H^+)=1.0\\times10^{-13}mol\\cdot L^{-1}，说明水的电离被抑制；酸碱对水的电离抑制作用，水解的盐促进水的电离。"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2022北京七中高二（上）期中化学（教师版）(1).md",
+   "line": 169,
+   "from": "A. NaCl B. $CH_{3}COONa$ C. $H_{2}SO_{4}$ D. $NH_{3}$\\cdot $H_{2}O$",
+   "to": "A. NaCl B. CH_{3}COONa C. H_{2}SO_{4} D. NH_{3}\\cdot H_{2}O"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2022北京东直门中学高二（下）期中化学（教师版）(1).md",
+   "line": 1091,
+   "from": "（2）“1)NH4Cl-$NH_{3}$\\cdot $H_{2}O$”时，如果不加 $NH_{4}Cl$ 固体，对制备过程的不利影响是___。",
+   "to": "（2）“1)NH4Cl-NH_{3}\\cdot H_{2}O”时，如果不加 NH_{4}Cl 固体，对制备过程的不利影响是___。"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2022北京二中高二11月月考化学（教师版）(1).md",
+   "line": 92,
+   "from": "B. 硫酸工业中，$SO_{2}$ 和 $O_{2}$ 化合成 $SO_{3}$(\\Delta H<0) 过程采用高温、常压",
+   "to": "B. 硫酸工业中，SO_{2} 和 O_{2} 化合成 SO_{3}(\\Delta H<0) 过程采用高温、常压"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2022北京交大附中高二（上）期中化学（教师版）(1).md",
+   "line": 13,
+   "from": "A. NaCl B. $CaCO_{3}$ C. $NH_{3}$ D. $NH_{3}$\\cdot $H_{2}O$",
+   "to": "A. NaCl B. CaCO_{3} C. NH_{3} D. NH_{3}\\cdot H_{2}O"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2022北京顺义一中高二（上）期中化学（教师版）(1).md",
+   "line": 479,
+   "from": "$2SO_{3}$(g) \\xlongequal{\\quad} $2SO_{2}$(g) + $O_{2}$(g)",
+   "to": "2SO_{3}(g) \\xlongequal{\\quad} 2SO_{2}(g) + O_{2}(g)"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2023北京一六一中高二（上）期中化学（教师版）.md",
+   "line": 808,
+   "from": "②$T_{1}$温度前，主要发生主反应：$CO_{2}$(g)+$3H_{2}$(g)\\rightleftharpoons $CH_{3}OH$(g)+$H_{2}O$(g)，$T_{1}$温度后主要发生副反应$CO_{2}$(g)+$H_{2}$(g)\\rightleftharpoons CO(g)+$H_{2}O$(g)，该反应是气体体积不变化的吸热反应，压强改变对平衡没有影响，$CO_{2}$(g)+$H_{2}$(g)\\rightleftharpoons CO(g)+$H_{2}O$(g)为吸热反应，$T_{1}$温度后，体系中主要发生副反应，则",
+   "to": "②T_{1}温度前，主要发生主反应：CO_{2}(g)+3H_{2}(g)\\rightleftharpoons CH_{3}OH(g)+H_{2}O(g)，T_{1}温度后主要发生副反应CO_{2}(g)+H_{2}(g)\\rightleftharpoons CO(g)+H_{2}O(g)，该反应是气体体积不变化的吸热反应，压强改变对平衡没有影响，CO_{2}(g)+H_{2}(g)\\rightleftharpoons CO(g)+H_{2}O(g)为吸热反应，T_{1}温度后，体系中主要发生副反应，则"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2018北京海淀高二（下）期中数学（理）（教师版）(1).md",
+   "line": 401,
+   "from": "<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>x</td><td style='text-align: center; word-wrap: break-word;'>(0,$x_{2}$)</td><td style='text-align: center; word-wrap: break-word;'>$x_{2}$</td><td style='text-align: center; word-wrap: break-word;'>($x_{2}$,+\\infty)</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>f&#x27;(x)</td><td style='text-align: center; word-wrap: break-word;'>-</td><td style='text-align: center; word-wrap: break-word;'>0</td><td style='text-align: center; word-wrap: break-word;'>+</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>f(x)</td><td style='text-align: center; word-wrap: break-word;'>\\downarrow</td><td style='text-align: center; word-wrap: break-word;'>极小</td><td style='text-align: center; word-wrap: break-word;'>\\nearrow</td></tr></table>",
+   "to": "<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>x</td><td style='text-align: center; word-wrap: break-word;'>(0,x_{2})</td><td style='text-align: center; word-wrap: break-word;'>x_{2}</td><td style='text-align: center; word-wrap: break-word;'>(x_{2},+\\infty)</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>f&#x27;(x)</td><td style='text-align: center; word-wrap: break-word;'>-</td><td style='text-align: center; word-wrap: break-word;'>0</td><td style='text-align: center; word-wrap: break-word;'>+</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>f(x)</td><td style='text-align: center; word-wrap: break-word;'>\\downarrow</td><td style='text-align: center; word-wrap: break-word;'>极小</td><td style='text-align: center; word-wrap: break-word;'>\\nearrow</td></tr></table>"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2021北京101中学高二（上）期中数学（教师版）(1).md",
+   "line": 69,
+   "from": "10.（5分）在平面斜坐标系xoy中\\angle xoy=$45^{\\circ}$，点P的斜坐标定义为：“若\\overrightarrow{OP}=$x_{0}$\\overrightarrow{$e_{1}$}+$y_{0}$\\overrightarrow{$e_{2}$}（其中\\overrightarrow{$e_{1}$}, \\overrightarrow{$e_{2}$}分别为与斜坐标系的x轴，y轴同方向的单位向量），则点P的坐标为($x_{0}$, \\quad $y_{0}$)”。若$F_{1}$(-1,0)，$F_{2}$(1,0)，且动点M(x,y)满足|\\overrightarrow{$MF_{1}$}|=|\\overrightarrow{$MF_{2}$}|，则点M在斜坐标系中的轨迹方程为()",
+   "to": "10.（5分）在平面斜坐标系xoy中\\angle xoy=45^{\\circ}，点P的斜坐标定义为：“若\\overrightarrow{OP}=x_{0}\\overrightarrow{e_{1}}+y_{0}\\overrightarrow{e_{2}}（其中\\overrightarrow{e_{1}}, \\overrightarrow{e_{2}}分别为与斜坐标系的x轴，y轴同方向的单位向量），则点P的坐标为(x_{0}, \\quad y_{0})”。若F_{1}(-1,0)，F_{2}(1,0)，且动点M(x,y)满足|\\overrightarrow{MF_{1}}|=|\\overrightarrow{MF_{2}}|，则点M在斜坐标系中的轨迹方程为()"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2021北京北大附中石景山学校高二（上）期中物理（教师版）(1).md",
+   "line": 369,
+   "from": "A. B 带正电，$Q_{A}$: $Q_{B}$=1:4 \\quad B. B 带负电，$Q_{A}$: $Q_{B}$=1:4",
+   "to": "A. B 带正电，Q_{A}: Q_{B}=1:4 \\quad B. B 带负电，Q_{A}: Q_{B}=1:4"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2021北京北大附中石景山学校高二（上）期中物理（教师版）(1).md",
+   "line": 371,
+   "from": "C. B 带正电，$Q_{A}$:$Q_{B}$=1:8 \\quad D. B 带负电，$Q_{A}$:$Q_{B}$=1:8",
+   "to": "C. B 带正电，Q_{A}:Q_{B}=1:8 \\quad D. B 带负电，Q_{A}:Q_{B}=1:8"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\化学\\2018全国II卷高考真题化学（教师版）(1).md",
+   "line": 578,
+   "from": "故答案为：2ZnS+$3O_{2}$\\xlongequal{高温}2ZnO+$2SO_{2}$;",
+   "to": "故答案为：2ZnS+3O_{2}\\xlongequal{高温}2ZnO+2SO_{2};"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\化学\\2019北京高考真题化学含答案(1).md",
+   "line": 313,
+   "from": "（1）①Cu+ $2H_{2}SO_{4}$(浓)\\xlongequal{\\Delta}$CuSO_{4}$+$SO_{2}$\\uparrow+$2H_{2}O$ ②饱和 $NaHSO_{3}$ 溶液",
+   "to": "（1）①Cu+ 2H_{2}SO_{4}(浓)\\xlongequal{\\Delta}CuSO_{4}+SO_{2}\\uparrow+2H_{2}O ②饱和 NaHSO_{3} 溶液"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\化学\\2019江苏高考真题化学（教师版）(1).md",
+   "line": 11,
+   "from": "2.（2分）反应NH4Cl+$NaNO_{2}$=NaCl+$N_{2}$\\uparrow+$2H_{2}O$放热且产生气体，可用于冬天石油开采。下列表示反应中相关微粒的化学用语正确的是（ ）",
+   "to": "2.（2分）反应NH4Cl+NaNO_{2}=NaCl+N_{2}\\uparrow+2H_{2}O放热且产生气体，可用于冬天石油开采。下列表示反应中相关微粒的化学用语正确的是（ ）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\化学\\2020全国II卷新高考真题化学（教师版）(1).md",
+   "line": 773,
+   "from": "2Na + $2H_{2}O$ = 2NaOH + $H_{2}$ \\uparrow",
+   "to": "2Na + 2H_{2}O = 2NaOH + H_{2} \\uparrow"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\化学\\2021河北新高考真题化学（教师版）(1).md",
+   "line": 669,
+   "from": "15.【答案】(1). Fe、Cr (2). 溶解浸出 (3). MgO、$Fe_{2}O_{3}$ (4). $2Na^{+}$+$2CrO_{4}^{2-}$+$2CO_{2}$+$H_{2}O$=$Cr_{2}O_{7}^{2-}$+$2NaHCO_{3}$\\downarrow",
+   "to": "15.【答案】(1). Fe、Cr (2). 溶解浸出 (3). MgO、Fe_{2}O_{3} (4). 2Na^{+}+2CrO_{4}^{2-}+2CO_{2}+H_{2}O=Cr_{2}O_{7}^{2-}+2NaHCO_{3}\\downarrow"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\化学\\2021浙江高考真题化学（教师版）(1).md",
+   "line": 403,
+   "from": "① HgO + $2Cl_{2}$ = $HgCl_{2}$ + $Cl_{2}O$，合适反应温度为18～25℃；副反应：2HgO + $2Cl_{2}$ \\xlongequal{\\Delta} $2HgCl_{2}$ + $O_{2}$。",
+   "to": "① HgO + 2Cl_{2} = HgCl_{2} + Cl_{2}O，合适反应温度为18～25℃；副反应：2HgO + 2Cl_{2} \\xlongequal{\\Delta} 2HgCl_{2} + O_{2}。"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\化学\\2021辽宁高考真题化学（教师版）(1).md",
+   "line": 911,
+   "from": "$c_{总}$(V)=0.01mol\\cdot $L^{-1}$，$lgc_{总}$(V)=-2，从图中可知，“沉钒”过程控制pH=3.0，$lgc_{总}$(V)=-2时，与胶体共沉降",
+   "to": "c_{总}(V)=0.01mol\\cdot L^{-1}，lgc_{总}(V)=-2，从图中可知，“沉钒”过程控制pH=3.0，lgc_{总}(V)=-2时，与胶体共沉降"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\数学\\2012-2021高考真题数学汇编：向量的数量积与三角恒等变换（2）（教师版）(1).md",
+   "line": 118,
+   "from": "19.（2017•全国）\\cos $20^{\\circ}$\\cos $25^{\\circ}$-\\sin $20^{\\circ}$\\sin $25^{\\circ}$=()",
+   "to": "19.（2017•全国）\\cos 20^{\\circ}\\cos 25^{\\circ}-\\sin 20^{\\circ}\\sin 25^{\\circ}=()"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\数学\\2012-2021高考真题数学汇编：平面解析几何（7）（教师版）(1).md",
+   "line": 1822,
+   "from": "$y_{1}$>0, $y_{4}$>0, $F_{1}P_{4}$, $F_{2}P_{2}$ 是圆 C 的切线，且 $F_{3}P_{1}$\\perp $F_{2}P_{2}$，由圆和椭圆的对称性，易知 $x_{2}$=-$x_{1}$, $y_{7}$=$y_{2}$,|$P_{1}P_{5}$|=2|$x_{1}$|，",
+   "to": "y_{1}>0, y_{4}>0, F_{1}P_{4}, F_{2}P_{2} 是圆 C 的切线，且 F_{3}P_{1}\\perp F_{2}P_{2}，由圆和椭圆的对称性，易知 x_{2}=-x_{1}, y_{7}=y_{2},|P_{1}P_{5}|=2|x_{1}|，"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\数学\\2012-2021高考真题数学汇编：解三角形（1）（教师版）(1).md",
+   "line": 73,
+   "from": "12. （2016·山东）\\triangle ABC 中，角 A, B, C 的对边分别是 a, b, c, $a^{2}$=$2b^{2}$(1-\\sin A)，则 A=()",
+   "to": "12. （2016·山东）\\triangle ABC 中，角 A, B, C 的对边分别是 a, b, c, a^{2}=2b^{2}(1-\\sin A)，则 A=()"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\数学\\2012-2021高考真题数学汇编：解三角形（3）（教师版）(1).md",
+   "line": 58,
+   "from": "13. （2012·陕西）在\\triangle ABC中，角A, B, C所对边长分别为a, b, $c^{2}$+$b^{2}$=$2c^{2}$，则\\cos C的最小值为（）",
+   "to": "13. （2012·陕西）在\\triangle ABC中，角A, B, C所对边长分别为a, b, c^{2}+b^{2}=2c^{2}，则\\cos C的最小值为（）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\数学\\2012-2021高考真题数学汇编：解三角形（3）（教师版）(1).md",
+   "line": 565,
+   "from": "13. （2012•陕西）在\\triangle ABC中，角A, B, C所对边长分别为a, b, $c^{2}$+$b^{2}$=$2c^{2}$，则\\cos C的最小值为（）",
+   "to": "13. （2012•陕西）在\\triangle ABC中，角A, B, C所对边长分别为a, b, c^{2}+b^{2}=2c^{2}，则\\cos C的最小值为（）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\数学\\2018天津高考真题数学（理）（教师版）(1).md",
+   "line": 808,
+   "from": "$5y_{1}$=$9y_{2}$，可得 5（k+1）=3\\sqrt{$9k^{2}$+4}，",
+   "to": "5y_{1}=9y_{2}，可得 5（k+1）=3\\sqrt{9k^{2}+4}，"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\数学\\2018浙江高考真题数学（教师版）(1).md",
+   "line": 962,
+   "from": "∵f(x)在x=$x_{1}$, $x_{2}$ ($x_{1}$\\neq $x_{2}$)处导数相等，",
+   "to": "∵f(x)在x=x_{1}, x_{2} (x_{1}\\neq x_{2})处导数相等，"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\数学\\2020全国Ⅰ卷新高考真题数学（教师版）(1).md",
+   "line": 671,
+   "from": "$b_{16}$, $b_{17}$, \\ldots, $b_{31}$ 对应的区间分别为 (0,16], (0,17], \\ldots, (0,31],",
+   "to": "b_{16}, b_{17}, \\ldots, b_{31} 对应的区间分别为 (0,16], (0,17], \\ldots, (0,31],"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\数学\\2021上海夏季高考真题数学（教师版）(1).md",
+   "line": 341,
+   "from": "①考虑按\\oplus：$a_{1}$+$a_{2}$+\\cdots+$a_{9}$=($a_{1}$+$a_{3}$+\\cdots+$a_{7}$+$a_{9}$)+($a_{2}$+$a_{4}$+$a_{6}$+$a_{8}$)",
+   "to": "①考虑按\\oplus：a_{1}+a_{2}+\\cdots+a_{9}=(a_{1}+a_{3}+\\cdots+a_{7}+a_{9})+(a_{2}+a_{4}+a_{6}+a_{8})"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\物理\\2019天津高考真题物理（教师版）(1).md",
+   "line": 193,
+   "from": "电流表 $A_{1}$（量程 0～250mA，内阻 $R_{1}$=5\\Omega）",
+   "to": "电流表 A_{1}（量程 0～250mA，内阻 R_{1}=5\\Omega）"
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\物理\\2019天津高考真题物理（教师版）(1).md",
+   "line": 667,
+   "from": "电流表 $A_{1}$（量程 0～250mA，内阻 $R_{1}$=5\\Omega）",
+   "to": "电流表 A_{1}（量程 0～250mA，内阻 R_{1}=5\\Omega）"
+  }
+ ]
+}

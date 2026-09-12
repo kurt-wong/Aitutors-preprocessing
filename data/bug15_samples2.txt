@@ -1,0 +1,66 @@
+扫描源文件: 2974
+含$的行: 259672
+其中含$$display块的行: 23154(旧检测器误报来源)
+真正半定界(剥$$和$后仍有裸命令)行: 1476
+真正涉及命令类别: 152
+============================================================
+
+### [\quad] 命中463行 | 2023北京一七一中高一12月月考数学（教师版）.md:L68
+   A.  $ (0,1) $ \quad B.  $ (0,2] $ \quad C.  $ (2,+\infty) $ \quad D.  $ (1,+\infty) $
+
+### [\n] 命中291行 | 2020天津高考真题生物（教师版）(1).md:L315
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td rowspan="2">基因</td><td rowspan="2">基因的表达产物（HMW）</td><td colspan="2">亲本</td><td rowspan="2">$ F_{1} $</td><td rowspan="2">育种目标\n强筋小麦</td><td rowspan="2">弱筋小麦</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>小偃 6 号</td><td style='text-align: center; word-wrap: break-word;'>安农 91168</td></tr></table>
+
+### [\end] 命中248行 | 2022北京北师大二附中高一6月月考化学（教师版）(1).md:L430
+   \end{array} $
+
+### [\begin] 命中232行 | 2017-2019北京高三数学上学期期中汇编：数列填空题（教师版）(1).md:L116
+   5. （2017 秋•通州区期中）我们可以利用数列\{a_n\}的递推公式a_n=\begin{cases}n, & n \text{为奇数时} \\ a_{\frac{n}{2}}, & n \text{为偶数时} (n \in \mathbb{N}^+) \end{cases}求出这个数列各项的值，使得这个数列中的每一项都是奇数。则a_{24}+a_{25}=\underline{28}；研究发现，该数列中的奇数都会重复出现，那么第8个5是该数列的第 $ \underline{640} $项。
+
+### [\frac] 命中75行 | 2012-2021高考真题数学汇编：空间向量与立体几何（3）（教师版）(1).md:L1071
+   【解答】解：（I）以A为原点，$\overrightarrow{AB}$，$\overrightarrow{AD}$，$\overrightarrow{AA_{1}}$的方向为X轴，Z轴的正方向建立空间直角坐标系，设AB=a，则A（0，3，D（0，1，D_{3}（0，1，8）\frac{a}{2}，1，2），B_{1}(a，0，6）故$\overrightarrow{AD_{1}}=(0，6，\overrightarrow{B_{1}E})=(-\frac{a}{2},5，\overrightarrow{AB_{1}}=(a，0，\overrightarrow{A E})=(\frac{a}{7},1$，$\because\overrightarrow{AD_{1}}\cdot\overrightarrow{B_{4}E}=1-1=7$
+
+### [\text] 命中30行 | 2023北京一六一中高三3月月考数学（教师版）(1).md:L215
+   【详解】$\because \cos \alpha = \frac{3}{5}, \alpha$ 是第一象限角，$\therefore \sin \alpha = \sqrt{1 - \cos^2 \alpha} = \frac{4}{5}$，$\tan \alpha = \frac{\sin \alpha}{\cos \alpha} = \frac{4}{3}$，$\because \text{角 } \alpha, \beta$ 的终边关于 } y \text{ 轴对称，} \therefore \tan \beta = -\tan \alpha = -\frac{4}{3}$。
+
+### [\right] 命中30行 | 2022北京丰台高三一模数学（教师版）(1).md:L528
+   所以 $ \left\{\begin{array}{l}\overrightarrow{n}\cdot\overrightarrow{BC}=0\\\overrightarrow{n}\cdot\overrightarrow{BP}=0\end{array}\right. $，即 $ \left\{\begin{array}{l}x-y=0,\ $ 1-\lambda)x-2y+\lambda z=0.\end{array}\right. $
+
+### [\sqrt] 命中30行 | 2022北京五中高一（下）期中数学（教师版）(1).md:L297
+   【解答】\odot\odot\odot\odot\odot\odot\odot\odot\odot\odot 解：在\triangle ABC中，\angle B=30^\circ，c=6，记b=f(a)，而由余弦定理可得b=\sqrt{a^2+c^2-2ac\cdot\cos B}}}= $ \sqrt{a^2+36-12a\cdot\frac{\sqrt{3}}{2}} $}= $ \sqrt{(a-3\sqrt{3})^2+9} $ $ \geq $3，
+
+### [\left] 命中25行 | 2012-2021高考真题数学汇编：集合（4）（教师版）(1).md:L1209
+   故$\left(\complement_R S\right) \cup T = \{x \mid x \leq 1\}\)
+
+### [\leq] 命中22行 | 2020北京海淀实验中学高一（上）12月月考数学（教师版）(1).md:L269
+   $$\because\left(0,\frac{1}{4}\right]\subseteq(0,1)\)，因此，“$$0<a\leq\frac{1}{4}$$”是“对任意的$x_1\neq x_2$”，都有$\frac{f(x_1)-f(x_2)}{x_1-x_2}<0$”成立的充分不必要条件。故选：C。
+
+### [\therefore] 命中22行 | 2023北京一六一中高三3月月考数学（教师版）(1).md:L215
+   【详解】$\because \cos \alpha = \frac{3}{5}, \alpha$ 是第一象限角，$\therefore \sin \alpha = \sqrt{1 - \cos^2 \alpha} = \frac{4}{5}$，$\tan \alpha = \frac{\sin \alpha}{\cos \alpha} = \frac{4}{3}$，$\because \text{角 } \alpha, \beta$ 的终边关于 } y \text{ 轴对称，} \therefore \tan \beta = -\tan \alpha = -\frac{4}{3}$。
+
+### [\cdot] 命中20行 | 2021北京陈经纶中学高二（上）期中数学（B）（教师版）(1).md:L329
+   $$\therefore \left\{ \begin{array} { l } { \overrightarrow { D A } \cdot \overrightarrow { n } = x = 0 } \\ { \overrightarrow { D E } \cdot \overrightarrow { n } = \frac { 1 } { 2 } x + \frac { 1 } { 2 } y + \frac { 1 } { 2 } z = 0 } \end{array} \right. \cdots \cdots \cdots
+
+### [\sin] 命中20行 | 2020上海高考真题数学（教师版）(1).md:L291
+   $$\frac{1}{2}\leqslant\sin(2x+\frac{\pi}{6})\leqslant1$，故 $-1\leqslant-\sin(2x+\frac{\pi}{6})\leqslant-\frac{1}{2}$，故 $-\frac{1}{2}\leqslant g(x)\leqslant0$。
+
+### [\cdots] 命中18行 | 2022北京中关村中学高二（下）期中数学（教师版）(1).md:L806
+   因此对 i=1,2,\cdots,n-2 都有  $ a_{i+1}-a_{i}=d_{i+1}-d_{i}=d $,
+
+### [\uparrow] 命中17行 | 2022北京三中高一（下）期中化学（教师版）(1).md:L1081
+   【答案】 ①. Cu + 2H_{2}SO_{4}(浓)  $ \xlongequal{加热} $ CuSO_{4} + 2H_{2}O + SO_{2}\uparrow ②. 品红溶液褪色 ③. 还原性 ④. SO_{2} + 2OH^{-} = SO_{3}^{2-} + H_{2}O
+
+### [\in] 命中17行 | 2012-2021高考真题数学汇编：集合（2）（教师版）(1).md:L557
+   A. \{2\} \quad B. \{1, 2, 4\} \quad C. \{1, 2, 4, 5\} \quad D. \{x \in R \mid -1 \leq x \leq 5\} $
+
+### [\pi] 命中16行 | 2020浙江高考真题数学（教师版）(1).md:L618
+   则$$\sin\left(A + \frac{\pi}{3}\right) \in\left(\frac{\sqrt{3}}{2},1\right)\)，$$\sin\left(A + \frac{\pi}{3}\right) + \frac{1}{2} \in\left(\frac{\sqrt{3}+1}{2}, \frac{3}{2}\right)\)。
+
+### [\infty] 命中16行 | 2012-2021高考真题数学汇编：导数及其应用（4）（教师版）(1).md:L1937
+   设  $ t=e^x $， $ (t>1) $，则  $ m\leq\frac{3-t}{t^2-t+1} $，+\infty）上恒成立，
+
+### [\nPM] 命中15行 | 2020全国I卷新高考真题数学（教师版）(1).md:L287
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>$ SO_{2} $\nPM 2.5</td><td style='text-align: center; word-wrap: break-word;'>[0,150]</td><td style='text-align: center; word-wrap: break-word;'>(150, 475]</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>[0,75]</td><td style='text-align: center; word-wrap: break-word;'>64</td><td style='text-align: center; word-wrap: break-word;'>16</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(75,115]</td><td style='text-align: center; word-wrap: break-word;'>10</td><td style='text-align: center; word-wrap: break-word;'>10</td></tr></table>
+
+### [\because] 命中14行 | 2012-2021高考真题数学汇编：平面解析几何（8）（教师版）(1).md:L1096
+   \because圆心到此点的距离  $ d=\sqrt{3} $， $ r=2 $，

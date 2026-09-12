@@ -1,0 +1,14 @@
+Q1 mat=[497,502](material) 与 q=[9,13](questions) 源文:
+--- L9-13 (questions) ---
+L9: 听第1段材料，回答第1题。
+L10: 
+L11: 1. When will the man go for dinner?
+L12: 
+L13: A. On Wednesday. B. On Thursday. C. On Friday.
+--- L497-502 (material) ---
+L497: 听第1段材料，回答第1题。
+L498: 
+L499: M: Hello, I'd like to book a table for four on Thursday night.
+L500: W: I'm sorry sir, but we have a private party that evening. Could you 
+L501: M: Well, let's make it Friday evening at 6:30.
+L502: W: All right, sir.

@@ -1,0 +1,209 @@
+[
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高一\\语文\\2020北京石景山高一（上）期末语文含答案.md",
+  "subject": "语文",
+  "verdict": "不合格",
+  "codes": [
+   "ANSWER_LABEL_DUP",
+   "ANSWER_MISSING",
+   "ANSWER_ZONE_UNANNOTATED",
+   "BOILERPLATE_INCLUDED"
+  ],
+  "questions": 18,
+  "answers": 15
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高二\\数学\\2018北京五十六中高二（下）期中数学（理）（教师版）(1).md",
+  "subject": "数学",
+  "verdict": "不合格",
+  "codes": [
+   "Q_BLOCK_MERGED_INDEPENDENT",
+   "ANSWER_IN_RANGE",
+   "ANSWER_MISSING",
+   "ANSWER_ZONE_UNANNOTATED",
+   "BOILERPLATE_INCLUDED"
+  ],
+  "questions": 14,
+  "answers": 7
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高三\\英语\\2021北京丰台高三二模英语（教师版）(1).md",
+  "subject": "英语",
+  "verdict": "不合格",
+  "codes": [
+   "ANSWER_LABEL_DUP",
+   "QUESTION_LABEL_DUP",
+   "QNUM_GAP",
+   "ANSWER_IN_RANGE",
+   "ANSWER_ORPHAN",
+   "ANSWER_ZONE_UNANNOTATED",
+   "BOILERPLATE_INCLUDED"
+  ],
+  "questions": 36,
+  "answers": 27
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高三\\物理\\2021北京石景山高三一模物理（教师版）(1).md",
+  "subject": "物理",
+  "verdict": "不合格",
+  "codes": [
+   "ANSWER_MISSING",
+   "MATERIAL_OUTSIDE",
+   "IMAGE_DANGLING",
+   "BOILERPLATE_INCLUDED"
+  ],
+  "questions": 20,
+  "answers": 0
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高三\\化学\\2019北京交大附中高三（上）12月月考化学含答案(1).md",
+  "subject": "化学",
+  "verdict": "不合格",
+  "codes": [
+   "Q_BLOCK_MERGED_INDEPENDENT",
+   "ANSWER_MISSING",
+   "IMAGE_DANGLING",
+   "BOILERPLATE_INCLUDED"
+  ],
+  "questions": 10,
+  "answers": 0
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高三\\生物\\2020北京西城高三（上）期末生物含答案(1).md",
+  "subject": "生物",
+  "verdict": "需返修",
+  "codes": [
+   "Q_BLOCK_MERGED_INDEPENDENT",
+   "ANSWER_IN_TABLE",
+   "ANSWER_MISSING",
+   "IMAGE_DANGLING",
+   "BOILERPLATE_INCLUDED"
+  ],
+  "questions": 7,
+  "answers": 0
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高一\\政治\\2018北京师大附中高一（下）期中政治含答案(1).md",
+  "subject": "政治",
+  "verdict": "需返修",
+  "codes": [
+   "Q_BLOCK_MERGED_INDEPENDENT",
+   "ANSWER_IN_TABLE",
+   "BOILERPLATE_INCLUDED"
+  ],
+  "questions": 30,
+  "answers": 6
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高一\\历史\\2021北京四十三中高一（上）12月月考历史（教师版）(1).md",
+  "subject": "历史",
+  "verdict": "需返修",
+  "codes": [
+   "ANSWER_LABEL_DUP",
+   "QUESTION_LABEL_DUP",
+   "Q_BLOCK_MERGED_INDEPENDENT",
+   "QNUM_GAP",
+   "ANSWER_MISSING",
+   "ANSWER_ORPHAN",
+   "BOILERPLATE_INCLUDED"
+  ],
+  "questions": 43,
+  "answers": 43
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高一\\地理\\2019北京人大附中高一（上）期中地理含答案.md",
+  "subject": "地理",
+  "verdict": "不合格",
+  "codes": [
+   "QUESTION_LABEL_DUP",
+   "Q_BLOCK_MERGED_INDEPENDENT",
+   "QNUM_GAP",
+   "ANSWER_MISSING",
+   "ANSWER_ZONE_UNANNOTATED",
+   "FIG_REF_NO_IMAGE",
+   "BOILERPLATE_INCLUDED"
+  ],
+  "questions": 27,
+  "answers": 4
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高一\\语文\\2020北京平谷五中高一（下）4月月考语文含答案(1).md",
+  "subject": "语文",
+  "verdict": "需返修",
+  "codes": [
+   "ANSWER_LABEL_DUP",
+   "ANSWER_ORPHAN",
+   "BOILERPLATE_INCLUDED"
+  ],
+  "questions": 9,
+  "answers": 21
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高三\\数学\\2021北京八十中高三考前练习数学（教师版）(1).md",
+  "subject": "数学",
+  "verdict": "需返修",
+  "codes": [
+   "Q_BLOCK_MERGED_INDEPENDENT",
+   "ANSWER_IN_TABLE",
+   "ANSWER_MISSING",
+   "BOILERPLATE_INCLUDED"
+  ],
+  "questions": 15,
+  "answers": 5
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高一\\英语\\2020北京东城高一（上）期末英语（教师版）.md",
+  "subject": "英语",
+  "verdict": "需返修",
+  "codes": [
+   "ANSWER_LABEL_DUP",
+   "QUESTION_LABEL_DUP",
+   "ANSWER_MISSING",
+   "BOILERPLATE_INCLUDED"
+  ],
+  "questions": 17,
+  "answers": 13
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高二\\物理\\2019北京四中高二（下）期末物理（教师版）(1).md",
+  "subject": "物理",
+  "verdict": "基本合格(有提示)",
+  "codes": [
+   "ANSWER_IN_TABLE",
+   "BOILERPLATE_INCLUDED"
+  ],
+  "questions": 24,
+  "answers": 6
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高一\\化学\\2021北京三十一中高一（下）期中化学（教师版）(1).md",
+  "subject": "化学",
+  "verdict": "需返修",
+  "codes": [
+   "QUESTION_LABEL_DUP",
+   "Q_BLOCK_MERGED_INDEPENDENT",
+   "ANSWER_IN_TABLE"
+  ],
+  "questions": 45,
+  "answers": 10
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高一\\生物\\2018北京市西城区高一（下）期末生物含答案(1).md",
+  "subject": "生物",
+  "verdict": "不合格",
+  "codes": [
+   "ANSWER_IN_RANGE",
+   "ANSWER_ZONE_UNANNOTATED"
+  ],
+  "questions": 43,
+  "answers": 8
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\auto-annotated-v6\\高一\\数学\\2021北京顺义一中高一（下）期中数学（教师版）(1).md",
+  "subject": "数学",
+  "verdict": "合格",
+  "codes": [],
+  "questions": 21,
+  "answers": 21
+ }
+]

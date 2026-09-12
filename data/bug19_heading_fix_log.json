@@ -1,0 +1,153 @@
+{
+ "summary": {
+  "strip": 0,
+  "keep_structure": 24,
+  "mode": "apply"
+ },
+ "records": [
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\学业水平考试\\化学\\12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+   "line": 174,
+   "action": "keep_structure",
+   "preview": "### 19. （除注明外，每空2分，共13分）"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 199,
+   "action": "keep_structure",
+   "preview": "### 1. 药品的取用"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 203,
+   "action": "keep_structure",
+   "preview": "### 2. 物质的溶解、加热"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 215,
+   "action": "keep_structure",
+   "preview": "### 3. 试纸的使用"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 237,
+   "action": "keep_structure",
+   "preview": "### 4. 气密性检查的常用方法"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 242,
+   "action": "keep_structure",
+   "preview": "### 5. 仪器的洗涤"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 267,
+   "action": "keep_structure",
+   "preview": "### 3. 防污染"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 295,
+   "action": "keep_structure",
+   "preview": "### 6. 实验常见事故的处理"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 390,
+   "action": "keep_structure",
+   "preview": "### 2. 常见离子的检验"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 533,
+   "action": "keep_structure",
+   "preview": "### 2. 物质分离与提纯的常见类型"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 599,
+   "action": "keep_structure",
+   "preview": "### 1. 物质制备实验的基本形式"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 619,
+   "action": "keep_structure",
+   "preview": "### 2. 制备实验方案的评价"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 629,
+   "action": "keep_structure",
+   "preview": "### 3. 常见气体的制备方法"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 786,
+   "action": "keep_structure",
+   "preview": "### 1. 测沉淀质量法"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 810,
+   "action": "keep_structure",
+   "preview": "### 3. 测气体质量法"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 814,
+   "action": "keep_structure",
+   "preview": "### 4. 滴定法"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 818,
+   "action": "keep_structure",
+   "preview": "### 5. 热重法"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 836,
+   "action": "keep_structure",
+   "preview": "### 1. 关系式法"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 845,
+   "action": "keep_structure",
+   "preview": "### 2. 守恒法"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 849,
+   "action": "keep_structure",
+   "preview": "### 3. 多步滴定计算"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 855,
+   "action": "keep_structure",
+   "preview": "### 4. 热重曲线计算"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 952,
+   "action": "keep_structure",
+   "preview": "### 1. 物质成分的探究"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 971,
+   "action": "keep_structure",
+   "preview": "### 2. 物质性质的探究"
+  },
+  {
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "line": 982,
+   "action": "keep_structure",
+   "preview": "### 3. 影响因素的探究"
+  }
+ ]
+}

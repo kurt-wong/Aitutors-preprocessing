@@ -1,0 +1,49 @@
+立体几何 keep 80 张,抽 6 张看上下文:
+
+--- L1096 ---
+  L1093: 
+  L1094: 1. （2019 秋·大兴区期末）某四棱锥的三视图如图所示，如果方格纸上小正方形的边长为 1，那么该四棱锥体积为（）
+  L1095: 
+>>L1096: <div style="text-align: center;"><img src="../../_imgs/2017-2019北京高三数学
+  L1097: 
+  L1098: 
+
+--- L1270 ---
+  L1267: 
+  L1268: 6. （2018秋·房山区期末）某几何体的三视图如图所示，则该几何体的体积为（图如图）
+  L1269: 
+>>L1270: <div style="text-align: center;"><img src="../../_imgs/2017-2019北京高三数学
+  L1271: 
+  L1272: 
+
+--- L1426 ---
+  L1423: <div style="text-align: center;"><img src="../../_imgs/2017-2019北京高三数学
+  L1424: 
+  L1425: 
+>>L1426: <div style="text-align: center;"><img src="../../_imgs/2017-2019北京高三数学
+  L1427: 
+  L1428: 
+
+--- L1576 ---
+  L1573: <div style="text-align: center;"><img src="../../_imgs/2017-2019北京高三数学
+  L1574: 
+  L1575: 
+>>L1576: <div style="text-align: center;"><img src="../../_imgs/2017-2019北京高三数学
+  L1577: 
+  L1578: 
+
+--- L1801 ---
+  L1798: <div style="text-align: center;">图1</div>
+  L1799: 
+  L1800: 
+>>L1801: <div style="text-align: center;"><img src="../../_imgs/2017-2019北京高三数学
+  L1802: 
+  L1803: 
+
+--- L2182 ---
+  L2179: 
+  L2180: 31. （2018 秋·海淀区期末）某三棱锥的三视图如图所示，则这个三棱锥中的体积为  $ \underline{\frac{4}{3}} 
+  L2181: 
+>>L2182: <div style="text-align: center;"><img src="../../_imgs/2017-2019北京高三数学
+  L2183: 
+  L2184: 

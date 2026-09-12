@@ -1,0 +1,17 @@
+{
+  "with_refs": 3,
+  "no_refs": 259,
+  "refs_total": 63,
+  "img_ok": 62,
+  "ref_fail": 1,
+  "pdf_miss": 0,
+  "pdf_error": 0,
+  "md_rewritten": 2,
+  "ref_rewritten": 62,
+  "v6_rewritten": 0,
+  "v6_ref_rewritten": 0,
+  "already_done": 1585,
+  "md_locked": 0,
+  "elapsed_sec": 1.3,
+  "md_total": 1847
+}

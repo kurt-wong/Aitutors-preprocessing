@@ -1,0 +1,24 @@
+# ============================================================
+# Aitutors-preprocessing .gitignore
+# 原则:代码+文档+小体积审计数据进库;原始大数据/敏感/产物排除
+# ============================================================
+
+# --- 大体量原始数据(数百 MB~百 GB 级)---
+/original/
+/maintainess/
+/_archive/
+/Ocr-markdown/
+/reports/
+
+# --- 敏感配置(API key 等,绝不入库)---
+/data/.llm_config
+*llm_config*
+
+# --- 运行时产物 ---
+/logs/reslice_debug/
+__pycache__/
+*.pyc
+*.tmp
+
+# --- 测试样本(显式保留,供代码审查对照数据结构)---
+!/tests/

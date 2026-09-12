@@ -1,0 +1,504 @@
+{
+ "summary": {
+  "fix": 0,
+  "keep_no_mark": 55,
+  "mode": "apply"
+ },
+ "records": [
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "unit_id": "Q2",
+   "action": "keep_no_mark",
+   "lines": [
+    12,
+    12
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "unit_id": "Q3",
+   "action": "keep_no_mark",
+   "lines": [
+    14,
+    14
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "unit_id": "Q4",
+   "action": "keep_no_mark",
+   "lines": [
+    16,
+    16
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "unit_id": "Q5",
+   "action": "keep_no_mark",
+   "lines": [
+    20,
+    20
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "unit_id": "Q6",
+   "action": "keep_no_mark",
+   "lines": [
+    22,
+    22
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "unit_id": "Q7",
+   "action": "keep_no_mark",
+   "lines": [
+    24,
+    24
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "unit_id": "Q8",
+   "action": "keep_no_mark",
+   "lines": [
+    26,
+    26
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "unit_id": "Q9",
+   "action": "keep_no_mark",
+   "lines": [
+    28,
+    28
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "unit_id": "Q10",
+   "action": "keep_no_mark",
+   "lines": [
+    32,
+    32
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "unit_id": "Q11",
+   "action": "keep_no_mark",
+   "lines": [
+    34,
+    36
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "unit_id": "Q12",
+   "action": "keep_no_mark",
+   "lines": [
+    38,
+    38
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "unit_id": "Q13",
+   "action": "keep_no_mark",
+   "lines": [
+    40,
+    40
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "unit_id": "Q14",
+   "action": "keep_no_mark",
+   "lines": [
+    42,
+    56
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "unit_id": "Q1",
+   "action": "keep_no_mark",
+   "lines": [
+    69,
+    75
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "unit_id": "Q2",
+   "action": "keep_no_mark",
+   "lines": [
+    77,
+    83
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "unit_id": "Q3",
+   "action": "keep_no_mark",
+   "lines": [
+    85,
+    89
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "unit_id": "Q4",
+   "action": "keep_no_mark",
+   "lines": [
+    91,
+    97
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "unit_id": "Q5",
+   "action": "keep_no_mark",
+   "lines": [
+    99,
+    109
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "unit_id": "Q6",
+   "action": "keep_no_mark",
+   "lines": [
+    111,
+    119
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "unit_id": "Q7",
+   "action": "keep_no_mark",
+   "lines": [
+    121,
+    127
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "unit_id": "Q8",
+   "action": "keep_no_mark",
+   "lines": [
+    129,
+    133
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "unit_id": "Q9",
+   "action": "keep_no_mark",
+   "lines": [
+    135,
+    141
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "unit_id": "Q10",
+   "action": "keep_no_mark",
+   "lines": [
+    143,
+    151
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "unit_id": "Q11",
+   "action": "keep_no_mark",
+   "lines": [
+    153,
+    159
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "unit_id": "Q12",
+   "action": "keep_no_mark",
+   "lines": [
+    161,
+    169
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).manifest.json",
+   "unit_id": "Q3",
+   "action": "keep_no_mark",
+   "lines": [
+    319,
+    345
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).manifest.json",
+   "unit_id": "Q4",
+   "action": "keep_no_mark",
+   "lines": [
+    347,
+    354
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).manifest.json",
+   "unit_id": "Q5",
+   "action": "keep_no_mark",
+   "lines": [
+    357,
+    369
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).manifest.json",
+   "unit_id": "Q7",
+   "action": "keep_no_mark",
+   "lines": [
+    373,
+    415
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).manifest.json",
+   "unit_id": "Q8",
+   "action": "keep_no_mark",
+   "lines": [
+    417,
+    435
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).manifest.json",
+   "unit_id": "Q10",
+   "action": "keep_no_mark",
+   "lines": [
+    439,
+    443
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).manifest.json",
+   "unit_id": "Q12",
+   "action": "keep_no_mark",
+   "lines": [
+    469,
+    475
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).manifest.json",
+   "unit_id": "Q17",
+   "action": "keep_no_mark",
+   "lines": [
+    505,
+    507
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).manifest.json",
+   "unit_id": "Q18",
+   "action": "keep_no_mark",
+   "lines": [
+    509,
+    515
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q1",
+   "action": "keep_no_mark",
+   "lines": [
+    395,
+    417
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q2",
+   "action": "keep_no_mark",
+   "lines": [
+    419,
+    438
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q3",
+   "action": "keep_no_mark",
+   "lines": [
+    440,
+    458
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q4",
+   "action": "keep_no_mark",
+   "lines": [
+    460,
+    476
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q5",
+   "action": "keep_no_mark",
+   "lines": [
+    478,
+    490
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q6",
+   "action": "keep_no_mark",
+   "lines": [
+    492,
+    506
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q7",
+   "action": "keep_no_mark",
+   "lines": [
+    508,
+    530
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q8",
+   "action": "keep_no_mark",
+   "lines": [
+    532,
+    544
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q9",
+   "action": "keep_no_mark",
+   "lines": [
+    546,
+    560
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q10",
+   "action": "keep_no_mark",
+   "lines": [
+    562,
+    570
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q11",
+   "action": "keep_no_mark",
+   "lines": [
+    572,
+    588
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q12",
+   "action": "keep_no_mark",
+   "lines": [
+    590,
+    602
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q13",
+   "action": "keep_no_mark",
+   "lines": [
+    604,
+    626
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q14",
+   "action": "keep_no_mark",
+   "lines": [
+    628,
+    642
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q15",
+   "action": "keep_no_mark",
+   "lines": [
+    644,
+    664
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q16",
+   "action": "keep_no_mark",
+   "lines": [
+    668,
+    692
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q17",
+   "action": "keep_no_mark",
+   "lines": [
+    694,
+    716
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q18",
+   "action": "keep_no_mark",
+   "lines": [
+    718,
+    746
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q19",
+   "action": "keep_no_mark",
+   "lines": [
+    748,
+    778
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q20",
+   "action": "keep_no_mark",
+   "lines": [
+    780,
+    807
+   ]
+  },
+  {
+   "manifest": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "unit_id": "Q21",
+   "action": "keep_no_mark",
+   "lines": [
+    809,
+    838
+   ]
+  }
+ ]
+}

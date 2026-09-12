@@ -1,0 +1,198 @@
+[
+ {
+  "file": "2020北京石景山高一（上）期末语文含答案.md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ },
+ {
+  "file": "2018北京五十六中高二（下）期中数学（理）（教师版）(1).md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ },
+ {
+  "file": "2021北京丰台高三二模英语（教师版）(1).md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ },
+ {
+  "file": "2021北京石景山高三一模物理（教师版）(1).md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ },
+ {
+  "file": "2019北京交大附中高三（上）12月月考化学含答案(1).md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 2,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": [
+   "L2 \\ce×2"
+  ]
+ },
+ {
+  "file": "2020北京西城高三（上）期末生物含答案(1).md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ },
+ {
+  "file": "2018北京师大附中高一（下）期中政治含答案(1).md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ },
+ {
+  "file": "2021北京四十三中高一（上）12月月考历史（教师版）(1).md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ },
+ {
+  "file": "2019北京人大附中高一（上）期中地理含答案.md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ },
+ {
+  "file": "2020北京平谷五中高一（下）4月月考语文含答案(1).md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ },
+ {
+  "file": "2021北京八十中高三考前练习数学（教师版）(1).md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ },
+ {
+  "file": "2020北京东城高一（上）期末英语（教师版）.md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ },
+ {
+  "file": "2019北京四中高二（下）期末物理（教师版）(1).md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ },
+ {
+  "file": "2021北京三十一中高一（下）期中化学（教师版）(1).md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 1,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": [
+   "L2 \\ce×1"
+  ]
+ },
+ {
+  "file": "2018北京市西城区高一（下）期末生物含答案(1).md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ },
+ {
+  "file": "2021北京顺义一中高一（下）期中数学（教师版）(1).md",
+  "issues": {
+   "L1_dollar_odd": [],
+   "L2_ce": 0,
+   "L3_bad_cmd": [],
+   "T1_unbalanced": [],
+   "T2_bad_attr": 0,
+   "T3_tag_mismatch": []
+  },
+  "tags": []
+ }
+]

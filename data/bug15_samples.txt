@@ -1,0 +1,991 @@
+扫描源文件数: 2974
+半定界(有$且岛外有裸命令)行总数: 22554
+涉及命令类别: 329
+============================================================
+
+### [\frac] 命中 11753 行 | 样本 2022北京丰台高一（上）期中物理（A卷）（教师版）.md:L472
+    $$ a_{ 列 }=\frac{\Delta v}{\Delta t}=\frac{0-20}{100}m/s^{2}=-0.2m/s^{2} $$ 
+
+### [\therefore] 命中 5886 行 | 样本 2012-2021高考真题数学汇编：空间向量与立体几何（2）（教师版）(1).md:L3065
+   $$\because \begin{cases} \overrightarrow{n} \cdot \overrightarrow{BC} = 0, \\ \overrightarrow{n} \cdot \overrightarrow{BP} = 5 \end{cases} \therefore \begin{cases} \sqrt{2} x - \sqrt{2} y = 8, \\ \sqrt{3} z = 0 \end{cases} \text{ 令 } x = 6, z = 0,$$
+
+### [\sqrt] 命中 3482 行 | 样本 2020北京大学强基计划数学（教师版）(1).md:L107
+    $$ \begin{aligned}\geq\frac{x}{2y}+\frac{1}{2}+\frac{y-x}{xy}\cdot y=\frac{x}{2y}+\frac{1}{2}+\frac{y-x}{x}=\frac{x}{2y}+\frac{x}{y}-\frac{1}{2}\geq\sqrt{2}-\frac{1}{2}\end{aligned} $$ 
+
+### [\mathrm] 命中 3150 行 | 样本 2018北京春季高中会考化学（教师版）(1).md:L356
+    $$ \mathrm{CH}_{3}\mathrm{CH}_{2}\mathrm{CH}_{2}\mathrm{Br} $$ 
+
+### [\right] 命中 2907 行 | 样本 2021北京清华附中朝阳学校高一（上）期中数学（教师版）.md:L274
+    $$ =\left(x_{1}-x_{2}\right)\left(x_{1}^{2}+x_{1}x_{2}+x_{2}^{2}-1\right) $$ 
+
+### [\left] 命中 2903 行 | 样本 2022北京交大附中高二（下）3月月考数学（教师版）(1).md:L624
+    $$ \because h\left(1\right)=2,h\left(e\right)=e-2+1=e-1, $$ 
+
+### [\times] 命中 2523 行 | 样本 2021北京顺义高一（下）期末物理（教师版）(1).md:L652
+    $$ F=m\frac{v^{2}}{r}=1\times\frac{2^{2}}{0.5}N=8N $$ 
+
+### [\quad] 命中 2219 行 | 样本 2012-2021高考真题数学汇编：集合（5）（教师版）(1).md:L725
+   A.  $ (-\infty, 2] $ \quad B.  $ [1, 2] $ \quad C.  $ [-2, 2] $ \quad D.  $ [-2, 1] $
+
+### [\sin] 命中 1754 行 | 样本 2018天津高考真题数学（理）（教师版）(1).md:L591
+    $$ \therefore\sin\left(2A-B\right)=\sin2A\cos B-\cos2A\sin B=\frac{4\sqrt{3}}{7}\times\frac{1}{2}-\frac{1}{7}\times\frac{\sqrt{3}}{2}=\frac{3\sqrt{3}}{14}. $$ 
+
+### [\pi] 命中 1739 行 | 样本 2021北京平谷高三一模数学（教师版）(1).md:L202
+    $$ 2\times\pi\bullet1^{2}+2\pi\times3=8\pi, $$ 
+
+### [\cos] 命中 1702 行 | 样本 2022北京房山实验中学高三（上）期中数学（教师版）(1).md:L316
+    $$ f\left(\frac{\pi}{4}+x\right)=\frac{\sin(\frac{\pi}{4}+x)+\cos(\frac{\pi}{4}+x)}{\sin(\frac{\pi}{4}+x)\cos(\frac{\pi}{4}+x)}=\frac{\sqrt{2}\cos x}{\frac{1}{2}\cos2x}=\frac{2\sqrt{2}\cos x}{\cos2x}, $$ 
+
+### [\cdot] 命中 1641 行 | 样本 2012-2021高考真题数学汇编：空间向量与立体几何（1）（教师版）(1).md:L1125
+    $$ \sin\theta=|\cos\langle\overrightarrow{A N},\quad\overrightarrow{n}\rangle|=\frac{|\overrightarrow{A N}\cdot\overrightarrow{n}|}{|\overrightarrow{A N}|\cdot|\overrightarrow{n}|}=\frac{\frac{5}{5}}{\sqrt{\frac{27}{4}+\frac{25}{4}+7}\times1}=\frac{\sqrt{15}}{6}. $$ 
+
+### [\because] 命中 1373 行 | 样本 2012-2021高考真题数学汇编：向量的数量积与三角恒等变换（4）（教师版）(1).md:L505
+    $$ \because|\overrightarrow{OP}|<\frac{2}{2},\therefore(x-a)^{2}+(y-b)^{7}<\frac{1}{4} $$ 
+
+### [\end] 命中 1340 行 | 样本 2018北京首都师大附中高二（上）期末数学（理）（教师版）(1).md:L245
+    $$ \left\{\begin{aligned}\overrightarrow{AP}\cdot\overrightarrow{n_{1}}&=0\\\overrightarrow{AD}\cdot\overrightarrow{n_{1}}&=0\end{aligned}\right.\Rightarrow\left\{\begin{aligned}x_{1}&=z_{1}\\y_{1}&=0\end{aligned}\right.\Rightarrow\overrightarrow{n_{1}}=(1,0,-1)\cos\theta=|\frac{-3}{3\sqrt{2}\cdot\sqrt{2}}|=\frac{1}{2} $$ 
+
+### [\begin] 命中 1327 行 | 样本 2021北京大峪中学高一（下）期中数学（教师版）(1).md:L475
+    $$ \begin{aligned}=-2\cos\alpha-2\sqrt{3}\sin\alpha+2=-4\sin\left(\alpha+\frac{\pi}{6}\right)+2.\end{aligned} $$ 
+
+### [\overrightarrow] 命中 1085 行 | 样本 2012-2021高考真题数学汇编：立体几何初步（4）（教师版）(1).md:L897
+    $$ \begin{array}{r}{|\overrightarrow{\mathrm{A B}_{1}}|=\sqrt{\left(\begin{array}{c}{\rightarrow}\\ {\bar{\mathrm{a}}+\bar{\mathrm{c}}}\end{array}\right)^{5}}=\sqrt{1+1+5}=\sqrt{3}}\end{array} $$ 
+
+### [\Delta] 命中 1010 行 | 样本 2021北京五中高一（下）期中数学（教师版）(1).md:L624
+    $$ S_{_{\Delta A D E}}=\frac{1}{2}A D\cdot A E\cdot\sin\angle D A E=\frac{1}{4}\cdot\frac{7500}{(\frac{1}{2}\cos\alpha+\frac{\sqrt{3}}{2}\sin\alpha)(\frac{\sqrt{3}}{2}\cos\alpha+\frac{1}{2}\sin\alpha)} $$ 
+
+### [\prime] 命中 936 行 | 样本 2021湖北高考真题物理（教师版）(1).md:L1087
+    $$ \boldsymbol{F}_{A}=B\boldsymbol{I}^{^{\prime}}\boldsymbol{L} $$ 
+
+### [\theta] 命中 794 行 | 样本 2018北京八中高三（上）期中数学（理）（教师版）(1).md:L413
+    $$ y_{D}{=}\sin\mathrm{~\left(~}\frac{\pi}{2}\mathrm{~-\theta~}\right){=}\cos\theta{} $$ 
+
+### [\nu] 命中 643 行 | 样本 2022北京东城高三三模物理（教师版）(1).md:L1037
+    $$ \nu_{2}=\nu_{1}+e\nu_{0} $$ 
+
+### [\circ] 命中 606 行 | 样本 2021北京四中高一（上）期中化学（教师版）.md:L325
+    $$ (20^{\circ}\mathrm{C}) $$ 
+
+### [\alpha] 命中 597 行 | 样本 2012-2021高考真题数学汇编：向量的数量积与三角恒等变换（1）（教师版）(1).md:L728
+    $$ \overrightarrow{OA}\cdot\overrightarrow{OP}_{1}=1\times\cos\alpha+0\times\sin\alpha=\cos\alpha, $$ 
+
+### [\in] 命中 518 行 | 样本 2021北京东直门中学高三（上）期中数学（教师版）(1).md:L425
+    $$ \frac{c}{a}=\frac{\sin C}{\sin A}=\frac{\sin(A+B)}{\sin A}=\cos B+\frac{1}{\tan A}\sin B=\frac{1}{2}+\frac{\sqrt{3}}{2}\frac{1}{\tan A}\in(2,+\infty)\;. $$ 
+
+### [\text] 命中 499 行 | 样本 2012-2021高考真题数学汇编：导数及其应用（3）（教师版）(1).md:L2680
+   $$\therefore x_{2}-x_{1}=lnx_{7}-lnx_{1}=ln\frac{x_{2}}{x_{3}}, \text{ 设 }\frac{x_{2}}{x_{1}}=t,$$
+
+### [\textcircled] 命中 478 行 | 样本 2019全国Ⅱ卷高考真题物理（教师版）(1).md:L648
+    $$ a=8\mathrm{~m}/\mathrm{s}^{2},\quad v_{2}=28\mathrm{~m}/\mathrm{s}\textcircled{7} $$ 
+
+### [\bullet] 命中 427 行 | 样本 2021北京清华附中高二（上）期末数学（教师版）(1).md:L257
+    $$ \therefore a=6\bullet\frac{a^{2}+1-9}{2a}, $$ 
+
+### [\triangle] 命中 419 行 | 样本 2012-2021高考真题数学汇编：平面解析几何（2）（教师版）(1).md:L1697
+    $$ \triangle=\left(8k m\right)^{2}-4(4k^{2}+1)(4m^{2}-4)=0, $$ 
+
+### [\angle] 命中 403 行 | 样本 2021北京五中高一（下）期中数学（教师版）(1).md:L624
+    $$ S_{_{\Delta A D E}}=\frac{1}{2}A D\cdot A E\cdot\sin\angle D A E=\frac{1}{4}\cdot\frac{7500}{(\frac{1}{2}\cos\alpha+\frac{\sqrt{3}}{2}\sin\alpha)(\frac{\sqrt{3}}{2}\cos\alpha+\frac{1}{2}\sin\alpha)} $$ 
+
+### [\tan] 命中 396 行 | 样本 2021北京农大附中高二（上）期中物理（教师版）(1).md:L1063
+    $$ \tan\theta=\frac{y}{\frac{l}{2}}=\frac{U l}{2d U_{0}} $$ 
+
+### [\mu] 命中 389 行 | 样本 2022北京五中高一3月月考数学（教师版）(1).md:L412
+    $$ \because\overrightarrow{BM}=\lambda\overrightarrow{AB}+\mu\overrightarrow{AC}, $$ 
+
+### [\perp] 命中 359 行 | 样本 2021北京十二中高一（下）期末数学（教师版）(1).md:L687
+    $$ \therefore A_{1}F\perp BE $$ 
+
+### [\cdots] 命中 354 行 | 样本 2020北京海淀实验中学高一（上）10月月考数学（教师版）(1).md:L548
+    $$ \therefore\frac{3n(3n+1)}{4}=c_{1}+c_{2}+\cdots+c_{n-1}+3n； $$ 
+
+### [\leq] 命中 344 行 | 样本 2022全国I卷新高考真题数学（教师版）(1).md:L315
+   $$\therefore l^{2}=6h,\quad\text{又}\because3\leq l\leq3\sqrt{3},\quad\therefore\frac{3}{2}\leq h\leq\frac{9}{2},$$
+
+### [\mathbf] 命中 301 行 | 样本 2018全国III卷高考真题数学（理）（教师版）(1).md:L932
+    $$  令 \mathbf{h}(\mathbf{x})=\mathbf{a}\mathbf{x}^{2}-\mathbf{x}+(1+2\mathbf{a}\mathbf{x})\quad(1+\mathbf{x})\ln(\mathbf{x}+1), $$ 
+
+### [\n] 命中 292 行 | 样本 2020北京朝阳外国语学校高一（上）期中化学（教师版）.md:L275
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>编号</td><td style='text-align: center; word-wrap: break-word;'>金属</td><td style='text-align: center; word-wrap: break-word;'>现象及产物检验</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>I</td><td style='text-align: center; word-wrap: break-word;'>镁条</td><td style='text-align: center; word-wrap: break-word;'>立即产生大量气体，金属表面变黑，该黑色固体能被磁铁吸引，液体颜色由棕黄色逐渐变为红褐色；\n片刻后气泡减少，金属表面覆盖有红褐色沉淀，此时取反应后的液体，滴加  $ K_{3} $[Fe(CN) $  _{6}  $]溶液，生成蓝色沉淀。</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>II</td><td style='text-align: center; word-wrap: break-word;'>铜粉</td><td style='text-align: center; word-wrap: break-word;'>无气体产生，溶液逐渐变为蓝绿色；\n取反应后的溶液，滴加  $ K_{3} $[Fe(CN) $  _{6}  $]溶液，生成蓝色沉淀。</td></tr></table>
+
+### [\lambda] 命中 282 行 | 样本 2012-2021高考真题数学汇编：向量的数量积与三角恒等变换（2）（教师版）(1).md:L267
+    $$ \therefore\frac{2\sqrt{5}}{5}\cos\theta+1=\lambda,\quad\frac{2\sqrt{5}}{5}\sin\theta+2=2\mu, $$ 
+
+### [\omega] 命中 281 行 | 样本 2023北京一六一中高一（下）期中物理（教师版）(1).md:L407
+    $$ \omega_{c}<\omega_{b} $$ 
+
+### [\mid] 命中 273 行 | 样本 2012-2021高考真题数学汇编：平面解析几何（2）（教师版）(1).md:L444
+    $$ \therefore\mid PF_{1}\mid=\sqrt{6}a, $$ 
+
+### [\leqslant] 命中 273 行 | 样本 2021北京东城广渠门中学高一（上）期中数学（教师版）.md:L271
+    $$ \therefore\begin{cases}-a+2\geqslant-1\\ 2a+2\leqslant3\end{cases} $$ 
+
+### [\rightleftharpoons] 命中 252 行 | 样本 2020北京丰台高三（上）期末化学（教师版）(1).md:L365
+    $$ \textcircled{2}2\mathrm{H_{2}S}\left(\mathrm{g}\right)+\mathrm{0_{2}(g)}\rightleftharpoons\mathrm{~S}\left(\mathrm{g}\right)+2\mathrm{H_{2}O}\left(\mathrm{g}\right)\quad\triangle H=-444\mathrm{~kJ}\bullet\mathrm{mol}^{-1} $$ 
+
+### [\varphi] 命中 224 行 | 样本 2021北京四中高二（上）期中物理（教师版）(1).md:L711
+    $$ t=\sqrt{\frac{2A}{a}}=\sqrt{\frac{\frac{2A}{\varphi\cdot q}}{dm}}=\sqrt{\frac{2dmA}{\varphi\cdot q}} $$ 
+
+### [\geq] 命中 221 行 | 样本 2019天津高考真题数学（理）（教师版）(1).md:L483
+    $$ 2\sqrt{xy}+\frac{6}{\sqrt{xy}}\geq2\sqrt{2\sqrt{xy}\cdot\frac{6}{\sqrt{xy}}}=4\sqrt{3}； $$ 
+
+### [\overline] 命中 216 行 | 样本 2023-3石景山一模高三数学答案(1).md:L55
+    $$ P(X=0)=P(\overline{A}\overline{B}\overline{C})=P(\overline{A})P(\overline{B})P(\overline{C}), $$ 
+
+### [\xlongequal] 命中 209 行 | 样本 2021北京丰台高三（上）期末化学（教师版）(1).md:L351
+    $$  R_{1}CH\xlongequal{}CHR_{2}+R_{3}CH\xlongequal{}CHR_{4}\xrightarrow{Ru 催化剂 }R_{1}CH\xlongequal{}CHR_{4}+R_{3}CH\xlongequal{}CHR_{2} $$ 
+
+### [\beta] 命中 208 行 | 样本 2012-2021高考真题数学汇编：三角函数（1）（教师版）(1).md:L1051
+    $$ \therefore\alpha+\beta=\pi+2k\pi,\quad k\in Z. $$ 
+
+### [\vec] 命中 206 行 | 样本 2022北京中关村中学高一（下）期中数学（教师版）(1).md:L386
+    $$ \therefore\left(\vec{b}-\vec{c}\right)\cdot\vec{a}=\left[\left(2\vec{i}+2\vec{j}\right)-\left(2\vec{i}-4\vec{j}\right)\right]\cdot\left(2\vec{i}-\vec{j}\right)=6\vec{j}\cdot\left(2\vec{i}-\vec{j}\right)=-6 $$ 
+
+### [\uparrow] 命中 197 行 | 样本 2022北京首都师大附中高一12月月考化学（教师版）(1).md:L227
+    $$  Cu+2H_{2}SO_{4}( 浓 )\overset{\Delta}{=}CuSO_{4}+SO_{2}\uparrow+2H_{2}O $$ 
+
+### [\geqslant] 命中 195 行 | 样本 2022北京丰台高一（上）期末数学（教师版）.md:L367
+    $$ \therefore\complement_{R}B=\{x\mid x\geqslant0\}。 $$ 
+
+### [\rho] 命中 188 行 | 样本 2021全国甲卷高考真题物理（教师版）(1).md:L419
+    $$ m=\rho_{0} \times 4nl \times S $$ 
+
+### [\xrightarrow] 命中 179 行 | 样本 2021北京清华附中高二（上）期末生物（教师版）(1).md:L376
+    $$ \begin{aligned}&(2)ABA\xrightarrow{ 结合 } 受体 \longrightarrow 靶 L3\quad\longrightarrow\quad 微管动态排布 \quad\longrightarrow\quad C_{n}^{+}( 浓度改变 )\longrightarrow 气孔关闭 \end{aligned} $$ 
+
+### [\parallel] 命中 159 行 | 样本 2012-2021高考真题数学汇编：立体几何初步（2）（教师版）(1).md:L2521
+    $$ \therefore BE\parallel CH, $$ 
+
+### [\approx] 命中 154 行 | 样本 2022北京首都师大附中高二（上）期中物理（教师版）(1).md:L406
+    $$ I_{1}=\frac{14400}{17\times3600}A\approx0.2353A $$ 
+
+### [\big] 命中 133 行 | 样本 2022北京五十中高一（下）期中数学（教师版）(1).md:L583
+    $$ \therefore9=\big(AC+AB\big)^{2}-AC\cdot AB\geq\big(AC+AB\big)^{2}-\left(\frac{AC+AB}{2}\right)^{2}=\frac{3}{4}\big(AC+AB\big)^{2}, $$ 
+
+### [\boldsymbol] 命中 114 行 | 样本 2021北京高三二模数学汇编：新定义（教师版）.md:L187
+    $$ \left|\boldsymbol{A}-\boldsymbol{S}\right|+\left|\boldsymbol{B}-\boldsymbol{S}\right|+\left|\boldsymbol{S}-\boldsymbol{C}\right|\geq1. $$ 
+
+### [\bigcap] 命中 114 行 | 样本 2021北京高考真题数学（教师版）(1).md:L441
+    $$ a_{13}=\left\{1,2\right\}\bigcap\left\{0,1\right\}=\left\{1\right\}\Leftrightarrow a_{13}=1;a_{14}=\left\{1,2\right\}\bigcap\left\{0,1\right\}=\left\{1\right\}\Leftrightarrow a_{14}=1; $$ 
+
+### [\xi] 命中 113 行 | 样本 2012-2021高考真题数学汇编：统计与概率（分布列）（2）（教师版）(1).md:L1195
+    $$ P\ \left(\xi=4\right)\ =\frac{8}{C_{6}^{3}}=\frac{2}{10}, $$ 
+
+### [\downarrow] 命中 111 行 | 样本 2022北京一六五中高三（上）期中数学（教师版）(1).md:L303
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>x</td><td style='text-align: center; word-wrap: break-word;'>$ (0,x_0) $</td><td style='text-align: center; word-wrap: break-word;'>x_0</td><td style='text-align: center; word-wrap: break-word;'>$ (x_0,+\infty) $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>f&#x27;(x)</td><td style='text-align: center; word-wrap: break-word;'>+</td><td style='text-align: center; word-wrap: break-word;'>0</td><td style='text-align: center; word-wrap: break-word;'>-</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>f(x)</td><td style='text-align: center; word-wrap: break-word;'>\nearrow</td><td style='text-align: center; word-wrap: break-word;'>极大值</td><td style='text-align: center; word-wrap: break-word;'>\n\downarrow</td></tr></table>
+
+### [\ldots] 命中 109 行 | 样本 2021北京师大附中高一（下）期末数学（教师版）(1).md:L733
+    $$ B_{3}=(\cos(x_{1}-3x_{2}+3x_{3}-x_{4}),\cos(x_{2}-3x_{3}+3x_{4}-x_{5}),\ldots,\cos(x_{n-1}-3x_{n}+3x_{1}-x_{2}),\cos(-3x_{1}+3x_{2}-x_{3}+x_{n})), $$ 
+
+### [\Omega] 命中 109 行 | 样本 2021北京顺义一中高二（上）期中物理（教师版）(1).md:L939
+    $$ R_{3}{=}0.03\Omega $$ 
+
+### [\rangle] 命中 100 行 | 样本 2012-2021高考真题数学汇编：空间向量与立体几何（2）（教师版）(1).md:L2102
+    $$ \therefore\cos\langle\overrightarrow{\pi},\overrightarrow{n}\rangle=\frac{\overrightarrow{\pi}\cdot\overrightarrow{n}}{|\overrightarrow{\pi}||\overrightarrow{n}|}=\frac{1}{2\sqrt{3}\times2\sqrt{2}}=\frac{2}{8}, $$ 
+
+### [\langle] 命中 99 行 | 样本 2019全国III卷高考真题数学（文）（教师版）(1).md:L417
+    $$ \therefore\cos\langle a,b\rangle=\frac{a\cdot b}{|a||b|}=\frac{-4}{2\sqrt{2}\times10}=-\frac{\sqrt{2}}{10} $$ 
+
+### [\cap] 命中 94 行 | 样本 2018北京四中高三（上）期中数学（文）含答案(1).md:L437
+   再结合$$x\in[0,\ \frac{\pi}{2}]$$，由$$[0,\ \frac{\pi}{2}]\cap[k\pi+\frac{\pi}{6},\ k\pi+\frac{2\pi}{3}]=[\frac{\pi}{6},\ +\frac{\pi}{2}]$$，$$k\in\mathbb{Z},$$
+
+### [\neq] 命中 91 行 | 样本 2021北京育才学校高一（上）期中数学（教师版）.md:L321
+    $$ \left\{\begin{aligned}x&\geqslant0\\ x-1&\neq0\end{aligned}\right., $$ 
+
+### [\log] 命中 89 行 | 样本 2022北京顺义二中高一（上）期中数学（教师版）.md:L417
+    $$ \begin{aligned}&\lg8-\lg2+\lg25-\log_{2}8\\&=3\lg2-\lg2+2\lg5-3\\&=2\left(\lg2+\lg5\right)-3\\&=2-3=-1\end{aligned} $$ 
+
+### [\infty] 命中 85 行 | 样本 2012-2021高考真题数学汇编：导数及其应用（4）（教师版）(1).md:L641
+    $$ (-\infty,-\frac{1}{3}) $$ 
+
+### [\ln] 命中 76 行 | 样本 2018全国III卷高考真题数学（理）（教师版）(1).md:L916
+    $$ \mathrm{f}^{\prime}\quad(\mathrm{x})=\ln(\mathrm{x}+1)-\frac{\mathrm{x}}{\mathrm{x}+1},\mathrm{f}^{\prime\prime}\quad(\mathrm{x})=\frac{\mathrm{x}}{(\mathrm{x}+1)^{2}}, $$ 
+
+### [\complement] 命中 66 行 | 样本 2012-2021高考真题数学汇编：集合（5）（教师版）(1).md:L1183
+    $$ \therefore A\cap(\complement_{R}B)=(3,\ 4) $$ 
+
+### [\mathbb] 命中 64 行 | 样本 2020北京高二数学下学期期末汇编：概率（教师版）(1).md:L348
+    $$ \boldsymbol{q}-\boldsymbol{p}=\boldsymbol{p}^{2}+\mathbb{C}_{2}^{\mathrm{1}}\mathrm{p}\left(1-\mathrm{p}\right)\mathrm{p}-\boldsymbol{p}=-2\boldsymbol{p}^{3}+3\boldsymbol{p}^{2}-\boldsymbol{p}, $$ 
+
+### [\sum] 命中 62 行 | 样本 2021北京海淀高三（上）期末数学（教师版）(1).md:L853
+    $$ \sum_{j=k+1}^{2k}T(j){\leqslant}k T(k){\leqslant}-k, $$ 
+
+### [\bigcup] 命中 57 行 | 样本 2021北京清华附中高一（上）期中数学（教师版）.md:L545
+    $$ \because A_{i}\subseteq E_{n},\ A_{j}\subseteq E_{n},\ A_{i}\bigcup A_{i}=E_{n} $$ 
+
+### [\overset] 命中 54 行 | 样本 2022北京石景山高三（上）期末化学（教师版）(1).md:L873
+    $$  \textcircled{1}.\overset{...}{O}::C::\overset{...}{O}\quad\textcircled{2} .CO_{2}+3H_{2}\xrightarrow[ 催化剂 ]{ 聚乙烯亚胺 }CH_{3}OH+H_{2}O $$ 
+
+### [\underline] 命中 54 行 | 样本 2021北京西城高三一模化学（教师版）(1).md:L230
+    $$ 2CO(g)+2NO(g)=N_{2}(g)+2CO_{2}(g)\quad\Delta H_{3}=\underline{\hspace{2cm}}。 $$ 
+
+### [\pm] 命中 54 行 | 样本 2012-2021高考真题数学汇编：平面解析几何（5）（教师版）(1).md:L1714
+    $$ y_{Q}^{2}=\frac{m^{2}}{1-n^{2}}=2,\quad\therefore y_{Q}=\pm\sqrt{2}, $$ 
+
+### [\Rightarrow] 命中 53 行 | 样本 2017-2019北京高三数学上学期期中汇编：立体几何（教师版）(1).md:L1034
+    $$ \sin\theta=\bigl\lvert\cos\overleftrightarrow{\mathrm{A}\mathrm{Q}},\quad\overleftrightarrow{\mathrm{m}}\bigr\rangle\bigl\rvert=\bigl\lvert\frac{\overleftrightarrow{\mathrm{A}\mathrm{Q}}\cdot\overleftrightarrow{\mathrm{m}}}{\lvert\overleftrightarrow{\mathrm{A}\mathrm{Q}}\rvert\cdot\lvert\overleftrightarrow{\mathrm{m}}\rvert}\bigr\rvert=\frac{\sqrt{2}}{3}\frac{\sqrt{2}\mathrm{t}}{\sqrt{3}\sqrt{2\mathrm{t}^{2}+\left(2-2\mathrm{t}\right)^{2}}}=\frac{\sqrt{2}}{3}\Rightarrow3\mathrm{t}^{2}=6\mathrm{t}^{2}-8\mathrm{t}+4, $$ 
+
+### [\vert] 命中 52 行 | 样本 2012-2021高考真题数学汇编：平面向量初步（教师版）(1).md:L429
+    $$ \overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OD}\mid=\vert\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}+\overrightarrow{CD}\vert,\quad\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}=(2,\sqrt{3}). $$ 
+
+### [\min] 命中 52 行 | 样本 2021北京通州高一（上）期末数学（教师版）.md:L722
+    $$ \therefore f\left(x\right)_{\min}=\sqrt{2}\times\left(-\frac{\sqrt{2}}{2}\right)+1=0,\ f\left(x\right)_{\max}=\sqrt{2}+1. $$ 
+
+### [\eta] 命中 51 行 | 样本 2019北京二中高三（上）开学考试数学（教师版）(1).md:L202
+    $$ \therefore E\eta=E(8-\xi)=2,\ D\eta=D(8-\xi)=2.4 $$ 
+
+### [\rightarrow] 命中 49 行 | 样本 2022北京一六六中高三（上）期中化学（教师版）(1).md:L208
+    $$  NaBH_{4}\xrightarrow[H_{2}O]{H^{+}}B(OH)_{3}\xrightarrow[ 在 SiC 表面 ]{NH_{3}} \rightarrow BN $$ 
+
+### [\varepsilon] 命中 49 行 | 样本 2019北京清华大学领军计划物理（教师版）(1).md:L427
+    $$ \mathrm{d}P(r,t)=\frac{\varepsilon^{2}(r,t)}{R(r)}=\frac{(\pi r^{2}\mu_{\mathrm{r}}\mu_{0}n\omega I_{0})^{2}\cos^{2}(\omega t)}{L^{2}}\cdot\frac{L}{2\pi r\rho}\mathrm{d}r $$ 
+
+### [\Phi] 命中 47 行 | 样本 2021北京高三怀柔零模物理（教师版）(1).md:L911
+    $$ \Delta\Phi=k_{1}I\cdot\pi r^{2}\textcircled{5} $$ 
+
+### [\Big] 命中 44 行 | 样本 2020北京密云高三（上）期末数学（教师版）(1).md:L559
+    $$ s_{ 甲 }^{~2}=\frac{1}{8}\Big[\left(78-85\right)^{2}+\left(79-85\right)^{2}+\left(81-85\right)^{2}+\left(82-85\right)^{2}+\left(84-85\right)^{2}+ $$ 
+
+### [\max] 命中 41 行 | 样本 2022北京首师大密云中学高一10月月考数学（教师版）(1).md:L928
+    $$ \therefore f(x)_{\max}=f(2)=7-4b=13； $$ 
+
+### [\longrightarrow] 命中 39 行 | 样本 2021北京朝阳高三一模化学（教师版）(1).md:L340
+    $$ \mathrm{R}_{1}\mathrm{COOR}_{2}+\mathrm{R}_{3}\mathrm{OH}\longrightarrow\mathrm{R}_{1}\mathrm{COOR}_{3}+\mathrm{R}_{2}\mathrm{OH} $$ 
+
+### [\qquad] 命中 39 行 | 样本 2012-2021高考真题数学汇编：平面解析几何（9）（教师版）(1).md:L1167
+    $$ y^{\prime}\mid_{\mathbf{x}=\mathbf{x}_{7}}=(\frac{\mathbf{x}^{2}}{2})^{\prime}\qquad\mid_{\mathbf{x}=\mathbf{x}_{8}}=x_{0}. $$ 
+
+### [\stackrel] 命中 38 行 | 样本 2019上海高考真题化学（教师版）(1).md:L894
+    $$ \begin{array}{l}\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{OH}\\\stackrel{SOCl_{2}}{\longrightarrow}\\\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{Cl}\end{array}\xrightarrow{\begin{array}{l}\mathrm{NaCN}\\\downarrow\\\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{Cl}\end{array}}\xrightarrow{\begin{array}{l}\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{CN}\\\downarrow\\\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{CN}\end{array}}\xrightarrow{\mathrm{H}^{+}/\mathrm{H}_{2}\mathrm{O}}\begin{array}{l}\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{COOH}\\\downarrow\\\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{COOH}\end{array}\xrightarrow[\text{ 浓硫酸 },\ \wedge]{\mathrm{CH}_{3}\mathrm{OH}}\begin{array}{l}\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{COOCH}_{3}\\\downarrow\\\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{COOCH}_{3}\end{array} $$ 
+
+### [\cup] 命中 38 行 | 样本 2021北京丰台高一（上）期末数学（教师版）.md:L544
+    $$ \therefore A\cup B=\left(-\infty,-1\right)\cup\left[1,+\infty\right) $$ 
+
+### [\sim] 命中 37 行 | 样本 2019全国III卷高考真题化学（教师版）(1).md:L571
+    $$ \mathrm{C}_{7}\mathrm{H}_{6}\mathrm{O}_{3}\sim\mathrm{C}_{9}\mathrm{H}_{8}\mathrm{O}_{4} $$ 
+
+### [\underset] 命中 36 行 | 样本 2021海南高考真题化学（教师版）(1).md:L921
+    $$  H_{3}C-\underset{CH_{3}}{\overset{OH}{C}}-COOH+CH_{3}CH_{2}OH\xrightarrow[\Delta]{ 浓硫酸 } $$ 
+
+### [\Longrightarrow] 命中 33 行 | 样本 2022北京二十中高一12月月考数学（教师版）(1).md:L566
+    $$ \therefore a^{2}=\frac{1}{2}\Longrightarrow a=\frac{\sqrt{2}}{2}, $$ 
+
+### [\Box] 命中 28 行 | 样本 2022北京朝阳高三（上）期中化学（教师版）(1).md:L276
+    $$ \Box \mathrm{HCO}_{3}^{-}+\Box \mathrm{Fe}^{2+}=\Box \mathrm{FeCO}_{3}\downarrow+\Box \underline{\phantom{0}}+\Box \underline{\phantom{0}} $$ 
+
+### [\subseteq] 命中 27 行 | 样本 2021北京朝阳陈经纶中学高一（上）10月月考数学（教师版）(1).md:L414
+    $$ \therefore B\subseteq A; $$ 
+
+### [\displaystyle] 命中 24 行 | 样本 2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).md:L2584
+    $$ \because r=\frac{\displaystyle\sum_{\mathrm{i}=1}^{7}\left(\mathrm{t}_{\mathrm{i}}-\overline{\mathrm{t}}\right)\left(\mathrm{y}_{\mathrm{i}}-\overline{\mathrm{y}}\right)}{\sqrt{\displaystyle\sum_{\mathrm{i}=5}^{7}\left(\mathrm{t}_{\mathrm{i}}-\overline{\mathrm{t}}\right)^{2}\sum_{\mathrm{i}=4}^{7}\left(\mathrm{y}_{\mathrm{i}}-\overline{\mathrm{y}}\right)^{2}}^{2}}=\frac{\displaystyle\sum_{\mathrm{i}=5}^{7}\mathrm{t}_{\mathrm{i}}\mathrm{y}_{\mathrm{i}}-7\overline{\mathrm{t}}\overline{\mathrm{y}}}{\sqrt{\displaystyle\sum_{\mathrm{i}=2}^{7}\left(\mathrm{t}_{\mathrm{i}}-\overline{\mathrm{t}}\right)^{2}\sum_{\mathrm{i}=3}^{7}\left(\mathrm{y}_{\mathrm{i}}-\overline{\mathrm{y}}\right)^{2}}}\approx\frac{40.17-3\times9.32}{2\sqrt{3}\cdot0.55}\approx\frac{2.89}{3.9106}\approx0.99, $$ 
+
+### [\subset] 命中 24 行 | 样本 2022北京顺义一中高二3月月考数学（教师版）(1).md:L486
+   $$\because FC_{1}\perp\text{平面}A_{1}B_{1}C_{1}D_{1},\,D_{1}G\subset\text{平面}A_{1}B_{1}C_{1}D_{1},\therefore FC_{1}\perp D_{1}G,$$
+
+### [\Leftrightarrow] 命中 23 行 | 样本 2012-2021高考真题数学汇编：导数及其应用（5）（教师版）(1).md:L2815
+    $$ \therefore F^{\prime}\left(x\right)>7\Leftrightarrow0<x<\sqrt{\mathrm{e}},\mathrm{~F}^{\prime}\left(\mathrm{x}\right)<0\Leftrightarrow\mathrm{x}>\sqrt{\mathrm{e}} $$ 
+
+### [\bar] 命中 22 行 | 样本 2022北京五十七中高三12月月考物理（教师版）(1).md:L695
+    $$ \bar{E}=n\frac{\Delta\Phi}{\Delta t}=\frac{n B S}{\Delta t} $$ 
+
+### [\bot] 命中 22 行 | 样本 2021北京丰台高二（上）期中数学（A）（教师版）(1).md:L531
+    $$ B D_{1}\bot $$ 
+
+### [\ne] 命中 20 行 | 样本 2012-2021高考真题数学汇编：解三角形（1）（教师版）(1).md:L2025
+    $$ \because\sin A\ne6, $$ 
+
+### [\varnothing] 命中 19 行 | 样本 2020北京大学附中衔接班高一（上）10月月考数学（教师版）(1).md:L524
+   $$\because A^{+}\bigcap A^{-}=\varnothing,\text{由容斥原理}\mid A^{+}\bigcup A^{-}\mid=\mid A^{+}\mid+\mid A^{-}\mid\geqslant3k-1,$$
+
+### [\gamma] 命中 18 行 | 样本 2021浙江高考真题数学（教师版）(1).md:L325
+    $$ \sin\alpha\cos\beta+\sin\beta\cos\gamma+\sin\gamma\cos\alpha\leq\sin\alpha\cos\gamma+\sin\beta\cos\beta+\sin\gamma\cos\alpha, $$ 
+
+### [\boxed] 命中 17 行 | 样本 2021北京高三二模化学汇编：生产工艺流程（教师版）(1).md:L525
+    $$ \mathrm{Cu_{2}Te}+\boxed{6}\mathrm{H_{2}SO_{4}}\xlongequal{\quad2\mathrm{CuSO_{4}}+\quad}\boxed{1}\mathrm{TeO_{2}}+\boxed{4}\xrightarrow{\mathrm{SO_{2}}}+\boxed{6}\mathrm{H_{2}O} $$ 
+
+### [\bigtriangleup] 命中 17 行 | 样本 2022北京五中高二（下）期中物理（教师版）(1).md:L623
+    $$  E_{ 感 }=\frac{\bigtriangleup\Phi}{\bigtriangleup t}=\frac{\bigtriangleup\mathrm{B}}{\bigtriangleup t}\bullet\pi\mathrm{r}^{2}=\mathrm{k}\pi\mathrm{r}^{2} $$ 
+
+### [\mathcal] 命中 17 行 | 样本 2023北京一七一中高一（下）期中物理（教师版）(1).md:L436
+    $$ \mathcal{V}_{a}=\mathcal{V}_{b} $$ 
+
+### [\propto] 命中 17 行 | 样本 2021福建高考真题物理（教师版）(1).md:L587
+    $$ \frac{r_{ 地 }^{3}}{T_{ 地 }^{2}}=k_{ 太 }\propto M_{ 太 } $$ 
+
+### [\equiv] 命中 16 行 | 样本 2023北京一六一中高二（下）期中化学（教师版）(1).md:L339
+    $$ \mathrm{(b)}\quad\mathrm{R}^{\prime}\mathrm{C}\equiv\mathrm{C}\mathrm{Na}+\mathrm{R}-\mathrm{Cl}\xrightarrow{\quad}\mathrm{R}^{\prime}\mathrm{C}\equiv\mathrm{CR}+\mathrm{NaCl} $$ 
+
+### [\nPM] 命中 15 行 | 样本 2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).md:L181
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>$ SO_{2} $\nPM2.5</td><td style='text-align: center; word-wrap: break-word;'>[0, 150]</td><td style='text-align: center; word-wrap: break-word;'>（150, 475]</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>[0, 75]</td><td style='text-align: center; word-wrap: break-word;'></td><td style='text-align: center; word-wrap: break-word;'></td></tr><tr><td style='text-align: center; word-wrap: break-word;'>（75, 115]</td><td style='text-align: center; word-wrap: break-word;'></td><td style='text-align: center; word-wrap: break-word;'></td></tr></table>
+
+### [\mathfrak] 命中 14 行 | 样本 2012-2021高考真题数学汇编：统计与概率（分布列）（3）（教师版）(1).md:L1084
+    $$ D\mathfrak{n}=\ (7-\frac{5}{3})\;{}^{2}\frac{\mathfrak{a}}{\mathfrak{a}+\mathfrak{b}+\mathfrak{c}}+\ (2-\frac{5}{6})\;{}^{2}\&\mathfrak{n}bsp;\frac{\mathfrak{b}}{\mathfrak{a}+\mathfrak{b}+\mathfrak{c}}+\ (3-\frac{2}{3})\;{}^{2}\&\mathfrak{n}bsp;\frac{\mathfrak{c}}{\mathfrak{a}+\mathfrak{b}+\mathfrak{c}}=\frac{8}{9}. $$ 
+
+### [\to] 命中 14 行 | 样本 2022北京中关村中学高一（下）期中数学（教师版）(1).md:L772
+    $$ \because\Delta x\to0,\therefore\left|\delta-\varepsilon\right|\to0 $$ 
+
+### [\notin] 命中 14 行 | 样本 2021北京人大附中高三数学热身练习参考答案（图片版）(1).md:L266
+    $$ A_{1}\bigcap A_{2}=\varnothing\Leftrightarrow t_{2}-t_{1}\notin D_{A} $$ 
+
+### [\dot] 命中 14 行 | 样本 14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md:L281
+    $$ \dot{v_{2}}=\frac{1}{3}\sqrt{6gL} $$ 
+
+### [\forall] 命中 13 行 | 样本 2012-2021高考真题数学汇编：导数及其应用（5）（教师版）(1).md:L1205
+    $$ \therefore\forall x\in(0,4) $$ 
+
+### [\cong] 命中 12 行 | 样本 2012-2021高考真题数学汇编：平面解析几何（4）（教师版）(1).md:L1120
+    $$ \therefore\triangle PAR\cong\triangle FAR, $$ 
+
+### [\mathtt] 命中 12 行 | 样本 2012-2021高考真题数学汇编：导数及其应用（3）（教师版）(1).md:L2656
+    $$ s_{3}\!=\!\frac{2}{\mathtt{a}}\!+\!ln\frac{2}{\mathtt{a}}_{7}\in\mathrm{~\left(~lna,~+\infty~\right)~}_{2}\!)\!=\!(\frac{2}{\mathtt{a}}\!-\!\mathrm{e}^{\frac{8}{\mathtt{a}}})\,+\,(\ln\frac{2}{\mathtt{a}}\!-\!\mathrm{e}^{\frac{2}{\mathtt{a}}}); $$ 
+
+### [\bf] 命中 12 行 | 样本 2012-2021高考真题数学汇编：空间向量与立体几何（3）（教师版）(1).md:L747
+    $$ \cos\beta=\vert\frac{\overset{\leftrightarrow{\mathrm{\bf~n}}\cdot\overrightarrow{\mathrm{\bf~m}}}{\vert\overrightarrow{\mathrm{\bf~n}}\vert}\cdot\vert\overrightarrow{\mathrm{\bf~m}}\vert}{\vert\overrightarrow{\mathrm{\bf~n}}\vert\cdot\vert\overrightarrow{\mathrm{\bf~m}}\vert}\vert=\vert\frac{1}{\sqrt{3+1+1}}\vert=\frac{\sqrt{5}}{5}\vert $$ 
+
+### [\hline] 命中 11 行 | 样本 2022北京一零一中高一（上）统练一数学（教师版）(1).md:L353
+    $$ \begin{array}{r} 4 \\ 4 \overline{) 8 } \\ 4 \\ \hline 0 \end{array} $$ 
+
+### [\Lambda] 命中 10 行 | 样本 2021湖北高考真题物理（教师版）(1).md:L834
+    $$ E=I_{_{0}}(R_{_{1}}+R_{_{0}}\ +r+R_{_\Lambda}) $$ 
+
+### [\vdots] 命中 10 行 | 样本 2012-2021高考真题数学汇编：平面解析几何（7）（教师版）(1).md:L930
+    $$ \displaystyle\ \vdots $$ 
+
+### [\bigcirc] 命中 10 行 | 样本 2019北京牛栏山一中高三（上）期中化学含答案(1).md:L698
+    $$ \mathrm{III}、\ \mathrm{\bigtriangleup   \bigcirc }_{\mathrm{(g)}+\mathrm{CO}_{2}(\mathrm{g})+3\mathrm{H}_{2}(\mathrm{g})}\longrightarrow\begin{array}{c}\mathrm{CH}_{2}\mathrm{OH}\\ \mathrm{CH}_{2}\mathrm{OH}\end{array}_{\mathrm{(g)}+\mathrm{CH}_{3}\mathrm{OH}(\mathrm{g})}\quad\Delta\mathrm{H}=-131.9\mathrm{kJ}\cdot\mathrm{mol}^{-1} $$ 
+
+### [\mathsf] 命中 10 行 | 样本 2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).md:L1672
+    $$ \begin{aligned}&V=\frac{1}{3}\times\mathsf{S}_{\triangle ABC}\times\mathsf{SA}\\ &\\&=\frac{1}{3}\times(\frac{1}{2}\times2\times2)\times2\\ &\\&=\frac{4}{3}.\\ \end{aligned} $$ 
+
+### [\boldmath] 命中 10 行 | 样本 2012-2021高考真题数学汇编：空间向量与立体几何（2）（教师版）(1).md:L738
+    $$ \because\overrightarrow{\mathrm{b}}\cdot\mathrm{~\boldmath~（~x~}\overrightarrow{\mathrm{e}_{1}}+\mathbf{y}\overrightarrow{\mathrm{e}_{6}}\frac{5}{2}-\frac{8}{2}x-y,\mathrm{~\boldmath~\frac{\sqrt{3}}{4}~\overline{~}\frac{\sqrt{3}}{2}~\mathrm{x}~,} $$ 
+
+### [\middle] 命中 10 行 | 样本 2019北京101中学高三（上）9月月考（二）数学含答案(1).md:L113
+    $$ B=\left\{x\middle|x-1<0\right\}=\left\{x\middle|x<1\right\}, $$ 
+
+### [\hspace] 命中 10 行 | 样本 2021北京三十一中高二（上）期中化学（教师版）(1).md:L388
+    $$ \mathrm{ii.I}_{2}+\mathrm{2H}_{2}\mathrm{O}+\underline{\hspace{2cm}}=\underline{\hspace{2cm}}+\underline{\hspace{2cm}}+\mathrm{2I^{-}} $$ 
+
+### [\Longleftrightarrow] 命中 9 行 | 样本 2021全国乙卷高考真题数学（文）（教师版）(1).md:L424
+    $$ \rho\cos\theta+\sqrt{3}\rho\sin\theta=4+\sqrt{3}\Longleftrightarrow\rho\sin(\theta+\frac{\pi}{6})=4+\sqrt{3} $$ 
+
+### [\div] 命中 9 行 | 样本 2019天津高考真题数学（理）（教师版）(1).md:L728
+    $$ \begin{aligned}&\left(ii\right)\sum_{i=1}^{2^{n}}a_{i}c_{i}=\sum_{i=1}^{2^{n}}\left[a_{i}+a_{i}\left(c_{i}-1\right)\right]=\sum_{i=1}^{2^{n}}a_{i}+\sum_{i=1}^{2^{n}}a_{2^{i}}\left(c_{2^{i}}-1\right)\\ &=\left(2^{n}\times4+\frac{2^{n}(2^{n}-1)}{2}\times3\right)+\sum_{i=1}^{n}\left(9\times4^{i}-1\right)\\ &=\left(3\times2^{2n-1}+5\times2^{n-1}\right)\div9\times\frac{4(1-4^{n})}{1-4}-n\\ &=27\times2^{2n+1}+5\times2^{n-1}-n-12,\quad\left(n\in\mathbf{N}^{*}\right).\\ \end{aligned} $$ 
+
+### [\lg] 命中 9 行 | 样本 2022北京顺义二中高一（上）期中数学（教师版）.md:L417
+    $$ \begin{aligned}&\lg8-\lg2+\lg25-\log_{2}8\\&=3\lg2-\lg2+2\lg5-3\\&=2\left(\lg2+\lg5\right)-3\\&=2-3=-1\end{aligned} $$ 
+
+### [\bigl] 命中 9 行 | 样本 2017-2019北京高三数学上学期期中汇编：立体几何（教师版）(1).md:L1034
+    $$ \sin\theta=\bigl\lvert\cos\overleftrightarrow{\mathrm{A}\mathrm{Q}},\quad\overleftrightarrow{\mathrm{m}}\bigr\rangle\bigl\rvert=\bigl\lvert\frac{\overleftrightarrow{\mathrm{A}\mathrm{Q}}\cdot\overleftrightarrow{\mathrm{m}}}{\lvert\overleftrightarrow{\mathrm{A}\mathrm{Q}}\rvert\cdot\lvert\overleftrightarrow{\mathrm{m}}\rvert}\bigr\rvert=\frac{\sqrt{2}}{3}\frac{\sqrt{2}\mathrm{t}}{\sqrt{3}\sqrt{2\mathrm{t}^{2}+\left(2-2\mathrm{t}\right)^{2}}}=\frac{\sqrt{2}}{3}\Rightarrow3\mathrm{t}^{2}=6\mathrm{t}^{2}-8\mathrm{t}+4, $$ 
+
+### [\bigr] 命中 9 行 | 样本 2017-2019北京高三数学上学期期中汇编：立体几何（教师版）(1).md:L1034
+    $$ \sin\theta=\bigl\lvert\cos\overleftrightarrow{\mathrm{A}\mathrm{Q}},\quad\overleftrightarrow{\mathrm{m}}\bigr\rangle\bigl\rvert=\bigl\lvert\frac{\overleftrightarrow{\mathrm{A}\mathrm{Q}}\cdot\overleftrightarrow{\mathrm{m}}}{\lvert\overleftrightarrow{\mathrm{A}\mathrm{Q}}\rvert\cdot\lvert\overleftrightarrow{\mathrm{m}}\rvert}\bigr\rvert=\frac{\sqrt{2}}{3}\frac{\sqrt{2}\mathrm{t}}{\sqrt{3}\sqrt{2\mathrm{t}^{2}+\left(2-2\mathrm{t}\right)^{2}}}=\frac{\sqrt{2}}{3}\Rightarrow3\mathrm{t}^{2}=6\mathrm{t}^{2}-8\mathrm{t}+4, $$ 
+
+### [\limits] 命中 9 行 | 样本 2023北京一七一中高二（上）期中化学（教师版）(1).md:L330
+    $$ \mathrm{~\Big\llap\bigcirc~F e S}_{2}\mathrm{~+~}\mathrm{~\Big\llap\bigcirc\limits_{A}-\underline{\mathrm{~}}~}+\mathrm{~\Big\llap\bigcirc~}\mathrm{~\underline{\mathrm{~}}~}=\mathrm{~\Big\llap\bigcirc~S O_{4}^{2-}~}+\mathrm{~\Big\llap\bigcirc~}\mathrm{~\underline{\mathrm{~}}~}+\mathrm{~\Big\llap\bigcirc~}\mathrm{~\underline{\mathrm{~}}~} $$ 
+
+### [\y] 命中 9 行 | 样本 2012-2021高考真题数学汇编：平面解析几何（6）（教师版）(1).md:L2331
+   即$\left\{\begin{array}{l}2(x_1+c)=-c\\4y_1=-2\end{array}\right.$, 即$\left\{\begin{array}{l}x_7=-\frac{3}{2}c\\y_4=-1\end{array}\right.
+
+### [\ddot] 命中 8 行 | 样本 2018北京师大附中高一（下）期中化学含答案(1).md:L481
+   ⑤ $Na^{+}$, $O^{-}$ + $Na^{-}$ \rightarrow $Na^{+}$ [:\ddot{O}:]^{2-} $Na^{+}$
+
+### [\dfrac] 命中 8 行 | 样本 2012-2021高考真题数学汇编：函数（1）（教师版）(1).md:L2029
+   $$g(x)=|2x+3|-|2x-1|=\begin{cases}4,x\geqslant\dfrac{1}{2}\\4x+2,-\dfrac{3}{2}<x<\dfrac{1}{2}\\-4,x\leqslant-\dfrac{3}{2}\end{cases}.$$
+
+### [\delta] 命中 8 行 | 样本 2020全国I卷高考真题化学（教师版）(1).md:L87
+    $$ \delta(\mathrm{A}^{2-})=\frac{c(\mathrm{A}^{2-})}{c(\mathrm{H}_{2}\mathrm{A})+c(\mathrm{HA}^{-})+c(\mathrm{A}^{2-})} $$ 
+
+### [\underbrace] 命中 8 行 | 样本 2021北京延庆高三一模物理（教师版）(1).md:L1063
+    $$ T=\frac{t}{\underbrace{n-1}_{2}}=\frac{2t}{n-1}. $$ 
+
+### [\triangleleft] 命中 7 行 | 样本 2021北京石景山九中高二(上)期中化学（教师版）(1).md:L1155
+    $$ 2\mathrm{H}_{2}(\mathrm{g})+\mathrm{O}_{2}(\mathrm{g})=2\mathrm{H}_{2}\mathrm{O}(\mathrm{g})\triangleleft H_{4} $$ 
+
+### [\b] 命中 7 行 | 样本 2012-2021高考真题数学汇编：函数（1）（教师版）(1).md:L1689
+    $$ \Rightarrow\begin{cases}1<-\frac{b}{2}<2\\b^{2}-4a>0\\1+a+b>0\\4+2b+a>0\end{cases}\Rightarrow\begin{cases}-4<b<-2\\b^{2}>4a\\1+a+b>0\\4+2b+a>0\end{cases} $$ 
+
+### [\Biggl] 命中 7 行 | 样本 2022北京十五中高二（下）期中数学（教师版）(1).md:L481
+    $$ \begin{aligned}&\frac{1}{a_{1}a_{2}}+\frac{1}{a_{2}a_{3}}+\cdots+\frac{1}{a_{n}a_{n+1}}=\frac{1}{-3\times(-1)}+\frac{1}{-1\times1}+\frac{1}{1\times3}+\cdots+\frac{1}{(2n-5)(2n-3)}\\ &=\frac{1}{3}-1+\frac{1}{2}\Biggl[(1-\frac{1}{3})+(\frac{1}{3}-\frac{1}{5})+\cdots+(\frac{1}{2n-5}-\frac{1}{2n-3})\Biggr]=-\frac{1}{6}-\frac{1}{4n-6},\\ \end{aligned} $$ 
+
+### [\Biggr] 命中 7 行 | 样本 2021江苏高考真题物理（教师版）(1).md:L832
+    $$ d_{m}=2\Biggl(\sqrt{R^{2}-\frac{2mU}{qB^{2}}}-\sqrt{R^{2}-\frac{4mU}{qB^{2}}}\Biggr) $$ 
+
+### [\nearrow] 命中 7 行 | 样本 2022北京一六五中高三（上）期中数学（教师版）(1).md:L303
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>x</td><td style='text-align: center; word-wrap: break-word;'>$ (0,x_0) $</td><td style='text-align: center; word-wrap: break-word;'>x_0</td><td style='text-align: center; word-wrap: break-word;'>$ (x_0,+\infty) $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>f&#x27;(x)</td><td style='text-align: center; word-wrap: break-word;'>+</td><td style='text-align: center; word-wrap: break-word;'>0</td><td style='text-align: center; word-wrap: break-word;'>-</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>f(x)</td><td style='text-align: center; word-wrap: break-word;'>\nearrow</td><td style='text-align: center; word-wrap: break-word;'>极大值</td><td style='text-align: center; word-wrap: break-word;'>\n\downarrow</td></tr></table>
+
+### [\lbrack] 命中 7 行 | 样本 2021北京东直门中学高三（上）期中数学（教师版）(1).md:L664
+    $$ =\frac{\sqrt{2}}{2}\sqrt{-\left(m^{2}-2\right)^{2}+4}\ll\sqrt{2},\left.\ \left\lbrack\right.\right.(8 分 )] $$ 
+
+### [\odot] 命中 6 行 | 样本 2020北京延庆高二（下）期中物理（教师版）(1).md:L74
+    $$ \begin{array}{ccc}&\bullet&\\&\bullet&\\&\bullet&\\&\bullet&\\&\mathbf{I}\odot\bullet\rightarrow\mathbf{F}\end{array} $$ 
+
+### [\sigma] 命中 6 行 | 样本 2022北京五中高一（下）期中物理（教师版）(1).md:L796
+    $$ F_{N}=F_{ 引力 }-F_{ 向心力 }=\sigma mg_{0} $$ 
+
+### [\na] 命中 6 行 | 样本 2022北京东城高三一模生物（教师版）(1).md:L1413
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>$ F_{2} $ 雌配子\n雄配子</td><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>D\na</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>A\nA 易感病</td><td style='text-align: center; word-wrap: break-word;'>D\na\nA 中度易感病</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D\na</td><td style='text-align: center; word-wrap: break-word;'>D\na 中度易感病</td><td style='text-align: center; word-wrap: break-word;'>D\na\nD\na 易感病</td></tr></table>
+
+### [\int] 命中 6 行 | 样本 2019北京清华大学领军计划物理（教师版）(1).md:L435
+    $$ P=\int\limits_{0}^{R}\mathrm{d}P(r)=\int\limits_{0}^{R}\frac{\left(\pi r^{2}\mu_{\mathrm{r}}\mu_{0}n\omega I_{0}\right)^{2}}{L^{2}}\cdot\frac{L}{4\pi r\rho}\mathrm{d}r=\frac{\pi\mu_{\mathrm{r}}^{2}\mu_{0}^{2}n^{2}\omega^{2}I_{0}^{2}R^{4}}{16\rho L} $$ 
+
+### [\nii] 命中 5 行 | 样本 2021北京高三二模化学汇编：科学探究（教师版）(1).md:L142
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>实验方案</td><td style='text-align: center; word-wrap: break-word;'>实验现象</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>1 mol/L NaNO $ _{2} $ 溶液（pH=8）\n<img src="../../_imgs/2021北京高三二模化学汇编：科学探究（教师版）(1)/img_in_image_box_115_506_147_655.jpg" alt="Image"" />\n2 mL 1 mol/L FeSO $ _{4} $ 溶液（调 pH=3）</td><td style='text-align: center; word-wrap: break-word;'>i.溶液先变黄色，迅速变为棕色\nii.将棕色溶液加热，颜色变浅，冷却</td></tr></table>
+
+### [\leftrightarrow] 命中 5 行 | 样本 2021北京高考真题数学（教师版）(1).md:L402
+    $$ -p=a_{2}\in\left\{2a_{1}+p,2a_{1}+p+1\right\}\overset{\begin{aligned}2a_{1}+p+1&\geq-p+1>-p\\ \Leftrightarrow\end{aligned}}{\underset{}{=2a_{1}+p}\leftrightarrow a_{1}=-p}. $$ 
+
+### [\phantom] 命中 5 行 | 样本 2022北京朝阳高三（上）期中化学（教师版）(1).md:L276
+    $$ \Box \mathrm{HCO}_{3}^{-}+\Box \mathrm{Fe}^{2+}=\Box \mathrm{FeCO}_{3}\downarrow+\Box \underline{\phantom{0}}+\Box \underline{\phantom{0}} $$ 
+
+### [\exists] 命中 5 行 | 样本 2019北京朝阳高三（上）10月抽样检测数学含答案(1).md:L246
+    $$ \neg p.\quad\exists\mathrm{n}\in\mathrm{N},\quad2^{\mathrm{n}}\leqslant\sqrt{\mathrm{n}} $$ 
+
+### [\a] 命中 5 行 | 样本 2021上海夏季高考真题数学（教师版）(1).md:L337
+    $$ \begin{aligned}a_{2}&=a_{1}+1&\oplus\\a_{3}&=a_{2}+1&\otimes\\a_{4}&=a_{3}+1&\oplus\\a_{5}&=a_{4}+1&\otimes\\a_{6}&=a_{5}+1&\oplus\\a_{7}&=a_{6}+1&\otimes\\a_{8}&=a_{7}+1&\oplus\\a_{9}&=a_{8}+1&\otimes\end{aligned} $$ 
+
+### [\bigg] 命中 5 行 | 样本 2021北京通州高一（上）期末数学（教师版）.md:L794
+    $$ \frac{\pi}{2}+m\pi<x<\frac{3\pi}{4}+m\pi,m\in Z\bigg\}. $$ 
+
+### [\phi] 命中 5 行 | 样本 2021北京石景山高三（上）期末物理（教师版）(1).md:L500
+    $$ q=\overline{I}\Delta t\ ,\quad\overline{I}=\frac{\overline{E}}{\left(R+r\right)}\ ,\quad\overline{E}=\frac{\Delta\phi}{\Delta t} $$ 
+
+### [\lim] 命中 5 行 | 样本 2020北京首都师大附中高一（上）开学考物理（教师版）(1).md:L551
+    $$ \nu=\lim\limits_{\Delta t\to0}\frac{\triangle x}{\triangle t} $$ 
+
+### [\colon] 命中 5 行 | 样本 2022北京东城高三二模数学（教师版）(1).md:L909
+    $$ T^{k+1}(A)\colon a_{k+2}\;,\;a_{k+3}\;,\;\ldots,\;a_{n}\;,\;a_{1}\;,\;a_{2}\;,\;a_{3}\;,\;\ldots,\;a_{k}\;,\;a_{k+1}\;, $$ 
+
+### [\nA] 命中 5 行 | 样本 2022北京东城高三一模生物（教师版）(1).md:L1413
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>$ F_{2} $ 雌配子\n雄配子</td><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>D\na</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>A\nA 易感病</td><td style='text-align: center; word-wrap: break-word;'>D\na\nA 中度易感病</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D\na</td><td style='text-align: center; word-wrap: break-word;'>D\na 中度易感病</td><td style='text-align: center; word-wrap: break-word;'>D\na\nD\na 易感病</td></tr></table>
+
+### [\rbrack] 命中 5 行 | 样本 2022北京一零一中高二（上）期中数学（教师版）(1).md:L594
+    $$ \therefore\sin^{2}\alpha=\frac{16}{7}\times\frac{\left(\lambda-1\right)^{2}}{5\lambda^{2}-8\lambda+4}=\frac{16}{7}\times\frac{\left(\lambda-1\right)^{2}}{5\left(\lambda-1\right)^{2}+2\left(\lambda-1\right)+1}, 令 t=\lambda-1\in\left\lbrack-1,0\right\rbrack $$ 
+
+### [\oplus] 命中 5 行 | 样本 2021北京海淀高三二模化学（教师版）(1).md:L384
+    $$  Ag_{3}PO_{4}\xlongequal{ 可见光 }\left[\ Ag_{3}PO_{4}\right]^{\oplus}+e^{-} $$ 
+
+### [\Gamma] 命中 4 行 | 样本 2012-2021高考真题数学汇编：平面解析几何（9）（教师版）(1).md:L2495
+    $$ \mathbf{x}^{4}{=}2\mathbf{p}\mathbf{y}{\Leftrightarrow}\mathbf{y}{=}\frac{\mathbf{x}^{2}}{3\mathbf{p}}{\Rightarrow}\mathbf{y}^{\prime}\mathbf{\Gamma}=\frac{\mathbf{x}}{\mathbf{p}}{=}\frac{\sqrt{3}}{3}\Rightarrow\mathbf{x}{=}\frac{\sqrt{6}}{3}\mathbf{p}\Rightarrow\mathbf{P}\left(\frac{\sqrt{3}\mathbf{p}}{5},\frac{\mathbf{p}}{6}\right) $$ 
+
+### [\arcsin] 命中 4 行 | 样本 2022北京五十五中高一（下）期中数学（教师版）(1).md:L459
+    $$ S_{\triangle ABC}=\frac{1}{2}\arcsin\mathrm{B}=\frac{1}{2}\times4\times6\times\frac{5\sqrt{7}}{16}=\frac{15\sqrt{7}}{4}. $$ 
+
+### [\textrm] 命中 4 行 | 样本 2019北京首都师大附中回龙观育新学校高一（上）期中物理（教师版）.md:L735
+    $$ \frac{1}{2}\textrm{a t}^{\prime2}=\textrm{v}_{\textrm{ 自 }}\textrm{t}^{\prime} $$ 
+
+### [\tilde] 命中 4 行 | 样本 2021北京西城高一（下）期末物理（教师版）(1).md:L1035
+    $$ mgy=E_{i}-\frac{1}{2}m\tilde{v}_{0}^{2} $$ 
+
+### [\lceil] 命中 4 行 | 样本 2022北京首都师大附中高二（下）期中化学（教师版）(1).md:L736
+    $$ \begin{aligned}&【详解】\textcircled{1} \left\lceil\begin{array}{c}\mathrm{CH}_{2}-\mathrm{CH}_{2}-\mathrm{CH}-\mathrm{CH}_{2}\\\mid\\\mathrm{CH}_{3}\end{array}\right\rceil n 的单体为 \mathrm{CH}_{2}=\mathrm{CH}_{2}、\mathrm{CH}_{2}=\mathrm{CHCH}_{3}；\\ &\\ & \textcircled{2} \left\lceil\begin{array}{c}\mathrm{CH}_{2}-\mathrm{CH}_{2}-\mathrm{CH}_{2}-\mathrm{CH}\\\mid\\\mathrm{CH}_{3}\end{array}\right\rceil n 的单体为 \mathrm{CH}_{2}=\mathrm{CH}_{2}、\mathrm{CH}_{2}=\mathrm{CHCH}_{3}；\\ &\\ & \textcircled{3} \left\lceil\begin{array}{c}\mathrm{CH}_{2}-\mathrm{CH}=\mathrm{CH}-\mathrm{CH}-\mathrm{CH}_{2}-\mathrm{CH}_{2}\\\mid\\\mathrm{CH}_{3}\end{array}\right\rceil n 的单体为 \mathrm{CH}_{2}=\mathrm{CH}-\mathrm{CH}=\mathrm{CHCH}_{3}、\mathrm{CH}_{2}=\mathrm{CH}_{2}；\\ &\\ & \textcircled{4} \left\lceil\begin{array}{c}\mathrm{CH}_{2}-\mathrm{CH}=\mathrm{CH}-\mathrm{CH}_{2}-\mathrm{CH}_{2}-\mathrm{CH}\\\mid\\\mathrm{CH}_{3}\end{array}\right\rceil n 的单体为 \mathrm{CH}_{2}=\mathrm{CH}-\mathrm{CH}=\mathrm{CH}_{2}、\mathrm{CH}_{2}=\mathrm{CHCH}_{3}；\\ \end{aligned} $$ 
+
+### [\rceil] 命中 4 行 | 样本 2021北京通州高三（上）期中数学（教师版）(1).md:L649
+    $$ E\left(T\right)=\left[500\times16-\left(18-16\right)\times100\right]\times0.06+\left\lceil500\times17-\left(18-17\right)\times100\right\rceil\times0.23+500\times18\times0.71=8790 $$ 
+
+### [\searrow] 命中 4 行 | 样本 2018北京师大二附中高二（下）期中数学（文）（教师版）(1).md:L372
+    $$ \begin{aligned}x\quad&-3\quad(-3,-2)\quad&-2\quad\left(-2,\frac{2}{3}\right)\quad&\frac{2}{3}\quad\left(\frac{2}{3},2\right)\quad&2\\f'(x)\quad&-\quad&0\quad&+\quad&0\quad&-\quad\\f(x)\quad&-3\quad&\searrow\quad& 极小值 -8\quad&\nearrow\quad& 极大值 \frac{40}{27}\quad&\searrow\quad&-8\end{aligned} $$ 
+
+### [\tfrac] 命中 4 行 | 样本 2019江苏高考真题物理（教师版）(1).md:L957
+    $$ x_{B}=v_{B}t-\tfrac{1}{2}a_{B}t^{2} $$ 
+
+### [\csin] 命中 4 行 | 样本 2012-2021高考真题数学汇编：解三角形（1）（教师版）(1).md:L581
+    $$ \therefore\sin C=\frac{\csin A}{a}=\frac{\sqrt{2}\times\frac{\sqrt{7}}{2}}{2}=\frac{2}{2}, $$ 
+
+### [\ni] 命中 3 行 | 样本 2018北京师大附中高二（下）期末化学含答案(1).md:L458
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>操作</td><td style='text-align: center; word-wrap: break-word;'>现象</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>持续通入 $ SO_{{2}} $→→尾气处理</td><td style='text-align: center; word-wrap: break-word;'>i. 液面上方出现白雾；\ni. 稍后，出现浑浊，溶液变为黄绿色；\ni. 稍后，产生大量白色沉淀，黄绿色褪去</td></tr></table>
+
+### [\nC] 命中 3 行 | 样本 2021北京师大附中高一（下）期中化学(选考班)（教师版）(1).md:L408
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>操作</td><td style='text-align: center; word-wrap: break-word;'>现象</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>关闭弹簧夹，滴加一定量浓硫酸，加热</td><td style='text-align: center; word-wrap: break-word;'>A中有白雾生成，铜片表面产生气泡\nB中有气泡冒出，产生大量白色沉淀\nC中产生白色沉淀，液面上方略显浅棕色并逐渐消失</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>打开弹簧夹，通入  $ N_{2} $，停止加热，一段时间后关闭</td><td style='text-align: center; word-wrap: break-word;'></td></tr><tr><td style='text-align: center; word-wrap: break-word;'>从 B、C 中分别取少量白色沉淀，加稀盐酸</td><td style='text-align: center; word-wrap: break-word;'>均未发现白色沉淀溶解</td></tr></table>
+
+### [\nMg] 命中 3 行 | 样本 2022北京二中高三三模化学（教师版）(1).md:L99
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'></td><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>B</td><td style='text-align: center; word-wrap: break-word;'>C</td><td style='text-align: center; word-wrap: break-word;'>D</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>目的</td><td style='text-align: center; word-wrap: break-word;'>比较 Mg、Al 金属性的强弱</td><td style='text-align: center; word-wrap: break-word;'>研究浓度对化学平衡的影响</td><td style='text-align: center; word-wrap: break-word;'>比较  $ Na_{2}CO_{3} $、 $ NaHCO_{3} $ 与酸反应的快慢</td><td style='text-align: center; word-wrap: break-word;'>比较碳酸、醋酸、苯酚的酸性强弱</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实验方案</td><td style='text-align: center; word-wrap: break-word;'>浓NaOH溶液\n<img src="imgs/img_in_image_box_324_1238_356_1349.jpg" alt="Image"" /> <img src="imgs/img_in_image_box_406_1237_436_1352.jpg" alt="Image"" />\nMg(OH) $ _{2} $ Al(OH) $ _{3} $</td><td style='text-align: center; word-wrap: break-word;'>2 mL 0.1 mol·L $ ^{-1} $ KSCN 溶液\n<img src="imgs/img_in_image_box_476_1256_577_1361.jpg" alt="Image"" />\n<img src="imgs/img_in_image_box_476_1361_596_1445.jpg" alt="Image"" /></td><td style='text-align: center; word-wrap: break-word;'>[F1][F2] [F8]</td><td style='text-align: center; word-wrap: break-word;'><img src="imgs/img_in_image_box_831_1209_949_1397.jpg" alt="Image"" /></td></tr></table>
+
+### [\hat] 命中 3 行 | 样本 2022北京顺义高一（上）期末化学（教师版）.md:L1012
+    $$ \mathrm{:}\ddot{\mathrm{C}}\ddot{\mathrm{l}}\mathrm{·}+\mathrm{\hat{}}\times\mathrm{M}\mathrm{g}\mathrm{\cdot}\mathrm{+}\mathrm{\hat{}}\mathrm{.}\ddot{\mathrm{C}}\mathrm{l}\mathrm{:}\mathrm{---}\mathrm{~>~}[\mathrm{:}\ddot{\mathrm{C}}\ddot{\mathrm{l}}{}:\mathrm{]}^{-}\mathrm{M}\mathrm{g}^{2+}[\mathrm{:}\ddot{\mathrm{C}}\ddot{\mathrm{l}}{}:\mathrm{]}^{-}, $$ 
+
+### [\m] 命中 3 行 | 样本 2023北京一七一中高一6月月考物理（教师版）(1).md:L542
+    $$ \begin{aligned}E_{\mathrm{k1}}&=E_{\mathrm{k2}}\\m_{1}=&1.44m_{2}=1.44m\end{aligned} $$ 
+
+### [\ast] 命中 3 行 | 样本 2021全国乙卷高考真题化学（教师版）(1).md:L460
+    $$ \mathrm{NOCl}+\mathrm{NOCl}^{\ast}\longrightarrow2\mathrm{NO}+\mathrm{Cl}, $$ 
+
+### [\T] 命中 3 行 | 样本 2021北京二中高一（上）期末数学（教师版）.md:L474
+   可得： $ \begin{cases}m>0\\k\in Z\\kT<2\pi<3\pi<(k+\frac{1}{2})T\text{或}\\T=\dfrac{2\pi}{m},T>\pi\end{cases} $或 $ \begin{cases}m>0\\k\in Z\ $ k+\frac{1}{2})T<2\pi<3\pi<(k+1)T,\\T=\dfrac{2\pi}{m},T>\pi\end{cases} $，
+
+### [\subsetneq] 命中 3 行 | 样本 2021北京八一学校高一（上）10月月考数学（教师版）(1).md:L198
+    $$ \therefore M\subsetneq N $$ 
+
+### [\Sigma] 命中 3 行 | 样本 2021北京昌平高一（下）期末数学（教师版）(1).md:L503
+    $$ \cos B{=}\cos[\pi{-}\mathbf{\Sigma}(A{+}C)]{=}{-}\cos\mathbf{\Sigma}(A{+}C){=}\sin A\sin C{-}\cos A\cos C{=}\frac{\sqrt{3}}{2}\times\frac{3\sqrt{3}}{14}{-}\frac{1}{2}\times\frac{13}{14}{=}{-}\frac{1}{7}. $$ 
+
+### [\bigotimes] 命中 3 行 | 样本 2021北京顺义牛栏山一中高二（上）期中数学（教师版）(1).md:L566
+    $$ \begin{array}{r}{f_{_{A}}\bigotimes_{B}\bigotimes_{C}(x)=f_{_{A}}(x)\cdot f_{_{B}}(x)\cdot f_{C}(x),}\end{array} $$ 
+
+### [\cot] 命中 3 行 | 样本 2012-2021高考真题数学汇编：三角函数（2）（教师版）(1).md:L901
+   $$\cot\alpha=\frac{\cos\alpha}{\sin\alpha}=2\sqrt{2}$$
+
+### [\lnot] 命中 3 行 | 样本 2022北京101中高一（上）统练（一）数学（教师版）(1).md:L316
+    $$ \therefore\lnot p:\forall x\in R,\quad a x^{2}+2x+1\neq0. $$ 
+
+### [\le] 命中 3 行 | 样本 2012-2021高考真题数学汇编：向量的数量积与三角恒等变换（3）（教师版）(1).md:L952
+    $$ =\sin\ \left(x-\varphi\right)\le4. $$ 
+
+### [\ge] 命中 3 行 | 样本 2021北京十一学校高三三模数学（教师版）（图片版）(1).md:L781
+    $$ A\ne B\;,\;\;d(A,B)\ge k $$ 
+
+### [\square] 命中 3 行 | 样本 2021北京房山高三一模化学（教师版）(1).md:L276
+    $$ \mathrm{3MnCO_{3} +2Fe^{3+} + \square  _{  _}} = \mathrm{3Mn^{2+} +2Fe(OH)_{3} + \square  _{  _}} $$ 
+
+### [\varpi] 命中 3 行 | 样本 2022北京东城高一（下）期末物理（教师版）(1).md:L322
+    $$ \nu=\varpi r $$ 
+
+### [\ensuremath] 命中 3 行 | 样本 2021北京五十七中高二（上）期中物理（教师版）(1).md:L756
+    $$ \mathbf{\bar{F}}=1950\ensuremath{\mathbf{N}} $$ 
+
+### [\h] 命中 3 行 | 样本 2018北京师大二附中高二（下）期中数学（文）（教师版）(1).md:L388
+    $$ \begin{aligned}x\quad&\frac{1}{2}\quad\begin{pmatrix}\frac{1}{2},1\end{pmatrix}\quad1\quad(1,2)\quad&2\\h^{\prime}(x)\quad&0\quad-\quad0\quad+\quad\\h(x)\quad& 极大值 \quad\searrow\quad 极小值 \quad\nearrow\quad&m-2+\ln2\end{aligned} $$ 
+
+### [\C] 命中 3 行 | 样本 2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).md:L2385
+   $$\therefore\left\{\begin{array}{l}C_{10}^{k}\left(\frac{1}{2}\right)^{10}\cdot3^{k}\geqslant C_{10}^{k+1}\left(\frac{5}{4}\right)^{10}\cdot3^{k+5}\\C_{10}^{k}\left(\frac{1}{4}\right)^{10}\cdot7^{k}\geqslant C_{10}^{k-1}\left(\frac{1}{8}\right)^{10}\cdot3^{k-1}\end{array}\right.$$
+
+### [\ce] 命中 3 行 | 样本 2022北京首师附中高二（下）期中化学（教师版）(1).md:L1115
+   的分子式及 M 的结构简式可知 K 的结构简式为  $  \ce{CH3OCH2CH2CH2Br}  $，根据已知信息可判断 J 的结构简式是  $  \ce{BrCH2CH2CH2Br}  $，I 的核磁共振氢谱只有一组峰，所以 I 的结构简式为  $  \ce{H2C-CH2
+
+### [\chemfig] 命中 3 行 | 样本 2022北京二十中高三12月月考化学（教师版）(1).md:L737
+    $$ \begin{aligned}n\underset{\mathrm{O}}{\overset{\mathrm{O}}{\underset{\mathrm{O}}{\chemfig{*}{O}}}+\mathrm{nHOCH_{2}CH_{2}OH}}\xrightarrow[\mathrm{TsOH}]{\mathrm{H^{+}/H_{2}O}}&\left[\overset{\mathrm{O}}{\underset{\mathrm{||}}{\mathrm{C}}}-\mathrm{CH_{2}CH_{2}C}\overset{\mathrm{O}}{\underset{\mathrm{||}}{\mathrm{C}}}-\mathrm{OCH_{2}CH_{2}O}\right]_{\mathrm{n}}+\mathrm{nH_{2}O}\end{aligned} $$ 
+
+### [\nabla] 命中 3 行 | 样本 2012-2021高考真题数学汇编：导数及其应用（3）（教师版）(1).md:L1819
+    $$ \mathbf{\nabla}\cdot M\mathbf{\nabla}(x)=kx-ln\mathbf{\nabla}(3+x)-x^{2},x\in(0,+\infty)\\ \textcircled{M}^{\prime}\mathbf{\nabla}\left(x\right)=k-\frac{5}{1+x}-2x=\frac{-4x^{2}+\left(k-2\right)x+k-2}{1+x}, $$ 
+
+### [\not] 命中 3 行 | 样本 2021北京八中高二（上）期末数学（教师版）(1).md:L399
+    $$ BD_{1}\not\subset $$ 
+
+### [\Bigg] 命中 3 行 | 样本 2022北京顺义一中高二3月月考数学（教师版）(1).md:L669
+    $$ \begin{aligned}&\therefore y_{P}+y_{Q}=-\Big(2k+1\Big)\Bigg(\frac{x_{1}+4}{x_{1}+2}+\frac{x_{2}+4}{x_{2}+2}\Bigg)\\ &=-\Big(2k+1\Big)\cdot\frac{2x_{1}x_{2}+6\big(x_{1}+x_{2}\big)+16}{\big(x_{1}+2\big)\big(x_{2}+2\big)}\\ &=-\Big(2k+1\Big)\cdot\frac{\frac{2\big(64k^{2}-8\big)}{4k^{2}+1}+\frac{6\times\big(-32k^{2}\big)}{4k^{2}+1}+16}{\big(x_{1}+2\big)\big(x_{2}+2\big)}}\\ &=-\Big(2k+1\Big)\cdot\frac{128k^{2}-16-192k^{2}+64k^{2}+16}{\big(4k^{2}+1\big)\big(x_{1}+2\big)\big(x_{2}+2\big)}=0\\ \end{aligned} $$ 
+
+### [\varPhi] 命中 3 行 | 样本 2019北京海淀高三（上）期末物理（教师版）(1).md:L538
+    $$ \varepsilon\;=\;\frac{\Delta\varPhi}{\Delta t}\;=\;\frac{\Delta(\boldsymbol{B}\cdot\boldsymbol{S})}{\Delta t}\;=\;\frac{\Delta\boldsymbol{B}}{\Delta t}\;S\;=\;k\pi r^{2} $$ 
+
+### [\nKSCN] 命中 3 行 | 样本 2022北京一六一中高三（上）期中化学（教师版）(1).md:L384
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>方案</td><td style='text-align: center; word-wrap: break-word;'>滴 0.1 mol ·  $ L^{-1} $\nKSCN 溶液\n<img src="../../_imgs/2022北京一六一中高三（上）期中化学（教师版）(1)/img_in_image_box_178_151_228_307.jpg" alt="Image"" />\n2mL 溶液. a</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/2022北京一六一中高三（上）期中化学（教师版）(1)/img_in_image_box_504_102_741_337.jpg" alt="Image"" />\nb ( 溶液)\n).05 mol ·  $ L^{-1} $  $ CuSO_4 $ 溶液</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>现象</td><td style='text-align: center; word-wrap: break-word;'>放置较长时间，溶液颜色不变红</td><td style='text-align: center; word-wrap: break-word;'>闭合开关 K，电流计指针不动，向右侧  $ CuSO_4 $ 溶液中滴加 0.1mol· $ L^{-1} $KSCN，指针向右大幅度偏转，溶液中有白色浑浊物产生。取出左侧溶液，滴加 0.1mol· $ L^{-1} $KSCN，溶液变红。</td></tr></table>
+
+### [\operatorname] 命中 3 行 | 样本 2012-2021高考真题数学汇编：指数函数、对数函数与幂函数（教师版）(1).md:L876
+    $$ 2^{\operatorname{l o g}_{2}8+\operatorname{l o}g_{4}3}=2^{\operatorname{l o}\varepsilon_{2}3+\frac{5}{2}\operatorname{l o}\varepsilon_{2}3}=2^{\operatorname{l o}\varepsilon_{2}(8\cdot3^{\frac{1}{6}})}=3\sqrt{3}. $$ 
+
+### [\arccos] 命中 3 行 | 样本 2012-2021高考真题数学汇编：立体几何初步（3）（教师版）(1).md:L1016
+    $$ \therefore\theta=\arccos\frac{1}{3}, $$ 
+
+### [\cal] 命中 3 行 | 样本 2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).md:L997
+    $$ {\cal P}\mathrm{~(}\xi=1\mathrm{)~}=\frac{C_{2}^{8}\bullet C_{1}^{1}}{\mathrm{A}_{3}^{2}}{+}\frac{C_{2}^{6}C_{1}^{1}\mathrm{A}_{4}^{2}C_{1}^{3}}{\mathrm{A}_{4}^{3}}{=}\frac{5}{3}; $$ 
+
+### [\nB] 命中 2 行 | 样本 2021北京东城高三二模化学（教师版） (1)(1).md:L372
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>实验</td><td style='text-align: center; word-wrap: break-word;'>现象</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>铜片 10 mL 0.005 mol·L $ ^{-1} $ KMnO $ _{4} $ 酸性溶液</td><td style='text-align: center; word-wrap: break-word;'>一段时间后，培养皿中由铜片向外侧依次呈现：\nA 区澄清且几乎无色；\nB 区底部覆盖棕黑色固体；\nC 区澄清且紫色变浅</td></tr></table>
+
+### [\nNa] 命中 2 行 | 样本 2021北京朝阳高一（上）期末化学(教师版).md:L129
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>实验装置</td><td colspan="3">试剂X</td><td style='text-align: center; word-wrap: break-word;'>实验结果</td></tr><tr><td rowspan="2"><img src="../../_imgs/2021北京朝阳高一（上）期末化学(教师版)/img_in_image_box_154_1222_236_1342.jpg" alt="Image"" />\n10mL\n澄清石灰水</td><td style='text-align: center; word-wrap: break-word;'>I</td><td style='text-align: center; word-wrap: break-word;'>II</td><td style='text-align: center; word-wrap: break-word;'>III</td><td rowspan="2">①II、III均产生白色沉淀\n②烧杯中溶液pH变化如下\n<img src="../../_imgs/2021北京朝阳高一（上）期末化学(教师版)/img_in_image_box_810_1284_1022_1426.jpg" alt="Image"" /></td></tr><tr><td style='text-align: center; word-wrap: break-word;'>蒸馏水</td><td style='text-align: center; word-wrap: break-word;'>0.05mol·L $ ^{-1} $\nNa $ _{2} $CO $ _{3} $溶液</td><td style='text-align: center; word-wrap: break-word;'>0.05mol·L $ ^{-1} $\nNaHCO $ _{3} $溶液</td></tr></table>
+
+### [\nNaHCO] 命中 2 行 | 样本 2022北京丰台高一（上）期中化学（A卷）（教师版）.md:L169
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>实验装置</td><td colspan="3">试剂 X</td><td style='text-align: center; word-wrap: break-word;'>实验结果</td></tr><tr><td rowspan="2"><img src="../../_imgs/2022北京丰台高一（上）期中化学（A卷）（教师版）/img_in_image_box_134_451_238_570.jpg" alt="Image"" />\n10 mL\n澄清石灰水</td><td style='text-align: center; word-wrap: break-word;'>I</td><td style='text-align: center; word-wrap: break-word;'>II</td><td style='text-align: center; word-wrap: break-word;'>III</td><td rowspan="2">① II、III 均产生白色沉淀\n② 烧杯中溶液 pH 变化如下\n<img src="../../_imgs/2022北京丰台高一（上）期中化学（A卷）（教师版）/img_in_image_box_786_493_1029_653.jpg" alt="Image"" /></td></tr><tr><td style='text-align: center; word-wrap: break-word;'>蒸馏水</td><td style='text-align: center; word-wrap: break-word;'>0.05 mol·L $ ^{-1} $\nNa $ _2 $CO $ _3 $ 溶液</td><td style='text-align: center; word-wrap: break-word;'>0.05 mol·L $ ^{-1} $\nNaHCO $ _3 $ 溶液</td></tr></table>
+
+### [\nKMnO] 命中 2 行 | 样本 2022北京一七一中高一（下）期中化学（教师版）(1).md:L364
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td rowspan="2">实验编号</td><td colspan="4">室温下，试管中所加试剂及其用量/mL</td><td rowspan="2">室温下溶液颜色褪至无色所需时间/min</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>0.6mol/L\n $ H_{{2}}C_{{2}}O_{{4}} $溶液</td><td style='text-align: center; word-wrap: break-word;'>$ H_{{2}}O $</td><td style='text-align: center; word-wrap: break-word;'>0.2mol/L\nKMnO_{{4}}溶液</td><td style='text-align: center; word-wrap: break-word;'>3mol/L\n稀硫酸</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>1</td><td style='text-align: center; word-wrap: break-word;'>3.0</td><td style='text-align: center; word-wrap: break-word;'>2.0</td><td style='text-align: center; word-wrap: break-word;'>2.0</td><td style='text-align: center; word-wrap: break-word;'>3.0</td><td style='text-align: center; word-wrap: break-word;'>4.0</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>2</td><td style='text-align: center; word-wrap: break-word;'>3.0</td><td style='text-align: center; word-wrap: break-word;'>a</td><td style='text-align: center; word-wrap: break-word;'>2.0</td><td style='text-align: center; word-wrap: break-word;'>2.0</td><td style='text-align: center; word-wrap: break-word;'>5.2</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>3</td><td style='text-align: center; word-wrap: break-word;'>3.0</td><td style='text-align: center; word-wrap: break-word;'>4.0</td><td style='text-align: center; word-wrap: break-word;'>2.0</td><td style='text-align: center; word-wrap: break-word;'>1.0</td><td style='text-align: center; word-wrap: break-word;'>6.4</td></tr></table>
+
+### [\nFe] 命中 2 行 | 样本 2022北京一六一中高一（下）期中化学（选考班）（教师版）(1).md:L950
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>实验</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/2022北京一六一中高一（下）期中化学（选考班）（教师版）(1)/img_in_image_box_181_1019_258_1145.jpg" alt="Image"" />\nFe  $ ^{{+}} $ I  $ H_{{2}}SO_{{4}} $</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/2022北京一六一中高一（下）期中化学（选考班）（教师版）(1)/img_in_image_box_392_1025_461_1141.jpg" alt="Image"" />\nFe  $ ^{{+}} $ II  $ H_{{2}}SO_{{4}} $</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/2022北京一六一中高一（下）期中化学（选考班）（教师版）(1)/img_in_image_box_586_1022_661_1153.jpg" alt="Image"" />\nMg III  $ H_{{2}}SO_{{4}} $</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/2022北京一六一中高一（下）期中化学（选考班）（教师版）(1)/img_in_image_box_757_1007_917_1122.jpg" alt="Image"" /> 稀  $ H_{{2}}SO_{{4}} $ IV</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>现象</td><td style='text-align: center; word-wrap: break-word;'>Fe表面产生大量无色气泡</td><td style='text-align: center; word-wrap: break-word;'>Fe表面产生少量气泡后迅速停止</td><td style='text-align: center; word-wrap: break-word;'>Mg表面迅速产生大量气泡</td><td style='text-align: center; word-wrap: break-word;'>Fe表面有大量气泡，Mg表面有少量气泡</td></tr></table>
+
+### [\frown] 命中 2 行 | 样本 2022北京一六六中高一（下）期中化学（教师版）(1).md:L883
+    $$ (2)\mathrm{Na^{+}\overset{\frown}{.}\overset{\frown}{.}\overset{\frown}{.}\overset{\frown}{.}\overset{\frown}{+}\overset{\frown}{.}\overset{\frown}{+}\overset{\frown}{+}Na\longrightarrow Na^{+}\left[\overset{\frown}{:}S:\right]^{2}\mathrm{Na^{+}}\quad(3)\mathrm{S^{2-}>Cl^{-}>Na^{+}} $$ 
+
+### [\over] 命中 2 行 | 样本 2022北京交大附中高一（上）期末化学（教师版）.md:L453
+    $$ +11\over2\over/8 $$ 
+
+### [\neg] 命中 2 行 | 样本 2020北京清华附中高一（上）10月月考数学（教师版）(1).md:L146
+    $$ \therefore\neg p:\exists x\in N,\ x^{3}<1. $$ 
+
+### [\nonumber] 命中 2 行 | 样本 2019北京人大附中高三（上）10月月考物理含答案(1).md:L635
+    $$ (p_{1}-p_{2})\;\triangle\;\stackrel{1}{\underset{}{V}{=}}\frac{1}{2}\rho\;\triangle\;\stackrel{}{V}V^{2}\nonumber-\frac{1}{2}\rho\;\triangle\;\stackrel{}{V}V^{\mathfrak{L}+}\rho\;\triangle\;\stackrel{}{V}g h_{2}-\rho\;\triangle\;\stackrel{}{V}g h_{1} $$ 
+
+### [\mathit] 命中 2 行 | 样本 2021北京理工大附中高一（下）期末数学（教师版）(1).md:L144
+    $$ \cos\mathrm{\boldmath~}(\mathit{A}\Box\mathit{B})\;=\cos\mathit{A}\cos\mathit{B}+\sin\mathit{A}\sin\mathit{B}=\frac{3}{5}\times\frac{4}{5}+\frac{4}{5}\times\frac{3}{5}=\frac{24}{25}. $$ 
+
+### [\Theta] 命中 2 行 | 样本 2021北京通州高一（下）期末数学（教师版）(1).md:L568
+    $$ \therefore\Theta=\frac{5\pi}{6}; $$ 
+
+### [\atop] 命中 2 行 | 样本 2019北京市昌平区上苑中学高二（上）期末模拟化学含答案(1).md:L985
+    $$ \mathrm{OHC}-\mathrm{CH}_{2}-\mathrm{CH}_{2}-\mathrm{CH}-\mathrm{CH}_{2}-\mathrm{CHO}\atop\mathrm{OH}\quad\mathrm{OH} $$ 
+
+### [\nNaCl] 命中 2 行 | 样本 2021北京石景山九中高二(上)期中化学（教师版）(1).md:L1205
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td rowspan="2"><img src="../../_imgs/2021北京石景山九中高二(上)期中化学（教师版）(1)/img_in_image_box_89_82_231_259.jpg" alt="Image"" /></td><td style='text-align: center; word-wrap: break-word;'>④</td><td style='text-align: center; word-wrap: break-word;'>1.0mol•L $ ^{-1} $NaCl</td><td style='text-align: center; word-wrap: break-word;'>7</td><td rowspan="2">氧气浓度/%\n0</td><td rowspan="2">$ H_{2}O $\n $ Na_{2}SO_{4} $\nNaCl\n $ (NH_{4})_{2}SO_{4} $\nNH4Cl\n时间/min\n300</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>⑤</td><td style='text-align: center; word-wrap: break-word;'>0.5mol•L $ ^{-1} $Na $ _{2} $SO $ _{4} $</td><td style='text-align: center; word-wrap: break-word;'>7</td></tr></table>
+
+### [\xleftrightarrow] 命中 2 行 | 样本 2021北京昌平高三（上）期末化学（教师版）(1).md:L478
+    $$  CH_{2}\rightleftharpoons CH-COOH+CH_{3}OH\overset{ 浓 }{}\xleftrightarrow[\bigtriangleup ]{H_{2}SO_{4}}CH_{2}\rightleftharpoons CH-COOCH_{3}+H_{2}O $$ 
+
+### [\nc] 命中 2 行 | 样本 2021北京朝阳高二（上）期末化学（教师版）(1).md:L140
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>初始物质\n时间/s</td><td style='text-align: center; word-wrap: break-word;'>0</td><td style='text-align: center; word-wrap: break-word;'>20</td><td style='text-align: center; word-wrap: break-word;'>40</td><td style='text-align: center; word-wrap: break-word;'>60</td><td style='text-align: center; word-wrap: break-word;'>80</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实验a:c( $ N_{{2}}O_{{4}} $)/mol· $ L^{{-1}} $</td><td style='text-align: center; word-wrap: break-word;'>0.10</td><td style='text-align: center; word-wrap: break-word;'>0.07</td><td style='text-align: center; word-wrap: break-word;'>0.045</td><td style='text-align: center; word-wrap: break-word;'>0.04</td><td style='text-align: center; word-wrap: break-word;'>0.04</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实验b:c( $ N_{{2}}O_{{4}} $)/mol· $ L^{{-1}} $\nc( $ NO_{{2}} $)/mol· $ L^{{-1}} $</td><td style='text-align: center; word-wrap: break-word;'>0.10\n0.20</td><td colspan="4">......</td></tr></table>
+
+### [\xrightleftharpoons] 命中 2 行 | 样本 2019北京东城高三（上）期末化学（教师版）(1).md:L390
+    $$ \begin{aligned}&(4)\mathrm{CH_{2}\overset{CH_{3}}{\underset{|}{=}}C-COOH}+HO\mathrm{\overset{}{\underset{|}{=}}CH_{2}CH_{2}}\mathrm{-OH}\xrightleftharpoons[\bigtriangleup]{ 浓硫酸 }\mathrm{CH_{2}\overset{CH_{3}}{\underset{|}{=}}C-COOCH_{2}CH_{2}OH}+\\&\mathrm{H_{2}O}\end{aligned} $$ 
+
+### [\chi] 命中 2 行 | 样本 2018北京临川学校高二（下）期中数学（文）含答案(1).md:L79
+   $$\chi^{2}=\frac{n\Box ad-bc\Box^{2}}{\Box a+b\Box\Box c+d\Box\Box a+c\Box\Box b+d\Box}$$
+
+### [\f] 命中 2 行 | 样本 2018北京师大二附中高二（下）期中数学（文）（教师版）(1).md:L372
+    $$ \begin{aligned}x\quad&-3\quad(-3,-2)\quad&-2\quad\left(-2,\frac{2}{3}\right)\quad&\frac{2}{3}\quad\left(\frac{2}{3},2\right)\quad&2\\f'(x)\quad&-\quad&0\quad&+\quad&0\quad&-\quad\\f(x)\quad&-3\quad&\searrow\quad& 极小值 -8\quad&\nearrow\quad& 极大值 \frac{40}{27}\quad&\searrow\quad&-8\end{aligned} $$ 
+
+### [\x] 命中 2 行 | 样本 2021北京怀柔高三一模数学（教师版）(1).md:L547
+    $$ \therefore\left\{\begin{aligned}\overrightarrow{BD}\cdot\overrightarrow{m}&=0\\\overrightarrow{BC_{1}}\cdot\overrightarrow{m}&=0\end{aligned}\right., 即 \left\{\begin{aligned}x_{1}-y_{1}&=0\\x_{1}-y_{1}+\sqrt{3}z_{1}&=0\end{aligned}\right., $$ 
+
+### [\widetilde] 命中 2 行 | 样本 2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).md:L2753
+    $$ \left\{\begin{array}{l}\displaystyle\sum_{\mathrm{i}=1}^{\mathrm{n}}\left(\mathrm{t}_{\mathrm{i}}-\overline{\mathrm{t}}\right)\left(\mathbf{y}_{\mathrm{i}}-\overline{\mathbf{y}}\right)\sum_{\mathrm{i}=1}^{\mathrm{n}}\mathrm{t}_{\mathrm{i}}\mathbf{y}_{\mathrm{i}}-\overline{\mathrm{n}}\overline{\mathrm{t}}\mathbf{y}\\ \displaystyle\sum_{\mathrm{i}=1}^{\mathrm{n}}\left(\mathrm{t}_{\mathrm{i}}-\overline{\mathrm{t}}\right)^{2}\sum_{\mathrm{i}=1}^{\mathrm{n}}\mathrm{t}_{\mathrm{i}}^{2}-\mathrm{n}\overline{\mathrm{t}}^{2}\end{array}\right.\\ \displaystyle\sum_{\mathrm{a}=\overline{\mathbf{y}}}^{\overline{\mathrm{a}}}\widetilde{\mathrm{b}}\overline{\mathrm{t}} $$ 
+
+### [\overbrace] 命中 2 行 | 样本 2022北京顺义一中高二10月月考物理（选考）（教师版）(1).md:L640
+    $$ 1.8\times10^{-7}\mathrm{J}\;;\;(4)\quad\overbrace{\begin{array}{c}\mathrm{\large~C}\\ \bullet\quad\mathrm{\large~A}\\ \bullet\quad\mathrm{\large~B}\\ \bullet\quad\bullet\quad\mathrm{\large~}\bullet\quad\bullet\end{array}}}^{E} $$ 
+
+### [\cfrac] 命中 2 行 | 样本 2022北京一零一中高二（下）期中物理（教师版）(1).md:L1352
+    $$ n=\frac{\cfrac{ED}{DO}}{\cfrac{FG}{GO}}=\cfrac{ED}{FG} $$ 
+
+### [\ll] 命中 2 行 | 样本 2021北京东直门中学高三（上）期中数学（教师版）(1).md:L664
+    $$ =\frac{\sqrt{2}}{2}\sqrt{-\left(m^{2}-2\right)^{2}+4}\ll\sqrt{2},\left.\ \left\lbrack\right.\right.(8 分 )] $$ 
+
+### [\v] 命中 2 行 | 样本 2022北京顺义一中高二（上）期中物理（教师版）(1).md:L560
+    $$ \begin{aligned}F_{ 合 }&=ma\\v_{1}=&0+at\end{aligned} $$ 
+
+### [\S] 命中 2 行 | 样本 2022北京顺义高二（下）期末物理（教师版）(1).md:L563
+    $$ \begin{aligned}U&=Bc\nu\\I&=neS\nu\\S&=cd\end{aligned} $$ 
+
+### [\nAgCl] 命中 2 行 | 样本 2019北京东城高三（上）期末化学（教师版）(1).md:L149
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'></td><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>B</td><td style='text-align: center; word-wrap: break-word;'>C</td><td style='text-align: center; word-wrap: break-word;'>D</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>装置 <img src="../../_imgs/2019北京东城高三（上）期末化学（教师版）(1)/img_in_image_box_296_460_412_585.jpg" alt="Image"" /></td><td style='text-align: center; word-wrap: break-word;'>$  \ce{Na2CO3}  $  $  \ce{Na2CO3}  $  $  \ce{Na2CO3}  $</td><td style='text-align: center; word-wrap: break-word;'>浸有NaBr溶液的棉球 <img src="../../_imgs/2019北京东城高三（上）期末化学（教师版）(1)/img_in_image_box_503_469_621_519.jpg" alt="Image"" /></td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/2019北京东城高三（上）期末化学（教师版）(1)/img_in_image_box_725_451_845_565.jpg" alt="Image"" />  $  \ce{AgCl}  $ 2mL\nAgCl悬浊液</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/2019北京东城高三（上）期末化学（教师版）(1)/img_in_image_box_924_453_1048_564.jpg" alt="Image"" />  $  \ce{Na2CO3}  $ 粉末  $  \ce{Na2SiO3}  $ 溶液</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>现象</td><td style='text-align: center; word-wrap: break-word;'>①中无明显现象②中产生浑浊</td><td style='text-align: center; word-wrap: break-word;'>左边棉球变黄，右边棉球变蓝</td><td style='text-align: center; word-wrap: break-word;'>试管中县出现淡黄色固体，后出现黄色固体</td><td style='text-align: center; word-wrap: break-word;'>试管中的液体变浑浊</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>结论</td><td style='text-align: center; word-wrap: break-word;'>热稳定性  $  \ce{Na2CO3}  $ &gt;NaHCO3</td><td style='text-align: center; word-wrap: break-word;'>氧化性： $  \ce{Cl2}  $ &gt; $  \ce{Br2}  $ &gt; $  \ce{I2}  $</td><td style='text-align: center; word-wrap: break-word;'>溶解度：  $  \ce{AgCl}  $ &gt; $  \ce{AgBr}  $ &gt;AgI</td><td style='text-align: center; word-wrap: break-word;'>非金属性：C&gt;Si</td></tr></table>
+
+### [\kappa] 命中 2 行 | 样本 2019全国I卷高考真题数学（文）（教师版）(1).md:L591
+    $$ \kappa^{2}=\frac{100(40\times20-10\times30)^{2}}{(40+10)(30+20)(40+30)(10+20)}=4.762 $$ 
+
+### [\nb] 命中 2 行 | 样本 2022北京一六一中高三（上）期中化学（教师版）(1).md:L384
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>方案</td><td style='text-align: center; word-wrap: break-word;'>滴 0.1 mol ·  $ L^{-1} $\nKSCN 溶液\n<img src="../../_imgs/2022北京一六一中高三（上）期中化学（教师版）(1)/img_in_image_box_178_151_228_307.jpg" alt="Image"" />\n2mL 溶液. a</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/2022北京一六一中高三（上）期中化学（教师版）(1)/img_in_image_box_504_102_741_337.jpg" alt="Image"" />\nb ( 溶液)\n).05 mol ·  $ L^{-1} $  $ CuSO_4 $ 溶液</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>现象</td><td style='text-align: center; word-wrap: break-word;'>放置较长时间，溶液颜色不变红</td><td style='text-align: center; word-wrap: break-word;'>闭合开关 K，电流计指针不动，向右侧  $ CuSO_4 $ 溶液中滴加 0.1mol· $ L^{-1} $KSCN，指针向右大幅度偏转，溶液中有白色浑浊物产生。取出左侧溶液，滴加 0.1mol· $ L^{-1} $KSCN，溶液变红。</td></tr></table>
+
+### [\bigvee] 命中 2 行 | 样本 2022北京一零一中高三12月月考化学（统练七）（教师版）(1).md:L776
+    $$  HOOC-CH\bigvee\begin{aligned}&CH_{2}OH\\ &CH_{2}OH\end{aligned},HOOC-CH\bigvee\begin{aligned}&CH_{2}OH\\ &CH_{2}OH\end{aligned} 与 HBr 发生取代反应生成 $$ 
+
+### [\lvert] 命中 2 行 | 样本 2017-2019北京高三数学上学期期中汇编：立体几何（教师版）(1).md:L1034
+    $$ \sin\theta=\bigl\lvert\cos\overleftrightarrow{\mathrm{A}\mathrm{Q}},\quad\overleftrightarrow{\mathrm{m}}\bigr\rangle\bigl\rvert=\bigl\lvert\frac{\overleftrightarrow{\mathrm{A}\mathrm{Q}}\cdot\overleftrightarrow{\mathrm{m}}}{\lvert\overleftrightarrow{\mathrm{A}\mathrm{Q}}\rvert\cdot\lvert\overleftrightarrow{\mathrm{m}}\rvert}\bigr\rvert=\frac{\sqrt{2}}{3}\frac{\sqrt{2}\mathrm{t}}{\sqrt{3}\sqrt{2\mathrm{t}^{2}+\left(2-2\mathrm{t}\right)^{2}}}=\frac{\sqrt{2}}{3}\Rightarrow3\mathrm{t}^{2}=6\mathrm{t}^{2}-8\mathrm{t}+4, $$ 
+
+### [\rvert] 命中 2 行 | 样本 2017-2019北京高三数学上学期期中汇编：立体几何（教师版）(1).md:L1034
+    $$ \sin\theta=\bigl\lvert\cos\overleftrightarrow{\mathrm{A}\mathrm{Q}},\quad\overleftrightarrow{\mathrm{m}}\bigr\rangle\bigl\rvert=\bigl\lvert\frac{\overleftrightarrow{\mathrm{A}\mathrm{Q}}\cdot\overleftrightarrow{\mathrm{m}}}{\lvert\overleftrightarrow{\mathrm{A}\mathrm{Q}}\rvert\cdot\lvert\overleftrightarrow{\mathrm{m}}\rvert}\bigr\rvert=\frac{\sqrt{2}}{3}\frac{\sqrt{2}\mathrm{t}}{\sqrt{3}\sqrt{2\mathrm{t}^{2}+\left(2-2\mathrm{t}\right)^{2}}}=\frac{\sqrt{2}}{3}\Rightarrow3\mathrm{t}^{2}=6\mathrm{t}^{2}-8\mathrm{t}+4, $$ 
+
+### [\overleftrightarrow] 命中 2 行 | 样本 2017-2019北京高三数学上学期期中汇编：立体几何（教师版）(1).md:L1034
+    $$ \sin\theta=\bigl\lvert\cos\overleftrightarrow{\mathrm{A}\mathrm{Q}},\quad\overleftrightarrow{\mathrm{m}}\bigr\rangle\bigl\rvert=\bigl\lvert\frac{\overleftrightarrow{\mathrm{A}\mathrm{Q}}\cdot\overleftrightarrow{\mathrm{m}}}{\lvert\overleftrightarrow{\mathrm{A}\mathrm{Q}}\rvert\cdot\lvert\overleftrightarrow{\mathrm{m}}\rvert}\bigr\rvert=\frac{\sqrt{2}}{3}\frac{\sqrt{2}\mathrm{t}}{\sqrt{3}\sqrt{2\mathrm{t}^{2}+\left(2-2\mathrm{t}\right)^{2}}}=\frac{\sqrt{2}}{3}\Rightarrow3\mathrm{t}^{2}=6\mathrm{t}^{2}-8\mathrm{t}+4, $$ 
+
+### [\nD] 命中 2 行 | 样本 2022北京东城高三一模生物（教师版）(1).md:L1413
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>$ F_{2} $ 雌配子\n雄配子</td><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>D\na</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>A\nA 易感病</td><td style='text-align: center; word-wrap: break-word;'>D\na\nA 中度易感病</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D\na</td><td style='text-align: center; word-wrap: break-word;'>D\na 中度易感病</td><td style='text-align: center; word-wrap: break-word;'>D\na\nD\na 易感病</td></tr></table>
+
+### [\zeta] 命中 2 行 | 样本 2021北京高三数学上学期期末汇编：数系的扩充与复数（教师版）.md:L107
+    $$ \therefore\overline{\zeta}=-1-i, $$ 
+
+### [\N] 命中 2 行 | 样本 2021北京东城高三二模物理（教师版） (1).md:L298
+    $$ \begin{array}{c}M\\\left|\begin{array}{cccc}&&&\\&\bullet&\bullet&\bullet\\&&B\bullet&\\\hline\end{array}\right.\\\left|\begin{array}{cccc}&&&\\&\bullet&\bullet&\bullet\\&&&\\\bullet&\bullet&\bullet&\bullet\\\bullet&\bullet&\bullet&\bullet\\\bullet&\bullet&\bullet&\bullet\\\bullet&\bullet&\bullet&\bullet\\\end{array}\right.\\N\end{array} $$ 
+
+### [\bigoplus] 命中 2 行 | 样本 2021辽宁高考真题化学（教师版）(1).md:L273
+    $$ \bigoplus_{(g)}+9\mathrm{O}_{2}(g)=6\mathrm{CO}_{2}(g)+6\mathrm{H}_{2}\mathrm{O}(1)\qquad\Delta H_{5} $$ 
+
+### [\otimes] 命中 2 行 | 样本 2012-2021高考真题数学汇编：函数（1）（教师版）(1).md:L1851
+    $$ \therefore x\otimes y+(2y)\otimes x=\frac{x^{2}-y^{2}}{xy}+\frac{4y^{2}-x^{2}}{2xy}=\frac{x^{2}+2y^{2}}{2xy}， $$ 
+
+### [\leftarrow] 命中 2 行 | 样本 2012-2021高考真题数学汇编：向量的数量积与三角恒等变换（3）（教师版）(1).md:L544
+    $$ \therefore\frac{\stackrel{\rightarrow}{c}\cdot\stackrel{\rightarrow}{a}}{\mid\stackrel{\leftarrow}{a}\mid}=\frac{\stackrel{\rightarrow}{c}\cdot\stackrel{\rightarrow}{b}}{\mid\stackrel{\leftarrow}{b}\mid}, $$ 
+
+### [\mp] 命中 2 行 | 样本 2012-2021高考真题数学汇编：解三角形（1）（教师版）(1).md:L1337
+    $$ \sin\left(180^\circ-150^\circ-C\right)\mp\sqrt{3}\sin C=\frac{\sqrt{5}}{2}, $$ 
+
+### [\nbsp] 命中 2 行 | 样本 2012-2021高考真题数学汇编：平面解析几何（9）（教师版）(1).md:L1764
+   \&\nbsp;由点 B 在椭圆上知，BF₁+BF₂=7 $ \sqrt{2} $，∴PF₁= $ \frac{AF_5}{AF_1+BF_2}\times(5\sqrt{2}-BF_2) $。
+
+### [\upmu] 命中 2 行 | 样本 2020北京高中合格考生物（第二次）（教师版）(1).md:L383
+    $$ \mathrm{CO}_{2}\ 400\upmu\mathrm{m o l}\cdot\mathrm{m o l}^{-1} $$ 
+
+### [\nt] 命中 2 行 | 样本 2018北京夏季高中会考物理（教师版）(1).md:L470
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>(2) 小物块从 A 运动到 B 的时间\nt&#x27;=(4-0.5)s=3.5s</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>【方案一】\n改变小物块与传送带间的动摩擦因数，其它物理量不变.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>设小物块与传送带间的动摩擦因数为  $ \mu&#x27; $\n在小物块做匀加速直线运动的过程中，根据牛顿第二定律  $ \mu/mg = ma&#x27; $\n小物块做匀加速直线运动\nt&#x27;= $ \frac{v}{a&#x27;} $\nx&#x27;= $ \frac{1}{2}a&#x27;t&#x27;^{2} $\n它做匀速直线运动的距离\nx&#x27;= $ v(t&#x27; - t&#x27;_{1}) $\n又因为  $ L = x&#x27;_{1} + x&#x27;_{2} $\n解得  $ \mu&#x27; = 0.20 $\n当小物块与传送带间的动摩擦因数为 0.20时，符合设计要求.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>【方案二】\n增加传送带的速度，其它物理量不变.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>设传送带的速度为  $ v&#x27; $\n小物块做匀加速直线运动\nt&#x27;= $ \frac{v}{a} $\nx&#x27;= $ \frac{1}{2}at&#x27;^{2} $\n它做匀速直线运动的距离\nx&#x27;= $ v(t&#x27; - t&#x27;_{1}) $\n又因为  $ L = x&#x27;_{1} + x&#x27;_{2} $</td></tr></table>
+
+### [\nx] 命中 2 行 | 样本 2018北京夏季高中会考物理（教师版）(1).md:L465
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>7②（8分）</td><td style='text-align: center; word-wrap: break-word;'>解：\n（1）电子做匀速直线运动时，受电场力和洛伦兹力\neE=evB\n解得\nv= $ \frac{E}{B} $\n（2）撤去磁场后，电子仅受电场力，根据牛顿第二定律，电子的加速度\na= $ \frac{eE}{m} $\n在水平方向\nL=vt\n在竖直方向\ny= $ \frac{1}{2}at^{2} $\n解得\ny= $ \frac{eB^{2}L^{2}}{2mE} $</td><td style='text-align: center; word-wrap: break-word;'>4分</td><td style='text-align: center; word-wrap: break-word;'>同5题</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>8（8分）</td><td style='text-align: center; word-wrap: break-word;'>解：\n（1）小物块放到传送带上后，开始做匀加速直线运动，根据牛顿第二定律\n $ \mu mg=ma $\na=1.0m/s^{2}\n小物块做匀加速直线运动\nt_{1}= $ \frac{v}{a} $=2.0s\nx= $ \frac{1}{2}at_{1}^{2} $=2.0m\n因为x&lt;L，所以小物块运动2.0m后开始做匀速直线运动\nt_{2}= $ \frac{L-x}{v} $=2.0s\n小物块从A运动到B所用的时间\nt=t_{1}+t_{2}=4.0s</td><td style='text-align: center; word-wrap: break-word;'>4分</td><td style='text-align: center; word-wrap: break-word;'>同5题</td></tr></table>
+
+### [\widehat] 命中 1 行 | 样本 2019北京人大附中新高一分班考数学（图片版）（教师版）(1).md:L511
+    $$ \therefore\widehat{AD}=\widehat{CD}, $$ 
+
+### [\DF] 命中 1 行 | 样本 2019北京人大附中新高一分班考数学（图片版）（教师版）(1).md:L935
+    $$ \begin{aligned}AD&=CD\\\{\angle ADC&=\angle DCE\\DF&=CE\end{aligned} $$ 
+
+### [\triangleq] 命中 1 行 | 样本 2020北京牛栏山一中高一（下）期中数学（教师版）(1).md:L412
+    $$ \because\frac{\pi}{4}<\beta<\frac{\pi}{2},\ \therefore2\beta\triangleq\frac{2\pi}{3}\in(-\frac{\pi}{6},\ \frac{\pi}{4})~, $$ 
+
+### [\supseteq] 命中 1 行 | 样本 2021北京东城高一（下）期末数学（教师版）(1).md:L312
+   $$\therefore E\supseteq(D_{1}\bigcap D_{2})$$ 不成立，故 $D$ 错误.
+
+### [\upvarphi] 命中 1 行 | 样本 2021北京师大附中高一（下）期末数学（教师版）(1).md:L751
+    $$ \begin{array}{r}{\upvarphi(x)=\sin(C_{\mathbf{n}-1}^{0}+C_{\mathbf{n}-1}^{1}+...+C_{\mathbf{n}-1}^{\mathbf{n}-1})=\sin(2^{n-1}x)}\end{array} $$ 
+
+### [\Psi] 命中 1 行 | 样本 2020北京和平街一中高一（下）期中物理（教师版）(1).md:L531
+    $$ \mathrm{P}=\frac{\Psi}{\mathrm{t}}=32\mathrm{w} $$ 
+
+### [\t] 命中 1 行 | 样本 2021北京西城高一（下）期末物理（教师版）(1).md:L754
+    $$ \begin{aligned}h&=\frac{1}{2}gt^{2}\\t&=\sqrt{\frac{2h}{g}}\end{aligned} $$ 
+
+### [\ddots] 命中 1 行 | 样本 2021北京顺义高一（上）期末物理（教师版）.md:L406
+    $$ h_{1}=\frac{1}{2}gt_{1}^{2}\qquad\qquad\ddots\qquad $$ 
+
+### [\nPrices] 命中 1 行 | 样本 2010北京上地一零一中高一分班考英语（教师版）(1).md:L99
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Happy Days Club\nFor Young People From 12 – 18 years\nEvery Friday 7:30 pm – 10:30pm 29 Milton Street\nJust $1 a week\nGames-music-dancing and lots more</td><td style='text-align: center; word-wrap: break-word;'>Parker;s Sweet Shop\n14 Barrett Road\n5 minutes from town centre Try our famous chocolate Eggs and sugar hears\nPrices lower than in other shops Open Monday- Saturday 9am-5am</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>International Library\nBooks, CDs and videos\nOver 100 Foreign newspapers And magazines Entrance Free Monday- Saturday 9:30am-6:00pm New England House, Museum Street</td><td style='text-align: center; word-wrap: break-word;'>Painting Competition\nFor young people 8-16 years old Paint a picture of an animal Send it to:\nYoung Artist Magazine 12 High Street\nBefore 14 September And win a bicycle!</td></tr></table>
+
+### [\nJust] 命中 1 行 | 样本 2010北京上地一零一中高一分班考英语（教师版）(1).md:L99
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Happy Days Club\nFor Young People From 12 – 18 years\nEvery Friday 7:30 pm – 10:30pm 29 Milton Street\nJust $1 a week\nGames-music-dancing and lots more</td><td style='text-align: center; word-wrap: break-word;'>Parker;s Sweet Shop\n14 Barrett Road\n5 minutes from town centre Try our famous chocolate Eggs and sugar hears\nPrices lower than in other shops Open Monday- Saturday 9am-5am</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>International Library\nBooks, CDs and videos\nOver 100 Foreign newspapers And magazines Entrance Free Monday- Saturday 9:30am-6:00pm New England House, Museum Street</td><td style='text-align: center; word-wrap: break-word;'>Painting Competition\nFor young people 8-16 years old Paint a picture of an animal Send it to:\nYoung Artist Magazine 12 High Street\nBefore 14 September And win a bicycle!</td></tr></table>
+
+### [\nBefore] 命中 1 行 | 样本 2010北京上地一零一中高一分班考英语（教师版）(1).md:L99
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Happy Days Club\nFor Young People From 12 – 18 years\nEvery Friday 7:30 pm – 10:30pm 29 Milton Street\nJust $1 a week\nGames-music-dancing and lots more</td><td style='text-align: center; word-wrap: break-word;'>Parker;s Sweet Shop\n14 Barrett Road\n5 minutes from town centre Try our famous chocolate Eggs and sugar hears\nPrices lower than in other shops Open Monday- Saturday 9am-5am</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>International Library\nBooks, CDs and videos\nOver 100 Foreign newspapers And magazines Entrance Free Monday- Saturday 9:30am-6:00pm New England House, Museum Street</td><td style='text-align: center; word-wrap: break-word;'>Painting Competition\nFor young people 8-16 years old Paint a picture of an animal Send it to:\nYoung Artist Magazine 12 High Street\nBefore 14 September And win a bicycle!</td></tr></table>
+
+### [\nFor] 命中 1 行 | 样本 2010北京上地一零一中高一分班考英语（教师版）(1).md:L99
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Happy Days Club\nFor Young People From 12 – 18 years\nEvery Friday 7:30 pm – 10:30pm 29 Milton Street\nJust $1 a week\nGames-music-dancing and lots more</td><td style='text-align: center; word-wrap: break-word;'>Parker;s Sweet Shop\n14 Barrett Road\n5 minutes from town centre Try our famous chocolate Eggs and sugar hears\nPrices lower than in other shops Open Monday- Saturday 9am-5am</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>International Library\nBooks, CDs and videos\nOver 100 Foreign newspapers And magazines Entrance Free Monday- Saturday 9:30am-6:00pm New England House, Museum Street</td><td style='text-align: center; word-wrap: break-word;'>Painting Competition\nFor young people 8-16 years old Paint a picture of an animal Send it to:\nYoung Artist Magazine 12 High Street\nBefore 14 September And win a bicycle!</td></tr></table>
+
+### [\nBooks] 命中 1 行 | 样本 2010北京上地一零一中高一分班考英语（教师版）(1).md:L99
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Happy Days Club\nFor Young People From 12 – 18 years\nEvery Friday 7:30 pm – 10:30pm 29 Milton Street\nJust $1 a week\nGames-music-dancing and lots more</td><td style='text-align: center; word-wrap: break-word;'>Parker;s Sweet Shop\n14 Barrett Road\n5 minutes from town centre Try our famous chocolate Eggs and sugar hears\nPrices lower than in other shops Open Monday- Saturday 9am-5am</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>International Library\nBooks, CDs and videos\nOver 100 Foreign newspapers And magazines Entrance Free Monday- Saturday 9:30am-6:00pm New England House, Museum Street</td><td style='text-align: center; word-wrap: break-word;'>Painting Competition\nFor young people 8-16 years old Paint a picture of an animal Send it to:\nYoung Artist Magazine 12 High Street\nBefore 14 September And win a bicycle!</td></tr></table>
+
+### [\nEvery] 命中 1 行 | 样本 2010北京上地一零一中高一分班考英语（教师版）(1).md:L99
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Happy Days Club\nFor Young People From 12 – 18 years\nEvery Friday 7:30 pm – 10:30pm 29 Milton Street\nJust $1 a week\nGames-music-dancing and lots more</td><td style='text-align: center; word-wrap: break-word;'>Parker;s Sweet Shop\n14 Barrett Road\n5 minutes from town centre Try our famous chocolate Eggs and sugar hears\nPrices lower than in other shops Open Monday- Saturday 9am-5am</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>International Library\nBooks, CDs and videos\nOver 100 Foreign newspapers And magazines Entrance Free Monday- Saturday 9:30am-6:00pm New England House, Museum Street</td><td style='text-align: center; word-wrap: break-word;'>Painting Competition\nFor young people 8-16 years old Paint a picture of an animal Send it to:\nYoung Artist Magazine 12 High Street\nBefore 14 September And win a bicycle!</td></tr></table>
+
+### [\nYoung] 命中 1 行 | 样本 2010北京上地一零一中高一分班考英语（教师版）(1).md:L99
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Happy Days Club\nFor Young People From 12 – 18 years\nEvery Friday 7:30 pm – 10:30pm 29 Milton Street\nJust $1 a week\nGames-music-dancing and lots more</td><td style='text-align: center; word-wrap: break-word;'>Parker;s Sweet Shop\n14 Barrett Road\n5 minutes from town centre Try our famous chocolate Eggs and sugar hears\nPrices lower than in other shops Open Monday- Saturday 9am-5am</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>International Library\nBooks, CDs and videos\nOver 100 Foreign newspapers And magazines Entrance Free Monday- Saturday 9:30am-6:00pm New England House, Museum Street</td><td style='text-align: center; word-wrap: break-word;'>Painting Competition\nFor young people 8-16 years old Paint a picture of an animal Send it to:\nYoung Artist Magazine 12 High Street\nBefore 14 September And win a bicycle!</td></tr></table>
+
+### [\nGames] 命中 1 行 | 样本 2010北京上地一零一中高一分班考英语（教师版）(1).md:L99
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Happy Days Club\nFor Young People From 12 – 18 years\nEvery Friday 7:30 pm – 10:30pm 29 Milton Street\nJust $1 a week\nGames-music-dancing and lots more</td><td style='text-align: center; word-wrap: break-word;'>Parker;s Sweet Shop\n14 Barrett Road\n5 minutes from town centre Try our famous chocolate Eggs and sugar hears\nPrices lower than in other shops Open Monday- Saturday 9am-5am</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>International Library\nBooks, CDs and videos\nOver 100 Foreign newspapers And magazines Entrance Free Monday- Saturday 9:30am-6:00pm New England House, Museum Street</td><td style='text-align: center; word-wrap: break-word;'>Painting Competition\nFor young people 8-16 years old Paint a picture of an animal Send it to:\nYoung Artist Magazine 12 High Street\nBefore 14 September And win a bicycle!</td></tr></table>
+
+### [\nOver] 命中 1 行 | 样本 2010北京上地一零一中高一分班考英语（教师版）(1).md:L99
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Happy Days Club\nFor Young People From 12 – 18 years\nEvery Friday 7:30 pm – 10:30pm 29 Milton Street\nJust $1 a week\nGames-music-dancing and lots more</td><td style='text-align: center; word-wrap: break-word;'>Parker;s Sweet Shop\n14 Barrett Road\n5 minutes from town centre Try our famous chocolate Eggs and sugar hears\nPrices lower than in other shops Open Monday- Saturday 9am-5am</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>International Library\nBooks, CDs and videos\nOver 100 Foreign newspapers And magazines Entrance Free Monday- Saturday 9:30am-6:00pm New England House, Museum Street</td><td style='text-align: center; word-wrap: break-word;'>Painting Competition\nFor young people 8-16 years old Paint a picture of an animal Send it to:\nYoung Artist Magazine 12 High Street\nBefore 14 September And win a bicycle!</td></tr></table>
+
+### [\nThere] 命中 1 行 | 样本 2021北京农大附中高一（上）期中英语（教师版）.md:L96
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Waiter / Waitress\nA job as a waiter or waitress is a good choice for 16-year-olds. Not only can one earn $9-$12 an hour, but they can also get the tips (小费). Most people that visit a restaurant don&#x27;t just have good food. They come here to relax and have a good time. Besides serving food quickly, a young waiter who talks to them politely with a smile on his face will make the diners enjoy their time at the restaurant.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Work in a library\nIf one is fond of books, working in a library is another suitable choice. Besides the pay is good, it offers a lot of free time when students can actually sit down and finish their homework. So on returning home, they would have time to hang around with friends or just relax. So working in a library is an excellent part-time job for teens, especially for school students.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Internet jobs\nThere are many ways of making money through online jobs like clicking on advertisements, visiting sites and signing up with them. However, such online jobs don&#x27;t pay well. A better Internet job for teens is to complete online surveys. These are quite simple surveys that usually ask one about his/ her opinions and ideas. Many companies use these ideas to make products designed for teenagers.</td></tr></table>
+
+### [\nIf] 命中 1 行 | 样本 2021北京农大附中高一（上）期中英语（教师版）.md:L96
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Waiter / Waitress\nA job as a waiter or waitress is a good choice for 16-year-olds. Not only can one earn $9-$12 an hour, but they can also get the tips (小费). Most people that visit a restaurant don&#x27;t just have good food. They come here to relax and have a good time. Besides serving food quickly, a young waiter who talks to them politely with a smile on his face will make the diners enjoy their time at the restaurant.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Work in a library\nIf one is fond of books, working in a library is another suitable choice. Besides the pay is good, it offers a lot of free time when students can actually sit down and finish their homework. So on returning home, they would have time to hang around with friends or just relax. So working in a library is an excellent part-time job for teens, especially for school students.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Internet jobs\nThere are many ways of making money through online jobs like clicking on advertisements, visiting sites and signing up with them. However, such online jobs don&#x27;t pay well. A better Internet job for teens is to complete online surveys. These are quite simple surveys that usually ask one about his/ her opinions and ideas. Many companies use these ideas to make products designed for teenagers.</td></tr></table>
+
+### [\npH] 命中 1 行 | 样本 2019北京东城区高二（上）期末化学含答案(1).md:L381
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>溶液编号</td><td style='text-align: center; word-wrap: break-word;'>溶剂</td><td colspan="2">溶液性状</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>①</td><td style='text-align: center; word-wrap: break-word;'>蒸馏水</td><td style='text-align: center; word-wrap: break-word;'>浅黄色澄清溶液:\npH = 3.8</td><td style='text-align: center; word-wrap: break-word;'>遇1mol/L KSCN溶液无明显变化</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>②</td><td style='text-align: center; word-wrap: break-word;'>0.01mol/L  $ H_{{2}}SO_{{4}} $</td><td style='text-align: center; word-wrap: break-word;'>无色澄清溶液: pH = 1.8</td><td style='text-align: center; word-wrap: break-word;'>遇1mol/L KSCN溶液微微变红</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>③</td><td style='text-align: center; word-wrap: break-word;'>2mol/L  $ H_{{2}}SO_{{4}} $</td><td style='text-align: center; word-wrap: break-word;'>无色澄清溶液</td><td style='text-align: center; word-wrap: break-word;'>遇1mol/L KSCN溶液微微变红</td></tr></table>
+
+### [\R] 命中 1 行 | 样本 2021北京丰台高二（下）期末化学（教师版）(1).md:L230
+    $$  ii.R_{1}-CHO+R_{2}-CH_{2}-CHO\xrightarrow[\triangle]{NaOH 溶液 }^{R_{1}}-\begin{array}{c}CH=C-CHO\\R_{2}\end{array}+H_{2}O $$ 
+
+### [\nNH] 命中 1 行 | 样本 2021北京石景山九中高二(上)期中化学（教师版）(1).md:L1205
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td rowspan="2"><img src="../../_imgs/2021北京石景山九中高二(上)期中化学（教师版）(1)/img_in_image_box_89_82_231_259.jpg" alt="Image"" /></td><td style='text-align: center; word-wrap: break-word;'>④</td><td style='text-align: center; word-wrap: break-word;'>1.0mol•L $ ^{-1} $NaCl</td><td style='text-align: center; word-wrap: break-word;'>7</td><td rowspan="2">氧气浓度/%\n0</td><td rowspan="2">$ H_{2}O $\n $ Na_{2}SO_{4} $\nNaCl\n $ (NH_{4})_{2}SO_{4} $\nNH4Cl\n时间/min\n300</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>⑤</td><td style='text-align: center; word-wrap: break-word;'>0.5mol•L $ ^{-1} $Na $ _{2} $SO $ _{4} $</td><td style='text-align: center; word-wrap: break-word;'>7</td></tr></table>
+
+### [\O] 命中 1 行 | 样本 2022北京一六一中高二（下）期中化学（教师版）(1).md:L857
+    $$  HOOCCOOH+HOCH_{2}CH_{2}OH\xlongequal[\Delta]{ 浓硫酸 }\begin{array}{c}O\\\|\\C-O-CH_{2}\\|\\C-O-CH_{2}\\\|\\O\end{array}+2H_{2}O; $$ 
+
+### [\nMgCl] 命中 1 行 | 样本 2022北京一零一中高二（上）期中化学（等级考）（教师版）(1).md:L93
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>A. 探究浓度对化学反应速率的影响</td><td style='text-align: center; word-wrap: break-word;'>B. 验证  $ \mathrm{Mg(OH)_2} $ 溶解度大于  $ \mathrm{Fe(OH)_3} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>4 mL 0.01 mol·L $ ^{-1} $ 4 mL 0.02 mol·L $ ^{-1} $\nKMnO $ _4 $溶液 KMnO $ _4 $溶液\n1 mL 0.1 mol·L $ ^{-1} $ H $ _2 $C $ _2 $O $ _4 $溶液</td><td style='text-align: center; word-wrap: break-word;'>3~4滴0.1 mol·L $ ^{-1} $\nMgCl $ _2 $溶液\n<img src="../../_imgs/2022北京一零一中高二（上）期中化学（等级考）（教师版）(1)/img_in_image_box_531_405_836_538.jpg" alt="Image"" /></td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C. 配制 FeCl $ _3 $溶液</td><td style='text-align: center; word-wrap: break-word;'>D. 测定中和反应的反应热</td></tr><tr><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/2022北京一零一中高二（上）期中化学（等级考）（教师版）(1)/img_in_image_box_115_640_515_773.jpg" alt="Image"" /></td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/2022北京一零一中高二（上）期中化学（等级考）（教师版）(1)/img_in_image_box_531_628_687_763.jpg" alt="Image"" /></td></tr></table>
+
+### [\inline] 命中 1 行 | 样本 2022北京东城高二（下）期末化学（教师版）(1).md:L902
+   (H₃C)₃C—<img src="https://latex.codecogs.com/svg.image?\inline&space;\bigcirc"/>—OH(对叔丁基苯酚)与 HCHO 在一定条件下发生的反应为羟醛缩合，会脱去小分子水，所以反应生成“杯酚”和水；结合对叔丁基苯酚的结构简式，数出 C 原子数为 10，不饱和度为 4，则 H 原子数为  $ 2 \times 10 + 2 - 2 \times 4 = 14 $，所以分子为  $  \mathrm{C}_{10} \mathrm{H}_{14} \mathrm{O}  $，a 正确；依据对叔丁基苯酚的结构简式  $  (\mathrm{H}_3\mathrm{C})_3\mathrm{C}  $——<img src="https://latex.codecogs.com/svg.image?\inline&space;\bigcirc"/>—OH 可知，形成苯环的 C 原子为  $  \mathrm{sp}^2  $ 杂化，苯环侧链上的 C 原子为  $  \mathrm{sp}^3  $ 杂化，b 错误；对叔丁基苯酚含有的官能团为酚羟基，容易被空气中的氧气氧化，c 正确；对叔丁基苯酚中羟基邻对位上的氢容易与  $  \mathrm{Br}_2  $ 发生取代反应，而对位被烷烃基占据，所以还有两个邻位可发生反应，即 1mol 对叔丁基苯酚最多能与 2mol  $  \mathrm{Br}_2  $ 发生反应，d 错误；
+
+### [\llap] 命中 1 行 | 样本 2023北京一七一中高二（上）期中化学（教师版）(1).md:L330
+    $$ \mathrm{~\Big\llap\bigcirc~F e S}_{2}\mathrm{~+~}\mathrm{~\Big\llap\bigcirc\limits_{A}-\underline{\mathrm{~}}~}+\mathrm{~\Big\llap\bigcirc~}\mathrm{~\underline{\mathrm{~}}~}=\mathrm{~\Big\llap\bigcirc~S O_{4}^{2-}~}+\mathrm{~\Big\llap\bigcirc~}\mathrm{~\underline{\mathrm{~}}~}+\mathrm{~\Big\llap\bigcirc~}\mathrm{~\underline{\mathrm{~}}~} $$ 
+
+### [\nKOH] 命中 1 行 | 样本 2023北京一六一中高二3月月考化学（教师版）(1).md:L281
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>序号</td><td style='text-align: center; word-wrap: break-word;'>实验 1</td><td style='text-align: center; word-wrap: break-word;'>实验 2</td><td style='text-align: center; word-wrap: break-word;'>实验 3</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实验过程</td><td style='text-align: center; word-wrap: break-word;'>2mL 0.1mol· $ L^{-1} $\n $ K_{2}CrO_{4} $溶液\n<img src="imgs/img_in_image_box_306_1235_331_1342.jpg" alt="Image"" />\n2mL  $ \bar{B}aCO_{3} $浊液，其中 c( $ CO_{3}^{2-} $)=0.1 mol· $ L^{-1} $</td><td style='text-align: center; word-wrap: break-word;'>2mL a mol· $ L^{-1} $\n $ K_{2}CO_{3} $溶液\n<img src="imgs/img_in_image_box_576_1231_601_1339.jpg" alt="Image"" />\n2mL  $ \bar{B}aCrO_{4} $浊液，其中 c( $ CrO_{4}^{2-} $)=0.1 mol· $ L^{-1} $</td><td style='text-align: center; word-wrap: break-word;'>2mL 6 mol· $ L^{-1} $\nKOH溶液\n<img src="imgs/img_in_image_box_888_1234_914_1333.jpg" alt="Image"" />\n2mL  $ \bar{B}aCrO_{4} $浊液，其中 c( $ CrO_{4}^{2-} $)=0.1 mol· $ L^{-1} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实验现象</td><td style='text-align: center; word-wrap: break-word;'>白色沉淀全部变为黄色</td><td style='text-align: center; word-wrap: break-word;'>a = 0.1 沉淀颜色仍为黄色\na = 3，沉淀颜色变为乳白色</td><td style='text-align: center; word-wrap: break-word;'>沉淀颜色仍为黄色</td></tr></table>
+
+### [\nCH] 命中 1 行 | 样本 2023北京一六一中高二（上）期中化学（教师版）.md:L102
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'></td><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>B</td><td style='text-align: center; word-wrap: break-word;'>C</td><td style='text-align: center; word-wrap: break-word;'>D</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实验目的</td><td style='text-align: center; word-wrap: break-word;'>比较常温下醋酸的  $ K_a $ 和碳酸的  $ K_{a1} $ 的相对大小</td><td style='text-align: center; word-wrap: break-word;'>探究浓度对反应速率的影响</td><td style='text-align: center; word-wrap: break-word;'>探究产物浓度对平衡的影响</td><td style='text-align: center; word-wrap: break-word;'>探究温度对平衡的影响</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实验装置</td><td style='text-align: center; word-wrap: break-word;'><img src="imgs/img_in_image_box_235_357_374_501.jpg" alt="Image"" />\n2mL 1 mol  $ \cdot $ L $ ^{-1} $\nCH $ _3 $COOH溶液</td><td style='text-align: center; word-wrap: break-word;'>1 mL浓硫酸 1 mL稀硫酸\n<img src="imgs/img_in_image_box_455_379_600_509.jpg" alt="Image"" />\n2 mL 0.1 mol/L Na $ _2 $S $ _2 $O $ _3 $溶液</td><td style='text-align: center; word-wrap: break-word;'><img src="imgs/img_in_image_box_689_352_857_477.jpg" alt="Image"" />\n2mL 0.1 mol  $ \cdot $ L $ ^{-1} $\nK $ _2 $CrO $ _4 $溶液 (橙色)</td><td style='text-align: center; word-wrap: break-word;'><img src="imgs/img_in_image_box_907_352_1058_525.jpg" alt="Image"" /></td></tr></table>
+
+### [\nK] 命中 1 行 | 样本 2023北京一六一中高二（上）期中化学（教师版）.md:L102
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'></td><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>B</td><td style='text-align: center; word-wrap: break-word;'>C</td><td style='text-align: center; word-wrap: break-word;'>D</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实验目的</td><td style='text-align: center; word-wrap: break-word;'>比较常温下醋酸的  $ K_a $ 和碳酸的  $ K_{a1} $ 的相对大小</td><td style='text-align: center; word-wrap: break-word;'>探究浓度对反应速率的影响</td><td style='text-align: center; word-wrap: break-word;'>探究产物浓度对平衡的影响</td><td style='text-align: center; word-wrap: break-word;'>探究温度对平衡的影响</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实验装置</td><td style='text-align: center; word-wrap: break-word;'><img src="imgs/img_in_image_box_235_357_374_501.jpg" alt="Image"" />\n2mL 1 mol  $ \cdot $ L $ ^{-1} $\nCH $ _3 $COOH溶液</td><td style='text-align: center; word-wrap: break-word;'>1 mL浓硫酸 1 mL稀硫酸\n<img src="imgs/img_in_image_box_455_379_600_509.jpg" alt="Image"" />\n2 mL 0.1 mol/L Na $ _2 $S $ _2 $O $ _3 $溶液</td><td style='text-align: center; word-wrap: break-word;'><img src="imgs/img_in_image_box_689_352_857_477.jpg" alt="Image"" />\n2mL 0.1 mol  $ \cdot $ L $ ^{-1} $\nK $ _2 $CrO $ _4 $溶液 (橙色)</td><td style='text-align: center; word-wrap: break-word;'><img src="imgs/img_in_image_box_907_352_1058_525.jpg" alt="Image"" /></td></tr></table>
+
+### [\Xi] 命中 1 行 | 样本 2018北京人大附中高二（上）期中数学含答案(1).md:L627
+    $$ ↳⊳\triangle=\mathbf{\Xi}(8k b)\mathbf{\Xi}^{2}-4b^{2}\bullet16k^{2}=0, $$ 
+
+### [\enspace] 命中 1 行 | 样本 2020北京高二数学下学期期末汇编：概率（教师版）(1).md:L726
+    $$ \mathbb{C}_{3}^{2}\bullet(\frac{1}{3})^{2}\bullet(\frac{2}{3})^{1}=\frac{2}{9},\enspace P\enspace(X=3)=\mathbb{C}_{3}^{3}\bullet(\frac{1}{3})^{3}\bullet(\frac{2}{3})^{0}=\frac{1}{27}. $$ 
+
+### [\perpC] 命中 1 行 | 样本 2021北京陈经纶中学高二（上）期中数学（B）（教师版）(1).md:L255
+   【详解】设$\overrightarrow{CB}=\vec{a}$，$\overrightarrow{CD}=\vec{b}$，$\overrightarrow{CC_{1}}=\vec{c}$，由题意可得$\overrightarrow{CA_{1}}=\vec{a}+\vec{b}+\vec{c}$，则$\overrightarrow{CA_{1}}\cdot\overrightarrow{BD}=\overrightarrow{CA_{1}}\cdot(\overrightarrow{CD}-\overrightarrow{CB})=\left(\vec{a}+\vec{b}+\vec{c}\right)\cdot\left(\vec{b}-\vec{a}\right)=\vec{b}^{2}-\vec{a}^{2}+\vec{c}\cdot\vec{b}-\vec{c}\cdot\vec{a}$}}=\left|\vec{c}\right|\cdot\left|\vec{b}\right|\cos60^{\circ}-\left|\vec{c}\right|\cdot\left|\vec{a}\right|\cos60^{\circ}=0$，$\therefore CA_{1}\perp BD$，同理可证$CA_{1}\perp BC_{1}$，$\because BD\cap BC_{1}=B$，故$CA_{1}\perp$平面$C_{1}BD$。
+
+### [\biggr] 命中 1 行 | 样本 2022北京一零一中高二（上）期中数学（教师版）(1).md:L548
+    $$ B\bigl(0,0,0\bigr),D\bigl(0,\sqrt{3},0\bigr),P\bigl(0,0,2\bigr),C\bigl(-1,\sqrt{3},0\bigr),A\bigl(1,0,0\bigr),N\biggl(-\frac{1}{2},\frac{\sqrt{3}}{2},1\biggr) $$ 
+
+### [\biggl] 命中 1 行 | 样本 2022北京一零一中高二（上）期中数学（教师版）(1).md:L548
+    $$ B\bigl(0,0,0\bigr),D\bigl(0,\sqrt{3},0\bigr),P\bigl(0,0,2\bigr),C\bigl(-1,\sqrt{3},0\bigr),A\bigl(1,0,0\bigr),N\biggl(-\frac{1}{2},\frac{\sqrt{3}}{2},1\biggr) $$ 
+
+### [\Bigl] 命中 1 行 | 样本 2022北京一零一中高二（上）期中数学（教师版）(1).md:L678
+    $$ M=\left\{\left(x,y\right)|\;x+y=\frac{1}{2}\Bigl(x_{1}+x_{2}+y_{1}+y_{2}\Bigr),x_{1}\leq x\leq x_{2} 且 y_{1}\leq y\leq y_{2}\right\}. $$ 
+
+### [\Bigr] 命中 1 行 | 样本 2022北京一零一中高二（上）期中数学（教师版）(1).md:L678
+    $$ M=\left\{\left(x,y\right)|\;x+y=\frac{1}{2}\Bigl(x_{1}+x_{2}+y_{1}+y_{2}\Bigr),x_{1}\leq x\leq x_{2} 且 y_{1}\leq y\leq y_{2}\right\}. $$ 
+
+### [\k] 命中 1 行 | 样本 2022北京十五中高二（下）期中数学（教师版）(1).md:L364
+   $$\left\{\begin{array}{l}k^{2}\cdot a_{k}\geq\left(k+1\right)^{2}\cdot a_{k+1}\\k^{2}\cdot a_{k}\geq\left(k-1\right)^{2}\cdot a_{k-1}\end{array}\right.$$，即$$\left\{\begin{array}{l}k^{2}\cdot\left(\frac{2}{3}\right)^{k}\geq\left(k+1\right)^{2}\cdot\left(\frac{2}{3}\right)^{k+1}\\k^{2}\cdot a_{k}\geq\left(k-1\right)^{2}\cdot\left(\frac{2}{3}\right)^{k-1}\end{array}\right.$$，
+
+### [\partial] 命中 1 行 | 样本 2023北京一六一中高二（上）期中数学（教师版）(1).md:L98
+    $$ \mathbf{\partial}\left(\overrightarrow{\mathrm{A B}}+\overrightarrow{\mathrm{A D}}\quad\right)\times\overrightarrow{\mathrm{A A}_{1}}=\overrightarrow{\mathrm{A B}}\times\overrightarrow{\mathrm{A A}_{1}}+\overrightarrow{\mathrm{A D}}\times\overrightarrow{\mathrm{A A}_{1}}; $$ 
+
+### [\large] 命中 1 行 | 样本 2022北京顺义一中高二10月月考物理（选考）（教师版）(1).md:L640
+    $$ 1.8\times10^{-7}\mathrm{J}\;;\;(4)\quad\overbrace{\begin{array}{c}\mathrm{\large~C}\\ \bullet\quad\mathrm{\large~A}\\ \bullet\quad\mathrm{\large~B}\\ \bullet\quad\bullet\quad\mathrm{\large~}\bullet\quad\bullet\end{array}}}^{E} $$ 
+
+### [\I] 命中 1 行 | 样本 2022北京顺义高二（下）期末物理（教师版）(1).md:L563
+    $$ \begin{aligned}U&=Bc\nu\\I&=neS\nu\\S&=cd\end{aligned} $$ 
+
+### [\nIt] 命中 1 行 | 样本 2021北京西城高二（上）期末英语（教师版）(1).md:L94
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan="2">The Model Z\nA new product to change people&#x27;s minds about electric cars</td></tr><tr><td rowspan="3">Features</td><td style='text-align: center; word-wrap: break-word;'>✧ Focus on how  $ \underline{\text{11}} $ a vehicle is.\nThe Model Z has industry-leading body and battery technology to reduce  $ \underline{\text{12}} $ during accidents.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>✧ Charging options have been upgraded.\nTravel up to  $ \underline{\text{13}} $ miles on a single charge.\nThe number of charging stations has been increased by 50%  $ \underline{\text{14}} $.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>✧ Provide the best interior experience.\nIt can seat up to 7 adults.\nIt has an expansive 20-inch touchscreen TV,  $ \underline{\text{15}} $ seats with soft touch materials and a system that keeps inside air fresh and clean.</td></tr></table>
+
+### [\nTravel] 命中 1 行 | 样本 2021北京西城高二（上）期末英语（教师版）(1).md:L94
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan="2">The Model Z\nA new product to change people&#x27;s minds about electric cars</td></tr><tr><td rowspan="3">Features</td><td style='text-align: center; word-wrap: break-word;'>✧ Focus on how  $ \underline{\text{11}} $ a vehicle is.\nThe Model Z has industry-leading body and battery technology to reduce  $ \underline{\text{12}} $ during accidents.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>✧ Charging options have been upgraded.\nTravel up to  $ \underline{\text{13}} $ miles on a single charge.\nThe number of charging stations has been increased by 50%  $ \underline{\text{14}} $.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>✧ Provide the best interior experience.\nIt can seat up to 7 adults.\nIt has an expansive 20-inch touchscreen TV,  $ \underline{\text{15}} $ seats with soft touch materials and a system that keeps inside air fresh and clean.</td></tr></table>
+
+### [\nThe] 命中 1 行 | 样本 2021北京西城高二（上）期末英语（教师版）(1).md:L94
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan="2">The Model Z\nA new product to change people&#x27;s minds about electric cars</td></tr><tr><td rowspan="3">Features</td><td style='text-align: center; word-wrap: break-word;'>✧ Focus on how  $ \underline{\text{11}} $ a vehicle is.\nThe Model Z has industry-leading body and battery technology to reduce  $ \underline{\text{12}} $ during accidents.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>✧ Charging options have been upgraded.\nTravel up to  $ \underline{\text{13}} $ miles on a single charge.\nThe number of charging stations has been increased by 50%  $ \underline{\text{14}} $.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>✧ Provide the best interior experience.\nIt can seat up to 7 adults.\nIt has an expansive 20-inch touchscreen TV,  $ \underline{\text{15}} $ seats with soft touch materials and a system that keeps inside air fresh and clean.</td></tr></table>
+
+### [\nM] 命中 1 行 | 样本 1_16_专题十六　化学实验综合　教师用书PDF.md:L2134
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'></td><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>B</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>目的</td><td style='text-align: center; word-wrap: break-word;'>比较 Mg、Al 金属性的强弱</td><td style='text-align: center; word-wrap: break-word;'>研究浓度对化学平衡的影响</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实验方案</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/1_16_专题十六　化学实验综合　教师用书PDF/img_in_image_box_733_385_835_507.jpg" alt="Image"" />\nM [F3]</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/1_16_专题十六　化学实验综合　教师用书PDF/img_in_image_box_926_354_1045_478.jpg" alt="Image"" />\n1 mL 0.01 mol · L $ ^{-1} $\nFeCl $ _{3} $溶液和1 mL\n0.01 mol · L $ ^{-1} $ KSCN溶液</td></tr><tr><td style='text-align: center; word-wrap: break-word;'></td><td style='text-align: center; word-wrap: break-word;'>C</td><td style='text-align: center; word-wrap: break-word;'>D</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>目的</td><td style='text-align: center; word-wrap: break-word;'>比较 Na $ _{2} $CO $ _{3} $、NaHCO $ _{3} $ 与酸反应的快慢</td><td style='text-align: center; word-wrap: break-word;'>比较碳酸、醋酸、苯酚的酸性强弱</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实验方案</td><td style='text-align: center; word-wrap: break-word;'>0.1 mol · L $ ^{-1} $盐酸\n<img src="../../_imgs/1_16_专题十六　化学实验综合　教师用书PDF/img_in_image_box_701_673_726_755.jpg" alt="Image"" /> <img src="../../_imgs/1_16_专题十六　化学实验综合　教师用书PDF/img_in_image_box_793_674_818_760.jpg" alt="Image"" />\n饱和Na $ _{2} $CO $ _{3} $ 饱和NaHCO $ _{3} $\n溶液 溶液</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/1_16_专题十六　化学实验综合　教师用书PDF/img_in_image_box_925_660_1074_788.jpg" alt="Image"" /></td></tr></table>
+
+### [\nFeCl] 命中 1 行 | 样本 1_16_专题十六　化学实验综合　教师用书PDF.md:L2134
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'></td><td style='text-align: center; word-wrap: break-word;'>A</td><td style='text-align: center; word-wrap: break-word;'>B</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>目的</td><td style='text-align: center; word-wrap: break-word;'>比较 Mg、Al 金属性的强弱</td><td style='text-align: center; word-wrap: break-word;'>研究浓度对化学平衡的影响</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实验方案</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/1_16_专题十六　化学实验综合　教师用书PDF/img_in_image_box_733_385_835_507.jpg" alt="Image"" />\nM [F3]</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/1_16_专题十六　化学实验综合　教师用书PDF/img_in_image_box_926_354_1045_478.jpg" alt="Image"" />\n1 mL 0.01 mol · L $ ^{-1} $\nFeCl $ _{3} $溶液和1 mL\n0.01 mol · L $ ^{-1} $ KSCN溶液</td></tr><tr><td style='text-align: center; word-wrap: break-word;'></td><td style='text-align: center; word-wrap: break-word;'>C</td><td style='text-align: center; word-wrap: break-word;'>D</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>目的</td><td style='text-align: center; word-wrap: break-word;'>比较 Na $ _{2} $CO $ _{3} $、NaHCO $ _{3} $ 与酸反应的快慢</td><td style='text-align: center; word-wrap: break-word;'>比较碳酸、醋酸、苯酚的酸性强弱</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实验方案</td><td style='text-align: center; word-wrap: break-word;'>0.1 mol · L $ ^{-1} $盐酸\n<img src="../../_imgs/1_16_专题十六　化学实验综合　教师用书PDF/img_in_image_box_701_673_726_755.jpg" alt="Image"" /> <img src="../../_imgs/1_16_专题十六　化学实验综合　教师用书PDF/img_in_image_box_793_674_818_760.jpg" alt="Image"" />\n饱和Na $ _{2} $CO $ _{3} $ 饱和NaHCO $ _{3} $\n溶液 溶液</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/1_16_专题十六　化学实验综合　教师用书PDF/img_in_image_box_925_660_1074_788.jpg" alt="Image"" /></td></tr></table>
+
+### [\nNaOH] 命中 1 行 | 样本 1_16_专题十六　化学实验综合　教师用书PDF.md:L2395
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>编号</td><td style='text-align: center; word-wrap: break-word;'>试剂</td><td style='text-align: center; word-wrap: break-word;'>溶液颜色</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>丙</td><td style='text-align: center; word-wrap: break-word;'>水</td><td rowspan="3">溶液均呈红色,丁与戊的颜色几乎相同,丙的颜色更浅</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>丁</td><td style='text-align: center; word-wrap: break-word;'>6 mol ·  $ L^{-1} $\nNaOH 溶液</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>戊</td><td style='text-align: center; word-wrap: break-word;'>酸性对氨基苯磺酸溶液</td></tr></table>
+
+### [\textsuperscript] 命中 1 行 | 样本 2017-2019北京高三化学上学期期末汇编：化学实验（教师版）(1).md:L2203
+    $$ \mathrm{FeSO}_{4}+\mathrm{\textsuperscript{____}}\mathrm{H}_{2}\mathrm{SO}_{4}+\mathrm{\textsuperscript{____}}\mathrm{H}_{2}\mathrm{O}_{2}=\mathrm{\textsuperscript{____}}\mathrm{Fe}_{2}\mathrm{\textsuperscript{(OH)}}\mathrm{\textsuperscript{n}}\mathrm{(SO}_{4})\mathrm{\textsuperscript{3}}-\frac{\mathrm{n}}{2}+ $$ 
+
+### [\triangleH] 命中 1 行 | 样本 2021北京丰台高三二模化学（教师版） (1)(1).md:L318
+    $$ FeSO_{4}+NO\rightleftharpoons Fe(NO)SO_{4}( 棕色 )\triangleH<0 $$ 
+
+### [\iota] 命中 1 行 | 样本 2021北京丰台高三（上）期末化学（教师版）(1).md:L206
+    $$ \mathrm{6I_{2} + \Box   \Upsilon  \kappa ClO_{3} + \Box   \Upsilon  \iota_{2}O  =  6KH(IO_{3})_{2} + \Box   \Upsilon  \kappa Cl + 3Cl_{2} ,} $$ 
+
+### [\Upsilon] 命中 1 行 | 样本 2021北京丰台高三（上）期末化学（教师版）(1).md:L206
+    $$ \mathrm{6I_{2} + \Box   \Upsilon  \kappa ClO_{3} + \Box   \Upsilon  \iota_{2}O  =  6KH(IO_{3})_{2} + \Box   \Upsilon  \kappa Cl + 3Cl_{2} ,} $$ 
+
+### [\textemdash] 命中 1 行 | 样本 2021北京朝阳高三二模化学（教师版）(1).md:L263
+    $$ \boxed{\mathrm{GaAs}+\mathrm{~\textemdash~}\mathrm{HNO}_{3}( 浓 )\xlongequal{\quad}\mathrm{~\textemdash~}\mathrm{Ga}(\mathrm{NO}_{3})_{3}+\mathrm{~\textemdash~}\mathrm{H}_{3}\mathrm{AsO}_{4}+\mathrm{~\textemdash~}+\mathrm{~\textemdash~}\mathrm{H}_{2}\mathrm{O}} $$ 
+
+### [\backslash] 命中 1 行 | 样本 2021北京海淀高三（上）期末化学（教师版）(1).md:L38
+   D. 铝离子的结构示意图： $ \begin{array}{c} \text{ } \\ | \\ \text{-13} \quad 2 \quad 8 \quad 3 \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \backslash \quad \
+
+### [\nmL] 命中 1 行 | 样本 2022北京东城高三二模化学（教师版）(1).md:L205
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>序号</td><td style='text-align: center; word-wrap: break-word;'>①</td><td style='text-align: center; word-wrap: break-word;'>②</td><td style='text-align: center; word-wrap: break-word;'>③</td><td style='text-align: center; word-wrap: break-word;'>④</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>装置</td><td style='text-align: center; word-wrap: break-word;'>3滴乙醛\n<img src="../../_imgs/2022北京东城高三二模化学（教师版）(1)/img_in_image_box_160_360_189_495.jpg" alt="Image"" />\n2 mL\n~2%  $ AgNO_{{3}} $溶液\na(pH=6)</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/2022北京东城高三二模化学（教师版）(1)/img_in_image_box_357_329_403_516.jpg" alt="Image"" />\nmL银氨溶液(pH=8)</td><td style='text-align: center; word-wrap: break-word;'><img src="../../_imgs/2022北京东城高三二模化学（教师版）(1)/img_in_image_box_565_318_716_505.jpg" alt="Image"" /></td><td style='text-align: center; word-wrap: break-word;'>3滴乙醛\n<img src="../../_imgs/2022北京东城高三二模化学（教师版）(1)/img_in_image_box_881_360_1014_521.jpg" alt="Image"" />\n2 mL银氨溶液(用浓氨水调~至pH=10)</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>现象</td><td style='text-align: center; word-wrap: break-word;'>一直无明显现象</td><td style='text-align: center; word-wrap: break-word;'>8min有银镜产生</td><td style='text-align: center; word-wrap: break-word;'>3min有银镜产生</td><td style='text-align: center; word-wrap: break-word;'>d中较长时间无银镜产生，e中有银镜产生</td></tr></table>
+
+### [\textsf] 命中 1 行 | 样本 2017-2019北京高三数学上学期期中汇编：立体几何（教师版）(1).md:L546
+    $$ \overrightarrow{\pi\bullet}\overrightarrow{\textsf{A G}}=2-1-1=0, $$ 
+
+### [\emptyset] 命中 1 行 | 样本 2019北京人大附中高三（下）2月月考数学（理）含答案(1).md:L340
+    $$ \therefore2\times\frac{\pi}{6}+\emptyset=\frac{\pi}{2}+2\mathrm{k}\pi(\mathrm{k}\in\mathbb{Z}),\quad\therefore\emptyset=\frac{\pi}{6}+2\mathrm{k}\pi(\mathrm{k}\in\mathbb{Z}), $$ 
+
+### [\substack] 命中 1 行 | 样本 2021北京顺义高三（上）期末数学（第一次统练）（教师版）(1).md:L193
+    $$ T_{r+1}=C_{6}^{r}(\sqrt{x})^{\substack{6-r\\}}\frac{1}{x}^{r}=C_{6}^{r}x^{3-\frac{3}{2}r} $$ 
+
+### [\textstyle] 命中 1 行 | 样本 2022北京一七一中高三（上）期中物理（教师版）(1).md:L790
+    $$ \textstyle\sum mv-MV=0 $$ 
+
+### [\gg] 命中 1 行 | 样本 2022北京海淀高三（上）期末物理（教师版） (1)(1).md:L796
+    $$ 10^{5}\mathrm{m/s}\gg10^{-4}\mathrm{m/s} $$ 
+
+### [\r] 命中 1 行 | 样本 2023北京一六一中高三12月月考物理（教师版）(1).md:L897
+    $$ \begin{aligned}E&=1.45\mathrm{V}\\r&=\frac{1.45-0.80}{0.50}\Omega=1.30\Omega\end{aligned} $$ 
+
+### [\rm] 命中 1 行 | 样本 2018北京市西城区高三（上）期末生物含答案(1).md:L354
+   M：标准$$\rm
+
+### [\cdotsATGCCT] 命中 1 行 | 样本 2018北京高三生物上学期期末汇编：现代生物科技专题（教师版）(1).md:L853
+    $$ \begin{aligned}&5^{\prime}\quad--\quad CCGTGT\cdots\cdots\cdots\cdots\cdotsCTCGCA\cdots\cdots\cdots\cdots\cdotsATGCCT\quad--\quad3^{\prime}\\ &\\ &3^{\prime}\quad--\quad GGCACA\cdots\cdots\cdots\cdots\cdots GAGCGT\cdots\cdots\cdots\cdots\cdots TACGGA\quad--\quad5^{\prime}\\ \end{aligned} $$ 
+
+### [\cdotsCTCGCA] 命中 1 行 | 样本 2018北京高三生物上学期期末汇编：现代生物科技专题（教师版）(1).md:L853
+    $$ \begin{aligned}&5^{\prime}\quad--\quad CCGTGT\cdots\cdots\cdots\cdots\cdotsCTCGCA\cdots\cdots\cdots\cdots\cdotsATGCCT\quad--\quad3^{\prime}\\ &\\ &3^{\prime}\quad--\quad GGCACA\cdots\cdots\cdots\cdots\cdots GAGCGT\cdots\cdots\cdots\cdots\cdots TACGGA\quad--\quad5^{\prime}\\ \end{aligned} $$ 
+
+### [\nPlace] 命中 1 行 | 样本 2021北京通州潞河中学高三三模英语（教师版）(1).md:L81
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Time: Wed 7 pm-9pm\nCost:$300\nLength:6 weeks\nPlace: Sydney College</td><td style='text-align: center; word-wrap: break-word;'>Time: Mon 5 pm-7pm\nCost:$30 per lesson\nLength: Once a week for 12 weeks\nPlace: Adult Learning Centre</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Web Design\nProvides advanced training in software, design, and coding for the web. Students must have already completed a recognized basic web design course or have at least 2 years&#x27; relevant work experience.\nStudents completing the course will receive the Diploma in Advanced Web Design.\nStart: June 1,2019\nTime: Weekdays 9 am-4pm\nCost:$4,990\nLength:40 weeks\nPlace: University of Technology</td><td style='text-align: center; word-wrap: break-word;'>Art\nThis practical course is intended to help established artists take their creativity further. From sketching and color, to composition, painting and experimenting with style, you will study and explore an engaging variety of creative media and subject matter.\nStart: April 21,2019\nTime: Thur. 3 pm-6pm\nCost:$750\nLength:15 weeks\nPlace: City Art</td></tr></table>
+
+### [\nStart] 命中 1 行 | 样本 2021北京通州潞河中学高三三模英语（教师版）(1).md:L81
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Time: Wed 7 pm-9pm\nCost:$300\nLength:6 weeks\nPlace: Sydney College</td><td style='text-align: center; word-wrap: break-word;'>Time: Mon 5 pm-7pm\nCost:$30 per lesson\nLength: Once a week for 12 weeks\nPlace: Adult Learning Centre</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Web Design\nProvides advanced training in software, design, and coding for the web. Students must have already completed a recognized basic web design course or have at least 2 years&#x27; relevant work experience.\nStudents completing the course will receive the Diploma in Advanced Web Design.\nStart: June 1,2019\nTime: Weekdays 9 am-4pm\nCost:$4,990\nLength:40 weeks\nPlace: University of Technology</td><td style='text-align: center; word-wrap: break-word;'>Art\nThis practical course is intended to help established artists take their creativity further. From sketching and color, to composition, painting and experimenting with style, you will study and explore an engaging variety of creative media and subject matter.\nStart: April 21,2019\nTime: Thur. 3 pm-6pm\nCost:$750\nLength:15 weeks\nPlace: City Art</td></tr></table>
+
+### [\nStudents] 命中 1 行 | 样本 2021北京通州潞河中学高三三模英语（教师版）(1).md:L81
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Time: Wed 7 pm-9pm\nCost:$300\nLength:6 weeks\nPlace: Sydney College</td><td style='text-align: center; word-wrap: break-word;'>Time: Mon 5 pm-7pm\nCost:$30 per lesson\nLength: Once a week for 12 weeks\nPlace: Adult Learning Centre</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Web Design\nProvides advanced training in software, design, and coding for the web. Students must have already completed a recognized basic web design course or have at least 2 years&#x27; relevant work experience.\nStudents completing the course will receive the Diploma in Advanced Web Design.\nStart: June 1,2019\nTime: Weekdays 9 am-4pm\nCost:$4,990\nLength:40 weeks\nPlace: University of Technology</td><td style='text-align: center; word-wrap: break-word;'>Art\nThis practical course is intended to help established artists take their creativity further. From sketching and color, to composition, painting and experimenting with style, you will study and explore an engaging variety of creative media and subject matter.\nStart: April 21,2019\nTime: Thur. 3 pm-6pm\nCost:$750\nLength:15 weeks\nPlace: City Art</td></tr></table>
+
+### [\nTime] 命中 1 行 | 样本 2021北京通州潞河中学高三三模英语（教师版）(1).md:L81
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Time: Wed 7 pm-9pm\nCost:$300\nLength:6 weeks\nPlace: Sydney College</td><td style='text-align: center; word-wrap: break-word;'>Time: Mon 5 pm-7pm\nCost:$30 per lesson\nLength: Once a week for 12 weeks\nPlace: Adult Learning Centre</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Web Design\nProvides advanced training in software, design, and coding for the web. Students must have already completed a recognized basic web design course or have at least 2 years&#x27; relevant work experience.\nStudents completing the course will receive the Diploma in Advanced Web Design.\nStart: June 1,2019\nTime: Weekdays 9 am-4pm\nCost:$4,990\nLength:40 weeks\nPlace: University of Technology</td><td style='text-align: center; word-wrap: break-word;'>Art\nThis practical course is intended to help established artists take their creativity further. From sketching and color, to composition, painting and experimenting with style, you will study and explore an engaging variety of creative media and subject matter.\nStart: April 21,2019\nTime: Thur. 3 pm-6pm\nCost:$750\nLength:15 weeks\nPlace: City Art</td></tr></table>
+
+### [\nLength] 命中 1 行 | 样本 2021北京通州潞河中学高三三模英语（教师版）(1).md:L81
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Time: Wed 7 pm-9pm\nCost:$300\nLength:6 weeks\nPlace: Sydney College</td><td style='text-align: center; word-wrap: break-word;'>Time: Mon 5 pm-7pm\nCost:$30 per lesson\nLength: Once a week for 12 weeks\nPlace: Adult Learning Centre</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Web Design\nProvides advanced training in software, design, and coding for the web. Students must have already completed a recognized basic web design course or have at least 2 years&#x27; relevant work experience.\nStudents completing the course will receive the Diploma in Advanced Web Design.\nStart: June 1,2019\nTime: Weekdays 9 am-4pm\nCost:$4,990\nLength:40 weeks\nPlace: University of Technology</td><td style='text-align: center; word-wrap: break-word;'>Art\nThis practical course is intended to help established artists take their creativity further. From sketching and color, to composition, painting and experimenting with style, you will study and explore an engaging variety of creative media and subject matter.\nStart: April 21,2019\nTime: Thur. 3 pm-6pm\nCost:$750\nLength:15 weeks\nPlace: City Art</td></tr></table>
+
+### [\nCost] 命中 1 行 | 样本 2021北京通州潞河中学高三三模英语（教师版）(1).md:L81
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Time: Wed 7 pm-9pm\nCost:$300\nLength:6 weeks\nPlace: Sydney College</td><td style='text-align: center; word-wrap: break-word;'>Time: Mon 5 pm-7pm\nCost:$30 per lesson\nLength: Once a week for 12 weeks\nPlace: Adult Learning Centre</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Web Design\nProvides advanced training in software, design, and coding for the web. Students must have already completed a recognized basic web design course or have at least 2 years&#x27; relevant work experience.\nStudents completing the course will receive the Diploma in Advanced Web Design.\nStart: June 1,2019\nTime: Weekdays 9 am-4pm\nCost:$4,990\nLength:40 weeks\nPlace: University of Technology</td><td style='text-align: center; word-wrap: break-word;'>Art\nThis practical course is intended to help established artists take their creativity further. From sketching and color, to composition, painting and experimenting with style, you will study and explore an engaging variety of creative media and subject matter.\nStart: April 21,2019\nTime: Thur. 3 pm-6pm\nCost:$750\nLength:15 weeks\nPlace: City Art</td></tr></table>
+
+### [\nProvides] 命中 1 行 | 样本 2021北京通州潞河中学高三三模英语（教师版）(1).md:L81
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Time: Wed 7 pm-9pm\nCost:$300\nLength:6 weeks\nPlace: Sydney College</td><td style='text-align: center; word-wrap: break-word;'>Time: Mon 5 pm-7pm\nCost:$30 per lesson\nLength: Once a week for 12 weeks\nPlace: Adult Learning Centre</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Web Design\nProvides advanced training in software, design, and coding for the web. Students must have already completed a recognized basic web design course or have at least 2 years&#x27; relevant work experience.\nStudents completing the course will receive the Diploma in Advanced Web Design.\nStart: June 1,2019\nTime: Weekdays 9 am-4pm\nCost:$4,990\nLength:40 weeks\nPlace: University of Technology</td><td style='text-align: center; word-wrap: break-word;'>Art\nThis practical course is intended to help established artists take their creativity further. From sketching and color, to composition, painting and experimenting with style, you will study and explore an engaging variety of creative media and subject matter.\nStart: April 21,2019\nTime: Thur. 3 pm-6pm\nCost:$750\nLength:15 weeks\nPlace: City Art</td></tr></table>
+
+### [\downarrowalgeq] 命中 1 行 | 样本 2018江苏高考真题化学（教师版）(1).md:L1288
+    $$ \mathrm{3HNO_{2} \downarrowalgeq   HNO_{3} \downarrow algeq   (aq)+2NO \downarrow+H_{2}O \downarrow(l)} \quad \Delta H=+75.9\mathrm{kJ} \quad \mathrm{J \cdot mol^{-1}} $$ 
+
+### [\wedge] 命中 1 行 | 样本 2019上海高考真题化学（教师版）(1).md:L894
+    $$ \begin{array}{l}\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{OH}\\\stackrel{SOCl_{2}}{\longrightarrow}\\\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{Cl}\end{array}\xrightarrow{\begin{array}{l}\mathrm{NaCN}\\\downarrow\\\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{Cl}\end{array}}\xrightarrow{\begin{array}{l}\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{CN}\\\downarrow\\\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{CN}\end{array}}\xrightarrow{\mathrm{H}^{+}/\mathrm{H}_{2}\mathrm{O}}\begin{array}{l}\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{COOH}\\\downarrow\\\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{COOH}\end{array}\xrightarrow[\text{ 浓硫酸 },\ \wedge]{\mathrm{CH}_{3}\mathrm{OH}}\begin{array}{l}\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{COOCH}_{3}\\\downarrow\\\mathrm{CH}_{2}-\mathrm{CH}_{2}\mathrm{COOCH}_{3}\end{array} $$ 
+
+### [\textup] 命中 1 行 | 样本 2021全国甲卷高考真题化学（教师版）(1).md:L202
+    $$ \bigcirc\bigcirc\quad\bigcirc\textup{Z r} $$ 
+
+### [\ominus] 命中 1 行 | 样本 2021湖南新高考真题化学（教师版）(1).md:L289
+   $$\mathrm{dD(g)+eE(g)}\rightleftharpoons gG(g)+hH(g)},\quad K^{\ominus}=\frac{\left(\frac{p_{\mathrm{G}}}{p^{\ominus}}\right)^{g}\cdot\left(\frac{p_{\mathrm{H}}}{p^{\ominus}}\right)^{h}}{\left(\frac{p_{\mathrm{D}}}{p^{\ominus}}\right)^{d}\cdot\left(\frac{p_{\mathrm{E}}}{p^{\ominus}}\right)^{e}},\text{ 其中 }p^{\ominus}=100\mathrm{kPa},\quad p_{\mathrm{G}}\text{、}p_{\mathrm{H}}\text{、}p_{\mathrm{D}}\text{、}p_{\mathrm{E}}\text{ 为}$$
+
+### [\DeltaH] 命中 1 行 | 样本 2022全国乙卷高考真题化学（教师版）(1).md:L626
+    $$ \mathrm{32H_{2}(g) +O_{2}(g)  = 2H_{2}O(g) \DeltaH_{3}  = -484kJ/mol } $$ 
+
+### [\overleftarrow] 命中 1 行 | 样本 2012-2021高考真题数学汇编：空间向量与立体几何（2）（教师版）(1).md:L1980
+    $$ \sin\theta=\vert\cos\overleftarrow{A F},\overrightarrow{n}\geq\vert=\frac{40}{\sqrt{180}\cdot5}=\frac{4\sqrt{6}}{15}; $$ 
+
+### [\varsigma] 命中 1 行 | 样本 2012-2021高考真题数学汇编：立体几何初步（2）（教师版）(1).md:L734
+    $$ \therefore\left\{\begin{aligned}&\left(\mathrm{a},\mathrm{~b},1\right)\bullet(3,2,-1)=\varsigma,\\&\mathrm{a}-\mathrm{b}+2+1=3\end{aligned}\right., $$ 
+
+### [\arctan] 命中 1 行 | 样本 2012-2021高考真题数学汇编：立体几何初步（2）（教师版）(1).md:L1575
+    $$ \therefore\angle A_{1}CC_{7}=\arctan\frac{2\sqrt{2}}{8}. $$ 
+
+### [\textbf] 命中 1 行 | 样本 2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).md:L1846
+    $$ \therefore\textbf{f}^{\prime}\quad(\mathrm{p})=\mathrm{C}_{20}^{2}[4\mathrm{p}(1-\mathrm{p})^{18}-18\mathrm{p}^{2}(7-\mathrm{p})^{17}]=2\mathrm{C}_{20}^{2}\mathrm{p}(7-\mathrm{p})^{17}(1-10\mathrm{p}), $$ 
+
+### [\P] 命中 1 行 | 样本 2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).md:L2383
+   当 $P_{k}$ 最大时，$$\left\{\begin{array}{l}P_{k}\geqslant P_{k+6}\\P_{k}\geqslant P_{k-1}\end{array}\right.$$
+
+### [\A] 命中 1 行 | 样本 2018江苏高考真题数学（教师版）(1).md:L537
+    $$ \begin{aligned}&\therefore\begin{cases}AB_{1}\perp A_{1}B,AB_{1}\perp BC\\A_{1}B\cap BC=B\\A_{1}B\subset 衙 A_{1}BC,BC\subset 衙 A_{1}BC\end{cases}\end{aligned} $$ 
+
+### [\epsilon] 命中 1 行 | 样本 2018江苏高考真题数学（教师版）(1).md:L739
+    $$ f\left(\sqrt{\frac{1}{2a}}\right)=-\frac{1}{2}=g\ \left(\sqrt{\frac{1}{2a}}\right)=-\frac{1}{2}lna2,\  得 \ a=\frac{\epsilon}{2}; $$ 
+
+### [\bc] 命中 1 行 | 样本 2019全国I卷高考真题数学（文）（教师版）(1).md:L779
+   $$\therefore 2a^{2}+2b^{2}+2c^{2}\geq2ab+2bc+2ac\text{，即 }a^{2}+b^{2}+c^{2}\geq ab+bc+ac\text{，}\text{当且仅当 }a=b=c\text{ 时取等号}\because abc=1\text{ 且 }a\text{，}b\text{，}c\text{ 都为正数，}\therefore ab=\frac{1}{c},\bc{=}\frac{1}{a},\ac=\frac{1}{b},\text{故 }\frac{1}{a}+\frac{1}{b}+\frac{1}{c}\leq a^{2}+b^{2}+c^{2}.$$
+
+### [\ac] 命中 1 行 | 样本 2019全国I卷高考真题数学（文）（教师版）(1).md:L779
+   $$\therefore 2a^{2}+2b^{2}+2c^{2}\geq2ab+2bc+2ac\text{，即 }a^{2}+b^{2}+c^{2}\geq ab+bc+ac\text{，}\text{当且仅当 }a=b=c\text{ 时取等号}\because abc=1\text{ 且 }a\text{，}b\text{，}c\text{ 都为正数，}\therefore ab=\frac{1}{c},\bc{=}\frac{1}{a},\ac=\frac{1}{b},\text{故 }\frac{1}{a}+\frac{1}{b}+\frac{1}{c}\leq a^{2}+b^{2}+c^{2}.$$
+
+### [\uplus] 命中 1 行 | 样本 2019天津高考真题数学（理）（教师版）(1).md:L413
+    $$ T_{r+1}=C_{\uplus}^{r}(2x)^{8^{-r}}(-\frac{1}{8x^{3}})^{r}=C_{\uplus}^{r}\bullet2^{8^{-r}\bullet}(-\frac{1}{8})^{r}\bullet x^{8^{-r}\bullet}(\frac{1}{x^{3}})^{r}=C_{\uplus}^{r}\bullet(-1)^{r}2^{8^{-4r}\bullet}x^{8^{-4r}}. $$ 
+
+### [\textit] 命中 1 行 | 样本 2020天津高考真题物理（教师版）(1).md:L500
+    $$ \textit{W}=\textit{P}t $$ 
+
+### [\dashv] 命中 1 行 | 样本 2018江苏高考真题生物（教师版）(1).md:L1765
+    $$ 5^{\prime}\dashv\mathtt{A U G C C A U C A A C A A A A U A C U A A C A C U}\vert\mathtt{U}\cdots\cdots\cdots-3^{\prime} $$ 
+
+### [\nATP] 命中 1 行 | 样本 2020全国Ⅲ卷高考真题生物（教师版）(1).md:L377
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>比较项目</td><td style='text-align: center; word-wrap: break-word;'>光反应</td><td style='text-align: center; word-wrap: break-word;'>暗反应</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>场所</td><td style='text-align: center; word-wrap: break-word;'>基粒类囊体膜上</td><td style='text-align: center; word-wrap: break-word;'>叶绿体的基质</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>条件</td><td style='text-align: center; word-wrap: break-word;'>色素、光、酶、水、ADP、Pi</td><td style='text-align: center; word-wrap: break-word;'>多种酶、 $ CO_{2} $、ATP、[H]</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>反应产物</td><td style='text-align: center; word-wrap: break-word;'>[H]、 $ O_{2} $、ATP</td><td style='text-align: center; word-wrap: break-word;'>有机物、ADP、Pi、水</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>物质变化</td><td style='text-align: center; word-wrap: break-word;'>水的光解： $ 2H_{2}O \xrightarrow{光、色素} 4[H]+O_{2} $\nATP的生成： $ ADP+Pi \xrightarrow{酶} ATP $</td><td style='text-align: center; word-wrap: break-word;'>$ CO_{2} $的固定： $ CO_{2}+C_{5} \xrightarrow{酶} 2C_{3} $\ $ C_{3} $的还原： $ 2C_{3}[H] $、ATP、酶（ $ CH_{2}O $)\ $ +C_{5}+H_{2}O $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>能量变化</td><td style='text-align: center; word-wrap: break-word;'>光能 $ \rightarrow $电能 $ \rightarrow $ATP中活跃的化学能</td><td style='text-align: center; word-wrap: break-word;'>ATP中活跃的化学能 $ \rightarrow $糖类等有机物中稳定的化学能</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>实质</td><td style='text-align: center; word-wrap: break-word;'>光能转变为化学能，水光解产生 $ O_{2} $和[H]</td><td style='text-align: center; word-wrap: break-word;'>同化 $ CO_{2} $形成（ $ CH_{2}O $）</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>联系</td><td colspan="2">①光反应 暗反应提供[H]（以NADPH形式存在）和ATP；\n②暗反应产生的ADP和Pi为光反应合成ATP提供原料；\n③没有光反应，暗反应无法进行，没有暗反应，有机物无法合成</td></tr></table>
+
+### [\nAAC] 命中 1 行 | 样本 2021广东新高考真题生物（教师版）(1).md:L268
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>密码子序号</td><td style='text-align: center; word-wrap: break-word;'>1 ... 4 ... 19 20 ... 540</td><td style='text-align: center; word-wrap: break-word;'>密码子表（部分）：</td></tr><tr><td colspan="2">正常核苷酸序列 AUG...AAC...ACU UUA...UAG\n突变① $ \downarrow $\n突变后核苷酸序列 AUG...AAC...ACC UUA...UAG</td><td style='text-align: center; word-wrap: break-word;'>AUG：甲硫氨酸，起始密码子\nAAC：天冬酰胺</td></tr><tr><td colspan="2">正常核苷酸序列 AUG...AAC...ACU UUA...UAG\n突变② $ \downarrow $\n突变后核苷酸序列 AUG...AAA...ACU UUA...UAG</td><td style='text-align: center; word-wrap: break-word;'>ACU、ACC：苏氨酸\nUUA：亮氨酸</td></tr></table>
+
+### [\nUUA] 命中 1 行 | 样本 2021广东新高考真题生物（教师版）(1).md:L268
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>密码子序号</td><td style='text-align: center; word-wrap: break-word;'>1 ... 4 ... 19 20 ... 540</td><td style='text-align: center; word-wrap: break-word;'>密码子表（部分）：</td></tr><tr><td colspan="2">正常核苷酸序列 AUG...AAC...ACU UUA...UAG\n突变① $ \downarrow $\n突变后核苷酸序列 AUG...AAC...ACC UUA...UAG</td><td style='text-align: center; word-wrap: break-word;'>AUG：甲硫氨酸，起始密码子\nAAC：天冬酰胺</td></tr><tr><td colspan="2">正常核苷酸序列 AUG...AAC...ACU UUA...UAG\n突变② $ \downarrow $\n突变后核苷酸序列 AUG...AAA...ACU UUA...UAG</td><td style='text-align: center; word-wrap: break-word;'>ACU、ACC：苏氨酸\nUUA：亮氨酸</td></tr></table>
+
+### [\nUAG] 命中 1 行 | 样本 2021广东新高考真题生物（教师版）(1).md:L273
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>正常核苷酸序列 AUG...AAC...ACU UUA...UAG\n突变③ $ \downarrow $\n突变后核苷酸序列 AUG...AAC...ACU UGA...UAG</td><td style='text-align: center; word-wrap: break-word;'>AAA：赖氨酸\nUAG、UGA：终止密码子\n...表示省略的、没有变化的碱基</td></tr></table>
+
+### [\nL] 命中 1 行 | 样本 2018北京夏季高中会考物理（教师版）(1).md:L465
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>7②（8分）</td><td style='text-align: center; word-wrap: break-word;'>解：\n（1）电子做匀速直线运动时，受电场力和洛伦兹力\neE=evB\n解得\nv= $ \frac{E}{B} $\n（2）撤去磁场后，电子仅受电场力，根据牛顿第二定律，电子的加速度\na= $ \frac{eE}{m} $\n在水平方向\nL=vt\n在竖直方向\ny= $ \frac{1}{2}at^{2} $\n解得\ny= $ \frac{eB^{2}L^{2}}{2mE} $</td><td style='text-align: center; word-wrap: break-word;'>4分</td><td style='text-align: center; word-wrap: break-word;'>同5题</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>8（8分）</td><td style='text-align: center; word-wrap: break-word;'>解：\n（1）小物块放到传送带上后，开始做匀加速直线运动，根据牛顿第二定律\n $ \mu mg=ma $\na=1.0m/s^{2}\n小物块做匀加速直线运动\nt_{1}= $ \frac{v}{a} $=2.0s\nx= $ \frac{1}{2}at_{1}^{2} $=2.0m\n因为x&lt;L，所以小物块运动2.0m后开始做匀速直线运动\nt_{2}= $ \frac{L-x}{v} $=2.0s\n小物块从A运动到B所用的时间\nt=t_{1}+t_{2}=4.0s</td><td style='text-align: center; word-wrap: break-word;'>4分</td><td style='text-align: center; word-wrap: break-word;'>同5题</td></tr></table>
+
+### [\ny] 命中 1 行 | 样本 2018北京夏季高中会考物理（教师版）(1).md:L465
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>7②（8分）</td><td style='text-align: center; word-wrap: break-word;'>解：\n（1）电子做匀速直线运动时，受电场力和洛伦兹力\neE=evB\n解得\nv= $ \frac{E}{B} $\n（2）撤去磁场后，电子仅受电场力，根据牛顿第二定律，电子的加速度\na= $ \frac{eE}{m} $\n在水平方向\nL=vt\n在竖直方向\ny= $ \frac{1}{2}at^{2} $\n解得\ny= $ \frac{eB^{2}L^{2}}{2mE} $</td><td style='text-align: center; word-wrap: break-word;'>4分</td><td style='text-align: center; word-wrap: break-word;'>同5题</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>8（8分）</td><td style='text-align: center; word-wrap: break-word;'>解：\n（1）小物块放到传送带上后，开始做匀加速直线运动，根据牛顿第二定律\n $ \mu mg=ma $\na=1.0m/s^{2}\n小物块做匀加速直线运动\nt_{1}= $ \frac{v}{a} $=2.0s\nx= $ \frac{1}{2}at_{1}^{2} $=2.0m\n因为x&lt;L，所以小物块运动2.0m后开始做匀速直线运动\nt_{2}= $ \frac{L-x}{v} $=2.0s\n小物块从A运动到B所用的时间\nt=t_{1}+t_{2}=4.0s</td><td style='text-align: center; word-wrap: break-word;'>4分</td><td style='text-align: center; word-wrap: break-word;'>同5题</td></tr></table>
+
+### [\nv] 命中 1 行 | 样本 2018北京夏季高中会考物理（教师版）(1).md:L465
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>7②（8分）</td><td style='text-align: center; word-wrap: break-word;'>解：\n（1）电子做匀速直线运动时，受电场力和洛伦兹力\neE=evB\n解得\nv= $ \frac{E}{B} $\n（2）撤去磁场后，电子仅受电场力，根据牛顿第二定律，电子的加速度\na= $ \frac{eE}{m} $\n在水平方向\nL=vt\n在竖直方向\ny= $ \frac{1}{2}at^{2} $\n解得\ny= $ \frac{eB^{2}L^{2}}{2mE} $</td><td style='text-align: center; word-wrap: break-word;'>4分</td><td style='text-align: center; word-wrap: break-word;'>同5题</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>8（8分）</td><td style='text-align: center; word-wrap: break-word;'>解：\n（1）小物块放到传送带上后，开始做匀加速直线运动，根据牛顿第二定律\n $ \mu mg=ma $\na=1.0m/s^{2}\n小物块做匀加速直线运动\nt_{1}= $ \frac{v}{a} $=2.0s\nx= $ \frac{1}{2}at_{1}^{2} $=2.0m\n因为x&lt;L，所以小物块运动2.0m后开始做匀速直线运动\nt_{2}= $ \frac{L-x}{v} $=2.0s\n小物块从A运动到B所用的时间\nt=t_{1}+t_{2}=4.0s</td><td style='text-align: center; word-wrap: break-word;'>4分</td><td style='text-align: center; word-wrap: break-word;'>同5题</td></tr></table>
+
+### [\neE] 命中 1 行 | 样本 2018北京夏季高中会考物理（教师版）(1).md:L465
+   <table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>7②（8分）</td><td style='text-align: center; word-wrap: break-word;'>解：\n（1）电子做匀速直线运动时，受电场力和洛伦兹力\neE=evB\n解得\nv= $ \frac{E}{B} $\n（2）撤去磁场后，电子仅受电场力，根据牛顿第二定律，电子的加速度\na= $ \frac{eE}{m} $\n在水平方向\nL=vt\n在竖直方向\ny= $ \frac{1}{2}at^{2} $\n解得\ny= $ \frac{eB^{2}L^{2}}{2mE} $</td><td style='text-align: center; word-wrap: break-word;'>4分</td><td style='text-align: center; word-wrap: break-word;'>同5题</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>8（8分）</td><td style='text-align: center; word-wrap: break-word;'>解：\n（1）小物块放到传送带上后，开始做匀加速直线运动，根据牛顿第二定律\n $ \mu mg=ma $\na=1.0m/s^{2}\n小物块做匀加速直线运动\nt_{1}= $ \frac{v}{a} $=2.0s\nx= $ \frac{1}{2}at_{1}^{2} $=2.0m\n因为x&lt;L，所以小物块运动2.0m后开始做匀速直线运动\nt_{2}= $ \frac{L-x}{v} $=2.0s\n小物块从A运动到B所用的时间\nt=t_{1}+t_{2}=4.0s</td><td style='text-align: center; word-wrap: break-word;'>4分</td><td style='text-align: center; word-wrap: break-word;'>同5题</td></tr></table>

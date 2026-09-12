@@ -1,0 +1,711 @@
+[2026-09-09 20:12:31] ============================================================
+[2026-09-09 20:12:31] 图片恢复开始 (PyMuPDF 坐标裁剪)
+[2026-09-09 20:12:31] ============================================================
+[2026-09-09 20:12:31] 源PDF索引: 12707 | 待扫描md: 2516
+[2026-09-09 20:12:31] 试跑模式: 只处理前 3 份
+[2026-09-09 20:12:31] 同步重写 auto-annotated-v6 引用 ...
+[2026-09-09 20:12:31] 完成: {"with_refs": 3, "no_refs": 0, "refs_total": 15, "img_ok": 0, "ref_fail": 0, "pdf_miss": 0, "pdf_error": 0, "md_rewritten": 0, "ref_rewritten": 0, "v6_rewritten": 0, "v6_ref_rewritten": 0, "elapsed_sec": 0.0, "md_total": 3}
+[2026-09-09 20:12:39] ============================================================
+[2026-09-09 20:12:39] 图片恢复开始 (PyMuPDF 坐标裁剪)
+[2026-09-09 20:12:39] ============================================================
+[2026-09-09 20:12:39] 源PDF索引: 12707 | 待扫描md: 2516
+[2026-09-09 20:12:39] 试跑模式: 只处理前 3 份
+[2026-09-09 20:12:39] 同步重写 auto-annotated-v6 引用 ...
+[2026-09-09 20:12:40] 完成: {"with_refs": 3, "no_refs": 0, "refs_total": 15, "img_ok": 0, "ref_fail": 15, "pdf_miss": 0, "pdf_error": 0, "md_rewritten": 0, "ref_rewritten": 0, "v6_rewritten": 0, "v6_ref_rewritten": 0, "elapsed_sec": 0.2, "md_total": 3}
+[2026-09-09 20:13:26] ============================================================
+[2026-09-09 20:13:26] 图片恢复开始 (PyMuPDF 坐标裁剪)
+[2026-09-09 20:13:26] ============================================================
+[2026-09-09 20:13:26] 源PDF索引: 12707 | 待扫描md: 2516
+[2026-09-09 20:13:26] 试跑模式: 只处理前 3 份
+[2026-09-09 20:13:27] 同步重写 auto-annotated-v6 引用 ...
+[2026-09-09 20:13:27] 完成: {"with_refs": 3, "no_refs": 0, "refs_total": 15, "img_ok": 15, "ref_fail": 0, "pdf_miss": 0, "pdf_error": 0, "md_rewritten": 3, "ref_rewritten": 15, "v6_rewritten": 0, "v6_ref_rewritten": 0, "elapsed_sec": 0.3, "md_total": 3}
+[2026-09-09 20:14:00] ============================================================
+[2026-09-09 20:14:00] 图片恢复开始 (PyMuPDF 坐标裁剪)
+[2026-09-09 20:14:00] ============================================================
+[2026-09-09 20:14:00] 源PDF索引: 12707 | 待扫描md: 2516
+[2026-09-09 20:14:00]   [ERR] D:\Project\Papers\Ocr-markdown\未分类\化学\12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md: [Errno 2] No such file or directory: 'D:\\Project\\Papers\\Ocr-markdown\\_imgs\\12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案\\12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案/img_in_image_box_146_130_374_266.jpg'
+[2026-09-09 20:14:00]   [ERR] D:\Project\Papers\Ocr-markdown\未分类\化学\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md: [Errno 2] No such file or directory: 'D:\\Project\\Papers\\Ocr-markdown\\_imgs\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案/img_in_image_box_340_273_832_328.jpg'
+[2026-09-09 20:14:03] 进度 20/2516 | 成图 524 | 失败 0 | 已重写 16
+[2026-09-09 20:14:11] 进度 40/2516 | 成图 1343 | 失败 0 | 已重写 36
+[2026-09-09 20:14:18] 进度 60/2516 | 成图 2140 | 失败 0 | 已重写 56
+[2026-09-09 20:14:22] 进度 80/2516 | 成图 2511 | 失败 0 | 已重写 75
+[2026-09-09 20:14:26] 进度 100/2516 | 成图 2864 | 失败 0 | 已重写 95
+[2026-09-09 20:14:28] 进度 120/2516 | 成图 3010 | 失败 0 | 已重写 112
+[2026-09-09 20:14:30] 进度 140/2516 | 成图 3200 | 失败 0 | 已重写 130
+[2026-09-09 20:14:32] 进度 160/2516 | 成图 3358 | 失败 0 | 已重写 148
+[2026-09-09 20:14:34] 进度 180/2516 | 成图 3497 | 失败 0 | 已重写 167
+[2026-09-09 20:14:45] 进度 200/2516 | 成图 4196 | 失败 0 | 已重写 187
+[2026-09-09 20:14:51] 进度 220/2516 | 成图 4724 | 失败 0 | 已重写 207
+[2026-09-09 20:14:57] 进度 240/2516 | 成图 5234 | 失败 0 | 已重写 227
+[2026-09-09 20:15:01]   [ERR] D:\Project\Papers\Ocr-markdown\未分类\地理\2022全国甲卷高考真题地理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\未分类\\地理\\2022全国甲卷高考真题地理（教师版）(1).md'
+[2026-09-09 20:15:01] 进度 260/2516 | 成图 5546 | 失败 0 | 已重写 241
+[2026-09-09 20:15:03] 进度 280/2516 | 成图 5749 | 失败 0 | 已重写 258
+[2026-09-09 20:15:04] 进度 300/2516 | 成图 5954 | 失败 0 | 已重写 277
+[2026-09-09 20:15:06] 进度 320/2516 | 成图 6141 | 失败 0 | 已重写 297
+[2026-09-09 20:15:06]   [ERR] D:\Project\Papers\Ocr-markdown\未分类\政治\2022全国甲卷高考真题政治（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\未分类\\政治\\2022全国甲卷高考真题政治（教师版）(1).md'
+[2026-09-09 20:15:08] 进度 340/2516 | 成图 6380 | 失败 0 | 已重写 314
+[2026-09-09 20:15:14] 进度 360/2516 | 成图 7405 | 失败 0 | 已重写 331
+[2026-09-09 20:15:16] 进度 380/2516 | 成图 7656 | 失败 0 | 已重写 349
+[2026-09-09 20:15:18] 进度 400/2516 | 成图 7938 | 失败 0 | 已重写 369
+[2026-09-09 20:15:20] 进度 420/2516 | 成图 8158 | 失败 0 | 已重写 389
+[2026-09-09 20:15:21]   [ERR] D:\Project\Papers\Ocr-markdown\未分类\数学\2021全国甲卷高考真题数学（理）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\未分类\\数学\\2021全国甲卷高考真题数学（理）（教师版）(1).md'
+[2026-09-09 20:15:22] 进度 440/2516 | 成图 8382 | 失败 0 | 已重写 407
+[2026-09-09 20:15:26] 进度 460/2516 | 成图 9057 | 失败 0 | 已重写 427
+[2026-09-09 20:15:31] 进度 480/2516 | 成图 9844 | 失败 0 | 已重写 447
+[2026-09-09 20:15:32]   [ERR] D:\Project\Papers\Ocr-markdown\未分类\物理\2021全国甲卷高考真题物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\未分类\\物理\\2021全国甲卷高考真题物理（教师版）(1).md'
+[2026-09-09 20:15:35]   [ERR] D:\Project\Papers\Ocr-markdown\未分类\物理\2022全国甲卷高考真题物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\未分类\\物理\\2022全国甲卷高考真题物理（教师版）(1).md'
+[2026-09-09 20:15:35] 进度 500/2516 | 成图 10551 | 失败 0 | 已重写 465
+[2026-09-09 20:15:40] 进度 520/2516 | 成图 11105 | 失败 0 | 已重写 485
+[2026-09-09 20:15:41] 进度 540/2516 | 成图 11421 | 失败 0 | 已重写 503
+[2026-09-09 20:15:44] 进度 560/2516 | 成图 11759 | 失败 0 | 已重写 523
+[2026-09-09 20:15:44]   [ERR] D:\Project\Papers\Ocr-markdown\未分类\生物\2021全国甲卷高考真题生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\未分类\\生物\\2021全国甲卷高考真题生物（教师版）(1).md'
+[2026-09-09 20:15:47]   [ERR] D:\Project\Papers\Ocr-markdown\未分类\生物\2022全国甲卷高考真题生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\未分类\\生物\\2022全国甲卷高考真题生物（教师版）(1).md'
+[2026-09-09 20:15:47] 进度 580/2516 | 成图 12073 | 失败 0 | 已重写 540
+[2026-09-09 20:15:47] 进度 600/2516 | 成图 12135 | 失败 0 | 已重写 548
+[2026-09-09 20:15:47] 进度 620/2516 | 成图 12157 | 失败 0 | 已重写 551
+[2026-09-09 20:15:49] 进度 640/2516 | 成图 12199 | 失败 0 | 已重写 560
+[2026-09-09 20:15:49] 进度 660/2516 | 成图 12243 | 失败 0 | 已重写 568
+[2026-09-09 20:15:49] 进度 680/2516 | 成图 12263 | 失败 0 | 已重写 577
+[2026-09-09 20:15:50]   [ERR] D:\Project\Papers\Ocr-markdown\未分类\语文\2022全国甲卷高考真题语文（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\未分类\\语文\\2022全国甲卷高考真题语文（教师版）(1).md'
+[2026-09-09 20:15:50] 进度 700/2516 | 成图 12369 | 失败 0 | 已重写 586
+[2026-09-09 20:15:52] 进度 720/2516 | 成图 12743 | 失败 0 | 已重写 606
+[2026-09-09 20:15:53]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2021北京101中学高一（下）期末化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京101中学高一（下）期末化学（教师版）(1).md'
+[2026-09-09 20:15:54]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2021北京东城高一（下）期末化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京东城高一（下）期末化学（教师版）(1).md'
+[2026-09-09 20:15:56] 进度 740/2516 | 成图 13258 | 失败 0 | 已重写 624
+[2026-09-09 20:15:57]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2021北京北师大实验中学高一（上）期末化学（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京北师大实验中学高一（上）期末化学（教师版）.md'
+[2026-09-09 20:15:59] 进度 760/2516 | 成图 13720 | 失败 0 | 已重写 643
+[2026-09-09 20:16:00]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2021北京徐悲鸿中学高一（下）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京徐悲鸿中学高一（下）期中化学（教师版）(1).md'
+[2026-09-09 20:16:00]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2021北京房山高一（上）期末化学（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京房山高一（上）期末化学（教师版）.md'
+[2026-09-09 20:16:00]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2021北京昌平高一（上）期末化学（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京昌平高一（上）期末化学（教师版）.md'
+[2026-09-09 20:16:00]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2021北京昌平高一（下）期末化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京昌平高一（下）期末化学（教师版）(1).md'
+[2026-09-09 20:16:00]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2021北京月坛中学高一（下）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京月坛中学高一（下）期中化学（教师版）(1).md'
+[2026-09-09 20:16:00]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2021北京朝阳高一（下）期末化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京朝阳高一（下）期末化学（教师版）(1).md'
+[2026-09-09 20:16:02]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一七一中学高一（下）期中化学（教师版） (1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京一七一中学高一（下）期中化学（教师版） (1).md'
+[2026-09-09 20:16:02] 进度 780/2516 | 成图 14180 | 失败 0 | 已重写 656
+[2026-09-09 20:16:02]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一七一中高一6月月考化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京一七一中高一6月月考化学（教师版）(1).md'
+[2026-09-09 20:16:02]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一七一中高一（上）期中化学（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京一七一中高一（上）期中化学（教师版）.md'
+[2026-09-09 20:16:02]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一七一中高一（下）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京一七一中高一（下）期中化学（教师版）(1).md'
+[2026-09-09 20:16:02]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一六一中学高一（下）期中化学（选考班）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京一六一中学高一（下）期中化学（选考班）（教师版）(1).md'
+[2026-09-09 20:16:03]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一六一中高一（下）期中化学（选考班）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京一六一中高一（下）期中化学（选考班）（教师版）(1).md'
+[2026-09-09 20:16:03]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一六六中学高一（下）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京一六六中学高一（下）期中化学（教师版）(1).md'
+[2026-09-09 20:16:03]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一六六中高一（下）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京一六六中高一（下）期中化学（教师版）(1).md'
+[2026-09-09 20:16:03]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一零一中学高一（上）期末化学（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京一零一中学高一（上）期末化学（教师版）.md'
+[2026-09-09 20:16:04]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一零一中高一（上）期末化学（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京一零一中高一（上）期末化学（教师版）.md'
+[2026-09-09 20:16:04]   [ERR] D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一零一中高一（下）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京一零一中高一（下）期中化学（教师版）(1).md'
+[2026-09-09 20:16:05] 进度 800/2516 | 成图 14734 | 失败 0 | 已重写 665
+[2026-09-09 20:16:07] 进度 820/2516 | 成图 14965 | 失败 0 | 已重写 684
+[2026-09-09 20:16:08]   [ERR] D:\Project\Papers\Ocr-markdown\高一\历史\2021北京101中学高一（上）期中历史（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\历史\\2021北京101中学高一（上）期中历史（教师版）.md'
+[2026-09-09 20:16:09]   [ERR] D:\Project\Papers\Ocr-markdown\高一\历史\2021北京101中学高一（下）期末历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\历史\\2021北京101中学高一（下）期末历史（教师版）(1).md'
+[2026-09-09 20:16:10]   [ERR] D:\Project\Papers\Ocr-markdown\高一\历史\2021北京北师大实验中学高一（上）期中历史（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\历史\\2021北京北师大实验中学高一（上）期中历史（教师版）.md'
+[2026-09-09 20:16:10] 进度 840/2516 | 成图 15257 | 失败 0 | 已重写 701
+[2026-09-09 20:16:11]   [ERR] D:\Project\Papers\Ocr-markdown\高一\历史\2021北京房山高一（下）期中历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\历史\\2021北京房山高一（下）期中历史（教师版）(1).md'
+[2026-09-09 20:16:12]   [ERR] D:\Project\Papers\Ocr-markdown\高一\历史\2021北京昌平高一（下）期末历史（图片版）（答案版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\历史\\2021北京昌平高一（下）期末历史（图片版）（答案版）(1).md'
+[2026-09-09 20:16:14] 进度 860/2516 | 成图 15575 | 失败 0 | 已重写 719
+[2026-09-09 20:16:20] 进度 880/2516 | 成图 16309 | 失败 0 | 已重写 739
+[2026-09-09 20:16:23]   [ERR] D:\Project\Papers\Ocr-markdown\高一\地理\2021北京101中学高一（上）期末地理（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2021北京101中学高一（上）期末地理（教师版）.md'
+[2026-09-09 20:16:24]   [ERR] D:\Project\Papers\Ocr-markdown\高一\地理\2021北京101中学高一（下）期中地理（合格班）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2021北京101中学高一（下）期中地理（合格班）（教师版）(1).md'
+[2026-09-09 20:16:25]   [ERR] D:\Project\Papers\Ocr-markdown\高一\地理\2021北京101中学高一（下）期中地理（等级班）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2021北京101中学高一（下）期中地理（等级班）（教师版）(1).md'
+[2026-09-09 20:16:25]   [ERR] D:\Project\Papers\Ocr-markdown\高一\地理\2021北京101中学高一（下）期末地理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2021北京101中学高一（下）期末地理（教师版）(1).md'
+[2026-09-09 20:16:26]   [ERR] D:\Project\Papers\Ocr-markdown\高一\地理\2021北京101中高一（上）期中地理（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2021北京101中高一（上）期中地理（教师版）.md'
+[2026-09-09 20:16:28] 进度 900/2516 | 成图 17193 | 失败 0 | 已重写 754
+[2026-09-09 20:16:29]   [ERR] D:\Project\Papers\Ocr-markdown\高一\地理\2021北京房山高一（上）期末地理（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2021北京房山高一（上）期末地理（教师版）.md'
+[2026-09-09 20:16:29]   [ERR] D:\Project\Papers\Ocr-markdown\高一\地理\2021北京房山高一（下）期中地理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2021北京房山高一（下）期中地理（教师版）(1).md'
+[2026-09-09 20:16:30]   [ERR] D:\Project\Papers\Ocr-markdown\高一\地理\2021北京昌平高一（下）期末地理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2021北京昌平高一（下）期末地理（教师版）(1).md'
+[2026-09-09 20:16:33] 进度 920/2516 | 成图 17611 | 失败 0 | 已重写 771
+[2026-09-09 20:16:34]   [ERR] D:\Project\Papers\Ocr-markdown\高一\政治\2021北京101中学高一(下)期中政治（合格班）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\政治\\2021北京101中学高一(下)期中政治（合格班）（教师版）(1).md'
+[2026-09-09 20:16:34] 进度 940/2516 | 成图 17790 | 失败 0 | 已重写 789
+[2026-09-09 20:16:34]   [ERR] D:\Project\Papers\Ocr-markdown\高一\政治\2021北京101中学高一(下)期中政治（等级班）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\政治\\2021北京101中学高一(下)期中政治（等级班）（教师版）(1).md'
+[2026-09-09 20:16:34]   [ERR] D:\Project\Papers\Ocr-markdown\高一\政治\2021北京101中学高一（上）期中政治（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\政治\\2021北京101中学高一（上）期中政治（教师版）.md'
+[2026-09-09 20:16:34]   [ERR] D:\Project\Papers\Ocr-markdown\高一\政治\2021北京101中学高一（上）期末政治（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\政治\\2021北京101中学高一（上）期末政治（教师版）.md'
+[2026-09-09 20:16:35]   [ERR] D:\Project\Papers\Ocr-markdown\高一\政治\2021北京101中学高一（下）期末政治（等级考）（教师版） (1)(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\政治\\2021北京101中学高一（下）期末政治（等级考）（教师版） (1)(1).md'
+[2026-09-09 20:16:36]   [ERR] D:\Project\Papers\Ocr-markdown\高一\政治\2021北京怀柔一中高一（上）期中政治（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\政治\\2021北京怀柔一中高一（上）期中政治（教师版）.md'
+[2026-09-09 20:16:36]   [ERR] D:\Project\Papers\Ocr-markdown\高一\政治\2021北京房山高一（上）期末政治（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\政治\\2021北京房山高一（上）期末政治（教师版）.md'
+[2026-09-09 20:16:36]   [ERR] D:\Project\Papers\Ocr-markdown\高一\政治\2021北京房山高一（下）期中政治（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\政治\\2021北京房山高一（下）期中政治（教师版）(1).md'
+[2026-09-09 20:16:36] 进度 960/2516 | 成图 17940 | 失败 0 | 已重写 799
+[2026-09-09 20:16:36]   [ERR] D:\Project\Papers\Ocr-markdown\高一\政治\2021北京昌平高一（上）期末政治（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\政治\\2021北京昌平高一（上）期末政治（教师版）.md'
+[2026-09-09 20:16:36]   [ERR] D:\Project\Papers\Ocr-markdown\高一\政治\2021北京昌平高一（下）期末政治（教师版） (1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\政治\\2021北京昌平高一（下）期末政治（教师版） (1).md'
+[2026-09-09 20:16:40] 进度 980/2516 | 成图 18235 | 失败 0 | 已重写 816
+[2026-09-09 20:16:40] 进度 1000/2516 | 成图 18334 | 失败 0 | 已重写 836
+[2026-09-09 20:16:40]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2021北京101中学高一（上）10月月考数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京101中学高一（上）10月月考数学（教师版）(1).md'
+[2026-09-09 20:16:42] 进度 1020/2516 | 成图 18483 | 失败 0 | 已重写 855
+[2026-09-09 20:16:42]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2021北京五中高一（下）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京五中高一（下）期中数学（教师版）(1).md'
+[2026-09-09 20:16:43] 进度 1040/2516 | 成图 18601 | 失败 0 | 已重写 872
+[2026-09-09 20:16:43]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2021北京北师大实验中学高一（上）期中数学（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京北师大实验中学高一（上）期中数学（教师版）.md'
+[2026-09-09 20:16:44] 进度 1060/2516 | 成图 18686 | 失败 0 | 已重写 889
+[2026-09-09 20:16:45]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2021北京房山高一（上）期末数学（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京房山高一（上）期末数学（教师版）.md'
+[2026-09-09 20:16:45]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2021北京房山高一（下）期末数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京房山高一（下）期末数学（教师版）(1).md'
+[2026-09-09 20:16:45]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2021北京昌平高一（上）期末数学（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京昌平高一（上）期末数学（教师版）.md'
+[2026-09-09 20:16:45]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2021北京昌平高一（下）期末数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京昌平高一（下）期末数学（教师版）(1).md'
+[2026-09-09 20:16:45]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2021北京景山学校远洋分校高一（下）6月月考数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京景山学校远洋分校高一（下）6月月考数学（教师版）(1).md'
+[2026-09-09 20:16:45]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2021北京景山学校远洋分校高一（下）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京景山学校远洋分校高一（下）期中数学（教师版）(1).md'
+[2026-09-09 20:16:45]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2021北京朝阳陈经纶中学高一（上）10月月考数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京朝阳陈经纶中学高一（上）10月月考数学（教师版）(1).md'
+[2026-09-09 20:16:45] 进度 1080/2516 | 成图 18801 | 失败 1 | 已重写 898
+[2026-09-09 20:16:45]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2021北京朝阳高一（下）期末数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京朝阳高一（下）期末数学（教师版）(1).md'
+[2026-09-09 20:16:46] 进度 1100/2516 | 成图 18932 | 失败 1 | 已重写 916
+[2026-09-09 20:16:47] 进度 1120/2516 | 成图 19056 | 失败 1 | 已重写 934
+[2026-09-09 20:16:47]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2022北京101中高一（上）统练（一）数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京101中高一（上）统练（一）数学（教师版）(1).md'
+[2026-09-09 20:16:47]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2022北京一七一中学高一（下）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一七一中学高一（下）期中数学（教师版）(1).md'
+[2026-09-09 20:16:48]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2022北京一七一中高一6月月考数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一七一中高一6月月考数学（教师版）(1).md'
+[2026-09-09 20:16:48]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2022北京一七一中高一（下）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一七一中高一（下）期中数学（教师版）(1).md'
+[2026-09-09 20:16:48]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2022北京一五六中高一（上）期中数学（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一五六中高一（上）期中数学（教师版）.md'
+[2026-09-09 20:16:48]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2022北京一六一中学高一（下）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一六一中学高一（下）期中数学（教师版）(1).md'
+[2026-09-09 20:16:48]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2022北京一六一中高一（上）期中数学（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一六一中高一（上）期中数学（教师版）.md'
+[2026-09-09 20:16:48]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2022北京一六一中高一（下）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一六一中高一（下）期中数学（教师版）(1).md'
+[2026-09-09 20:16:48]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2022北京一六六中高一（下）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一六六中高一（下）期中数学（教师版）(1).md'
+[2026-09-09 20:16:48]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2022北京一零一中学高一（下）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一零一中学高一（下）期中数学（教师版）(1).md'
+[2026-09-09 20:16:48]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2022北京一零一中高一（上）期中数学（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一零一中高一（上）期中数学（教师版）.md'
+[2026-09-09 20:16:48]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2022北京一零一中高一（上）统练一数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一零一中高一（上）统练一数学（教师版）(1).md'
+[2026-09-09 20:16:48]   [ERR] D:\Project\Papers\Ocr-markdown\高一\数学\2022北京一零一中高一（下）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2022北京一零一中高一（下）期中数学（教师版）(1).md'
+[2026-09-09 20:16:48] 进度 1140/2516 | 成图 19188 | 失败 1 | 已重写 940
+[2026-09-09 20:16:52] 进度 1160/2516 | 成图 19528 | 失败 1 | 已重写 960
+[2026-09-09 20:16:54] 进度 1180/2516 | 成图 19954 | 失败 1 | 已重写 980
+[2026-09-09 20:16:58] 进度 1200/2516 | 成图 20549 | 失败 1 | 已重写 1000
+[2026-09-09 20:17:00]   [ERR] D:\Project\Papers\Ocr-markdown\高一\物理\2021北京和平街一中高一（上）期中物理（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京和平街一中高一（上）期中物理（教师版）.md'
+[2026-09-09 20:17:01] 进度 1220/2516 | 成图 21223 | 失败 1 | 已重写 1019
+[2026-09-09 20:17:02]   [ERR] D:\Project\Papers\Ocr-markdown\高一\物理\2021北京房山高一（上）期中物理（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京房山高一（上）期中物理（教师版）.md'
+[2026-09-09 20:17:02]   [ERR] D:\Project\Papers\Ocr-markdown\高一\物理\2021北京房山高一（上）期末物理（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京房山高一（上）期末物理（教师版）.md'
+[2026-09-09 20:17:04]   [ERR] D:\Project\Papers\Ocr-markdown\高一\物理\2021北京房山高一（下）期中物理（教师版）（图片版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京房山高一（下）期中物理（教师版）（图片版）(1).md'
+[2026-09-09 20:17:04]   [ERR] D:\Project\Papers\Ocr-markdown\高一\物理\2021北京房山高一（下）期末物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京房山高一（下）期末物理（教师版）(1).md'
+[2026-09-09 20:17:04]   [ERR] D:\Project\Papers\Ocr-markdown\高一\物理\2021北京昌平高一（下）期末物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京昌平高一（下）期末物理（教师版）(1).md'
+[2026-09-09 20:17:05]   [ERR] D:\Project\Papers\Ocr-markdown\高一\物理\2021北京朝阳高一（下）期末物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京朝阳高一（下）期末物理（教师版）(1).md'
+[2026-09-09 20:17:06] 进度 1240/2516 | 成图 21807 | 失败 1 | 已重写 1033
+[2026-09-09 20:17:10] 进度 1260/2516 | 成图 22431 | 失败 1 | 已重写 1053
+[2026-09-09 20:17:12]   [ERR] D:\Project\Papers\Ocr-markdown\高一\生物\2021北京101中学高一（下）期中生物（合格班）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2021北京101中学高一（下）期中生物（合格班）（教师版）(1).md'
+[2026-09-09 20:17:12]   [ERR] D:\Project\Papers\Ocr-markdown\高一\生物\2021北京101中学高一（下）期中生物（等级班）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2021北京101中学高一（下）期中生物（等级班）（教师版）(1).md'
+[2026-09-09 20:17:13]   [ERR] D:\Project\Papers\Ocr-markdown\高一\生物\2021北京101中学高一（下）期末生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2021北京101中学高一（下）期末生物（教师版）(1).md'
+[2026-09-09 20:17:13] 进度 1280/2516 | 成图 22819 | 失败 1 | 已重写 1070
+[2026-09-09 20:17:15]   [ERR] D:\Project\Papers\Ocr-markdown\高一\生物\2021北京师大附中高一10月月考生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2021北京师大附中高一10月月考生物（教师版）(1).md'
+[2026-09-09 20:17:15]   [ERR] D:\Project\Papers\Ocr-markdown\高一\生物\2021北京房山高一（上）期中生物（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2021北京房山高一（上）期中生物（教师版）.md'
+[2026-09-09 20:17:15]   [ERR] D:\Project\Papers\Ocr-markdown\高一\生物\2021北京房山高一（上）期末生物（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2021北京房山高一（上）期末生物（教师版）.md'
+[2026-09-09 20:17:15]   [ERR] D:\Project\Papers\Ocr-markdown\高一\生物\2021北京房山高一（下）期中生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2021北京房山高一（下）期中生物（教师版）(1).md'
+[2026-09-09 20:17:15] 进度 1300/2516 | 成图 23309 | 失败 1 | 已重写 1086
+[2026-09-09 20:17:16]   [ERR] D:\Project\Papers\Ocr-markdown\高一\生物\2021北京昌平高一（上）期末生物（教师版）.md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2021北京昌平高一（上）期末生物（教师版）.md'
+[2026-09-09 20:17:21] 进度 1320/2516 | 成图 23591 | 失败 1 | 已重写 1101
+[2026-09-09 20:17:25] 进度 1340/2516 | 成图 23628 | 失败 1 | 已重写 1114
+[2026-09-09 20:17:25]   [ERR] D:\Project\Papers\Ocr-markdown\高一\英语\2021北京房山高一（下）期中英语（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\英语\\2021北京房山高一（下）期中英语（教师版）(1).md'
+[2026-09-09 20:17:25]   [ERR] D:\Project\Papers\Ocr-markdown\高一\英语\2021北京昌平高一（下）期末英语（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\英语\\2021北京昌平高一（下）期末英语（教师版）(1).md'
+[2026-09-09 20:17:25] 进度 1360/2516 | 成图 23676 | 失败 1 | 已重写 1120
+[2026-09-09 20:17:25]   [ERR] D:\Project\Papers\Ocr-markdown\高一\英语\2022北京一七一中学高一（下）期中英语（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\英语\\2022北京一七一中学高一（下）期中英语（教师版）(1).md'
+[2026-09-09 20:17:25]   [ERR] D:\Project\Papers\Ocr-markdown\高一\英语\2022北京一七一中高一（下）期中英语（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\英语\\2022北京一七一中高一（下）期中英语（教师版）(1).md'
+[2026-09-09 20:17:25]   [ERR] D:\Project\Papers\Ocr-markdown\高一\英语\2022北京一零一中学高一（下）期中英语（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\英语\\2022北京一零一中学高一（下）期中英语（教师版）(1).md'
+[2026-09-09 20:17:25]   [ERR] D:\Project\Papers\Ocr-markdown\高一\英语\2022北京一零一中高一（下）期中英语（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高一\\英语\\2022北京一零一中高一（下）期中英语（教师版）(1).md'
+[2026-09-09 20:17:25] 进度 1380/2516 | 成图 23703 | 失败 1 | 已重写 1121
+[2026-09-09 20:17:25] 进度 1400/2516 | 成图 23710 | 失败 1 | 已重写 1123
+[2026-09-09 20:17:25] 进度 1420/2516 | 成图 23724 | 失败 1 | 已重写 1124
+[2026-09-09 20:17:27] 进度 1440/2516 | 成图 23891 | 失败 1 | 已重写 1130
+[2026-09-09 20:17:35] 进度 1460/2516 | 成图 25171 | 失败 1 | 已重写 1150
+[2026-09-09 20:17:37]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2021北京房山高三一模化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2021北京房山高三一模化学（教师版）(1).md'
+[2026-09-09 20:17:37]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2021北京房山高三二模化学（教师版） (1)(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2021北京房山高三二模化学（教师版） (1)(1).md'
+[2026-09-09 20:17:37]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2021北京昌平高三二模化学（教师版） (1)(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2021北京昌平高三二模化学（教师版） (1)(1).md'
+[2026-09-09 20:17:37]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2021北京昌平高三（上）期末化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2021北京昌平高三（上）期末化学（教师版）(1).md'
+[2026-09-09 20:17:38] 进度 1480/2516 | 成图 25680 | 失败 1 | 已重写 1166
+[2026-09-09 20:17:42] 进度 1500/2516 | 成图 26213 | 失败 1 | 已重写 1186
+[2026-09-09 20:17:42]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2022北京一七一中学高三三模化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一七一中学高三三模化学（教师版）(1).md'
+[2026-09-09 20:17:43]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2022北京一七一中高三（上）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一七一中高三（上）期中化学（教师版）(1).md'
+[2026-09-09 20:17:43]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2022北京一六一中高三10月月考化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一六一中高三10月月考化学（教师版）(1).md'
+[2026-09-09 20:17:43]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2022北京一六一中高三考前热身化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一六一中高三考前热身化学（教师版）(1).md'
+[2026-09-09 20:17:44]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2022北京一六一中高三（上）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一六一中高三（上）期中化学（教师版）(1).md'
+[2026-09-09 20:17:44]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2022北京一六六中学高三三模化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一六六中学高三三模化学（教师版）(1).md'
+[2026-09-09 20:17:45]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2022北京一六六中高三三模化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一六六中高三三模化学（教师版）(1).md'
+[2026-09-09 20:17:45]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2022北京一六六中高三（上）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一六六中高三（上）期中化学（教师版）(1).md'
+[2026-09-09 20:17:46]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2022北京一零一中学高三三模化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一零一中学高三三模化学（教师版）(1).md'
+[2026-09-09 20:17:46]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2022北京一零一中高三12月月考化学（统练七）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一零一中高三12月月考化学（统练七）（教师版）(1).md'
+[2026-09-09 20:17:46]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2022北京一零一中高三9月月考化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一零一中高三9月月考化学（教师版）(1).md'
+[2026-09-09 20:17:47]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2022北京一零一中高三三模化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一零一中高三三模化学（教师版）(1).md'
+[2026-09-09 20:17:47]   [ERR] D:\Project\Papers\Ocr-markdown\高三\化学\2022北京一零一中高三（上）统练六化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一零一中高三（上）统练六化学（教师版）(1).md'
+[2026-09-09 20:17:49] 进度 1520/2516 | 成图 27268 | 失败 1 | 已重写 1193
+[2026-09-09 20:17:51]   [ERR] D:\Project\Papers\Ocr-markdown\高三\历史\2021北京延庆高三一模历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\历史\\2021北京延庆高三一模历史（教师版）(1).md'
+[2026-09-09 20:17:51]   [ERR] D:\Project\Papers\Ocr-markdown\高三\历史\2021北京房山高三一模历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\历史\\2021北京房山高三一模历史（教师版）(1).md'
+[2026-09-09 20:17:51]   [ERR] D:\Project\Papers\Ocr-markdown\高三\历史\2021北京房山高三二模历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\历史\\2021北京房山高三二模历史（教师版）(1).md'
+[2026-09-09 20:17:51] 进度 1540/2516 | 成图 27464 | 失败 1 | 已重写 1210
+[2026-09-09 20:17:51]   [ERR] D:\Project\Papers\Ocr-markdown\高三\历史\2021北京昌平高三二模历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\历史\\2021北京昌平高三二模历史（教师版）(1).md'
+[2026-09-09 20:17:51]   [ERR] D:\Project\Papers\Ocr-markdown\高三\历史\2021北京昌平高三（上）期末历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\历史\\2021北京昌平高三（上）期末历史（教师版）(1).md'
+[2026-09-09 20:17:52] 进度 1560/2516 | 成图 27609 | 失败 1 | 已重写 1228
+[2026-09-09 20:17:54] 进度 1580/2516 | 成图 27759 | 失败 1 | 已重写 1243
+[2026-09-09 20:17:54]   [ERR] D:\Project\Papers\Ocr-markdown\高三\历史\2022北京一零一中学高三三模历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\历史\\2022北京一零一中学高三三模历史（教师版）(1).md'
+[2026-09-09 20:17:54]   [ERR] D:\Project\Papers\Ocr-markdown\高三\历史\2022北京一零一中高三10月月考历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\历史\\2022北京一零一中高三10月月考历史（教师版）(1).md'
+[2026-09-09 20:17:54]   [ERR] D:\Project\Papers\Ocr-markdown\高三\历史\2022北京一零一中高三9月月考历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\历史\\2022北京一零一中高三9月月考历史（教师版）(1).md'
+[2026-09-09 20:17:54]   [ERR] D:\Project\Papers\Ocr-markdown\高三\历史\2022北京一零一中高三三模历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\历史\\2022北京一零一中高三三模历史（教师版）(1).md'
+[2026-09-09 20:17:57] 进度 1600/2516 | 成图 28090 | 失败 1 | 已重写 1259
+[2026-09-09 20:18:01]   [ERR] D:\Project\Papers\Ocr-markdown\高三\地理\2021北京房山高三一模地理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\地理\\2021北京房山高三一模地理（教师版）(1).md'
+[2026-09-09 20:18:01]   [ERR] D:\Project\Papers\Ocr-markdown\高三\地理\2021北京房山高三二模地理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\地理\\2021北京房山高三二模地理（教师版）(1).md'
+[2026-09-09 20:18:02]   [ERR] D:\Project\Papers\Ocr-markdown\高三\地理\2021北京昌平高三（上）期末地理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\地理\\2021北京昌平高三（上）期末地理（教师版）(1).md'
+[2026-09-09 20:18:02] 进度 1620/2516 | 成图 28521 | 失败 1 | 已重写 1276
+[2026-09-09 20:18:07]   [ERR] D:\Project\Papers\Ocr-markdown\高三\地理\2022北京一零一中高三10月月考地理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\地理\\2022北京一零一中高三10月月考地理（教师版）(1).md'
+[2026-09-09 20:18:07] 进度 1640/2516 | 成图 28932 | 失败 1 | 已重写 1295
+[2026-09-09 20:18:10] 进度 1660/2516 | 成图 29232 | 失败 1 | 已重写 1315
+[2026-09-09 20:18:11]   [ERR] D:\Project\Papers\Ocr-markdown\高三\政治\2021北京房山高三一模政治（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\政治\\2021北京房山高三一模政治（教师版）(1).md'
+[2026-09-09 20:18:11]   [ERR] D:\Project\Papers\Ocr-markdown\高三\政治\2021北京房山高三二模政治（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\政治\\2021北京房山高三二模政治（教师版）(1).md'
+[2026-09-09 20:18:11]   [ERR] D:\Project\Papers\Ocr-markdown\高三\政治\2021北京昌平高三二模政治（教师版） (1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\政治\\2021北京昌平高三二模政治（教师版） (1).md'
+[2026-09-09 20:18:11]   [ERR] D:\Project\Papers\Ocr-markdown\高三\政治\2021北京昌平高三（上）期末政治（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\政治\\2021北京昌平高三（上）期末政治（教师版）(1).md'
+[2026-09-09 20:18:12] 进度 1680/2516 | 成图 29427 | 失败 1 | 已重写 1331
+[2026-09-09 20:18:13]   [ERR] D:\Project\Papers\Ocr-markdown\高三\政治\2022北京一零一中学高三三模政治（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\政治\\2022北京一零一中学高三三模政治（教师版）(1).md'
+[2026-09-09 20:18:13] 进度 1700/2516 | 成图 29620 | 失败 1 | 已重写 1350
+[2026-09-09 20:18:13]   [ERR] D:\Project\Papers\Ocr-markdown\高三\政治\2022北京一零一中高三三模政治（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\政治\\2022北京一零一中高三三模政治（教师版）(1).md'
+[2026-09-09 20:18:16] 进度 1720/2516 | 成图 30179 | 失败 1 | 已重写 1368
+[2026-09-09 20:18:17] 进度 1740/2516 | 成图 30337 | 失败 1 | 已重写 1388
+[2026-09-09 20:18:18] 进度 1760/2516 | 成图 30474 | 失败 1 | 已重写 1408
+[2026-09-09 20:18:19]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2021北京延庆高三一模数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2021北京延庆高三一模数学（教师版）(1).md'
+[2026-09-09 20:18:19]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2021北京怀柔高三一模数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2021北京怀柔高三一模数学（教师版）(1).md'
+[2026-09-09 20:18:19]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2021北京房山良乡中学高三（上）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2021北京房山良乡中学高三（上）期中数学（教师版）(1).md'
+[2026-09-09 20:18:19]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2021北京昌平高三二模数学（教师版） (1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2021北京昌平高三二模数学（教师版） (1).md'
+[2026-09-09 20:18:19]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2021北京昌平高三（上）期末数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2021北京昌平高三（上）期末数学（教师版）(1).md'
+[2026-09-09 20:18:20] 进度 1780/2516 | 成图 30656 | 失败 1 | 已重写 1423
+[2026-09-09 20:18:21] 进度 1800/2516 | 成图 30792 | 失败 1 | 已重写 1439
+[2026-09-09 20:18:22]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2022北京一七一中高三2月月考数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2022北京一七一中高三2月月考数学（教师版）(1).md'
+[2026-09-09 20:18:22]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2022北京一六一中学高三考前热身数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2022北京一六一中学高三考前热身数学（教师版）(1).md'
+[2026-09-09 20:18:22]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2022北京一六一中学高三（下）3月月考数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2022北京一六一中学高三（下）3月月考数学（教师版）(1).md'
+[2026-09-09 20:18:22] 进度 1820/2516 | 成图 30913 | 失败 1 | 已重写 1449
+[2026-09-09 20:18:22]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2022北京一六一中高三12月月考数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2022北京一六一中高三12月月考数学（教师版）(1).md'
+[2026-09-09 20:18:22]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2022北京一六一中高三3月月考数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2022北京一六一中高三3月月考数学（教师版）(1).md'
+[2026-09-09 20:18:22]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2022北京一六一中高三考前热身数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2022北京一六一中高三考前热身数学（教师版）(1).md'
+[2026-09-09 20:18:22]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2022北京一六一中高三（上）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2022北京一六一中高三（上）期中数学（教师版）(1).md'
+[2026-09-09 20:18:22]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2022北京一零一中学高三三模数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2022北京一零一中学高三三模数学（教师版）(1).md'
+[2026-09-09 20:18:22]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2022北京一零一中高三三模数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2022北京一零一中高三三模数学（教师版）(1).md'
+[2026-09-09 20:18:22]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2022北京一零一中高三（上）统练二数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2022北京一零一中高三（上）统练二数学（教师版）(1).md'
+[2026-09-09 20:18:23]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2022北京一零一中高三（下）统练三数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2022北京一零一中高三（下）统练三数学（教师版）(1).md'
+[2026-09-09 20:18:23]   [ERR] D:\Project\Papers\Ocr-markdown\高三\数学\2022北京一零九中高三10月月考数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2022北京一零九中高三10月月考数学（教师版）(1).md'
+[2026-09-09 20:18:24] 进度 1840/2516 | 成图 31083 | 失败 1 | 已重写 1459
+[2026-09-09 20:18:28]   [ERR] D:\Project\Papers\Ocr-markdown\高三\物理\2021北京延庆高三一模物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2021北京延庆高三一模物理（教师版）(1).md'
+[2026-09-09 20:18:28]   [ERR] D:\Project\Papers\Ocr-markdown\高三\物理\2021北京房山高三一模物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2021北京房山高三一模物理（教师版）(1).md'
+[2026-09-09 20:18:28] 进度 1860/2516 | 成图 31849 | 失败 1 | 已重写 1477
+[2026-09-09 20:18:28]   [ERR] D:\Project\Papers\Ocr-markdown\高三\物理\2021北京昌平高三二模物理(教师版)(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2021北京昌平高三二模物理(教师版)(1).md'
+[2026-09-09 20:18:28]   [ERR] D:\Project\Papers\Ocr-markdown\高三\物理\2021北京昌平高三（上）期末物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2021北京昌平高三（上）期末物理（教师版）(1).md'
+[2026-09-09 20:18:31] 进度 1880/2516 | 成图 32545 | 失败 1 | 已重写 1495
+[2026-09-09 20:18:34]   [ERR] D:\Project\Papers\Ocr-markdown\高三\物理\2022北京一七一中高三9月月考物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2022北京一七一中高三9月月考物理（教师版）(1).md'
+[2026-09-09 20:18:34]   [ERR] D:\Project\Papers\Ocr-markdown\高三\物理\2022北京一七一中高三（上）期中物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2022北京一七一中高三（上）期中物理（教师版）(1).md'
+[2026-09-09 20:18:34]   [ERR] D:\Project\Papers\Ocr-markdown\高三\物理\2022北京一零一中高三9月月考物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2022北京一零一中高三9月月考物理（教师版）(1).md'
+[2026-09-09 20:18:34]   [ERR] D:\Project\Papers\Ocr-markdown\高三\物理\2022北京一零一中高三三模物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2022北京一零一中高三三模物理（教师版）(1).md'
+[2026-09-09 20:18:34]   [ERR] D:\Project\Papers\Ocr-markdown\高三\物理\2022北京七中高三（上）期中物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2022北京七中高三（上）期中物理（教师版）(1).md'
+[2026-09-09 20:18:35] 进度 1900/2516 | 成图 33353 | 失败 1 | 已重写 1510
+[2026-09-09 20:18:42] 进度 1920/2516 | 成图 33968 | 失败 1 | 已重写 1530
+[2026-09-09 20:18:44]   [ERR] D:\Project\Papers\Ocr-markdown\高三\生物\2021北京延庆高三一模生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\生物\\2021北京延庆高三一模生物（教师版）(1).md'
+[2026-09-09 20:18:44]   [ERR] D:\Project\Papers\Ocr-markdown\高三\生物\2021北京昌平高三二模生物（教师版） (1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\生物\\2021北京昌平高三二模生物（教师版） (1).md'
+[2026-09-09 20:18:45]   [ERR] D:\Project\Papers\Ocr-markdown\高三\生物\2021北京昌平高三（上）期末生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\生物\\2021北京昌平高三（上）期末生物（教师版）(1).md'
+[2026-09-09 20:18:45]   [ERR] D:\Project\Papers\Ocr-markdown\高三\生物\2021北京朝阳高三一模生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\生物\\2021北京朝阳高三一模生物（教师版）(1).md'
+[2026-09-09 20:18:47] 进度 1940/2516 | 成图 34456 | 失败 1 | 已重写 1546
+[2026-09-09 20:18:51] 进度 1960/2516 | 成图 34855 | 失败 1 | 已重写 1566
+[2026-09-09 20:18:53]   [ERR] D:\Project\Papers\Ocr-markdown\高三\生物\2022北京一零一中高三10月月考生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\生物\\2022北京一零一中高三10月月考生物（教师版）(1).md'
+[2026-09-09 20:18:56] 进度 1980/2516 | 成图 35247 | 失败 1 | 已重写 1583
+[2026-09-09 20:18:57]   [ERR] D:\Project\Papers\Ocr-markdown\高三\英语\2021北京延庆高三一模英语（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\英语\\2021北京延庆高三一模英语（教师版）(1).md'
+[2026-09-09 20:18:57]   [ERR] D:\Project\Papers\Ocr-markdown\高三\英语\2021北京昌平高三（上）期末英语（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\英语\\2021北京昌平高三（上）期末英语（教师版）(1).md'
+[2026-09-09 20:18:57] 进度 2000/2516 | 成图 35284 | 失败 1 | 已重写 1591
+[2026-09-09 20:18:57]   [ERR] D:\Project\Papers\Ocr-markdown\高三\英语\2022北京一六一中高三12月月考英语（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\英语\\2022北京一六一中高三12月月考英语（教师版）(1).md'
+[2026-09-09 20:18:57] 进度 2020/2516 | 成图 35310 | 失败 1 | 已重写 1599
+[2026-09-09 20:18:58] 进度 2040/2516 | 成图 35321 | 失败 1 | 已重写 1603
+[2026-09-09 20:18:58] 进度 2060/2516 | 成图 35326 | 失败 1 | 已重写 1606
+[2026-09-09 20:18:58]   [ERR] D:\Project\Papers\Ocr-markdown\高三\语文\2022北京一七一中学高三三模语文（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\语文\\2022北京一七一中学高三三模语文（教师版）(1).md'
+[2026-09-09 20:18:58]   [ERR] D:\Project\Papers\Ocr-markdown\高三\语文\2022北京一七一中高三三模语文（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\语文\\2022北京一七一中高三三模语文（教师版）(1).md'
+[2026-09-09 20:18:58]   [ERR] D:\Project\Papers\Ocr-markdown\高三\语文\2022北京一零一中高三2月月考语文（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\语文\\2022北京一零一中高三2月月考语文（教师版）(1).md'
+[2026-09-09 20:18:58]   [ERR] D:\Project\Papers\Ocr-markdown\高三\语文\2022北京一零一中高三（上）统练七语文（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高三\\语文\\2022北京一零一中高三（上）统练七语文（教师版）(1).md'
+[2026-09-09 20:18:58] 进度 2080/2516 | 成图 35369 | 失败 1 | 已重写 1609
+[2026-09-09 20:19:03] 进度 2100/2516 | 成图 36076 | 失败 1 | 已重写 1629
+[2026-09-09 20:19:06] 进度 2120/2516 | 成图 36504 | 失败 1 | 已重写 1649
+[2026-09-09 20:19:06]   [ERR] D:\Project\Papers\Ocr-markdown\高二\化学\2021北京昌平高二（上）期末化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2021北京昌平高二（上）期末化学（教师版）(1).md'
+[2026-09-09 20:19:08]   [ERR] D:\Project\Papers\Ocr-markdown\高二\化学\2022北京一五六中学高二（下）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2022北京一五六中学高二（下）期中化学（教师版）(1).md'
+[2026-09-09 20:19:08]   [ERR] D:\Project\Papers\Ocr-markdown\高二\化学\2022北京一五六中高二（下）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2022北京一五六中高二（下）期中化学（教师版）(1).md'
+[2026-09-09 20:19:09]   [ERR] D:\Project\Papers\Ocr-markdown\高二\化学\2022北京一六一中高二（下）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2022北京一六一中高二（下）期中化学（教师版）(1).md'
+[2026-09-09 20:19:09]   [ERR] D:\Project\Papers\Ocr-markdown\高二\化学\2022北京一零一中高二10月月考化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2022北京一零一中高二10月月考化学（教师版）(1).md'
+[2026-09-09 20:19:09]   [ERR] D:\Project\Papers\Ocr-markdown\高二\化学\2022北京一零一中高二（上）期中化学（等级考）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2022北京一零一中高二（上）期中化学（等级考）（教师版）(1).md'
+[2026-09-09 20:19:09]   [ERR] D:\Project\Papers\Ocr-markdown\高二\化学\2022北京一零一中高二（下）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2022北京一零一中高二（下）期中化学（教师版）(1).md'
+[2026-09-09 20:19:09]   [ERR] D:\Project\Papers\Ocr-markdown\高二\化学\2022北京七中高二（上）期中化学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2022北京七中高二（上）期中化学（教师版）(1).md'
+[2026-09-09 20:19:10] 进度 2140/2516 | 成图 37186 | 失败 1 | 已重写 1661
+[2026-09-09 20:19:14]   [ERR] D:\Project\Papers\Ocr-markdown\高二\历史\2021北京101中学高二（上）期中历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\历史\\2021北京101中学高二（上）期中历史（教师版）(1).md'
+[2026-09-09 20:19:14] 进度 2160/2516 | 成图 37584 | 失败 1 | 已重写 1679
+[2026-09-09 20:19:14]   [ERR] D:\Project\Papers\Ocr-markdown\高二\历史\2021北京昌平实验学校高二（上）期中历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\历史\\2021北京昌平实验学校高二（上）期中历史（教师版）(1).md'
+[2026-09-09 20:19:14]   [ERR] D:\Project\Papers\Ocr-markdown\高二\历史\2021北京朝阳日坛中学高二（上）期中历史（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\历史\\2021北京朝阳日坛中学高二（上）期中历史（教师版）(1).md'
+[2026-09-09 20:19:18] 进度 2180/2516 | 成图 38054 | 失败 1 | 已重写 1697
+[2026-09-09 20:19:22]   [ERR] D:\Project\Papers\Ocr-markdown\高二\地理\2021北京101中学高二（上）期末地理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\地理\\2021北京101中学高二（上）期末地理（教师版）(1).md'
+[2026-09-09 20:19:23]   [ERR] D:\Project\Papers\Ocr-markdown\高二\地理\2021北京延庆高二（上）期末地理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\地理\\2021北京延庆高二（上）期末地理（教师版）(1).md'
+[2026-09-09 20:19:24]   [ERR] D:\Project\Papers\Ocr-markdown\高二\地理\2021北京昌平实验学校高二（上）期中地理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\地理\\2021北京昌平实验学校高二（上）期中地理（教师版）(1).md'
+[2026-09-09 20:19:24]   [ERR] D:\Project\Papers\Ocr-markdown\高二\地理\2021北京昌平高二（上）期末地理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\地理\\2021北京昌平高二（上）期末地理（教师版）(1).md'
+[2026-09-09 20:19:26] 进度 2200/2516 | 成图 38588 | 失败 1 | 已重写 1713
+[2026-09-09 20:19:26]   [ERR] D:\Project\Papers\Ocr-markdown\高二\政治\2021北京101中学高二（上）期中政治（合格考）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\政治\\2021北京101中学高二（上）期中政治（合格考）（教师版）(1).md'
+[2026-09-09 20:19:26]   [ERR] D:\Project\Papers\Ocr-markdown\高二\政治\2021北京101中学高二（上）期中政治（等级考）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\政治\\2021北京101中学高二（上）期中政治（等级考）（教师版）(1).md'
+[2026-09-09 20:19:26]   [ERR] D:\Project\Papers\Ocr-markdown\高二\政治\2021北京101中学高二（上）期末政治（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\政治\\2021北京101中学高二（上）期末政治（教师版）(1).md'
+[2026-09-09 20:19:27]   [ERR] D:\Project\Papers\Ocr-markdown\高二\政治\2021北京四中高二（上）期中政治（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\政治\\2021北京四中高二（上）期中政治（教师版）(1).md'
+[2026-09-09 20:19:27]   [ERR] D:\Project\Papers\Ocr-markdown\高二\政治\2021北京昌平区新学道临川学校高二（上）期末政治（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\政治\\2021北京昌平区新学道临川学校高二（上）期末政治（教师版）(1).md'
+[2026-09-09 20:19:27]   [ERR] D:\Project\Papers\Ocr-markdown\高二\政治\2021北京昌平实验中学高二（上）期中政治（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\政治\\2021北京昌平实验中学高二（上）期中政治（教师版）(1).md'
+[2026-09-09 20:19:27] 进度 2220/2516 | 成图 38731 | 失败 1 | 已重写 1727
+[2026-09-09 20:19:29] 进度 2240/2516 | 成图 38817 | 失败 1 | 已重写 1747
+[2026-09-09 20:19:30] 进度 2260/2516 | 成图 38953 | 失败 1 | 已重写 1767
+[2026-09-09 20:19:30]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2021北京101中学高二（上）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2021北京101中学高二（上）期中数学（教师版）(1).md'
+[2026-09-09 20:19:30]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2021北京14中高二（上）期中数学答案图片(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2021北京14中高二（上）期中数学答案图片(1).md'
+[2026-09-09 20:19:31] 进度 2280/2516 | 成图 39150 | 失败 1 | 已重写 1785
+[2026-09-09 20:19:32]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2021北京昌平高二（上）期末数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2021北京昌平高二（上）期末数学（教师版）(1).md'
+[2026-09-09 20:19:32]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2021北京景山远洋分校高二（上）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2021北京景山远洋分校高二（上）期中数学（教师版）(1).md'
+[2026-09-09 20:19:33] 进度 2300/2516 | 成图 39374 | 失败 1 | 已重写 1803
+[2026-09-09 20:19:34]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2022北京101中学高二（上）期末数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2022北京101中学高二（上）期末数学（教师版）(1).md'
+[2026-09-09 20:19:34]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2022北京101矿大分校高二（下）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2022北京101矿大分校高二（下）期中数学（教师版）(1).md'
+[2026-09-09 20:19:34]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2022北京一七一中高二10月月考数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2022北京一七一中高二10月月考数学（教师版）(1).md'
+[2026-09-09 20:19:34]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2022北京一七一中高二（上）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2022北京一七一中高二（上）期中数学（教师版）(1).md'
+[2026-09-09 20:19:34]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2022北京一六一中学高二（下）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2022北京一六一中学高二（下）期中数学（教师版）(1).md'
+[2026-09-09 20:19:34]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2022北京一六一中高二10月月考数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2022北京一六一中高二10月月考数学（教师版）(1).md'
+[2026-09-09 20:19:34]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2022北京一六一中高二（上）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2022北京一六一中高二（上）期中数学（教师版）(1).md'
+[2026-09-09 20:19:34]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2022北京一零一中高二（上）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2022北京一零一中高二（上）期中数学（教师版）(1).md'
+[2026-09-09 20:19:34]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2022北京一零一中高二（上）期末数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2022北京一零一中高二（上）期末数学（教师版）(1).md'
+[2026-09-09 20:19:35]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2022北京一零一中高二（下）期中数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2022北京一零一中高二（下）期中数学（教师版）(1).md'
+[2026-09-09 20:19:35]   [ERR] D:\Project\Papers\Ocr-markdown\高二\数学\2022北京一零一中高二（下）统练三数学（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2022北京一零一中高二（下）统练三数学（教师版）(1).md'
+[2026-09-09 20:19:35] 进度 2320/2516 | 成图 39565 | 失败 1 | 已重写 1812
+[2026-09-09 20:19:38] 进度 2340/2516 | 成图 39927 | 失败 1 | 已重写 1832
+[2026-09-09 20:19:40]   [ERR] D:\Project\Papers\Ocr-markdown\高二\物理\2021北京101中学高二（上）期末物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2021北京101中学高二（上）期末物理（教师版）(1).md'
+[2026-09-09 20:19:41]   [ERR] D:\Project\Papers\Ocr-markdown\高二\物理\2021北京农大附中高二（上）期中物理（合格考）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2021北京农大附中高二（上）期中物理（合格考）（教师版）(1).md'
+[2026-09-09 20:19:42] 进度 2360/2516 | 成图 40713 | 失败 1 | 已重写 1850
+[2026-09-09 20:19:45]   [ERR] D:\Project\Papers\Ocr-markdown\高二\物理\2022北京一七一中高二10月月考物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2022北京一七一中高二10月月考物理（教师版）(1).md'
+[2026-09-09 20:19:46]   [ERR] D:\Project\Papers\Ocr-markdown\高二\物理\2022北京一七一中高二（上）期中物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2022北京一七一中高二（上）期中物理（教师版）(1).md'
+[2026-09-09 20:19:46]   [ERR] D:\Project\Papers\Ocr-markdown\高二\物理\2022北京一五六中高二（下）期中物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2022北京一五六中高二（下）期中物理（教师版）(1).md'
+[2026-09-09 20:19:46]   [ERR] D:\Project\Papers\Ocr-markdown\高二\物理\2022北京一六六中高二（上）期中物理（选考）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2022北京一六六中高二（上）期中物理（选考）（教师版）(1).md'
+[2026-09-09 20:19:46] 进度 2380/2516 | 成图 41544 | 失败 1 | 已重写 1866
+[2026-09-09 20:19:46]   [ERR] D:\Project\Papers\Ocr-markdown\高二\物理\2022北京一零一中高二（上）期中物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2022北京一零一中高二（上）期中物理（教师版）(1).md'
+[2026-09-09 20:19:47]   [ERR] D:\Project\Papers\Ocr-markdown\高二\物理\2022北京一零一中高二（下）期中物理（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2022北京一零一中高二（下）期中物理（教师版）(1).md'
+[2026-09-09 20:19:50] 进度 2400/2516 | 成图 42113 | 失败 1 | 已重写 1884
+[2026-09-09 20:19:51]   [ERR] D:\Project\Papers\Ocr-markdown\高二\生物\2021北京101中学高二（上）期中生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2021北京101中学高二（上）期中生物（教师版）(1).md'
+[2026-09-09 20:19:51]   [ERR] D:\Project\Papers\Ocr-markdown\高二\生物\2021北京101中学高二（上）期末生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2021北京101中学高二（上）期末生物（教师版）(1).md'
+[2026-09-09 20:19:51]   [ERR] D:\Project\Papers\Ocr-markdown\高二\生物\2021北京101中学高二（下）期末生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2021北京101中学高二（下）期末生物（教师版）(1).md'
+[2026-09-09 20:19:51]   [ERR] D:\Project\Papers\Ocr-markdown\高二\生物\2021北京东城高二（上）期末生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2021北京东城高二（上）期末生物（教师版）(1).md'
+[2026-09-09 20:19:52]   [ERR] D:\Project\Papers\Ocr-markdown\高二\生物\2021北京农大附中高二（上）期中生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2021北京农大附中高二（上）期中生物（教师版）(1).md'
+[2026-09-09 20:19:53]   [ERR] D:\Project\Papers\Ocr-markdown\高二\生物\2021北京昌平高二（上）期末生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2021北京昌平高二（上）期末生物（教师版）(1).md'
+[2026-09-09 20:19:53]   [ERR] D:\Project\Papers\Ocr-markdown\高二\生物\2021北京朝阳外国语学校高二（上）期中生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2021北京朝阳外国语学校高二（上）期中生物（教师版）(1).md'
+[2026-09-09 20:19:54] 进度 2420/2516 | 成图 42659 | 失败 1 | 已重写 1897
+[2026-09-09 20:19:54]   [ERR] D:\Project\Papers\Ocr-markdown\高二\生物\2022北京一五六中学高二（下）期中生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2022北京一五六中学高二（下）期中生物（教师版）(1).md'
+[2026-09-09 20:19:55]   [ERR] D:\Project\Papers\Ocr-markdown\高二\生物\2022北京一五六中高二（下）期中生物（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2022北京一五六中高二（下）期中生物（教师版）(1).md'
+[2026-09-09 20:19:55]   [ERR] D:\Project\Papers\Ocr-markdown\高二\生物\2022北京一零一中高二（下）期中生物（等级考）（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2022北京一零一中高二（下）期中生物（等级考）（教师版）(1).md'
+[2026-09-09 20:19:59] 进度 2440/2516 | 成图 42927 | 失败 1 | 已重写 1910
+[2026-09-09 20:20:00]   [ERR] D:\Project\Papers\Ocr-markdown\高二\英语\2022北京一七一中高二10月月考英语（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\英语\\2022北京一七一中高二10月月考英语（教师版）(1).md'
+[2026-09-09 20:20:00]   [ERR] D:\Project\Papers\Ocr-markdown\高二\英语\2022北京一七一中高二（上）期中英语（教师版）(1).md: [Errno 13] Permission denied: 'D:\\Project\\Papers\\Ocr-markdown\\高二\\英语\\2022北京一七一中高二（上）期中英语（教师版）(1).md'
+[2026-09-09 20:20:00] 进度 2460/2516 | 成图 42972 | 失败 1 | 已重写 1920
+[2026-09-09 20:20:00] 进度 2480/2516 | 成图 42990 | 失败 1 | 已重写 1925
+[2026-09-09 20:20:00] 进度 2500/2516 | 成图 42998 | 失败 1 | 已重写 1928
+[2026-09-09 20:20:00] 同步重写 auto-annotated-v6 引用 ...
+[2026-09-09 20:20:02] 完成: {"with_refs": 2157, "no_refs": 359, "refs_total": 43013, "img_ok": 42998, "ref_fail": 1, "pdf_miss": 0, "pdf_error": 228, "md_rewritten": 1928, "ref_rewritten": 37936, "v6_rewritten": 1229, "v6_ref_rewritten": 22884, "elapsed_sec": 361.9, "md_total": 2516}
+[2026-09-09 20:20:28] ============================================================
+[2026-09-09 20:20:28] 图片恢复开始 (PyMuPDF 坐标裁剪)
+[2026-09-09 20:20:28] ============================================================
+[2026-09-09 20:20:28] 源PDF索引: 12707 | 待扫描md: 2525
+[2026-09-09 20:20:28] 进度 20/2525 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:20:28] 进度 40/2525 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:20:28] 进度 60/2525 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:20:28] 进度 80/2525 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:20:28] 进度 100/2525 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:20:28] 进度 120/2525 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:20:28] 进度 140/2525 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:20:28] 进度 160/2525 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:20:28] 进度 180/2525 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:20:28] 进度 200/2525 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:20:28] 进度 220/2525 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:20:28] 进度 240/2525 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:20:55]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\未分类\地理\2022全国甲卷高考真题地理（教师版）(1).md
+[2026-09-09 20:20:55] 进度 260/2525 | 成图 6 | 失败 0 | 已重写 0
+[2026-09-09 20:20:55] 进度 280/2525 | 成图 6 | 失败 0 | 已重写 0
+[2026-09-09 20:20:55] 进度 300/2525 | 成图 6 | 失败 0 | 已重写 0
+[2026-09-09 20:20:55] 进度 320/2525 | 成图 6 | 失败 0 | 已重写 0
+[2026-09-09 20:21:21]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\未分类\政治\2022全国甲卷高考真题政治（教师版）(1).md
+[2026-09-09 20:21:21] 进度 340/2525 | 成图 10 | 失败 0 | 已重写 0
+[2026-09-09 20:21:21] 进度 360/2525 | 成图 10 | 失败 0 | 已重写 0
+[2026-09-09 20:21:21] 进度 380/2525 | 成图 10 | 失败 0 | 已重写 0
+[2026-09-09 20:21:21] 进度 400/2525 | 成图 10 | 失败 0 | 已重写 0
+[2026-09-09 20:21:21] 进度 420/2525 | 成图 10 | 失败 0 | 已重写 0
+[2026-09-09 20:21:47]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\未分类\数学\2021全国甲卷高考真题数学（理）（教师版）(1).md
+[2026-09-09 20:21:47] 进度 440/2525 | 成图 27 | 失败 0 | 已重写 0
+[2026-09-09 20:21:47] 进度 460/2525 | 成图 27 | 失败 0 | 已重写 0
+[2026-09-09 20:21:47] 进度 480/2525 | 成图 27 | 失败 0 | 已重写 0
+[2026-09-09 20:22:13]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\未分类\物理\2021全国甲卷高考真题物理（教师版）(1).md
+[2026-09-09 20:22:39]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\未分类\物理\2022全国甲卷高考真题物理（教师版）(1).md
+[2026-09-09 20:22:39] 进度 500/2525 | 成图 79 | 失败 0 | 已重写 0
+[2026-09-09 20:22:39] 进度 520/2525 | 成图 79 | 失败 0 | 已重写 0
+[2026-09-09 20:22:39] 进度 540/2525 | 成图 79 | 失败 0 | 已重写 0
+[2026-09-09 20:22:39] 进度 560/2525 | 成图 79 | 失败 0 | 已重写 0
+[2026-09-09 20:23:05]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\未分类\生物\2021全国甲卷高考真题生物（教师版）(1).md
+[2026-09-09 20:23:31]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\未分类\生物\2022全国甲卷高考真题生物（教师版）(1).md
+[2026-09-09 20:23:31] 进度 580/2525 | 成图 87 | 失败 0 | 已重写 0
+[2026-09-09 20:23:31] 进度 600/2525 | 成图 87 | 失败 0 | 已重写 0
+[2026-09-09 20:23:31] 进度 620/2525 | 成图 87 | 失败 0 | 已重写 0
+[2026-09-09 20:23:31] 进度 640/2525 | 成图 87 | 失败 0 | 已重写 0
+[2026-09-09 20:23:31] 进度 660/2525 | 成图 87 | 失败 0 | 已重写 0
+[2026-09-09 20:23:31] 进度 680/2525 | 成图 87 | 失败 0 | 已重写 0
+[2026-09-09 20:23:58]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\未分类\语文\2022全国甲卷高考真题语文（教师版）(1).md
+[2026-09-09 20:23:58] 进度 700/2525 | 成图 90 | 失败 0 | 已重写 0
+[2026-09-09 20:23:58] 进度 720/2525 | 成图 90 | 失败 0 | 已重写 0
+[2026-09-09 20:24:24]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2021北京101中学高一（下）期末化学（教师版）(1).md
+[2026-09-09 20:24:50]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2021北京东城高一（下）期末化学（教师版）(1).md
+[2026-09-09 20:24:50] 进度 740/2525 | 成图 159 | 失败 0 | 已重写 0
+[2026-09-09 20:25:16]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2021北京北师大实验中学高一（上）期末化学（教师版）.md
+[2026-09-09 20:25:16] 进度 760/2525 | 成图 191 | 失败 0 | 已重写 0
+[2026-09-09 20:25:42]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2021北京徐悲鸿中学高一（下）期中化学（教师版）(1).md
+[2026-09-09 20:26:08]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2021北京房山高一（上）期末化学（教师版）.md
+[2026-09-09 20:26:35]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2021北京昌平高一（上）期末化学（教师版）.md
+[2026-09-09 20:27:01]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2021北京昌平高一（下）期末化学（教师版）(1).md
+[2026-09-09 20:27:27]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2021北京月坛中学高一（下）期中化学（教师版）(1).md
+[2026-09-09 20:27:53]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2021北京朝阳高一（下）期末化学（教师版）(1).md
+[2026-09-09 20:28:19]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一七一中学高一（下）期中化学（教师版） (1).md
+[2026-09-09 20:28:19] 进度 780/2525 | 成图 365 | 失败 0 | 已重写 0
+[2026-09-09 20:28:46]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一七一中高一6月月考化学（教师版）(1).md
+[2026-09-09 20:29:12]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一七一中高一（上）期中化学（教师版）.md
+[2026-09-09 20:29:38]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一七一中高一（下）期中化学（教师版）(1).md
+[2026-09-09 20:30:05]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一六一中学高一（下）期中化学（选考班）（教师版）(1).md
+[2026-09-09 20:30:31]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一六一中高一（下）期中化学（选考班）（教师版）(1).md
+[2026-09-09 20:30:57]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一六六中学高一（下）期中化学（教师版）(1).md
+[2026-09-09 20:31:23]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一六六中高一（下）期中化学（教师版）(1).md
+[2026-09-09 20:31:50]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一零一中学高一（上）期末化学（教师版）.md
+[2026-09-09 20:32:16]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一零一中高一（上）期末化学（教师版）.md
+[2026-09-09 20:32:42]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\化学\2022北京一零一中高一（下）期中化学（教师版）(1).md
+[2026-09-09 20:32:42] 进度 800/2525 | 成图 728 | 失败 0 | 已重写 1
+[2026-09-09 20:32:42] 进度 820/2525 | 成图 728 | 失败 0 | 已重写 1
+[2026-09-09 20:33:08]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\历史\2021北京101中学高一（上）期中历史（教师版）.md
+[2026-09-09 20:33:34]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\历史\2021北京101中学高一（下）期末历史（教师版）(1).md
+[2026-09-09 20:34:01]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\历史\2021北京北师大实验中学高一（上）期中历史（教师版）.md
+[2026-09-09 20:34:01] 进度 840/2525 | 成图 787 | 失败 0 | 已重写 1
+[2026-09-09 20:34:27]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\历史\2021北京房山高一（下）期中历史（教师版）(1).md
+[2026-09-09 20:34:54]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\历史\2021北京昌平高一（下）期末历史（图片版）（答案版）(1).md
+[2026-09-09 20:34:54] 进度 860/2525 | 成图 808 | 失败 0 | 已重写 1
+[2026-09-09 20:34:54] 进度 880/2525 | 成图 808 | 失败 0 | 已重写 1
+[2026-09-09 20:35:20]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\地理\2021北京101中学高一（上）期末地理（教师版）.md
+[2026-09-09 20:35:47]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\地理\2021北京101中学高一（下）期中地理（合格班）（教师版）(1).md
+[2026-09-09 20:36:14]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\地理\2021北京101中学高一（下）期中地理（等级班）（教师版）(1).md
+[2026-09-09 20:36:40]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\地理\2021北京101中学高一（下）期末地理（教师版）(1).md
+[2026-09-09 20:37:07]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\地理\2021北京101中高一（上）期中地理（教师版）.md
+[2026-09-09 20:37:07] 进度 900/2525 | 成图 1088 | 失败 0 | 已重写 1
+[2026-09-09 20:37:33]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\地理\2021北京房山高一（上）期末地理（教师版）.md
+[2026-09-09 20:37:59]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\地理\2021北京房山高一（下）期中地理（教师版）(1).md
+[2026-09-09 20:38:25]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\地理\2021北京昌平高一（下）期末地理（教师版）(1).md
+[2026-09-09 20:38:25] 进度 920/2525 | 成图 1162 | 失败 0 | 已重写 1
+[2026-09-09 20:38:25] 进度 940/2525 | 成图 1162 | 失败 0 | 已重写 1
+[2026-09-09 20:38:51]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\政治\2021北京101中学高一(下)期中政治（合格班）（教师版）(1).md
+[2026-09-09 20:39:18]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\政治\2021北京101中学高一(下)期中政治（等级班）（教师版）(1).md
+[2026-09-09 20:39:44]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\政治\2021北京101中学高一（上）期中政治（教师版）.md
+[2026-09-09 20:40:10]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\政治\2021北京101中学高一（上）期末政治（教师版）.md
+[2026-09-09 20:40:36]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\政治\2021北京101中学高一（下）期末政治（等级考）（教师版） (1)(1).md
+[2026-09-09 20:41:02]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\政治\2021北京怀柔一中高一（上）期中政治（教师版）.md
+[2026-09-09 20:41:28]   [LOCKED] 无法写入(已提取图片): D:\Project\Papers\Ocr-markdown\高一\政治\2021北京房山高一（上）期末政治（教师版）.md
+[2026-09-09 20:41:28] 进度 960/2525 | 成图 1237 | 失败 0 | 已重写 1
+[2026-09-09 20:44:40] ============================================================
+[2026-09-09 20:44:40] 图片恢复开始 (PyMuPDF 坐标裁剪)
+[2026-09-09 20:44:40] ============================================================
+[2026-09-09 20:44:41] 源PDF索引: 12707 | 待扫描md: 2542
+[2026-09-09 20:44:41] 进度 20/2542 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:44:41] 进度 40/2542 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:44:41] 进度 60/2542 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:44:41] 进度 80/2542 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:44:41] 进度 100/2542 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:44:41] 进度 120/2542 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:44:41] 进度 140/2542 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:44:41] 进度 160/2542 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:44:41] 进度 180/2542 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:44:41] 进度 200/2542 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:44:41] 进度 220/2542 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:44:41] 进度 240/2542 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:44:41] 进度 260/2542 | 成图 6 | 失败 0 | 已重写 1
+[2026-09-09 20:44:41] 进度 280/2542 | 成图 6 | 失败 0 | 已重写 1
+[2026-09-09 20:44:41] 进度 300/2542 | 成图 6 | 失败 0 | 已重写 1
+[2026-09-09 20:44:41] 进度 320/2542 | 成图 6 | 失败 0 | 已重写 1
+[2026-09-09 20:44:41] 进度 340/2542 | 成图 10 | 失败 0 | 已重写 2
+[2026-09-09 20:44:41] 进度 360/2542 | 成图 10 | 失败 0 | 已重写 2
+[2026-09-09 20:44:41] 进度 380/2542 | 成图 10 | 失败 0 | 已重写 2
+[2026-09-09 20:44:41] 进度 400/2542 | 成图 10 | 失败 0 | 已重写 2
+[2026-09-09 20:44:41] 进度 420/2542 | 成图 10 | 失败 0 | 已重写 2
+[2026-09-09 20:44:41] 进度 440/2542 | 成图 27 | 失败 0 | 已重写 3
+[2026-09-09 20:44:41] 进度 460/2542 | 成图 27 | 失败 0 | 已重写 3
+[2026-09-09 20:44:41] 进度 480/2542 | 成图 27 | 失败 0 | 已重写 3
+[2026-09-09 20:44:41] 进度 500/2542 | 成图 79 | 失败 0 | 已重写 5
+[2026-09-09 20:44:41] 进度 520/2542 | 成图 79 | 失败 0 | 已重写 5
+[2026-09-09 20:44:41] 进度 540/2542 | 成图 79 | 失败 0 | 已重写 5
+[2026-09-09 20:44:41] 进度 560/2542 | 成图 79 | 失败 0 | 已重写 5
+[2026-09-09 20:44:41] 进度 580/2542 | 成图 87 | 失败 0 | 已重写 7
+[2026-09-09 20:44:41] 进度 600/2542 | 成图 87 | 失败 0 | 已重写 7
+[2026-09-09 20:44:41] 进度 620/2542 | 成图 87 | 失败 0 | 已重写 7
+[2026-09-09 20:44:41] 进度 640/2542 | 成图 87 | 失败 0 | 已重写 7
+[2026-09-09 20:44:41] 进度 660/2542 | 成图 87 | 失败 0 | 已重写 7
+[2026-09-09 20:44:41] 进度 680/2542 | 成图 87 | 失败 0 | 已重写 7
+[2026-09-09 20:44:42] 进度 700/2542 | 成图 90 | 失败 0 | 已重写 8
+[2026-09-09 20:44:42] 进度 720/2542 | 成图 90 | 失败 0 | 已重写 8
+[2026-09-09 20:44:42] 进度 740/2542 | 成图 159 | 失败 0 | 已重写 10
+[2026-09-09 20:44:42] 进度 760/2542 | 成图 191 | 失败 0 | 已重写 11
+[2026-09-09 20:44:43] 进度 780/2542 | 成图 365 | 失败 0 | 已重写 18
+[2026-09-09 20:44:46] 进度 800/2542 | 成图 798 | 失败 0 | 已重写 30
+[2026-09-09 20:44:47] 进度 820/2542 | 成图 822 | 失败 0 | 已重写 31
+[2026-09-09 20:44:47] 进度 840/2542 | 成图 876 | 失败 0 | 已重写 33
+[2026-09-09 20:44:49] 进度 860/2542 | 成图 902 | 失败 0 | 已重写 36
+[2026-09-09 20:44:49] 进度 880/2542 | 成图 922 | 失败 0 | 已重写 38
+[2026-09-09 20:44:52] 进度 900/2542 | 成图 1202 | 失败 0 | 已重写 43
+[2026-09-09 20:44:53] 进度 920/2542 | 成图 1276 | 失败 0 | 已重写 46
+[2026-09-09 20:44:54] 进度 940/2542 | 成图 1312 | 失败 0 | 已重写 47
+[2026-09-09 20:44:55] 进度 960/2542 | 成图 1369 | 失败 0 | 已重写 52
+[2026-09-09 20:44:56] 进度 980/2542 | 成图 1473 | 失败 0 | 已重写 60
+[2026-09-09 20:44:56] 进度 1000/2542 | 成图 1473 | 失败 0 | 已重写 60
+[2026-09-09 20:44:56] 进度 1020/2542 | 成图 1474 | 失败 0 | 已重写 61
+[2026-09-09 20:44:56] 进度 1040/2542 | 成图 1486 | 失败 0 | 已重写 62
+[2026-09-09 20:44:56] 进度 1060/2542 | 成图 1493 | 失败 0 | 已重写 63
+[2026-09-09 20:44:56] 进度 1080/2542 | 成图 1493 | 失败 0 | 已重写 63
+[2026-09-09 20:44:56] 进度 1100/2542 | 成图 1549 | 失败 1 | 已重写 71
+[2026-09-09 20:44:56] 进度 1120/2542 | 成图 1549 | 失败 1 | 已重写 71
+[2026-09-09 20:44:57] 进度 1140/2542 | 成图 1597 | 失败 1 | 已重写 77
+[2026-09-09 20:44:57] 进度 1160/2542 | 成图 1666 | 失败 1 | 已重写 87
+[2026-09-09 20:44:58] 进度 1180/2542 | 成图 1688 | 失败 1 | 已重写 89
+[2026-09-09 20:44:58] 进度 1200/2542 | 成图 1688 | 失败 1 | 已重写 89
+[2026-09-09 20:44:58] 进度 1220/2542 | 成图 1688 | 失败 1 | 已重写 89
+[2026-09-09 20:44:58] 进度 1240/2542 | 成图 1773 | 失败 1 | 已重写 91
+[2026-09-09 20:45:01] 进度 1260/2542 | 成图 1903 | 失败 1 | 已重写 96
+[2026-09-09 20:45:02] 进度 1280/2542 | 成图 2062 | 失败 1 | 已重写 100
+[2026-09-09 20:45:03] 进度 1300/2542 | 成图 2205 | 失败 1 | 已重写 103
+[2026-09-09 20:45:04] 进度 1320/2542 | 成图 2294 | 失败 1 | 已重写 108
+[2026-09-09 20:45:04] 进度 1340/2542 | 成图 2371 | 失败 1 | 已重写 110
+[2026-09-09 20:45:04] 进度 1360/2542 | 成图 2371 | 失败 1 | 已重写 110
+[2026-09-09 20:45:04] 进度 1380/2542 | 成图 2374 | 失败 1 | 已重写 112
+[2026-09-09 20:45:05] 进度 1400/2542 | 成图 2399 | 失败 1 | 已重写 117
+[2026-09-09 20:45:05] 进度 1420/2542 | 成图 2399 | 失败 1 | 已重写 117
+[2026-09-09 20:45:05] 进度 1440/2542 | 成图 2399 | 失败 1 | 已重写 117
+[2026-09-09 20:45:05] 进度 1460/2542 | 成图 2399 | 失败 1 | 已重写 117
+[2026-09-09 20:45:05] 进度 1480/2542 | 成图 2401 | 失败 1 | 已重写 118
+[2026-09-09 20:45:05] 进度 1500/2542 | 成图 2430 | 失败 1 | 已重写 119
+[2026-09-09 20:45:06] 进度 1520/2542 | 成图 2509 | 失败 1 | 已重写 122
+[2026-09-09 20:45:12] 进度 1540/2542 | 成图 3236 | 失败 1 | 已重写 135
+[2026-09-09 20:45:12] 进度 1560/2542 | 成图 3236 | 失败 1 | 已重写 135
+[2026-09-09 20:45:12] 进度 1580/2542 | 成图 3276 | 失败 1 | 已重写 140
+[2026-09-09 20:45:12] 进度 1600/2542 | 成图 3276 | 失败 1 | 已重写 140
+[2026-09-09 20:45:13] 进度 1620/2542 | 成图 3331 | 失败 1 | 已重写 144
+[2026-09-09 20:45:13] 进度 1640/2542 | 成图 3331 | 失败 1 | 已重写 144
+[2026-09-09 20:45:14] 进度 1660/2542 | 成图 3383 | 失败 1 | 已重写 147
+[2026-09-09 20:45:14] 进度 1680/2542 | 成图 3419 | 失败 1 | 已重写 148
+[2026-09-09 20:45:15] 进度 1700/2542 | 成图 3467 | 失败 1 | 已重写 152
+[2026-09-09 20:45:15] 进度 1720/2542 | 成图 3467 | 失败 1 | 已重写 152
+[2026-09-09 20:45:15] 进度 1740/2542 | 成图 3483 | 失败 1 | 已重写 154
+[2026-09-09 20:45:15] 进度 1760/2542 | 成图 3483 | 失败 1 | 已重写 154
+[2026-09-09 20:45:15] 进度 1780/2542 | 成图 3483 | 失败 1 | 已重写 154
+[2026-09-09 20:45:15] 进度 1800/2542 | 成图 3527 | 失败 1 | 已重写 159
+[2026-09-09 20:45:15] 进度 1820/2542 | 成图 3527 | 失败 1 | 已重写 159
+[2026-09-09 20:45:15] 进度 1840/2542 | 成图 3527 | 失败 1 | 已重写 159
+[2026-09-09 20:45:17] 进度 1860/2542 | 成图 3650 | 失败 1 | 已重写 171
+[2026-09-09 20:45:17] 进度 1880/2542 | 成图 3650 | 失败 1 | 已重写 171
+[2026-09-09 20:45:18] 进度 1900/2542 | 成图 3789 | 失败 1 | 已重写 175
+[2026-09-09 20:45:18] 进度 1920/2542 | 成图 3878 | 失败 1 | 已重写 178
+[2026-09-09 20:45:19] 进度 1940/2542 | 成图 3959 | 失败 1 | 已重写 180
+[2026-09-09 20:45:20] 进度 1960/2542 | 成图 4065 | 失败 1 | 已重写 184
+[2026-09-09 20:45:20] 进度 1980/2542 | 成图 4065 | 失败 1 | 已重写 184
+[2026-09-09 20:45:20] 进度 2000/2542 | 成图 4091 | 失败 1 | 已重写 185
+[2026-09-09 20:45:20] 进度 2020/2542 | 成图 4104 | 失败 1 | 已重写 187
+[2026-09-09 20:45:20] 进度 2040/2542 | 成图 4104 | 失败 1 | 已重写 187
+[2026-09-09 20:45:20] 进度 2060/2542 | 成图 4105 | 失败 1 | 已重写 188
+[2026-09-09 20:45:20] 进度 2080/2542 | 成图 4105 | 失败 1 | 已重写 188
+[2026-09-09 20:45:21] 进度 2100/2542 | 成图 4110 | 失败 1 | 已重写 191
+[2026-09-09 20:45:21] 进度 2120/2542 | 成图 4119 | 失败 1 | 已重写 192
+[2026-09-09 20:45:21] 进度 2140/2542 | 成图 4119 | 失败 1 | 已重写 192
+[2026-09-09 20:45:23] 进度 2160/2542 | 成图 4370 | 失败 1 | 已重写 198
+[2026-09-09 20:45:23] 进度 2180/2542 | 成图 4463 | 失败 1 | 已重写 200
+[2026-09-09 20:45:24] 进度 2200/2542 | 成图 4535 | 失败 1 | 已重写 203
+[2026-09-09 20:45:25] 进度 2220/2542 | 成图 4635 | 失败 1 | 已重写 207
+[2026-09-09 20:45:26] 进度 2240/2542 | 成图 4690 | 失败 1 | 已重写 212
+[2026-09-09 20:45:26] 进度 2260/2542 | 成图 4693 | 失败 1 | 已重写 213
+[2026-09-09 20:45:26] 进度 2280/2542 | 成图 4693 | 失败 1 | 已重写 213
+[2026-09-09 20:45:26] 进度 2300/2542 | 成图 4709 | 失败 1 | 已重写 215
+[2026-09-09 20:45:26] 进度 2320/2542 | 成图 4721 | 失败 1 | 已重写 216
+[2026-09-09 20:45:27] 进度 2340/2542 | 成图 4830 | 失败 1 | 已重写 224
+[2026-09-09 20:45:27] 进度 2360/2542 | 成图 4866 | 失败 1 | 已重写 228
+[2026-09-09 20:45:28] 进度 2380/2542 | 成图 4893 | 失败 1 | 已重写 229
+[2026-09-09 20:45:28] 进度 2400/2542 | 成图 4945 | 失败 1 | 已重写 230
+[2026-09-09 20:45:29] 进度 2420/2542 | 成图 5186 | 失败 1 | 已重写 236
+[2026-09-09 20:45:31] 进度 2440/2542 | 成图 5353 | 失败 1 | 已重写 241
+[2026-09-09 20:45:33] 进度 2460/2542 | 成图 5553 | 失败 1 | 已重写 246
+[2026-09-09 20:45:33] 进度 2480/2542 | 成图 5553 | 失败 1 | 已重写 246
+[2026-09-09 20:45:34] 进度 2500/2542 | 成图 5555 | 失败 1 | 已重写 248
+[2026-09-09 20:45:34] 进度 2520/2542 | 成图 5555 | 失败 1 | 已重写 248
+[2026-09-09 20:45:34] 进度 2540/2542 | 成图 5555 | 失败 1 | 已重写 248
+[2026-09-09 20:45:34] 同步重写 auto-annotated-v6 引用 ...
+[2026-09-09 20:45:35] 完成: {"with_refs": 249, "no_refs": 361, "refs_total": 5556, "img_ok": 5555, "ref_fail": 1, "pdf_miss": 0, "pdf_error": 0, "md_rewritten": 248, "ref_rewritten": 5555, "v6_rewritten": 0, "v6_ref_rewritten": 0, "already_done": 1932, "md_locked": 0, "elapsed_sec": 54.1, "md_total": 2542}
+[2026-09-09 20:47:11] ============================================================
+[2026-09-09 20:47:11] 图片恢复开始 (PyMuPDF 坐标裁剪)
+[2026-09-09 20:47:11] ============================================================
+[2026-09-09 20:47:11] 源PDF索引: 12707 | 待扫描md: 1847
+[2026-09-09 20:47:11] 进度 20/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 40/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 60/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 80/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 100/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 120/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 140/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 160/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 180/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 200/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 220/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 240/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 260/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 280/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 300/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 320/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 340/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 360/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 380/1847 | 成图 0 | 失败 0 | 已重写 0
+[2026-09-09 20:47:11] 进度 400/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 420/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 440/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 460/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 480/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 500/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 520/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 540/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 560/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 580/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 600/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 620/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 640/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 660/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 680/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 700/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 720/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 740/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 760/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 780/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 800/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 820/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 840/1847 | 成图 0 | 失败 1 | 已重写 0
+[2026-09-09 20:47:11] 进度 860/1847 | 成图 55 | 失败 1 | 已重写 1
+[2026-09-09 20:47:11] 进度 880/1847 | 成图 55 | 失败 1 | 已重写 1
+[2026-09-09 20:47:11] 进度 900/1847 | 成图 55 | 失败 1 | 已重写 1
+[2026-09-09 20:47:11] 进度 920/1847 | 成图 55 | 失败 1 | 已重写 1
+[2026-09-09 20:47:11] 进度 940/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 960/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 980/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1000/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1020/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1040/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1060/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1080/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1100/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1120/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1140/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1160/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1180/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1200/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1220/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1240/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1260/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1280/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1300/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1320/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1340/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1360/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1380/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1400/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1420/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1440/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1460/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1480/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1500/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1520/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1540/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1560/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1580/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1600/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1620/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1640/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1660/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1680/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1700/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1720/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1740/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1760/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1780/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1800/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1820/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 进度 1840/1847 | 成图 62 | 失败 1 | 已重写 2
+[2026-09-09 20:47:11] 同步重写 auto-annotated-v6 引用 ...
+[2026-09-09 20:47:12] 完成: {"with_refs": 3, "no_refs": 259, "refs_total": 63, "img_ok": 62, "ref_fail": 1, "pdf_miss": 0, "pdf_error": 0, "md_rewritten": 2, "ref_rewritten": 62, "v6_rewritten": 0, "v6_ref_rewritten": 0, "already_done": 1585, "md_locked": 0, "elapsed_sec": 1.3, "md_total": 1847}

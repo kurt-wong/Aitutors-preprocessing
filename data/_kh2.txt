@@ -1,0 +1,8 @@
+U35 U-org1 题号=[1] answer=None stem=[354, 401]
+U36 U-org2 题号=[2] answer=None stem=[403, 425]
+U37 U-org3 题号=[3] answer=None stem=[427, 440]
+U38 U-cp1 题号=[1] answer=None stem=[444, 458]
+U39 U-cp2 题号=[2] answer=None stem=[460, 479]
+U40 U-cp3 题号=[3] answer=None stem=[481, 502]
+
+全批 49 份中,答案=单行<table>且被≥3 unit共享: 14 份,共 304 unit

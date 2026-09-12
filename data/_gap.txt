@@ -1,0 +1,14 @@
+无主图 123 张,与最近 unit 区间距离分布: {3: 39, 5: 5, '>5': 59, 4: 20}
+
+L496 gap=3 近 Q30/499-516  行内容: <div style="text-align: center;"><img src="../../_imgs/2017-
+L1916 gap=3 近 Q23/1919-1932  行内容: <div style="text-align: center;"><img src="../../_imgs/2017-
+L2042 gap=3 近 Q27/2045-2060  行内容: <div style="text-align: center;"><img src="../../_imgs/2017-
+L2064 gap=3 近 Q28/2067-2089  行内容: <div style="text-align: center;"><img src="../../_imgs/2017-
+L2097 gap=3 近 Q29/2100-2133  行内容: <div style="text-align: center;"><img src="../../_imgs/2017-
+L2293 gap=3 近 Q34/2296-2324  行内容: <div style="text-align: center;"><img src="../../_imgs/2017-
+L2373 gap=3 近 Q36/2376-2435  行内容: <div style="text-align: center;"><img src="../../_imgs/2017-
+L2445 gap=3 近 Q37/2448-2519  行内容: <div style="text-align: center;"><img src="../../_imgs/2017-
+L2529 gap=3 近 Q38/2532-2598  行内容: <div style="text-align: center;"><img src="../../_imgs/2017-
+L2608 gap=3 近 Q39/2611-2690  行内容: <div style="text-align: center;"><img src="../../_imgs/2017-
+L2700 gap=3 近 Q40/2703-2770  行内容: <div style="text-align: center;"><img src="../../_imgs/2017-
+L2780 gap=3 近 Q41/2783-2830  行内容: <div style="text-align: center;"><img src="../../_imgs/2017-
