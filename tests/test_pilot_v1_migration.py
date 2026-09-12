@@ -150,3 +150,63 @@ def test_mutation_sanity_verify_post_catches(bad):
         m2["units"][-1]["basis_evidence"] = "分节标题 L1:伪造证据"
     viol = p3m.verify_post(m2, lines, pre_facts)
     assert viol, f"变异 {bad} 必须被迁移自检拦截"
+
+
+# ── R38 A5:--refresh-v2 的 FACTS 事实锚点守卫(此前零测试覆盖) ─────────────
+GUARD_LINES = ["# 合成刷新守卫卷", "", "## 一、选择题", "1. 甲（ ）", "",
+               "## 二、非选择题", "2. 乙（ ）"]
+
+
+def _guard_repo(workdir):
+    d = workdir / "pilot_refresh_guard"
+    d.mkdir()
+    src = d / "guard.md"
+    src.write_text("\n".join(GUARD_LINES) + "\n", encoding="utf-8", newline="")
+    man = {"identity_version": 2, "units": [
+        {"unit_id": "Q1", "unit_type": "standalone_question",
+         "question_numbers": [1], "original_question_type": "fill_in",
+         "stem_lines": [4, 4], "options_lines": None, "answer_lines": None,
+         "explanation_lines": None},
+        {"unit_id": "Q2", "unit_type": "standalone_question",
+         "question_numbers": [2], "original_question_type": "fill_in",
+         "stem_lines": [7, 7], "options_lines": None, "answer_lines": None,
+         "explanation_lines": None}],
+        "source_file": str(src)}
+    mf = d / "guard.manifest.json"
+    mf.write_text(json.dumps(man, ensure_ascii=False, indent=1),
+                  encoding="utf-8", newline="\n")
+    rel = str(src.relative_to(ROOT)).replace("\\", "/")
+    return src, mf, rel, man
+
+
+def test_refresh_v2_refuses_on_facts_drift(workdir, monkeypatch):
+    """事实与 R36 FACTS 快照不一致 → 拒绝刷新,manifest 字节不动。"""
+    src, mf, rel, man = _guard_repo(workdir)
+    pre = mf.read_bytes()
+    drifted = [dict(f, question_numbers=[999]) for f in p3m.facts_of(man)]
+    monkeypatch.setattr(p3m, "FACTS_MAP", {rel: drifted})
+    entry, _ = p3m.migrate_file(src, apply=True, refresh_v2=True)
+    assert entry.get("violations") and "FACTS" in entry["violations"][0]
+    assert mf.read_bytes() == pre, "拒刷时 manifest 必须字节不动"
+
+
+def test_refresh_v2_refuses_when_anchor_missing(workdir, monkeypatch):
+    """FACTS 快照缺该文件 → 拒绝刷新(无锚点不得静默覆盖)。"""
+    src, mf, rel, man = _guard_repo(workdir)
+    pre = mf.read_bytes()
+    monkeypatch.setattr(p3m, "FACTS_MAP", {})
+    entry, _ = p3m.migrate_file(src, apply=True, refresh_v2=True)
+    assert entry.get("violations") and "缺该文件" in entry["violations"][0]
+    assert mf.read_bytes() == pre
+
+
+def test_refresh_v2_proceeds_when_anchor_matches(workdir, monkeypatch):
+    """锚点一致 → 正常刷新(无 violations),身份键重算后仍 v2。"""
+    src, mf, rel, man = _guard_repo(workdir)
+    monkeypatch.setattr(p3m, "FACTS_MAP", {rel: p3m.facts_of(man)})
+    entry, _ = p3m.migrate_file(src, apply=True, refresh_v2=True)
+    assert not entry.get("violations"), entry.get("violations")
+    assert entry.get("applied") and entry.get("refresh_v2")
+    post = json.loads(mf.read_text(encoding="utf-8"))
+    assert post["identity_version"] == 2 and post["sections"]
+    assert all(u.get("section_ref") for u in post["units"])
