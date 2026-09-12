@@ -736,7 +736,8 @@ def main():
     def flush_results():
         # 增量落盘：中断也不丢已完成结果
         result_path.write_text(
-            json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+            json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8",
+            newline="")  # BUG-16:禁 Windows CRLF 翻转
 
     if args.workers > 1 and len(todo) > 1:
         from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -793,7 +794,8 @@ def main():
                        "n_issues": len(r.get("issues") or [])} for r in results],
         }
         derive_summary_path(args.out).write_text(
-            json.dumps(summary, ensure_ascii=False, indent=1), encoding="utf-8")
+            json.dumps(summary, ensure_ascii=False, indent=1), encoding="utf-8",
+            newline="")  # BUG-16:禁 Windows CRLF 翻转
         log(f"[汇总] 成功 {len(done)}/{len(results)} | prompt {tot_p:,} + completion "
             f"{tot_c:,} tokens | LLM 合计 {round(tot_t)}s | 均 {summary['avg_llm_seconds_per_file']}s/份")
 
