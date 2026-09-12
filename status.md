@@ -7,14 +7,13 @@
 
 ## 一句话现状
 
-**重切路线已成立（试点 16/16 全签核），全量推广尚未启动。** 生产化就绪度 ≈ 原型验证 100% / 生产化 30%。
-下一步的门槛不在"能不能切"，而在"源修复收尾 + 全量 runner + 运维闭环"。
+**Identity correctness 项目已闭环(BUG-24/25 关闭,R38 独立对抗复核通过),冻结候选基线 = `7f37be9 / R38`。现切换到 System Readiness Gate 阶段**:全量推广的门槛不在 identity,而在 BUG-11/14/15、OCR 覆盖与真实行为、image recovery、真实 LLM 稳定性、Resolver 契约消费。readiness 声明一律按 `review_protocol.md` 规则 2 三列举证(claim/证据域/证据类型),禁止"局部 PASS → 系统 PASS"。
 
 ---
 
 ## 当前阶段
 
-**阶段：LLM 重切 · 试点完成 → 全量推广前准备**（旧的"规则批注 + BERT 训练"路线已于 2026-09-09 废弃，见 PRD §12 决策记录）。
+**阶段:System Readiness Gate**(Identity v2 + SectionLocator 层自 `7f37be9` 起冻结,不再扩展规则;Identity correctness 项目 R30–R38 已闭环)。旧的"规则批注 + BERT 训练"路线已于 2026-09-09 废弃,见 PRD §12 决策记录。
 
 ---
 
@@ -100,9 +99,11 @@
 | 🟢 | **Phase 2 QuestionIdentity 实施(R34)** | 四项一体落地:basis 字段 + SectionLocator schema(612 locators)+ C13/C14 v2 三态裁决 + 存量确定性回填(50/50,printed provenance:source_line 948 / migration 134 / unknown 402 猜测禁止)。**P2-01~P2-08 全部有真实测试**(`tests/test_question_identity_phase2.py`,64 passed + 1 xfailed);回填后 batch-C QC 38 PASS 零回归。残留:v1 历史产物(pilot)旧语义待回填;basis_evidence 语义充分性待 Phase 3 对抗语料 |
 | 🟢 | **Phase 3 Evidence Soundness(R35)** | 第五轮审查验收 R34(Phase 2 🟢 ACCEPTED / BUG-23 🟢 CLOSED)后执行:第二层证据语义检查(evidence 引用行必须承载编号语义且题号相关,prose/噪声/无关题号 → PENDING_REVIEW,不越界宣称语义真值);真实 batch-C 复验 **0 新增 review**;对抗语料 `test_identity_adversarial_corpus.py` **16/16**(含核心攻击 c09 证据行无编号语义 / c10 证据题号无关 / c11 OCR 内容错 + c16 回填幂等字节一致);变异验证短路语义检查恰被 c09/c10/c11 拦截。套件 **80 passed + 1 xfailed**。残留:证据语义真值走 PENDING_REVIEW 人工通道(按裁定为 obligation 非 BUG) |
 | 🟢 | **pilot v1→v2 迁移清尾(R36)** | 第五轮审查裁定 Identity 层冻结后的收尾:16 份纯 v1 试点卷确定性迁移(`phase3_pilot_v1_migration.py`,零 LLM,迁移后四条自检+违规回滚),**15/16 applied / 0 violations**,迁移后 QC 与 v1 基线**裁决零翻转**(15 PASS/1 FAIL),字节级幂等 15/15,事实快照 389 单元入库;验收测试 10/10 含变异 sanity(伪造 printed/事实漂移/同节 keep 重号全拦)。**残留:三十一中化学被 C13 如实拒写 → 根因为 BUG-24(见下),决策点上报** |
-| 🟢 | **BUG-24 分节标题过滤器误杀(R36 发现 / R37 修复)** | `_heading_rows` 的 `答案\|解析\|评分` 排除器整行子串匹配,误杀含 note 的真实分节标题(三十一中化学 L324 填空题节)→ SectionLocator 假阴性。用户裁定:应修、现在修、只修 SectionLocator 不动 Identity/keep。R37 修复:排除器两阶段结构角色识别(结构归一化 + 归一头部窗口 10 判 marker),**全链复验见下 R37 行**。残留:三十一中化学 FAIL 理由已变为正确的"跨分节重号含多个非 keep",**keep 三方裁决仍是独立决策点**;`## 解析几何` 类 topic 词假阴性全语料 1 例(诚实边界) |
-| 🟢 | **BUG-24 修复全链复验(R37)** | 改码前先锁影响面:before 快照(bug24_locator_snapshot)+ before QC 与 R34 提交基线逐文件零差异;全语料盘点 3120 卷:恢复 848 行、**0 答案内容行误升**,reslice-scope 恢复 13 行逐条人检(6 真分节 + 7 benign 源结构标题)。修复后:**11 份 manifest 重生成**(batch-C 7 + pilot 4,三十一中如实拒写故字节不变),**QC 裁决集零翻转**(38/12、15/1),fails 全部 0→0,字节级幂等 66/66,NEW-OLD diff `data/bug24_fix_report.json`;验收 `tests/test_bug24_section_locator.py` 13/13(B24-01~08 + 三类变异 sanity);套件 **103 passed + 1 xfailed** |
-| 🟡→🟢 | **R37 结论对抗性审查(R38)** | 8 攻击面独立复核:A2 issue 明细零差异(66/66)、A3 事实漂移 0、A4 他目录 v2 存量 0、A6 新增 start_line 恰等于 13 条恢复行且丢失 heading 0、A7 数字逐位复现——通过;**A1 证伪"全语料 0 答案内容行误升"过强主张**:`\.` 转义点致 8 例答案块误升(均非提交范围)→ 已修(恢复面 848→840,提交产物字节零变化,4 条回归语料入库);诚实残留 4 例(straddle 3 + OCR 行融合 1,扩窗会误杀合法标题,不硬修);补 `--refresh-v2` FACTS 锚点守卫 3 测试。正确口径:**提交范围 0 误升,全语料 840 行含 4 例已知残留**。套件 **106 passed + 1 xfailed**,审计工件 `data/r38_audit_report.json` |
+| 🟢 CLOSED | **BUG-24 分节标题过滤器误杀(R36 发现 / R37 修复 / R38 复核 / R39 用户裁定关闭)** | `_heading_rows` 的 `答案\|解析\|评分` 排除器整行子串匹配,误杀含 note 的真实分节标题(三十一中化学 L324 填空题节)→ SectionLocator 假阴性。修复:排除器两阶段结构角色识别(结构归一化 + 归一头部窗口 10 判 marker)。**三概念分账(不得混写)**:① BUG-24 correctness = CLOSED;② 3 例 straddle 跨界标题 = ACCEPTED KNOWN BOUNDARY(扩窗 11 实测误杀合法标题,不硬修);③ 1 例 OCR 行融合 = ACCEPTED OCR LIMITATION。"heading detection 问题全部解决"无证据不成立。保留独立决策点:三十一中化学 Q1-11/F1-11 keep 三方裁决(不得自动豁免) |
+| 🟢 CLOSED | **BUG-25 `\.` 转义点误升(R38 发现并修复,用户裁定 FIX VERIFIED)** | OCR 转义点 `26 \.` 击穿 `_NUM_PREFIX` 序号前缀剥离 → 8 例【答案】/【解析】块被误升为分节标题(全部 full-corpus 非提交范围,提交产物零影响)。修复后恢复面 848→840(恰减 8),66 份提交 manifest 字节零变化,4 条真实行入回归语料。明细 `bugs.md` BUG-25 |
+| 🟢 | **BUG-24 修复全链复验(R37)** | 改码前先锁影响面:before 快照(bug24_locator_snapshot)+ before QC 与 R34 提交基线逐文件零差异;全语料盘点 3120 卷:恢复 848 行(reslice-scope 恢复 13 行逐条人检:6 真分节 + 7 benign 源结构标题)。~~"全语料 0 答案内容行误升"~~ **该全称主张已被 R38 证伪并正式撤销(RETRACTED),正确口径见下行**。修复后:**11 份 manifest 重生成**(batch-C 7 + pilot 4,三十一中如实拒写故字节不变),**QC 裁决集零翻转**(38/12、15/1),fails 全部 0→0,字节级幂等 66/66,NEW-OLD diff `data/bug24_fix_report.json`;验收 `tests/test_bug24_section_locator.py` B24-01~08 + 三类变异 sanity |
+| 🟢 ACCEPTED | **R38 对抗性审查(用户最终裁定:高质量 adversarial review)** | 8 攻击面独立复核:A2 issue 明细零差异(66/66)、A3 事实漂移 0、A4 他目录 v2 存量 0、A6 新增 start_line 恰等于 13 条恢复行且丢失 heading 0(集合级归因证明)、A7 数字逐位复现——通过且证据强于 R37;**A1 证伪"全语料 0 误升"过强主张** → BUG-25 修复;4 例残留裁定 ACCEPTED KNOWN LIMITATION;补 `--refresh-v2` FACTS 锚点守卫 3 测试(含变异注入)。正确口径:**提交范围 13 行 0 误升(逐条人检);全语料 840 行含 4 例已知残留(0.5%)**。套件 **106 passed + 1 xfailed**,审计工件 `data/r38_audit_report.json` |
+| 🔵 | **R39 冻结候选基线登记 + 审查协议建立(2026-09-13 用户裁定)** | `7f37be9 / R38` = **Identity v2 + SectionLocator 冻结候选基线**,Identity 层不再扩展规则;项目阶段切换 System Readiness Gate。新审计规则入库 `review_protocol.md`:规则 1 全称命题必须穷尽验证(触发词:全部/零/没有/唯一/所有/无遗漏/无误升/全量保持)、规则 2 readiness claim 三列(claim/证据域/证据类型)+ 禁止"局部 PASS→系统 PASS"、规则 3 既有方法论六条汇总。R37 全称主张正式 RETRACTED 记档 |
 | 🟡 | **Resolver Identity 消费 v2(BUG-22 最后一层)** | preprocessing 侧身份模型已落地(QuestionIdentity v2 + SectionLocator + basis/basis_evidence + 三态裁决);resolver/IR 层消费 v2 模型属下游设计,随 resolver 项目推进 |
 | 🟡 | **第三轮外部审查（R29）** | 评级：🟡 有条件通过代码层 / **🔴 不通过全量生产放行**。CI/工程骨架/fixer/QC 契约已证；剩余风险从"代码会不会坏"转移到"**结构合法但语义切错**"（D1 语义错位区间、D2 跨题污染、D3 composite 复杂组合、D4 orphan 链、D5 真实 OCR 噪声、D6 OCR 服务链零测试、D7 真实 MIMO 准确率未自动化证明）。下一轮攻击方向转换：silent-mis-segmentation。方案见 log.md R29（战术 A：对 batch-C 50 份真实产物跑语义代理检测 C13/C14/C15，零 LLM 成本）→ **R30 已执行，确证 BUG-22** |
 

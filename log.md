@@ -745,3 +745,17 @@
 **修复(仅一处,机械性根因)**:`_NUM_PREFIX` 序号前缀允许 OCR 转义点(`\d{1,3}\s*\\?\s*[.、．]`)→ 8 例误升全灭,恢复面 848→840;**66 份提交 manifest 字节零变化**(重生成快照与已提交 after 快照逐字节一致);4 条真实 `\.` 行入 B24-02 回归语料。
 
 **结果**:R37 结论逐条重新裁决——B24-01/03/04/05/06/07/08、幂等、确定性、CI **维持成立且证据更强**(A2/A3/A4/A6 为新增强证据);**"0 答案内容行误升"修正为"提交范围 13 行 0 误升;全语料 840 行含 4 例已知残留(0.5%,均非提交范围,明细入库)"**;补 1 个测试缺口 + 1 个规则缺陷(转义点)。套件 **106 passed + 1 xfailed**。审计工件:`data/r38_audit_report.json`、`data/r38_qc_issue_diff.json`。
+
+## R39 · 2026-09-13 · R38 用户裁定落盘:BUG-24/25 关闭、R37 全称主张撤销、审查协议建立、冻结基线登记(纯记账轮,零代码变更)
+
+**输入**:用户对 R38 的最终裁定——R38 **🟢 ACCEPTED**(评价为"高质量 adversarial review,审查机制已能主动推翻自己的过强结论");BUG-24 **🟢 CLOSED**(B24-01~08 全部成立);8 例 `\.` 缺陷 **🟢 FIX VERIFIED**(正式判定为真实 BUG,现已关闭);4 例残留 **🟡 ACCEPTED KNOWN LIMITATION**(定性:当前确定性规则无法在提高 recall 的同时保持 precision——不是 BUG,也不得塞进 BUG-24 的 closed 结论里);R37"全语料 0 误升" **❌ RETRACTED**(被 R38 穷举复核证伪);新增审计方法论规则 **🟢 ESTABLISHED**;`7f37be9 / R38` 定为 **Identity v2 + SectionLocator 冻结候选基线**,项目从 Identity correctness 切换到 **Preprocessing system readiness**。用户同时要求:HEAD_WINDOW=10 只能记录为"当前审计语料上经验验证的边界参数",不得记录为"理论上正确的窗口"。
+
+**执行(零代码变更,纯记账)**:
+
+1. `bugs.md`:BUG-24 状态改 **🟢 CLOSED**,附**三概念分账**(① correctness 缺陷 CLOSED / ② 3 例 straddle 跨界 = ACCEPTED KNOWN BOUNDARY / ③ 1 例 OCR 行融合 = ACCEPTED OCR LIMITATION;明确禁写"heading detection 问题全部解决"这类无证据表述);**新增 BUG-25**(`\.` 转义点击穿序号前缀剥离,🟢 CLOSED:发现=A1 独立检测器、根因=`_NUM_PREFIX` 不认转义形态、修复=允许转义点、对账=848→840 恰减 8 + 66 份提交 manifest 字节零变化 + 4 条回归语料);三十一中化学 keep 三方裁决保持为独立决策点,不被关闭吞并。
+2. **新建 `review_protocol.md`**:规则 1 **全称命题必须由全称验证支撑**(触发词:全部/所有/零/没有/唯一/无遗漏/无误升/全量保持/100%;两问:验证域是什么、是否穷举;非穷举只能写"在 X 范围内";R37 证伪案例挂账);规则 2 **readiness claim 三列制**(claim / 证据域 / 证据类型,未测行必须显式写"尚待测")**+ 禁止"局部 PASS → 系统 PASS" + "套件绿灯 ≠ system readiness"**;规则 3 汇总既有方法论六条(修复正确≠结论充分 / 窗口参数经验表述 / 守卫升级回迁突变验证 / Source-structure 五步法 / 实现存在≠受保护 / 三概念分账)。
+3. `question_identity_design.md`:§10.4 BUG-24"OPEN 待裁决"过期措辞更正为 CLOSED 链路;§10.5 增 HEAD_WINDOW 精确表述(**经验验证参数,扩到 11 实测误杀合法标题 `综合题(40分)(答案书写在答题卡上)`,当前不应扩大,未来扩窗提案必须附全语料误杀实验**);新增 §10.6(R39 最终裁定 + 冻结基线 + Identity 层不再扩展规则 + resolver 必须消费 v2)。
+4. `status.md`:一句话现状/当前阶段切换 System Readiness Gate;风险表更新 BUG-24 CLOSED 行、BUG-25 新行、R37 行内全称主张标注 **RETRACTED**、R38 行改 🟢 ACCEPTED、新增 R39 冻结基线行。
+5. **测试基建硬化(本轮唯一非文档改动,`pytest.ini`)**:本地裸 `pytest` 首次跑出收集期全灭——① 仓库根被沙箱留下 4 个 ACL 异常的 `pytest-cache-files-*` 空目录(连 Get-Acl 都 Unauthorized),收集遍历即 PermissionError;升级 danger-full-access 删除恢复;② 裸 pytest 还误收 `_archive` 归档区的历史 `test_*.py` 导致收集错误(CI 一直用 `pytest tests/` 故从未暴露)。修复:`testpaths = tests`(与 CI 口径一致)+ `norecursedirs` 防御清单。复跑:**106 passed + 1 xfailed(17.24s)**,与 R38 基线一致。
+
+**结果**:R38 全部裁定入库,三本台账与设计文档口径一致;冻结候选基线 `7f37be9 / R38` 登记;下一阶段 = **System Readiness Gate**(BUG-11/14/15、OCR 覆盖与真实行为、image recovery、真实 LLM 稳定性、Resolver 契约消费,每 claim 按三列制举证);Identity 层不再扩展规则。生产代码零变更(仅 pytest.ini 基建硬化),套件 **106 passed + 1 xfailed**。

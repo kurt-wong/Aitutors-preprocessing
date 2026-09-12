@@ -311,7 +311,7 @@ schema:`identity_version:2` + 顶层 `sections[{id,title,ordinal,start_line,end_
 ### 10.4 R36 追加:pilot v1→v2 迁移清尾 + BUG-24(冻结期唯一动土)
 
 - 第五轮审查裁定 Identity 层冻结后,按裁定优先级执行 pilot 16 份 v1→v2 确定性迁移(`phase3_pilot_v1_migration.py`,零 LLM;迁移后四条工具级自检 + 违规回滚,**未新增 QC 规则**):15/16 applied、裁决集与 v1 基线零翻转、字节级幂等 15/15、事实快照 389 单元(`data/phase3_pilot_v1_facts.json`)。
-- **BUG-24(OPEN,待用户裁决)**:`_heading_rows` 的 `答案|解析|评分` 整行子串排除器误杀含 note 的真实分节标题(三十一中化学"二、填空题…注意:…答案才计分"),SectionLocator 假阴性 → 同分节重号误判。收窄修复实测牵动 batch-C ≥3 份已提交 v2 产物的 section 划分与 R34/R35 证据链,按冻结令作为独立受审变更上报,不在本轮擅动;且修复后该卷仍需 keep 三方裁决(两个非 keep 跨节重号),不得自动豁免。
+- **BUG-24(R36 上报时为 OPEN;R37 修复、R38 独立对抗复核、2026-09-13 用户裁定 🟢 CLOSED,详见 bugs.md)**:`_heading_rows` 的 `答案|解析|评分` 整行子串排除器误杀含 note 的真实分节标题(三十一中化学"二、填空题…注意:…答案才计分"),SectionLocator 假阴性 → 同分节重号误判。修复后该卷仍需 keep 三方裁决(两个非 keep 跨节重号),不得自动豁免——该决策点独立保留。
 
 ### 10.5 R37 追加:SectionLocator 排除器契约(BUG-24 修复,Source structure 层)
 
@@ -320,3 +320,10 @@ schema:`identity_version:2` + 顶层 `sections[{id,title,ordinal,start_line,end_
 - **实测边界(3120 卷,R38 对抗性审计修正口径)**:恢复 840 行;reslice-scope 13 行 0 误升(逐条人检);全语料残留 4 例已知坏/边界恢复(straddle 跨界 3 + OCR 行融合 1,均非提交范围,扩窗会误杀合法标题"综合题(40分)(答案书写在答题卡上)"故不硬修)+ 残留假阴性 1 例(`## 解析几何`)。R38 曾证伪 R37 的"全语料 0 误升"主张:`\.` 转义点击穿序号前缀剥离造成 8 例答案块误升(已修,回归语料入库)——教训:**全称主张必须穷尽验证,抽样人检只支撑提交范围结论**。
 - **BUG-24 修复后的三十一中化学(两问题分离证明)**:填空题节恢复 → FAIL 理由变为"跨分节重号含多个非 keep"(正确建模),仍拒写——SectionLocator correctness 修复不产生任何 keep/合法性结论。
 - **方法论固化**:凡动 Source structure 层规则——① 先全语料盘点、恢复候选逐条人检;② 先落 before 快照(sections/span/refs/裁决)再改码;③ 以 NEW-OLD 产物比对(而非仅 pytest)收尾;④ 受影响已提交产物全链重生成并证明裁决集零翻转。resolver 消费 v2 时不得重新推导分节,消费的即是本契约的产物。
+- **窗口参数的准确表述(R38 用户裁定措辞)**:HEAD_WINDOW=10 **不是"理论上正确的窗口"**,而是"在当前审计语料上通过边界人检的**经验验证参数**";扩到 11 已产生真实 false positive(误杀合法标题 `综合题(40分)(答案书写在答题卡上)`,marker 恰在归一头部第 9 位),因此**当前不应扩大**。未来任何扩窗提案必须附新的全语料误杀实验。
+
+### 10.6 R39 追加:最终裁定与冻结基线(2026-09-13 用户裁定)
+
+- **R38 审查 🟢 ACCEPTED**;**BUG-24 🟢 CLOSED**(B24-01~08 全部成立);**BUG-25(`\.` 转义点 8 例)🟢 FIX VERIFIED**;**4 例残留 🟡 ACCEPTED KNOWN LIMITATION**(3 straddle + 1 OCR 行融合,非 BUG,不得并入 BUG-24 的 closed 结论);**R37"全语料 0 误升"主张 ❌ RETRACTED**(被 R38 穷举复核证伪,正确口径:提交范围 13 行 0 误升;全语料 840 行含 4 例已知残留)。
+- **审计规则 🟢 ESTABLISHED**:全称命题必须由全称验证支撑,抽样验证只支持抽样范围内结论——已正式写入 `review_protocol.md`(规则 1;readiness claim 三列规则 2 同轮建立)。
+- **冻结候选基线**:`7f37be9 / R38` 定为 **Identity v2 + SectionLocator 冻结候选基线**。Identity 层自本基线起**不再扩展规则**;下一阶段为 **System Readiness Gate**(BUG-11/14/15、OCR 覆盖与真实 OCR 行为、image recovery、真实 LLM 输入输出稳定性、preprocessing→Resolver 契约消费),每个 readiness claim 按 review_protocol 规则 2 三列举证,禁止"局部 PASS → 系统 PASS"。resolver 允许离线契约级设计,必须消费 v2、不得重新发明 identity。
