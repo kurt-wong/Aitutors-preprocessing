@@ -196,7 +196,8 @@ def main():
         "blocked_categories": BLOCKED,
         "samples": samples,
     }
-    OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1),
+                   encoding="utf-8", newline="")  # BUG-16:禁 Windows CRLF 翻转
     print(f"\n留档: {OUT} ({len(samples)} 份)")
 
 
