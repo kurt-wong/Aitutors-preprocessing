@@ -43,6 +43,20 @@ def test_c12_separated_listening_structure_allowed(workdir):
     assert not any(i.startswith("C12") for i in _qc(mf)["issues"])
 
 
+def test_c13_duplicate_question_numbers_reported(workdir):
+    """R30 实测缺陷形状:大题内编号被当全卷题号 →题号双重归属必须报 C13。"""
+    from conftest import SYNTH_MAN
+    man = json.loads(json.dumps(SYNTH_MAN))
+    # U3-4 的题号撞上 Q3(模拟选择题 Q3 + 非选择题大题内编号"3.")
+    man["units"].append(
+        {"unit_id": "N3", "unit_type": "standalone_question",
+         "question_numbers": [3], "original_question_type": "fill_in",
+         "stem_lines": [19, 19], "options_lines": None,
+         "answer_lines": [31, 31], "explanation_lines": None})
+    _, mf, _ = make_repo(workdir, man=man)
+    assert any(i.startswith("C13") for i in _qc(mf)["issues"])
+
+
 def test_c12_proper_nesting_allowed(workdir):
     """material ⊆ questions → 不报。"""
     from conftest import SYNTH_MAN

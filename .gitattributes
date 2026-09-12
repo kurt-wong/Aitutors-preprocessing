@@ -1,0 +1,10 @@
+# 行尾策略(BUG-16 根治):文本统一 LF,与编辑器/平台默认解耦。
+# 历史教训:Windows 下保留编辑(write_text/edit 工具)会把 LF 静默翻成 CRLF,
+# 造成字节层审计噪音(git diff 全文件假性重写)。仓库级锁死,一次归一,永绝后患。
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.ini text eol=lf
+*.txt text eol=lf

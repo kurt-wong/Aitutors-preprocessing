@@ -1,0 +1,1292 @@
+{
+ "dir": "Ocr-markdown\\reslice-batch-C",
+ "n_files": 50,
+ "n_units": 1484,
+ "flags_by_check": {
+  "P13": 120,
+  "P15": 23,
+  "P14": 11
+ },
+ "flagged_files": [
+  "2018北京春季高中会考生物（教师版）(1).manifest.json",
+  "2018北京春季高中会考英语（教师版）(1).manifest.json",
+  "2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+  "2020北京高中合格考化学（第一次）（教师版）(1).manifest.json",
+  "2021北京高中合格考历史（第一次）（教师版）(1).manifest.json",
+  "2017-2019北京高中地理合格考试汇编：人口（教师版）(1).manifest.json",
+  "2021北京高中合格考政治（第一次）（教师版）(1).manifest.json",
+  "2021北京高中合格考数学（第二次）（教师版）(1).manifest.json",
+  "2021北京高中合格考物理（第二次）（教师版）(1).manifest.json",
+  "2020北京高中合格考生物（第二次）（教师版）(1).manifest.json",
+  "2020北京高中合格考英语（第二次）（教师版）(1).manifest.json",
+  "2021北京高考压轴卷历史（教师版）(1).manifest.json",
+  "2019北京清华大学领军计划物理（教师版）(1).manifest.json",
+  "2019北京大学博雅计划模拟语文（教师版）(1).manifest.json",
+  "2021北京四十三中高一（上）期中政治（教师版）.manifest.json",
+  "2021北京师大二附中高一（上）期中数学（教师版）.manifest.json",
+  "2018北京十四中高一（下）期中物理（教师版）(1).manifest.json",
+  "2021北京四中高一（上）期中生物（教师版）.manifest.json",
+  "2019北京三十五中新高一分班考试英语含答案(1).manifest.json",
+  "1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+  "2017-2019北京高三化学上学期期末汇编：化学实验（教师版）(1).manifest.json",
+  "2021北京四中高三（上）期中化学（教师版）(1).manifest.json",
+  "2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+  "2020北京大兴高三（上）期末英语（教师版）(1).manifest.json",
+  "2012-2021高考真题数学汇编：空间向量与立体几何（2）（教师版）(1).manifest.json",
+  "2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).manifest.json",
+  "2012-2021高考真题生物汇编：基因工程（1）（教师版）(1).manifest.json"
+ ],
+ "results": [
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\会考\\化学\\2018北京春季高中会考化学（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\会考\\化学\\2018北京春季高中会考化学（教师版）(1).md",
+   "n_units": 40,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\会考\\历史\\2018北京夏季高中会考历史（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\会考\\历史\\2018北京夏季高中会考历史（教师版）(1).md",
+   "n_units": 53,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\会考\\地理\\2018北京春季高中会考地理（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\会考\\地理\\2018北京春季高中会考地理（教师版）(1).md",
+   "n_units": 25,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\会考\\政治\\2018北京夏季高中会考政治（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\会考\\政治\\2018北京夏季高中会考政治（教师版）(1).md",
+   "n_units": 36,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\会考\\数学\\2018北京春季高中会考数学（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\会考\\数学\\2018北京春季高中会考数学（教师版）(1).md",
+   "n_units": 30,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\会考\\物理\\2018北京春季高中会考物理（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\会考\\物理\\2018北京春季高中会考物理（教师版）(1).md",
+   "n_units": 22,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\会考\\生物\\2018北京春季高中会考生物（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\会考\\生物\\2018北京春季高中会考生物（教师版）(1).md",
+   "n_units": 50,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q41",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "1. (5分)"
+    },
+    {
+     "check": "P13",
+     "unit": "Q42",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "2.（5分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q43",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "3.（5分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q44",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "4.（5分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q45",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "5. （5分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q46",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "6.（5分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q47",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "（1）翻译；氨基酸"
+    },
+    {
+     "check": "P13",
+     "unit": "Q50",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "10.（5分）"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\会考\\英语\\2018北京春季高中会考英语（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\会考\\英语\\2018北京春季高中会考英语（教师版）(1).md",
+   "n_units": 18,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q61",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "Possible version:"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\会考\\语文\\2018北京春季高中会考语文（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\会考\\语文\\2018北京春季高中会考语文（教师版）(1).md",
+   "n_units": 10,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md",
+   "n_units": 18,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\其他汇编\\理综\\14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\其他汇编\\理综\\14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+   "n_units": 35,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).md",
+   "n_units": 12,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q10",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "【解答】本题考查不定代词的用法；anything 任何事物，常常用在否定句和疑问句中；everything 一切事物，在"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\合格考\\化学\\2020北京高中合格考化学（第一次）（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\合格考\\化学\\2020北京高中合格考化学（第一次）（教师版）(1).md",
+   "n_units": 34,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q1",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "【解析】"
+    },
+    {
+     "check": "P13",
+     "unit": "Q15",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "【解析】"
+    },
+    {
+     "check": "P13",
+     "unit": "Q24",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "【解析】"
+    },
+    {
+     "check": "P15",
+     "unit": "N1",
+     "detail": "answer_lines 内出现非本单元题号 26",
+     "sample": "26. 【答案】"
+    },
+    {
+     "check": "P15",
+     "unit": "N2",
+     "detail": "answer_lines 内出现非本单元题号 27",
+     "sample": "27. 【答案】(1). ② (2). ③ (3). ①"
+    },
+    {
+     "check": "P15",
+     "unit": "N3",
+     "detail": "answer_lines 内出现非本单元题号 28",
+     "sample": "28.【答案】（1）. 负极 (2).  $ \\mathrm{Zn} + \\mathrm{H}_{2} \\mathrm{"
+    },
+    {
+     "check": "P15",
+     "unit": "N4",
+     "detail": "answer_lines 内出现非本单元题号 29",
+     "sample": "29.【答案】(1).  $ \\mathrm{NH_{3}} $ (2). 降低 (3). 6 (4). 24"
+    },
+    {
+     "check": "P15",
+     "unit": "N5",
+     "detail": "answer_lines 内出现非本单元题号 30",
+     "sample": "30. 【答案】(1). 对 (2). 对 (3). 对 (4). 错"
+    },
+    {
+     "check": "P15",
+     "unit": "N6",
+     "detail": "answer_lines 内出现非本单元题号 31",
+     "sample": "31.【答案】(1).  $  \\text{Cu} + 2\\text{H}_2\\text{SO}_4 \\text{(浓)"
+    },
+    {
+     "check": "P15",
+     "unit": "N7",
+     "detail": "answer_lines 内出现非本单元题号 32",
+     "sample": "32. 【答案】(1). 第3周期第ⅣA族 (2). 共价键 (3). Si与P电子层数相同，核电荷数Si小于P，原子半"
+    },
+    {
+     "check": "P15",
+     "unit": "N8",
+     "detail": "answer_lines 内出现非本单元题号 33",
+     "sample": "33. 【答案】(1). BaCl₂ (2). NH₄Cl  $ \\xrightarrow{\\Delta_x} $ NH"
+    },
+    {
+     "check": "P15",
+     "unit": "N9",
+     "detail": "answer_lines 内出现非本单元题号 34",
+     "sample": "34.【答案】(1).增大接触面积，使反应更快（或更充分）(2).探究在其它条件相同时，pH对硝酸盐氮去除效果的影响(3"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\合格考\\历史\\2021北京高中合格考历史（第一次）（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\合格考\\历史\\2021北京高中合格考历史（第一次）（教师版）(1).md",
+   "n_units": 42,
+   "flags": [
+    {
+     "check": "P14",
+     "unit": "Q25",
+     "detail": "stem_lines 内出现非本单元题号 5",
+     "sample": "5.依据下面学习笔记中的内容，可以判断该国是( )"
+    },
+    {
+     "check": "P13",
+     "unit": "U42",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "42.(20分)"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\合格考\\地理\\2017-2019北京高中地理合格考试汇编：人口（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\合格考\\地理\\2017-2019北京高中地理合格考试汇编：人口（教师版）(1).md",
+   "n_units": 7,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "U11-12",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "12\\. B"
+    },
+    {
+     "check": "P15",
+     "unit": "U13-14",
+     "detail": "answer_lines 内出现非本单元题号 4",
+     "sample": "4. A"
+    },
+    {
+     "check": "P13",
+     "unit": "Q15",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "15\\. B"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\合格考\\政治\\2021北京高中合格考政治（第一次）（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\合格考\\政治\\2021北京高中合格考政治（第一次）（教师版）(1).md",
+   "n_units": 31,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q31",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "31\\. (6分)"
+    },
+    {
+     "check": "P13",
+     "unit": "Q33",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "33.（6分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q34",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "34.（6分）"
+    },
+    {
+     "check": "P14",
+     "unit": "U35",
+     "detail": "questions_lines 内出现非本单元题号 1",
+     "sample": "1. ___"
+    },
+    {
+     "check": "P14",
+     "unit": "U35",
+     "detail": "questions_lines 内出现非本单元题号 2",
+     "sample": "2. ……"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\合格考\\数学\\2021北京高中合格考数学（第二次）（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\合格考\\数学\\2021北京高中合格考数学（第二次）（教师版）(1).md",
+   "n_units": 28,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q21",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "(21)  $ [0,+\\infty) $. (22)  $ \\underline{2} $ ;  $ \\underli"
+    },
+    {
+     "check": "P13",
+     "unit": "Q22",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "(21)  $ [0,+\\infty) $. (22)  $ \\underline{2} $ ;  $ \\underli"
+    },
+    {
+     "check": "P13",
+     "unit": "Q23",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "(21)  $ [0,+\\infty) $. (22)  $ \\underline{2} $ ;  $ \\underli"
+    },
+    {
+     "check": "P13",
+     "unit": "Q24",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "(21)  $ [0,+\\infty) $. (22)  $ \\underline{2} $ ;  $ \\underli"
+    },
+    {
+     "check": "P13",
+     "unit": "Q25",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "(25)  $ T = \\pi $"
+    },
+    {
+     "check": "P13",
+     "unit": "Q27",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "## （27） 略"
+    },
+    {
+     "check": "P13",
+     "unit": "Q28",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "（28）简析：（I）令  $ f(x)=x^{2}+\\frac{1}{x}=0 $，即  $ x^{3}+1=0 $，所"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\合格考\\物理\\2021北京高中合格考物理（第二次）（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\合格考\\物理\\2021北京高中合格考物理（第二次）（教师版）(1).md",
+   "n_units": 15,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q21",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "21.  $ \\frac{d}{\\Delta t_{1}} $ 大于"
+    },
+    {
+     "check": "P13",
+     "unit": "Q22",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "22. 70 大于"
+    },
+    {
+     "check": "P13",
+     "unit": "Q23",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "23. 左  $ \\frac{m(h_{C}-h_{A})^{2}}{8T^{2}} $"
+    },
+    {
+     "check": "P13",
+     "unit": "Q24",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "24.（5分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q25",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "25\\.（5分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q26",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "26\\. (6分)"
+    },
+    {
+     "check": "P13",
+     "unit": "Q27",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "27\\. (6分)"
+    },
+    {
+     "check": "P13",
+     "unit": "Q28",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "28.（6分）"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\合格考\\生物\\2020北京高中合格考生物（第二次）（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\合格考\\生物\\2020北京高中合格考生物（第二次）（教师版）(1).md",
+   "n_units": 44,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q36",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "36.（6分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q37",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "37.（5分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q38",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "38.（7分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q39",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "39.（5分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q40",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "40.（5分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q41",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "41.（6分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q42",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "42.（5分）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q43",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "43.（6分）"
+    },
+    {
+     "check": "P13",
+     "unit": "U44",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "44.（5分）"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\合格考\\英语\\2020北京高中合格考英语（第二次）（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\合格考\\英语\\2020北京高中合格考英语（第二次）（教师版）(1).md",
+   "n_units": 15,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "U15-17",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": ""
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\合格考\\语文\\2021北京高中合格考语文（第二次）（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\合格考\\语文\\2021北京高中合格考语文（第二次）（教师版）(1).md",
+   "n_units": 9,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\学业水平考试\\化学\\12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\学业水平考试\\化学\\12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+   "n_units": 19,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\历史\\2021北京高考压轴卷历史（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\竞赛自招\\历史\\2021北京高考压轴卷历史（教师版）(1).md",
+   "n_units": 20,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q16",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "16.（1）技术革命：蔡伦独创新意，使用树皮、麻头、破布和旧渔网加工造成新的书写材料——一纸(或蔡伦独创新意，改进造纸术"
+    },
+    {
+     "check": "P13",
+     "unit": "Q18",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "18.（1）原因：19世纪中期以来民族危机日益严重；巴黎和会。上中国外交的失败导致五四运动的爆发，反帝爱国运动是五四运动"
+    },
+    {
+     "check": "P13",
+     "unit": "Q20",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "20.（1）因素：劳动力资源，国内市场，技术改革和机器发明，资产阶级代议制度。特征：自由资本主义或“自由放任”。"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\政治\\2019北京大学博雅计划模拟政治（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\竞赛自招\\政治\\2019北京大学博雅计划模拟政治（教师版）(1).md",
+   "n_units": 5,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\数学\\2020北京大学强基计划数学（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\竞赛自招\\数学\\2020北京大学强基计划数学（教师版）(1).md",
+   "n_units": 20,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).md",
+   "n_units": 19,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q2",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "2. A"
+    },
+    {
+     "check": "P13",
+     "unit": "Q3",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "3. A 解法一： $ E = \\frac{1}{2}m(\\dot{r}^2 + r^2\\dot{\\theta}^2) "
+    },
+    {
+     "check": "P13",
+     "unit": "Q4",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "4. B 在小车参考系（非惯性系）中引入平移惯性力，得到等效的重力加速度，再应用单摆模型求出结果．即等效  $ g' ="
+    },
+    {
+     "check": "P13",
+     "unit": "Q8",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "8. D 由  $ L \\gg R $ 知，铁芯内部的磁场可以看作匀强磁场，磁感应强度大小为  $ B = \\mu_r "
+    },
+    {
+     "check": "P13",
+     "unit": "Q10",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "10. B"
+    },
+    {
+     "check": "P13",
+     "unit": "Q11",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "11\\. C 解法一：由能量守恒可知，外力做功+电源做功=电容器储能的变化量，因而有"
+    },
+    {
+     "check": "P13",
+     "unit": "Q12",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "12. B 该系统可以看作是一个圆柱面（可类比螺线管）和一个平板电容器串联，形成一个 LC 振荡电路."
+    },
+    {
+     "check": "P13",
+     "unit": "Q13",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "13. 电场平均值定理  $ E = \\frac{E_{内} + E_{外}}{2} = \\frac{0 + \\frac"
+    },
+    {
+     "check": "P13",
+     "unit": "Q14",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "14. D 由于  $ 2\\text{nm} \\ll 643.2\\text{nm} $，小孔衍射，衍射角  $ \\the"
+    },
+    {
+     "check": "P13",
+     "unit": "Q15",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "15\\. B波从波源出发，直接被接收者接收，接收频率为"
+    },
+    {
+     "check": "P14",
+     "unit": "Q16",
+     "detail": "stem_lines 内出现非本单元题号 6",
+     "sample": "6. 如图7所示，小球 m 质量远小于大球 M，小球放于大球上，下落后弹起，高度为  $ h_2 $，若小球直接在相同高"
+    },
+    {
+     "check": "P13",
+     "unit": "Q16",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "16. BE 设小球弹起初速度分别为  $ v_2 $，对应弹起高度  $ h_2 $， $ v_1 $ 对应弹起高度 "
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\语文\\2019北京大学博雅计划模拟语文（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\竞赛自招\\语文\\2019北京大学博雅计划模拟语文（教师版）(1).md",
+   "n_units": 4,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "U11",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "断句："
+    },
+    {
+     "check": "P13",
+     "unit": "U15",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "抓住这首诗的核心情感是在困境和悲哀中仍不放弃希望和信念理想的积极情调，努力、相信、热爱是本诗的关键词，要抓住它们进行写作"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高一\\化学\\2022北京首都师大附中高一12月月考化学（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2022北京首都师大附中高一12月月考化学（教师版）(1).md",
+   "n_units": 20,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高一\\历史\\2020北京平谷高一（上）期末历史含答案.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高一\\历史\\2020北京平谷高一（上）期末历史含答案.md",
+   "n_units": 54,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高一\\地理\\2022北京东城高一（上）期末地理（教师版）.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2022北京东城高一（上）期末地理（教师版）.md",
+   "n_units": 16,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高一\\政治\\2021北京四十三中高一（上）期中政治（教师版）.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高一\\政治\\2021北京四十三中高一（上）期中政治（教师版）.md",
+   "n_units": 41,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q10",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "故本题选 B。"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高一\\数学\\2021北京师大二附中高一（上）期中数学（教师版）.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京师大二附中高一（上）期中数学（教师版）.md",
+   "n_units": 21,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q16",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "16.【分析】（Ⅰ）先求出集合 A，B，然后由并集的定义求出 U，再利用补集的定义求解即可；"
+    },
+    {
+     "check": "P13",
+     "unit": "Q17",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "17.【分析】（1）利用  $ f(1)=4 $， $ f(2)=5 $，列出关于 b，c 的方程组，求出 b，c 的值"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高一\\物理\\2018北京十四中高一（下）期中物理（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2018北京十四中高一（下）期中物理（教师版）(1).md",
+   "n_units": 23,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q6",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "6."
+    },
+    {
+     "check": "P13",
+     "unit": "Q21",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "21."
+    },
+    {
+     "check": "P13",
+     "unit": "Q22",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "22."
+    },
+    {
+     "check": "P13",
+     "unit": "Q23",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "23."
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高一\\生物\\2021北京四中高一（上）期中生物（教师版）.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2021北京四中高一（上）期中生物（教师版）.md",
+   "n_units": 35,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q2",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "2. 下列关于水 叙述错误的是"
+    },
+    {
+     "check": "P13",
+     "unit": "Q9",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "9. 科学家把质膜与细胞的其余部分脱离，并将质膜冰冻，然后将其从疏水层撕裂。利用这种技术制作电子显微镜观察材料，发现撕裂"
+    },
+    {
+     "check": "P13",
+     "unit": "Q19",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "19. 2018 年《Cell》期刊报道，中国科学院上海神经科学研究所利用体细胞核移植技术，克隆出两只长尾猕猴，取名为“"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高一\\英语\\2019北京三十五中新高一分班考试英语含答案(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高一\\英语\\2019北京三十五中新高一分班考试英语含答案(1).md",
+   "n_units": 39,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q81",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "81. not to play games in the street"
+    },
+    {
+     "check": "P13",
+     "unit": "Q82",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "82. until my mother came back"
+    },
+    {
+     "check": "P13",
+     "unit": "Q83",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "83. as soon as he saw"
+    },
+    {
+     "check": "P13",
+     "unit": "Q84",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "84. to keep you waiting/ to make you wait"
+    },
+    {
+     "check": "P13",
+     "unit": "Q85",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "85. stopped to have a rest"
+    },
+    {
+     "check": "P13",
+     "unit": "Q86-essay",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "## 九、 写作（共10分）略"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高一\\语文\\2022北京首都师大附中高一12月月考语文（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高一\\语文\\2022北京首都师大附中高一12月月考语文（教师版）(1).md",
+   "n_units": 9,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "n_units": 84,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "U-eg2",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "解题指导  $ \\mathrm{H}_{2}\\mathrm{O}_{2} $ 中氧元素的化合价为-1，处于中间价态，故 "
+    },
+    {
+     "check": "P13",
+     "unit": "Q4",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "☐答案 C"
+    },
+    {
+     "check": "P13",
+     "unit": "Q3",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "✉答案 C"
+    },
+    {
+     "check": "P13",
+     "unit": "Q4",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": ""
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高三\\化学\\2017-2019北京高三化学上学期期末汇编：化学实验（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2017-2019北京高三化学上学期期末汇编：化学实验（教师版）(1).md",
+   "n_units": 89,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q17",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "17. （2018 秋·朝阳区期末）学习和研究化学，经常要进行实验。安全是顺利进行实验及避免伤害和事故的保障。下列说法不"
+    },
+    {
+     "check": "P14",
+     "unit": "Q39",
+     "detail": "stem_lines 内出现非本单元题号 1",
+     "sample": "1. 感官标准：颜色黑紫透亮；气味清香浓郁，有纯正柔和的醋香与醋香..."
+    },
+    {
+     "check": "P14",
+     "unit": "Q39",
+     "detail": "stem_lines 内出现非本单元题号 2",
+     "sample": "2. 理化指标：总酸度含量，"
+    },
+    {
+     "check": "P15",
+     "unit": "Q39",
+     "detail": "answer_lines 内出现非本单元题号 1",
+     "sample": "1. 感官标准：颜色黑紫透亮；气味清香浓郁，有纯正柔和的醋香与醋香……"
+    },
+    {
+     "check": "P15",
+     "unit": "Q39",
+     "detail": "answer_lines 内出现非本单元题号 2",
+     "sample": "2. 理化指标：总酸度含量，以醋酸计算，不得低于9.5%；总脂含量，以醋酸乙"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高三\\化学\\2021北京四中高三（上）期中化学（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2021北京四中高三（上）期中化学（教师版）(1).md",
+   "n_units": 19,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q1",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "1. 【分析】A、臭氧的消毒是利用其强氧化性；"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高三\\历史\\2022北京丰台高三一模历史（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\历史\\2022北京丰台高三一模历史（教师版）(1).md",
+   "n_units": 20,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高三\\地理\\2021北京东城高三二模地理（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\地理\\2021北京东城高三二模地理（教师版）(1).md",
+   "n_units": 12,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高三\\政治\\2021北京房山高三二模政治（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\政治\\2021北京房山高三二模政治（教师版）(1).md",
+   "n_units": 20,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期中汇编：立体几何（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2017-2019北京高三数学上学期期中汇编：立体几何（教师版）(1).md",
+   "n_units": 17,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).md",
+   "n_units": 74,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高三\\物理\\2022北京首都师大附中高三9月月考物理（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2022北京首都师大附中高三9月月考物理（教师版）(1).md",
+   "n_units": 18,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).md",
+   "n_units": 21,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q10",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "D、部分标记个体迁出会导致第二次捕捉时捉到的带标记的个体减少，从而使计算出来的种群数量比实际值偏大，故种群密度也比实际值"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高三\\英语\\2020北京大兴高三（上）期末英语（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高三\\英语\\2020北京大兴高三（上）期末英语（教师版）(1).md",
+   "n_units": 11,
+   "flags": [
+    {
+     "check": "P14",
+     "unit": "Q51",
+     "detail": "stem_lines 内出现非本单元题号 1",
+     "sample": "1. 表达意愿："
+    },
+    {
+     "check": "P14",
+     "unit": "Q51",
+     "detail": "stem_lines 内出现非本单元题号 2",
+     "sample": "2. 申请理由："
+    },
+    {
+     "check": "P14",
+     "unit": "Q51",
+     "detail": "stem_lines 内出现非本单元题号 3",
+     "sample": "3. 恳请获准。"
+    },
+    {
+     "check": "P14",
+     "unit": "Q51",
+     "detail": "stem_lines 内出现非本单元题号 1",
+     "sample": "1. 词数不少于50:"
+    },
+    {
+     "check": "P14",
+     "unit": "Q51",
+     "detail": "stem_lines 内出现非本单元题号 2",
+     "sample": "2. 开头和结尾已给出，不计入总词数。Dear Jim,"
+    },
+    {
+     "check": "P15",
+     "unit": "Q52",
+     "detail": "answer_lines 内出现非本单元题号 2",
+     "sample": "2．评分时，先根据文章的内容和语言质量初步确定其档次，然后以该档次的要求来衡量，确定或调整档次，最后给分。"
+    },
+    {
+     "check": "P15",
+     "unit": "Q52",
+     "detail": "answer_lines 内出现非本单元题号 3",
+     "sample": "3．评分时应考虑：内容要点的完整性、上下文的连贯、词汇和句式的多样性及语言的准确性。"
+    },
+    {
+     "check": "P15",
+     "unit": "Q52",
+     "detail": "answer_lines 内出现非本单元题号 4",
+     "sample": "4. 拼写、标点符号或书写影响内容表达时，应视其影响程度予以考虑。英、美拼写及词汇用法均可接受。"
+    },
+    {
+     "check": "P15",
+     "unit": "Q52",
+     "detail": "answer_lines 内出现非本单元题号 3",
+     "sample": "3. 提供帮助（指路；收行李车）；"
+    },
+    {
+     "check": "P15",
+     "unit": "Q52",
+     "detail": "answer_lines 内出现非本单元题号 4",
+     "sample": "4. 合影留念。"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：空间向量与立体几何（2）（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\数学\\2012-2021高考真题数学汇编：空间向量与立体几何（2）（教师版）(1).md",
+   "n_units": 60,
+   "flags": [
+    {
+     "check": "P15",
+     "unit": "Q20",
+     "detail": "answer_lines 内出现非本单元题号 2",
+     "sample": "2）由  $ PD \\perp $ 底面  $ ABCD $，所以  $ \\overrightarrow{DP} = ("
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\数学\\2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).md",
+   "n_units": 60,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q20",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "所以为使累计得分的期望最大，小明应选择先回答 B 类问题."
+    },
+    {
+     "check": "P13",
+     "unit": "Q21",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "所以有99%的把握认为甲机床的产品质量与乙机床的产品质量有差异."
+    },
+    {
+     "check": "P13",
+     "unit": "Q22",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "故有99%的把握认为该市一天空气中PM2.5浓度与$SO_{2}$浓度有关，"
+    },
+    {
+     "check": "P13",
+     "unit": "Q23",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "所以  $ E(X_n) = 2p_n + q_n + 0 \\times (4 - p_n - q_n) = \\left"
+    },
+    {
+     "check": "P13",
+     "unit": "Q24",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "理由如下：由（2）知各样区的这种野生动物数量与植物覆盖面积有很强的正相关．由于各地块间植物覆盖面积差异很大，采用分层抽样"
+    },
+    {
+     "check": "P13",
+     "unit": "Q25",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "所以有95%的把握认为一天中到该公园锻炼的人次与该市当天的空气质量有关."
+    },
+    {
+     "check": "P13",
+     "unit": "Q27",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "因为15>10，所以选择甲分厂承接更好."
+    },
+    {
+     "check": "P13",
+     "unit": "Q28",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "$$ =P\\ (X=3)\\ P\\ (Y=1)\\ +P\\ (X=2)\\ P\\ (Y=0)\\ =&\\frac{8}{27}\\"
+    },
+    {
+     "check": "P13",
+     "unit": "Q29",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "故有95%的把握认为男、女顾客对该商场服务的评价有差异."
+    },
+    {
+     "check": "P13",
+     "unit": "Q30",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "$$ \\begin{aligned}&(2)P(X=4 且甲获胜 )=P(\\mathrm{~A}_{6}\\overlin"
+    },
+    {
+     "check": "P13",
+     "unit": "Q31",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "∴无法确定有没有变化."
+    },
+    {
+     "check": "P13",
+     "unit": "Q32",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "∴能有99%的把握认为两种生产方式的效率有差异."
+    },
+    {
+     "check": "P13",
+     "unit": "Q33",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "所以事件A发生的概率： $ \\frac{2}{7} $."
+    },
+    {
+     "check": "P13",
+     "unit": "Q34",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "$$ D\\xi_{6}<D\\xi_{4}<D\\xi_{2}=D\\xi_{5}<D\\xi_{2}<D\\xi_{1}. $$"
+    },
+    {
+     "check": "P13",
+     "unit": "Q35",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "：应该对余下的产品进行检验."
+    },
+    {
+     "check": "P13",
+     "unit": "Q36",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "所以利用模型②的预测值更可靠些."
+    },
+    {
+     "check": "P13",
+     "unit": "Q37",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "新养殖法箱产量的中位数的估计值 52.35（kg）"
+    },
+    {
+     "check": "P13",
+     "unit": "Q38",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "因此 $ \\sigma $的估计值为 $ \\sqrt{6.008}\\approx0.09 $."
+    },
+    {
+     "check": "P13",
+     "unit": "Q40",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "X的数学期望  $ EX=0\\times\\frac{7}{42}+1\\times\\frac{5}{21}\\frac{10"
+    },
+    {
+     "check": "P13",
+     "unit": "Q41",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "∴剔除离群值后样本标准差为 $ \\sqrt{4.008}\\approx0.09 $."
+    },
+    {
+     "check": "P13",
+     "unit": "Q42",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "（3）答：由图知100名患者中服药者指标y数据的方差比未服药者指标y数据的方差大."
+    },
+    {
+     "check": "P13",
+     "unit": "Q43",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "$\\therefore n=300$ 时，Y 的数学期望达到最大值."
+    },
+    {
+     "check": "P13",
+     "unit": "Q44",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "∴估计Y大于零的概率 $ P=\\frac{72}{90}=\\frac{4}{5} $"
+    },
+    {
+     "check": "P13",
+     "unit": "Q45",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "$$ \\begin{aligned}&\\therefore E(X)=\\sum_{k=n}^{n+m}(\\frac{3}"
+    },
+    {
+     "check": "P13",
+     "unit": "Q46",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "故 $k$ 为 8 时，$P_{k}$ 最大。"
+    },
+    {
+     "check": "P13",
+     "unit": "Q47",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "$$ E(X)=0\\times\\frac{4}{15}+8\\times\\frac{7\\quad4}{15\\quad15}"
+    },
+    {
+     "check": "P13",
+     "unit": "Q49",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "∴买19个更合适."
+    },
+    {
+     "check": "P13",
+     "unit": "Q51",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "$$ \\begin{aligned}&P\\ (A\\ )=P\\ (T_{6}+T_{2}\\leq70)\\ =P\\ (T_{"
+    },
+    {
+     "check": "P13",
+     "unit": "Q52",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "$$ \\overline{E X=0}\\times\\frac{3}{15}+1\\times\\frac{7}{15}\\ti"
+    },
+    {
+     "check": "P13",
+     "unit": "Q53",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "故同时购买甲和丙的概率最大."
+    },
+    {
+     "check": "P13",
+     "unit": "Q54",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "$$ \\overline{EX=1\\times\\frac{6}{6}+2\\times\\frac{8\\ 2}{6\\ 4}="
+    },
+    {
+     "check": "P13",
+     "unit": "Q55",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "（Ⅱ）t=6时， $ y=5.2\\times6+8.6=10.8 $（千亿元）."
+    },
+    {
+     "check": "P13",
+     "unit": "Q56",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "随机变量 $X$ 的数学期望 $E(X) = 1 \\times \\frac{8}{14} + 2 \\times \\fra"
+    },
+    {
+     "check": "P13",
+     "unit": "Q57",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "（ii）根据（Ⅱ）的结果可知，年利润  $ z $ 的预报值  $ z^{\\sqrt{x}} $  $ -x = -x "
+    },
+    {
+     "check": "P13",
+     "unit": "Q58",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "和数学期望  $ EX=1\\times\\frac{1}{7}+2\\times\\frac{3}{8}+3\\times\\fr"
+    },
+    {
+     "check": "P13",
+     "unit": "Q59",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "$$ \\overline{EX=0}\\times\\frac{2}{5}+(-1)\\times\\frac{1}{14}\\f"
+    },
+    {
+     "check": "P13",
+     "unit": "Q60",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "不中奖的概率为： $ 2 - \\frac{1}{3} = \\frac{8}{3} > \\frac{1}{5} $."
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-batch-C\\高考真题\\生物\\2012-2021高考真题生物汇编：基因工程（1）（教师版）(1).manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\生物\\2012-2021高考真题生物汇编：基因工程（1）（教师版）(1).md",
+   "n_units": 60,
+   "flags": [
+    {
+     "check": "P15",
+     "unit": "U21",
+     "detail": "answer_lines 内出现非本单元题号 3",
+     "sample": "3、DNA 连接酶：连接的是两个核苷酸之间的磷酸二酯键。"
+    },
+    {
+     "check": "P15",
+     "unit": "U28",
+     "detail": "answer_lines 内出现非本单元题号 2",
+     "sample": "2、PCR 扩增过程中，在引物作用下，DNA 聚合酶从引物 3'端开始延伸 DNA 链，即 DNA 的合成方向是从子链的"
+    },
+    {
+     "check": "P15",
+     "unit": "U35",
+     "detail": "answer_lines 内出现非本单元题号 2",
+     "sample": "2. 植物组织培养经历的过程是脱分化形成愈伤组织，再分化形成幼根幼芽等，注意植物激素的浓度配比、无菌操作等。"
+    },
+    {
+     "check": "P15",
+     "unit": "U44",
+     "detail": "answer_lines 内出现非本单元题号 1",
+     "sample": "1、 $ \\frac{1}{5} $、 $ \\frac{1}{2} $、 $ \\frac{7}{2} $、之后一直是 $"
+    },
+    {
+     "check": "P15",
+     "unit": "U51",
+     "detail": "answer_lines 内出现非本单元题号 2",
+     "sample": "2、 “分子缝合针”--DNA连接酶"
+    }
+   ]
+  }
+ ]
+}

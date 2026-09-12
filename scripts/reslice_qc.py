@@ -8,6 +8,7 @@
   C5 源文件的图片引用全部被带入切片（无丢失）
   C6 源文件的表格行全部被带入切片
   C7 卷面指令不出现（本大题共X小题/答题卡提示）
+  C13 题号唯一性：同一题号不得归属多个单元（大题内编号冲突）
 输出 reslice_pilot_qc.json + 汇总
 """
 import json
@@ -195,6 +196,15 @@ def check(md_path: Path):
         if ratio > 0.85:
             issues.append(f"C11 详解区首行与题干首行相似{ratio:.2f}(原题复述未剥离): {u.get('unit_id')}")
             break  # 每份报一次即可
+
+    # C13 题号唯一性(R30 语义代理探针实测:8/50 份真实产物存在"大题内编号/
+    #   分卷重编号"被当全卷题号 → 题号 1-N 双重归属,题库入库即冲突。
+    #   "结构合法但语义错误"的 D1 家族,C1-C12 原本全放行)
+    from collections import Counter
+    qcnt = Counter(n for u in man["units"] for n in (u.get("question_numbers") or []))
+    dups = sorted(n for n, c in qcnt.items() if c > 1)
+    if dups:
+        issues.append(f"C13 题号重复归属(疑似大题内编号/分卷重编号): {dups[:10]}")
 
     return {"file": str(md_path), "units": len(man["units"]),
             "questions": len(man_nums), "issues": issues,

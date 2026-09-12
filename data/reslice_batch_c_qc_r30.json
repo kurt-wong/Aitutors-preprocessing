@@ -1,0 +1,404 @@
+[
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\会考\\化学\\2018北京春季高中会考化学（教师版）(1).md",
+  "units": 40,
+  "questions": 25,
+  "issues": [
+   "C3 第35单元答案区为空",
+   "C3 第36单元答案区为空",
+   "C3 第37单元答案区为空",
+   "C3 第38单元答案区为空",
+   "C3 第39单元答案区为空",
+   "C3 第40单元答案区为空",
+   "C13 题号重复归属(疑似大题内编号/分卷重编号): [1, 2, 3, 4, 5, 6]"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\会考\\历史\\2018北京夏季高中会考历史（教师版）(1).md",
+  "units": 53,
+  "questions": 53,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\会考\\地理\\2018北京春季高中会考地理（教师版）(1).md",
+  "units": 25,
+  "questions": 50,
+  "issues": [
+   "C13 题号重复归属(疑似大题内编号/分卷重编号): [1, 2, 3, 4, 5]"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\会考\\政治\\2018北京夏季高中会考政治（教师版）(1).md",
+  "units": 36,
+  "questions": 37,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\会考\\数学\\2018北京春季高中会考数学（教师版）(1).md",
+  "units": 30,
+  "questions": 30,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\会考\\物理\\2018北京春季高中会考物理（教师版）(1).md",
+  "units": 22,
+  "questions": 28,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\会考\\生物\\2018北京春季高中会考生物（教师版）(1).md",
+  "units": 50,
+  "questions": 40,
+  "issues": [
+   "C13 题号重复归属(疑似大题内编号/分卷重编号): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\会考\\英语\\2018北京春季高中会考英语（教师版）(1).md",
+  "units": 18,
+  "questions": 61,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\会考\\语文\\2018北京春季高中会考语文（教师版）(1).md",
+  "units": 10,
+  "questions": 17,
+  "issues": [
+   "C7 含卷面指令: ['在答题卡上']"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md",
+  "units": 18,
+  "questions": 18,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\其他汇编\\理综\\14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+  "units": 35,
+  "questions": 35,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).md",
+  "units": 12,
+  "questions": 12,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\合格考\\化学\\2020北京高中合格考化学（第一次）（教师版）(1).md",
+  "units": 34,
+  "questions": 25,
+  "issues": [
+   "C13 题号重复归属(疑似大题内编号/分卷重编号): [1, 2, 3, 4, 5, 6, 7, 8, 9]"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\合格考\\历史\\2021北京高中合格考历史（第一次）（教师版）(1).md",
+  "units": 42,
+  "questions": 42,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\合格考\\地理\\2017-2019北京高中地理合格考试汇编：人口（教师版）(1).md",
+  "units": 7,
+  "questions": 15,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\合格考\\政治\\2021北京高中合格考政治（第一次）（教师版）(1).md",
+  "units": 31,
+  "questions": 35,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\合格考\\数学\\2021北京高中合格考数学（第二次）（教师版）(1).md",
+  "units": 28,
+  "questions": 28,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\合格考\\物理\\2021北京高中合格考物理（第二次）（教师版）(1).md",
+  "units": 15,
+  "questions": 28,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\合格考\\生物\\2020北京高中合格考生物（第二次）（教师版）(1).md",
+  "units": 44,
+  "questions": 44,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\合格考\\英语\\2020北京高中合格考英语（第二次）（教师版）(1).md",
+  "units": 15,
+  "questions": 36,
+  "issues": [
+   "C3 第6单元答案区为空",
+   "C5 4 个图片行未被任何单元覆盖: ['L439:(1)/img_in_image_box_109_504_164_603.jpg', 'L444:(1)/img_in_image_box_220_503_276_600.jpg', 'L449:(1)/img_in_image_box_340_506_397_598.jpg']",
+   "C6 3 个表格行未被任何单元覆盖: [547, 687, 692]",
+   "C13 题号重复归属(疑似大题内编号/分卷重编号): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\合格考\\语文\\2021北京高中合格考语文（第二次）（教师版）(1).md",
+  "units": 9,
+  "questions": 17,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\学业水平考试\\化学\\12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+  "units": 19,
+  "questions": 19,
+  "issues": [
+   "C6 1 个表格行未被任何单元覆盖: [203]"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\历史\\2021北京高考压轴卷历史（教师版）(1).md",
+  "units": 20,
+  "questions": 20,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\政治\\2019北京大学博雅计划模拟政治（教师版）(1).md",
+  "units": 5,
+  "questions": 5,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\数学\\2020北京大学强基计划数学（教师版）(1).md",
+  "units": 20,
+  "questions": 20,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).md",
+  "units": 19,
+  "questions": 19,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\语文\\2019北京大学博雅计划模拟语文（教师版）(1).md",
+  "units": 4,
+  "questions": 10,
+  "issues": [
+   "C13 题号重复归属(疑似大题内编号/分卷重编号): [1, 2, 3]"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高一\\化学\\2022北京首都师大附中高一12月月考化学（教师版）(1).md",
+  "units": 20,
+  "questions": 20,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高一\\历史\\2020北京平谷高一（上）期末历史含答案.md",
+  "units": 54,
+  "questions": 54,
+  "issues": [
+   "C3 第2单元答案区为空",
+   "C3 第12单元答案区为空",
+   "C3 第25单元答案区为空",
+   "C3 第39单元答案区为空",
+   "C3 第44单元答案区为空"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高一\\地理\\2022北京东城高一（上）期末地理（教师版）.md",
+  "units": 16,
+  "questions": 34,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高一\\政治\\2021北京四十三中高一（上）期中政治（教师版）.md",
+  "units": 41,
+  "questions": 41,
+  "issues": [
+   "C5 1 个图片行未被任何单元覆盖: ['L1356:师版）/img_in_image_box_71_847_386_1071.jpg']"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高一\\数学\\2021北京师大二附中高一（上）期中数学（教师版）.md",
+  "units": 21,
+  "questions": 21,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高一\\物理\\2018北京十四中高一（下）期中物理（教师版）(1).md",
+  "units": 23,
+  "questions": 23,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高一\\生物\\2021北京四中高一（上）期中生物（教师版）.md",
+  "units": 35,
+  "questions": 35,
+  "issues": [
+   "C5 5 个图片行未被任何单元覆盖: ['L1265:版）/img_in_image_box_77_1155_710_1552.jpg', 'L1308:版）/img_in_image_box_89_1185_647_1462.jpg', 'L1365:教师版）/img_in_image_box_97_413_413_644.jpg']"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高一\\英语\\2019北京三十五中新高一分班考试英语含答案(1).md",
+  "units": 39,
+  "questions": 95,
+  "issues": [
+   "C9 2 处试卷结构行混入单元区间: ['L358:## 六、 阅读理解填词（每空1分，共7分）', 'L422:注意事项：1. 不少于 60 词。2. 文中不得出现真实的校名和姓名。']",
+   "C13 题号重复归属(疑似大题内编号/分卷重编号): [86]"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高一\\语文\\2022北京首都师大附中高一12月月考语文（教师版）(1).md",
+  "units": 9,
+  "questions": 14,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+  "units": 84,
+  "questions": 12,
+  "issues": [
+   "C3 第22单元答案区为空",
+   "C3 第57单元答案区为空",
+   "C3 第62单元答案区为空",
+   "C5 50 个图片行未被任何单元覆盖: ['L11:PDF/img_in_image_box_210_518_234_604.jpg', 'L17:PDF/img_in_image_box_285_565_340_613.jpg', 'L20:PDF/img_in_image_box_203_632_241_700.jpg']",
+   "C6 8 个表格行未被任何单元覆盖: [240, 247, 298, 377, 384, 393, 398, 681]",
+   "C13 题号重复归属(疑似大题内编号/分卷重编号): [1, 2, 3, 4, 5, 6, 7, 8]"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高三\\化学\\2017-2019北京高三化学上学期期末汇编：化学实验（教师版）(1).md",
+  "units": 89,
+  "questions": 89,
+  "issues": [
+   "C5 1 个图片行未被任何单元覆盖: ['L2080:1)/img_in_image_box_192_873_430_1133.jpg']"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高三\\化学\\2021北京四中高三（上）期中化学（教师版）(1).md",
+  "units": 19,
+  "questions": 19,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高三\\历史\\2022北京丰台高三一模历史（教师版）(1).md",
+  "units": 20,
+  "questions": 20,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高三\\地理\\2021北京东城高三二模地理（教师版）(1).md",
+  "units": 12,
+  "questions": 20,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高三\\政治\\2021北京房山高三二模政治（教师版）(1).md",
+  "units": 20,
+  "questions": 20,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期中汇编：立体几何（教师版）(1).md",
+  "units": 17,
+  "questions": 17,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).md",
+  "units": 74,
+  "questions": 74,
+  "issues": [
+   "C5 80 个图片行未被任何单元覆盖: ['L1096:(1)/img_in_image_box_102_409_551_767.jpg', 'L1120:）(1)/img_in_image_box_104_79_241_220.jpg', 'L1126:）(1)/img_in_image_box_291_73_433_225.jpg']"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高三\\物理\\2022北京首都师大附中高三9月月考物理（教师版）(1).md",
+  "units": 18,
+  "questions": 18,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).md",
+  "units": 21,
+  "questions": 21,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高三\\英语\\2020北京大兴高三（上）期末英语（教师版）(1).md",
+  "units": 11,
+  "questions": 52,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：空间向量与立体几何（2）（教师版）(1).md",
+  "units": 60,
+  "questions": 60,
+  "issues": [],
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).md",
+  "units": 60,
+  "questions": 60,
+  "issues": [
+   "C5 7 个图片行未被任何单元覆盖: ['L690:)/img_in_chart_box_100_1159_848_1426.jpg', 'L853:(1)/img_in_image_box_100_359_459_512.jpg', 'L922:)/img_in_image_box_104_1307_315_1492.jpg']",
+   "C6 31 个表格行未被任何单元覆盖: [708, 737, 876, 1161, 1170, 1195, 1202, 1209, 1305, 1314]"
+  ],
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-batch-C\\高考真题\\生物\\2012-2021高考真题生物汇编：基因工程（1）（教师版）(1).md",
+  "units": 60,
+  "questions": 60,
+  "issues": [],
+  "verdict": "PASS"
+ }
+]
