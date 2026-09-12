@@ -1,0 +1,90 @@
+[
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c01-01.md",
+  "tier": "C1 原生文本PDF"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c01-02.md",
+  "tier": "C1 原生文本PDF"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c02-01.md",
+  "tier": "C2 扫描PDF"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c02-02.md",
+  "tier": "C2 扫描PDF"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c05-01.md",
+  "tier": "C5 数学LaTeX"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c05-02.md",
+  "tier": "C5 数学LaTeX"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c06-01.md",
+  "tier": "C6 化学图片题"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c06-02.md",
+  "tier": "C6 化学图片题"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c07-01.md",
+  "tier": "C7 答案解析混排"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c07-02.md",
+  "tier": "C7 答案解析混排"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c08-01.md",
+  "tier": "C8 跨页题"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c08-02.md",
+  "tier": "C8 跨页题"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c09-01.md",
+  "tier": "C9 多section同号"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c09-02.md",
+  "tier": "C9 多section同号"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c10-01.md",
+  "tier": "C10 题图分离"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c10-02.md",
+  "tier": "C10 题图分离"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c11-01.md",
+  "tier": "C11 OCR行融合"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c11-02.md",
+  "tier": "C11 OCR行融合"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c12-01.md",
+  "tier": "C12 OCR错号"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c12-02.md",
+  "tier": "C12 OCR错号"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c13-01.md",
+  "tier": "C13 composite"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c13-02.md",
+  "tier": "C13 composite"
+ }
+]

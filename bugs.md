@@ -250,3 +250,10 @@
 - **修复**:两处词表统一勘误为 6 值全集 + 勘误注记(纯文档;identity 逻辑零改动,不破冻结)。
 - **已知限制(不掩饰)**:`check_identity` **不校验 basis 值域**——词表当前只存在于文档,无机器强制;未来新值仍可静默进入生产数据。是否加域校验属**新规则**(会改变裁决面),受 Identity 冻结约束,**列为用户决策点,本轮不擅自加**。
 - **教训**:契约词表必须与生产数据的**实际值域**对账(值域审计应是 schema 检查的标准项,存在性检查不够);"字段在"≠"值合法"。
+
+### BUG-28 · batch summary 硬编码写生产账目,--out 隔离不彻底　🟢 FIXED(mutation-sensitive / Gate 首攻面 PAC 批注前发现)
+- **状态**:🟢 FIXED(R43 发现并修复;回归测试 + 变异验证)。
+- **发现**:PAC 对抗语料批注前核查 batch 模式账目路径:BUG-21 已把 log/result 改为随 `--out` 派生(`derive_run_paths`),但 batch 汇总仍**硬编码**写 `data/reslice_batch_c_summary.json`(原 `reslice_pipeline.py` main 末段)——任何带 `--out` 的独立批量跑都会**静默冲掉生产 batch-C 的证据工件**。定性:C-01 家族(证据工件被覆盖/过期),触发条件 = 下一次任何 `--batch --out` 运行(PAC 即将触发,属于"不修就会真实发生"的缺陷)。
+- **修复**:`derive_summary_path(out)` 与 `derive_run_paths` 同则派生(`--out` → `data/reslice_{目录名}_summary.json`;默认行为保持写 batch-C 路径,生产口径零变化)。
+- **证据**:`tests/test_batch_summary_isolation.py` 3 用例——默认路径不变 / --out 派生隔离 / **集成级**(monkeypatch process_file 真跑 main():summary 落派生路径且 batch-C 文件不存在);**变异验证**(调用点回退硬编码 → 恰 1 条集成测试 FAIL → 备份还原 3 passed)。
+- **教训**:隔离修复必须**穷举账目面**——BUG-21 当时只隔离了 log/result,summary 漏网;"同一次修复里的兄弟路径"是系统性盲区,改路径派生时应 grep 同目录下所有硬编码写盘点。

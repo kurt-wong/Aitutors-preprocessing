@@ -599,6 +599,19 @@ def derive_run_paths(out=None, batch=False):
             ROOT / "data/reslice_pilot_result.json")
 
 
+def derive_summary_path(out=None):
+    """batch 汇总路径(BUG-28 可单测):与 derive_run_paths 同则派生。
+
+    BUG-28(Gate 首攻面发现):batch summary 此前硬编码写
+    `data/reslice_batch_c_summary.json`——任何带 --out 的独立批量跑
+    (如 PAC 对抗语料)都会静默冲掉生产 batch-C 的证据工件,
+    属 C-01 家族(过期/被覆盖的证据工件)。--out 时一律按输出目录名派生。
+    """
+    if out:
+        return ROOT / f"data/reslice_{Path(out).name}_summary.json"
+    return ROOT / "data/reslice_batch_c_summary.json"
+
+
 def recompile_outputs(out_root):
     """从已有 manifest 重编译切片/锚点产出(不调 LLM),返回份数。
 
@@ -779,7 +792,7 @@ def main():
                        "units": r.get("units"),
                        "n_issues": len(r.get("issues") or [])} for r in results],
         }
-        (ROOT / "data/reslice_batch_c_summary.json").write_text(
+        derive_summary_path(args.out).write_text(
             json.dumps(summary, ensure_ascii=False, indent=1), encoding="utf-8")
         log(f"[汇总] 成功 {len(done)}/{len(results)} | prompt {tot_p:,} + completion "
             f"{tot_c:,} tokens | LLM 合计 {round(tot_t)}s | 均 {summary['avg_llm_seconds_per_file']}s/份")

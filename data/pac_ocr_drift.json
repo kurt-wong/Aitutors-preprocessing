@@ -1,0 +1,557 @@
+{
+ "note": "PAC OCR 漂移对比(D6 真实 OCR 服务链证据):fresh=本轮直调 API 产物,baseline=历史守护队列产物(同模型 PaddleOCR-VL-1.6,时间差数月)",
+ "n": 22,
+ "identical": 0,
+ "rows": [
+  {
+   "sample_id": "pac-c01-01",
+   "category": "C1 原生文本PDF",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9927,
+   "baseline": {
+    "lines": 749,
+    "chars": 19228,
+    "headings": 7,
+    "images": 9,
+    "page_breaks": 14,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 749,
+    "chars": 18948,
+    "headings": 7,
+    "images": 9,
+    "page_breaks": 14,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c01-02",
+   "category": "C1 原生文本PDF",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9924,
+   "baseline": {
+    "lines": 261,
+    "chars": 11229,
+    "headings": 11,
+    "images": 5,
+    "page_breaks": 7,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 261,
+    "chars": 11059,
+    "headings": 11,
+    "images": 5,
+    "page_breaks": 7,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c02-01",
+   "category": "C2 扫描PDF",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9596,
+   "baseline": {
+    "lines": 508,
+    "chars": 15305,
+    "headings": 12,
+    "images": 26,
+    "page_breaks": 10,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 508,
+    "chars": 14317,
+    "headings": 12,
+    "images": 26,
+    "page_breaks": 10,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c02-02",
+   "category": "C2 扫描PDF",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9901,
+   "baseline": {
+    "lines": 429,
+    "chars": 11633,
+    "headings": 8,
+    "images": 6,
+    "page_breaks": 9,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 429,
+    "chars": 11405,
+    "headings": 8,
+    "images": 6,
+    "page_breaks": 9,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c05-01",
+   "category": "C5 数学LaTeX",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9802,
+   "baseline": {
+    "lines": 259,
+    "chars": 7302,
+    "headings": 11,
+    "images": 7,
+    "page_breaks": 5,
+    "esc_dot_lines": 2,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 259,
+    "chars": 7036,
+    "headings": 11,
+    "images": 7,
+    "page_breaks": 5,
+    "esc_dot_lines": 2,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c05-02",
+   "category": "C5 数学LaTeX",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9964,
+   "baseline": {
+    "lines": 404,
+    "chars": 18326,
+    "headings": 16,
+    "images": 4,
+    "page_breaks": 11,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 404,
+    "chars": 18194,
+    "headings": 16,
+    "images": 4,
+    "page_breaks": 11,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c06-01",
+   "category": "C6 化学图片题",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9672,
+   "baseline": {
+    "lines": 465,
+    "chars": 26529,
+    "headings": 6,
+    "images": 29,
+    "page_breaks": 11,
+    "esc_dot_lines": 1,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 465,
+    "chars": 25224,
+    "headings": 6,
+    "images": 27,
+    "page_breaks": 11,
+    "esc_dot_lines": 1,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c06-02",
+   "category": "C6 化学图片题",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9977,
+   "baseline": {
+    "lines": 641,
+    "chars": 20868,
+    "headings": 33,
+    "images": 15,
+    "page_breaks": 14,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 641,
+    "chars": 20886,
+    "headings": 45,
+    "images": 15,
+    "page_breaks": 14,
+    "esc_dot_lines": 0,
+    "fuse_lines": 12
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c07-01",
+   "category": "C7 答案解析混排",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9846,
+   "baseline": {
+    "lines": 1454,
+    "chars": 38500,
+    "headings": 21,
+    "images": 39,
+    "page_breaks": 28,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 1454,
+    "chars": 37330,
+    "headings": 21,
+    "images": 39,
+    "page_breaks": 28,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c07-02",
+   "category": "C7 答案解析混排",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9827,
+   "baseline": {
+    "lines": 510,
+    "chars": 14853,
+    "headings": 6,
+    "images": 16,
+    "page_breaks": 11,
+    "esc_dot_lines": 1,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 510,
+    "chars": 14354,
+    "headings": 7,
+    "images": 16,
+    "page_breaks": 11,
+    "esc_dot_lines": 1,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c08-01",
+   "category": "C8 跨页题",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9981,
+   "baseline": {
+    "lines": 537,
+    "chars": 29660,
+    "headings": 26,
+    "images": 3,
+    "page_breaks": 12,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 537,
+    "chars": 29570,
+    "headings": 26,
+    "images": 3,
+    "page_breaks": 12,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c08-02",
+   "category": "C8 跨页题",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9752,
+   "baseline": {
+    "lines": 389,
+    "chars": 9901,
+    "headings": 6,
+    "images": 16,
+    "page_breaks": 11,
+    "esc_dot_lines": 1,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 389,
+    "chars": 9421,
+    "headings": 6,
+    "images": 16,
+    "page_breaks": 11,
+    "esc_dot_lines": 1,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c09-01",
+   "category": "C9 多section同号",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9823,
+   "baseline": {
+    "lines": 819,
+    "chars": 22318,
+    "headings": 6,
+    "images": 22,
+    "page_breaks": 19,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 819,
+    "chars": 21548,
+    "headings": 7,
+    "images": 22,
+    "page_breaks": 19,
+    "esc_dot_lines": 0,
+    "fuse_lines": 1
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c09-02",
+   "category": "C9 多section同号",
+   "baseline_sha256_equal": false,
+   "similarity": 1.0,
+   "baseline": {
+    "lines": 550,
+    "chars": 18650,
+    "headings": 27,
+    "images": 0,
+    "page_breaks": 10,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 550,
+    "chars": 18650,
+    "headings": 27,
+    "images": 0,
+    "page_breaks": 10,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c10-01",
+   "category": "C10 题图分离",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9799,
+   "baseline": {
+    "lines": 413,
+    "chars": 14186,
+    "headings": 12,
+    "images": 18,
+    "page_breaks": 10,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 413,
+    "chars": 13626,
+    "headings": 12,
+    "images": 18,
+    "page_breaks": 10,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c10-02",
+   "category": "C10 题图分离",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9993,
+   "baseline": {
+    "lines": 840,
+    "chars": 18349,
+    "headings": 7,
+    "images": 34,
+    "page_breaks": 18,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 840,
+    "chars": 18373,
+    "headings": 13,
+    "images": 34,
+    "page_breaks": 18,
+    "esc_dot_lines": 0,
+    "fuse_lines": 6
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c11-01",
+   "category": "C11 OCR行融合",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9793,
+   "baseline": {
+    "lines": 560,
+    "chars": 32456,
+    "headings": 7,
+    "images": 32,
+    "page_breaks": 12,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 561,
+    "chars": 31282,
+    "headings": 7,
+    "images": 32,
+    "page_breaks": 12,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "delta_lines": 1
+  },
+  {
+   "sample_id": "pac-c11-02",
+   "category": "C11 OCR行融合",
+   "baseline_sha256_equal": false,
+   "similarity": 1.0,
+   "baseline": {
+    "lines": 522,
+    "chars": 19103,
+    "headings": 11,
+    "images": 0,
+    "page_breaks": 11,
+    "esc_dot_lines": 0,
+    "fuse_lines": 1
+   },
+   "fresh": {
+    "lines": 522,
+    "chars": 19103,
+    "headings": 11,
+    "images": 0,
+    "page_breaks": 11,
+    "esc_dot_lines": 0,
+    "fuse_lines": 1
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c12-01",
+   "category": "C12 OCR错号",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9979,
+   "baseline": {
+    "lines": 308,
+    "chars": 8014,
+    "headings": 10,
+    "images": 1,
+    "page_breaks": 7,
+    "esc_dot_lines": 2,
+    "fuse_lines": 3
+   },
+   "fresh": {
+    "lines": 308,
+    "chars": 7981,
+    "headings": 10,
+    "images": 1,
+    "page_breaks": 7,
+    "esc_dot_lines": 2,
+    "fuse_lines": 3
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c12-02",
+   "category": "C12 OCR错号",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9549,
+   "baseline": {
+    "lines": 475,
+    "chars": 13199,
+    "headings": 11,
+    "images": 28,
+    "page_breaks": 10,
+    "esc_dot_lines": 2,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 475,
+    "chars": 12275,
+    "headings": 11,
+    "images": 28,
+    "page_breaks": 10,
+    "esc_dot_lines": 2,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c13-01",
+   "category": "C13 composite",
+   "baseline_sha256_equal": false,
+   "similarity": 0.9824,
+   "baseline": {
+    "lines": 581,
+    "chars": 18165,
+    "headings": 5,
+    "images": 21,
+    "page_breaks": 11,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 581,
+    "chars": 17535,
+    "headings": 5,
+    "images": 21,
+    "page_breaks": 11,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  },
+  {
+   "sample_id": "pac-c13-02",
+   "category": "C13 composite",
+   "baseline_sha256_equal": false,
+   "similarity": 1.0,
+   "baseline": {
+    "lines": 635,
+    "chars": 23869,
+    "headings": 18,
+    "images": 0,
+    "page_breaks": 20,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "fresh": {
+    "lines": 635,
+    "chars": 23869,
+    "headings": 18,
+    "images": 0,
+    "page_breaks": 20,
+    "esc_dot_lines": 0,
+    "fuse_lines": 0
+   },
+   "delta_lines": 0
+  }
+ ]
+}
