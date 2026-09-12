@@ -608,3 +608,22 @@
 **方案 B 去向**:manifest section 字段 + (section, number) 复合键消费属 resolver/IR 正式设计(Phase 2),按审查意见不在本轮打补丁;本轮 section 字段只作为身份消歧元数据写入 manifest,不改 resolver 侧任何代码(resolver 尚不存在)。
 
 **结果**:BUG-22 关闭;审查 Phase 1(立即止血)三项全部完成。
+
+## R32 · 第五轮审查验收 + Phase 2 设计评审稿落盘(2026-09-12)
+
+**输入**:第五轮审查(基于 R31 的 e3e4e47)。裁决:**R31 Phase 1 🟢 PASS / ACCEPTED**;BUG-22 分层记账——Prompt defect / QC detection / batch-C migration 三层 🟢 CLOSED,resolver identity model 与 V3 canonical identity integration 🟡 OPEN;**下一步优先进入 Phase 2(resolver 引入 QuestionIdentity 正式模型),不启动全量 rollout**。
+
+**本轮执行(纯设计,零代码变更)**:落盘 `question_identity_design.md` —— QuestionIdentity 第一性原理设计评审稿,逐条回答审查四问:
+
+1. **Identity 层级**:拆分 `SourceOccurrenceIdentity`(source_version + section_ref + printed_number + span,Source Fact,永不被覆盖)与 `CanonicalQuestionIdentity`(section_ref + canonical_number + basis,Preprocessing Interpretation,可重推但每次留证据);unit_id 降级为 display alias(R31 实测其在汇编中大量重复,不可作任何键);长期 locator 契约 = (source_span, semantic_role, ordinal),list position 仅限迁移期临时使用。
+2. **Section 定义**:`SectionLocator = (source_version, ordinal, start_line, end_line)`,title 只是 display metadata(可重复/可空/可被 OCR 损坏);OCR 丢标题的三级 fallback,降级必须产生显式 warning,禁止静默。
+3. **printed vs canonical number**:schema 目标形态 `{printed_number, canonical_number, canonical_basis, section}`;printed_number 为 Source Fact 永不可改写(化学 2018 非选择卷面印 1-9、答案区键 26-34,只存 26 会永久丢失源事实);现有 `number` 字段语义 = canonical_number,不静默改义;printed_number 不参与 C13。
+4. **答案区键位语义**:定性为"全卷答案编排编号(canonical answer-key slot)",是 canonical_number 的最强证据源,**不是答案顺序、不是数据库 identity**;推导证据链 answer_key > running-max(旁证 unit_id 命名)> keep,无证据编号不允许。
+
+另固化:概念漂移防火墙(C13 的 (section,number) 只是 manifest scope invariant,不等于 V3 canonical identity)、7 条不变量清单(Phase 2 验收逐条测)、Phase 3 Question Identity Adversarial Corpus 11 条 fixture 规划(每条全链路:Prompt→Manifest→C13→Resolver→Migration→IR)。
+
+**BUG-22 状态更新**:分层记账,bugs.md/status.md 同步(Prompt/QC/迁移 🟢,identity 建模 🟡)。
+
+**勘误**:`data/reslice_batch_c_qc_r31.json` 实测为 **38 PASS / 12 FAIL**(非 R31 记录所称"剩余 4 份 FAIL");已逐条核对 12 份 FAIL 的 issues 全部为 C3/C5/C6/C7/C9 既有缺陷,**无一条含 C13**——"C13 残留 0"的结论不变,但 FAIL 总数口径以本条为准。
+
+**结果**:Phase 2 设计评审稿待审;实现代码按裁定在设计验收后另起实施任务。

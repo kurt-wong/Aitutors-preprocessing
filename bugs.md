@@ -54,11 +54,11 @@
 - **修复（R28）**：路径选择提为纯函数 `derive_run_paths(out, batch)`——**凡 `--out` 独立输出，log/result 一律跟随输出目录名派生**（与 R23 batch+`--out` 既有语义统一）；默认账目只在不带 `--out` 的正式跑（pilot/batch-C）时写。回归测试 `tests/test_run_paths.py` 4 用例：纯函数契约 3 + **真实子进程集成 1**（无配置环境跑 `--file --out`，LLM 必失败，断言账目落派生路径且 pilot 账目/日志根本不被创建）。mutation M4 回退旧行为 → 单元+集成双咬住。**集成测试附带抓出第二个缺陷**：账目目录假定存在，fresh checkout（含 CI）无 `logs/`、`data/` 时 `open()` 崩 → 补 `mkdir(parents=True)` 兜底（含 `logs/reslice_debug`）。
 - **教训**：调试入口与生产入口共享写路径 = 定时炸弹；"输出隔离"必须覆盖**全部写路径**（产物+账目+日志），R23 给 fixer 加 `--out/--log` 时漏了 pipeline 自身。
 
-### BUG-22 · 大题内编号被当全卷题号 → 题号重复归属（8/50 真实产物）　🔴（语义/入库阻塞）
-- **状态**：✅ 修复（2026-09-12 R31,第四轮审查裁定 A+C 先行、B 并入 resolver 设计）
+### BUG-22 · 大题内编号被当全卷题号 → 题号重复归属（8/50 真实产物）　🟡（Phase 1 关闭 / 建模 OPEN）
+- **状态（第五轮审查分层裁定,R32 记账）**：Prompt defect 🟢 CLOSED / QC detection 🟢 CLOSED / batch-C migration 🟢 CLOSED / **resolver identity model 🟡 OPEN** / **V3 canonical identity integration 🟡 OPEN**。系统性根因(QuestionIdentity 未进入 resolver 正式模型)的修复设计见 `question_identity_design.md`(R32 设计评审稿),实现属 Phase 2 实施任务。
 - **发现**：第三轮审查（R29）指示专攻"结构合法但语义错误"；`scripts/semantic_probe.py` 对 batch-C 50 份真实 LLM 产物零成本测量,P15 报警经人工逐条分诊确证。
 - **确证证据**：① 合格考化学（第一次）：选择题 Q1-Q9 与非选择题 N1-N9 **题号 1-9 各双重归属**（非选择题卷面用大题内编号"1.-9.",答案区实键 26-34,N1→26…N9→34 逐条对上）；② 全量普查：**8/50 文件（16%）**含重复题号。
-- **根因(R31 确诊)**：不止"模型缺维度"——**prompt v2.1 第 247 行明确指示"分节各自从 1 编号…按原样照抄题号即可"**,BUG-22 是 prompt 主动指示的产物。
+- **根因(R31 确诊,R32 定性升级)**：不止"模型缺维度"——**prompt v2.1 第 247 行明确指示"分节各自从 1 编号…按原样照抄题号即可"。正式定性:Prompt Contract 与下游 Identity Contract 不一致(Prompt Specification Defect),LLM 是正确遵循,不是模型理解错误。**
 - **第四轮审查核心裁定(R31 执行)**：重号并非总是错误——选考模块（"任选一个模块作答",三模块印刷号 1-3 本来就相同）与教师用书汇编（各考点块独立编号）的重号是**合法真实形态**。因此:
   1. **C13 升级为 Scoped Question Identity**:身份键 = (section, 题号),同分节重复 FAIL、跨分节同号放行;无 section 字段的存量数据退化为全卷判定。契约测试 +3(同分节报/跨分节放/无 section 报)。
   2. **Prompt v2.2**:"分节照抄"条款删除,改为"题号身份必须全卷唯一,以答案区键位为准,无键位按分节顺延";输出 schema 新增 `section` 字段;版本号两处升 v2.2。
