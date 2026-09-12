@@ -233,3 +233,12 @@
 - **回归测试**：`tests/test_no_config_import.py` 3 用例——子进程 `RESLICE_ROOT` 指向空目录（配置**真实**不存在，与 CI 同构，非 monkeypatch）：import 成功 / `call_llm` 显式失败 / `write_outputs` 离线三产出齐全。
 - **mutation 验证**（审查要求"破坏生产代码→测试必须失败"）：M1 回退 import 期加载 → 3 用例全 FAIL ✅；M2 吞异常假修复 → fails-loudly 用例 FAIL ✅；M3 `clamp_intervals` 空操作 → 8 用例 FAIL ✅。全部回退后 30 passed + 1 xfailed。
 - **教训**：① "本地全绿"≠"CI 可执行"——本地开发机恰好满足隐式依赖，掩盖了 import 期副作用；可测试性重构必须连**环境依赖**一起进测试边界。② 声称"CI 就绪"前必须看真实 Run 结果，不能只看 workflow 文件存在。
+
+### BUG-26 · `--recompile` 静默洗掉 QuestionIdentity v2 身份头 → QC 降级 v1 语义　🟢 CLOSED（生产路径层 / R41 readiness gate 修复）
+- **状态**:🟢 FIX VERIFIED(R41 System Readiness Gate 攻击面 B「失败传播」发现并修复;mutation 验证通过)。
+- **发现**:Gate B-01 真实测试——取 batch-C 真实 v2 manifest + 真实源,在隔离目录跑生产入口重编译,产物 `identity_version` 与 `sections` **双双消失**(单元级 section_ref/basis 等仍在)。旧实现 `main()` 的 `--recompile` 分支只把 `{"units": man_full["units"]}` 传给 `write_outputs`,而 write_outputs 的身份头拷贝(`for k in ("identity_version","sections"): if k in man`)恒不触发——R34 在 write_outputs 侧加的守卫被调用方绕开。
+- **危害定性(如实量化)**:① 契约破坏:重编译产物不再是 v2,QC 静默降级走 v1 存量语义,"resolver 只消费 v2" 契约失效;② B-02 爆炸半径实测:当前 65 份生产 v2 文件在降级模拟下 **0 个裁决翻转**(生产语料当前无跨分节重号,身份检查无 FAIL/PENDING),即**今天无 verdict 级后果,但机制真实存在**,任何未来重编译都会静默腐蚀身份层;③ 潜伏原因:v2 回填(R34)后从未跑过 `--recompile`。
+- **修复**:`--recompile` 主体抽成可测函数 `recompile_outputs(out_root)`,传**完整 manifest**;BUG-26 注释入 docstring。
+- **回归测试**:`tests/test_recompile_identity.py` 2 用例(合成 v2 卷 → recompile_outputs → 身份头逐字保留 + 单元级字段逐项相等 + 切片字节确定性;QC 仍走 v2 分支)。
+- **mutation 验证**:调用点退回 `{"units": ...}` 传参 → 2 用例全 FAIL;恢复修复 → 全 PASS;真实 batch-C 产物端到端复验:重编译后 identity_version=2、sections=13 保留。
+- **教训**:① 守卫加在被调方(write_outputs)不等于调用方(main)会触发——**守卫的触发条件本身必须有测试**;② "R34 加了守卫"这类历史结论在新攻击面下必须重测,不可引用代替验证。

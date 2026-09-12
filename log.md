@@ -785,3 +785,41 @@
 **发现汇总**:0 个结论级翻转;3 个措辞/落盘级问题(V6"空目录"无证据资格、V9 bugs.md 缺显式 RETRACTED、V12"第 9 位"1 基不精确)——**全部当场修正并复验**。复现方法论事实留痕:语料 gitignored,数字复现必须先从已提交工件反推口径定义再对账;"files 3045 vs 3120"这类表层矛盾在深挖后都有结构性解释,**禁止用"字段过期"之类的猜测收尾**(本条 V10 即先猜后纠的实例)。
 
 **结果**:R39 全部实质结论经真实测试维持成立;R40 修正 3 处后,BUG-24/25 关闭、R37 撤销、review_protocol、冻结基线登记的证据链闭合。套件 **106 passed + 1 xfailed**。
+
+---
+
+## R41(2026-09-13):R40 用户裁定落盘 + System Readiness Gate 正式启动
+
+**用户裁定 R40:🟢 ACCEPTED(合格的"审查审查"闭环)**。裁定要点:
+- 接受 16 攻击面验证、变异/穷举方法、V10 两次假说证伪不猜测收尾、BUG-25 mutation-sensitive protection、66 manifest 字节级稳定、R37 正式撤销;
+- **限定措辞被采纳并落盘**:"R40 独立复核范围内,R39 的实质工程结论未发生结论级翻转;发现 3 项证据表达或台账完整性问题,均已修正并复验"——即"结论级翻转 = 0"成立 且 "原报告完全无错误 = false" 必须同时成立(V6 证伪了"空目录"这一原始陈述,虽不影响核心因果结论);
+- **方法论事实确认:CI 绿只是证据链一环,不等于审查结论正确**;
+- **R40 ACCEPTED ≠ 系统冻结**:preprocessing 项目不得宣布全面完成,转入 **System Readiness Gate**——"从局部缺陷对抗,升级为端到端系统不变量对抗",Gate 不重复 R40;
+- 四个一级攻击面:**A 生产路径完整性**(Input→preprocessing→artifact→manifest→QC→identity→handoff;字段丢失/schema 漂移/v1v2 混用/Git 忽略工件依赖/fresh checkout 不可运行/生产数据与 fixture 语义不一致);**B 失败传播**(FAIL/PENDING_REVIEW/MISSING/STALE 是否可能被后续阶段静默转换为 PASS——用户标记为当前最危险系统级攻击面之一);**C 工件可追溯性**(Source→Output→QC→Fix→Snapshot 完整回溯,防"产物正确但无法证明为什么正确");**D Fresh 环境可复现**(fresh clone + 无隐藏本地语料 + 无忽略工件依赖 + 无预存在目录;R36"本地有数据→CI 没有"为一级先例);
+- **三十一中化学 keep 三方裁决作为独立语义裁决事项保留**,不与 readiness gate 混为同一问题;keep 是显式豁免,不能因 SectionLocator 已修自动合法,也不能因当前 FAIL 默认 Locator 仍有问题(R33/R34 原则)。
+
+### R41 Gate 执行明细(四攻击面实测)
+
+**A 生产路径完整性**:
+- A1 schema 全量(80 份 manifest:pilot 16 + batch-C 50 + stress10 9 + test-v21 3 + audit-a5 2):JSON/必需键/units 字段/section_ref 可解析/printed_provenance/basis/源在位/切片+annotated 在位——**80/80 零缺陷**(`data/r41_gate_ac_report.json`)。
+- A2 v1/v2 混用盘点:生产交付范围(pilot+batch-C)= 66 份,**65 v2 + 1 v1**(三十一中,keep 裁决挂起件,已知);测试语料 stress10/test-v21/audit-a5 共 14 份全 v1(未回填历史件,非交付范围)。readiness 声明必须限定范围:"生产 66 份中 65 v2"。
+- A3 当前 QC vs 已提交 QC 证据逐份对比:batch-C/stress10 零漂移;pilot 见 C-01。
+
+**B 失败传播**:
+- **B-01 🔴 CONFIRMED → BUG-26 🟢 修复**:`--recompile` 只传 `{"units":...}` → write_outputs 身份头拷贝恒不触发 → 重编译静默洗掉 `identity_version/sections`,QC 降级 v1 语义、违反 resolver v2 契约。详见 bugs.md BUG-26。
+- B-02 降级爆炸半径量化(65 份生产 v2 逐一模拟剥离身份头重算):**53 PASS→PASS、12 FAIL→FAIL、0 翻转**——当前语料无 verdict 级后果,机制风险如实记录,不夸大。
+- B-03 裁决优先级(真实 PASS 文件副本攻击):剥 1 个 section_ref → **PENDING_REVIEW**(不静默 PASS,C14 命中);再注入 C1 issue → **FAIL 压过 PENDING**。优先级正确。
+- B-04(设计事实,非缺陷):process_file 对 validation_issues 非空仍写产物(记入 annotation_meta),QC 是唯一闸门——**下游 resolver 契约必须消费 QC verdict,不得只看产物存在**;已列入 resolver 契约约束。
+- 过程失误如实记录:B-03 首轮选了本就 FAIL 的会考化学做基线(6 条既有 C3)误读为异常,换真实 PASS 文件后复测通过——选样错误,非系统缺陷。
+
+**C 工件可追溯性**:
+- C1 切片重编译确定性:每语料抽样(pilot 全 16 + 其余各 3)manifest+源 → compile_slices vs 已提交切片 md **字节级全等,0 不一致**。
+- **C-01 🔴 已修**:`data/reslice_pilot_qc.json` 停留在 R25(85784a9),记载三十一中 **PASS/0 issues**,与当前真实裁决 FAIL(C13)矛盾——过期证据工件,任何读该工件的人会得出"pilot 16/16 PASS"的错误结论。已重跑 QC 刷新:**15 PASS / 1 FAIL**,与台账一致。
+- C2 BUG-24 快照链(before/after/fix report/66 manifest sha256)R40 已验,本轮不重复。
+
+**D Fresh 环境可复现**:
+- D-01 🟢:`git archive HEAD` → 独立目录(确认无 Ocr-markdown)→ `pytest tests` = **89 passed / 17 skipped / 1 xfailed**——corpus 依赖测试独立 skip,无隐藏本地依赖。
+- D-02 🟠 记录:10 个脚本仍硬编码 `Path(r"D:\Project\Papers")`(reslice_qc/prereview_check/render_lint/select_batch_c/run_fix_chain/fix_* 等)——BUG-20 只根治了 reslice_pipeline。当前不崩 CI(路径不在 import 期触盘),但换机/换路径即断;列为硬化待办,不冒充已修。
+- 操作教训:二进制 `git archive | tar` 过 PowerShell 管道损坏(bad header checksum),改走临时 .tar 文件;mutation 恢复误用 `git checkout` 把未提交修复一并还原,当场重施——**变异恢复必须用补丁式还原,checkout 只可用于已提交状态**。
+
+**Gate 结论**:发现并修复 1 个生产路径缺陷(BUG-26)+ 1 个过期证据工件(C-01 已刷新)+ 1 个硬化待办(D-02);A/B(优先级)/C(确定性)/D 主体通过。readiness 三列表更新依据:`data/r41_gate_ac_report.json`、`data/r41_gate_b02_report.json`。套件 108 passed + 1 xfailed。

@@ -599,6 +599,34 @@ def derive_run_paths(out=None, batch=False):
             ROOT / "data/reslice_pilot_result.json")
 
 
+def recompile_outputs(out_root):
+    """从已有 manifest 重编译切片/锚点产出(不调 LLM),返回份数。
+
+    BUG-26(R41 readiness gate 发现):必须把完整 manifest(含
+    identity_version/sections)传给 write_outputs——早期实现只传
+    {"units": ...},write_outputs 的身份头拷贝(k in man)恒不触发,
+    重编译会静默洗掉 v2 身份头,使 QC 降级走 v1 存量语义、违反
+    "resolver 只消费 v2" 的契约。单元级身份字段(section_ref 等)虽在
+    units 内,单独存在不足以支撑 v2 判定。
+    """
+    n = 0
+    for mf in sorted(out_root.rglob("*.manifest.json")):
+        man_full = json.loads(mf.read_text(encoding="utf-8"))
+        src = Path(man_full["source_file"])
+        text = re.sub(r"<!--\s*META:[^>]*-->\n?", "",
+                      src.read_text(encoding="utf-8", errors="replace"))
+        lines = text.splitlines()
+        meta = man_full.get("annotation_meta", {})
+        write_outputs(mf.parent, mf.stem.replace(".manifest", ""), lines,
+                      man_full,
+                      meta.get("validation_issues", []),
+                      {"warnings": meta.get("warnings", [])}, src.name, src,
+                      model=man_full.get("model", DEFAULT_MODEL))
+        n += 1
+        print(f"[recompile] {mf.stem.replace('.manifest', '')}")
+    return n
+
+
 def main():
     global OUT_ROOT
     ap = argparse.ArgumentParser()
@@ -618,21 +646,7 @@ def main():
     args = ap.parse_args()
 
     if args.recompile:
-        n = 0
-        for mf in sorted(OUT_ROOT.rglob("*.manifest.json")):
-            man_full = json.loads(mf.read_text(encoding="utf-8"))
-            src = Path(man_full["source_file"])
-            text = re.sub(r"<!--\s*META:[^>]*-->\n?", "",
-                          src.read_text(encoding="utf-8", errors="replace"))
-            lines = text.splitlines()
-            meta = man_full.get("annotation_meta", {})
-            write_outputs(mf.parent, mf.stem.replace(".manifest", ""), lines,
-                          {"units": man_full["units"]},
-                          meta.get("validation_issues", []),
-                          {"warnings": meta.get("warnings", [])}, src.name, src,
-                          model=man_full.get("model", DEFAULT_MODEL))
-            n += 1
-            print(f"[recompile] {mf.stem.replace('.manifest', '')}")
+        n = recompile_outputs(OUT_ROOT)
         print(f"===== recompile 完成：{n} 份 =====")
         return
 

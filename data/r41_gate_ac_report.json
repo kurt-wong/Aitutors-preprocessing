@@ -1,0 +1,70 @@
+{
+ "schema": {
+  "pilot": {
+   "files": 16,
+   "no_iv": [
+    "2021北京三十一中高一（下）期中化学（教师版）(1).manifest.json"
+   ],
+   "bad": []
+  },
+  "batch-C": {
+   "files": 50,
+   "no_iv": [],
+   "bad": []
+  },
+  "stress10": {
+   "files": 9,
+   "no_iv": [
+    "2021北京丰台高一（上）期末生物（教师版）.manifest.json",
+    "2021北京丰台高一（下）期中联考英语（B卷）（教师版）(1).manifest.json",
+    "2020北京海淀高三（上）期末语文含答案(1).manifest.json",
+    "2021北京一七一中学高二（上）期中数学（教师版）(1).manifest.json",
+    "2019北京101中学高二（下）期中生物含答案(1).manifest.json",
+    "2018北京昌平临川学校高二（下）期中英语（教师版）(1).manifest.json",
+    "2012-2021高考真题数学汇编：空间向量与立体几何（1）（教师版）(1).manifest.json",
+    "2012-2021高考真题数学汇编：统计与概率（分布列）（3）（教师版）(1).manifest.json",
+    "2021全国II卷新高考真题数学（教师版）(1).manifest.json"
+   ],
+   "bad": []
+  },
+  "test-v21": {
+   "files": 3,
+   "no_iv": [
+    "2021北京四中高一（上）期中生物（教师版）.manifest.json",
+    "1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+    "2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json"
+   ],
+   "bad": []
+  },
+  "audit-a5": {
+   "files": 2,
+   "no_iv": [
+    "2019北京101中学高二（下）期中生物含答案(1).manifest.json",
+    "2018北京昌平临川学校高二（下）期中英语（教师版）(1).manifest.json"
+   ],
+   "bad": []
+  }
+ },
+ "qc_drift": [
+  "pilot:2021北京三十一中高一（下）期中化学（教师版）(1).md 裁决漂移 已提交=PASS 当前=FAIL issues 0→1"
+ ],
+ "recompile_mismatch": [],
+ "v1_files": [
+  "pilot:2021北京三十一中高一（下）期中化学（教师版）(1).manifest.json",
+  "stress10:2021北京丰台高一（上）期末生物（教师版）.manifest.json",
+  "stress10:2021北京丰台高一（下）期中联考英语（B卷）（教师版）(1).manifest.json",
+  "stress10:2020北京海淀高三（上）期末语文含答案(1).manifest.json",
+  "stress10:2021北京一七一中学高二（上）期中数学（教师版）(1).manifest.json",
+  "stress10:2019北京101中学高二（下）期中生物含答案(1).manifest.json",
+  "stress10:2018北京昌平临川学校高二（下）期中英语（教师版）(1).manifest.json",
+  "stress10:2012-2021高考真题数学汇编：空间向量与立体几何（1）（教师版）(1).manifest.json",
+  "stress10:2012-2021高考真题数学汇编：统计与概率（分布列）（3）（教师版）(1).manifest.json",
+  "stress10:2021全国II卷新高考真题数学（教师版）(1).manifest.json",
+  "test-v21:2021北京四中高一（上）期中生物（教师版）.manifest.json",
+  "test-v21:1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+  "test-v21:2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+  "audit-a5:2019北京101中学高二（下）期中生物含答案(1).manifest.json",
+  "audit-a5:2018北京昌平临川学校高二（下）期中英语（教师版）(1).manifest.json"
+ ],
+ "errors": []
+}
