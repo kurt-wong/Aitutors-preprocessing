@@ -1,0 +1,809 @@
+{
+ "contract": "resolver_contract_design.md v0.1 (R48)",
+ "n_files": 88,
+ "tally": {
+  "pc1": 1
+ },
+ "v1_files": [
+  "Ocr-markdown\\resliced-pilot\\高一\\化学\\2021北京三十一中高一（下）期中化学（教师版）(1).md"
+ ],
+ "qc_verdicts": {
+  "FAIL": 16,
+  "PASS": 71
+ },
+ "rows": [
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\会考\\化学\\2018北京春季高中会考化学（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 40,
+   "src_lines": 584,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\会考\\历史\\2018北京夏季高中会考历史（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 53,
+   "src_lines": 1045,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\会考\\地理\\2018北京春季高中会考地理（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 25,
+   "src_lines": 661,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\会考\\政治\\2018北京夏季高中会考政治（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 36,
+   "src_lines": 650,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\会考\\数学\\2018北京春季高中会考数学（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 30,
+   "src_lines": 749,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\会考\\物理\\2018北京春季高中会考物理（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 22,
+   "src_lines": 376,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\会考\\生物\\2018北京春季高中会考生物（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 50,
+   "src_lines": 601,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\会考\\英语\\2018北京春季高中会考英语（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 18,
+   "src_lines": 612,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\会考\\语文\\2018北京春季高中会考语文（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 10,
+   "src_lines": 463,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 18,
+   "src_lines": 211,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\其他汇编\\理综\\14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 35,
+   "src_lines": 332,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 12,
+   "src_lines": 169,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\合格考\\化学\\2020北京高中合格考化学（第一次）（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 34,
+   "src_lines": 819,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\合格考\\历史\\2021北京高中合格考历史（第一次）（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 42,
+   "src_lines": 479,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\合格考\\地理\\2017-2019北京高中地理合格考试汇编：人口（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 7,
+   "src_lines": 278,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\合格考\\政治\\2021北京高中合格考政治（第一次）（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 31,
+   "src_lines": 543,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\合格考\\数学\\2021北京高中合格考数学（第二次）（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 28,
+   "src_lines": 261,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\合格考\\物理\\2021北京高中合格考物理（第二次）（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 15,
+   "src_lines": 416,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\合格考\\生物\\2020北京高中合格考生物（第二次）（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 44,
+   "src_lines": 542,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\合格考\\英语\\2020北京高中合格考英语（第二次）（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 15,
+   "src_lines": 1060,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\合格考\\语文\\2021北京高中合格考语文（第二次）（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 9,
+   "src_lines": 511,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\学业水平考试\\化学\\12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 19,
+   "src_lines": 203,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\历史\\2021北京高考压轴卷历史（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 20,
+   "src_lines": 304,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\政治\\2019北京大学博雅计划模拟政治（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 5,
+   "src_lines": 151,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\数学\\2020北京大学强基计划数学（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 20,
+   "src_lines": 332,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 19,
+   "src_lines": 517,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\语文\\2019北京大学博雅计划模拟语文（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 4,
+   "src_lines": 228,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高一\\化学\\2022北京首都师大附中高一12月月考化学（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 20,
+   "src_lines": 641,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高一\\历史\\2020北京平谷高一（上）期末历史含答案.md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 54,
+   "src_lines": 944,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高一\\地理\\2022北京东城高一（上）期末地理（教师版）.md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 16,
+   "src_lines": 1189,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高一\\政治\\2021北京四十三中高一（上）期中政治（教师版）.md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 41,
+   "src_lines": 1515,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高一\\数学\\2021北京师大二附中高一（上）期中数学（教师版）.md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 21,
+   "src_lines": 596,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高一\\物理\\2018北京十四中高一（下）期中物理（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 23,
+   "src_lines": 495,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高一\\生物\\2021北京四中高一（上）期中生物（教师版）.md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 35,
+   "src_lines": 1454,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高一\\英语\\2019北京三十五中新高一分班考试英语含答案(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 39,
+   "src_lines": 550,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高一\\语文\\2022北京首都师大附中高一12月月考语文（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 9,
+   "src_lines": 453,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 84,
+   "src_lines": 3403,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高三\\化学\\2017-2019北京高三化学上学期期末汇编：化学实验（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 89,
+   "src_lines": 6717,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高三\\化学\\2021北京四中高三（上）期中化学（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 19,
+   "src_lines": 978,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高三\\历史\\2022北京丰台高三一模历史（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 20,
+   "src_lines": 430,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高三\\地理\\2021北京东城高三二模地理（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 12,
+   "src_lines": 389,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高三\\政治\\2021北京房山高三二模政治（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 20,
+   "src_lines": 351,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期中汇编：立体几何（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 17,
+   "src_lines": 1040,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 74,
+   "src_lines": 5095,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高三\\物理\\2022北京首都师大附中高三9月月考物理（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 18,
+   "src_lines": 840,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 21,
+   "src_lines": 839,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高三\\英语\\2020北京大兴高三（上）期末英语（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 11,
+   "src_lines": 463,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：空间向量与立体几何（2）（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 60,
+   "src_lines": 4110,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 60,
+   "src_lines": 2958,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-batch-C\\高考真题\\生物\\2012-2021高考真题生物汇编：基因工程（1）（教师版）(1).md",
+   "corpus": "reslice-batch-C",
+   "findings": [],
+   "identity_version": 2,
+   "units": 60,
+   "src_lines": 2865,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高一\\化学\\2021北京三十一中高一（下）期中化学（教师版）(1).md",
+   "corpus": "resliced-pilot",
+   "findings": [
+    "pc1 非 identity v2(pipeline 原生 v1,须经回填;resolver 只消费 v2)"
+   ],
+   "identity_version": 1,
+   "units": 56,
+   "src_lines": 560
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高一\\历史\\2021北京四十三中高一（上）12月月考历史（教师版）(1).md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 43,
+   "src_lines": 1127,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高一\\地理\\2019北京人大附中高一（上）期中地理含答案.md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 19,
+   "src_lines": 581,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高一\\政治\\2018北京师大附中高一（下）期中政治含答案(1).md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 35,
+   "src_lines": 529,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高一\\数学\\2021北京顺义一中高一（下）期中数学（教师版）(1).md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 21,
+   "src_lines": 594,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高一\\生物\\2018北京市西城区高一（下）期末生物含答案(1).md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 42,
+   "src_lines": 560,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高一\\英语\\2020北京东城高一（上）期末英语（教师版）.md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 19,
+   "src_lines": 805,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高一\\语文\\2020北京平谷五中高一（下）4月月考语文含答案(1).md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 10,
+   "src_lines": 837,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高一\\语文\\2020北京石景山高一（上）期末语文含答案.md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 10,
+   "src_lines": 635,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高三\\化学\\2019北京交大附中高三（上）12月月考化学含答案(1).md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 19,
+   "src_lines": 465,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高三\\数学\\2021北京八十中高三考前练习数学（教师版）(1).md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 21,
+   "src_lines": 404,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高三\\物理\\2021北京石景山高三一模物理（教师版）(1).md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 20,
+   "src_lines": 413,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高三\\生物\\2020北京西城高三（上）期末生物含答案(1).md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 21,
+   "src_lines": 510,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高三\\英语\\2021北京丰台高三二模英语（教师版）(1).md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 9,
+   "src_lines": 537,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高二\\数学\\2018北京五十六中高二（下）期中数学（理）（教师版）(1).md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 20,
+   "src_lines": 259,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\resliced-pilot\\高二\\物理\\2019北京四中高二（下）期末物理（教师版）(1).md",
+   "corpus": "resliced-pilot",
+   "findings": [],
+   "identity_version": 2,
+   "units": 24,
+   "src_lines": 507,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-01.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 30,
+   "src_lines": 749,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-02.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 28,
+   "src_lines": 261,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c02-01.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 20,
+   "src_lines": 508,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c02-02.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 32,
+   "src_lines": 429,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c05-01.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 20,
+   "src_lines": 259,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c05-02.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 21,
+   "src_lines": 404,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c06-01.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 19,
+   "src_lines": 465,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c06-02.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 20,
+   "src_lines": 641,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c07-01.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 35,
+   "src_lines": 1454,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c07-02.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 21,
+   "src_lines": 510,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c08-01.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 9,
+   "src_lines": 537,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c08-02.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 12,
+   "src_lines": 389,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c09-01.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 34,
+   "src_lines": 819,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c09-02.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 35,
+   "src_lines": 550,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c10-01.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 20,
+   "src_lines": 413,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c10-02.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 18,
+   "src_lines": 840,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c11-01.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 56,
+   "src_lines": 561,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c11-02.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 19,
+   "src_lines": 522,
+   "qc_verdict": "FAIL"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c12-01.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 27,
+   "src_lines": 308,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c12-02.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 25,
+   "src_lines": 475,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c13-01.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 19,
+   "src_lines": 581,
+   "qc_verdict": "PASS"
+  },
+  {
+   "file": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c13-02.md",
+   "corpus": "ocr",
+   "findings": [],
+   "identity_version": 2,
+   "units": 10,
+   "src_lines": 635,
+   "qc_verdict": "PASS"
+  }
+ ]
+}

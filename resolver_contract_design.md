@@ -1,0 +1,96 @@
+# Resolver 消费契约设计评审稿 (resolver_contract_design.md)
+
+> **状态**:v0.1 纸面稿(R48,2026-09-13)。resolver/compiler/gate/admission 在仓库内 **NOT_BUILT**(`data/pac_track_round1.json` 如实记录)——本稿在实现存在之前冻结**消费契约**,实现后按附录 A 对抗语料开实现级审查。
+> **输入裁定**:R47 用户架构级复核(优先序 ① Gate+Resolver Boundary;三边界纪律;ArtifactWriter Contract 候选)+ R42"resolver 必须消费 v2,不得重新发明 identity"+ R36"生产数据不得并存两套 identity contract"。
+> **纪律**:每条契约必须挂证据出处;纸面契约不冒充已验证性质——本稿全部条款的验证状态为「纸面冻结,待实现后实测」,唯一例外是 §6 生产侧前置条件(R48 已实测)。
+
+---
+
+## 0. 定位与非目标
+
+- **是什么**:preprocessing(Identity v2 + QC + backfill)与 Question IR 之间的消费契约——resolver 如何读取、拒绝、降级、传递 preprocessing 产物。
+- **不是什么**:resolver 内部算法设计、IR schema 设计、入库方案(各自另立设计稿)。
+- **核心风险(R47 用户判定)**:入口(Identity 层)已经过多轮对抗加固,但消费层可能**重新解释事实**——resolver 若自行推断身份/语义,V2 时代"程序替用户判断事实"的问题会在下游重生。
+
+## 1. 三边界(R47 用户裁定,强制)
+
+| 层 | 只回答 | 禁止 |
+|---|---|---|
+| **Resolver** | "能不能定位"(structural only) | 任何语义判断(如 `if answer looks_like_solution: accept()`)、任何身份重推断 |
+| **Gate** | "约束能不能被机器证明" | 用启发式放行换取 PASS 率 |
+| **Admission** | "人类是否接受不确定性" | 被前两层的静默降级绕过 |
+
+**证据出处**:R47 裁定原文;V2 教训(log.md R1–R15 时代 LLM/程序替用户判断事实);R34"QC 只验证已建立的语义事实,不做语义推理"同源原则。
+
+## 2. 输入契约(C-IN)
+
+| # | 契约 | 证据出处 |
+|---|---|---|
+| C-IN-1 | **只消费 identity v2**。pipeline 原生输出是 v1,必须经 `phase2_identity_backfill` 回填后才可消费;禁止直接消费 pipeline 原生输出。 | R44 Gate 实测(PAC 22/22 原生 v1 → 回填后 v2);R36"不得并存两套 identity contract" |
+| C-IN-2 | **消费 QC verdict,不得以产物存在为消费依据**。`write_outputs` 对 validation_issues 非空仍写产物——产物存在 ≠ 可消费。 | R41 B-04(代码位置证据);BUG-21/28/29 家族(账目覆盖会伪造"存在") |
+| C-IN-3 | **裁决三态逐级传播**:FAIL → 拒绝/隔离;PENDING_REVIEW → 强制人工通道,**禁止自动转 PASS**;PASS → 可自动消费。 | R34 三态语义;R35 Evidence Soundness;R47"不得为提高 PASS 比例扩展自动规则" |
+| C-IN-4 | **不重新推断身份**。身份键 = `question_numbers`(canonical,全卷语义)+ `section_ref`;`unit_id` 是 display alias,**不可作任何键**(汇编卷大量重复);`printed_number` 是 Source Fact,**永不改写、永不猜测**(unknown > guessed)。 | R32 §1.3/R33 A6(78 单元 unit_id 重复);R34 printed provenance 纪律;R47 printed 硬化方向 |
+| C-IN-5 | **basis 语义只读**。`keep` 是个体豁免(resolver 不得因重号自行补 keep、不得因 basis 缺失自行推断豁免);basis 值域校验按 §10.7 schema-validation-only 方向处理(schema violation,不进 FAIL 裁决)。 | R33/R34 划分语义;R42 BUG-27;R47 修订 |
+| C-IN-6 | **answer 区编号可与题干区不一致**;答案表键位 = 全卷答案编排编号(canonical answer-key slot),是 canonical_number 最强证据源,**不是答案顺序、不是数据库 identity**。 | c13-02 实测(题干区"共 1 小题" vs 解析区编号 10/11,源卷版本噪音);R19/R32 §4 |
+| C-IN-7 | **answer_lines 单行 `<table>` 按题号取对应 td**,切片层保持现状。 | R19 决策(14 份 304 单元实测);status.md 入库前置任务 |
+| C-IN-8 | **锚定用行号,不用标题形态**。OCR 对答案行的标题化是随机的(c06-02 fresh−baseline=12 处、c10-02=6 处),resolver 定位必须以 manifest 行号区间为准,不得重新解析标题层级。 | R44/R46 OCR 漂移量化 |
+
+## 3. 失败传播契约(C-FAIL)
+
+| # | 契约 | 证据出处 |
+|---|---|---|
+| C-FAIL-1 | FAIL / PENDING_REVIEW / MISSING / STALE 任何一态**不得被 resolver 或其下游静默转换为 PASS**;每级转换必须留痕。 | R41 Gate 攻击面 B(用户标记为最危险系统级攻击面);BUG-26(recompile 洗 v2 身份头 → QC 静默降级 v1 语义,已修) |
+| C-FAIL-2 | QC verdict 为 FAIL 的文件若仍被人工放行进 IR,必须走 Admission 层显式记录,不得在 resolver 内消化。 | R41 B-03 优先级语义(FAIL 压过 PENDING_REVIEW);三边界 |
+| C-FAIL-3 | resolver 运行时发现输入非 v2 / verdict 缺失 / 工件漂移,应 **fail-closed 拒绝该文件**,不得降级重算替代(重算即重新解释事实)。 | BUG-24 拒写先例(fail-closed 如实拒绝优于错误写入);C-IN-1/2 |
+
+## 4. 输出工件契约(C-OUT,ArtifactWriter 候选首批条款)
+
+| # | 契约 | 证据出处 |
+|---|---|---|
+| C-OUT-1 | resolver 产出(IR、报告、日志)路径必须**派生自 --out 类参数**,禁止写死覆盖既有证据工件。 | BUG-21/28/29 家族;R47 ArtifactWriter Contract 建议 |
+| C-OUT-2 | 每单元 IR 必须携带 provenance:源文件、源行号区间、QC verdict、identity 字段原样(禁止在 IR 中重塑 printed/canonical)。 | C-OUT 目标"产物正确但无法证明为什么正确"(R41 攻击面 C);review_protocol 规则 2 |
+| C-OUT-3 | resolver 自身报告中恢复/成功类声明按 review_protocol **规则 4** 报 numerator/denominator/proof method。 | R46 c09-01 事件(23/34);R47 规则化 |
+
+## 5. 已知消费风险登记(实测数字,规则 4 口径)
+
+以下为 resolver 实现时**必须显式处理、不得假装不存在**的真实数据形态:
+
+1. **printed 未回收是常态**:batch-C 回填 printed provenance = source_line 948 / migration_report 134 / **unknown 402(27.1%,printed 全部为 null)**;PAC c01-02 括号式题号 28/28 unverified、c09-01 23/34 recovered(11 单元 printed=None)。→ IR 不得回填猜测值。
+2. **源面答案缺失**:c09-01 6 题 C3(源卷就没有答案)、历史卷(2021 四十三中)4 题答案缺失——忠实反映,不是流水线缺陷。→ IR 缺答案是合法终态。
+3. **答案/解析不分离**:c12-02 Q24 answer 区为【解析】散文(答案内容在解析内)——绑定语义正确,分离质量项由 resolver 裁定,**不得静默重绑**。R30 另两例:政治 U35 源文档同行合并致 material 首行边界污染 1 行;地理 U13-14 答案区"4. A"实为"14."OCR 丢字(resolver 按题号取数会漏 Q14)。
+4. **OCR 行融合**:c11-02 L137 三重融合(标题+正文同行)被 SectionLocator 如实收为 section start(ACCEPTED OCR LIMITATION 家族)。
+5. **PENDING_REVIEW 是设计产物不是噪音**:keep 证据语义充分性机器不可证(R35 诚实边界),人工通道是契约的一部分。
+
+## 6. 生产侧前置条件预检(R48 实测:`scripts/resolver_contract_preflight.py`)
+
+对生产 66 份(batch-C 50 + pilot 16)+ PAC 22 份共 88 份产物逐份机器检查十条前置(pc1 v2 在册 / pc2 identity 无 fail / pc3 无 pending / pc4 QC verdict 可计算 / pc5 basis 值域 / pc6 provenance 值域 / pc7 provenance 与 printed 反伪造一致性 / pc8 section_ref 可解析 / pc9 行号区间界内 / pc10 源文件在位)。结果见 `data/resolver_contract_preflight.json` 与 §6.1。
+
+### 6.1 实测结果(R48,`data/resolver_contract_preflight.json`)
+
+- **88 份(batch-C 50 + pilot 16 + PAC 22)逐份机器检查:87/88 零 findings**;
+- 唯一 finding = **pc1 ×1**:三十一中化学(pilot)仍为 v1——known(keep 三方裁决挂起件,fail-closed 拒回填),**恰证明 pc1 拒收路径有真实命中**,不是空检查;
+- pc2–pc10 全部 0:identity 无 fail、无 pending、QC verdict 87/87 可计算(v1 件按契约不进入 QC 消费路径)、basis/provenance 值域与反伪造一致性、section_ref 零悬空、行号零越界、源文件全部在位;
+- QC verdict 分布与台账算术闭合:**PASS 71**(batch-C 38 + pilot 15 + PAC 18)/**FAIL 16**(batch-C 12 + PAC 4);
+- 结论(限定口径):**在当前 88 份产物上,生产侧满足 resolver 输入契约的机器可检前置条件;此为 producer-side 事实,不构成 resolver 实现正确性的任何证明**(消费侧证据须待实现后按 §7/附录 A 开审)。
+
+## 7. 未来实现的验收标准(R-ACC,实现审查逐条测)
+
+1. **R-ACC-1**:resolver 拒绝 v1 输入(fail-closed),拒绝理由可机器读取;
+2. **R-ACC-2**:FAIL 文件不进自动消费路径;PENDING_REVIEW 文件不自动转 PASS(变异验证:放宽即测试红);
+3. **R-ACC-3**:resolver 输出 IR 的 printed/canonical 与 manifest 逐单元 byte-equal(不得重塑);
+4. **R-ACC-4**:resolver 不导入 `question_identity` 之外的身份推断逻辑——身份唯一来源 = manifest v2 字段(实现审查做 import 面与代码路径审计);
+5. **R-ACC-5**:c13-02 形态(answer 区编号不一致)不崩溃、不静默错配,处置留痕;
+6. **R-ACC-6**:R19 答案表 td 切分正确(14 份 304 单元语料);
+7. **R-ACC-7**:输出工件遵守 C-OUT-1(变异验证:写死路径即测试红,BUG-28/29 教训,且此类变异必须先备份目标工件——R46 补记);
+8. **R-ACC-8**:附录 A 对抗语料全量跑通,每样本处置可解释(与 PAC 同纪律:FAIL 必须非静默、可归因)。
+
+## 附录 A · 对抗语料登记(ready-to-fire)
+
+| 语料 | 量 | 攻击目标 |
+|---|---|---|
+| PAC 第一轮产物 | 22 份(18 PASS / 4 FAIL) | 真实 OCR 漂移输入;4 份 FAIL 的 C-FAIL-2 处置;c09-01 printed/canonical 分离;c13-02 版本噪音;c12-02 答案在解析内;c01-02 括号式题号;c11-02 融合 |
+| batch-C | 50 份(38 PASS / 12 FAIL) | keep 93 单元豁免消费;unknown 402 单元;汇编卷 unit_id 重复;R19 答案表 td |
+| pilot | 16 份(15 PASS / 1 v1 FAIL) | v1 拒收路径(三十一中化学);BUG-22 原形态卷(Q26-34) |
+| R30 语义探针校准卷 | 政治 U35 / 地理 U13-14 等 | material 边界污染、答案区 OCR 丢字取数 |
+
+**开审条件**:resolver 实现存在且 R-ACC 清单有对应测试骨架;开审纪律同 PAC(R46 级对抗:独立重算 + 变异 + 穷举,不得抽样冒充全称)。

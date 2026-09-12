@@ -1034,3 +1034,24 @@ M1(BUG-29 复发变异)期间,被变异的代码把**真实默认报告** `data/
 4. `status.md` 同步:阶段标记切换(PAC 第一轮含 R46 审查结案;下一攻击目标 = Resolver 消费边界)。
 
 **结果**:R31–R46 审查链获用户架构级验收;preprocessing Identity Layer 判为 Frozen Candidate;下一轮工作对象待用户在「Resolver 契约纸面审 / Resolver 实现后审 / 先 BUG-11/14/15」间裁定。本轮零生产代码变更,套件状态不变(130 passed + 1 xfailed)。
+
+---
+
+## R48(2026-09-13):Resolver 消费契约纸面冻结 + 生产侧前置条件实测(用户裁定下一轮对象)
+
+**输入**:R47 决策点用户裁定——下一轮 = **Resolver 契约纸面审**(先冻结消费契约并预置对抗语料,零 resolver 实现;实现存在后再开实现级对抗审查)。
+
+### 交付
+
+1. **`resolver_contract_design.md` v0.1**:消费契约逐条挂证据出处——三边界(R47:Resolver structural only / Gate 只证明约束 / Admission 承接人类不确定性);输入契约 C-IN-1~8(只消费 v2、消费 QC verdict 而非产物存在、三态传播、身份只读不重推断、basis 只读、answer 区编号可不一致、答案表 td 按题号取、行号锚定不重解析标题);失败传播 C-FAIL-1~3(四态不得静默转 PASS、人工放行走 Admission、异常 fail-closed 不降级重算);输出工件 C-OUT-1~3(ArtifactWriter 候选首批条款 + 规则 4);已知消费风险登记(printed unknown 402/1484=27.1%、源面答案缺失、答案在解析内、OCR 融合、PENDING_REVIEW 是设计产物);验收标准 R-ACC-1~8(实现审查逐条测,含变异义务);附录 A 对抗语料登记(PAC 22 + batch-C 50 + pilot 16 + R30 校准卷,ready-to-fire)。
+2. **`scripts/resolver_contract_preflight.py`**:生产侧前置条件预检 pc1–pc10,全部复用生产共用实现(`question_identity.check_identity` / `reslice_qc.check`),不新增 QC 规则、不重新发明校验。
+3. **实测结果(真实语料,`data/resolver_contract_preflight.json`)**:88 份(batch-C 50 + pilot 16 + PAC 22)逐份检查——**87/88 零 findings**;唯一 finding = pc1×1 三十一中化学 v1(known,keep 挂起件,恰证明拒收路径有真实命中);pc2–pc10 全 0;QC verdict 分布与台账算术闭合(PASS 71 = 38+15+18;FAIL 16 = 12+4)。**限定口径:producer-side 前置条件成立,不构成 resolver 实现正确性的任何证明。**
+4. **CI 契约测试 +4** `tests/test_resolver_contract_preflight.py`:干净 v2 合成语料 0 findings(且 QC verdict=PASS 可计算)+ 三条变异注入即测试(伪造 printed→pc7 / 非法 basis "Explicit"→pc5 / v1 输入→pc1)——预检区分力由缺陷形态本身证明。
+
+### 边界与残留(如实)
+
+- 本稿是**纸面契约**,全部条款验证状态 = 纸面冻结待实测;唯 §6 生产侧前置为本轮实测;
+- resolver 实现存在后,开审纪律同 PAC/R46(独立重算 + 变异 + 穷举,不得抽样冒充全称);R-ACC-4(import 面审计)只能在实现后做;
+- 契约本身未经过独立对抗审查轮(用户如需,可对本稿开启"审查审查"——按 R42 收口先例,由用户裁定是否豁免)。
+
+**结果**:Gate 攻击序①的消费侧纸面边界冻结;套件 **134 passed + 1 xfailed**;生产代码零变更(新增 preflight 脚本为审计工具,不进生产链路)。
