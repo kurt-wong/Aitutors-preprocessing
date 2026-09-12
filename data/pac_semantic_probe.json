@@ -1,0 +1,636 @@
+{
+ "dir": "Ocr-markdown\\reslice-pac-annotated",
+ "n_files": 22,
+ "n_units": 530,
+ "flags_by_check": {
+  "P13": 24,
+  "P14": 32,
+  "P15": 22
+ },
+ "flagged_files": [
+  "pac-c01-02.manifest.json",
+  "pac-c02-01.manifest.json",
+  "pac-c02-02.manifest.json",
+  "pac-c05-01.manifest.json",
+  "pac-c07-02.manifest.json",
+  "pac-c08-01.manifest.json",
+  "pac-c09-01.manifest.json",
+  "pac-c09-02.manifest.json",
+  "pac-c11-01.manifest.json",
+  "pac-c12-02.manifest.json",
+  "pac-c13-02.manifest.json"
+ ],
+ "results": [
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-01.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c01-01.md",
+   "n_units": 30,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-02.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c01-02.md",
+   "n_units": 28,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q21",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "(21)  $ [0,+\\infty) $. (22)  $ \\underline{2} $ ;  $ \\underli"
+    },
+    {
+     "check": "P13",
+     "unit": "Q22",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "(21)  $ [0,+\\infty) $. (22)  $ \\underline{2} $ ;  $ \\underli"
+    },
+    {
+     "check": "P13",
+     "unit": "Q23",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "(21)  $ [0,+\\infty) $. (22)  $ \\underline{2} $ ;  $ \\underli"
+    },
+    {
+     "check": "P13",
+     "unit": "Q24",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "(21)  $ [0,+\\infty) $. (22)  $ \\underline{2} $ ;  $ \\underli"
+    },
+    {
+     "check": "P13",
+     "unit": "Q25",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "(25)  $ T = \\pi $"
+    },
+    {
+     "check": "P13",
+     "unit": "Q27",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "## （27） 略"
+    },
+    {
+     "check": "P13",
+     "unit": "Q28",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "（28）简析：（I）令  $ f(x)=x^{2}+\\frac{1}{x}=0 $，即  $ x^{3}+1=0 $，所"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c02-01.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c02-01.md",
+   "n_units": 20,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q21",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "21."
+    },
+    {
+     "check": "P14",
+     "unit": "Q24",
+     "detail": "stem_lines 内出现非本单元题号 1",
+     "sample": "1）当小球的角速度为 $ \\omega=10rad/s $时，细线拉力大小；"
+    },
+    {
+     "check": "P14",
+     "unit": "Q24",
+     "detail": "stem_lines 内出现非本单元题号 2",
+     "sample": "2）当细线断裂时，小球的线速度大小；"
+    },
+    {
+     "check": "P14",
+     "unit": "Q25",
+     "detail": "stem_lines 内出现非本单元题号 2",
+     "sample": "2）当绳子跟竖直方向的夹角为 $ \\theta $时，求小球运动的向心力大小；"
+    },
+    {
+     "check": "P14",
+     "unit": "Q25",
+     "detail": "stem_lines 内出现非本单元题号 3",
+     "sample": "3）通过计算说明：要增大夹角 $ \\theta $，应该增大小球运动的角速度 $ \\omega $。"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c02-02.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c02-02.md",
+   "n_units": 32,
+   "flags": [
+    {
+     "check": "P14",
+     "unit": "Q25",
+     "detail": "stem_lines 内出现非本单元题号 1",
+     "sample": "1. 削弱了帝国主义和殖民主义力量"
+    },
+    {
+     "check": "P14",
+     "unit": "Q25",
+     "detail": "stem_lines 内出现非本单元题号 2",
+     "sample": "2. 动摇了欧洲的世界优势地位"
+    },
+    {
+     "check": "P14",
+     "unit": "Q25",
+     "detail": "stem_lines 内出现非本单元题号 3",
+     "sample": "3. ___"
+    },
+    {
+     "check": "P14",
+     "unit": "Q25",
+     "detail": "stem_lines 内出现非本单元题号 4",
+     "sample": "4. 促进了殖民地半殖民地国家的民族觉醒"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c05-01.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c05-01.md",
+   "n_units": 20,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q9",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "check": "P13",
+     "unit": "Q10",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "check": "P13",
+     "unit": "Q11",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "check": "P13",
+     "unit": "Q12",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "check": "P13",
+     "unit": "Q13",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "check": "P13",
+     "unit": "Q14",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "check": "P13",
+     "unit": "Q19",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "19. (1) 单调递增区间  $ (-\\infty,-2) $， $ (2,+\\infty) $；单调递减区间  $ "
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c05-02.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c05-02.md",
+   "n_units": 21,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c06-01.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c06-01.md",
+   "n_units": 19,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c06-02.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c06-02.md",
+   "n_units": 20,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c07-01.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c07-01.md",
+   "n_units": 35,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c07-02.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c07-02.md",
+   "n_units": 21,
+   "flags": [
+    {
+     "check": "P15",
+     "unit": "Q17",
+     "detail": "answer_lines 内出现非本单元题号 2",
+     "sample": "2）物质循环（1分）"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c08-01.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c08-01.md",
+   "n_units": 9,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "U-7to5-35-39",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "35-39 DEFGB"
+    },
+    {
+     "check": "P15",
+     "unit": "U-RE-40-43",
+     "detail": "answer_lines 内出现非本单元题号 1",
+     "sample": "1. 如抄写原文，不扣分。"
+    },
+    {
+     "check": "P15",
+     "unit": "U-RE-40-43",
+     "detail": "answer_lines 内出现非本单元题号 2",
+     "sample": "2. 如能恰当地运用名词短语回答，不扣分。"
+    },
+    {
+     "check": "P15",
+     "unit": "U-RE-40-43",
+     "detail": "answer_lines 内出现非本单元题号 1",
+     "sample": "1. 如抄写原文，不扣分。"
+    },
+    {
+     "check": "P15",
+     "unit": "U-RE-40-43",
+     "detail": "answer_lines 内出现非本单元题号 2",
+     "sample": "2.  $ \\underline{\\text{so people get less from nonverbal exp"
+    },
+    {
+     "check": "P15",
+     "unit": "U-RE-40-43",
+     "detail": "answer_lines 内出现非本单元题号 3",
+     "sample": "3. 整句全划等情况不得分。"
+    },
+    {
+     "check": "P15",
+     "unit": "U-RE-40-43",
+     "detail": "answer_lines 内出现非本单元题号 1",
+     "sample": "1. 内容：内容意义上言之有理即可得分。"
+    },
+    {
+     "check": "P15",
+     "unit": "U-RE-40-43",
+     "detail": "answer_lines 内出现非本单元题号 1",
+     "sample": "1) 照抄原文某些段落，不得分。"
+    },
+    {
+     "check": "P15",
+     "unit": "U-RE-40-43",
+     "detail": "answer_lines 内出现非本单元题号 2",
+     "sample": "2) 所表达内容与题目要求无关，不得分。"
+    },
+    {
+     "check": "P15",
+     "unit": "U-RE-40-43",
+     "detail": "answer_lines 内出现非本单元题号 3",
+     "sample": "3) 仅列出一种做法，只要内容充实，不影响得分。"
+    },
+    {
+     "check": "P15",
+     "unit": "U-RE-40-43",
+     "detail": "answer_lines 内出现非本单元题号 2",
+     "sample": "2. 语言：准确、连贯；如有错误，酌情扣分。"
+    },
+    {
+     "check": "P15",
+     "unit": "U-RE-40-43",
+     "detail": "answer_lines 内出现非本单元题号 3",
+     "sample": "3. 字数要求"
+    },
+    {
+     "check": "P14",
+     "unit": "U-Essay-44",
+     "detail": "stem_lines 内出现非本单元题号 1",
+     "sample": "1. 表达歉意："
+    },
+    {
+     "check": "P14",
+     "unit": "U-Essay-44",
+     "detail": "stem_lines 内出现非本单元题号 2",
+     "sample": "2. 不能参加的原因："
+    },
+    {
+     "check": "P14",
+     "unit": "U-Essay-44",
+     "detail": "stem_lines 内出现非本单元题号 3",
+     "sample": "3. 解决办法的建议。"
+    },
+    {
+     "check": "P14",
+     "unit": "U-Essay-44",
+     "detail": "stem_lines 内出现非本单元题号 2",
+     "sample": "2. 文章开头与结尾已给出，不计入总词数。"
+    },
+    {
+     "check": "P15",
+     "unit": "U-Essay-44",
+     "detail": "answer_lines 内出现非本单元题号 2",
+     "sample": "2. 语言准确性：包括语法、用词、拼写、大小写及标点符号等要素。其中，语法包括主谓一致、时态、数、人称、冠词、代词、介词"
+    },
+    {
+     "check": "P15",
+     "unit": "U-Essay-44",
+     "detail": "answer_lines 内出现非本单元题号 3",
+     "sample": "3. 得体性：是指语言表达恰当，考虑到了情境、交际对象和语体变化等因素。"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c08-02.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c08-02.md",
+   "n_units": 12,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c09-01.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c09-01.md",
+   "n_units": 34,
+   "flags": [
+    {
+     "check": "P14",
+     "unit": "Q26",
+     "detail": "stem_lines 内出现非本单元题号 1",
+     "sample": "1\\. （3分）补齐物质及其用途的连线。"
+    },
+    {
+     "check": "P14",
+     "unit": "Q27",
+     "detail": "stem_lines 内出现非本单元题号 2",
+     "sample": "2. （3分）选择装置，完成实验。"
+    },
+    {
+     "check": "P14",
+     "unit": "Q28",
+     "detail": "stem_lines 内出现非本单元题号 3",
+     "sample": "3. （4分）化学能在一定条件下可转化为电能。"
+    },
+    {
+     "check": "P14",
+     "unit": "Q29",
+     "detail": "stem_lines 内出现非本单元题号 4",
+     "sample": "4.（4分）煤和石油在燃烧时会产生  $ NO_2 $，为保护环境需要脱硝处理。某种脱硝方法中利用了如下反应。"
+    },
+    {
+     "check": "P14",
+     "unit": "Q30",
+     "detail": "questions_lines 内出现非本单元题号 5",
+     "sample": "5. （8分）阅读短文，回答问题。"
+    },
+    {
+     "check": "P14",
+     "unit": "Q31",
+     "detail": "stem_lines 内出现非本单元题号 6",
+     "sample": "6. （4分）某小组同学用下图所示装置制取二氧化硫，并探究其性质。"
+    },
+    {
+     "check": "P14",
+     "unit": "Q32",
+     "detail": "stem_lines 内出现非本单元题号 7",
+     "sample": "7. （8分）硅是重要的半导体材料。近日，我国宣布突破了碳基半导体材料制备的瓶颈，有望替代目前的硅材料，支持高端芯片的国"
+    },
+    {
+     "check": "P14",
+     "unit": "Q33",
+     "detail": "stem_lines 内出现非本单元题号 8",
+     "sample": "8.（8分）某氨氮废水资源化利用和处理的流程如下图所示（部分物质已略去）。"
+    },
+    {
+     "check": "P14",
+     "unit": "Q34",
+     "detail": "stem_lines 内出现非本单元题号 9",
+     "sample": "9.（8分）铁单质化学性质活泼，来源丰富，价格低廉，被广泛用于修复地下水中硝酸盐氮的污染。某研究小组探究铁单质处理硝酸盐"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c09-02.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c09-02.md",
+   "n_units": 35,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q96",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "## 九、 写作（共10分）略"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c10-01.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c10-01.md",
+   "n_units": 20,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c10-02.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c10-02.md",
+   "n_units": 18,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c11-01.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c11-01.md",
+   "n_units": 56,
+   "flags": [
+    {
+     "check": "P14",
+     "unit": "Q46",
+     "detail": "stem_lines 内出现非本单元题号 1",
+     "sample": "1. （3分）我国古代四大发明之一的黑火药是由硫磺粉、硝酸钾和木炭粉按一定比例混合而成的，爆炸的反应为： $  \\tex"
+    },
+    {
+     "check": "P14",
+     "unit": "Q47",
+     "detail": "stem_lines 内出现非本单元题号 2",
+     "sample": "2. （3分）现有下列三种物质：① Cl₂、② NO₂、③ NH₄Cl。其中，能与水反应生成一种酸和一种气体的是___（"
+    },
+    {
+     "check": "P14",
+     "unit": "Q48",
+     "detail": "stem_lines 内出现非本单元题号 3",
+     "sample": "3. （5分）某小组同学用图1所示装置制取氨，并探究其性质。"
+    },
+    {
+     "check": "P14",
+     "unit": "Q49",
+     "detail": "stem_lines 内出现非本单元题号 4",
+     "sample": "4. （6分）某小组同学利用下图所示装置探究二氧化硫气体的性质。"
+    },
+    {
+     "check": "P14",
+     "unit": "Q50",
+     "detail": "stem_lines 内出现非本单元题号 5",
+     "sample": "5. （5分）某原电池装置如图所示。"
+    },
+    {
+     "check": "P14",
+     "unit": "Q51",
+     "detail": "stem_lines 内出现非本单元题号 6",
+     "sample": "6. （6分）化学反应中常伴随着能量变化。将 Mg 条打磨后，插入 6 mol/L 盐酸中。"
+    },
+    {
+     "check": "P14",
+     "unit": "Q52",
+     "detail": "stem_lines 内出现非本单元题号 7",
+     "sample": "7. （5分）下表列出了①～⑦七种元素在周期表中的位置。"
+    },
+    {
+     "check": "P15",
+     "unit": "Q52",
+     "detail": "answer_lines 内出现非本单元题号 7",
+     "sample": "7. （5分）（1）Na（2）H_{2}O （3）H_{2}SiO_{3}（4）NH_{4}NO_{3} 取少量该化合物"
+    },
+    {
+     "check": "P13",
+     "unit": "Q52",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "7. （5分）（1）Na（2）H_{2}O （3）H_{2}SiO_{3}（4）NH_{4}NO_{3} 取少量该化合物"
+    },
+    {
+     "check": "P14",
+     "unit": "Q53",
+     "detail": "stem_lines 内出现非本单元题号 8",
+     "sample": "8. （5分）在2L的密闭容器中，SO $ _{2} $和O $ _{2} $在催化剂500℃的条件下发生反应。SO $"
+    },
+    {
+     "check": "P14",
+     "unit": "Q54",
+     "detail": "stem_lines 内出现非本单元题号 9",
+     "sample": "9. （6分）海洋资源的开发与利用具有广阔的前景。海水的pH一般在7.5~8.6之间。应用海水脱硫的一种工艺流程如下图所"
+    },
+    {
+     "check": "P15",
+     "unit": "Q54",
+     "detail": "answer_lines 内出现非本单元题号 9",
+     "sample": "9. （6分）（1）a （2）b （3） $ 2H_2SO_3 + O_2 = 2SO_4^{2-} + 4H^+ $"
+    },
+    {
+     "check": "P13",
+     "unit": "Q54",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "9. （6分）（1）a （2）b （3） $ 2H_2SO_3 + O_2 = 2SO_4^{2-} + 4H^+ $"
+    },
+    {
+     "check": "P14",
+     "unit": "Q55",
+     "detail": "stem_lines 内出现非本单元题号 10",
+     "sample": "10. （7分）工业以黄铜矿（主要成分是  $ CuFeS_{2} $）为原料制备粗铜，进一步以粗铜为原料制备  $ C"
+    },
+    {
+     "check": "P14",
+     "unit": "Q56",
+     "detail": "stem_lines 内出现非本单元题号 11",
+     "sample": "11. （4分）实验小组利用传感器探究  $ Na_{2}CO_{3} $ 和  $ NaHCO_{3} $ 的性质。"
+    },
+    {
+     "check": "P15",
+     "unit": "Q56",
+     "detail": "answer_lines 内出现非本单元题号 11",
+     "sample": "11. （4分）（1） $ \\mathrm{NaHCO_{3}(2)CO_{3}^{2-}+Ca^{2+}=CaCO_{"
+    },
+    {
+     "check": "P13",
+     "unit": "Q56",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "11. （4分）（1） $ \\mathrm{NaHCO_{3}(2)CO_{3}^{2-}+Ca^{2+}=CaCO_{"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c11-02.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c11-02.md",
+   "n_units": 19,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c12-01.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c12-01.md",
+   "n_units": 27,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c12-02.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c12-02.md",
+   "n_units": 25,
+   "flags": [
+    {
+     "check": "P13",
+     "unit": "Q18",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "18. 增大 增大  $ \\frac{4\\pi^{2}n^{2}L}{t^{2}} $"
+    },
+    {
+     "check": "P13",
+     "unit": "Q20",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "20. （1）铯（2）b（3）a"
+    },
+    {
+     "check": "P13",
+     "unit": "Q22",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "22. （6分）【解析】"
+    },
+    {
+     "check": "P13",
+     "unit": "Q24",
+     "detail": "answer_lines 无【答案】/答案表/字母行/区间连写",
+     "sample": "24. （6分）【解析】"
+    }
+   ]
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c13-01.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c13-01.md",
+   "n_units": 19,
+   "flags": []
+  },
+  {
+   "manifest": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c13-02.manifest.json",
+   "source": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c13-02.md",
+   "n_units": 10,
+   "flags": [
+    {
+     "check": "P15",
+     "unit": "Q20",
+     "detail": "answer_lines 内出现非本单元题号 10",
+     "sample": "10. 【分析】本题为命题作文，需要以“青春的价值”为题写一篇议论文。习主席曾说过以青春之我、奋斗之我，为民族复兴铺路架"
+    },
+    {
+     "check": "P15",
+     "unit": "Q20",
+     "detail": "answer_lines 内出现非本单元题号 1",
+     "sample": "1\\. 整体性原则：新材料作文的审题要有全局意识，要从材料的整体着眼，不能纠缠局部的细节。否则很有可能出现偏题走题现象。"
+    },
+    {
+     "check": "P15",
+     "unit": "Q20",
+     "detail": "answer_lines 内出现非本单元题号 2",
+     "sample": "2．多向性原则：一般来说，新材料作文中材料所蕴涵的观点并不是唯一的，从不同的角度可以得到不同的结论，因此要学会多角度审视"
+    },
+    {
+     "check": "P15",
+     "unit": "Q20",
+     "detail": "answer_lines 内出现非本单元题号 3",
+     "sample": "3．筛选性原则：因为我们从材料中获得的观点具有多样性，因此，在进入写作时对所得到的观点还要进行适当筛选。筛选的原则：①服"
+    },
+    {
+     "check": "P15",
+     "unit": "Q20",
+     "detail": "answer_lines 内出现非本单元题号 11",
+     "sample": "11. 【分析】本题考查学生写作的基本能力。写作本文，首先要审清题目的要旨。从考题“那一刻，我仿佛第一次看到___开”，"
+    }
+   ]
+  }
+ ]
+}
