@@ -513,7 +513,7 @@ def process_file(src_path: Path, log):
         except Exception as e:
             last_exc = e
             dbg = ROOT / "logs/reslice_debug"
-            dbg.mkdir(exist_ok=True)
+            dbg.mkdir(parents=True, exist_ok=True)
             (dbg / f"{src_path.stem}.reply.attempt{attempt+1}.txt").write_text(reply, encoding="utf-8")
             log(f"[{src_path.name}] JSON 提取失败(尝试{attempt+1}): {e}")
     if man is None:
@@ -549,6 +549,24 @@ def process_file(src_path: Path, log):
             "completion_tokens": usage.get("completion_tokens"),
             "elapsed_s": round(elapsed, 1),
             "src_bytes": src_path.stat().st_size, "src_lines": len(lines)}
+
+
+def derive_run_paths(out=None, batch=False):
+    """(log_path, result_path)：账目/日志路径选择（BUG-21 可单测）。
+
+    规则：--out 只隔离产物不隔离账目 = 定时炸弹（R27 冒烟实际覆盖过 pilot 账目，
+    靠 git 恢复）。凡 --out 独立输出，log/result 一律跟随输出目录名派生，
+    绝不写默认账目；默认账目只在不带 --out 的正式跑（pilot/batch-C）时写。
+    """
+    if out:
+        tag = Path(out).name
+        return (ROOT / f"logs/reslice_{tag}_log.txt",
+                ROOT / f"data/reslice_{tag}_result.json")
+    if batch:
+        return (ROOT / "logs/reslice_batch_c_log.txt",
+                ROOT / "data/reslice_batch_c_result.json")
+    return (ROOT / "logs/reslice_pilot_log.txt",
+            ROOT / "data/reslice_pilot_result.json")
 
 
 def main():
@@ -615,18 +633,11 @@ def main():
     elif args.batch:
         OUT_ROOT = SRC_ROOT / "reslice-batch-C"
 
-    if args.batch:
-        if args.out:
-            # --out 独立输出时 log/result 跟随派生,绝不覆盖默认批的正式账目
-            tag = Path(args.out).name
-            log_path = ROOT / f"logs/reslice_{tag}_log.txt"
-            result_path = ROOT / f"data/reslice_{tag}_result.json"
-        else:
-            log_path = ROOT / "logs/reslice_batch_c_log.txt"
-            result_path = ROOT / "data/reslice_batch_c_result.json"
-    else:
-        log_path = ROOT / "logs/reslice_pilot_log.txt"
-        result_path = ROOT / "data/reslice_pilot_result.json"
+    # 账目/日志：--out 一律派生隔离（BUG-21），默认账目只在正式跑时写
+    log_path, result_path = derive_run_paths(args.out, bool(args.batch))
+    # fresh checkout 没有 logs/、data/（含 CI 环境）：目录兜底，避免 open() 崩
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    result_path.parent.mkdir(parents=True, exist_ok=True)
 
     import threading
     log_lock = threading.Lock()

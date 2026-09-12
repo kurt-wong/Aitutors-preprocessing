@@ -48,10 +48,10 @@
 - **⚠ R15 第二轮审查修正（2026-09-11 11:28）**：进一步发现 space 亦非零误改——`$` 错乱（货币/OCR 孤立 `$`）与真岛交错时状态机误改岛内 `\quad`（C1 反例 `costs $5 then $a \quad b$` 确证）。块感知检测：31288 处替换中**3 处误改**（display 块内孤立 `$` 翻转），已**精确回滚，space 达零误改（保留 453）**。教训：`$`计数岛判定在 `$`错乱时必失效；改进方向=修复前跳过 `$` 错乱行。**当前生效：space 453 零误改；table / BLOCK / COMPLEX 留档**。
 
 ### BUG-21 · `--file`/`--pilot` 调试跑覆盖批量账目 JSON　🟡（工具/记账）
-- **状态**：🟠 Open（2026-09-12 R27 登记）
+- **状态**：✅ 修复（2026-09-12 R28，用户指令"先修复 bug"）
 - **现象**：`reslice_pipeline.py --file <src> --out <dir>` 的 `--out` 只重定向**产物**目录；结果账目恒写 `data/reslice_pilot_result.json`（`main()` 629 行，非 batch 模式无条件走该路径）→ 一次单文件调试跑把 16 份试点账目覆盖成 1 条。R27 真 LLM 冒烟实际触发，靠 `git checkout` 恢复（建仓第 3 天即回本）。
 - **影响**：账目丢失（可恢复，git 已追踪）；若发生在未追踪时期即不可逆。全量/批量跑不受影响（batch 模式走独立 `reslice_{tag}_result.json`）。
-- **修复方向（未做）**：`--out` 存在时账目跟随输出目录写 `<out>/_result.json`；或 `--file` 模式不写账目。5 行级改动，待用户拍板后连测试一起提交。
+- **修复（R28）**：路径选择提为纯函数 `derive_run_paths(out, batch)`——**凡 `--out` 独立输出，log/result 一律跟随输出目录名派生**（与 R23 batch+`--out` 既有语义统一）；默认账目只在不带 `--out` 的正式跑（pilot/batch-C）时写。回归测试 `tests/test_run_paths.py` 4 用例：纯函数契约 3 + **真实子进程集成 1**（无配置环境跑 `--file --out`，LLM 必失败，断言账目落派生路径且 pilot 账目/日志根本不被创建）。mutation M4 回退旧行为 → 单元+集成双咬住。**集成测试附带抓出第二个缺陷**：账目目录假定存在，fresh checkout（含 CI）无 `logs/`、`data/` 时 `open()` 崩 → 补 `mkdir(parents=True)` 兜底（含 `logs/reslice_debug`）。
 - **教训**：调试入口与生产入口共享写路径 = 定时炸弹；"输出隔离"必须覆盖**全部写路径**（产物+账目+日志），R23 给 fixer 加 `--out/--log` 时漏了 pipeline 自身。
 
 ---
