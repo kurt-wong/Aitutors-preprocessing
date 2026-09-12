@@ -16,6 +16,7 @@
 
 # --- 运行时产物 ---
 /logs/reslice_debug/
+/data/_p2adv_tmp/
 __pycache__/
 *.pyc
 *.tmp

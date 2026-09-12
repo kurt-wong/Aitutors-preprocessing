@@ -1,7 +1,8 @@
-# QuestionIdentity 第一性原理设计(R32 / Phase 2 设计评审稿)
+# QuestionIdentity 第一性原理设计(R32 提出 / R33 对抗性审查修订)
 
-> 状态:🟡 设计评审稿,未实现。本文档不改任何生产代码;实现属 Phase 2 实施任务,须在本设计被验收后进行。
+> 状态:🟡 设计评审稿 v0.2,未实现。本文档不改任何生产代码;实现属 Phase 2 实施任务,须在本设计被验收后进行。
 > 输入:第五轮审查对 R31(`e3e4e47`)的裁决——Phase 1 PASS,BUG-22 分层关闭(Prompt/QC/迁移 🟢,resolver identity 模型 🟡),下一步优先进入 Phase 2。
+> R33:对本设计开启对抗性审查,全部可测声称落到真实 batch-C 产物上的生产代码突变测量(`scripts/phase2_adversarial_probe.py` → `data/phase2_adversarial_review.json`)。**原 v0.1 不变量 1 被真实数据证伪,已修订**;各声称的裁定见 §5.1。
 > 原则:每个设计决定必须回指真实试卷证据,不允许"为了让系统简单"而篡改源事实。
 
 ---
@@ -89,7 +90,8 @@ SectionLocator
 ```
 
 - `title` 字段仍保留,但语义明确为 **display metadata**,可重复、可为空、可被 OCR 损坏;
-- 等价表述:section 由 `(source_version, ordinal)` 唯一定位,`start_line/end_line` 提供可回源的 span 证据。二者冗余但互为校验:ordinal 与 span 在确定性构建时必须一致。
+- 等价表述:section 由 `(source_version, ordinal)` 唯一定位,`start_line/end_line` 提供可回源的 span 证据。二者冗余但互为校验:ordinal 与 span 在确定性构建时必须一致;
+- **现实约束(A7 实测)**:现有 50 份 manifest 无任何 locator 字段,section 仅是裸 title 字符串——Phase 2 实施必须扩展 manifest schema 并对存量回填,否则本节设计只是纸面模型。
 
 ### Section 缺失时的 fallback(OCR 丢标题,真实存在)
 
@@ -124,6 +126,7 @@ SectionLocator
 
 - 现有 `number` 字段语义 = `canonical_number`(R31 迁移后已满足),**不得静默改义**;
 - 新增 `printed_number` 采用**只增不改**原则:R31 迁移报告中保存了每单元 old 值,可确定性回填(化学 N1-N9 的 old=1..9 即 printed);`shift`/`keep` 类同;
+- **现实约束(A5 实测)**:迁移报告含 old 值的仅 41/1484 单元(2.8%)。v2.1 存量产物的 printed 无法从 manifest 恢复——Phase 2 须新增从源 md 的确定性 printed 推导(如题干行首印刷题号);推导不出即显式标 `provenance=unknown`,**禁止把 canonical 回填成 printed**(那会伪造 Source Fact,比缺失更糟);
 - `answer_key` 类迁移的 printed_number 一律取 old 值;`keep` 类的 printed == canonical;
 - C13 的身份键在过渡期为 `(section, canonical_number)`,printed_number 进入后**不参与** C13(印刷号允许跨节重复,这正是选考模块的合法结构)。
 
@@ -149,15 +152,33 @@ SectionLocator
 - `keep`(选考模块/汇编):canonical_number 保持印刷号,身份由 section 消歧——**这正是 scoped identity 存在的原因**;
 - 任何推导必须产出 `canonical_basis`,不允许无证据编号。
 
-## 5. 不变量清单(Phase 2 验收将逐条测)
+## 5. 不变量清单(R33 修订版,Phase 2 验收将逐条测)
 
-1. `(section_ref, canonical_number)` 在单 manifest 内唯一(同节重复 = FAIL;跨节同号 = LEGAL,warning 级记录);
+1. **canonical 全卷唯一 + 显式豁免**(v0.1 原表述"跨节同号 = LEGAL"已被 A3 突变实测证伪,见 §5.1):
+   - `canonical_number` 在单 manifest 内**全卷唯一**;
+   - 唯一例外:`canonical_basis == "keep"`(选考模块/汇编块的合法局部编号)——豁免必须**显式标记**,不得仅凭"分节不同"推定合法;
+   - 同分节重复无论何时都是 FAIL;
+   - 由此:跨分节重号且双方均无 keep 依据 = FAIL(这正是 BUG-22 的原始回归形态)。
 2. `printed_number` 一经写入永不变化(任何工具改写它 = 违约,测试拦截);
 3. `canonical_number` 的每次变化必有 `canonical_basis` + 迁移报告条目;
 4. `unit_id` 不参与任何唯一性断言(仅 display alias);
-5. SectionLocator 的 ordinal 与 span 在确定性构建下一致;
+5. SectionLocator 的 ordinal 与 span 在确定性构建下一致,且 **manifest 必须记录 locator 字段**(ordinal/span),仅有 title 字符串不满足本设计;
 6. 无 section 降级必须产生显式 warning,禁止静默;
 7. 答案区键位只作为 canonical 证据,永不直接成为跨系统 identity。
+
+### 5.1 R33 对抗性审查结果(每条含真实测量,证据 `data/phase2_adversarial_review.json`)
+
+| 探针 | 测量(真实 batch-C 50 份产物,生产代码) | 裁定 |
+|---|---|---|
+| A3 BUG-22 回迁突变 | 7 份迁移产物题号全部回退 old 值后跑生产 C13:**保留 section → 仅 1/7 被拦**(博雅语文是回退后恰成同分节重复才命中);**删除 section → 7/7 全拦** | 🔴 **v0.1 不变量 1 证伪**:scoped C13 一旦有 section 就对 BUG-22 跨分节形态失去守卫。已修订为 canonical 全卷唯一 + keep 显式豁免;生产侧登记 **BUG-23**,修复依赖 basis 字段,并入 Phase 2 实施 |
+| A1 section 覆盖率 | 1484 单元中仅 **291(19.6%)** 带 section;**42/50 文件零 section** | 🟠 scoped identity 现实生效面不足两成,其余 84% 数据 C13 处于全卷退化模式。Phase 2 必须包含存量回填/标注,不得只设计新链路 |
+| A4 静默降级 | 删 section 后 8 份产物 QC 输出中,**0 份**出现任何"缺 section"类显式告警 | 🔴 不变量 6 当前未实现(生产静默降级)。列为 Phase 2 实施必测项 |
+| A5 printed 回填覆盖 | migration report 含 old 值的单元 **41/1484(2.8%)**,7/50 文件 | 🟠 §3 回填策略仅覆盖 2.8%。修订:迁移件回填;v2.1 存量产物的 printed 无法从 manifest 恢复,须新增从源 md 的确定性推导,推导不出则显式标 `provenance=unknown`,**禁止把 canonical 当 printed 猜测回填** |
+| A6 unit_id 重复 | 1/50 文件(专题十六汇编)**78 个单元** unit_id 重复 | ✅ §1.3 "unit_id 不可作键"声称成立,已量化 |
+| A7 SectionLocator 字段 | 50 份 manifest 全部单元字段普查:**无任何 ordinal/span/locator 类字段**;section 仅是 291 个裸 title 字符串 | 🔴 §2 SectionLocator 在现有产物上不可实现,manifest schema 必须扩展(不变量 5 已补要求) |
+| A2 scoped 不变量普查 | 真实 50 份产物 (section,题号) 零冲突 | ✅ 成立,但注意此检查与 C13 同源,不构成独立证据 |
+
+**测试固化**:`tests/test_question_identity_adversarial.py`——xfail(strict) 锁定"BUG-22 回归形态必须被拦"的修复义务(修复后 XPASS 强制转绿),另一用例锁定"section 字段是唯一分叉点"。
 
 ## 6. Phase 3 预告:Question Identity Adversarial Corpus
 

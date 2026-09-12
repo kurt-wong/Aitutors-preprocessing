@@ -56,6 +56,7 @@
 
 ### BUG-22 · 大题内编号被当全卷题号 → 题号重复归属（8/50 真实产物）　🟡（Phase 1 关闭 / 建模 OPEN）
 - **状态（第五轮审查分层裁定,R32 记账）**：Prompt defect 🟢 CLOSED / QC detection 🟢 CLOSED / batch-C migration 🟢 CLOSED / **resolver identity model 🟡 OPEN** / **V3 canonical identity integration 🟡 OPEN**。系统性根因(QuestionIdentity 未进入 resolver 正式模型)的修复设计见 `question_identity_design.md`(R32 设计评审稿),实现属 Phase 2 实施任务。
+- **⚠ R33 更正(2026-09-12)**:"QC detection 🟢 CLOSED" 需限定口径——回迁突变实测 scoped C13 对 BUG-22 原始回归形态(跨分节重号)漏放 6/7,检测能力实际有洞,已登记 **BUG-23**;R31 的"C13 残留 0"结论只证明存量已修,不证明守卫仍有效。
 - **发现**：第三轮审查（R29）指示专攻"结构合法但语义错误"；`scripts/semantic_probe.py` 对 batch-C 50 份真实 LLM 产物零成本测量,P15 报警经人工逐条分诊确证。
 - **确证证据**：① 合格考化学（第一次）：选择题 Q1-Q9 与非选择题 N1-N9 **题号 1-9 各双重归属**（非选择题卷面用大题内编号"1.-9.",答案区实键 26-34,N1→26…N9→34 逐条对上）；② 全量普查：**8/50 文件（16%）**含重复题号。
 - **根因(R31 确诊,R32 定性升级)**：不止"模型缺维度"——**prompt v2.1 第 247 行明确指示"分节各自从 1 编号…按原样照抄题号即可"。正式定性:Prompt Contract 与下游 Identity Contract 不一致(Prompt Specification Defect),LLM 是正确遵循,不是模型理解错误。**
@@ -67,6 +68,16 @@
 - **防回归**：`tests/test_bug22_migration.py` 7 用例锁定三条算法 + scoped 断言双向语义 + 同名标题消歧;mutation(shift -1)被测试拦截后回退。
 - **方案 B(manifest section 字段 + (section,number) 复合键进 resolver/IR)按审查意见并入 Phase 2 resolver 正式设计**,不在本轮打补丁。
 - **教训**：**"QC 全绿"≠"切分正确"**;而修复此类缺陷时**必须先辨认合法重号形态**,否则全局唯一性检查会把真实的选考模块/汇编结构误判为错误——检测器的假阳性与假阴性同样致命。
+
+### BUG-23 · scoped C13 对 BUG-22 回归形态失去守卫(跨分节 canonical 重号漏放)　🔴（语义/QC 守卫漏洞）
+- **状态**：待修复(修复依赖 QuestionIdentity basis/keep 模型,并入 Phase 2 实施;已用 xfail(strict) 测试锁定修复义务)
+- **登记**：2026-09-12(R33,Phase 2 设计对抗性审查)
+- **发现**:`scripts/phase2_adversarial_probe.py` A3 回迁突变——把 R31 迁移的 7 份真实产物题号全部回退到 old 值(BUG-22 原始形态:选择题与非选择题各自从 1 编号),跑**生产** `reslice_qc.check()`:**保留 section 字段时仅 1/7 被拦**(唯一命中是博雅语文,回退后恰成同分节重复);**删除 section 字段则 7/7 全拦**。
+- **根因**：C13 身份键 = (section, 题号),跨分节同号一律放行。但 BUG-22 的原始形态**恰恰是跨分节重号**(选择 1-9 vs 非选择 1-9)——R31 的 scoped 升级在区分"合法重号(选考/汇编)"与"非法重号(BUG-22)"时,把"分节不同"当成了合法性充分条件,而真正判据应是**是否存在显式 keep 依据**。Prompt v2.2 修复后新产物靠 prompt 约束不复发,但 QC 层面对 section 标注数据已无回归检测能力——一旦 prompt 或模型再退化,缺陷将静默通过。
+- **位置**：`scripts\reslice_qc.py:201-214`(C13)。
+- **解决方向(不得盲修)**：canonical_number 全卷唯一 + `canonical_basis=="keep"` 显式豁免(选考模块/汇编);需要 manifest 增 basis 字段后实施,属 `question_identity_design.md` R33 修订版不变量 1。在 basis 字段落地前不可简单改回全卷唯一——会把合法选考/汇编重号误判(BUG-22 修复期已实证该假阳性)。
+- **测试固化**：`tests/test_question_identity_adversarial.py`——`test_bug22_cross_section_regression_must_be_flagged` xfail(strict=True)(修复后 XPASS 强制失败提醒转绿);`test_section_field_is_sole_discriminant_for_bug22` 锁定分叉点。
+- **教训**：**守卫升级必须做回迁突变验证**——修复缺陷后要把缺陷形态重新注入产物跑守卫,证明"修复后的检测器仍能拦住原始缺陷"。R31 只验证了"C13 残留 0",没有验证"C13 还拦得住 BUG-22",这是检测器换键时的系统性验证盲区。
 
 ---
 

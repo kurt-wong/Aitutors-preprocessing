@@ -1,0 +1,198 @@
+{
+ "generated_by": "scripts/phase2_adversarial_probe.py",
+ "design_doc": "question_identity_design.md",
+ "probes": {
+  "A1_section_coverage": {
+   "files": 50,
+   "units_total": 1484,
+   "units_with_section": 291,
+   "pct": 19.6,
+   "files_fully_covered": 8,
+   "files_zero_section": 42
+  },
+  "A2_scoped_invariant_real": {
+   "violations": [],
+   "pass": true
+  },
+  "A3_bug22_regression_mutation": {
+   "files": [
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\化学\\2018北京春季高中会考化学（教师版）(1).md",
+     "units_reverted": 6,
+     "mode": [
+      "shift"
+     ],
+     "c13_with_section": [],
+     "c13_without_section": [
+      "C13 题号身份冲突(同分节重复归属): [('∅', 1), ('∅', 2), ('∅', 3), ('∅', 4), ('∅', 5), ('∅', 6)]"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\地理\\2018北京春季高中会考地理（教师版）(1).md",
+     "units_reverted": 5,
+     "mode": [
+      "shift"
+     ],
+     "c13_with_section": [],
+     "c13_without_section": [
+      "C13 题号身份冲突(同分节重复归属): [('∅', 1), ('∅', 2), ('∅', 3), ('∅', 4), ('∅', 5)]"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\生物\\2018北京春季高中会考生物（教师版）(1).md",
+     "units_reverted": 10,
+     "mode": [
+      "shift"
+     ],
+     "c13_with_section": [],
+     "c13_without_section": [
+      "C13 题号身份冲突(同分节重复归属): [('∅', 1), ('∅', 2), ('∅', 3), ('∅', 4), ('∅', 5), ('∅', 6), ('∅', 7), ('∅', 8), ('∅', 9), ('∅', 10)]"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\高一\\英语\\2019北京三十五中新高一分班考试英语含答案(1).md",
+     "units_reverted": 1,
+     "mode": [
+      "explicit"
+     ],
+     "c13_with_section": [],
+     "c13_without_section": [
+      "C13 题号身份冲突(同分节重复归属): [('∅', 86)]"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\语文\\2019北京大学博雅计划模拟语文（教师版）(1).md",
+     "units_reverted": 3,
+     "mode": [
+      "shift"
+     ],
+     "c13_with_section": [
+      "C13 题号身份冲突(同分节重复归属): [('一、 现代文根据语境填空(10题，共20分)#1', 1), ('三、 现代文阅读(20分)#1', 1)]"
+     ],
+     "c13_without_section": [
+      "C13 题号身份冲突(同分节重复归属): [('∅', 1), ('∅', 2), ('∅', 3)]"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\合格考\\化学\\2020北京高中合格考化学（第一次）（教师版）(1).md",
+     "units_reverted": 9,
+     "mode": [
+      "answer_key"
+     ],
+     "c13_with_section": [],
+     "c13_without_section": [
+      "C13 题号身份冲突(同分节重复归属): [('∅', 1), ('∅', 2), ('∅', 3), ('∅', 4), ('∅', 5), ('∅', 6), ('∅', 7), ('∅', 8), ('∅', 9)]"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\合格考\\英语\\2020北京高中合格考英语（第二次）（教师版）(1).md",
+     "units_reverted": 7,
+     "mode": [
+      "shift"
+     ],
+     "c13_with_section": [],
+     "c13_without_section": [
+      "C13 题号身份冲突(同分节重复归属): [('∅', 1), ('∅', 2), ('∅', 3), ('∅', 4), ('∅', 5), ('∅', 6), ('∅', 7), ('∅', 8), ('∅', 9), ('∅', 10)]"
+     ]
+    }
+   ],
+   "caught_with_section": 1,
+   "caught_without_section": 7,
+   "total": 7
+  },
+  "A4_silent_degradation": {
+   "files_tested": 8,
+   "files_with_explicit_warning": 2,
+   "detail": [
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\化学\\2018北京春季高中会考化学（教师版）(1).manifest.json",
+     "issues": 7,
+     "section_warnings": [
+      "C13 题号身份冲突(同分节重复归属): [('∅', 1), ('∅', 2), ('∅', 3)]"
+     ]
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\地理\\2018北京春季高中会考地理（教师版）(1).manifest.json",
+     "issues": 0,
+     "section_warnings": []
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\会考\\生物\\2018北京春季高中会考生物（教师版）(1).manifest.json",
+     "issues": 0,
+     "section_warnings": []
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\合格考\\化学\\2020北京高中合格考化学（第一次）（教师版）(1).manifest.json",
+     "issues": 0,
+     "section_warnings": []
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\合格考\\英语\\2020北京高中合格考英语（第二次）（教师版）(1).manifest.json",
+     "issues": 3,
+     "section_warnings": []
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\竞赛自招\\语文\\2019北京大学博雅计划模拟语文（教师版）(1).manifest.json",
+     "issues": 0,
+     "section_warnings": []
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\高一\\英语\\2019北京三十五中新高一分班考试英语含答案(1).manifest.json",
+     "issues": 1,
+     "section_warnings": []
+    },
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+     "issues": 6,
+     "section_warnings": [
+      "C13 题号身份冲突(同分节重复归属): [('∅', 1), ('∅', 2), ('∅', 3), ('∅', 4), ('∅', 5), ('∅', 6), ('∅', 7), ('∅', 8)]"
+     ]
+    }
+   ]
+  },
+  "A5_printed_provenance": {
+   "files_with_changes": 7,
+   "files_total": 50,
+   "units_with_old_value": 41,
+   "units_total": 1484,
+   "pct_units": 2.8
+  },
+  "A6_unit_id_duplication": {
+   "files_with_dup_unit_id": 1,
+   "files_total": 50,
+   "detail": [
+    {
+     "file": "Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+     "dup_ids": [
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4",
+      "Q5"
+     ],
+     "dup_units": 78
+    }
+   ]
+  },
+  "A7_section_locator_fields": {
+   "all_unit_fields": {
+    "unit_id": 1484,
+    "unit_type": 1484,
+    "question_numbers": 1484,
+    "original_question_type": 1484,
+    "answer_lines": 1484,
+    "explanation_lines": 1484,
+    "extra_lines": 1243,
+    "stem_lines": 1242,
+    "options_lines": 1242,
+    "section": 291,
+    "material_lines": 242,
+    "questions_lines": 242,
+    "explanation_lines_note": 1
+   },
+   "locator_like_fields": {},
+   "has_locator": false
+  }
+ },
+ "manifest_count": 50
+}
