@@ -94,7 +94,7 @@
 | ✅ | ~~LIFO 死逻辑 / stdout 死锁 / token 明文~~ | BUG-10/12/13 已修复（R9：单测+recompile/QC 16/16+加载验证） |
 | ✅ | ~~裸 LaTeX 半包残损~~ | BUG-09 已修复（R8：103 行回退 + 加防回归，`data\bug09_revert_log.json`） |
 | 🔵 | status.md 曾自相矛盾 | 本次已重写；PRD 为唯一规格基准 |
-| 🔴 | **BUG-22 题号重复归属（R30 新证）** | 语义代理探针实测 batch-C 真实产物：**8/50 文件（16%）**存在大题内编号/分卷重编号被当全卷题号（合格考化学 1-9 双重归属，答案区实键 26-34）；C1-C12 全放行 = silent mis-segmentation 实锤。已加 QC C13+契约测试（batch-C QC 口径 38→34/50）。修复方案（prompt 归一 / manifest section 字段 / 8 份定向修复）待拍板 |
+| 🟢 | **BUG-22 题号重复归属（R30 发现 / R31 修复）** | 8/50 真实产物大题内编号被当全卷题号;根因确诊为 prompt v2.1"分节照抄"条款主动指示。R31 按第四轮审查裁定执行:① C13 升级 **Scoped Question Identity**((section,题号),选考模块/汇编合法重号放行);② Prompt v2.2(题号以答案区键位为准 + section 字段);③ 确定性迁移 `fix_bug22_renumber.py`(answer_key/shift/keep 三规则 + migration report,零 LLM)。**迁移后 batch-C QC:C13 残留 0,38/50 PASS**。方案 B((section,number) 进 resolver)并入 Phase 2 |
 | 🟡 | **第三轮外部审查（R29）** | 评级：🟡 有条件通过代码层 / **🔴 不通过全量生产放行**。CI/工程骨架/fixer/QC 契约已证；剩余风险从"代码会不会坏"转移到"**结构合法但语义切错**"（D1 语义错位区间、D2 跨题污染、D3 composite 复杂组合、D4 orphan 链、D5 真实 OCR 噪声、D6 OCR 服务链零测试、D7 真实 MIMO 准确率未自动化证明）。下一轮攻击方向转换：silent-mis-segmentation。方案见 log.md R29（战术 A：对 batch-C 50 份真实产物跑语义代理检测 C13/C14/C15，零 LLM 成本）→ **R30 已执行，确证 BUG-22** |
 
 ---

@@ -44,7 +44,7 @@ def test_c12_separated_listening_structure_allowed(workdir):
 
 
 def test_c13_duplicate_question_numbers_reported(workdir):
-    """R30 实测缺陷形状:大题内编号被当全卷题号 →题号双重归属必须报 C13。"""
+    """R30 实测缺陷形状:大题内编号被当全卷题号(无 section 字段)→ 按全卷题号判定必须报 C13。"""
     from conftest import SYNTH_MAN
     man = json.loads(json.dumps(SYNTH_MAN))
     # U3-4 的题号撞上 Q3(模拟选择题 Q3 + 非选择题大题内编号"3.")
@@ -55,6 +55,53 @@ def test_c13_duplicate_question_numbers_reported(workdir):
          "answer_lines": [31, 31], "explanation_lines": None})
     _, mf, _ = make_repo(workdir, man=man)
     assert any(i.startswith("C13") for i in _qc(mf)["issues"])
+
+
+def test_c13_same_section_duplicate_reported(workdir):
+    """R31 审查升级:有 section 字段时身份键=(section,题号);同分节重复仍必须报。"""
+    from conftest import SYNTH_MAN
+    man = json.loads(json.dumps(SYNTH_MAN))
+    for u in man["units"]:
+        u["section"] = "一、选择题"
+    man["units"].append(
+        {"unit_id": "N3", "unit_type": "standalone_question", "section": "一、选择题",
+         "question_numbers": [3], "original_question_type": "fill_in",
+         "stem_lines": [19, 19], "options_lines": None,
+         "answer_lines": [31, 31], "explanation_lines": None})
+    _, mf, _ = make_repo(workdir, man=man)
+    assert any(i.startswith("C13") for i in _qc(mf)["issues"])
+
+
+def test_c13_cross_section_duplicate_allowed(workdir):
+    """R31 审查升级:选考模块/汇编的分节重编号是合法形态——不同 section 同号不得报 C13。"""
+    from conftest import SYNTH_MAN
+    man = json.loads(json.dumps(SYNTH_MAN))
+    for u in man["units"]:
+        u["section"] = "一、选择题"
+    # 模拟"任选一个模块"的选考模块:模块二内编号 3 与选择题 3 同号但分节不同
+    man["units"].append(
+        {"unit_id": "M2-3", "unit_type": "standalone_question", "section": "《有机化学基础》模块试题",
+         "question_numbers": [3], "original_question_type": "fill_in",
+         "stem_lines": [19, 19], "options_lines": None,
+         "answer_lines": [31, 31], "explanation_lines": None})
+    _, mf, _ = make_repo(workdir, man=man)
+    assert not any(i.startswith("C13") for i in _qc(mf)["issues"])
+
+
+def test_c13_scoped_identity_passes_qc(workdir):
+    """R31:带 section 的合法分节重编号(选考模块)经 write_outputs 产物 QC 必须 PASS。"""
+    from conftest import SYNTH_MAN
+    man = json.loads(json.dumps(SYNTH_MAN))
+    for u in man["units"]:
+        u["section"] = "一、选择题"
+    man["units"].append(
+        {"unit_id": "M2-3", "unit_type": "standalone_question", "section": "《有机化学基础》模块试题",
+         "question_numbers": [3], "original_question_type": "fill_in",
+         "stem_lines": [19, 19], "options_lines": None,
+         "answer_lines": [31, 31], "explanation_lines": None})
+    _, mf, _ = make_repo(workdir, man=man)
+    r = _qc(mf)
+    assert r["verdict"] == "PASS", r["issues"]
 
 
 def test_c12_proper_nesting_allowed(workdir):

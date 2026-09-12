@@ -210,6 +210,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
   {
    "unit_id": "Q1",
    "unit_type": "standalone_question",
+   "section": "一、选择题",
    "question_numbers": [1],
    "original_question_type": "single_choice|multiple_choice|fill_in|short_answer|essay|cloze|reading|grammar_fill|vocabulary_fill|seven_to_five|reading_expression|true_false",
    "stem_lines": [起始行号, 结束行号],
@@ -221,6 +222,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
   {
    "unit_id": "U2-5",
    "unit_type": "composite_question",
+   "section": "三、阅读理解",
    "question_numbers": [2,3,4,5],
    "original_question_type": "reading",
    "material_lines": [起始行号, 结束行号],
@@ -244,7 +246,15 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
 - 所有题目必须出现且只出现在一个单元里；题号连续覆盖全卷。
 - 试卷末尾的标题行、页眉页脚不纳入。
 - 综合题的 question_numbers 填这道大题本身的题号（如完形填空是第11题就填 [11]）。
-- 有的试卷分节各自从 1 编号（如单选 1-45 后填空又从 1 开始），按原样照抄题号即可。
+- 【题号身份规则(R31,BUG-22 修复)】question_numbers 是入库题目身份,必须是全卷唯一编号:
+  * 试卷各分节依次编号(单选 1-25 后非选择题印刷"1.-9.")时,后续分节必须归一到全卷编号:
+    以答案区键位为准——答案区"26.【答案】…"表明非选择题第1题实为全卷第26题,填 [26];
+    答案区无明确键位时,按前面分节已出现的最大题号顺延(选择题到25,则非选择题"1."填26)。
+  * 选考模块("请在以下三个模块试题中任选一个模块作答")各模块内印刷题号本来相同,
+    保留印刷题号,但必须用 section 字段区分模块。
+  * 每个单元必须输出 "section" 字段:所属分节标题(如"二、非选择题""《有机化学基础》模块试题"
+    "考点2 物质的检验、分离和提纯"),无分节时填 null。
+- 教师用书/专题汇编中每个例题组各自从 1 编号是真实形态:保留印刷题号,用 section 字段标识例题组。
 - 卷末作文等若没有印刷题号，按全卷顺序顺延编号（如前一题是 43 就填 44）。
 - 只输出一个合法 JSON 对象本身：不要任何解释文字，字符串内不要未转义的换行或引号，
   不要尾逗号，不要注释。
@@ -270,11 +280,12 @@ def validate_manifest(man, n_lines, lines=None):
     """确定性校验：行号合法、题号覆盖、答案存在。返回 (问题列表, 汇总)。
 
     分节重号（如单选 1-45 与填空 1-11 各自从 1 编号）是真实试卷形态，
-    记入 warnings 而非 issues。
+    R31 起以 (section, 题号) 为身份键区分:同分节重复=身份冲突(issue);
+    不同分节同号合法(warning)。无 section 字段的存量数据按全卷题号判定。
     """
     issues = []
     warns = []
-    covered = {}   # 题号 -> unit_id（检测跨单元重号）
+    covered = {}   # (section, 题号) -> unit_id（检测身份冲突,见 R31/BUG-22）
 
     def chk_range(rg, what, uid):
         if rg is None:
@@ -293,9 +304,16 @@ def validate_manifest(man, n_lines, lines=None):
         if not nums:
             issues.append(f"{uid}: 缺 question_numbers")
         for n in nums:
-            if n in covered:
-                warns.append(f"{uid}: 题号 {n} 与 {covered[n]} 重号（可能为分节各自编号，需确认）")
-            covered[n] = uid
+            # R31:身份键=(section,题号)。同分节重复=身份冲突(升 issue);
+            #   不同分节同号(选考模块/汇编)合法,仅记 info 级 warning。
+            key = (u.get("section") or "", n)
+            if key in covered:
+                issues.append(f"{uid}: 题号 {n} 与 {covered[key]} 同分节重复归属(身份冲突)")
+            else:
+                covered[key] = uid
+                flat = [k for k in covered if isinstance(k, tuple) and k[1] == n and k[0] != key[0]]
+                if flat:
+                    warns.append(f"{uid}: 题号 {n} 与其他分节({flat[0][0] or '无分节'})同号(分节编号,合法)")
         if u.get("unit_type") == "composite_question":
             chk_range(u.get("material_lines"), "material", uid)
             chk_range(u.get("questions_lines"), "questions", uid)
@@ -321,8 +339,8 @@ def validate_manifest(man, n_lines, lines=None):
                 for i in range(max(1, rg[0]), min(rg[1], len(lines)) + 1):
                     if PAPER_LINE.match(lines[i - 1].strip()):
                         issues.append(f"{uid}: L{i} 试卷结构行混入单元区间: {lines[i-1].strip()[:40]}")
-    return issues, {"units": len(units), "covered_questions": len(covered),
-                    "covered_sorted": sorted(covered), "warnings": warns}
+    return issues, {"units": len(units), "covered_questions": len({n for _, n in covered}),
+                    "covered_sorted": sorted({n for _, n in covered}), "warnings": warns}
 
 
 def span_text(lines, rg):
@@ -453,7 +471,7 @@ def compile_anchor(lines, man, src_name, src_path, model=DEFAULT_MODEL):
             reg(rg, f"<!-- META:{t}:start:{n} -->", f"<!-- META:{t}:end:{n} -->", t)
 
     out = ["<!-- META:annotation:start -->",
-           f"<!-- META:doc:source={src_name}, model={model}, prompt=reslice-pilot-v2.1 -->",
+           f"<!-- META:doc:source={src_name}, model={model}, prompt=reslice-pilot-v2.2 -->",
            "<!-- META:annotation:end -->"]
     for i, ln in enumerate(lines, 1):
         # 开锚点：unit 先开（外层包络先行）；闭锚点：角色先闭、unit 后关，
@@ -480,7 +498,7 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
     manifest = {
         "source_file": str(src_path),
         "model": model,
-        "annotation_meta": {"prompt_version": "reslice-pilot-v2.1",
+        "annotation_meta": {"prompt_version": "reslice-pilot-v2.2",
                             "validation_issues": issues,
                             "warnings": summary.get("warnings", [])},
         "units": man["units"],

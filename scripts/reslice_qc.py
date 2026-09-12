@@ -8,7 +8,8 @@
   C5 源文件的图片引用全部被带入切片（无丢失）
   C6 源文件的表格行全部被带入切片
   C7 卷面指令不出现（本大题共X小题/答题卡提示）
-  C13 题号唯一性：同一题号不得归属多个单元（大题内编号冲突）
+  C13 题号身份唯一性:身份键=(section,题号),同分节重复归属必报(大题内编号冲突)；
+      不同分节同号合法(选考模块/教师用书汇编的真实编号形态)。无 section 字段时按全卷题号判定。
 输出 reslice_pilot_qc.json + 汇总
 """
 import json
@@ -197,14 +198,20 @@ def check(md_path: Path):
             issues.append(f"C11 详解区首行与题干首行相似{ratio:.2f}(原题复述未剥离): {u.get('unit_id')}")
             break  # 每份报一次即可
 
-    # C13 题号唯一性(R30 语义代理探针实测:8/50 份真实产物存在"大题内编号/
-    #   分卷重编号"被当全卷题号 → 题号 1-N 双重归属,题库入库即冲突。
-    #   "结构合法但语义错误"的 D1 家族,C1-C12 原本全放行)
+    # C13 题号身份唯一性(Scoped Question Identity,R30 探针实测 8/50 真实产物
+    #   "大题内编号/分卷重编号"被当全卷题号 → 题库入库双重归属;R31 审查升级:
+    #   重号并非总是错误——选考模块("任选一个模块作答")与教师用书汇编的分节内
+    #   编号本来就会重复。身份键 = (section, 题号):同分节重复必报;不同分节
+    #   同号合法。unit 无 section 字段时退化为全卷题号(R30 行为,存量数据口径)。
     from collections import Counter
-    qcnt = Counter(n for u in man["units"] for n in (u.get("question_numbers") or []))
-    dups = sorted(n for n, c in qcnt.items() if c > 1)
+    ident = Counter()
+    for u in man["units"]:
+        sec = u.get("section") or ""
+        for n in (u.get("question_numbers") or []):
+            ident[(sec, n)] += 1
+    dups = sorted((s or "∅", n) for (s, n), c in ident.items() if c > 1)
     if dups:
-        issues.append(f"C13 题号重复归属(疑似大题内编号/分卷重编号): {dups[:10]}")
+        issues.append(f"C13 题号身份冲突(同分节重复归属): {dups[:10]}")
 
     return {"file": str(md_path), "units": len(man["units"]),
             "questions": len(man_nums), "issues": issues,
@@ -223,7 +230,7 @@ def main():
                  if not (p.name.endswith(".annotated.md") or p.name.endswith(".restored.md")))
     results = [check(p) for p in mds]
     result_path.write_text(
-        json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+        json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     npass = sum(1 for r in results if r["verdict"] == "PASS")
     print(f"=== 重切回归：{npass}/{len(results)} PASS ===")
     for r in results:

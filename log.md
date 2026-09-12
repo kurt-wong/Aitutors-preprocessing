@@ -583,3 +583,28 @@
 **附:提交前 EOL 审计抓到 BUG-16 家族复发并根治**:commit diff 出现 464 行假性重写 → 实测 reslice_qc.py 由纯 LF 被编辑工具翻成纯 CRLF(功能零影响,字节层审计受损)。处置:LF 归一 + **`.gitattributes` 仓库级锁死**(`*.py/*.md/*.json/*.yml/*.ini/*.txt → LF`,BUG-16 从"脚本自觉 newline='' "升级为"仓库强制");存量 CRLF 的 reslice_pipeline.py(首个 commit 起即 CRLF)一次性归一。教训:编辑工具也是"保留编辑",同样要过 EOL 审计;git diff 行数暴涨是 EOL 翻转的信号弹。
 
 <!-- 新一轮记录从此行下方追加，R{n} 递增，附 YYYY-MM-DD HH:MM 时间戳 -->
+
+## R31 · BUG-22 修复:C13 升级 Scoped Identity + Prompt v2.2 + 确定性迁移(2026-09-12)
+
+**输入**:第四轮对抗性审查(基于 R30 的 e52bd74)。裁决:BUG-22 确认 🔴;A+C 先行、B 并入 resolver 设计;**C13 必须从"题号唯一性"升级为"Question Identity 唯一性"**,否则会把真实试卷结构(选考模块/汇编)误判为错误;C 不得人工改 JSON,须确定性迁移脚本 + migration log。
+
+**根因补确诊**:prompt v2.1 第 247 行"有的试卷分节各自从 1 编号…按原样照抄题号即可"——BUG-22 不是模型漏判,是 **prompt 主动指示**的产物。
+
+**执行**:
+
+1. **C13 → Scoped Question Identity**(reslice_qc.py):身份键 = (section, 题号);同分节重复 FAIL,跨分节同号放行(选考模块三模块印刷号 1-3 本来就相同、汇编各块独立编号,均为合法真实形态);无 section 字段的存量数据退化为全卷判定(R30 口径)。契约测试 +3(同分节报 / 跨分节放 / 全卷退化报)。
+2. **Prompt v2.2**(reslice_pipeline.py):删除"分节照抄"条款,改为"题号身份必须全卷唯一,以答案区键位为准,无键位按前面分节最大题号顺延;选考模块保留印刷号但必须输出 section";schema 两个单元样例均加 `section` 字段;版本号两处升 v2.2;validate_manifest 同步升级(同分节重复升 issue,跨分节同号降为 warning,covered 键改 (section,题号) tuple)。
+3. **确定性迁移**(scripts/fix_bug22_renumber.py,方案 C,零 LLM):读旧 manifest → 写新 manifest + 重编译 annotated/切片,每单元变更(旧值/新值/规则/证据)记入 `data/bug22_migration_report.json`。三条证据驱动规则:
+   - **answer_key**:答案区键位行直接给出全卷题号(合格考化学 N1-N9→26-34,键位"26.【答案】"…"34.【答案】"逐行对应);
+   - **shift**:运行最大值顺迁(生物+40、地理+50、英语笔试+25、博雅 11/12-14/15、化学2018必答+25——与 LLM 自己的 unit_id 命名 Q41-50/U26-60/U11-U15 **互相独立地印证**同一答案);
+   - **keep**:选考模块("任选一个模块作答")与教师用书汇编保持印刷号,身份由 section 区分。
+   默认 dry-run;落盘前强制 scoped 唯一性断言,冲突即拒绝写入。
+4. **迁移执行与验证**:8/8 文件 apply 成功;抽验化学合格考 manifest(N1-N9→26-34、section="第二部分 非选择题"、审计记录在、纯 LF);**batch-C QC 重跑(reslice_batch_c_qc_r31.json):C13 残留 0 份,38/50 PASS**——回到 C13 引入前口径,剩余 4 份 FAIL 均为既有 C3/C5/C6 缺陷(缺答案区/丢图/丢表),与题号无关。
+
+**迁移实测踩坑(三个教训,均已固化为代码注释)**:① 汇编 manifest 的 unit_id 大量重复(U1/Q1/Q2 各出现多次),分节归属必须按**单元位置** zip 分配,以 unit_id 为键会静默互相覆盖;② 同名标题消歧序号必须按**标题出现次序**分配(同一标题块下所有单元必须同 section),按单元计数会把同块拆散;③ 排除答案行的正则 `[答案]` 是字符类,把含"方案"的"考点3 制备实验方案的设计与评价"整个误杀 → 改字面;OCR 丢 `##` 前缀的裸考点标题需单独匹配分支。
+
+**防回归**:tests/test_bug22_migration.py 7 用例(shift 递推/无冲突不动/answer_key/keep/scoped 断言双向/同名标题消歧);mutation 验证(shift 故意 -1 → 测试失败 → 回退)。QC 契约 +4。套件 **45 passed + 1 xfailed**。
+
+**方案 B 去向**:manifest section 字段 + (section, number) 复合键消费属 resolver/IR 正式设计(Phase 2),按审查意见不在本轮打补丁;本轮 section 字段只作为身份消歧元数据写入 manifest,不改 resolver 侧任何代码(resolver 尚不存在)。
+
+**结果**:BUG-22 关闭;审查 Phase 1(立即止血)三项全部完成。
