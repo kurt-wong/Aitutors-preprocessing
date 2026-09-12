@@ -26,7 +26,9 @@ def test_summary_path_default_untouched():
 
 
 def test_summary_path_out_isolated():
-    p = rp.derive_summary_path(r"D:\x\reslice-pac")
+    # 平台无关:不得硬编码 Windows 路径语法(Path.name 在 POSIX 上不认反斜杠,
+    # CI(Linux)曾因此失败——环境可移植性,R36 先例类)
+    p = rp.derive_summary_path(str(Path("x") / "reslice-pac"))
     # 命名约定与 derive_run_paths 一致:reslice_{目录名}
     assert p.name == "reslice_reslice-pac_summary.json"
     assert p != rp.derive_summary_path(None)
