@@ -1,0 +1,190 @@
+{
+ "n": 17,
+ "n_fail": 0,
+ "results": [
+  {
+   "mutation": "control(拷贝零变异)",
+   "sample": "pac-c01-01",
+   "expect": "复现原结果",
+   "got_issues": [],
+   "verdict": "PASS",
+   "ok": true
+  },
+  {
+   "mutation": "M-C1 标记破坏",
+   "sample": "pac-c01-01",
+   "expect": "C1",
+   "got_issues": [
+    "C1 题干区标记不配对"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  },
+  {
+   "mutation": "M-C2 题号丢失(5→999)",
+   "sample": "pac-c01-01",
+   "expect": "C2",
+   "got_issues": [
+    "C2 源有而 manifest 无的题号: [5]"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  },
+  {
+   "mutation": "M-C3 答案区清空",
+   "sample": "pac-c01-01",
+   "expect": "C3",
+   "got_issues": [
+    "C3 第1单元答案区为空"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  },
+  {
+   "mutation": "M-C5 图片行未覆盖",
+   "sample": "pac-c01-01",
+   "expect": "C5",
+   "got_issues": [
+    "C5 1 个图片行未被任何单元覆盖: ['L750:mgs/mutation_injected.jpg']",
+    "C8 锚点版与源文件不一致（749 vs 750 行, 前缀差异 0）"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  },
+  {
+   "mutation": "M-C6 表格行未覆盖",
+   "sample": "pac-c01-01",
+   "expect": "C6",
+   "got_issues": [
+    "C6 1 个表格行未被任何单元覆盖: [750]",
+    "C8 锚点版与源文件不一致（749 vs 750 行, 前缀差异 0）"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  },
+  {
+   "mutation": "M-C7 卷面指令混入",
+   "sample": "pac-c01-01",
+   "expect": "C7",
+   "got_issues": [
+    "C7 含卷面指令: ['考试时间 9']"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  },
+  {
+   "mutation": "M-C8 锚点版与源不一致",
+   "sample": "pac-c01-01",
+   "expect": "C8",
+   "got_issues": [
+    "C8 锚点版与源文件不一致（751 vs 749 行, 前缀差异 0）"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  },
+  {
+   "mutation": "M-C10 锚点不配对",
+   "sample": "pac-c01-01",
+   "expect": "C10",
+   "got_issues": [
+    "C10 锚点 annotation 不配对: start×1 vs end×0"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  },
+  {
+   "mutation": "M-C11 详解区原题复述",
+   "sample": "pac-c01-01",
+   "expect": "C11",
+   "got_issues": [
+    "C11 详解区首行与题干首行相似1.00(原题复述未剥离): Q1"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  },
+  {
+   "mutation": "M-C13 同分节重号",
+   "sample": "pac-c01-01",
+   "expect": "C13",
+   "got_issues": [
+    "C13 同分节重复归属: 题号 1 → ['Q1', 'Q1-MUTDUP']"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  },
+  {
+   "mutation": "M-C13b 跨分节双非keep重号",
+   "sample": "pac-c01-01",
+   "expect": "C13",
+   "got_issues": [
+    "C2 源有而 manifest 无的题号: [2]",
+    "C13 同分节重复归属: 题号 1 → ['Q1', 'Q2']"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  },
+  {
+   "mutation": "M-C14 缺 section_ref",
+   "sample": "pac-c01-01",
+   "expect": "C14 review + verdict PENDING_REVIEW",
+   "got_issues": [],
+   "got_reviews": [
+    "C14 identity_scope_missing: 1 个单元缺 section_ref ['Q1']"
+   ],
+   "verdict": "PENDING_REVIEW",
+   "ok": true
+  },
+  {
+   "mutation": "M-C9 结构行混入单元区间",
+   "sample": "pac-c01-01",
+   "expect": "C9",
+   "got_issues": [
+    "C9 1 处试卷结构行混入单元区间: ['L1:# 2018 北京春季高中会考']"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  },
+  {
+   "mutation": "C4/C12 前置:复合题存在",
+   "sample": "pac-c13-01",
+   "expect": "至少 1 个 composite 单元",
+   "got_issues": [],
+   "verdict": null,
+   "ok": true
+  },
+  {
+   "mutation": "M-C4 综合题缺材料区间",
+   "sample": "pac-c13-01",
+   "expect": "C4",
+   "got_issues": [
+    "C4 U1-2 综合题缺 material_lines/questions_lines"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  },
+  {
+   "mutation": "M-C12 material 相交未嵌套",
+   "sample": "pac-c13-01",
+   "expect": "C12",
+   "got_issues": [
+    "C12 U1-2 material 与 questions 相交但未嵌套: mat=[10, 30] q=[20, 40]"
+   ],
+   "got_reviews": [],
+   "verdict": "FAIL",
+   "ok": true
+  }
+ ]
+}

@@ -1,0 +1,4886 @@
+{
+ "samples": [
+  {
+   "sample_id": "pac-c01-01",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "3b87f19f2e212c63f9afc1c159982ecb16fd0da5f36e7745ce5b66e9c46b1fdc",
+     "actual": "3b87f19f2e212c63f9afc1c159982ecb16fd0da5f36e7745ce5b66e9c46b1fdc",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "3b87f19f2e212c63f9afc1c159982ecb16fd0da5f36e7745ce5b66e9c46b1fdc",
+     "actual": "3b87f19f2e212c63f9afc1c159982ecb16fd0da5f36e7745ce5b66e9c46b1fdc",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 15,
+     "actual": 15,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      782,
+      812,
+      1067,
+      595,
+      562,
+      582,
+      596,
+      814,
+      586,
+      375,
+      813,
+      683,
+      392,
+      846,
+      457
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "57272625a184433b7f7cac933f3a2f5710f49920d576252975927ee12a79f4ee",
+     "actual": "57272625a184433b7f7cac933f3a2f5710f49920d576252975927ee12a79f4ee",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 15,
+     "actual": 15,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306108516917248",
+     "actual": "92306108516917248",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "57272625a184433b7f7cac933f3a2f5710f49920d576252975927ee12a79f4ee",
+     "actual": "57272625a184433b7f7cac933f3a2f5710f49920d576252975927ee12a79f4ee",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "3b87f19f2e212c63f9afc1c159982ecb16fd0da5f36e7745ce5b66e9c46b1fdc",
+     "actual": "3b87f19f2e212c63f9afc1c159982ecb16fd0da5f36e7745ce5b66e9c46b1fdc",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 18787,
+     "actual": 18787,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 5865,
+     "actual": 5865,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 30,
+     "actual": 30,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 30,
+     "actual": 30,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 6,
+     "actual": 6,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 30,
+     "actual": 30,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 6,
+     "actual": 6,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      749,
+      749
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "30nums",
+      "result": "30nums",
+      "max": 30
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c01-02",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "f5bb86eb4b2f9b33d8d250225001870270ac2b23896ae93eb819d24bc3ac9b94",
+     "actual": "f5bb86eb4b2f9b33d8d250225001870270ac2b23896ae93eb819d24bc3ac9b94",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "f5bb86eb4b2f9b33d8d250225001870270ac2b23896ae93eb819d24bc3ac9b94",
+     "actual": "f5bb86eb4b2f9b33d8d250225001870270ac2b23896ae93eb819d24bc3ac9b94",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 8,
+     "actual": 8,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      1001,
+      1009,
+      812,
+      300,
+      590,
+      150,
+      902,
+      467
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "23eab8a774f8f88e5d43f42cc6b36800188b9288194f61e7eb40d5fea0689309",
+     "actual": "23eab8a774f8f88e5d43f42cc6b36800188b9288194f61e7eb40d5fea0689309",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 8,
+     "actual": 8,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306109957058560",
+     "actual": "92306109957058560",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "23eab8a774f8f88e5d43f42cc6b36800188b9288194f61e7eb40d5fea0689309",
+     "actual": "23eab8a774f8f88e5d43f42cc6b36800188b9288194f61e7eb40d5fea0689309",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "f5bb86eb4b2f9b33d8d250225001870270ac2b23896ae93eb819d24bc3ac9b94",
+     "actual": "f5bb86eb4b2f9b33d8d250225001870270ac2b23896ae93eb819d24bc3ac9b94",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 9159,
+     "actual": 9159,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 13173,
+     "actual": 13173,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 28,
+     "actual": 28,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 28,
+     "actual": 28,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 8,
+     "actual": 8,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 28,
+     "actual": 28,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 8,
+     "actual": 8,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      261,
+      261
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "28nums",
+      "result": "28nums",
+      "max": 28
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c02-01",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "2aa28b062c3d6004877ce7f99c4aa458270f5e1564138039ca7997da7db13d23",
+     "actual": "2aa28b062c3d6004877ce7f99c4aa458270f5e1564138039ca7997da7db13d23",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "2aa28b062c3d6004877ce7f99c4aa458270f5e1564138039ca7997da7db13d23",
+     "actual": "2aa28b062c3d6004877ce7f99c4aa458270f5e1564138039ca7997da7db13d23",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 11,
+     "actual": 11,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "scanned",
+     "actual": "scanned",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "scanned",
+     "actual": "scanned",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "31086f124389c375f8892505712b839f8a6e02a16bf9bd044998246bb1cd51a7",
+     "actual": "31086f124389c375f8892505712b839f8a6e02a16bf9bd044998246bb1cd51a7",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 11,
+     "actual": 11,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306112214847488",
+     "actual": "92306112214847488",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "31086f124389c375f8892505712b839f8a6e02a16bf9bd044998246bb1cd51a7",
+     "actual": "31086f124389c375f8892505712b839f8a6e02a16bf9bd044998246bb1cd51a7",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "2aa28b062c3d6004877ce7f99c4aa458270f5e1564138039ca7997da7db13d23",
+     "actual": "2aa28b062c3d6004877ce7f99c4aa458270f5e1564138039ca7997da7db13d23",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 12932,
+     "actual": 12932,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 16018,
+     "actual": 16018,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      508,
+      508
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "26nums",
+      "result": "26nums",
+      "max": 26
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c02-02",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "f176c217bfd8b6ee95f670b8f914e30d869bb06b7e24ae8170db200a0ca578cc",
+     "actual": "f176c217bfd8b6ee95f670b8f914e30d869bb06b7e24ae8170db200a0ca578cc",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "f176c217bfd8b6ee95f670b8f914e30d869bb06b7e24ae8170db200a0ca578cc",
+     "actual": "f176c217bfd8b6ee95f670b8f914e30d869bb06b7e24ae8170db200a0ca578cc",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 10,
+     "actual": 10,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "scanned",
+     "actual": "scanned",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "scanned",
+     "actual": "scanned",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "17bd21d3cea5c1d1e68e547d2e191e15c2f664804e3f1577b84f04ab14a92406",
+     "actual": "17bd21d3cea5c1d1e68e547d2e191e15c2f664804e3f1577b84f04ab14a92406",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 10,
+     "actual": 10,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306113931722752",
+     "actual": "92306113931722752",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "17bd21d3cea5c1d1e68e547d2e191e15c2f664804e3f1577b84f04ab14a92406",
+     "actual": "17bd21d3cea5c1d1e68e547d2e191e15c2f664804e3f1577b84f04ab14a92406",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "f176c217bfd8b6ee95f670b8f914e30d869bb06b7e24ae8170db200a0ca578cc",
+     "actual": "f176c217bfd8b6ee95f670b8f914e30d869bb06b7e24ae8170db200a0ca578cc",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 11456,
+     "actual": 11456,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 20439,
+     "actual": 20439,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 32,
+     "actual": 32,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 32,
+     "actual": 32,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 8,
+     "actual": 8,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 32,
+     "actual": 32,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 8,
+     "actual": 8,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      429,
+      429
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "32nums",
+      "result": "32nums",
+      "max": 32
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c05-01",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "6f7070a1d14ac66cfcd00e9af44fb77526eb36aa7fe2c676cc69fe2321ad48f2",
+     "actual": "6f7070a1d14ac66cfcd00e9af44fb77526eb36aa7fe2c676cc69fe2321ad48f2",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "6f7070a1d14ac66cfcd00e9af44fb77526eb36aa7fe2c676cc69fe2321ad48f2",
+     "actual": "6f7070a1d14ac66cfcd00e9af44fb77526eb36aa7fe2c676cc69fe2321ad48f2",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 6,
+     "actual": 6,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      1061,
+      739,
+      602,
+      1213,
+      1129,
+      242
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "c49d27086f2ee08d386d989efeff1123e4abbd7a7ea874bdc1a56269a570e100",
+     "actual": "c49d27086f2ee08d386d989efeff1123e4abbd7a7ea874bdc1a56269a570e100",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 6,
+     "actual": 6,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306069576998912",
+     "actual": "92306069576998912",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "c49d27086f2ee08d386d989efeff1123e4abbd7a7ea874bdc1a56269a570e100",
+     "actual": "c49d27086f2ee08d386d989efeff1123e4abbd7a7ea874bdc1a56269a570e100",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "6f7070a1d14ac66cfcd00e9af44fb77526eb36aa7fe2c676cc69fe2321ad48f2",
+     "actual": "6f7070a1d14ac66cfcd00e9af44fb77526eb36aa7fe2c676cc69fe2321ad48f2",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 7915,
+     "actual": 7915,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 3375,
+     "actual": 3375,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 10,
+     "actual": 10,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 10,
+     "actual": 10,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      259,
+      259
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "20nums",
+      "result": "20nums",
+      "max": 20
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c05-02",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "652701fc3979926cfdc13bed3f986ab34bcf703391202adf567e319b7180b642",
+     "actual": "652701fc3979926cfdc13bed3f986ab34bcf703391202adf567e319b7180b642",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "652701fc3979926cfdc13bed3f986ab34bcf703391202adf567e319b7180b642",
+     "actual": "652701fc3979926cfdc13bed3f986ab34bcf703391202adf567e319b7180b642",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      1189,
+      1159,
+      655,
+      423,
+      618,
+      904,
+      604,
+      715,
+      921,
+      966,
+      1399,
+      920
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "335d573f30aabc754f397e74e5bbf32645f91774ac36a115d766a8a3c02b3984",
+     "actual": "335d573f30aabc754f397e74e5bbf32645f91774ac36a115d766a8a3c02b3984",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306115123109888",
+     "actual": "92306115123109888",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "335d573f30aabc754f397e74e5bbf32645f91774ac36a115d766a8a3c02b3984",
+     "actual": "335d573f30aabc754f397e74e5bbf32645f91774ac36a115d766a8a3c02b3984",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "652701fc3979926cfdc13bed3f986ab34bcf703391202adf567e319b7180b642",
+     "actual": "652701fc3979926cfdc13bed3f986ab34bcf703391202adf567e319b7180b642",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 14595,
+     "actual": 14595,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 2448,
+     "actual": 2448,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 21,
+     "actual": 21,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 21,
+     "actual": 21,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 15,
+     "actual": 15,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 21,
+     "actual": 21,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 15,
+     "actual": 15,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      404,
+      404
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "21nums",
+      "result": "21nums",
+      "max": 21
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c06-01",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "b988d36f7ae4f22a76179f13398ae8cb36d8ee43e1aaa5553dc96078a2819419",
+     "actual": "b988d36f7ae4f22a76179f13398ae8cb36d8ee43e1aaa5553dc96078a2819419",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "b988d36f7ae4f22a76179f13398ae8cb36d8ee43e1aaa5553dc96078a2819419",
+     "actual": "b988d36f7ae4f22a76179f13398ae8cb36d8ee43e1aaa5553dc96078a2819419",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      903,
+      675,
+      503,
+      727,
+      805,
+      991,
+      1008,
+      1073,
+      763,
+      694,
+      822,
+      136
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "5533b4b68503a96a149392e68861ea30feddd8dfb4918022c6109c32f1d7e1c5",
+     "actual": "5533b4b68503a96a149392e68861ea30feddd8dfb4918022c6109c32f1d7e1c5",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306117701197824",
+     "actual": "92306117701197824",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "5533b4b68503a96a149392e68861ea30feddd8dfb4918022c6109c32f1d7e1c5",
+     "actual": "5533b4b68503a96a149392e68861ea30feddd8dfb4918022c6109c32f1d7e1c5",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "b988d36f7ae4f22a76179f13398ae8cb36d8ee43e1aaa5553dc96078a2819419",
+     "actual": "b988d36f7ae4f22a76179f13398ae8cb36d8ee43e1aaa5553dc96078a2819419",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 16507,
+     "actual": 16507,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 3100,
+     "actual": 3100,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 19,
+     "actual": 19,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 19,
+     "actual": 19,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 5,
+     "actual": 5,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 19,
+     "actual": 19,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 5,
+     "actual": 5,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      465,
+      465
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "19nums",
+      "result": "19nums",
+      "max": 19
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c06-02",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "185bba11de372e998686f5535d37797ee26452fe5286365cfd4647d255872574",
+     "actual": "185bba11de372e998686f5535d37797ee26452fe5286365cfd4647d255872574",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "185bba11de372e998686f5535d37797ee26452fe5286365cfd4647d255872574",
+     "actual": "185bba11de372e998686f5535d37797ee26452fe5286365cfd4647d255872574",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 15,
+     "actual": 15,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      1024,
+      661,
+      465,
+      915,
+      1108,
+      813,
+      414,
+      846,
+      950,
+      1012,
+      1196,
+      1096,
+      1110,
+      1200,
+      1362
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "f43ced350e5aac8a7e28e7716ddd05d42bf4c766beb8d620e71939036c32808a",
+     "actual": "f43ced350e5aac8a7e28e7716ddd05d42bf4c766beb8d620e71939036c32808a",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 15,
+     "actual": 15,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306119191715840",
+     "actual": "92306119191715840",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "f43ced350e5aac8a7e28e7716ddd05d42bf4c766beb8d620e71939036c32808a",
+     "actual": "f43ced350e5aac8a7e28e7716ddd05d42bf4c766beb8d620e71939036c32808a",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "185bba11de372e998686f5535d37797ee26452fe5286365cfd4647d255872574",
+     "actual": "185bba11de372e998686f5535d37797ee26452fe5286365cfd4647d255872574",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 19243,
+     "actual": 19243,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 4842,
+     "actual": 4842,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 21,
+     "actual": 21,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 21,
+     "actual": 21,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      641,
+      641
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "20nums",
+      "result": "20nums",
+      "max": 20
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c07-01",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "fc1153f7fa56e014851e3b96b9e6e2b5af6513786a62ab901d29c14317e21226",
+     "actual": "fc1153f7fa56e014851e3b96b9e6e2b5af6513786a62ab901d29c14317e21226",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "fc1153f7fa56e014851e3b96b9e6e2b5af6513786a62ab901d29c14317e21226",
+     "actual": "fc1153f7fa56e014851e3b96b9e6e2b5af6513786a62ab901d29c14317e21226",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 29,
+     "actual": 29,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      603,
+      659,
+      984,
+      761,
+      910,
+      505,
+      1030,
+      654,
+      756,
+      1081,
+      732,
+      1005,
+      1131,
+      905,
+      778,
+      969,
+      1096,
+      774,
+      731,
+      834,
+      1068,
+      793,
+      888,
+      529,
+      1043,
+      1203,
+      1151,
+      1136,
+      556
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "4ac3b0ed332aa0afa26c50caaca646ad00a63cc3bc0cf9097da141488e2aa526",
+     "actual": "4ac3b0ed332aa0afa26c50caaca646ad00a63cc3bc0cf9097da141488e2aa526",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 29,
+     "actual": 29,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306120623173632",
+     "actual": "92306120623173632",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "4ac3b0ed332aa0afa26c50caaca646ad00a63cc3bc0cf9097da141488e2aa526",
+     "actual": "4ac3b0ed332aa0afa26c50caaca646ad00a63cc3bc0cf9097da141488e2aa526",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "fc1153f7fa56e014851e3b96b9e6e2b5af6513786a62ab901d29c14317e21226",
+     "actual": "fc1153f7fa56e014851e3b96b9e6e2b5af6513786a62ab901d29c14317e21226",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 32832,
+     "actual": 32832,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 7365,
+     "actual": 7365,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [
+      "Q2: 无 answer_lines（题号 [2]）",
+      "Q6: 无 answer_lines（题号 [6]）",
+      "Q8: 无 answer_lines（题号 [8]）",
+      "Q9: 无 answer_lines（题号 [9]）",
+      "Q18: 无 answer_lines（题号 [18]）",
+      "Q19: 无 answer_lines（题号 [19]）",
+      "Q24: 无 answer_lines（题号 [24]）",
+      "Q28: 无 answer_lines（题号 [28]）"
+     ],
+     "actual": [
+      "Q2: 无 answer_lines（题号 [2]）",
+      "Q6: 无 answer_lines（题号 [6]）",
+      "Q8: 无 answer_lines（题号 [8]）",
+      "Q9: 无 answer_lines（题号 [9]）",
+      "Q18: 无 answer_lines（题号 [18]）",
+      "Q19: 无 answer_lines（题号 [19]）",
+      "Q24: 无 answer_lines（题号 [24]）",
+      "Q28: 无 answer_lines（题号 [28]）"
+     ],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 35,
+     "actual": 35,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 35,
+     "actual": 35,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 16,
+     "actual": 16,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "FAIL",
+     "actual": "FAIL",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [
+      "C3 第2单元答案区为空",
+      "C3 第6单元答案区为空",
+      "C3 第8单元答案区为空",
+      "C3 第9单元答案区为空",
+      "C3 第18单元答案区为空",
+      "C3 第19单元答案区为空",
+      "C3 第24单元答案区为空",
+      "C3 第28单元答案区为空",
+      "C5 11 个图片行未被任何单元覆盖: ['L457:mgs/img_in_image_box_101_226_299_414.jpg', 'L462:mgs/img_in_image_box_619_224_823_415.jpg', 'L470:mgs/img_in_image_box_100_433_311_594.jpg']",
+      "C11 详解区首行与题干首行相似0.96(原题复述未剥离): Q2"
+     ],
+     "actual": [
+      "C3 第2单元答案区为空",
+      "C3 第6单元答案区为空",
+      "C3 第8单元答案区为空",
+      "C3 第9单元答案区为空",
+      "C3 第18单元答案区为空",
+      "C3 第19单元答案区为空",
+      "C3 第24单元答案区为空",
+      "C3 第28单元答案区为空",
+      "C5 11 个图片行未被任何单元覆盖: ['L457:mgs/img_in_image_box_101_226_299_414.jpg', 'L462:mgs/img_in_image_box_619_224_823_415.jpg', 'L470:mgs/img_in_image_box_100_433_311_594.jpg']",
+      "C11 详解区首行与题干首行相似0.96(原题复述未剥离): Q2"
+     ],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 35,
+     "actual": 35,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 16,
+     "actual": 16,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      1454,
+      1454
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [
+      "Q2",
+      "Q6",
+      "Q8",
+      "Q9",
+      "Q18",
+      "Q19",
+      "Q24",
+      "Q28"
+     ],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "35nums",
+      "result": "35nums",
+      "max": 35
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c07-02",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "72cda6291f5ecd4f4a0a3a0b8c7ec869d7c560ad1be7810bb2f9a41e48d103a1",
+     "actual": "72cda6291f5ecd4f4a0a3a0b8c7ec869d7c560ad1be7810bb2f9a41e48d103a1",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "72cda6291f5ecd4f4a0a3a0b8c7ec869d7c560ad1be7810bb2f9a41e48d103a1",
+     "actual": "72cda6291f5ecd4f4a0a3a0b8c7ec869d7c560ad1be7810bb2f9a41e48d103a1",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      790,
+      790,
+      510,
+      687,
+      988,
+      778,
+      1360,
+      980,
+      517,
+      897,
+      857,
+      217
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "2c0214f018fcb5ccee5bc55ac484515d1c8e939c3fd6b15958cd5dfd8e170ed9",
+     "actual": "2c0214f018fcb5ccee5bc55ac484515d1c8e939c3fd6b15958cd5dfd8e170ed9",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306122284376064",
+     "actual": "92306122284376064",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "2c0214f018fcb5ccee5bc55ac484515d1c8e939c3fd6b15958cd5dfd8e170ed9",
+     "actual": "2c0214f018fcb5ccee5bc55ac484515d1c8e939c3fd6b15958cd5dfd8e170ed9",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "72cda6291f5ecd4f4a0a3a0b8c7ec869d7c560ad1be7810bb2f9a41e48d103a1",
+     "actual": "72cda6291f5ecd4f4a0a3a0b8c7ec869d7c560ad1be7810bb2f9a41e48d103a1",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 13363,
+     "actual": 13363,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 15647,
+     "actual": 15647,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 21,
+     "actual": 21,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 21,
+     "actual": 21,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 8,
+     "actual": 8,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 21,
+     "actual": 21,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 8,
+     "actual": 8,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      510,
+      510
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "21nums",
+      "result": "21nums",
+      "max": 21
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c08-01",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "ae9421ac538121736f2edbe6a937d735643f1f7e7e3c96ec38bd3da162eaeb8a",
+     "actual": "ae9421ac538121736f2edbe6a937d735643f1f7e7e3c96ec38bd3da162eaeb8a",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "ae9421ac538121736f2edbe6a937d735643f1f7e7e3c96ec38bd3da162eaeb8a",
+     "actual": "ae9421ac538121736f2edbe6a937d735643f1f7e7e3c96ec38bd3da162eaeb8a",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 13,
+     "actual": 13,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      2176,
+      2334,
+      2609,
+      2375,
+      3117,
+      2807,
+      2662,
+      3220,
+      967,
+      1424,
+      670,
+      1874,
+      764
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "3dd4a874757ec698b7bb288dbad4a0f298f916db618af510b8f60e21426d49df",
+     "actual": "3dd4a874757ec698b7bb288dbad4a0f298f916db618af510b8f60e21426d49df",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 13,
+     "actual": 13,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306123268886528",
+     "actual": "92306123268886528",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "3dd4a874757ec698b7bb288dbad4a0f298f916db618af510b8f60e21426d49df",
+     "actual": "3dd4a874757ec698b7bb288dbad4a0f298f916db618af510b8f60e21426d49df",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "ae9421ac538121736f2edbe6a937d735643f1f7e7e3c96ec38bd3da162eaeb8a",
+     "actual": "ae9421ac538121736f2edbe6a937d735643f1f7e7e3c96ec38bd3da162eaeb8a",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 13795,
+     "actual": 13795,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 12335,
+     "actual": 12335,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 9,
+     "actual": 9,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 9,
+     "actual": 9,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 26,
+     "actual": 26,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 9,
+     "actual": 9,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 26,
+     "actual": 26,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      537,
+      537
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "44nums",
+      "result": "44nums",
+      "max": 44
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c08-02",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "495eee2b79583e09f17e1ddbe78994a1fbfe9087bc47a7d51f6cb46192c32004",
+     "actual": "495eee2b79583e09f17e1ddbe78994a1fbfe9087bc47a7d51f6cb46192c32004",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "495eee2b79583e09f17e1ddbe78994a1fbfe9087bc47a7d51f6cb46192c32004",
+     "actual": "495eee2b79583e09f17e1ddbe78994a1fbfe9087bc47a7d51f6cb46192c32004",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      436,
+      451,
+      472,
+      413,
+      537,
+      254,
+      249,
+      387,
+      303,
+      115,
+      774,
+      470
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "b59712b57731bada186b90423bf5b7b44b08ece9c74b9113aa443790555d70af",
+     "actual": "b59712b57731bada186b90423bf5b7b44b08ece9c74b9113aa443790555d70af",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306125398990848",
+     "actual": "92306125398990848",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "b59712b57731bada186b90423bf5b7b44b08ece9c74b9113aa443790555d70af",
+     "actual": "b59712b57731bada186b90423bf5b7b44b08ece9c74b9113aa443790555d70af",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "495eee2b79583e09f17e1ddbe78994a1fbfe9087bc47a7d51f6cb46192c32004",
+     "actual": "495eee2b79583e09f17e1ddbe78994a1fbfe9087bc47a7d51f6cb46192c32004",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 9592,
+     "actual": 9592,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 4740,
+     "actual": 4740,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 7,
+     "actual": 7,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 7,
+     "actual": 7,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      389,
+      389
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "20nums",
+      "result": "20nums",
+      "max": 20
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c09-01",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "7a0b52cb42bcb77b377eefab92626c49ac9a3837e2d5fcdfb54ee456285c7e37",
+     "actual": "7a0b52cb42bcb77b377eefab92626c49ac9a3837e2d5fcdfb54ee456285c7e37",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "7a0b52cb42bcb77b377eefab92626c49ac9a3837e2d5fcdfb54ee456285c7e37",
+     "actual": "7a0b52cb42bcb77b377eefab92626c49ac9a3837e2d5fcdfb54ee456285c7e37",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      634,
+      582,
+      763,
+      664,
+      492,
+      747,
+      734,
+      579,
+      175,
+      605,
+      557,
+      620,
+      534,
+      575,
+      587,
+      762,
+      548,
+      1054,
+      1045,
+      596
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "2fa0edf21e5984a240bd1a2bc1ed2d11290b3c3d13fc9749981cfb9df8a4c4c6",
+     "actual": "2fa0edf21e5984a240bd1a2bc1ed2d11290b3c3d13fc9749981cfb9df8a4c4c6",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306126732607488",
+     "actual": "92306126732607488",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "2fa0edf21e5984a240bd1a2bc1ed2d11290b3c3d13fc9749981cfb9df8a4c4c6",
+     "actual": "2fa0edf21e5984a240bd1a2bc1ed2d11290b3c3d13fc9749981cfb9df8a4c4c6",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "7a0b52cb42bcb77b377eefab92626c49ac9a3837e2d5fcdfb54ee456285c7e37",
+     "actual": "7a0b52cb42bcb77b377eefab92626c49ac9a3837e2d5fcdfb54ee456285c7e37",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 19828,
+     "actual": 19828,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 20792,
+     "actual": 20792,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [
+      "Q1: 无 answer_lines（题号 [1]）",
+      "Q2: 无 answer_lines（题号 [2]）",
+      "Q3: 无 answer_lines（题号 [3]）",
+      "Q15: 无 answer_lines（题号 [15]）",
+      "Q22: 无 answer_lines（题号 [22]）",
+      "Q24: 无 answer_lines（题号 [24]）"
+     ],
+     "actual": [
+      "Q1: 无 answer_lines（题号 [1]）",
+      "Q2: 无 answer_lines（题号 [2]）",
+      "Q3: 无 answer_lines（题号 [3]）",
+      "Q15: 无 answer_lines（题号 [15]）",
+      "Q22: 无 answer_lines（题号 [22]）",
+      "Q24: 无 answer_lines（题号 [24]）"
+     ],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 34,
+     "actual": 34,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 34,
+     "actual": 34,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 5,
+     "actual": 5,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "FAIL",
+     "actual": "FAIL",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [
+      "C3 第1单元答案区为空",
+      "C3 第2单元答案区为空",
+      "C3 第3单元答案区为空",
+      "C3 第15单元答案区为空",
+      "C3 第22单元答案区为空",
+      "C3 第24单元答案区为空"
+     ],
+     "actual": [
+      "C3 第1单元答案区为空",
+      "C3 第2单元答案区为空",
+      "C3 第3单元答案区为空",
+      "C3 第15单元答案区为空",
+      "C3 第22单元答案区为空",
+      "C3 第24单元答案区为空"
+     ],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 34,
+     "actual": 34,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 5,
+     "actual": 5,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      819,
+      819
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q15",
+      "Q22",
+      "Q24"
+     ],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "34nums",
+      "result": "34nums",
+      "max": 34
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c09-02",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "666ccbef9f8996cc53311c3f6a2d40cecedd5d2ba122629166f5069a2980e671",
+     "actual": "666ccbef9f8996cc53311c3f6a2d40cecedd5d2ba122629166f5069a2980e671",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "666ccbef9f8996cc53311c3f6a2d40cecedd5d2ba122629166f5069a2980e671",
+     "actual": "666ccbef9f8996cc53311c3f6a2d40cecedd5d2ba122629166f5069a2980e671",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 11,
+     "actual": 11,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      1664,
+      2691,
+      2050,
+      2978,
+      2690,
+      1526,
+      1730,
+      1248,
+      758,
+      619,
+      1057
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "b13078a18bc5c5487ce60aa68bb213981791d92e5f86a91fb235f0637c788ca0",
+     "actual": "b13078a18bc5c5487ce60aa68bb213981791d92e5f86a91fb235f0637c788ca0",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 11,
+     "actual": 11,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306127703158784",
+     "actual": "92306127703158784",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "b13078a18bc5c5487ce60aa68bb213981791d92e5f86a91fb235f0637c788ca0",
+     "actual": "b13078a18bc5c5487ce60aa68bb213981791d92e5f86a91fb235f0637c788ca0",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "666ccbef9f8996cc53311c3f6a2d40cecedd5d2ba122629166f5069a2980e671",
+     "actual": "666ccbef9f8996cc53311c3f6a2d40cecedd5d2ba122629166f5069a2980e671",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 11762,
+     "actual": 11762,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 9631,
+     "actual": 9631,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [
+      "Q96: L422 试卷结构行混入单元区间: 注意事项：1. 不少于 60 词。2. 文中不得出现真实的校名和姓名。"
+     ],
+     "actual": [
+      "Q96: L422 试卷结构行混入单元区间: 注意事项：1. 不少于 60 词。2. 文中不得出现真实的校名和姓名。"
+     ],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 35,
+     "actual": 35,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 35,
+     "actual": 35,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 26,
+     "actual": 26,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "FAIL",
+     "actual": "FAIL",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [
+      "C9 1 处试卷结构行混入单元区间: ['L422:注意事项：1. 不少于 60 词。2. 文中不得出现真实的校名和姓名。']"
+     ],
+     "actual": [
+      "C9 1 处试卷结构行混入单元区间: ['L422:注意事项：1. 不少于 60 词。2. 文中不得出现真实的校名和姓名。']"
+     ],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 35,
+     "actual": 35,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 26,
+     "actual": 26,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      550,
+      550
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "96nums",
+      "result": "96nums",
+      "max": 96
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c10-01",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "43ff77a8da83ab9e20d6c42a7ca900b67ddd05450ed3ac5481074d45f5dc54db",
+     "actual": "43ff77a8da83ab9e20d6c42a7ca900b67ddd05450ed3ac5481074d45f5dc54db",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "43ff77a8da83ab9e20d6c42a7ca900b67ddd05450ed3ac5481074d45f5dc54db",
+     "actual": "43ff77a8da83ab9e20d6c42a7ca900b67ddd05450ed3ac5481074d45f5dc54db",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 11,
+     "actual": 11,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      814,
+      771,
+      444,
+      745,
+      757,
+      892,
+      789,
+      406,
+      705,
+      613,
+      678
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "7c1373d1252f09645a2b36bba5c82c3d35e2479d5f323bac134942033e77eef1",
+     "actual": "7c1373d1252f09645a2b36bba5c82c3d35e2479d5f323bac134942033e77eef1",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 11,
+     "actual": 11,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306128629207040",
+     "actual": "92306128629207040",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "7c1373d1252f09645a2b36bba5c82c3d35e2479d5f323bac134942033e77eef1",
+     "actual": "7c1373d1252f09645a2b36bba5c82c3d35e2479d5f323bac134942033e77eef1",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "43ff77a8da83ab9e20d6c42a7ca900b67ddd05450ed3ac5481074d45f5dc54db",
+     "actual": "43ff77a8da83ab9e20d6c42a7ca900b67ddd05450ed3ac5481074d45f5dc54db",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 12426,
+     "actual": 12426,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 2682,
+     "actual": 2682,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 11,
+     "actual": 11,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 20,
+     "actual": 20,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 11,
+     "actual": 11,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      413,
+      413
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "20nums",
+      "result": "20nums",
+      "max": 20
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c10-02",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "00c4e924f57674ec0f2f7ff935b2fb300677123c0253fbd71bfadbf6d6675164",
+     "actual": "00c4e924f57674ec0f2f7ff935b2fb300677123c0253fbd71bfadbf6d6675164",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "00c4e924f57674ec0f2f7ff935b2fb300677123c0253fbd71bfadbf6d6675164",
+     "actual": "00c4e924f57674ec0f2f7ff935b2fb300677123c0253fbd71bfadbf6d6675164",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 19,
+     "actual": 19,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      589,
+      675,
+      638,
+      636,
+      652,
+      735,
+      708,
+      657,
+      179,
+      726,
+      570,
+      538,
+      884,
+      570,
+      631,
+      705,
+      469,
+      512,
+      258
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "e8eb0b8be29578467751d997d71d7d971c2645aad46b37c7fb46e0e58a7db9eb",
+     "actual": "e8eb0b8be29578467751d997d71d7d971c2645aad46b37c7fb46e0e58a7db9eb",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 19,
+     "actual": 19,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306129884196864",
+     "actual": "92306129884196864",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "e8eb0b8be29578467751d997d71d7d971c2645aad46b37c7fb46e0e58a7db9eb",
+     "actual": "e8eb0b8be29578467751d997d71d7d971c2645aad46b37c7fb46e0e58a7db9eb",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "00c4e924f57674ec0f2f7ff935b2fb300677123c0253fbd71bfadbf6d6675164",
+     "actual": "00c4e924f57674ec0f2f7ff935b2fb300677123c0253fbd71bfadbf6d6675164",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 18488,
+     "actual": 18488,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 3349,
+     "actual": 3349,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 18,
+     "actual": 18,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 18,
+     "actual": 18,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 6,
+     "actual": 6,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 18,
+     "actual": 18,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 6,
+     "actual": 6,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      840,
+      840
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "18nums",
+      "result": "18nums",
+      "max": 18
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c11-01",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "e38a8e8243bab96a931beef5fd16352a73ed4c4d5e4fba86462b5927891571d5",
+     "actual": "e38a8e8243bab96a931beef5fd16352a73ed4c4d5e4fba86462b5927891571d5",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "e38a8e8243bab96a931beef5fd16352a73ed4c4d5e4fba86462b5927891571d5",
+     "actual": "e38a8e8243bab96a931beef5fd16352a73ed4c4d5e4fba86462b5927891571d5",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 13,
+     "actual": 13,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      1109,
+      863,
+      975,
+      958,
+      726,
+      509,
+      866,
+      531,
+      565,
+      758,
+      585,
+      1128,
+      53
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "4dbc320a366388dd17fbddc792197dcd8db4047b24aa395930d60013940856a4",
+     "actual": "4dbc320a366388dd17fbddc792197dcd8db4047b24aa395930d60013940856a4",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 13,
+     "actual": 13,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306132038537216",
+     "actual": "92306132038537216",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "4dbc320a366388dd17fbddc792197dcd8db4047b24aa395930d60013940856a4",
+     "actual": "4dbc320a366388dd17fbddc792197dcd8db4047b24aa395930d60013940856a4",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "e38a8e8243bab96a931beef5fd16352a73ed4c4d5e4fba86462b5927891571d5",
+     "actual": "e38a8e8243bab96a931beef5fd16352a73ed4c4d5e4fba86462b5927891571d5",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 19266,
+     "actual": 19266,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 20626,
+     "actual": 20626,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 56,
+     "actual": 56,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 56,
+     "actual": 56,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 6,
+     "actual": 6,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 56,
+     "actual": 56,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 6,
+     "actual": 6,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      561,
+      561
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "56nums",
+      "result": "56nums",
+      "max": 56
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c11-02",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "c6db2d092fb684617657fa965430a59bd027b751b7cf8173b0bc04840640dcbe",
+     "actual": "c6db2d092fb684617657fa965430a59bd027b751b7cf8173b0bc04840640dcbe",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "c6db2d092fb684617657fa965430a59bd027b751b7cf8173b0bc04840640dcbe",
+     "actual": "c6db2d092fb684617657fa965430a59bd027b751b7cf8173b0bc04840640dcbe",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      1033,
+      1121,
+      1089,
+      350,
+      772,
+      1133,
+      965,
+      1046,
+      1051,
+      989,
+      1314,
+      1398
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "b14b69109995891b0dc43b81998ac7eef15474936ad58d0e3c79d532c244fb0f",
+     "actual": "b14b69109995891b0dc43b81998ac7eef15474936ad58d0e3c79d532c244fb0f",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306133210640384",
+     "actual": "92306133210640384",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "b14b69109995891b0dc43b81998ac7eef15474936ad58d0e3c79d532c244fb0f",
+     "actual": "b14b69109995891b0dc43b81998ac7eef15474936ad58d0e3c79d532c244fb0f",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "c6db2d092fb684617657fa965430a59bd027b751b7cf8173b0bc04840640dcbe",
+     "actual": "c6db2d092fb684617657fa965430a59bd027b751b7cf8173b0bc04840640dcbe",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 16484,
+     "actual": 16484,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 3365,
+     "actual": 3365,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [
+      "Q1: L137 试卷结构行混入单元区间: ### 一、选择题：本大题共 10 道小题，每小题 4 分，共 40 分。在每小"
+     ],
+     "actual": [
+      "Q1: L137 试卷结构行混入单元区间: ### 一、选择题：本大题共 10 道小题，每小题 4 分，共 40 分。在每小"
+     ],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 19,
+     "actual": 19,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 19,
+     "actual": 19,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 10,
+     "actual": 10,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "FAIL",
+     "actual": "FAIL",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [
+      "C7 含卷面指令: ['本大题共']",
+      "C9 1 处试卷结构行混入单元区间: ['L137:### 一、选择题：本大题共 10 道小题，每小题 4 分，共 40 分。在每小']"
+     ],
+     "actual": [
+      "C7 含卷面指令: ['本大题共']",
+      "C9 1 处试卷结构行混入单元区间: ['L137:### 一、选择题：本大题共 10 道小题，每小题 4 分，共 40 分。在每小']"
+     ],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 19,
+     "actual": 19,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 10,
+     "actual": 10,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      522,
+      522
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "19nums",
+      "result": "19nums",
+      "max": 19
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c12-01",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "5c962de7f4aaf1647a7f951e8b0ff16eb1d85d6d39283cd16f99306b3f55ca9d",
+     "actual": "5c962de7f4aaf1647a7f951e8b0ff16eb1d85d6d39283cd16f99306b3f55ca9d",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "5c962de7f4aaf1647a7f951e8b0ff16eb1d85d6d39283cd16f99306b3f55ca9d",
+     "actual": "5c962de7f4aaf1647a7f951e8b0ff16eb1d85d6d39283cd16f99306b3f55ca9d",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 8,
+     "actual": 8,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      1065,
+      1311,
+      1368,
+      1144,
+      1330,
+      449,
+      1483,
+      95
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "d98fde17ccf81f65566d922fb70e8c4437c4de1de76ca7ad354413c3583fcb56",
+     "actual": "d98fde17ccf81f65566d922fb70e8c4437c4de1de76ca7ad354413c3583fcb56",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 8,
+     "actual": 8,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306134145015808",
+     "actual": "92306134145015808",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "d98fde17ccf81f65566d922fb70e8c4437c4de1de76ca7ad354413c3583fcb56",
+     "actual": "d98fde17ccf81f65566d922fb70e8c4437c4de1de76ca7ad354413c3583fcb56",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "5c962de7f4aaf1647a7f951e8b0ff16eb1d85d6d39283cd16f99306b3f55ca9d",
+     "actual": "5c962de7f4aaf1647a7f951e8b0ff16eb1d85d6d39283cd16f99306b3f55ca9d",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 9332,
+     "actual": 9332,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 14623,
+     "actual": 14623,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 27,
+     "actual": 27,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 27,
+     "actual": 27,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 6,
+     "actual": 6,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 27,
+     "actual": 27,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 6,
+     "actual": 6,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      308,
+      308
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "28nums",
+      "result": "28nums",
+      "max": 28
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c12-02",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "0aa03b3375387f6def9334ba5918e56a3e090445d1168571e24bb460c17b78fc",
+     "actual": "0aa03b3375387f6def9334ba5918e56a3e090445d1168571e24bb460c17b78fc",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "0aa03b3375387f6def9334ba5918e56a3e090445d1168571e24bb460c17b78fc",
+     "actual": "0aa03b3375387f6def9334ba5918e56a3e090445d1168571e24bb460c17b78fc",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 11,
+     "actual": 11,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      693,
+      741,
+      647,
+      894,
+      948,
+      516,
+      382,
+      386,
+      647,
+      521,
+      487
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "1ec2e8a728f52c44505ac96bdec7a18c687b8d39eeb690f307f1ab1a3174ea2a",
+     "actual": "1ec2e8a728f52c44505ac96bdec7a18c687b8d39eeb690f307f1ab1a3174ea2a",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 11,
+     "actual": 11,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306135191244800",
+     "actual": "92306135191244800",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "1ec2e8a728f52c44505ac96bdec7a18c687b8d39eeb690f307f1ab1a3174ea2a",
+     "actual": "1ec2e8a728f52c44505ac96bdec7a18c687b8d39eeb690f307f1ab1a3174ea2a",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "0aa03b3375387f6def9334ba5918e56a3e090445d1168571e24bb460c17b78fc",
+     "actual": "0aa03b3375387f6def9334ba5918e56a3e090445d1168571e24bb460c17b78fc",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 12022,
+     "actual": 12022,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 16168,
+     "actual": 16168,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 25,
+     "actual": 25,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 25,
+     "actual": 25,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 8,
+     "actual": 8,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 25,
+     "actual": 25,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 8,
+     "actual": 8,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      475,
+      475
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "25nums",
+      "result": "25nums",
+      "max": 25
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c13-01",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "5da33ddf1b4fad1d2e15a41c61fc01d8fe54f72c81623b0acd465b74fa41073a",
+     "actual": "5da33ddf1b4fad1d2e15a41c61fc01d8fe54f72c81623b0acd465b74fa41073a",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "5da33ddf1b4fad1d2e15a41c61fc01d8fe54f72c81623b0acd465b74fa41073a",
+     "actual": "5da33ddf1b4fad1d2e15a41c61fc01d8fe54f72c81623b0acd465b74fa41073a",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      945,
+      884,
+      548,
+      591,
+      607,
+      412,
+      210,
+      844,
+      456,
+      7,
+      538,
+      30
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "0bf34c1c78f49562c3247dfb687a62c016d1b2a7e9da1a44101ed3240d6a753b",
+     "actual": "0bf34c1c78f49562c3247dfb687a62c016d1b2a7e9da1a44101ed3240d6a753b",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 12,
+     "actual": 12,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306136663445504",
+     "actual": "92306136663445504",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "0bf34c1c78f49562c3247dfb687a62c016d1b2a7e9da1a44101ed3240d6a753b",
+     "actual": "0bf34c1c78f49562c3247dfb687a62c016d1b2a7e9da1a44101ed3240d6a753b",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "5da33ddf1b4fad1d2e15a41c61fc01d8fe54f72c81623b0acd465b74fa41073a",
+     "actual": "5da33ddf1b4fad1d2e15a41c61fc01d8fe54f72c81623b0acd465b74fa41073a",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 14072,
+     "actual": 14072,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 17832,
+     "actual": 17832,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 19,
+     "actual": 19,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 19,
+     "actual": 19,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 5,
+     "actual": 5,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 19,
+     "actual": 19,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 5,
+     "actual": 5,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      581,
+      581
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "34nums",
+      "result": "34nums",
+      "max": 34
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  },
+  {
+   "sample_id": "pac-c13-02",
+   "checks": [
+    {
+     "name": "pdf_sha256(track vs 现文件)",
+     "claim": "478fd91a8897c170e1cfe1c5ad6c477ed7c7d6720487092d5454bc66cf9c10c9",
+     "actual": "478fd91a8897c170e1cfe1c5ad6c477ed7c7d6720487092d5454bc66cf9c10c9",
+     "ok": true
+    },
+    {
+     "name": "pdf_sha256(track vs selection)",
+     "claim": "478fd91a8897c170e1cfe1c5ad6c477ed7c7d6720487092d5454bc66cf9c10c9",
+     "actual": "478fd91a8897c170e1cfe1c5ad6c477ed7c7d6720487092d5454bc66cf9c10c9",
+     "ok": true
+    },
+    {
+     "name": "pages(track vs fitz)",
+     "claim": 21,
+     "actual": 21,
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs fitz重测)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "text_layer 逐页字符数(fitz 原始)",
+     "claim": null,
+     "actual": [
+      964,
+      1759,
+      1573,
+      1272,
+      1551,
+      1723,
+      1788,
+      6,
+      832,
+      1047,
+      1008,
+      1067,
+      1376,
+      1177,
+      850,
+      1234,
+      1289,
+      1135,
+      1269,
+      964,
+      552
+     ],
+     "ok": true
+    },
+    {
+     "name": "text_layer(track vs selection)",
+     "claim": "native_text",
+     "actual": "native_text",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs 现文件)",
+     "claim": "bd39d337f689e10d3dc20d7c964fb30e608c8a2e3b386cb03e0be41b4f103f81",
+     "actual": "bd39d337f689e10d3dc20d7c964fb30e608c8a2e3b386cb03e0be41b4f103f81",
+     "ok": true
+    },
+    {
+     "name": "ocr status(track vs track_ocr)",
+     "claim": "OK",
+     "actual": "OK",
+     "ok": true
+    },
+    {
+     "name": "pages_billed(track vs track_ocr)",
+     "claim": 21,
+     "actual": 21,
+     "ok": true
+    },
+    {
+     "name": "job_id(track vs track_ocr)",
+     "claim": "92306137751044096",
+     "actual": "92306137751044096",
+     "ok": true
+    },
+    {
+     "name": "ocr md sha256(track vs track_ocr)",
+     "claim": "bd39d337f689e10d3dc20d7c964fb30e608c8a2e3b386cb03e0be41b4f103f81",
+     "actual": "bd39d337f689e10d3dc20d7c964fb30e608c8a2e3b386cb03e0be41b4f103f81",
+     "ok": true
+    },
+    {
+     "name": "input_pdf_sha(track_ocr vs selection)",
+     "claim": "478fd91a8897c170e1cfe1c5ad6c477ed7c7d6720487092d5454bc66cf9c10c9",
+     "actual": "478fd91a8897c170e1cfe1c5ad6c477ed7c7d6720487092d5454bc66cf9c10c9",
+     "ok": true
+    },
+    {
+     "name": "prompt_tokens(track vs result)",
+     "claim": 22784,
+     "actual": 22784,
+     "ok": true
+    },
+    {
+     "name": "completion_tokens(track vs result)",
+     "claim": 22170,
+     "actual": 22170,
+     "ok": true
+    },
+    {
+     "name": "validation_issues(track vs result)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "units(track vs result)",
+     "claim": 10,
+     "actual": 10,
+     "ok": true
+    },
+    {
+     "name": "manifest units(track vs 现文件)",
+     "claim": 10,
+     "actual": 10,
+     "ok": true
+    },
+    {
+     "name": "identity_version(track vs 现文件)",
+     "claim": 2,
+     "actual": 2,
+     "ok": true
+    },
+    {
+     "name": "sections(track vs 现文件)",
+     "claim": 18,
+     "actual": 18,
+     "ok": true
+    },
+    {
+     "name": "qc verdict(track vs pac_qc_v2)",
+     "claim": "PASS",
+     "actual": "PASS",
+     "ok": true
+    },
+    {
+     "name": "qc issues(track vs pac_qc_v2)",
+     "claim": [],
+     "actual": [],
+     "ok": true
+    },
+    {
+     "name": "identity fails(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "identity reviews(track vs 报告)",
+     "claim": 0,
+     "actual": 0,
+     "ok": true
+    },
+    {
+     "name": "backfill units(track vs 报告)",
+     "claim": 10,
+     "actual": 10,
+     "ok": true
+    },
+    {
+     "name": "backfill sections(track vs 报告)",
+     "claim": 18,
+     "actual": 18,
+     "ok": true
+    }
+   ],
+   "invariants": [
+    {
+     "name": "I1 canonical 重复(仅 keep 豁免可合法)",
+     "value": {},
+     "ok": null
+    },
+    {
+     "name": "I2 区间越界",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I3 section_ref 悬空",
+     "value": [],
+     "ok": true
+    },
+    {
+     "name": "I4 annotated==source(C8 独立复算)",
+     "value": [
+      635,
+      635
+     ],
+     "ok": true
+    },
+    {
+     "name": "I5 answer_lines 缺失单元",
+     "value": [],
+     "ok": null
+    },
+    {
+     "name": "I6 覆盖=1..max 无缺重(manifest∩result 双侧)",
+     "value": {
+      "manifest": "20nums",
+      "result": "20nums",
+      "max": 20
+     },
+     "ok": true
+    },
+    {
+     "name": "I7 model/prompt_version",
+     "value": {
+      "model": "mimo-x-pro-preview",
+      "prompt_version": "reslice-pilot-v2.3"
+     },
+     "ok": true
+    }
+   ]
+  }
+ ],
+ "totals": {
+  "pages_measured_sum": 293,
+  "pages_billed_sum": 293,
+  "pages_billed_eq_measured": true,
+  "prompt_sum": 336640,
+  "completion_sum": 240585,
+  "llm_total": 577225,
+  "units_sum": 530,
+  "probe_n_units": 530,
+  "units_sum_eq_probe": true,
+  "qc_pass": 18,
+  "qc_fail": 4,
+  "qc_pass_eq_track": true,
+  "qc_fail_eq_track": true,
+  "n_samples": 22,
+  "probe_flags_recount": 78,
+  "probe_flags_eq_header": true
+ },
+ "findings": [],
+ "n_checks": 550,
+ "n_mismatch": 0
+}

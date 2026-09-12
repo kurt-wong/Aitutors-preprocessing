@@ -1,0 +1,292 @@
+{
+ "when": "2026-09-13 01:36",
+ "n_files": 22,
+ "n_ok": 18,
+ "n_error": 0,
+ "n_no_issues": 18,
+ "total_src_bytes": 665084,
+ "total_prompt_tokens": 336640,
+ "total_completion_tokens": 240585,
+ "total_llm_seconds": 5846,
+ "avg_llm_seconds_per_file": 265.7,
+ "tokens_per_1k_chars": 867.9,
+ "by_tier": {
+  "C5 数学LaTeX": {
+   "n": 2,
+   "bytes": 32216,
+   "llm_s": 96.7,
+   "prompt_tokens": 22510,
+   "completion_tokens": 5823
+  },
+  "C6 化学图片题": {
+   "n": 2,
+   "bytes": 68845,
+   "llm_s": 125.7,
+   "prompt_tokens": 35750,
+   "completion_tokens": 7942
+  },
+  "C8 跨页题": {
+   "n": 2,
+   "bytes": 50636,
+   "llm_s": 256.6,
+   "prompt_tokens": 23387,
+   "completion_tokens": 17075
+  },
+  "C1 原生文本PDF": {
+   "n": 2,
+   "bytes": 42702,
+   "llm_s": 584.2,
+   "prompt_tokens": 27946,
+   "completion_tokens": 19038
+  },
+  "C2 扫描PDF": {
+   "n": 2,
+   "bytes": 46943,
+   "llm_s": 833.6,
+   "prompt_tokens": 24388,
+   "completion_tokens": 36457
+  },
+  "C10 题图分离": {
+   "n": 2,
+   "bytes": 54206,
+   "llm_s": 81.19999999999999,
+   "prompt_tokens": 30914,
+   "completion_tokens": 6031
+  },
+  "C11 OCR行融合": {
+   "n": 2,
+   "bytes": 69478,
+   "llm_s": 301.5,
+   "prompt_tokens": 35750,
+   "completion_tokens": 23991
+  },
+  "C9 多section同号": {
+   "n": 2,
+   "bytes": 57928,
+   "llm_s": 1350.4,
+   "prompt_tokens": 31590,
+   "completion_tokens": 30423
+  },
+  "C12 OCR错号": {
+   "n": 2,
+   "bytes": 41372,
+   "llm_s": 391.3,
+   "prompt_tokens": 21354,
+   "completion_tokens": 30791
+  },
+  "C7 答案解析混排": {
+   "n": 2,
+   "bytes": 106113,
+   "llm_s": 1222.0,
+   "prompt_tokens": 46195,
+   "completion_tokens": 23012
+  },
+  "C13 composite": {
+   "n": 2,
+   "bytes": 94645,
+   "llm_s": 603.0999999999999,
+   "prompt_tokens": 36856,
+   "completion_tokens": 40002
+  }
+ },
+ "files": [
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c05-02.md",
+   "tier": "C5 数学LaTeX",
+   "elapsed_s": 41.1,
+   "prompt_tokens": 14595,
+   "completion_tokens": 2448,
+   "units": 21,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c06-01.md",
+   "tier": "C6 化学图片题",
+   "elapsed_s": 50.3,
+   "prompt_tokens": 16507,
+   "completion_tokens": 3100,
+   "units": 19,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c05-01.md",
+   "tier": "C5 数学LaTeX",
+   "elapsed_s": 55.6,
+   "prompt_tokens": 7915,
+   "completion_tokens": 3375,
+   "units": 20,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c06-02.md",
+   "tier": "C6 化学图片题",
+   "elapsed_s": 75.4,
+   "prompt_tokens": 19243,
+   "completion_tokens": 4842,
+   "units": 20,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c08-02.md",
+   "tier": "C8 跨页题",
+   "elapsed_s": 72.2,
+   "prompt_tokens": 9592,
+   "completion_tokens": 4740,
+   "units": 12,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c01-02.md",
+   "tier": "C1 原生文本PDF",
+   "elapsed_s": 204.3,
+   "prompt_tokens": 9159,
+   "completion_tokens": 13173,
+   "units": 28,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c08-01.md",
+   "tier": "C8 跨页题",
+   "elapsed_s": 184.4,
+   "prompt_tokens": 13795,
+   "completion_tokens": 12335,
+   "units": 9,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c02-01.md",
+   "tier": "C2 扫描PDF",
+   "elapsed_s": 240.9,
+   "prompt_tokens": 12932,
+   "completion_tokens": 16018,
+   "units": 20,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c10-01.md",
+   "tier": "C10 题图分离",
+   "elapsed_s": 37.8,
+   "prompt_tokens": 12426,
+   "completion_tokens": 2682,
+   "units": 20,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c10-02.md",
+   "tier": "C10 题图分离",
+   "elapsed_s": 43.4,
+   "prompt_tokens": 18488,
+   "completion_tokens": 3349,
+   "units": 18,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c11-02.md",
+   "tier": "C11 OCR行融合",
+   "elapsed_s": 38.9,
+   "prompt_tokens": 16484,
+   "completion_tokens": 3365,
+   "units": 19,
+   "n_issues": 1
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c01-01.md",
+   "tier": "C1 原生文本PDF",
+   "elapsed_s": 379.9,
+   "prompt_tokens": 18787,
+   "completion_tokens": 5865,
+   "units": 30,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c09-01.md",
+   "tier": "C9 多section同号",
+   "elapsed_s": 270.9,
+   "prompt_tokens": 19828,
+   "completion_tokens": 20792,
+   "units": 34,
+   "n_issues": 6
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c12-01.md",
+   "tier": "C12 OCR错号",
+   "elapsed_s": 182.9,
+   "prompt_tokens": 9332,
+   "completion_tokens": 14623,
+   "units": 27,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c11-01.md",
+   "tier": "C11 OCR行融合",
+   "elapsed_s": 262.6,
+   "prompt_tokens": 19266,
+   "completion_tokens": 20626,
+   "units": 56,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c07-02.md",
+   "tier": "C7 答案解析混排",
+   "elapsed_s": 519.7,
+   "prompt_tokens": 13363,
+   "completion_tokens": 15647,
+   "units": 21,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c12-02.md",
+   "tier": "C12 OCR错号",
+   "elapsed_s": 208.4,
+   "prompt_tokens": 12022,
+   "completion_tokens": 16168,
+   "units": 25,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c02-02.md",
+   "tier": "C2 扫描PDF",
+   "elapsed_s": 592.7,
+   "prompt_tokens": 11456,
+   "completion_tokens": 20439,
+   "units": 32,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c13-01.md",
+   "tier": "C13 composite",
+   "elapsed_s": 305.4,
+   "prompt_tokens": 14072,
+   "completion_tokens": 17832,
+   "units": 19,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c07-01.md",
+   "tier": "C7 答案解析混排",
+   "elapsed_s": 702.3,
+   "prompt_tokens": 32832,
+   "completion_tokens": 7365,
+   "units": 35,
+   "n_issues": 8
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c13-02.md",
+   "tier": "C13 composite",
+   "elapsed_s": 297.7,
+   "prompt_tokens": 22784,
+   "completion_tokens": 22170,
+   "units": 10,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac\\ocr\\pac-c09-02.md",
+   "tier": "C9 多section同号",
+   "elapsed_s": 1079.5,
+   "prompt_tokens": 11762,
+   "completion_tokens": 9631,
+   "units": 35,
+   "n_issues": 1
+  }
+ ]
+}

@@ -947,3 +947,57 @@ PAC 第一轮 22 份全链(真实 OCR + 真实 LLM)跑通,轨迹工件完整,FAI
 ### 结果
 
 完成标准:① 22 份选样留档 ✅;② 全 stage 轨迹(NOT_BUILT 如实)✅;③ **22/22 深度语义复核**(QC+identity+语义探针分诊+覆盖完整性+危害面实查)✅;④ 分诊报告(18 PASS/4 FAIL 全可解释)+ BUG-28/29 入册 ✅;⑤ 台账更新+CI 绿 ✅。套件 111 passed + 1 xfailed。
+
+---
+
+## R46(2026-09-13):PAC 第一轮结果对抗性审查——逐结论真实测试复证
+
+**输入**:用户指令"针对 PAC 第一轮的结果开启一轮严格的对抗性审查,每个结论必须有真实测试作为证据;不降低标准、不自我合理化、不强行解释、不推测"。审查对象 = R44/R45 的全部对外结论。
+
+### (a) track 数字独立重算:`scripts/pac_audit_recompute.py` → `data/pac_audit_recompute.json`
+
+不信任 track 任何字段,从原始工件(源 PDF/OCR md/annotated 产物/QC/回填/LLM result)逐项重算:**550 项比对,0 不一致,0 findings**。全局量全部复证:页数实测=计费=**293**;tokens 重算=**577,225**(336,640+240,585);单元和=**530**=探针 n_units;QC 重数=**18/4**;探针报警重数=**78**=header 分项和。附加不变量 22/22 全过:I2 区间零越界、I3 section_ref 零悬空、I4 C8 独立复算逐行相等、I1 canonical 零重复、I6 覆盖=1..max 零缺重(manifest∩LLM result 双侧互证)、I7 model 全部 mimo-x-pro-preview。**R45"覆盖 10/10"升级为机器复证的 22/22。**
+
+### (b) QC 对抗变异:`scripts/pac_audit_qc_mutation.py` → `data/pac_audit_qc_mutation.json`
+
+真实产物整目录拷贝(原件零触碰),**17 条变异 0 失手**:控制组(零变异拷贝)逐字复现 pac_qc_v2 → 拷贝保真成立;C1/C2/C3/C5/C6/C7/C8/C9/C10/C11/C12/C13(同节+跨节双非keep)/C14/C4 各注入一个已知缺陷,**期望检查码全部命中且 verdict 正确降级**(C14 → PENDING_REVIEW 而非静默)。"18 PASS"背后的 QC 不存在已知结构性盲区(在这些检查族的设计语义内)。
+
+### (c) 语义探针攻击:`scripts/pac_audit_probe.py` → `data/pac_audit_probe.json`
+
+- **灵敏度双向验证 8 条 0 失手**:注入 P14(stem 吞下题题号行)/P15(answer 指别题题号答案行)/P13(answer 指纯散文行)必报;阴性对照(共享答案表行、区间连写 `1-5 ACDBA`、解答步骤编号 `1、目的基因…`)必不报。
+- **78 报警独立再分诊**(不沿用 R45 口头分类):规则分类 54(R1 printed/canonical 错位×21、R2 括号答案键×5、R3 子问编号×11、R4 写作提示/评分细则×5、R5 答案内容在但形态正则未覆盖×12)+ **残差 24 条逐条人工读原文裁决**——全部为探针盲区或已记录噪音(`略`式答案×2、题干内材料编号×4、紧凑答案行×6+1、作文提示/评分细则编号×5、printed=None 的 printed/canonical 家族×2、散文式解析答案×1、c13-02 解析材料编号×1、**新盲区子类:答案键字母超 A-D(`35-39 DEFGB`,ANS 字母表过窄)×1**)。**"0 新缺陷"结论经独立再分诊成立。**
+- **如实更正**:R45 的分项计数(7+8+8+4+17+21=65,+2 噪音=67)与总数 78 对不上账——结论正确但分项算术不成立,以本次机器分类为准。
+
+### (d) BUG-28/29 修复独立验证
+
+- BUG-28:`test_batch_summary_isolation` 3/3 绿(套件内);batch-C summary 未被 PAC 跑动过。
+- BUG-29:真实 dry-run(`--out reslice-pac-annotated --report <临时>`)→ 默认报告 sha256 前后一致、临时报告 22 份 0 fail/0 review。**发现覆盖缺口:BUG-29 只有人工实测、无 CI 回归** → 新增 `tests/test_backfill_report_isolation.py` 钉死。
+- 变异自证伪:BUG-29 复发变异 → 恰 1 测试红;C7 失敏变异 → 恰 test_c7 红;P14 失敏变异 → 恰 P14/P15 两测试红;恢复后全绿。
+
+### (e)(f)(g) 选样指纹 / 回填 / 文本层
+
+- `pac_select.py --check`:**22/22 指纹一致**(源 PDF 无漂移)。
+- 回填 dry-run:22 份 0 fail 0 review,与 track 完全一致。
+- QC 确定性重跑:与 pac_qc_v2 唯一差异 = `file` 字段路径写法(相对 vs 绝对),verdict/issues 全等。
+- 文本层独立 fitz 重测(逐页字符数入档):**22/22 与 track/selection 一致**,20 native_text + 2 scanned 复证。
+
+### hazard 形态逐条复证(新鲜 OCR 产物上)
+
+c12-01 转义点行 **L266/L274 逐行复现**(与台账锚点同位)、c12-02 **L445/L461 复现**,【答案】【解析】转义点行 **0 误升分节** = BUG-25 修复成立;c06-02 答案行标题化 fresh-baseline **差恰 12**、c10-02 **差恰 6**;c11-01 融合行 baseline L324 与 fresh L325 **逐字相等**;c11-02 L137 三重融合行在。drift json 内部一致(0/22 字节一致,相似度 0.9549–1.0000)。**一处定性澄清**:c05-01 两条转义点行(`17\.`/`19\.`)确被升为分节,但其非转义孪生(`18.`/`20.`)同样被 SECTION_RE 收为分节——是解答题标题的定位器设计行为,非 BUG-25 类答案块误升;"0 误升"仅在答案块语义下成立,特此限定措辞。
+
+### 审查发现汇总(无新生生产缺陷;3 项台账/覆盖问题 + 1 项卫生问题,全部处置)
+
+1. **R45 分项计数对不上账**(65+2≠78)→ 本轮回填机器分类,如实更正;
+2. **c09-01 printed 声明措辞过宽**:实测 34 单元中 23 recovered(Q27→printed 2、Q32→7 等分离正确),Q26/Q30 等 11 个 printed=None(题干 `1\.` 转义点/无印刷号行,回收正则边界同 c01-02 家族)——"输出 printed(1-9)"应限定为"已回收子集";
+3. **BUG-29 无 CI 回归** → 新增测试 + 变异自证伪;
+4. **未跟踪证据工件**:`data/pac_qc.json`(回填前 v1 QC)、`data/reslice_reslice-pac-annotated_summary.json` 补入版本库。
+
+### 资产沉淀
+
+新增 `scripts/pac_audit_{recompute,qc_mutation,probe}.py`(语料依赖,本地跑)+ `tests/test_qc_mutation_sensitivity.py`(12)、`tests/test_probe_sensitivity.py`(6)、`tests/test_backfill_report_isolation.py`(1)——**CI 合成语料钉住 QC 14 检查族灵敏度、探针双向契约、BUG-29 隔离,共 +19 测试**。套件 **130 passed + 1 xfailed**。
+
+### 残留(如实)
+
+- 探针对"答案键字母超 A-D""散文式解析答案""题干内材料编号"三类为已证实盲区(测量仪语义,非缺陷);探针仍未进 QC(维持"报警≠缺陷"纪律);
+- c12-02 Q24 answer 区为【解析】散文(答案内容在解析内)——绑定语义正确但"答案/解析分离"质量项留待 resolver 阶段裁定;
+- 审查范围限定 PAC 22 份与本轮结论;历史 66 份生产产物不在本次攻击面。
