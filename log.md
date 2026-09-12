@@ -682,3 +682,16 @@
 **已知残留(不隐瞒)**:v1 历史产物(pilot 16 份等)仍走旧语义,回填列为后续任务;unverified 402 单元 printed 无证据(多为综合题多号单元),显式 unknown 不猜;basis_evidence 的语义充分性需 Phase 3 对抗语料覆盖(PENDING_REVIEW 通道即为此)。
 
 **结果**:BUG-23 关闭;BUG-22 状态重述(撤销 detection CLOSED,待 BUG-23 修复后 C13 检测器 🟢、Resolver Identity 🟡 等下游消费);套件 **64 passed + 1 xfailed**。
+
+## R35 · Phase 3:Evidence Soundness 对抗语料,第二层证据语义检查(2026-09-12)
+
+**输入**:第五轮审查对 R34 的验收——Phase 2 🟢 ACCEPTED,BUG-23 🟢 CLOSED,四项全 🟢;Phase 3 指令明确:**不再堆规则,攻击"PASS 为什么成立"**,验收标准从 Guard Soundness 提升为 **Evidence Soundness**;裁决语义:PASS=机器能证明 / FAIL=机器能证伪 / PENDING_REVIEW=无法证明也无法证伪。核心 test gap(不是 BUG,是义务):basis_evidence 机器校验只证明了"引用存在且位置合法",未证明"引用内容构成局部编号语义"。
+
+**执行**:
+
+1. **第二层证据语义检查**(`question_identity.evidence_semantic_reason`,QC 与回填共用):keep 豁免引用行必须承载编号语义(题号式 26./一、;结构性 模块/任选/考点/汇编/针对训练/X 组;或分节标题行 SECTION_RE 豁免题号相关性),纯 prose/OCR 噪声行 → PENDING_REVIEW;非标题引用行的行首题号与本单元(印刷号∪canonical)完全无关(如引用"26.【答案】"行)→ PENDING_REVIEW。**诚实边界:只升级到"内容承载编号语义且题号相关",不宣称语义真值证明**——深度语义仍走人工复核通道。
+2. **真实数据复验**:batch-C 50 份跑第二层检查 **0 新增 review**(既有 keep 证据全部确实引用分节标题行,新检查未误伤);QC 38 PASS / 0 PENDING_REVIEW 不变。
+3. **对抗语料** `tests/test_identity_adversarial_corpus.py` 16 用例全绿,覆盖审查冻结的全部攻击面:baseline / 合法模块 / BUG-22 原型 / 同节 keep bypass / 同名 section occurrence / 缺 section / 证据越界 / 证据缺失 / **证据行无编号语义(核心)** / **证据题号无关(核心)** / OCR 内容错 / printed 保持 unknown / unit_id 解耦 / section 顺序重排 / locator 漂移证伪 / **回填重跑幂等(真实 batch-C 字节一致)**。
+4. **变异验证**:短路 evidence_semantic_reason → 恰好 c09/c10/c11 三条核心攻击用例失败 → 回退;另仓库级幂等佐证:--apply 重跑后 backfill 报告与已提交版本零差异。
+
+**结果**:Evidence Soundness 第一层机器可证增量落地,语料 16/16;套件 **80 passed + 1 xfailed**;无新增 confirmed BUG(test gap 按审查意见保持为 PENDING_REVIEW 义务而非缺陷)。

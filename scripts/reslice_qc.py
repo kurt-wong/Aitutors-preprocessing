@@ -215,7 +215,7 @@ def check(md_path: Path):
     from collections import Counter
     reviews = []
     if (man.get("identity_version") or 1) >= 2:
-        fails, reviews = qi.check_identity(man, len(src_lines_all))
+        fails, reviews = qi.check_identity(man, len(src_lines_all), src_lines_all)
         issues.extend(fails)
     else:
         ident = Counter()

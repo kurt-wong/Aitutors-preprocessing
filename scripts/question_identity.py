@@ -107,7 +107,8 @@ def assign_identity(man, lines):
 
 
 def evidence_ok(text, n_lines):
-    """keep 豁免证据:非空 + 至少一个 L{行号} 引用 + 行号全部在源文件界内。"""
+    """keep 豁免证据(第一层,机器可证):非空 + 至少一个 L{行号} 引用 +
+    行号全部在源文件界内。"""
     if not text or not isinstance(text, str):
         return False
     refs = [int(m) for m in LINE_REF.findall(text)]
@@ -116,7 +117,48 @@ def evidence_ok(text, n_lines):
     return all(1 <= r <= max(n_lines, 1) for r in refs)
 
 
-def check_identity(man, n_lines):
+# 编号语义承载 token(R35/Phase 3 evidence-soundness 第二层):被引用行必须
+# 真的像"能证明局部编号"的行——题号式(26. / 一、)、结构性(模块/任选/
+# 考点/汇编/针对训练/A 组…)。纯 prose 行(OCR 错位、答案复述等)不算证据。
+NUMBERING_TOKEN = re.compile(
+    r"\d{1,3}\s*[.、．]"
+    r"|[一二三四五六七八九十]{1,3}\s*[、．]"
+    r"|模块|任选|考点|考向|专题|针对训练|汇编|部分"
+    r"|[A-ZＡ-Ｚ]\s*[组組]")
+
+
+def evidence_semantic_reason(unit, lines, n_lines):
+    """第二层证据语义检查(Phase 3):被引用行是否存在编号语义、题号是否
+    与本单元相关。返回 None=通过 / str=复核原因。
+
+    边界诚实性:本检查只做**机器可证**的部分——引用行必须承载编号语义;
+    行首题号若与本单元(印刷号∪canonical)完全无关,则不构成证据。
+    结构性分节标题行(SECTION_RE 命中)豁免题号相关性检查:标题首的数字是
+    分节序号而非题号(如"考点3 …"块内题印 1-7)。语义深度(该行是否真的
+    证明局部编号体系)机器无法判定 → 调用方保持 PENDING_REVIEW 通道。
+    """
+    ev = unit.get("basis_evidence")
+    refs = [int(m) for m in LINE_REF.findall(ev)] if ev else []
+    cited = [lines[r - 1] for r in refs if 1 <= r <= len(lines)]
+    if not cited:
+        return "无有效引用行"
+    for ln in cited:
+        s = ln.strip()
+        if SECTION_RE.match(s):
+            return None  # 结构性标题行,编号语义由分节结构承载
+        if not NUMBERING_TOKEN.search(s):
+            return f"证据行无编号语义: L?{s[:30]}"
+        m = re.match(r"^\s*(\d{1,3})\s*[.、．]", s)
+        if m:
+            nums = {int(x) for x in (unit.get("question_numbers") or [])}
+            nums |= {int(x) for x in (unit.get("printed_number") or [])
+                     if isinstance(x, (int, str)) and str(x).isdigit()}
+            if int(m.group(1)) not in nums:
+                return f"证据行行首题号与本单元无关: L?{s[:30]}"
+    return None
+
+
+def check_identity(man, n_lines, lines=None):
     """验证已建立的身份语义事实。返回 (fail_issues, review_notes)。
 
     - 仅对 identity_version >= 2 生效(v1 语义由 QC 旧代码路径保留)。
@@ -171,10 +213,17 @@ def check_identity(man, n_lines):
             fails.append(f"C13 canonical身份冲突(跨分节重号含多个非 keep): "
                          f"题号 {n} → {ids}")
             continue
-        bad = [u.get("unit_id") for u, _ in own
-               if (u.get("basis") or "") == "keep"
-               and not evidence_ok(u.get("basis_evidence"), n_lines)]
+        bad = []
+        for u, _ in own:
+            if (u.get("basis") or "") != "keep":
+                continue
+            if not evidence_ok(u.get("basis_evidence"), n_lines):
+                bad.append(u.get("unit_id"))
+            elif lines is not None:
+                reason = evidence_semantic_reason(u, lines, n_lines)
+                if reason:
+                    bad.append(f"{u.get('unit_id')}({reason})")
         if bad:
-            reviews.append(f"C13 keep 依据不足(证据缺失或行号越界,需人工复核): "
-                           f"题号 {n} → {bad}")
+            reviews.append(f"C13 keep 依据不足(证据缺失/越界/无编号语义,"
+                           f"需人工复核): 题号 {n} → {bad}")
     return fails, reviews

@@ -264,3 +264,46 @@ schema:`identity_version:2` + 顶层 `sections[{id,title,ordinal,start_line,end_
 - **v1 存量语义保留**:无 `identity_version` 的历史产物(pilot 16 份、归档)仍走 R31 scoped 旧路径,该路径对 BUG-22 回归无守卫(BUG-23 语义仅 v2 生效)。batch-C 已全部回填 v2;pilot 回填列为后续任务。
 - unverified 402 单元(27.1%)printed 缺证据:多为综合题(多题号单元,无单一印刷号)与题干首行非题号的单元;按设计显式标 unknown,不猜。
 - `basis_evidence` 的行号存在性可机器验证,**语义充分性**(证据是否真的证明局部编号)仍需人工/Phase 3 对抗语料覆盖——PENDING_REVIEW 通道就是为此存在。
+
+---
+
+## 10. R35 / Phase 3:Evidence Soundness(对抗语料)
+
+第五轮审查裁定:Phase 3 不继续堆规则,攻击"PASS 为什么成立";裁决语义升级为——**PASS = 机器能够证明,FAIL = 机器能够证伪,PENDING_REVIEW = 机器无法证明也无法证伪**。
+
+### 10.1 第二层证据语义检查(机器可证的增量,不越界宣称)
+
+`question_identity.evidence_semantic_reason()`:keep 豁免引用的行不再只要求"存在且界内",还必须——
+
+1. **承载编号语义**:题号式(`26.`/`一、`)、结构性(模块/任选/考点/汇编/针对训练/X 组…)、或为分节标题行(SECTION_RE 命中,编号语义由分节结构承载);纯 prose/OCR 噪声行 → PENDING_REVIEW;
+2. **题号相关性**:非标题引用行的行首题号若与本单元(印刷号 ∪ canonical)完全无关(如 keep 单元引用"26.【答案】"行)→ PENDING_REVIEW。
+
+诚实边界:该检查把"引用存在"升级为"引用内容承载编号语义且题号相关",但**仍不宣称语义证明**——"该行是否真的表明本块使用独立 1-3 编号体系"机器无法判定,保留 PENDING_REVIEW。真实数据复验:batch-C 50 份第二层检查 **0 新增 review**(全部既有 keep 证据确实引用分节标题行)。
+
+### 10.2 对抗语料(`tests/test_identity_adversarial_corpus.py`,16/16)
+
+| # | 攻击面 | 期望 | 结果 |
+|---|---|---|---|
+| c01 | 正常全局编号 baseline | 无问题 | ✅ |
+| c02 | 合法独立模块(keep+标题证据) | PASS | ✅ |
+| c03 | 非法跨 section 重号(BUG-22 原型) | FAIL | ✅ |
+| c04 | 同 section 重号(keep 不得成万能 bypass) | FAIL | ✅ |
+| c05 | 同名 section occurrence 消歧 | PASS | ✅ |
+| c06 | section 缺失 | PENDING_REVIEW | ✅ |
+| c07/08 | evidence 越界 / 缺失 | PENDING_REVIEW | ✅ |
+| **c09** | **evidence 行存在但无编号语义(核心攻击)** | PENDING_REVIEW | ✅ |
+| **c10** | **evidence 指向题号无关行(核心攻击)** | PENDING_REVIEW | ✅ |
+| c11 | OCR 行号正确但内容错 | PENDING_REVIEW | ✅ |
+| c12 | printed 无证据保持 unknown | 不猜测 | ✅ |
+| c13 | duplicate unit_id 与身份解耦 | 无碰撞 | ✅ |
+| c14 | section 顺序变化重派 | ordinal 确定性 | ✅ |
+| c15 | locator 漂移(源截断/span 越界) | FAIL | ✅ |
+| c16 | **回填重跑幂等(真实 batch-C)** | 字节一致 | ✅ |
+
+**变异验证**:短路 `evidence_semantic_reason` → 恰好 c09/c10/c11 三条核心攻击用例失败 → 回退。套件 **80 passed + 1 xfailed**。
+
+### 10.3 Phase 3 残留(仍不宣称完成的部分)
+
+- 证据**语义真值**("该行确实证明局部编号体系")本质上需要人工复核或更强的语义判定,PENDING_REVIEW 是显式出口而非缺陷;
+- c11 的 OCR 噪声与 c09 同机制拦截,更细粒度的 OCR 内容纠错不属 identity 层职责(归 OCR 质检);
+- 三态裁决模型(PASS/FAIL/PENDING_REVIEW)经本轮验证适用于 identity 层,向其它 preprocessing 检查推广属后续决策,不在本轮扩大范围。

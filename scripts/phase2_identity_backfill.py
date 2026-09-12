@@ -95,7 +95,7 @@ def backfill_file(md_path, mig_by_file, apply=False):
         prov[u.get("printed_provenance")] += 1
         basis_cnt[u.get("basis")] += 1
 
-    fails, reviews = qi.check_identity(man, len(lines))
+    fails, reviews = qi.check_identity(man, len(lines), lines)
     entry = {"file": str(md_path), "units": len(man["units"]),
              "sections": len(man["sections"]),
              "basis": dict(basis_cnt), "printed_provenance": dict(prov),
