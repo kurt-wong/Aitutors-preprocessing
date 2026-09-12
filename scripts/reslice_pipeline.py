@@ -22,6 +22,7 @@ r"""LLM 重切流水线（试点版）。
 """
 import argparse
 import json
+import os
 import re
 import sys
 import time
@@ -32,13 +33,26 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from prereview_check import parse_answer_tables, parse_range_answers, normalize_qnum  # noqa: E402
 
-ROOT = Path(r"D:\Project\Papers")
+# ROOT 不再硬编码开发机绝对路径(H-01):RESLICE_ROOT 环境变量可覆盖,
+# 默认取本仓库根(scripts/ 的上一级)——任何 checkout 在任意机器上都成立。
+ROOT = Path(os.environ.get("RESLICE_ROOT") or Path(__file__).resolve().parents[1])
 CFG_PATH = ROOT / "data/.llm_config"   # 2026-09-10 自 finetune 归档时移出
 OUT_ROOT = ROOT / "Ocr-markdown/resliced-pilot"
 SRC_ROOT = ROOT / "Ocr-markdown"
 
+DEFAULT_MODEL = "mimo-x-pro-preview"   # 仅产物元数据兜底标签;真实调用以配置为准
+
 
 def load_cfg():
+    """读 LLM 配置(惰性:只在真正调 LLM 时执行,H-01)。
+
+    配置缺失必须在调用点显式失败——import 期不读配置,
+    确定性路径(渲染/校验/QC/fix 链)不依赖私有配置文件。
+    """
+    if not CFG_PATH.exists():
+        raise FileNotFoundError(
+            f"LLM 配置缺失: {CFG_PATH}。只有 LLM 调用需要该文件;"
+            "渲染/校验/QC 等确定性路径不需要。")
     cfg = {}
     for line in CFG_PATH.read_text(encoding="utf-8").splitlines():
         if "=" in line:
@@ -47,14 +61,21 @@ def load_cfg():
     return cfg
 
 
-CFG = load_cfg()
+def model_tag():
+    """产物元数据里的模型名。元数据标签非机密、非功能性:配置缺失时用默认名。
+    真正的 LLM 调用(call_llm)不走此函数,缺配置仍显式失败。"""
+    try:
+        return load_cfg().get("model", DEFAULT_MODEL)
+    except FileNotFoundError:
+        return DEFAULT_MODEL
 
 # （v2.1：call_llm 直接返回 usage，为并发执行消除共享全局状态）
 
 
 def call_llm(prompt, max_tokens=50000, temperature=0.1, retries=4):
+    cfg = load_cfg()   # 惰性:配置缺失在此显式抛 FileNotFoundError(H-01)
     body = json.dumps({
-        "model": CFG["model"],
+        "model": cfg["model"],
         "messages": [{"role": "user", "content": prompt}],
         "max_tokens": max_tokens,
         "temperature": temperature,
@@ -63,10 +84,10 @@ def call_llm(prompt, max_tokens=50000, temperature=0.1, retries=4):
     for attempt in range(retries + 1):
         try:
             req = urllib.request.Request(
-                CFG["base_url"].rstrip("/") + "/chat/completions",
+                cfg["base_url"].rstrip("/") + "/chat/completions",
                 data=body,
                 headers={"Content-Type": "application/json",
-                         "Authorization": f"Bearer {CFG['api_key']}"},
+                         "Authorization": f"Bearer {cfg['api_key']}"},
             )
             with urllib.request.urlopen(req, timeout=600) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
@@ -310,7 +331,7 @@ def span_text(lines, rg):
     return "\n".join(lines[rg[0] - 1: rg[1]])
 
 
-def compile_slices(lines, man, src_name, src_path):
+def compile_slices(lines, man, src_name, src_path, model=DEFAULT_MODEL):
     """确定性编译：行区间 → 切片 md（仅供人工查看的展示视图）。
 
     原则：标注本身绝不改写/生成题目内容。切片里出现的一切正文都来自源行区间
@@ -374,13 +395,13 @@ def compile_slices(lines, man, src_name, src_path):
             out.append(exp)
             out.append("“详解区结束”")
         slices.append("\n".join(out))
-    header = (f"<!-- resliced by {CFG['model']} | source: {src_name} | 展示视图，非批注正文 -->\n")
+    header = (f"<!-- resliced by {model} | source: {src_name} | 展示视图，非批注正文 -->\n")
     return header + "\n\n".join(slices) + "\n", {k: v for k, v in
                                                  {n: (tbl_ans.get(n) or rng_ans.get(n))
                                                   for n in range(1, 1000)}.items() if v}
 
 
-def compile_anchor(lines, man, src_name, src_path):
+def compile_anchor(lines, man, src_name, src_path, model=DEFAULT_MODEL):
     """锚点批注版：源 md 原文逐行不动，只在对应位置插入 META 注释锚点。
 
     这是批注的本质产物——不改写、不生成任何内容，锚点即切分元数据。
@@ -432,7 +453,7 @@ def compile_anchor(lines, man, src_name, src_path):
             reg(rg, f"<!-- META:{t}:start:{n} -->", f"<!-- META:{t}:end:{n} -->", t)
 
     out = ["<!-- META:annotation:start -->",
-           f"<!-- META:doc:source={src_name}, model={CFG['model']}, prompt=reslice-pilot-v2.1 -->",
+           f"<!-- META:doc:source={src_name}, model={model}, prompt=reslice-pilot-v2.1 -->",
            "<!-- META:annotation:end -->"]
     for i, ln in enumerate(lines, 1):
         # 开锚点：unit 先开（外层包络先行）；闭锚点：角色先闭、unit 后关，
@@ -447,17 +468,18 @@ def compile_anchor(lines, man, src_name, src_path):
     return "\n".join(out) + "\n"
 
 
-def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path):
+def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path,
+                  model=DEFAULT_MODEL):
     """三产出：① manifest JSON（无正文）② 锚点批注版源 md（本质产物）
     ③ 切片 md（人工查看的展示视图）。"""
     out_dir.mkdir(parents=True, exist_ok=True)
-    anchor = compile_anchor(lines, man, src_name, src_path)
+    anchor = compile_anchor(lines, man, src_name, src_path, model=model)
     (out_dir / f"{stem}.annotated.md").write_text(anchor, encoding="utf-8")
-    md, _ = compile_slices(lines, man, src_name, src_path)
+    md, _ = compile_slices(lines, man, src_name, src_path, model=model)
     (out_dir / f"{stem}.md").write_text(md, encoding="utf-8")
     manifest = {
         "source_file": str(src_path),
-        "model": CFG["model"],
+        "model": model,
         "annotation_meta": {"prompt_version": "reslice-pilot-v2.1",
                             "validation_issues": issues,
                             "warnings": summary.get("warnings", [])},
@@ -521,7 +543,7 @@ def process_file(src_path: Path, log):
 
     rel = rel_out(src_path, SRC_ROOT)
     write_outputs(OUT_ROOT / rel.parent, src_path.stem, lines, man,
-                  issues, summary, src_path.name, src_path)
+                  issues, summary, src_path.name, src_path, model=model_tag())
     return {"file": str(src_path), "issues": issues, **summary,
             "prompt_tokens": usage.get("prompt_tokens"),
             "completion_tokens": usage.get("completion_tokens"),
@@ -559,7 +581,8 @@ def main():
             write_outputs(mf.parent, mf.stem.replace(".manifest", ""), lines,
                           {"units": man_full["units"]},
                           meta.get("validation_issues", []),
-                          {"warnings": meta.get("warnings", [])}, src.name, src)
+                          {"warnings": meta.get("warnings", [])}, src.name, src,
+                          model=man_full.get("model", DEFAULT_MODEL))
             n += 1
             print(f"[recompile] {mf.stem.replace('.manifest', '')}")
         print(f"===== recompile 完成：{n} 份 =====")

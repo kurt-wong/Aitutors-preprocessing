@@ -47,6 +47,13 @@
 - **⚠ R14 对抗性审查修正（2026-09-11 10:56）**：审查发现 **TABLE 修复有缺陷**——`line.replace("\\n","<br>")` 未保护 `$` 岛，拆坏数学命令 `\nearrow`（67 处确证，在 `$ \nearrow` 岛内）；且"命令 vs 换行残留"无法可靠自动区分（叠加货币 `$`）。**table 376 已整体回滚**（审计还原，验证 table 全=before / space 全=after）。**space 456 经状态机独立验证（8/8 用例 + 全 record 自洽）正确，保留**。表格 `\n` 换行残留并入待人工。**当前生效：space 456；table / BLOCK / COMPLEX 留档**。
 - **⚠ R15 第二轮审查修正（2026-09-11 11:28）**：进一步发现 space 亦非零误改——`$` 错乱（货币/OCR 孤立 `$`）与真岛交错时状态机误改岛内 `\quad`（C1 反例 `costs $5 then $a \quad b$` 确证）。块感知检测：31288 处替换中**3 处误改**（display 块内孤立 `$` 翻转），已**精确回滚，space 达零误改（保留 453）**。教训：`$`计数岛判定在 `$`错乱时必失效；改进方向=修复前跳过 `$` 错乱行。**当前生效：space 453 零误改；table / BLOCK / COMPLEX 留档**。
 
+### BUG-21 · `--file`/`--pilot` 调试跑覆盖批量账目 JSON　🟡（工具/记账）
+- **状态**：🟠 Open（2026-09-12 R27 登记）
+- **现象**：`reslice_pipeline.py --file <src> --out <dir>` 的 `--out` 只重定向**产物**目录；结果账目恒写 `data/reslice_pilot_result.json`（`main()` 629 行，非 batch 模式无条件走该路径）→ 一次单文件调试跑把 16 份试点账目覆盖成 1 条。R27 真 LLM 冒烟实际触发，靠 `git checkout` 恢复（建仓第 3 天即回本）。
+- **影响**：账目丢失（可恢复，git 已追踪）；若发生在未追踪时期即不可逆。全量/批量跑不受影响（batch 模式走独立 `reslice_{tag}_result.json`）。
+- **修复方向（未做）**：`--out` 存在时账目跟随输出目录写 `<out>/_result.json`；或 `--file` 模式不写账目。5 行级改动，待用户拍板后连测试一起提交。
+- **教训**：调试入口与生产入口共享写路径 = 定时炸弹；"输出隔离"必须覆盖**全部写路径**（产物+账目+日志），R23 给 fixer 加 `--out/--log` 时漏了 pipeline 自身。
+
 ---
 
 ## 二、已修复 / 已规避（Fixed / Mitigated）
@@ -169,3 +176,13 @@
 - **历史数据影响（如实记录）**：469 被碰文件 + BUG-09 回退 88 文件（同 100% CRLF 嫌疑）。**下游影响实测 = 0**（所有工具链用 Python 文本读=universal newlines，splitlines 行内容逐行一致，1035/1035 验证）；损害面=审计完整性（字节层被改，无字节级快照无法精确恢复）。嫌疑分桶：目录未碰对照 ≥90% LF 仅 2 个（历史卷）、50–90% 205、<50% 260。**未做概率性恢复**（目录先验反向恢复可能制造新的不一致——避免二次伤害）；若必须恢复：从原始 PDF 重转或对高置信目录按用户指令执行。
 - **教训**：Windows 下任何"保留编辑"（读-改-写）必须 `newline=""`；审计叙事必须涵盖**文件级副作用**（EOL/BOM/末行换行），只数"改动行数"会漏；`write_text` 便利性是陷阱。
 - **用户决策（2026-09-11 · R17）**：暂不恢复；后续有空时用 LLM 扫描嫌疑文件、结合原始 PDF 判断能否补全原行尾。挂起为待办。
+
+### BUG-20 · 模块 import 期硬依赖开发机私有配置 → CI collection 全灭　🔴（工程/CI）
+- **状态**：✅ 修复（2026-09-12 R27）
+- **发现**：ChatGPT 第二轮对抗审查（H-01），证据为 GitHub Actions 真实 Run（head `8d2c3f4`，conclusion=failure，pytest exit 4，0 用例执行）。
+- **根因**：`reslice_pipeline.py` 顶部 `ROOT = Path(r"D:\Project\Papers")`（开发机绝对路径硬编码）+ `CFG = load_cfg()` 在 **import 期**读 `data/.llm_config`（gitignored，CI runner 上不存在）→ `FileNotFoundError` → conftest import 失败 → collection 阶段全灭，27 用例 0 执行。
+- **本地等价复现**：沙箱禁改生产配置文件，改用 read_text 定向注入 FileNotFoundError 模拟缺文件 → 同一调用栈（conftest:18 → reslice_pipeline:50 → load_cfg:43），exit 4，与 CI 日志逐行吻合。
+- **修复**：① `ROOT` 改为 `RESLICE_ROOT` 环境变量可覆盖、默认取仓库相对路径（`Path(__file__).parents[1]`）；② 配置**惰性加载**——`CFG = load_cfg()` 删除，`call_llm` 内调用点加载，缺配置**显式抛** `FileNotFoundError`（拒绝吞异常式假修复，见 mutation M2）；③ 确定性渲染路径（`compile_anchor`/`compile_slices`/`write_outputs`）的模型名改为参数 `model=DEFAULT_MODEL`，不再触碰配置文件；`model_tag()` 仅供产物元数据兜底。
+- **回归测试**：`tests/test_no_config_import.py` 3 用例——子进程 `RESLICE_ROOT` 指向空目录（配置**真实**不存在，与 CI 同构，非 monkeypatch）：import 成功 / `call_llm` 显式失败 / `write_outputs` 离线三产出齐全。
+- **mutation 验证**（审查要求"破坏生产代码→测试必须失败"）：M1 回退 import 期加载 → 3 用例全 FAIL ✅；M2 吞异常假修复 → fails-loudly 用例 FAIL ✅；M3 `clamp_intervals` 空操作 → 8 用例 FAIL ✅。全部回退后 30 passed + 1 xfailed。
+- **教训**：① "本地全绿"≠"CI 可执行"——本地开发机恰好满足隐式依赖，掩盖了 import 期副作用；可测试性重构必须连**环境依赖**一起进测试边界。② 声称"CI 就绪"前必须看真实 Run 结果，不能只看 workflow 文件存在。

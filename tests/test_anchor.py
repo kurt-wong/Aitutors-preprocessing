@@ -2,6 +2,8 @@
 """锚点顺序/嵌套/分离契约(固化 R24-A3 + R24-B1)。"""
 import re
 
+import pytest
+
 import reslice_pipeline as rp
 
 
@@ -12,13 +14,23 @@ def _anchor_order(man, n_lines=600):
             re.finditer(r"<!-- META:answer:(start|end):1 -->", out)]
 
 
+@pytest.mark.xfail(
+    strict=True,
+    reason="已知缺陷形状(R24-B2/T-02):compile_anchor 不自防御倒置区间,"
+           "生产路径靠 clamp_intervals 前置归一化。此测试语义是"
+           "'当前仍然是错的'——若哪天 compile_anchor 内建兜底,strict xfail 会失败,"
+           "提醒把本测试翻转为正向断言。")
 def test_inverted_produces_end_before_start():
-    """R24-A3 实测复现:未兜底的倒置区间,end 先于 start 输出(协议破坏)。"""
+    """R24-A3 实测复现:未兜底的倒置区间,end 先于 start 输出(协议破坏)。
+
+    不作为正向 PASS 条件(ChatGPT 二轮 T-02):这是负向回归文档,
+    锁的是"缺陷仍在"而不是"缺陷是对的"。
+    """
     man = {"units": [{"unit_id": "Q1", "unit_type": "standalone_question",
                       "question_numbers": [1], "stem_lines": [10, 20],
                       "answer_lines": [500, 400]}]}
     order = _anchor_order(man)
-    assert order == ["end", "start"]          # 这是"bug 形状"的锁定测试
+    assert order == ["start", "end"]   # 断言正确形状;当前实现给不出 → xfail
 
 
 def test_clamped_inverted_produces_start_before_end():
