@@ -38,8 +38,18 @@
 5. **实现存在 ≠ 实现受保护**:新增防护逻辑若无测试覆盖,视为未完成(R38 A5:`--refresh-v2` FACTS 锚点守卫零覆盖,后补 3 条含变异注入)。
 6. **BUG / Known Boundary / Limitation 三概念分账**:correctness 缺陷可 CLOSED;证据表明"当前确定性规则无法在保 precision 下提 recall"的为 ACCEPTED KNOWN BOUNDARY,不是 BUG,也不得并入任何 BUG 的 closed 结论里(R38 裁定)。
 
+## 规则 4 · 恢复/成功类声明三要素(R46 用户裁定,强制)
+
+**凡报告中出现「恢复 / 成功 / 完整 / 全部回收 / 零缺失」类措辞,必须同时给出 numerator / denominator / proof method;禁止只报分子。**
+
+- **正确范式**:「printed number recovered for 23/34 units; remaining 11 units preserve unknown provenance」——分子、分母、证明方法(逐单元回源解析)三要素齐全。
+- **禁写**:「34 units recovered」「全部恢复」「零缺失」这类隐含全称的成功声明(与规则 1 的全称命题规则叠加生效:恢复类声明既受穷举验证约束,也受三要素披露约束)。
+- **核心纪律**:数据恢复成功 ≠ 数据完整恢复;unknown provenance 是如实状态,不是失败,更不得为提高 recovered 数量牺牲 provenance(printed 硬化方向:unknown > guessed)。
+- **证据出处**:R46 审查发现 c09-01 printed 声明措辞过宽——实测 34 单元中 23 recovered、11 printed=None(题干 `1\.` 转义点家族),台账原措辞「输出 printed(1-9)」隐含全称,经审查限定为「已回收子集」;用户裁定将其规则化为本条。
+
 ---
 
 ## 变更记录
 
 - 2026-09-13:初版(R38 用户裁定:规则 1/2 建立,规则 3 汇总既有条款)。
+- 2026-09-13:新增规则 4(R46 用户裁定:恢复/成功类声明三要素,出处 c09-01 printed 23/34 事件)。

@@ -1005,3 +1005,32 @@ c12-01 转义点行 **L266/L274 逐行复现**(与台账锚点同位)、c12-02 *
 ### R46 补记:变异自审的爆炸半径
 
 M1(BUG-29 复发变异)期间,被变异的代码把**真实默认报告** `data/phase2_identity_backfill_report.json` 冲掉(777 行→6 行)——变异测试本身测试失败(符合预期),但污染已发生;`git checkout` 恢复后 sha256 核验与 HEAD 一致,工作树净。**教训入册:对"写死工件路径"类缺陷做复发变异,变异体会直接攻击真实工件——今后此类变异必须先备份目标工件或在副本上做**(BUG-28/29 家族的变异测试同理)。
+
+---
+
+## R47(2026-09-13):用户对 R31–R46 审查链的架构级复核裁定落盘(纯记账轮,零生产代码变更)
+
+**输入**:用户基于 R31–R46 审查记录的架构级复核(声明为证据链层复核,非独立代码重扫)。裁定与建议原样入库:
+
+### 裁定要点
+
+1. **R46 = 整个审查链中证据等级最高的一轮**;审查方法已从"修复→写测试→证明修复有效"升级为"假设结论可能错误→构造攻击→用独立测量推翻或保留"。**R46 作为 Identity + PAC 阶段结束标志;不建议继续无限增强 preprocessing 规则**。
+2. **组件状态表(用户口径)**:Question Identity v2 🟢 基本冻结 / SectionLocator 🟢 / C13-C14 语义保护 🟢 / migration-backfill 🟢 / PAC 审计框架 🟢 首轮验证通过 / OCR-LLM 真实性验证 🟡 尚未进入 / Resolver 消费 identity 🟡 下一阶段风险 / Resolver→IR 🔴 未审。
+3. **BUG-29 评级 🟡 Medium**(test isolation failure,非业务错误;但若发生在生产 migration 会破坏审计链)。**建议升级为统一 ArtifactWriter Contract**:所有脚本禁止直接 `open("data/foo.json","w")`,必须经 writer 控制 output root / overwrite policy / atomic write / backup——否则 resolver/gate 会重复出现同族缺陷。
+4. **semantic overclaim 纪律(R46 c09-01 事件的规则化)**:报告禁止「全部/完整/零缺失/成功恢复」类措辞,除非同时给出 **denominator / numerator / proof method**(正确范式:"printed number recovered for 23/34 units; remaining 11 units preserve unknown provenance")。**数据恢复成功 ≠ 数据完整恢复**。
+5. **最大剩余风险转移判定**:Identity 层经 BUG-22~29 连续攻击后已稳,剩余最大风险在 `Evidence → Resolver → Question IR` 边界。三个必须保持的边界:**Resolver 只回答"能不能定位"(structural only,禁止 `looks_like_solution` 类语义判断)、Gate 只证明约束、Admission 承接人类不确定性**;PENDING_REVIEW 通道必须保持,**不得为提高 PASS 比例扩展自动规则**(Evidence Soundness 局限:机器只能证明 evidence exists + shape valid,不能证明 evidence means what we think)。
+6. **下一阶段优先级(用户排序)**:① **Gate + Resolver Boundary**(验证 identity v2 → resolver consumer → IR correctness;最优先)→ ② BUG-11/14/15 数据卫生(结构正确但内容错误,直接影响 Question IR)→ ③ basis 值域(**schema validation only**:invalid enum → schema violation,**不得** basis invalid → FAIL,否则改变历史数据裁决)→ ④ printed 正则硬化(**必须保持 unknown > guessed**,不得为 recovered 数量牺牲 provenance)。
+
+### 我方事实核对(真实测试,非转抄)
+
+- **resolver/compiler/gate/admission 在仓库内确认 NOT_BUILT**:`data/pac_track_round1.json` 全 stage 轨迹如实记录;"resolver 只消费 v2"契约已多处固化(`tests/test_recompile_identity.py`、`reslice_qc.py` L210 共用校验、`phase3_pilot_v1_migration.py`);resolver 实体代码不存在(grep 确认)。**推论:用户建议的"下一轮转向 Resolver 消费 v2 的对抗性审查"在开审前必须先定义审查对象**——当前可审的是契约/接口设计与消费约束(pac_track 中已列:消费 v2 仅经回填、消费 QC verdict 而非产物存在、answer 区编号可与题干区不一致等),实现级对抗审查须待 resolver 实现存在。此为决策点上报,不擅选路线。
+- **一处口径澄清(不改变裁定)**:用户组件表"OCR/LLM 真实性验证 🟡 尚未进入"——PAC 第一轮已有 22 份真实 OCR+LLM 链证据(293 页 OCR 全轨迹、57.7 万 tokens、漂移量化 0/22 字节一致、R46 独立重算复证);"尚未进入"的部分准确说是 **Resolver/IR 消费层行为与 D-02 环境可移植性**,以及扩样面(C3 DOCX/C4 图像 BLOCKED)。台账以本口径为准。
+
+### 落盘动作(本轮执行)
+
+1. `review_protocol.md` 新增**规则 4(恢复/成功类声明三要素)**:出处 = R46 用户裁定 + c09-01 printed 23/34 事件;
+2. `question_identity_design.md` §10.7 追加 R47 修订:basis 值域实施方向收窄为 **schema validation only(invalid → schema violation,不进 FAIL 语义)**,仍待正式批准;
+3. ArtifactWriter Contract 登记为 **治理候选**,并入 D-02 / BUG-21/28/29 家族同一扫描面(实施待批准);
+4. `status.md` 同步:阶段标记切换(PAC 第一轮含 R46 审查结案;下一攻击目标 = Resolver 消费边界)。
+
+**结果**:R31–R46 审查链获用户架构级验收;preprocessing Identity Layer 判为 Frozen Candidate;下一轮工作对象待用户在「Resolver 契约纸面审 / Resolver 实现后审 / 先 BUG-11/14/15」间裁定。本轮零生产代码变更,套件状态不变(130 passed + 1 xfailed)。

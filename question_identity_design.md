@@ -336,3 +336,4 @@ schema:`identity_version:2` + 顶层 `sections[{id,title,ordinal,start_line,end_
 - **用户决策矩阵(原样登记,实施须正式批准)**:basis 是否 closed-set → **是**;是否需要机器校验 → **是**;是否现在直接改 → **否**;是否立项 → **是**;是否需重新定义 Identity 语义 → **不需要**;是否应增加新的自动 PASS/FAIL 逻辑 → **不应该**;是否需要 migration → 视非法历史值情况决定。
 - **裁定理由**:值域校验是数据契约完整性检查,不是新的身份判定规则;但它会把 `invalid basis` 从"可能继续流通"变成"明确 FAIL/PENDING_REVIEW",因此必须经正式批准,**不允许在当前 Identity 冻结基线中偷偷加入**。前置条件:若 Frozen Spec 未明确封闭域,先修 Spec 再决定代码行为。
 - **若批准实施,测试覆盖最低要求(用户指定)**:valid / invalid / missing / null / empty string / case variation / whitespace variation / unknown future value,尤其 `"explicit "`、`"Explicit"`、`"EXPLICIT"` 是否允许必须由契约明确规定——否则重蹈"文档六值、代码六值、字符串规范未冻结"覆辙。
+- **R47 修订(2026-09-13 用户架构级复核)**:实施方向进一步收窄为 **schema validation only**——非法枚举值 → **schema violation(契约完整性错误)**,**不得**将其转化为新的自动 FAIL 裁决逻辑(否则会改变历史数据裁决语义,违反"QC 只验证已建立的语义事实,不做语义推理"裁定)。仍属候选,实施须正式批准;批准前 Identity 冻结基线不动。
