@@ -242,3 +242,11 @@
 - **回归测试**:`tests/test_recompile_identity.py` 2 用例(合成 v2 卷 → recompile_outputs → 身份头逐字保留 + 单元级字段逐项相等 + 切片字节确定性;QC 仍走 v2 分支)。
 - **mutation 验证**:调用点退回 `{"units": ...}` 传参 → 2 用例全 FAIL;恢复修复 → 全 PASS;真实 batch-C 产物端到端复验:重编译后 identity_version=2、sections=13 保留。
 - **教训**:① 守卫加在被调方(write_outputs)不等于调用方(main)会触发——**守卫的触发条件本身必须有测试**;② "R34 加了守卫"这类历史结论在新攻击面下必须重测,不可引用代替验证。
+
+### BUG-27 · basis 契约词表三处不一致 + 生产值 `explicit` 游离于声明词表外　🟢 CLOSED(契约文档层 / R42 V8 发现)
+- **状态**:🟢 文档勘误完成(R42 对抗性审查发现;identity 代码冻结,零逻辑改动)。
+- **发现**:R42 V8 对 80 份产物做值域审计(契约词表来源 `question_identity.py:22-23`):batch-C 三十五中英语 `Q86-essay` 的 `basis='explicit'` **不在声明词表** {answer_key|shift|keep|printed_as_is|unverified} 内。溯源:`explicit` 是 `fix_bug22_renumber.PLAN` 的合法 mode(逐单元指定,唯一用例 Q86→印刷号 96),回填脚本按设计把 PLAN mode 直写 basis;设计文档统计行(L244)也如实记了 explicit 1——**数据合法,契约词表漏收**。
+- **三处不一致**:① `question_identity.py:23` 声明 5 值(漏 explicit);② 设计文档 L62 声明 `answer_key|running_max|printed_as_is` 3 值(running_max 为 shift 旧名,严重过时);③ 生产数据实际 6 值。
+- **修复**:两处词表统一勘误为 6 值全集 + 勘误注记(纯文档;identity 逻辑零改动,不破冻结)。
+- **已知限制(不掩饰)**:`check_identity` **不校验 basis 值域**——词表当前只存在于文档,无机器强制;未来新值仍可静默进入生产数据。是否加域校验属**新规则**(会改变裁决面),受 Identity 冻结约束,**列为用户决策点,本轮不擅自加**。
+- **教训**:契约词表必须与生产数据的**实际值域**对账(值域审计应是 schema 检查的标准项,存在性检查不够);"字段在"≠"值合法"。

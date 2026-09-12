@@ -59,7 +59,8 @@ SourceOccurrence
 CanonicalLabel
     ├── section_ref
     ├── canonical_number # 当前 manifest/编号体系内的规范编号(int)
-    └── basis            # 推导依据:answer_key | running_max | printed_as_is
+    └── basis            # 推导依据:answer_key | shift | keep | printed_as_is | explicit | unverified
+                         # (R42 BUG-27 勘误:原写 running_max 为 shift 旧名;补 explicit=迁移计划逐单元指定)
 ```
 
 这是 **Preprocessing Interpretation**:它回答的问题是:"在本套编号规则下,这道题的规范编号是什么"。它可以被重新推导、被迁移脚本改写,但每一次改写必须留下 basis 证据(R31 迁移报告即此模式)。

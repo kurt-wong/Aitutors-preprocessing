@@ -20,7 +20,10 @@ manifest identity v2 schema:
   单元: "section"(title,展示元数据) + "section_ref"(-> sections.id)
         "printed_number"(list[str|int]|None,卷面印刷题号,Source Fact)
         "printed_provenance"(source_line|migration_report|unknown)
-        "basis"(answer_key|shift|keep|printed_as_is|unverified)
+        "basis"(answer_key|shift|keep|printed_as_is|explicit|unverified
+                —— R42 BUG-27 词表勘误:补 explicit(迁移计划逐单元指定,
+                fix_bug22_renumber.PLAN 真实用例 Q86-essay;check_identity
+                当前不校验 basis 值域,词表以生产数据+PLAN 为准)
         "basis_evidence"(str)
 """
 import re

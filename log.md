@@ -823,3 +823,29 @@
 - 操作教训:二进制 `git archive | tar` 过 PowerShell 管道损坏(bad header checksum),改走临时 .tar 文件;mutation 恢复误用 `git checkout` 把未提交修复一并还原,当场重施——**变异恢复必须用补丁式还原,checkout 只可用于已提交状态**。
 
 **Gate 结论**:发现并修复 1 个生产路径缺陷(BUG-26)+ 1 个过期证据工件(C-01 已刷新)+ 1 个硬化待办(D-02);A/B(优先级)/C(确定性)/D 主体通过。readiness 三列表更新依据:`data/r41_gate_ac_report.json`、`data/r41_gate_b02_report.json`。套件 108 passed + 1 xfailed。
+
+---
+
+## R42(2026-09-13):对 R41 报告的对抗性审查("audit of audit" 第二轮)
+
+原则:R41 每个结论独立重测;优先攻击我自己的薄弱面(B-02 是模拟非真实 check、A1 只查存在性、A3 漏两语料、fresh checkout 跑的旧 HEAD)。
+
+| # | 被攻击的 R41 结论 | 裁决 | 真实测试 |
+|---|---|---|---|
+| V1 | 套件 108 passed + 1 xfailed | 🟢 | 重跑复现(17.8s) |
+| V2 | CI 绿(head 9240a1c) | 🟢 | `gh run view 34703603339`:conclusion=success,headSha 精确匹配 |
+| V3 | BUG-26 mutation 敏感 | 🟢 重做(补丁式恢复) | 退回 `{"units":...}` → 恰好 2 条新测试 FAIL(邻近 9 条不受影响=耦合不过宽)→ 备份恢复 → 11 passed。上次误用 git checkout 还原未提交修复,本次备份-还原闭环 |
+| V4 | B-02 "0 裁决翻转"(R41 是**模拟**) | 🟢 真实 check 证实 | 65 份生产 v2 落盘剥离身份头副本,跑真实 `qc.check()`:53 PASS→PASS、12 FAIL→FAIL、**0 翻转**,与模拟一致(`data/r42_v4_real_downgrade.json`) |
+| V5 | 修复在 CLI 真实入口有效 | 🟢 | subprocess 跑 `reslice_pipeline.py --recompile --out`:v2 身份头/units/切片字节全保持;**幂等**(两轮一致);v1 文件(三十一中)不崩、保持 v1 |
+| V6 | 重编译确定性(R41 仅抽样) | 🟢 升级为穷举 | 全 80 份 manifest+源重编译 vs 已提交切片:**0 不一致** |
+| V7 | QC 与已提交证据零漂移(R41 漏 test-v21/audit-a5) | 🟢 穷举补齐 | 80 份全跑:裁决分布 pilot 15/1、batch-C 38/12、stress10 5/4、test-v21 1/2、audit-a5 2/0;与三份已提交证据**0 漂移**。**披露补全**:R41 未列 stress10 4 FAIL / test-v21 2 FAIL(测试语料,非交付范围;R41 无假声明但披露不全,现入账) |
+| V8 | A1 schema "零缺陷"(R41 只查存在性) | 🔴 **值域审计抓到 BUG-27** | 契约词表对账:三十五中英语 Q86-essay `basis='explicit'` 游离于声明词表;溯源为 PLAN 合法 mode,契约三处不一致(5值/3值 running_max/实际6值)→ **文档勘误完成**,域校验缺失列为决策点(不破冻结擅自加规则)。A1 存在性本身独立复算:80 份/0 缺陷 🟢 |
+| V9 | C-01 刷新后工件可信 | 🟢 | 重跑 QC → 与已提交 json **sha256 逐字节一致**(确定性可复现);R25 出处 `85784a9` git 历史复验 |
+| V10 | fresh checkout 全绿(R41 跑的是旧 HEAD) | 🟢 新 HEAD 重验 | `git archive HEAD`(9240a1c,无 Ocr-markdown):**91 passed / 17 skipped / 1 xfailed**(91=89+2 新测试,算术自洽);17 个 skip **全部**带 corpus 缺席理由(-rs 穷举:5+1+10+1) |
+| V11 | D-02 "10 个脚本硬编码" | 🔴 **计数不准** | 独立重数:**9 个文件(10 处命中**,phase2_adversarial_probe 占 2 处)。status.md 已勘误;log.md 按 append-only 以本条勘误为准 |
+| V12 | B-02 报告工件与结论一致 | 🟢 | `r41_gate_b02_report.json` 复算:rows=65、tally 精确吻合声明 |
+| V13 | B-03 优先级正确(R41 单文件) | 🟢 泛化 | 换 pilot 石景山物理重放:剥 section_ref → PENDING_REVIEW(C14);叠加 C1 issue → FAIL |
+| 补 | BUG-26 修复有无同类盲区(其他顶层键被 recompile 丢?) | 🟢 | 80 份顶层键型穷举:仅 v1 四键/v2 六键两种形态,write_outputs 输出与之平价——无隐藏键丢失面 |
+| 补 | B-04 "issues 非空仍写产物" | 🟡 证据类型=代码位置(write_outputs 无条件调用),非运行时测试(LLM 路径不可离线触发)——如实标注,不冒充运行证据 |
+
+**发现汇总**:2 个新问题——**BUG-27**(契约词表不一致+explicit 游离,文档层,已勘误)与 **D-02 计数不准**(9 非 10,已勘误);1 项披露补全(stress10/test-v21 裁决入账);R41 其余全部结论经独立重测维持,其中 V4/V6/V7/V10 由抽样/模拟/旧基线**升级为穷举/真实 check/新 HEAD**。套件 108 passed + 1 xfailed。
