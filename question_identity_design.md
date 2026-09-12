@@ -307,3 +307,8 @@ schema:`identity_version:2` + 顶层 `sections[{id,title,ordinal,start_line,end_
 - 证据**语义真值**("该行确实证明局部编号体系")本质上需要人工复核或更强的语义判定,PENDING_REVIEW 是显式出口而非缺陷;
 - c11 的 OCR 噪声与 c09 同机制拦截,更细粒度的 OCR 内容纠错不属 identity 层职责(归 OCR 质检);
 - 三态裁决模型(PASS/FAIL/PENDING_REVIEW)经本轮验证适用于 identity 层,向其它 preprocessing 检查推广属后续决策,不在本轮扩大范围。
+
+### 10.4 R36 追加:pilot v1→v2 迁移清尾 + BUG-24(冻结期唯一动土)
+
+- 第五轮审查裁定 Identity 层冻结后,按裁定优先级执行 pilot 16 份 v1→v2 确定性迁移(`phase3_pilot_v1_migration.py`,零 LLM;迁移后四条工具级自检 + 违规回滚,**未新增 QC 规则**):15/16 applied、裁决集与 v1 基线零翻转、字节级幂等 15/15、事实快照 389 单元(`data/phase3_pilot_v1_facts.json`)。
+- **BUG-24(OPEN,待用户裁决)**:`_heading_rows` 的 `答案|解析|评分` 整行子串排除器误杀含 note 的真实分节标题(三十一中化学"二、填空题…注意:…答案才计分"),SectionLocator 假阴性 → 同分节重号误判。收窄修复实测牵动 batch-C ≥3 份已提交 v2 产物的 section 划分与 R34/R35 证据链,按冻结令作为独立受审变更上报,不在本轮擅动;且修复后该卷仍需 keep 三方裁决(两个非 keep 跨节重号),不得自动豁免。

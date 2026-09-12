@@ -1,0 +1,109 @@
+{
+ "applied": true,
+ "files": [
+  {
+   "file": "Ocr-markdown/resliced-pilot/高一/化学/2021北京三十一中高一（下）期中化学（教师版）(1).md",
+   "pre_identity_version": 1,
+   "units": 56,
+   "sections": 5,
+   "basis": {
+    "printed_as_is": 34,
+    "unverified": 22
+   },
+   "printed_provenance": {
+    "source_line": 34,
+    "unknown": 22
+   },
+   "fail_issues": [
+    "C13 同分节重复归属: 题号 1 → ['Q1', 'F1']",
+    "C13 同分节重复归属: 题号 2 → ['Q2', 'F2']",
+    "C13 同分节重复归属: 题号 3 → ['Q3', 'F3']",
+    "C13 同分节重复归属: 题号 4 → ['Q4', 'F4']",
+    "C13 同分节重复归属: 题号 5 → ['Q5', 'F5']",
+    "C13 同分节重复归属: 题号 6 → ['Q6', 'F6']",
+    "C13 同分节重复归属: 题号 7 → ['Q7', 'F7']",
+    "C13 同分节重复归属: 题号 8 → ['Q8', 'F8']",
+    "C13 同分节重复归属: 题号 9 → ['Q9', 'F9']",
+    "C13 同分节重复归属: 题号 10 → ['Q10', 'F10']",
+    "C13 同分节重复归属: 题号 11 → ['Q11', 'F11']"
+   ],
+   "review_notes": [],
+   "applied": false
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高一/历史/2021北京四十三中高一（上）12月月考历史（教师版）(1).md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高一/地理/2019北京人大附中高一（上）期中地理含答案.md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高一/政治/2018北京师大附中高一（下）期中政治含答案(1).md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高一/数学/2021北京顺义一中高一（下）期中数学（教师版）(1).md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高一/生物/2018北京市西城区高一（下）期末生物含答案(1).md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高一/英语/2020北京东城高一（上）期末英语（教师版）.md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高一/语文/2020北京平谷五中高一（下）4月月考语文含答案(1).md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高一/语文/2020北京石景山高一（上）期末语文含答案.md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高三/化学/2019北京交大附中高三（上）12月月考化学含答案(1).md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高三/数学/2021北京八十中高三考前练习数学（教师版）(1).md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高三/物理/2021北京石景山高三一模物理（教师版）(1).md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高三/生物/2020北京西城高三（上）期末生物含答案(1).md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高三/英语/2021北京丰台高三二模英语（教师版）(1).md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高二/数学/2018北京五十六中高二（下）期中数学（理）（教师版）(1).md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  },
+  {
+   "file": "Ocr-markdown/resliced-pilot/高二/物理/2019北京四中高二（下）期末物理（教师版）(1).md",
+   "pre_identity_version": 2,
+   "skipped": "already_v2"
+  }
+ ]
+}

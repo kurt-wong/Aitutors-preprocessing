@@ -695,3 +695,18 @@
 4. **变异验证**:短路 evidence_semantic_reason → 恰好 c09/c10/c11 三条核心攻击用例失败 → 回退;另仓库级幂等佐证:--apply 重跑后 backfill 报告与已提交版本零差异。
 
 **结果**:Evidence Soundness 第一层机器可证增量落地,语料 16/16;套件 **80 passed + 1 xfailed**;无新增 confirmed BUG(test gap 按审查意见保持为 PENDING_REVIEW 义务而非缺陷)。
+
+## R36 · pilot 16 份 v1→v2 确定性迁移清尾 + BUG-24 发现(2026-09-13)
+
+**输入**:第五轮审查对 R35 的验收——Phase 3 第一阶段 🟢 ACCEPTED,"闭环质量高于 R34";**Identity 层正式冻结**(不再堆规则);裁定下一步优先级 ① 先清 pilot 16 份 v1 回填(生产数据不得并存两套 identity contract)→ ② 全量 rollout 是更高层 system readiness gate,Identity 闭环不能替代 → ③ resolver 必须消费 v2,不得重新发明 identity。验收标准六条冻结:migration success / schema validation / C13+C14 / idempotency / 不产生非法 PASS / 不改变既有正确 identity。
+
+**执行**:
+
+1. **基线盘点**:pilot 16 份全部纯 v1(无 identity_version/sections/basis/printed);源文件 16/16 存在、行号无漂移;v1 legacy QC 基线 = **15 PASS / 1 FAIL**(三十一中化学,C13 重号),留档 `data/phase3_pilot_v1_baseline_qc.json`。
+2. **迁移工具** `scripts/phase3_pilot_v1_migration.py`(零 LLM):复用 batch-C 回填核心(BUG-22 PLAN/迁移报告均不覆盖 pilot → basis 全走题干首行确定性解析 printed_as_is 或 unverified,绝不猜测);**迁移后自检四条**(identity v2 成立 / 内容事实按位置逐单元不变 / printed_provenance=source_line 必须回源成立 / check_identity 无 fail),任一违反即原样回滚该文件——自检是工具级验证,**未新增任何 QC 规则**(守住 Identity 冻结)。
+3. **迁移结果:15/16 applied,0 violations;第 16 份(三十一中化学)被 C13 如实拒写**。迁移后 QC(`data/phase3_pilot_v2_qc.json`)= 15 PASS / 1 FAIL,**与 v1 基线裁决集零翻转**;幂等:字节级 15/15 通过 + --apply 重跑 0 写入;事实快照 `data/phase3_pilot_v1_facts.json`(16 份 / 389 单元,只写一次,防未来漂移锚点)。
+4. **验收测试** `tests/test_pilot_v1_migration.py` 10/10:六条验收逐条固化 + **变异 sanity**——伪造 printed(source_line 但源行解析不出)/ 事实漂移(偷改 canonical)/ 注入同分节 keep 重号,三类破坏全部被 verify_post 拦截。
+
+**BUG-24 发现(本轮最重要的负发现,详见 bugs.md)**:三十一中化学被拒写的真实根因不是数据缺陷——L324 `## 二、 填空题…注意:…答案才计分` 是合法分节标题(填空题独立编号 1-11),`_heading_rows` 的 `答案|解析|评分` 排除器对整行子串匹配,标题尾 note 含"答案"→ 填空题节被误杀 → 11 组同分节重号误判。**裁决无翻转(v1 同 FAIL),无非法 PASS**;但按 R35 冻结令**不擅自修**:收窄排除器实测会改变 batch-C ≥3 份已提交 v2 产物的 section 划分(naive 收窄更会把 135 行【解析】误升分节),牵动 R34/R35 证据链,应作为独立受审变更;且即使节被正确建模,该卷仍是两个非 keep 跨节重号,需三方裁决,不能自动豁免。
+
+**结果**:pilot 迁移 15/16 完成并关闭;唯一残留挂 **BUG-24 OPEN(决策点上报)**;套件 **90 passed + 1 xfailed**;生产数据 v1 残留面从 16 份缩至 1 份(且该份 v1/v2 裁决一致 FAIL,无契约撕裂风险)。

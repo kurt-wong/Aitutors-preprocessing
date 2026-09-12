@@ -99,6 +99,8 @@
 | 🟢 | **BUG-23 C13 Guard Soundness Failure(R33 发现 / R34 修复)** | 回迁突变实测:BUG-22 原始回归形态(跨分节重号)在保留 section 时仅 1/7 被生产 C13 拦截。R34 修复:QuestionIdentity v2 划分语义(非 keep 全卷唯一 + keep 个体豁免须带可回源证据,证据不足 → PENDING_REVIEW);batch-C 50 份确定性回填 v2(0 fail);**复验:回迁突变 7/7 全拦、缺 section 8/8 显式告警**。证据 `data/phase2_adversarial_review_r34.json` |
 | 🟢 | **Phase 2 QuestionIdentity 实施(R34)** | 四项一体落地:basis 字段 + SectionLocator schema(612 locators)+ C13/C14 v2 三态裁决 + 存量确定性回填(50/50,printed provenance:source_line 948 / migration 134 / unknown 402 猜测禁止)。**P2-01~P2-08 全部有真实测试**(`tests/test_question_identity_phase2.py`,64 passed + 1 xfailed);回填后 batch-C QC 38 PASS 零回归。残留:v1 历史产物(pilot)旧语义待回填;basis_evidence 语义充分性待 Phase 3 对抗语料 |
 | 🟢 | **Phase 3 Evidence Soundness(R35)** | 第五轮审查验收 R34(Phase 2 🟢 ACCEPTED / BUG-23 🟢 CLOSED)后执行:第二层证据语义检查(evidence 引用行必须承载编号语义且题号相关,prose/噪声/无关题号 → PENDING_REVIEW,不越界宣称语义真值);真实 batch-C 复验 **0 新增 review**;对抗语料 `test_identity_adversarial_corpus.py` **16/16**(含核心攻击 c09 证据行无编号语义 / c10 证据题号无关 / c11 OCR 内容错 + c16 回填幂等字节一致);变异验证短路语义检查恰被 c09/c10/c11 拦截。套件 **80 passed + 1 xfailed**。残留:证据语义真值走 PENDING_REVIEW 人工通道(按裁定为 obligation 非 BUG) |
+| 🟢 | **pilot v1→v2 迁移清尾(R36)** | 第五轮审查裁定 Identity 层冻结后的收尾:16 份纯 v1 试点卷确定性迁移(`phase3_pilot_v1_migration.py`,零 LLM,迁移后四条自检+违规回滚),**15/16 applied / 0 violations**,迁移后 QC 与 v1 基线**裁决零翻转**(15 PASS/1 FAIL),字节级幂等 15/15,事实快照 389 单元入库;验收测试 10/10 含变异 sanity(伪造 printed/事实漂移/同节 keep 重号全拦)。**残留:三十一中化学被 C13 如实拒写 → 根因为 BUG-24(见下),决策点上报** |
+| 🔴 | **BUG-24 分节标题过滤器误杀(待裁决)** | `_heading_rows` 的 `答案\|解析\|评分` 排除器整行子串匹配,误杀含 note 的真实分节标题(三十一中化学 L324 填空题节)→ SectionLocator 假阴性 → 同分节重号误判。按 R35 冻结令不擅自修:收窄排除器会改变 batch-C ≥3 份已提交 v2 产物的 section 划分(naive 收窄误升 135 行【解析】为分节),需作为独立受审变更重跑回填/QC 全链;且修复后该卷仍需 keep 三方裁决。**待用户决策:修 / 不修 / 何时修** |
 | 🟡 | **Resolver Identity 消费 v2(BUG-22 最后一层)** | preprocessing 侧身份模型已落地(QuestionIdentity v2 + SectionLocator + basis/basis_evidence + 三态裁决);resolver/IR 层消费 v2 模型属下游设计,随 resolver 项目推进 |
 | 🟡 | **第三轮外部审查（R29）** | 评级：🟡 有条件通过代码层 / **🔴 不通过全量生产放行**。CI/工程骨架/fixer/QC 契约已证；剩余风险从"代码会不会坏"转移到"**结构合法但语义切错**"（D1 语义错位区间、D2 跨题污染、D3 composite 复杂组合、D4 orphan 链、D5 真实 OCR 噪声、D6 OCR 服务链零测试、D7 真实 MIMO 准确率未自动化证明）。下一轮攻击方向转换：silent-mis-segmentation。方案见 log.md R29（战术 A：对 batch-C 50 份真实产物跑语义代理检测 C13/C14/C15，零 LLM 成本）→ **R30 已执行，确证 BUG-22** |
 
@@ -108,5 +110,5 @@
 
 - 源 md **3120 份**（corpus_scan 口径，含 1 份 `.restored.md` artifact；真源 ~3119）；其中 3113 可配 PDF。
 - `auto-annotated-v6` 1434 份 = **旧规则批注**（已弃用，仅供历史对照，非当前口径）。
-- `resliced-pilot` 16 份 = 试点（全 PASS）;`Ocr-markdown\reslice-batch-C` 50 份 = batch-C LLM 重切产物（R31 迁移后 QC 38 PASS / 12 FAIL,12 份 FAIL 均为既有 C3/C5/C6/C7/C9 缺陷,**无 C13**）。
+- `resliced-pilot` 16 份 = 试点,**R36 已迁移 identity v2(15/16;第 16 份被 BUG-24 拒写仍 v1,裁决 v1/v2 一致 FAIL)**,QC 15 PASS / 1 FAIL;`Ocr-markdown\reslice-batch-C` 50 份 = batch-C LLM 重切产物（R31 迁移后 QC 38 PASS / 12 FAIL,12 份 FAIL 均为既有 C3/C5/C6/C7/C9 缺陷,**无 C13**）。
 - 页额度 `data\ocr_page_usage.json`：`{date,used}`，每日 20000，午夜重置，API 侧为最终闸门。

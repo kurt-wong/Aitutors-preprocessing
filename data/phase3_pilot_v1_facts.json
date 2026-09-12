@@ -1,0 +1,6768 @@
+{
+ "note": "迁移验证时点的内容事实快照(按位置);迁移只增 identity 键,事实必须不变",
+ "files": {
+  "Ocr-markdown/resliced-pilot/高一/化学/2021北京三十一中高一（下）期中化学（教师版）(1).md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     13,
+     13
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     15,
+     15
+    ]
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     17,
+     17
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     19,
+     21
+    ]
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     23,
+     23
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     25,
+     25
+    ]
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     27,
+     27
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     29,
+     29
+    ]
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": [
+     31,
+     31
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     33,
+     33
+    ]
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": [
+     35,
+     35
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     37,
+     37
+    ]
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     39,
+     39
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     41,
+     41
+    ]
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": [
+     43,
+     43
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     45,
+     45
+    ]
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": [
+     47,
+     47
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     49,
+     49
+    ]
+   },
+   {
+    "question_numbers": [
+     10
+    ],
+    "stem_lines": [
+     51,
+     51
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     53,
+     53
+    ]
+   },
+   {
+    "question_numbers": [
+     11
+    ],
+    "stem_lines": [
+     55,
+     55
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     57,
+     59
+    ]
+   },
+   {
+    "question_numbers": [
+     12
+    ],
+    "stem_lines": [
+     61,
+     61
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     63,
+     63
+    ]
+   },
+   {
+    "question_numbers": [
+     13
+    ],
+    "stem_lines": [
+     65,
+     65
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     67,
+     67
+    ]
+   },
+   {
+    "question_numbers": [
+     14
+    ],
+    "stem_lines": [
+     69,
+     69
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     72,
+     72
+    ]
+   },
+   {
+    "question_numbers": [
+     15
+    ],
+    "stem_lines": [
+     74,
+     74
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     76,
+     76
+    ]
+   },
+   {
+    "question_numbers": [
+     16
+    ],
+    "stem_lines": [
+     78,
+     78
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     80,
+     80
+    ]
+   },
+   {
+    "question_numbers": [
+     17
+    ],
+    "stem_lines": [
+     82,
+     82
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     84,
+     84
+    ]
+   },
+   {
+    "question_numbers": [
+     18
+    ],
+    "stem_lines": [
+     86,
+     86
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     88,
+     88
+    ]
+   },
+   {
+    "question_numbers": [
+     19
+    ],
+    "stem_lines": [
+     90,
+     90
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     92,
+     92
+    ]
+   },
+   {
+    "question_numbers": [
+     20
+    ],
+    "stem_lines": [
+     94,
+     94
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     96,
+     96
+    ]
+   },
+   {
+    "question_numbers": [
+     21
+    ],
+    "stem_lines": [
+     98,
+     98
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     100,
+     102
+    ]
+   },
+   {
+    "question_numbers": [
+     22
+    ],
+    "stem_lines": [
+     104,
+     107
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     111,
+     113
+    ]
+   },
+   {
+    "question_numbers": [
+     23
+    ],
+    "stem_lines": [
+     115,
+     115
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     117,
+     117
+    ]
+   },
+   {
+    "question_numbers": [
+     24
+    ],
+    "stem_lines": [
+     119,
+     119
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     121,
+     127
+    ]
+   },
+   {
+    "question_numbers": [
+     25
+    ],
+    "stem_lines": [
+     129,
+     129
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     131,
+     141
+    ]
+   },
+   {
+    "question_numbers": [
+     26
+    ],
+    "stem_lines": [
+     144,
+     144
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     146,
+     152
+    ]
+   },
+   {
+    "question_numbers": [
+     27
+    ],
+    "stem_lines": [
+     154,
+     163
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     165,
+     167
+    ]
+   },
+   {
+    "question_numbers": [
+     28
+    ],
+    "stem_lines": [
+     169,
+     169
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     171,
+     179
+    ]
+   },
+   {
+    "question_numbers": [
+     29
+    ],
+    "stem_lines": [
+     181,
+     181
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     183,
+     189
+    ]
+   },
+   {
+    "question_numbers": [
+     30
+    ],
+    "stem_lines": [
+     191,
+     191
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     193,
+     193
+    ]
+   },
+   {
+    "question_numbers": [
+     31
+    ],
+    "stem_lines": [
+     195,
+     195
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     197,
+     199
+    ]
+   },
+   {
+    "question_numbers": [
+     32
+    ],
+    "stem_lines": [
+     201,
+     201
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     203,
+     209
+    ]
+   },
+   {
+    "question_numbers": [
+     33
+    ],
+    "stem_lines": [
+     211,
+     211
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     213,
+     219
+    ]
+   },
+   {
+    "question_numbers": [
+     34
+    ],
+    "stem_lines": [
+     221,
+     221
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     223,
+     229
+    ]
+   },
+   {
+    "question_numbers": [
+     35
+    ],
+    "stem_lines": [
+     231,
+     231
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     233,
+     239
+    ]
+   },
+   {
+    "question_numbers": [
+     36
+    ],
+    "stem_lines": [
+     243,
+     243
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     246,
+     246
+    ]
+   },
+   {
+    "question_numbers": [
+     37
+    ],
+    "stem_lines": [
+     248,
+     248
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     251,
+     251
+    ]
+   },
+   {
+    "question_numbers": [
+     38
+    ],
+    "stem_lines": [
+     253,
+     253
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     256,
+     256
+    ]
+   },
+   {
+    "question_numbers": [
+     39
+    ],
+    "stem_lines": [
+     258,
+     258
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     260,
+     266
+    ]
+   },
+   {
+    "question_numbers": [
+     40
+    ],
+    "stem_lines": [
+     268,
+     268
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     271,
+     276
+    ]
+   },
+   {
+    "question_numbers": [
+     41
+    ],
+    "stem_lines": [
+     278,
+     278
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     281,
+     281
+    ]
+   },
+   {
+    "question_numbers": [
+     42
+    ],
+    "stem_lines": [
+     283,
+     285
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     288,
+     294
+    ]
+   },
+   {
+    "question_numbers": [
+     43
+    ],
+    "stem_lines": [
+     296,
+     296
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     299,
+     299
+    ]
+   },
+   {
+    "question_numbers": [
+     44
+    ],
+    "stem_lines": [
+     301,
+     301
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     304,
+     309
+    ]
+   },
+   {
+    "question_numbers": [
+     45
+    ],
+    "stem_lines": [
+     311,
+     313
+    ],
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     316,
+     322
+    ]
+   },
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     326,
+     326
+    ],
+    "answer_lines": [
+     531,
+     531
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     328,
+     328
+    ],
+    "answer_lines": [
+     531,
+     531
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     533,
+     538
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     540,
+     542
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     544,
+     544
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     546,
+     546
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     548,
+     548
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     550,
+     550
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     552,
+     552
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     10
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     554,
+     554
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     11
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     556,
+     560
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高一/历史/2021北京四十三中高一（上）12月月考历史（教师版）(1).md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     11,
+     11
+    ],
+    "answer_lines": [
+     419,
+     419
+    ],
+    "explanation_lines": [
+     421,
+     423
+    ],
+    "options_lines": [
+     13,
+     19
+    ]
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     21,
+     21
+    ],
+    "answer_lines": [
+     429,
+     429
+    ],
+    "explanation_lines": [
+     431,
+     433
+    ],
+    "options_lines": [
+     23,
+     23
+    ]
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     25,
+     25
+    ],
+    "answer_lines": [
+     439,
+     439
+    ],
+    "explanation_lines": [
+     441,
+     443
+    ],
+    "options_lines": [
+     27,
+     27
+    ]
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     29,
+     29
+    ],
+    "answer_lines": [
+     455,
+     455
+    ],
+    "explanation_lines": [
+     457,
+     463
+    ],
+    "options_lines": [
+     31,
+     37
+    ]
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": [
+     39,
+     39
+    ],
+    "answer_lines": [
+     475,
+     475
+    ],
+    "explanation_lines": [
+     477,
+     481
+    ],
+    "options_lines": [
+     41,
+     47
+    ]
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": [
+     49,
+     49
+    ],
+    "answer_lines": [
+     487,
+     487
+    ],
+    "explanation_lines": [
+     489,
+     491
+    ],
+    "options_lines": [
+     51,
+     51
+    ]
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     53,
+     62
+    ],
+    "answer_lines": [
+     493,
+     513
+    ],
+    "explanation_lines": [
+     515,
+     519
+    ],
+    "options_lines": [
+     65,
+     71
+    ]
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": [
+     73,
+     73
+    ],
+    "answer_lines": [
+     531,
+     531
+    ],
+    "explanation_lines": [
+     533,
+     535
+    ],
+    "options_lines": [
+     75,
+     75
+    ]
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": [
+     77,
+     77
+    ],
+    "answer_lines": [
+     541,
+     541
+    ],
+    "explanation_lines": [
+     543,
+     545
+    ],
+    "options_lines": [
+     79,
+     79
+    ]
+   },
+   {
+    "question_numbers": [
+     10
+    ],
+    "stem_lines": [
+     81,
+     81
+    ],
+    "answer_lines": [
+     551,
+     551
+    ],
+    "explanation_lines": [
+     553,
+     555
+    ],
+    "options_lines": [
+     83,
+     83
+    ]
+   },
+   {
+    "question_numbers": [
+     11
+    ],
+    "stem_lines": [
+     85,
+     85
+    ],
+    "answer_lines": [
+     565,
+     565
+    ],
+    "explanation_lines": [
+     567,
+     569
+    ],
+    "options_lines": [
+     87,
+     93
+    ]
+   },
+   {
+    "question_numbers": [
+     12
+    ],
+    "stem_lines": [
+     95,
+     99
+    ],
+    "answer_lines": [
+     585,
+     585
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     101,
+     107
+    ]
+   },
+   {
+    "question_numbers": [
+     13
+    ],
+    "stem_lines": [
+     109,
+     109
+    ],
+    "answer_lines": [
+     591,
+     591
+    ],
+    "explanation_lines": [
+     593,
+     595
+    ],
+    "options_lines": [
+     111,
+     111
+    ]
+   },
+   {
+    "question_numbers": [
+     14
+    ],
+    "stem_lines": [
+     113,
+     113
+    ],
+    "answer_lines": [
+     607,
+     607
+    ],
+    "explanation_lines": [
+     609,
+     611
+    ],
+    "options_lines": [
+     115,
+     121
+    ]
+   },
+   {
+    "question_numbers": [
+     15
+    ],
+    "stem_lines": [
+     123,
+     123
+    ],
+    "answer_lines": [
+     625,
+     625
+    ],
+    "explanation_lines": [
+     627,
+     629
+    ],
+    "options_lines": [
+     125,
+     131
+    ]
+   },
+   {
+    "question_numbers": [
+     16
+    ],
+    "stem_lines": [
+     133,
+     137
+    ],
+    "answer_lines": [
+     631,
+     638
+    ],
+    "explanation_lines": [
+     640,
+     646
+    ],
+    "options_lines": [
+     140,
+     140
+    ]
+   },
+   {
+    "question_numbers": [
+     17
+    ],
+    "stem_lines": [
+     142,
+     142
+    ],
+    "answer_lines": [
+     652,
+     652
+    ],
+    "explanation_lines": [
+     654,
+     656
+    ],
+    "options_lines": [
+     144,
+     144
+    ]
+   },
+   {
+    "question_numbers": [
+     18
+    ],
+    "stem_lines": [
+     146,
+     146
+    ],
+    "answer_lines": [
+     664,
+     668
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     148,
+     150
+    ]
+   },
+   {
+    "question_numbers": [
+     19
+    ],
+    "stem_lines": [
+     152,
+     152
+    ],
+    "answer_lines": [
+     680,
+     680
+    ],
+    "explanation_lines": [
+     682,
+     684
+    ],
+    "options_lines": [
+     154,
+     160
+    ]
+   },
+   {
+    "question_numbers": [
+     20
+    ],
+    "stem_lines": [
+     162,
+     162
+    ],
+    "answer_lines": [
+     696,
+     696
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     164,
+     170
+    ]
+   },
+   {
+    "question_numbers": [
+     21
+    ],
+    "stem_lines": [
+     172,
+     172
+    ],
+    "answer_lines": [
+     704,
+     704
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     174,
+     174
+    ]
+   },
+   {
+    "question_numbers": [
+     22
+    ],
+    "stem_lines": [
+     176,
+     176
+    ],
+    "answer_lines": [
+     710,
+     710
+    ],
+    "explanation_lines": [
+     712,
+     716
+    ],
+    "options_lines": [
+     178,
+     178
+    ]
+   },
+   {
+    "question_numbers": [
+     23
+    ],
+    "stem_lines": [
+     180,
+     184
+    ],
+    "answer_lines": [
+     726,
+     726
+    ],
+    "explanation_lines": [
+     728,
+     730
+    ],
+    "options_lines": [
+     186,
+     186
+    ]
+   },
+   {
+    "question_numbers": [
+     24
+    ],
+    "stem_lines": [
+     188,
+     192
+    ],
+    "answer_lines": [
+     742,
+     742
+    ],
+    "explanation_lines": [
+     744,
+     746
+    ],
+    "options_lines": [
+     196,
+     196
+    ]
+   },
+   {
+    "question_numbers": [
+     25
+    ],
+    "stem_lines": [
+     198,
+     198
+    ],
+    "answer_lines": [
+     752,
+     752
+    ],
+    "explanation_lines": [
+     754,
+     756
+    ],
+    "options_lines": [
+     200,
+     200
+    ]
+   },
+   {
+    "question_numbers": [
+     26
+    ],
+    "stem_lines": [
+     202,
+     204
+    ],
+    "answer_lines": [
+     766,
+     766
+    ],
+    "explanation_lines": [
+     768,
+     770
+    ],
+    "options_lines": [
+     206,
+     206
+    ]
+   },
+   {
+    "question_numbers": [
+     27
+    ],
+    "stem_lines": [
+     208,
+     208
+    ],
+    "answer_lines": [
+     782,
+     782
+    ],
+    "explanation_lines": [
+     784,
+     786
+    ],
+    "options_lines": [
+     210,
+     216
+    ]
+   },
+   {
+    "question_numbers": [
+     28
+    ],
+    "stem_lines": [
+     218,
+     218
+    ],
+    "answer_lines": [
+     792,
+     792
+    ],
+    "explanation_lines": [
+     794,
+     796
+    ],
+    "options_lines": [
+     220,
+     220
+    ]
+   },
+   {
+    "question_numbers": [
+     29
+    ],
+    "stem_lines": [
+     222,
+     222
+    ],
+    "answer_lines": [
+     802,
+     802
+    ],
+    "explanation_lines": [
+     804,
+     810
+    ],
+    "options_lines": [
+     224,
+     224
+    ]
+   },
+   {
+    "question_numbers": [
+     30
+    ],
+    "stem_lines": [
+     226,
+     226
+    ],
+    "answer_lines": [
+     818,
+     818
+    ],
+    "explanation_lines": [
+     820,
+     822
+    ],
+    "options_lines": [
+     228,
+     228
+    ]
+   },
+   {
+    "question_numbers": [
+     31
+    ],
+    "stem_lines": [
+     230,
+     230
+    ],
+    "answer_lines": [
+     834,
+     834
+    ],
+    "explanation_lines": [
+     836,
+     838
+    ],
+    "options_lines": [
+     232,
+     238
+    ]
+   },
+   {
+    "question_numbers": [
+     32
+    ],
+    "stem_lines": [
+     240,
+     240
+    ],
+    "answer_lines": [
+     844,
+     844
+    ],
+    "explanation_lines": [
+     846,
+     850
+    ],
+    "options_lines": [
+     242,
+     242
+    ]
+   },
+   {
+    "question_numbers": [
+     33
+    ],
+    "stem_lines": [
+     244,
+     249
+    ],
+    "answer_lines": [
+     852,
+     867
+    ],
+    "explanation_lines": [
+     869,
+     871
+    ],
+    "options_lines": [
+     251,
+     257
+    ]
+   },
+   {
+    "question_numbers": [
+     34
+    ],
+    "stem_lines": [
+     259,
+     259
+    ],
+    "answer_lines": [
+     883,
+     883
+    ],
+    "explanation_lines": [
+     885,
+     887
+    ],
+    "options_lines": [
+     261,
+     267
+    ]
+   },
+   {
+    "question_numbers": [
+     35
+    ],
+    "stem_lines": [
+     269,
+     269
+    ],
+    "answer_lines": [
+     899,
+     899
+    ],
+    "explanation_lines": [
+     901,
+     901
+    ],
+    "options_lines": [
+     271,
+     277
+    ]
+   },
+   {
+    "question_numbers": [
+     36
+    ],
+    "stem_lines": [
+     279,
+     279
+    ],
+    "answer_lines": [
+     909,
+     909
+    ],
+    "explanation_lines": [
+     911,
+     911
+    ],
+    "options_lines": [
+     281,
+     283
+    ]
+   },
+   {
+    "question_numbers": [
+     37
+    ],
+    "stem_lines": [
+     285,
+     285
+    ],
+    "answer_lines": [
+     925,
+     925
+    ],
+    "explanation_lines": [
+     927,
+     929
+    ],
+    "options_lines": [
+     287,
+     293
+    ]
+   },
+   {
+    "question_numbers": [
+     38
+    ],
+    "stem_lines": [
+     295,
+     295
+    ],
+    "answer_lines": [
+     941,
+     941
+    ],
+    "explanation_lines": [
+     943,
+     949
+    ],
+    "options_lines": [
+     297,
+     303
+    ]
+   },
+   {
+    "question_numbers": [
+     39
+    ],
+    "stem_lines": [
+     305,
+     305
+    ],
+    "answer_lines": [
+     961,
+     961
+    ],
+    "explanation_lines": [
+     963,
+     969
+    ],
+    "options_lines": [
+     307,
+     313
+    ]
+   },
+   {
+    "question_numbers": [
+     40
+    ],
+    "stem_lines": [
+     317,
+     345
+    ],
+    "answer_lines": [
+     971,
+     999
+    ],
+    "explanation_lines": [
+     1005,
+     1007
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     41
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     1013,
+     1052
+    ],
+    "explanation_lines": [
+     1054,
+     1062
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     42
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     1064,
+     1093
+    ],
+    "explanation_lines": [
+     1095,
+     1103
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     43
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     1105,
+     1115
+    ],
+    "explanation_lines": [
+     1117,
+     1127
+    ],
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高一/地理/2019北京人大附中高一（上）期中地理含答案.md": [
+   {
+    "question_numbers": [
+     1,
+     2
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     525,
+     525
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     27,
+     29
+    ],
+    "answer_lines": [
+     525,
+     525
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     31,
+     37
+    ]
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     41,
+     43
+    ],
+    "answer_lines": [
+     525,
+     525
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     45,
+     56
+    ]
+   },
+   {
+    "question_numbers": [
+     5,
+     6
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     525,
+     525
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     93,
+     95
+    ],
+    "answer_lines": [
+     525,
+     525
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     97,
+     102
+    ]
+   },
+   {
+    "question_numbers": [
+     8,
+     9,
+     10
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     525,
+     525
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     11,
+     12
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     13,
+     14
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     15,
+     16
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     17,
+     18
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     527,
+     527
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     19,
+     20,
+     21
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     527,
+     529
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     22,
+     23
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     529,
+     529
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     24,
+     25
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     529,
+     529
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     26,
+     27,
+     28
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     529,
+     529
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     29,
+     30
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     529,
+     529
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     31
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     533,
+     537
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     32
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     539,
+     549
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     33
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     551,
+     561
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     34
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     563,
+     580
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高一/政治/2018北京师大附中高一（下）期中政治含答案(1).md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     11,
+     11
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     13,
+     19
+    ]
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     21,
+     29
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     31,
+     31
+    ]
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     33,
+     33
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     35,
+     41
+    ]
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     43,
+     43
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     45,
+     47
+    ]
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": [
+     49,
+     57
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     59,
+     59
+    ]
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": [
+     61,
+     73
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     75,
+     75
+    ]
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     77,
+     91
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     93,
+     93
+    ]
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": [
+     95,
+     103
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     105,
+     105
+    ]
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": [
+     107,
+     120
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     122,
+     122
+    ]
+   },
+   {
+    "question_numbers": [
+     10,
+     11
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     12
+    ],
+    "stem_lines": [
+     151,
+     151
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     153,
+     159
+    ]
+   },
+   {
+    "question_numbers": [
+     13
+    ],
+    "stem_lines": [
+     161,
+     179
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     181,
+     181
+    ]
+   },
+   {
+    "question_numbers": [
+     14
+    ],
+    "stem_lines": [
+     183,
+     195
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     197,
+     197
+    ]
+   },
+   {
+    "question_numbers": [
+     15
+    ],
+    "stem_lines": [
+     199,
+     207
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     209,
+     209
+    ]
+   },
+   {
+    "question_numbers": [
+     16
+    ],
+    "stem_lines": [
+     211,
+     211
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     213,
+     219
+    ]
+   },
+   {
+    "question_numbers": [
+     17
+    ],
+    "stem_lines": [
+     221,
+     221
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     223,
+     229
+    ]
+   },
+   {
+    "question_numbers": [
+     18
+    ],
+    "stem_lines": [
+     231,
+     239
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     241,
+     241
+    ]
+   },
+   {
+    "question_numbers": [
+     19
+    ],
+    "stem_lines": [
+     243,
+     243
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     245,
+     249
+    ]
+   },
+   {
+    "question_numbers": [
+     20
+    ],
+    "stem_lines": [
+     251,
+     259
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     261,
+     261
+    ]
+   },
+   {
+    "question_numbers": [
+     21
+    ],
+    "stem_lines": [
+     263,
+     267
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     269,
+     269
+    ]
+   },
+   {
+    "question_numbers": [
+     22
+    ],
+    "stem_lines": [
+     271,
+     281
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     283,
+     283
+    ]
+   },
+   {
+    "question_numbers": [
+     23
+    ],
+    "stem_lines": [
+     285,
+     290
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     292,
+     300
+    ]
+   },
+   {
+    "question_numbers": [
+     24
+    ],
+    "stem_lines": [
+     302,
+     306
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     308,
+     308
+    ]
+   },
+   {
+    "question_numbers": [
+     25
+    ],
+    "stem_lines": [
+     310,
+     318
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     320,
+     320
+    ]
+   },
+   {
+    "question_numbers": [
+     26
+    ],
+    "stem_lines": [
+     322,
+     322
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     324,
+     330
+    ]
+   },
+   {
+    "question_numbers": [
+     27
+    ],
+    "stem_lines": [
+     332,
+     332
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     334,
+     340
+    ]
+   },
+   {
+    "question_numbers": [
+     28
+    ],
+    "stem_lines": [
+     342,
+     350
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     352,
+     352
+    ]
+   },
+   {
+    "question_numbers": [
+     29
+    ],
+    "stem_lines": [
+     354,
+     361
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     363,
+     363
+    ]
+   },
+   {
+    "question_numbers": [
+     30
+    ],
+    "stem_lines": [
+     365,
+     365
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     367,
+     373
+    ]
+   },
+   {
+    "question_numbers": [
+     31
+    ],
+    "stem_lines": [
+     379,
+     379
+    ],
+    "answer_lines": [
+     481,
+     481
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     32
+    ],
+    "stem_lines": [
+     381,
+     381
+    ],
+    "answer_lines": [
+     483,
+     483
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     33
+    ],
+    "stem_lines": [
+     383,
+     383
+    ],
+    "answer_lines": [
+     485,
+     485
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     34
+    ],
+    "stem_lines": [
+     385,
+     387
+    ],
+    "answer_lines": [
+     487,
+     487
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     35
+    ],
+    "stem_lines": [
+     392,
+     442
+    ],
+    "answer_lines": [
+     491,
+     503
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     36
+    ],
+    "stem_lines": [
+     444,
+     466
+    ],
+    "answer_lines": [
+     505,
+     529
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高一/数学/2021北京顺义一中高一（下）期中数学（教师版）(1).md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     7,
+     7
+    ],
+    "answer_lines": [
+     155,
+     155
+    ],
+    "explanation_lines": [
+     157,
+     165
+    ],
+    "options_lines": [
+     9,
+     9
+    ]
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     11,
+     11
+    ],
+    "answer_lines": [
+     167,
+     167
+    ],
+    "explanation_lines": [
+     169,
+     187
+    ],
+    "options_lines": [
+     13,
+     13
+    ]
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     15,
+     15
+    ],
+    "answer_lines": [
+     189,
+     189
+    ],
+    "explanation_lines": [
+     191,
+     197
+    ],
+    "options_lines": [
+     17,
+     19
+    ]
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     21,
+     21
+    ],
+    "answer_lines": [
+     199,
+     199
+    ],
+    "explanation_lines": [
+     201,
+     211
+    ],
+    "options_lines": [
+     23,
+     23
+    ]
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": [
+     25,
+     25
+    ],
+    "answer_lines": [
+     213,
+     213
+    ],
+    "explanation_lines": [
+     215,
+     227
+    ],
+    "options_lines": [
+     27,
+     33
+    ]
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": [
+     35,
+     35
+    ],
+    "answer_lines": [
+     229,
+     229
+    ],
+    "explanation_lines": [
+     231,
+     250
+    ],
+    "options_lines": [
+     37,
+     39
+    ]
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     41,
+     41
+    ],
+    "answer_lines": [
+     252,
+     252
+    ],
+    "explanation_lines": [
+     254,
+     266
+    ],
+    "options_lines": [
+     43,
+     49
+    ]
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": [
+     53,
+     53
+    ],
+    "answer_lines": [
+     268,
+     268
+    ],
+    "explanation_lines": [
+     270,
+     285
+    ],
+    "options_lines": [
+     55,
+     55
+    ]
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": [
+     57,
+     57
+    ],
+    "answer_lines": [
+     289,
+     289
+    ],
+    "explanation_lines": [
+     291,
+     310
+    ],
+    "options_lines": [
+     59,
+     65
+    ]
+   },
+   {
+    "question_numbers": [
+     10
+    ],
+    "stem_lines": [
+     67,
+     67
+    ],
+    "answer_lines": [
+     312,
+     312
+    ],
+    "explanation_lines": [
+     314,
+     322
+    ],
+    "options_lines": [
+     69,
+     75
+    ]
+   },
+   {
+    "question_numbers": [
+     11
+    ],
+    "stem_lines": [
+     79,
+     79
+    ],
+    "answer_lines": [
+     328,
+     328
+    ],
+    "explanation_lines": [
+     330,
+     336
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     12
+    ],
+    "stem_lines": [
+     81,
+     81
+    ],
+    "answer_lines": [
+     338,
+     338
+    ],
+    "explanation_lines": [
+     340,
+     346
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     13
+    ],
+    "stem_lines": [
+     83,
+     83
+    ],
+    "answer_lines": [
+     348,
+     348
+    ],
+    "explanation_lines": [
+     350,
+     360
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     14
+    ],
+    "stem_lines": [
+     85,
+     85
+    ],
+    "answer_lines": [
+     362,
+     362
+    ],
+    "explanation_lines": [
+     364,
+     366
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     15
+    ],
+    "stem_lines": [
+     87,
+     87
+    ],
+    "answer_lines": [
+     368,
+     368
+    ],
+    "explanation_lines": [
+     370,
+     392
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     16
+    ],
+    "stem_lines": [
+     91,
+     95
+    ],
+    "answer_lines": [
+     396,
+     396
+    ],
+    "explanation_lines": [
+     398,
+     416
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     17
+    ],
+    "stem_lines": [
+     99,
+     105
+    ],
+    "answer_lines": [
+     418,
+     418
+    ],
+    "explanation_lines": [
+     420,
+     436
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     18
+    ],
+    "stem_lines": [
+     107,
+     113
+    ],
+    "answer_lines": [
+     438,
+     438
+    ],
+    "explanation_lines": [
+     440,
+     478
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     19
+    ],
+    "stem_lines": [
+     115,
+     127
+    ],
+    "answer_lines": [
+     480,
+     480
+    ],
+    "explanation_lines": [
+     482,
+     510
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     20
+    ],
+    "stem_lines": [
+     131,
+     137
+    ],
+    "answer_lines": [
+     512,
+     512
+    ],
+    "explanation_lines": [
+     514,
+     538
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     21
+    ],
+    "stem_lines": [
+     139,
+     147
+    ],
+    "answer_lines": [
+     540,
+     540
+    ],
+    "explanation_lines": [
+     542,
+     594
+    ],
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高一/生物/2018北京市西城区高一（下）期末生物含答案(1).md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     7,
+     8
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     9,
+     11
+    ]
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     13,
+     14
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     15,
+     17
+    ]
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     19,
+     20
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     21,
+     23
+    ]
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     25,
+     26
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     27,
+     29
+    ]
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": [
+     31,
+     32
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     33,
+     35
+    ]
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": [
+     37,
+     38
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     39,
+     45
+    ]
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     47,
+     48
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     49,
+     49
+    ]
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": [
+     51,
+     55
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     58,
+     64
+    ]
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": [
+     66,
+     67
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     68,
+     74
+    ]
+   },
+   {
+    "question_numbers": [
+     10
+    ],
+    "stem_lines": [
+     76,
+     77
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     78,
+     78
+    ]
+   },
+   {
+    "question_numbers": [
+     11
+    ],
+    "stem_lines": [
+     80,
+     81
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     82,
+     82
+    ]
+   },
+   {
+    "question_numbers": [
+     12
+    ],
+    "stem_lines": [
+     84,
+     85
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     86,
+     86
+    ]
+   },
+   {
+    "question_numbers": [
+     13
+    ],
+    "stem_lines": [
+     88,
+     89
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     90,
+     92
+    ]
+   },
+   {
+    "question_numbers": [
+     14
+    ],
+    "stem_lines": [
+     94,
+     95
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     96,
+     102
+    ]
+   },
+   {
+    "question_numbers": [
+     15
+    ],
+    "stem_lines": [
+     104,
+     108
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     109,
+     115
+    ]
+   },
+   {
+    "question_numbers": [
+     16
+    ],
+    "stem_lines": [
+     119,
+     120
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     121,
+     127
+    ]
+   },
+   {
+    "question_numbers": [
+     17
+    ],
+    "stem_lines": [
+     129,
+     132
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     134,
+     136
+    ]
+   },
+   {
+    "question_numbers": [
+     18
+    ],
+    "stem_lines": [
+     138,
+     139
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     140,
+     140
+    ]
+   },
+   {
+    "question_numbers": [
+     19
+    ],
+    "stem_lines": [
+     142,
+     143
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     144,
+     150
+    ]
+   },
+   {
+    "question_numbers": [
+     20
+    ],
+    "stem_lines": [
+     152,
+     174
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     176,
+     176
+    ]
+   },
+   {
+    "question_numbers": [
+     21
+    ],
+    "stem_lines": [
+     178,
+     179
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     180,
+     186
+    ]
+   },
+   {
+    "question_numbers": [
+     22
+    ],
+    "stem_lines": [
+     190,
+     191
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     192,
+     192
+    ]
+   },
+   {
+    "question_numbers": [
+     23
+    ],
+    "stem_lines": [
+     194,
+     195
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     196,
+     202
+    ]
+   },
+   {
+    "question_numbers": [
+     24
+    ],
+    "stem_lines": [
+     204,
+     205
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     206,
+     208
+    ]
+   },
+   {
+    "question_numbers": [
+     25
+    ],
+    "stem_lines": [
+     210,
+     211
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     212,
+     214
+    ]
+   },
+   {
+    "question_numbers": [
+     26
+    ],
+    "stem_lines": [
+     216,
+     217
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     218,
+     218
+    ]
+   },
+   {
+    "question_numbers": [
+     27
+    ],
+    "stem_lines": [
+     220,
+     221
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     222,
+     222
+    ]
+   },
+   {
+    "question_numbers": [
+     28
+    ],
+    "stem_lines": [
+     224,
+     225
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     226,
+     232
+    ]
+   },
+   {
+    "question_numbers": [
+     29
+    ],
+    "stem_lines": [
+     234,
+     235
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     236,
+     236
+    ]
+   },
+   {
+    "question_numbers": [
+     30
+    ],
+    "stem_lines": [
+     238,
+     239
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     240,
+     246
+    ]
+   },
+   {
+    "question_numbers": [
+     31
+    ],
+    "stem_lines": [
+     250,
+     251
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     252,
+     258
+    ]
+   },
+   {
+    "question_numbers": [
+     32
+    ],
+    "stem_lines": [
+     260,
+     261
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     262,
+     268
+    ]
+   },
+   {
+    "question_numbers": [
+     33
+    ],
+    "stem_lines": [
+     270,
+     271
+    ],
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     272,
+     278
+    ]
+   },
+   {
+    "question_numbers": [
+     34,
+     35
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     486,
+     486
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     36
+    ],
+    "stem_lines": [
+     314,
+     346
+    ],
+    "answer_lines": [
+     490,
+     498
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     37
+    ],
+    "stem_lines": [
+     348,
+     355
+    ],
+    "answer_lines": [
+     500,
+     504
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     38
+    ],
+    "stem_lines": [
+     357,
+     374
+    ],
+    "answer_lines": [
+     506,
+     516
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     39
+    ],
+    "stem_lines": [
+     376,
+     399
+    ],
+    "answer_lines": [
+     518,
+     524
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     40
+    ],
+    "stem_lines": [
+     401,
+     407
+    ],
+    "answer_lines": [
+     526,
+     532
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     41
+    ],
+    "stem_lines": [
+     409,
+     431
+    ],
+    "answer_lines": [
+     534,
+     540
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     42
+    ],
+    "stem_lines": [
+     433,
+     447
+    ],
+    "answer_lines": [
+     544,
+     552
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     43
+    ],
+    "stem_lines": [
+     449,
+     474
+    ],
+    "answer_lines": [
+     554,
+     559
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高一/英语/2020北京东城高一（上）期末英语（教师版）.md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     7,
+     7
+    ],
+    "answer_lines": [
+     421,
+     421
+    ],
+    "explanation_lines": [
+     423,
+     429
+    ],
+    "options_lines": [
+     9,
+     9
+    ]
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     11,
+     11
+    ],
+    "answer_lines": [
+     431,
+     433
+    ],
+    "explanation_lines": [
+     435,
+     441
+    ],
+    "options_lines": [
+     13,
+     13
+    ]
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     15,
+     15
+    ],
+    "answer_lines": [
+     443,
+     443
+    ],
+    "explanation_lines": [
+     445,
+     451
+    ],
+    "options_lines": [
+     17,
+     17
+    ]
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     19,
+     19
+    ],
+    "answer_lines": [
+     453,
+     453
+    ],
+    "explanation_lines": [
+     455,
+     463
+    ],
+    "options_lines": [
+     21,
+     21
+    ]
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": [
+     23,
+     23
+    ],
+    "answer_lines": [
+     465,
+     465
+    ],
+    "explanation_lines": [
+     467,
+     473
+    ],
+    "options_lines": [
+     25,
+     25
+    ]
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": [
+     27,
+     27
+    ],
+    "answer_lines": [
+     475,
+     475
+    ],
+    "explanation_lines": [
+     477,
+     483
+    ],
+    "options_lines": [
+     29,
+     29
+    ]
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     31,
+     31
+    ],
+    "answer_lines": [
+     485,
+     485
+    ],
+    "explanation_lines": [
+     487,
+     493
+    ],
+    "options_lines": [
+     33,
+     33
+    ]
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": [
+     35,
+     35
+    ],
+    "answer_lines": [
+     495,
+     495
+    ],
+    "explanation_lines": [
+     497,
+     503
+    ],
+    "options_lines": [
+     37,
+     39
+    ]
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": [
+     41,
+     41
+    ],
+    "answer_lines": [
+     507,
+     507
+    ],
+    "explanation_lines": [
+     509,
+     515
+    ],
+    "options_lines": [
+     43,
+     43
+    ]
+   },
+   {
+    "question_numbers": [
+     10
+    ],
+    "stem_lines": [
+     45,
+     45
+    ],
+    "answer_lines": [
+     517,
+     517
+    ],
+    "explanation_lines": [
+     519,
+     525
+    ],
+    "options_lines": [
+     47,
+     47
+    ]
+   },
+   {
+    "question_numbers": [
+     11
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     529,
+     533
+    ],
+    "explanation_lines": [
+     535,
+     567
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     12
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     571,
+     581
+    ],
+    "explanation_lines": [
+     583,
+     593
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     13
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     595,
+     609
+    ],
+    "explanation_lines": [
+     611,
+     621
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     14
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     623,
+     637
+    ],
+    "explanation_lines": [
+     639,
+     639
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     15
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     643,
+     655
+    ],
+    "explanation_lines": [
+     657,
+     667
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     16
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     671,
+     701
+    ],
+    "explanation_lines": [
+     703,
+     703
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     17
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     707,
+     729
+    ],
+    "explanation_lines": [
+     731,
+     737
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     18
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     739,
+     759
+    ],
+    "explanation_lines": [
+     761,
+     771
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     19
+    ],
+    "stem_lines": [
+     393,
+     411
+    ],
+    "answer_lines": [
+     775,
+     803
+    ],
+    "explanation_lines": [
+     805,
+     805
+    ],
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高一/语文/2020北京平谷五中高一（下）4月月考语文含答案(1).md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     475,
+     491
+    ],
+    "explanation_lines": [
+     437,
+     497
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     535,
+     551
+    ],
+    "explanation_lines": [
+     501,
+     569
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     587,
+     593
+    ],
+    "explanation_lines": [
+     573,
+     631
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     245,
+     251
+    ],
+    "answer_lines": [
+     635,
+     641
+    ],
+    "explanation_lines": [
+     633,
+     659
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     691,
+     709
+    ],
+    "explanation_lines": [
+     663,
+     711
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": [
+     409,
+     409
+    ],
+    "answer_lines": [
+     719,
+     723
+    ],
+    "explanation_lines": [
+     717,
+     725
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     411,
+     411
+    ],
+    "answer_lines": [
+     729,
+     731
+    ],
+    "explanation_lines": [
+     727,
+     743
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": [
+     413,
+     413
+    ],
+    "answer_lines": [
+     747,
+     755
+    ],
+    "explanation_lines": [
+     745,
+     769
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": [
+     417,
+     419
+    ],
+    "answer_lines": [
+     775,
+     799
+    ],
+    "explanation_lines": [
+     773,
+     811
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     10
+    ],
+    "stem_lines": [
+     421,
+     427
+    ],
+    "answer_lines": [
+     815,
+     829
+    ],
+    "explanation_lines": [
+     813,
+     837
+    ],
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高一/语文/2020北京石景山高一（上）期末语文含答案.md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     7,
+     7
+    ],
+    "answer_lines": [
+     297,
+     305
+    ],
+    "explanation_lines": [
+     307,
+     307
+    ],
+    "options_lines": [
+     9,
+     24
+    ]
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     25,
+     31
+    ],
+    "answer_lines": [
+     309,
+     317
+    ],
+    "explanation_lines": [
+     319,
+     319
+    ],
+    "options_lines": [
+     33,
+     35
+    ]
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     37,
+     37
+    ],
+    "answer_lines": [
+     321,
+     327
+    ],
+    "explanation_lines": [
+     329,
+     339
+    ],
+    "options_lines": [
+     39,
+     45
+    ]
+   },
+   {
+    "question_numbers": [
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     343,
+     377
+    ],
+    "explanation_lines": [
+     379,
+     387
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     9,
+     10,
+     11,
+     12
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     391,
+     417
+    ],
+    "explanation_lines": [
+     419,
+     441
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     13,
+     14
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     443,
+     457
+    ],
+    "explanation_lines": [
+     459,
+     473
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     15
+    ],
+    "stem_lines": [
+     195,
+     201
+    ],
+    "answer_lines": [
+     475,
+     483
+    ],
+    "explanation_lines": [
+     485,
+     487
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     16,
+     17
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     493,
+     505
+    ],
+    "explanation_lines": [
+     507,
+     507
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     18,
+     19
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     511,
+     525
+    ],
+    "explanation_lines": [
+     527,
+     529
+    ],
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     20
+    ],
+    "stem_lines": [
+     277,
+     285
+    ],
+    "answer_lines": [
+     535,
+     635
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高三/化学/2019北京交大附中高三（上）12月月考化学含答案(1).md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     13,
+     13
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     15,
+     21
+    ]
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     23,
+     23
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     25,
+     31
+    ]
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     33,
+     33
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     35,
+     41
+    ]
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     43,
+     47
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     49,
+     51
+    ]
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": [
+     53,
+     53
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     55,
+     63
+    ]
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": [
+     65,
+     67
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     70,
+     70
+    ]
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     72,
+     79
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     81,
+     87
+    ]
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": [
+     91,
+     91
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     93,
+     99
+    ]
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": [
+     101,
+     106
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     108,
+     114
+    ]
+   },
+   {
+    "question_numbers": [
+     10
+    ],
+    "stem_lines": [
+     116,
+     117
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     119,
+     119
+    ]
+   },
+   {
+    "question_numbers": [
+     11
+    ],
+    "stem_lines": [
+     123,
+     128
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     130,
+     132
+    ]
+   },
+   {
+    "question_numbers": [
+     12
+    ],
+    "stem_lines": [
+     134,
+     137
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     139,
+     145
+    ]
+   },
+   {
+    "question_numbers": [
+     13
+    ],
+    "stem_lines": [
+     147,
+     147
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     149,
+     157
+    ]
+   },
+   {
+    "question_numbers": [
+     14
+    ],
+    "stem_lines": [
+     160,
+     164
+    ],
+    "answer_lines": [
+     374,
+     374
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     167,
+     173
+    ]
+   },
+   {
+    "question_numbers": [
+     15
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     378,
+     388
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     16
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     390,
+     415
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     17
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     417,
+     429
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     18
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     431,
+     445
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     19
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     447,
+     465
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高三/数学/2021北京八十中高三考前练习数学（教师版）(1).md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     15,
+     15
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     17,
+     17
+    ]
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     19,
+     19
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     21,
+     21
+    ]
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     23,
+     23
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     25,
+     31
+    ]
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     33,
+     33
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     35,
+     35
+    ]
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": [
+     37,
+     37
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     39,
+     39
+    ]
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": [
+     41,
+     41
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     43,
+     43
+    ]
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     45,
+     45
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     47,
+     47
+    ]
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": [
+     51,
+     51
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     53,
+     53
+    ]
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": [
+     55,
+     55
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     57,
+     63
+    ]
+   },
+   {
+    "question_numbers": [
+     10
+    ],
+    "stem_lines": [
+     65,
+     67
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     69,
+     69
+    ]
+   },
+   {
+    "question_numbers": [
+     11
+    ],
+    "stem_lines": [
+     75,
+     75
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     12
+    ],
+    "stem_lines": [
+     77,
+     77
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     13
+    ],
+    "stem_lines": [
+     79,
+     81
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     14
+    ],
+    "stem_lines": [
+     84,
+     84
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     15
+    ],
+    "stem_lines": [
+     86,
+     92
+    ],
+    "answer_lines": [
+     169,
+     169
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     16
+    ],
+    "stem_lines": [
+     98,
+     107
+    ],
+    "answer_lines": [
+     171,
+     183
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     17
+    ],
+    "stem_lines": [
+     109,
+     122
+    ],
+    "answer_lines": [
+     186,
+     213
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     18
+    ],
+    "stem_lines": [
+     124,
+     130
+    ],
+    "answer_lines": [
+     215,
+     245
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     19
+    ],
+    "stem_lines": [
+     132,
+     138
+    ],
+    "answer_lines": [
+     247,
+     276
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     20
+    ],
+    "stem_lines": [
+     142,
+     148
+    ],
+    "answer_lines": [
+     278,
+     338
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     21
+    ],
+    "stem_lines": [
+     150,
+     158
+    ],
+    "answer_lines": [
+     340,
+     404
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高三/物理/2021北京石景山高三一模物理（教师版）(1).md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     12,
+     12
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     14,
+     14
+    ]
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     16,
+     16
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     18,
+     24
+    ]
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     26,
+     26
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     28,
+     34
+    ]
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     36,
+     41
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     44,
+     52
+    ]
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": [
+     54,
+     57
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     59,
+     65
+    ]
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": [
+     67,
+     67
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     69,
+     69
+    ]
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     71,
+     73
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     76,
+     82
+    ]
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": [
+     84,
+     89
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     91,
+     97
+    ]
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": [
+     99,
+     111
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     113,
+     119
+    ]
+   },
+   {
+    "question_numbers": [
+     10
+    ],
+    "stem_lines": [
+     121,
+     123
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     126,
+     134
+    ]
+   },
+   {
+    "question_numbers": [
+     11
+    ],
+    "stem_lines": [
+     136,
+     138
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     141,
+     147
+    ]
+   },
+   {
+    "question_numbers": [
+     12
+    ],
+    "stem_lines": [
+     149,
+     151
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     154,
+     160
+    ]
+   },
+   {
+    "question_numbers": [
+     13
+    ],
+    "stem_lines": [
+     162,
+     162
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     164,
+     172
+    ]
+   },
+   {
+    "question_numbers": [
+     14
+    ],
+    "stem_lines": [
+     174,
+     185
+    ],
+    "answer_lines": [
+     297,
+     297
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     188,
+     194
+    ]
+   },
+   {
+    "question_numbers": [
+     15
+    ],
+    "stem_lines": [
+     202,
+     213
+    ],
+    "answer_lines": [
+     301,
+     305
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     16
+    ],
+    "stem_lines": [
+     215,
+     232
+    ],
+    "answer_lines": [
+     307,
+     315
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     17
+    ],
+    "stem_lines": [
+     236,
+     242
+    ],
+    "answer_lines": [
+     319,
+     333
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     18
+    ],
+    "stem_lines": [
+     246,
+     258
+    ],
+    "answer_lines": [
+     337,
+     351
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     19
+    ],
+    "stem_lines": [
+     260,
+     269
+    ],
+    "answer_lines": [
+     353,
+     385
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     20
+    ],
+    "stem_lines": [
+     273,
+     285
+    ],
+    "answer_lines": [
+     387,
+     413
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高三/生物/2020北京西城高三（上）期末生物含答案(1).md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     13,
+     13
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     15,
+     21
+    ]
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     23,
+     23
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     25,
+     31
+    ]
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     33,
+     35
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     37,
+     43
+    ]
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     45,
+     45
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     47,
+     53
+    ]
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": [
+     55,
+     60
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     62,
+     68
+    ]
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": [
+     70,
+     74
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     75,
+     81
+    ]
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     83,
+     83
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     85,
+     91
+    ]
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": [
+     93,
+     97
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     98,
+     106
+    ]
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": [
+     108,
+     108
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     110,
+     116
+    ]
+   },
+   {
+    "question_numbers": [
+     10
+    ],
+    "stem_lines": [
+     118,
+     118
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     120,
+     126
+    ]
+   },
+   {
+    "question_numbers": [
+     11
+    ],
+    "stem_lines": [
+     128,
+     131
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     133,
+     139
+    ]
+   },
+   {
+    "question_numbers": [
+     12
+    ],
+    "stem_lines": [
+     141,
+     141
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     143,
+     154
+    ]
+   },
+   {
+    "question_numbers": [
+     13
+    ],
+    "stem_lines": [
+     156,
+     156
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     158,
+     164
+    ]
+   },
+   {
+    "question_numbers": [
+     14
+    ],
+    "stem_lines": [
+     166,
+     166
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     168,
+     174
+    ]
+   },
+   {
+    "question_numbers": [
+     15
+    ],
+    "stem_lines": [
+     176,
+     176
+    ],
+    "answer_lines": [
+     395,
+     395
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     178,
+     193
+    ]
+   },
+   {
+    "question_numbers": [
+     16
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     399,
+     413
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     17
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     415,
+     441
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     18
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     445,
+     457
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     19
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     460,
+     474
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     20
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     476,
+     494
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     21
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     496,
+     510
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高三/英语/2021北京丰台高三二模英语（教师版）(1).md": [
+   {
+    "question_numbers": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     376,
+     376
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     380,
+     386
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     21,
+     22,
+     23
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     392,
+     392
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     24,
+     25,
+     26,
+     27
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     392,
+     392
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     28,
+     29,
+     30,
+     31
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     392,
+     392
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     32,
+     33,
+     34
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     392,
+     392
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     35,
+     36,
+     37,
+     38,
+     39
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     396,
+     396
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     40,
+     41,
+     42,
+     43
+    ],
+    "stem_lines": null,
+    "answer_lines": [
+     402,
+     481
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     44
+    ],
+    "stem_lines": [
+     346,
+     362
+    ],
+    "answer_lines": [
+     485,
+     536
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高二/数学/2018北京五十六中高二（下）期中数学（理）（教师版）(1).md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     11,
+     11
+    ],
+    "answer_lines": [
+     160,
+     160
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     13,
+     13
+    ]
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     15,
+     15
+    ],
+    "answer_lines": [
+     160,
+     160
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     17,
+     17
+    ]
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     19,
+     19
+    ],
+    "answer_lines": [
+     160,
+     160
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     21,
+     21
+    ]
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     23,
+     23
+    ],
+    "answer_lines": [
+     160,
+     160
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     25,
+     25
+    ]
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": [
+     27,
+     27
+    ],
+    "answer_lines": [
+     160,
+     160
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     29,
+     29
+    ]
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": [
+     31,
+     31
+    ],
+    "answer_lines": [
+     160,
+     160
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     33,
+     39
+    ]
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     41,
+     41
+    ],
+    "answer_lines": [
+     160,
+     160
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     43,
+     49
+    ]
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": [
+     51,
+     51
+    ],
+    "answer_lines": [
+     160,
+     160
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     53,
+     71
+    ]
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": [
+     77,
+     77
+    ],
+    "answer_lines": [
+     164,
+     164
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     10
+    ],
+    "stem_lines": [
+     79,
+     79
+    ],
+    "answer_lines": [
+     164,
+     164
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     11
+    ],
+    "stem_lines": [
+     81,
+     81
+    ],
+    "answer_lines": [
+     164,
+     164
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     12
+    ],
+    "stem_lines": [
+     86,
+     86
+    ],
+    "answer_lines": [
+     164,
+     164
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     13
+    ],
+    "stem_lines": [
+     88,
+     88
+    ],
+    "answer_lines": [
+     164,
+     164
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     14
+    ],
+    "stem_lines": [
+     90,
+     96
+    ],
+    "answer_lines": [
+     164,
+     164
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     15
+    ],
+    "stem_lines": [
+     103,
+     107
+    ],
+    "answer_lines": [
+     168,
+     182
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     16
+    ],
+    "stem_lines": [
+     111,
+     117
+    ],
+    "answer_lines": [
+     184,
+     194
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     17
+    ],
+    "stem_lines": [
+     124,
+     128
+    ],
+    "answer_lines": [
+     196,
+     216
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     18
+    ],
+    "stem_lines": [
+     132,
+     136
+    ],
+    "answer_lines": [
+     218,
+     220
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     19
+    ],
+    "stem_lines": [
+     140,
+     144
+    ],
+    "answer_lines": [
+     222,
+     222
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     20
+    ],
+    "stem_lines": [
+     148,
+     152
+    ],
+    "answer_lines": [
+     224,
+     259
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   }
+  ],
+  "Ocr-markdown/resliced-pilot/高二/物理/2019北京四中高二（下）期末物理（教师版）(1).md": [
+   {
+    "question_numbers": [
+     1
+    ],
+    "stem_lines": [
+     9,
+     9
+    ],
+    "answer_lines": [
+     472,
+     472
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     11,
+     17
+    ]
+   },
+   {
+    "question_numbers": [
+     2
+    ],
+    "stem_lines": [
+     19,
+     19
+    ],
+    "answer_lines": [
+     472,
+     472
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     21,
+     27
+    ]
+   },
+   {
+    "question_numbers": [
+     3
+    ],
+    "stem_lines": [
+     29,
+     29
+    ],
+    "answer_lines": [
+     472,
+     472
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     31,
+     37
+    ]
+   },
+   {
+    "question_numbers": [
+     4
+    ],
+    "stem_lines": [
+     39,
+     62
+    ],
+    "answer_lines": [
+     472,
+     472
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     5
+    ],
+    "stem_lines": [
+     65,
+     69
+    ],
+    "answer_lines": [
+     472,
+     472
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     72,
+     78
+    ]
+   },
+   {
+    "question_numbers": [
+     6
+    ],
+    "stem_lines": [
+     80,
+     103
+    ],
+    "answer_lines": [
+     472,
+     472
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     7
+    ],
+    "stem_lines": [
+     106,
+     141
+    ],
+    "answer_lines": [
+     472,
+     472
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     8
+    ],
+    "stem_lines": [
+     144,
+     150
+    ],
+    "answer_lines": [
+     472,
+     472
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     153,
+     159
+    ]
+   },
+   {
+    "question_numbers": [
+     9
+    ],
+    "stem_lines": [
+     163,
+     163
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     165,
+     171
+    ]
+   },
+   {
+    "question_numbers": [
+     10
+    ],
+    "stem_lines": [
+     173,
+     175
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     178,
+     186
+    ]
+   },
+   {
+    "question_numbers": [
+     11
+    ],
+    "stem_lines": [
+     188,
+     188
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     190,
+     196
+    ]
+   },
+   {
+    "question_numbers": [
+     12
+    ],
+    "stem_lines": [
+     198,
+     200
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     203,
+     209
+    ]
+   },
+   {
+    "question_numbers": [
+     13
+    ],
+    "stem_lines": [
+     211,
+     213
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     219,
+     225
+    ]
+   },
+   {
+    "question_numbers": [
+     14
+    ],
+    "stem_lines": [
+     227,
+     231
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     234,
+     240
+    ]
+   },
+   {
+    "question_numbers": [
+     15
+    ],
+    "stem_lines": [
+     242,
+     244
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     247,
+     253
+    ]
+   },
+   {
+    "question_numbers": [
+     16
+    ],
+    "stem_lines": [
+     255,
+     284
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     17
+    ],
+    "stem_lines": [
+     289,
+     291
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     294,
+     300
+    ]
+   },
+   {
+    "question_numbers": [
+     18
+    ],
+    "stem_lines": [
+     302,
+     334
+    ],
+    "answer_lines": [
+     477,
+     477
+    ],
+    "explanation_lines": null,
+    "options_lines": [
+     337,
+     343
+    ]
+   },
+   {
+    "question_numbers": [
+     19
+    ],
+    "stem_lines": [
+     349,
+     354
+    ],
+    "answer_lines": [
+     481,
+     481
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     20
+    ],
+    "stem_lines": [
+     356,
+     379
+    ],
+    "answer_lines": [
+     483,
+     483
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     21
+    ],
+    "stem_lines": [
+     386,
+     388
+    ],
+    "answer_lines": [
+     487,
+     487
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     22
+    ],
+    "stem_lines": [
+     391,
+     400
+    ],
+    "answer_lines": [
+     489,
+     491
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     23
+    ],
+    "stem_lines": [
+     402,
+     444
+    ],
+    "answer_lines": [
+     493,
+     503
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   },
+   {
+    "question_numbers": [
+     24
+    ],
+    "stem_lines": [
+     446,
+     461
+    ],
+    "answer_lines": [
+     507,
+     507
+    ],
+    "explanation_lines": null,
+    "options_lines": null
+   }
+  ]
+ }
+}
