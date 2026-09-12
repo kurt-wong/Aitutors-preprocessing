@@ -919,3 +919,9 @@
 ### 结果
 
 PAC 第一轮 22 份全链(真实 OCR + 真实 LLM)跑通,轨迹工件完整,FAIL 全部可解释且非静默;OCR 服务链从"零测试"升级为 22 份真实轨迹 + 漂移量化;抓 2 个账目覆盖缺陷(均修复+验证)。套件 **111 passed + 1 xfailed**(BUG-28 回归 +3)。残留:① 人工复核深度不均(hazard 卷深度、PASS 卷抽验,已如实标注,逐题全查留待用户抽查);② C3/C4 类 BLOCKED;③ 第二轮扩样(每类 2 份=26)待第一轮分诊裁定后决定。
+
+### R44 补记(同日):CI 三连红排查与修复 + BUG-16 家族清尾
+
+- **CI 三连 failure 实锤排查**:R44 的 BUG-28 提交起 CI 连红三次。日志定位:**我自己写的测试不可移植**——`test_summary_path_out_isolated` 用 `Path(r"D:\x\reslice-pac")`,Windows 本地 `.name` 取到目录名,CI(Linux)反斜杠不是分隔符 → `.name` 返回整串 → FAIL。生产代码 `derive_summary_path` 本身无缺陷(生产在 Windows 跑)。修复:测试改平台无关构造(`Path("x")/"reslice-pac"`)。**教训**:R36"本地过≠CI 过"先例在我这轮复现,写测试用 Windows 字面路径语法 = 埋 CI 炸弹;新测试须默认平台无关。
+- **BUG-16 家族清尾**:CI 修复过程中 git warning 暴露 `flush_results`/summary 写盘漏 `newline=""`(账目 json 被翻 CRLF)——已修 + 已提交的 PAC result json 归一纯 LF(CRLF count=0)。
+- **CI 复绿**:`gh run view 34723215654`(43e24a2)= success。套件 111 passed + 1 xfailed 维持。
