@@ -759,3 +759,29 @@
 5. **测试基建硬化(本轮唯一非文档改动,`pytest.ini`)**:本地裸 `pytest` 首次跑出收集期全灭——① 仓库根被沙箱留下 4 个 ACL 异常的 `pytest-cache-files-*` 空目录(连 Get-Acl 都 Unauthorized),收集遍历即 PermissionError;升级 danger-full-access 删除恢复;② 裸 pytest 还误收 `_archive` 归档区的历史 `test_*.py` 导致收集错误(CI 一直用 `pytest tests/` 故从未暴露)。修复:`testpaths = tests`(与 CI 口径一致)+ `norecursedirs` 防御清单。复跑:**106 passed + 1 xfailed(17.24s)**,与 R38 基线一致。
 
 **结果**:R38 全部裁定入库,三本台账与设计文档口径一致;冻结候选基线 `7f37be9 / R38` 登记;下一阶段 = **System Readiness Gate**(BUG-11/14/15、OCR 覆盖与真实行为、image recovery、真实 LLM 稳定性、Resolver 契约消费,每 claim 按三列制举证);Identity 层不再扩展规则。生产代码零变更(仅 pytest.ini 基建硬化),套件 **106 passed + 1 xfailed**。
+
+## R40 · 2026-09-13 · 对 R39 全部结论的对抗性审查(16 个攻击面,每个结论真实测试)
+
+**输入**:用户指令——对 R39 全部结论开启严格对抗性审查,每个结论必须有真实测试证据;不降标准、不自我合理化、不强行解释未通过项、不靠推测。自查先行声明:R39 是记账轮,最弱环节是①记账数字只是转抄 R38 工件而非独立复现;②"三处撤销/空目录/CI 一直"这类全称与存在性主张;③pytest.ini 硬化声称的"口径对齐"与排除功能。
+
+**执行与裁决(独立实现,不复用 R38 探针;探针用后即删)**:
+
+- **V1 基线完整性 🟢**:`git diff 7f37be9..8fb7e48` = 6 文件(5 md + pytest.ini),`scripts/ tests/ ocr_service/` 零改动——"R39 未动生产代码,冻结基线不受影响"成立。
+- **V2 CI 🟢**:`gh run view 34700526059` → conclusion=success,headSha=8fb7e48 精确匹配。
+- **V3 套件 🟢**:重跑 **106 passed + 1 xfailed**(18.12s)。
+- **V4 收集口径 🟢**:裸 `pytest` 与 `pytest tests/` 收集列表 Compare-Object 逐项一致(107 项,_archive 命中 0);变异对照:`pytest _archive` 显式传路径即复现收集错误 → `testpaths` 确为保护源,非巧合。
+- **V5 norecursedirs 功能 🟢**:投毒 `pytest-cache-files-zzz/test_poison.py`(import 即 raise)——裸跑 exit 0 不收集;显式传该路径即爆 `RuntimeError: POISON COLLECTED` → 排除规则功能性成立,变异对照成立。
+- **V6 "空目录"主张 🔴 证伪(证据资格)**:当时唯一证据是 `dir /a /b` 返回 "File Not Found",与"拒绝访问"不可区分——**"空"没有证据资格**,R39 行文按规则 1 精确化为"内容不可读(ACL 拒绝),是否为空无法证实"。因果链本身仍成立:删除后同一收集命令错误 6→2(仅剩 _archive),目录确为致错因;且删除后已不可再验(如实记录)。
+- **V7 "CI 一直用 pytest tests/" 🟢(全称主张穷举)**:git 历史穷举——ci.yml 仅一个历史版本(a7d78f6),内容即 `pytest tests/`;"一直"以穷举成立。
+- **V8 三概念分账 🟢**:`ACCEPTED KNOWN BOUNDARY` / `ACCEPTED OCR LIMITATION` 在 bugs.md / status.md / log.md 三处各 1 命中。
+- **V9 "三处 RETRACTED" 🔴 半证伪 + 当场修复**:status.md 2 处、log.md 2 处成立;**bugs.md 0 处**(唯一"撤销"命中属 BUG-22 历史行)——review_protocol 出处句在 bugs.md 上仅有 supersession 措辞支撑。修复:bugs.md BUG-24 条目补"R37 主张正式撤销(RETRACTED)"显式行;复验三文件命中 ≥1。
+- **V10 BUG-25 全语料记账 🟢(最终逐位复现,过程中两次自查纠偏)**:独立重实现扫描。第一轮用我自己的过滤器得 3134 文件/56023 候选,与已提交 3120/44211 不符——未绕过,分目录量化定位第一层口径差为产品测试目录(reslice-audit-a5 2 份 + reslice-stress10 9 份 + reslice-test-v21 3 份,后者恰贡献 17 行整行排除,精确解释 excluded 偏差)。对齐后**九个数字全部逐位复现**:files 3120 / head 44211(候选−整行排除)/ 整行排除 11747 / 生产排除 10907 / 去转义点排除 10899 / restored 840 / restored 前 848 / reslice 源 75 / reslice restored 13。新旧差集恰 8 行,8/8 含 `\.` 且现被生产排除。第二层:inventory `files_full=3045` 与 3120 的差——先后两个假说(零候选文件、旧字段未更新)**均被实测证伪**,最终结构解释经专项验证成立:**75 份 manifest(batch-C 50 + pilot 16 + stress10 9)→ 75 个去重源全部在 3120 集内,3120 − 75 = 3045**(full 计数即排除 reslice-scope 源后的口径),无遗留疑点。
+- **V11 🟢**:8 行逐一复验(朝阳二模历史 L291、西城一模历史 L374、西城二模历史 L323、通州语文 L489、临川政治 L266/L274、东城物理 L445/L461)生产现全部排除。
+- **V12 窗口边界 🟢 结论成立 / 措辞 🔴 修正**:实测临川地理 L283 `## 二、 综合题（40分）（答案书写在答题卡上）`:归一头『答』= **第 10 字符**(0 基 index 9)、『案』= 第 11;窗口 10 保留、窗口 11 误杀——结论成立,但"marker 恰在第 9 位"表述不精确(1 基应为第 10),设计文档 §10.5 与 `question_identity.py` 注释已改为"『答案』跨第 10~11 字符"。
+- **V13 BUG-25 保护力 🟢(变异验证)**:临时回退 `_NUM_PREFIX` 转义点 → `test_b24_02_answer_lines_stay_excluded` **FAIL**(1 failed/12 passed)→ `git checkout` 恢复 → 13 passed。修复受测试保护(协议规则 3.5 实证,非"实现存在")。
+- **V14 字节稳定性 🟢**:66/66 manifest 当前 sha256 == 已提交 after 快照,0 不一致。
+- **V15/V16 🟢**:R39 引用的 8 个工件文件全部存在;`7f37be9` 基线串在 status/log/设计文档一致。
+
+**发现汇总**:0 个结论级翻转;3 个措辞/落盘级问题(V6"空目录"无证据资格、V9 bugs.md 缺显式 RETRACTED、V12"第 9 位"1 基不精确)——**全部当场修正并复验**。复现方法论事实留痕:语料 gitignored,数字复现必须先从已提交工件反推口径定义再对账;"files 3045 vs 3120"这类表层矛盾在深挖后都有结构性解释,**禁止用"字段过期"之类的猜测收尾**(本条 V10 即先猜后纠的实例)。
+
+**结果**:R39 全部实质结论经真实测试维持成立;R40 修正 3 处后,BUG-24/25 关闭、R37 撤销、review_protocol、冻结基线登记的证据链闭合。套件 **106 passed + 1 xfailed**。

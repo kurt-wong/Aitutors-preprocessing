@@ -51,7 +51,8 @@ PRINTED_LINE = re.compile(r"^\s*(\d{1,3})\s*[\.、．]")
 # 回归语料见 test_bug24_section_locator)。诚实残留(全语料 4 例,均不在
 # batch-C/pilot 提交范围):marker 与窗口跨界(straddle,如"书面表达第一节
 # 参考答案")与 OCR 行融合(标题与答案同行)——扩窗会误杀合法标题
-# ("综合题(40分)(答案书写在答题卡上)" marker 恰在 9),按证据记录不硬修。
+# ("综合题(40分)(答案书写在答题卡上)"的"答案"跨归一头部第 10~11 字符,
+# 窗口 10 只含"答"故保留、窗口 11 含"答案"即误杀,R40 实测),按证据记录不硬修。
 ANSWER_MARKER = re.compile(r"答案|解析|评分")
 _HASH_PREFIX = re.compile(r"^#{1,6}\s*")
 _PART_PREFIX = re.compile(r"^第[一二三四五]部分\s*")
