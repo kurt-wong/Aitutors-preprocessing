@@ -1640,3 +1640,12 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 
 ### 结果与边界
 全量回归 **242 passed + 1 xfailed**(与 R66 收口态一致,零回退)。**R66.1 = B/C 受控通过、A(生产 daemon 重启+新代码进程归属)暂停待用户裁决;D5-B 继续禁止**。625/9,657 拆分是风险预检口径,不构成逐份"已处理"裁定;引导回填若实施须逐份日志证据 + 新轮治理(登记+测试+变异)。报告 `reports/r66_1_activation.md`。
+
+---
+
+## R67 设计轮(2026-09-13):Manifest 审计级引导 DESIGN ONLY + daemon「跑飞」归因
+**输入**:用户先裁决路线甲(审计回填),随即指令改为**先出设计、勿实施**;并要求回答 daemon 为何会跑飞。
+**归因(报告 §一)**:旧 daemon 并未跑飞——是**卡死**(runner 日志冻结于 09-10 21:27:45 / 75/12703,进程存活 2.7 天零输出);「跑飞」是直启的前瞻风险,三层成因:① 清单冷启动语义(R-OHM-1 只保护记账之后,manifest 从零开始);② 历史搬移存量(跑步机遗产);③ 9,657 份从未处理 = daemon 本职(配额闸门内,非故障)。
+**探针实测(只读,`scripts/_r67_design_probe.py`)**:审计 698 条 from→to **698/698 全匹配**——from 恰为唯一 PDF 的 runner 期望输出(共享歧义 0),to 全部在位;**但 625 首扫候选中仅 1 份期望输出 ∈ 审计 from 集**(697/698 审计源当前期望输出在位=已被跑步机回填,EXISTS skip)。**设计含义:审计回填的受益时点是 D5-B 再次搬移被 MANIFEST_DONE 拦截,不是首扫;625 无证明者禁止推断回填(禁 stem 级身份/禁 fallback)。**
+**设计落盘** `reports/r67_manifest_bootstrap_design.md`:工具形态(离线、默认 dry-run、--apply 显式)、匹配规则(完整路径等值,歧义/to 缺失 fail-closed 入 excluded 桶)、条目 schema(provenance=r63-audit-bootstrap + processed_at unknown + pages 0 之代价如实披露)、五 fail-closed 点、幂等、与生产激活的顺序契约、测试 9 项 + 变异 5 项计划。**四个用户决策点待裁决:① pages 未知表达(0 vs -1 哨兵);② written_at=写入时刻+processed_at unknown;③ 625 首扫候选处置(接受重跑/逐份裁定/日志考古扩展探针);④ apply 时机。**
+**边界**:零实施、零生产写入;探针只读;698/698 是当下对账,apply 前语料若变动须重跑探针。
