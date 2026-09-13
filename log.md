@@ -1555,6 +1555,8 @@ R58 七项结论:**6 项成立、1 项措辞级证伪(已更正)**;0 代码行�
 
 ### R64 收口(CI 实测,2026-09-13)
 
-**F-r64-1(跨平台缺陷,CI 抓获,当轮修复)**:首轮 CI Run 34747603049(ubuntu)失败——eclassify_audit.jsonl 由 Windows 写入(反斜杠路径),武器 os.path.basename 在 POSIX 上不切 \ → 审计索引键错位、in_reclassify_audit 恒 False(t3 咬合;计数行"1 failed, 205 passed, 23 skipped, 1 xfailed"与预期算术 206-19-4 一致,即失败恰为 1)。修复:basename 前双分隔符归一(src.replace(chr(92), "/"));真实语料结论不变(重跑 audit_hit_groups 73/73、各项计数逐项相同,JSON 字节级还原免时间戳噪音)。教训:**跨平台审计武器对"另一平台 authored 的路径"必须显式归一分隔符;win-only 语义测试之外,反模式是假设 os.path 行为与产物来源平台一致**。
+**F-r64-1(跨平台缺陷,CI 抓获,当轮修复)**:首轮 CI Run 34747603049(ubuntu)失败——reclassify_audit.jsonl 由 Windows 写入(反斜杠路径),武器 os.path.basename 在 POSIX 上不切 \ → 审计索引键错位、in_reclassify_audit 恒 False(t3 咬合;计数行"1 failed, 205 passed, 23 skipped, 1 xfailed"与预期算术 206-19-4 一致,即失败恰为 1)。修复:basename 前双分隔符归一(src.replace(chr(92), "/"));真实语料结论不变(重跑 audit_hit_groups 73/73、各项计数逐项相同,JSON 字节级还原免时间戳噪音)。教训:**跨平台审计武器对"另一平台 authored 的路径"必须显式归一分隔符;win-only 语义测试之外,反模式是假设 os.path 行为与产物来源平台一致**。
 
 **收口:修复提交 857e3b9 → CI Run 34747741001 = success,日志原文 "206 passed, 23 skipped, 1 xfailed"**。算术闭合:206+23+1 = 230 = 本地 229 passed + 1 xfailed;skip 23 = 19 corpus + 4 win-only(R62 t3/t5 + R64 t7/t14,本地均真实通过非 xfail)。R64 全链:用户裁决落盘 → D0–D5 只读实测 → 14 钉 + 变异 5/5 → 台账 → CI 绿。main = 857e3b9(前序:d7d17d3 主提交 / 7ded519 D5 报告强收)。下一项待用户裁定(BUG-14-DATA 修复域:先修跑步机机制 → 周期 reclassify → 语义去重)。
+
+**台账转写缺陷披露(F-r64-2,当轮修复)**:本轮 log.md 追加误用 PowerShell 双引号 here-string,反引号转义吞掉行内代码标记,且 `r 被转义为 CR 致 L1558 处 reclassify 首字母丢失。机械修复:CR 还原为字母 r(diff 仅 1 行,无任何主张改动);被吞反引号仅为格式损失,文字与数字未损,不回填以免二次噪音。教训:向 log.md 追加含反引号/反斜杠的内容必须用单引号 here-string(@'...'@)或文件写入工具。
