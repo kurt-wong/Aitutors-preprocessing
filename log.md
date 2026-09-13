@@ -1296,3 +1296,5 @@ R-ACC-1 ✅(真实 v1 + C1)/ 2 ✅(16 真实 FAIL + C2/C3 + CI t3t4)/ 3 ✅(1664
 新增 `scripts/r55_r45_audit.py`(语料依赖,本地跑)+ `tests/test_r55_r45_audit.py`(**CI +9**:M1-P14 回归/转义点回归/M2-M5 契约/残差分诊桶 8 类/coverage 三态/md_of 陷阱回归);工件 `data/r55_r45_audit.json`(24KB,入库)。套件 **175 passed + 1 xfailed**(本地)。
 
 **结果**:R45 顶层声明 L1/L2/L4–L8 全部以真实测试复证成立;L3 分项算术为已知更正在案;新增 F-r55-2(R46 更正自身的分项缺口)与 F-r55-3(方法论:分项数字非事实层)。**0 新的 PAC/生产缺陷**;本轮审计工具自身缺陷 3 项当场修(R49/R53/R54 同族纪律第四次实证)。审计结论待用户裁定收口(R42 先例)。
+
+**闭环证据**:提交 `1f32952`(5 文件,+1811)→ 推送 `3c3d2a5..1f32952` → **CI Run 34736885133 = success,`158 passed, 17 skipped, 1 xfailed`**(本地 175 − 17 语料 skip = 158,算术闭合)。受审对象 `resolver_reference.py`/生产三脚本/`audit_f1_consistency.py` 本轮零变更(git diff 复证)。过程记录:首次推送因本地代理(127.0.0.1)瞬断失败,重试成功;R45 时点 CI 日志 blob 拉取 TLS 超时,以 worktree 可复现重跑 + run 结论(success)替代,证据局限已如实声明。
