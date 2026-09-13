@@ -140,3 +140,32 @@ R49 纸面审查发现 v0.1 的 C 条款→R-ACC 映射存在缺口(C-IN-5 / C-I
 - F1 只证明**结构一致性**;R-ACC-12 恰证明它对语义错误**无检出义务、也不应有**(Audit invariant,非 Gate)。语义正确性仍属 QC 语义探针(测量仪)/Admission 人工通道。
 - R-ACC-12/13 攻击样本 = PAC 单文件 + 单个 material 富样本各 1 份,K=6/族枚举(manifest 序前 K 个合格单元,非按结果挑选);结论限定该样本域,不外推全语料发生率。
 - E1 staged 漂移演示中 resolver 行为(ADMITTED)符合契约:Resolver 消费 QC verdict,该态下 QC 仍 PASS(其裁决对象是切片)——F1 正是为暴露该跨组件缝隙而存在,且按裁决不改变 admission 语义。
+
+## 附录 D · R56 二审裁定 + R57 治理落地(2026-09-13,用户裁定)
+
+### D.1 裁定记录
+
+1. **R55 收口通过 ✅**(R45 声明对抗性复证:顶层声明全成立;F-r55-2/3/4 入册)。
+2. **立即采纳**:G-TAX-1 Rule Taxonomy + Rule Retirement Policy(落地 `governance/rule_registry.md`,CI 钉住)、G-RES-1(本附录 D.2)、G-BOUND-1(本附录 D.3)。
+3. **登记但延期**:G-SCHEMA-1 basis 拆分(`identity_policy`+`evidence`)→ **IR vNext / Admission vNext 落点,不反向修改 Identity v2**(v2 经 R34/35/38/40/42/49/53 多轮验证,现改会重开 migration/resolver/admission 风险)。
+4. **暂不实施**:G-AUD-1 统一审计框架——历史 audit artifact 具 provenance 价值,不重构;若未来批准,仅对新轮次生效(登记册 §6.3)。
+5. 阶段路线(用户认可):Identity v2 冻结 → **BUG-11/14/15 数据卫生(序:11→14→15)** → basis schema-only 治理(排期③)→ Admission Layer 稳定化 → V3 Backend 消费。
+
+### D.2 Resolver 禁能力膨胀条款(G-RES-1,显式禁令)
+
+Resolver 的职责边界 = **structural extraction + provenance attach**,以下能力**明令禁止进入 Resolver**(无论需求方理由):
+
+1. **semantic inference**(任何语义真值推断,含"这题切对了吗");
+2. **similarity judgment**(同题/相似题判定——归属未来 Question Similarity 层);
+3. **knowledge classification**(知识点/难度/题型分类);
+4. **answer correctness judgment**(答案正确性判定——归属 Admission/人工)。
+
+违禁判定标准:任何让 Resolver 输出超出"结构事实 + 出处"字段的需求,一律拒绝并登记;正确回应是路由到后续层,而不是就地扩展。此禁令与三边界纪律(R47)同效力,修改须用户裁定。
+
+### D.3 阶段定位原则(G-BOUND-1)
+
+**preprocessing = V3 的 Data Admission Layer,不是"题目解析脚本"**。已由本层证明的事实(OCR 判读、section 归属、identity、结构完整性),V3 Backend **不得重复判断**——重复判断即边界污染(V2 失败路线重演)。Backend 消费面 = 验证过的 IR + provenance + unresolved 显式通道(596 槽位,禁止 `answers.get(q, "")` 类静默默认)。
+
+### D.4 审计惯性防线
+
+用户裁定采纳"审计惯性"预警:规则增长须以登记册为闸口(新增必登记、退役须裁定),**默认拒绝"为审计工具新增审计工具"**(登记册 §6.5)。复杂度倒挂(审计 ≈ 生产链 5.4×,R56 实测)定性为维护成本风险而非正确性风险,治理手段 = 冻结增长 + 分类学 + 退役政策,而非削减已证明必要的检查。

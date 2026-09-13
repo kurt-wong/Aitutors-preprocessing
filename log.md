@@ -1328,3 +1328,25 @@ R-ACC-1 ✅(真实 v1 + C1)/ 2 ✅(16 真实 FAIL + C2/C3 + CI t3t4)/ 3 ✅(1664
 ### 本轮动作边界
 
 **仅登记,零执行**:无代码/契约/schema 变更;所有候选(G-SCHEMA-1/G-TAX-1/G-AUD-1/G-RES-1/G-BOUND-1)待用户裁定采纳与排期。R55 结论仍待收口。
+
+---
+
+## R57(2026-09-13):二审裁定落地——规则登记册 + Resolver 禁令 + 阶段定位(R56 审核意见收口)
+
+**输入**:外部二审意见(基于 R51–R56 记录,自述非代码级)含最终裁决。
+
+### 裁决与处置(全部落地,零生产代码变更)
+
+1. **R55 收口 ✅**(R45 声明复证轮,提交 1f32952/52da2e3,CI 34736885133/34737142579 success)。
+2. **G-TAX-1 + Rule Retirement Policy → `governance/rule_registry.md`**:五类 taxonomy(FACT_INTEGRITY/STRUCTURE/IDENTITY/EVIDENCE/QUALITY);登记 C1–C14(逐条取自 reslice_qc.py 真实描述)/ P13–P15(测量仪)/ F1+I0–I3 / 审计治理机制 / R-ACC 攻击家族;每条含 purpose/attack surface/evidence/retirement;退役政策 5 条(新增必登记、C 族退役须裁定、审计脚本冻结为 provenance、探针替换须同级校准、**默认拒绝"审计审计系统"**)。
+3. **G-RES-1 → 契约附录 D.2**:Resolver 四项显式禁令(semantic inference / similarity judgment / knowledge classification / answer correctness judgment);违禁判定标准 = 输出超出"结构事实+出处"即拒,路由后续层。
+4. **G-BOUND-1 → 附录 D.3**:preprocessing = V3 Data Admission Layer;Backend 不得重复 OCR/section/identity 判断;消费面 = IR + provenance + unresolved 显式通道(596 槽位,禁静默默认)。
+5. **G-SCHEMA-1 延期**:basis 拆分落 IR vNext/Admission vNext,不反向改 Identity v2(多轮验证资产,现改重开 migration/resolver/admission 风险)。
+6. **G-AUD-1 暂不实施**:历史 audit artifact = provenance,不重构。
+7. 审计惯性防线(附录 D.4):复杂度倒挂(5.4×,R56 实测定性)治理手段 = 冻结增长+分类学+退役政策,不削减已证明必要的检查。
+
+### 测试与证据
+
+- `tests/test_rule_registry.py` **+4**:代码↔登记册**双向 set-diff 钉住**(册上幽灵规则与代码未登记规则都被咬)+ taxonomy/字段/退役政策在册断言。
+- 变异咬合:staged 删册上 C14 行 → t1 精准咬合;还原 sha 闭环。
+- 下一阶段路线(用户裁定):**Identity v2 冻结 → BUG-11/14/15 数据卫生(序 11→14→15)→ basis schema-only(排期③)→ Admission Layer 稳定化 → V3 Backend 消费**。
