@@ -70,12 +70,8 @@ vic = json.load(open(os.path.join(BASE, "data", "r66_1_victim_split.json"), enco
 audit_froms = {os.path.relpath(a["from"], OUT_ROOT).replace("\\", "/") for a in audit}
 hit = 0
 for v in vic["victims"]:
-    stem = v["stem"]
-    for p in v["existing_md_core"] + v["existing_md_excluded"]:
-        pass
-    # victim 的期望输出 rel:
+    # F-r67-1 修正:原版在此 early-break(hit>=1 即退出),把 624/624 误报成 1
     rel = v["expected_output_rel"].replace("Ocr-markdown/", "")
     if rel in audit_froms:
         hit += 1
-        break
 print(f"victim 625 中期望输出在审计 from 集合内的={hit}")

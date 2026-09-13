@@ -82,9 +82,19 @@ def validate_entry(entry):
     for k in ("source_rel", "output_rel"):
         if not isinstance(entry[k], str) or not entry[k]:
             raise ManifestError(f"{k} 必须是非空字符串: {entry[k]!r}")
-    for k in ("source_size", "pages"):
+    for k in ("source_size",):
         if not isinstance(entry[k], int) or isinstance(entry[k], bool):
             raise ManifestError(f"{k} 必须是整数: {entry[k]!r}")
+    # R67 扩展(用户裁决):pages 允许 null 表示页数未知,但仅当 provenance 在场
+    # (禁 -1 哨兵污染数值语义、禁假 0 伪事实);runner 自身记账恒为真实整数。
+    pages = entry["pages"]
+    if pages is None:
+        prov = entry.get("provenance")
+        if not isinstance(prov, str) or not prov:
+            raise ManifestError(
+                f"pages=null 仅允许伴随非空 provenance(未知必须有出处): {entry!r}")
+    elif not isinstance(pages, int) or isinstance(pages, bool):
+        raise ManifestError(f"pages 必须是整数或 null: {pages!r}")
     for k in ("source_sha256", "written_at"):
         if not isinstance(entry[k], str) or not entry[k]:
             raise ManifestError(f"{k} 必须是非空字符串: {entry[k]!r}")

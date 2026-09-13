@@ -1,7 +1,21 @@
 # R67 设计报告:Manifest 审计级引导(bootstrap)+ daemon「跑飞」归因
 
-日期:2026-09-13 | 状态:**DESIGN ONLY,零实施**(用户指令:先出设计,勿开始实施)
-前置:R66.1 受控激活 4/4 全绿;用户裁决路线甲(审计记录回填)后追加指令改为先设计。
+日期:2026-09-13 | 状态:**用户已裁决五项冻结(见 §十),进入 implement;apply 仍须 dry-run diff 人工批准**
+
+---
+
+## ⭐ §十 用户裁决(2026-09-13,冻结,凌驾本报告任何早期草案)
+
+| 决策点 | 裁决 |
+|---|---|
+| ① pages 未知 | **nullable**(`pages: null` + `provenance`);禁 `-1` 哨兵(污染数值语义)、禁假 `0`(伪事实) |
+| ② 时间字段 | **recorded_at 语义**(系统何时知道),绝不冒充 processed_at(OCR 何时发生);bootstrap 条目 `processed_at: null`。勘误:R66 既有 `written_at` 的取值时机本就是"记录写入时刻",故 bootstrap 条目 `written_at` = bootstrap 执行时刻语义自洽,另加显式 `processed_at: null` |
+| ③ 625 首扫候选 | **不接受直接重跑**;先 OCR 日志考古 → A 类(日志+路径唯一)入 bootstrap / B 类(弱证据)PENDING_REVIEW / C 类(无证据)不入 manifest;最大化利用既有 provenance |
+| ④ apply 时机 | **暂缓**:implement → CI → mutation → dry-run → manifest diff → 人工批准 → apply;diff 必须逐条列 evidence 来源与 confidence |
+| ⑤ 覆盖禁令 | **bootstrap 不得覆盖/修改任何已有 manifest 条目**(append-only history;只能为 missing source_rel 补新记录;已有条目原样保留) |
+| 原则 | **manifest 是事实账本,不是推测账本**;"看起来处理过"(文件存在)永不入账;最大风险 = 为修历史状态引入新伪事实 |
+
+其他裁决:R66.1 **PASS 收口**;daemon 归因"卡死"正确,worker 生命周期管理(heartbeat/progress checkpoint/stuck detection)登记为未来治理项,不混入本轮;下一阶段顺序 = implement → dry-run → diff 审查 → apply → daemon 新状态确认 → D5-B。
 
 ---
 
@@ -49,10 +63,14 @@ runner(33036)日志冻结于 09-10 21:27:45(扫描至 75/12703),进程存活 2.7
 | from == 唯一 PDF 的 runner 期望输出 | **698/698** | source↔输出映射日志级证明完整 |
 | 多 PDF 共享同一期望输出(歧义) | **0** | 无歧义,无需仲裁 |
 | to 文件仍在位 | **698/698** | 搬移结果未被后续破坏 |
-| 625 首扫候选中期望输出 ∈ 审计 from 集 | **1** | 审计证据覆盖不了 625;697/698 审计源当前期望输出在位(已被跑步机回填,EXISTS skip) |
+| 625 首扫候选中期望输出 ∈ 审计 from 集 | **625/625(⚠ F-r67-1 更正)** | 审计证据**全覆盖**首扫受害者 |
 
-**设计含义**:审计回填的受益时点是 **D5-B**(搬移→MANIFEST_DONE),不是首扫;
-首扫的 625 重跑问题独立存在,须单独裁定(§七 ③)。
+**⚠ F-r67-1(当轮自查更正)**:本节首版误写"625 中仅 1 份有审计证明"——根因是探针
+`hit += 1; break` 在首个命中即退出(把 ≥1 截断成 1)。修正探针后复证 **625/625**;
+dry-run 实测与此一致(624 受害者全部经审计入账,B_pending=0;差 1 份系工具 md 索引
+按口径排除 reslice 试验目录,其 source 作为审计源仍入账)。**结论反转后的设计含义:
+审计回填同时保护首扫(624 份不再重 OCR,首扫规模 10,282 → ~9,658)与 D5-B 搬移**。
+教训(与 F-r65-2 同族):审计武器的统计循环里禁止 early-break,计数必须穷举。
 
 ---
 

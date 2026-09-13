@@ -1649,3 +1649,15 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 **探针实测(只读,`scripts/_r67_design_probe.py`)**:审计 698 条 from→to **698/698 全匹配**——from 恰为唯一 PDF 的 runner 期望输出(共享歧义 0),to 全部在位;**但 625 首扫候选中仅 1 份期望输出 ∈ 审计 from 集**(697/698 审计源当前期望输出在位=已被跑步机回填,EXISTS skip)。**设计含义:审计回填的受益时点是 D5-B 再次搬移被 MANIFEST_DONE 拦截,不是首扫;625 无证明者禁止推断回填(禁 stem 级身份/禁 fallback)。**
 **设计落盘** `reports/r67_manifest_bootstrap_design.md`:工具形态(离线、默认 dry-run、--apply 显式)、匹配规则(完整路径等值,歧义/to 缺失 fail-closed 入 excluded 桶)、条目 schema(provenance=r63-audit-bootstrap + processed_at unknown + pages 0 之代价如实披露)、五 fail-closed 点、幂等、与生产激活的顺序契约、测试 9 项 + 变异 5 项计划。**四个用户决策点待裁决:① pages 未知表达(0 vs -1 哨兵);② written_at=写入时刻+processed_at unknown;③ 625 首扫候选处置(接受重跑/逐份裁定/日志考古扩展探针);④ apply 时机。**
 **边界**:零实施、零生产写入;探针只读;698/698 是当下对账,apply 前语料若变动须重跑探针。
+
+---
+
+## R67 实施轮(2026-09-13):Bootstrap 工具落地(dry-run 为止,apply 待批)+ F-r67-1
+**输入**:用户冻结五项裁决(pages nullable+provenance 禁-1禁假0 / 时间字段 recorded_at 语义不冒充 processed_at / 625 先日志考古 A-B-C 分桶 / apply=dry-run+diff 人工批准 / **bootstrap 禁覆盖已有 manifest**);原则"manifest 是事实账本,不是推测账本"。
+**实施**:
+1. 登记册 §7 R-OHM-1 行增补 R67 扩展(schema/覆盖禁令/无证据不入账);`output_manifest.validate_entry` 扩展:pages 允许 null **仅当 provenance 在场**(t8 双向钉:合法/无出处拒绝/字符串拒绝)。
+2. 新工具 `scripts/r67_manifest_bootstrap.py`:证据源仅两种——① R63 审计(from==唯一 PDF 期望输出、完整路径等值、to 在位>100B;歧义/未匹配/to 缺失 fail-closed 入 excluded);② OCR 日志考古(按 F-r65-2 截断规则构造 `[ts] [i/total] grade/subject/{fn[:50]}...`+`[OK] N pages`,fragment 全量歧义统计,歧义/无 OK → B 类 PENDING_REVIEW 只入报告);无同名 md 者不 seed(其首扫重跑=有价值的数据恢复,如实放行)。**禁覆盖**:source_rel 已在册 → 跳过计数,绝不修改;幂等:二次 apply 追加 0。条目:written_at=记录写入时刻(recorded_at 语义)、processed_at 恒 null(OCR 时刻本轮未提取,不用 written_at 冒充)、provenance ∈ {r63-audit-bootstrap, ocr-log-archaeology}、审计行号/日志 OK 行号留证。
+3. **测试 13 钉全绿**(`tests/test_r67_bootstrap.py`;t5 净化碰撞用 monkeypatch 合成——Windows 禁用字符造不出真实碰撞,如实披露;t13 真实语料冒烟 corpus 门控);**变异 5/5 BITE 字节还原**(M1 null无出处放行/M2 禁覆盖拆除/M3 匹配放宽/M4 fragment 歧义拆除/M5 dry-run 偷偷落盘);全量套件 **255 passed + 1 xfailed**(242+13)。
+4. **真实语料 dry-run(零落盘)**:`planned=698,全部 provenance=r63-audit-bootstrap,excluded=0,B_pending=0,already_in_manifest=0`;日志富化 698/698 补到真实页数(pages null=0);报告 `data/r67_bootstrap_report.json`。**apply 未执行,待用户审 diff 授权**。
+**⚠ F-r67-1(当轮自查更正,结论反转)**:设计轮探针 `_r67_design_probe.py` 的统计循环 `hit += 1; break` 早退,把 **625/625 审计可证** 误报为"仅 1 份";由此设计轮"审计回填只保 D5-B 不保首扫"的说法**作废**。修正探针复证 625/625,与 dry-run(624 受害者全经审计入账、B=0;差 1 份系 md 索引按口径排除 reslice 试验目录,其 source 仍作为审计源入账)一致。**更正后结论:审计回填同时保护首扫(重 OCR 规模 10,282 → ~9,658)与 D5-B 搬移拦截**。教训与 F-r65-2 同族:审计统计禁止 early-break,计数必须穷举。
+**边界**:manifest 生产文件未创建、daemon 未重启、D5-B 未跑;下一动作 = 用户审 698 条 diff(data/r67_bootstrap_report.json)→ 授权 apply → daemon 激活验收 → D5-B。
