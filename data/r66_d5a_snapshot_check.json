@@ -1,0 +1,35 @@
+{
+ "meta": {
+  "weapon": "r66_d5a_snapshot_check",
+  "purpose": "D5-A 跑步机修复前后冻结快照对账(修复不得触碰语料)",
+  "baseline": "data/r64_corpus_inventory.json (R64 D0 冻结;R65 独立复证 0 漂移)",
+  "identity_fields": [
+   "rel_path",
+   "size",
+   "sha256",
+   "norm_sha256"
+  ],
+  "mtime_excluded_note": "mtime 不入内容身份(如实声明);任何字节变化必入 changed",
+  "scope_note": "OCR_ROOT 源树+derived 全部 md(baseline 口径);根级 md 单独点名",
+  "root_level_md": [
+   {
+    "rel_path": "README.md",
+    "sha256": "91edba5108fd863092b5fd5c5cada5531d34f23076c05ba4ec34309bbedd48c4",
+    "errors": []
+   }
+  ],
+  "collect_errors": []
+ },
+ "counts": {
+  "baseline_records": 4881,
+  "current_records": 4881,
+  "changed": 0,
+  "missing": 0,
+  "new": 0
+ },
+ "changed": [],
+ "missing": [],
+ "new": [],
+ "corpus_digest": "6940f2ec994b7f7f653ff5316e9bae1e351177fb22a8f60057c901e7d5821f8d",
+ "audit_jsonl_sha256": "c53c954507fd06da0b6abf4e792226c15fc332df1ba6c16e9d80c583e2bd17ef"
+}

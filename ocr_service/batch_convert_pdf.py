@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 批量转换PDF文档为Markdown (带每日页数限制)
 使用PaddleOCR-VL-1.6 API
@@ -13,6 +13,12 @@ import sys
 import time
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+# R66 D5-A(用户 R65 裁定限定解冻):输出清单 R-OHM-1,governance/rule_registry.md §7。
+# 仅新增 skip 判定与记账接线;process_pdf 主体与 OCR API 语义不变。
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from output_manifest import (ManifestError, append_entry, decide_skip,  # noqa: E402
+                             load_manifest, make_entry)
 
 JOB_URL = "https://paddleocr.aistudio-app.com/api/v2/ocr/jobs"
 BASE = r"D:\Project\Papers"
@@ -48,6 +54,7 @@ optional_payload = {
 PDF_ROOT = r"D:\Project\Papers\maintainess\PDF"
 OUTPUT_ROOT = r"D:\Project\Papers\Ocr-markdown"
 LOG_FILE = r"D:\Project\Papers\logs\ocr_batch_log.txt"
+MANIFEST_FILE = r"D:\Project\Papers\data\ocr_output_manifest.jsonl"
 
 session = requests.Session()
 session.verify = False
@@ -201,6 +208,14 @@ def main():
         log("已达今日页数限制，请明天再试")
         return
 
+    # R-OHM-1:载入输出清单(fail-closed:损坏即中止,禁止静默降级为重跑)
+    try:
+        manifest = load_manifest(MANIFEST_FILE)
+    except ManifestError as e:
+        log(f"[FATAL] 输出清单损坏,拒绝继续(R-OHM-1 fail-closed): {e}")
+        raise SystemExit(2)
+    log(f"输出清单载入: {len(manifest)} 条 source 记录")
+
     # 收集所有PDF文件
     all_files = []
 
@@ -247,12 +262,19 @@ def main():
             limit_reached = True
             break
 
-        # 检查是否已存在
+        # 检查是否已存在(R-OHM-1:期望输出落空时查清单,MANIFEST_DONE 切断跑步机)
         base_name = os.path.splitext(filename)[0]
         base_name = re.sub(r'[<>:"/\\|?*]', '_', base_name)
         output_md = os.path.join(output_dir, f"{base_name}.md")
 
-        if os.path.exists(output_md) and os.path.getsize(output_md) > 100:
+        skip_now, skip_reason, skip_detail = decide_skip(
+            output_md=output_md, source_pdf=file_path, pdf_root=PDF_ROOT,
+            output_root=OUTPUT_ROOT, manifest=manifest)
+        if skip_reason != "EXISTS":
+            # 既有 EXISTS 路径保持静默;其余决策(无论 skip 与否)显式留证
+            log(f"[DECIDE:{skip_reason}] {filename[:50]} -> "
+                f"{json.dumps(skip_detail, ensure_ascii=False)}")
+        if skip_now:
             skip += 1
             continue
 
@@ -267,6 +289,17 @@ def main():
             success += 1
             pages_used_today += pages
             save_page_usage(pages_used_today)
+            # R-OHM-1:成功写出即记账(先校验后写;清单故障 = FATAL,禁止静默失账)
+            try:
+                entry = make_entry(source_pdf=file_path, pdf_root=PDF_ROOT,
+                                   output_md=output_md, output_root=OUTPUT_ROOT,
+                                   pages=pages,
+                                   written_at=time.strftime("%Y-%m-%d %H:%M:%S"))
+                append_entry(MANIFEST_FILE, entry)
+                manifest[entry["source_rel"]] = entry
+            except ManifestError as e:
+                log(f"[FATAL] 输出清单写入失败,拒绝静默继续(R-OHM-1): {e}")
+                raise SystemExit(2)
         else:
             fail += 1
 

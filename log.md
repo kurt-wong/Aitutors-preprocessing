@@ -1578,3 +1578,34 @@ R58 七项结论:**6 项成立、1 项措辞级证伪(已更正)**;0 代码行�
 ### R65 收口(CI 实测,2026-09-13)
 
 **提交 7122765 → CI Run 34750043799 = success,日志原文 "208 passed, 23 skipped, 1 xfailed"**。算术闭合:208+23+1 = 232 = 本地 231 passed + 1 xfailed;skip 23 = 19 corpus + 4 win-only(R62 t3/t5 + R64 t7/t14),本轮前已逐节点点名枚举。main = 7122765。R65 审查全链收口:审查武器 → 11 主张复证 → 3 发现当轮修复+咬合 → 台账 → CI 绿。下一项待用户裁定(R64 D5:先修跑步机机制 → 周期 reclassify → 语义去重)。
+
+---
+
+## R66(2026-09-13):BUG-14-DATA D5-A — 跑步机切断机制修复(R-OHM-1)+ 修复前冻结快照
+
+**输入**:用户 R65 裁决落盘——R65 PASS 收口;D5 协议冻结为 **D5-A 停跑步机 → D5-B 全量 reclassify 一次 → D5-C 幂等复跑 → D5-D 重审计 → D5-E 语义去重**;本轮只做 D5-A + 修复前冻结快照,不碰语义去重/canonical identity/BUG-14-CHAIN。证据分层裁定同步冻结:62/67 字节不同组=日志直接证明、5/67=强推断(日志窗口外)、6/6 字节相同组=重复处理证据(非复制证据)。
+
+### 修复前冻结快照(先于任何代码改动)
+
+武器 `scripts/r66_d5a_snapshot_check.py`(确定性、无时间戳、只读,复用 r64 采集/哈希实现):baseline = R64 D0 冻结清单(R65 已复证)。实测 **4,881/4,881,changed=0/missing=0/new=0**,corpus_digest = `6940f2ec…21f8d`;身份口径 (rel_path,size,sha256,norm_sha256),mtime 不入身份,根级 md 单独点名(F-r65-1 口径)。daemon 静默:ocr_batch_log 停笔于 09-10 21:27:45,快照前后 mtime 不变;两个 09-10 启动的 python 进程未杀(用户进程),如实披露。
+
+### 机制修复(治理先行,先登记后实现)
+
+1. `governance/rule_registry.md` §7 新增 **R-OHM-1**(FACT_INTEGRITY+EVIDENCE)+ runner R25 冻结的**限定解冻声明**;CI 双向钉在册。
+2. 新模块 `ocr_service/output_manifest.py`(纯 stdlib):append-only JSONL 清单(source_rel/size/sha256/output_rel/written_at/pages,先校验后写+fsync);`decide_skip` 保留既有 EXISTS(>100B)语义,期望输出落空时查清单:**同 source(size+sha256 级)已在册 → MANIFEST_DONE skip**;坏行/缺键 → ManifestError → runner SystemExit(2)(fail-closed,禁静默降级重跑);路径键正斜杠归一(F-r64-1)。
+3. runner 4 处接线:清单载入 fail-closed / decide_skip 替换旧 exists / `[DECIDE:<reason>]` 显式留证(EXISTS 保持静默)/ 成功写出即记账(清单故障=FATAL)。process_pdf 主体与 OCR API 语义零改动。
+4. **设计裁定(自 caught,如实入账)**:MANIFEST_DONE 首版要求"记录输出仍在原位"——但跑步机场景恰是已被搬走,分支永不命中,切不断回流;修正为 sha 级已处理即 skip,记录输出现状(present/missing-or-moved)只入日志留证。**输出丢失不自动重跑**(auto-fix 禁;重跑权在人,删清单记录=显式授权,t4 实测恢复重跑)。
+
+### 测试与对抗(全部真实执行)
+
+- `tests/test_r66_treadmill_fix.py` **10 钉全绿**;核心 t2 跑**真实 main()**(仅 stub process_pdf,零 API):OCR→记账→模拟 reclassify 搬移→二轮 main() → MANIFEST_DONE skip、stub 调用保持 1、未分类零回流。CI 无 requests/urllib3 → import 级 stub(测试禁网),如实披露。
+- 变异 **5/5 BITE 全部字节还原**(M1 skip 拆除/M2 坏行静默/M3 接线回退/M4 sha 拆除/M5 append 校验拆除);快照武器阳性控制 t10(篡改必入 changed/幽灵 missing/新文件 new)。
+- 全量套件 **241 passed + 1 xfailed**(231+10)。
+- **修复后快照重跑与修复前逐字节一致**(sha256 93E77E86…16EF 前后相同,corpus_digest 不变)→ 机器证据:本轮零触碰语料。
+
+### 边界(如实)
+
+- runner 本体未真实执行(不调 OCR API);证据等级 = 真实 main() 集成 + 源码锚 + 变异咬合。现存两个 09-10 进程持旧代码,修复对其无效,**需用户重启 daemon 生效**;清单从零开始,首跑不改变既有 skip 结构(在位产出照旧 EXISTS),之后逐份记账。
+- D5-B/C/D/E 本轮不启动;reclassify --apply 仍未运行过。
+
+报告 `reports/r66_d5a_treadmill_fix.md`;证据 `data/r66_d5a_snapshot_check.json`。

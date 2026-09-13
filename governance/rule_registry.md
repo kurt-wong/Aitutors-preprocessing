@@ -88,3 +88,11 @@ R-ACC-17(provenance 断裂 fail-closed,含 BUG-31 义务钉)/ R-ACC-18(Resolver�
 3. 审计轮次脚本(rNN_*/pac_audit_* 等)是**一次性武器 + provenance 证据**:永不退役、永不复用改造;统一审计框架(G-AUD-1)经裁定"暂不实施",自某轮批准后仅对新轮次生效。
 4. 测量仪(探针)可替换,但替换须经同等校准与双向变异,并更新本册 evidence。
 5. 防递归陷阱:不为审计工具新增审计工具,除非有具名攻击面 + 用户裁定(审计审计系统的默认答案是"不")。
+
+## 7. 生产 runner 机制规则(R66 / BUG-14-DATA D5-A)
+
+**解冻声明**:`ocr_service/batch_convert_pdf.py` 自 R25 冻结;经用户 R65 裁定("下一轮只修跑步机机制,建立修复前冻结快照,不碰语义去重/canonical identity/BUG-14-CHAIN")限定解冻——仅新增 `ocr_service/output_manifest.py` 模块与 main 循环 skip/记账接线;`process_pdf` 主体、OCR API 语义、输出路径决策、既有 exists>100B skip 行为全部保持原样。
+
+| ID | 类 | purpose / attack surface | evidence | retirement |
+|---|---|---|---|---|
+| R-OHM-1 | FACT_INTEGRITY + EVIDENCE | runner 每次成功 OCR 写出后追加 append-only 输出清单(JSONL:source_rel/source_size/source_sha256/output_rel/written_at/pages);skip 决策在期望输出路径落空时必须查清单:同一 source(size+sha256 级一致)已在册 → skip(MANIFEST_DONE),记录输出当前在位与否只入日志留证、不参与决策(输出被搬移/丢失后的重跑权在人,runner 不自动重跑=禁 auto-fix)。防的就是跑步机:reclassify 搬移 md 后 skip-check 落空 → 同 PDF 重 OCR 回流(BUG-14-DATA 根因)。清单损坏/缺键/校验失败一律 fail-closed 显式中止,禁止静默降级为重跑(把"前置条件不存在"伪装成"事实不存在") | R64 D4 边界钉(副本+锚);R65 日志级证据:62/67 字节不同组直接证明重复处理、6/6 字节相同组亦为双次处理(重复处理证据而非复制证据);R66 修复变异咬合(见 tests/test_r66_treadmill_fix.py) | runner/OCR 工作流退役且语料转长期归档时 |
