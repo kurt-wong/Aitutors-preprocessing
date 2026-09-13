@@ -16,6 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from fix_bug22_renumber import strip_meta  # noqa: E402
+import audit_integrity as ai  # noqa: E402
 
 PREFLIGHT = ROOT / "data/resolver_contract_preflight.json"
 OUT = ROOT / "data/r48_audit_recompute.json"
@@ -34,6 +35,11 @@ def load_qc(path, key):
 
 
 def main():
+    # R50 Input Integrity Gate:审计全程输入集不得变化(执行前后 sha 对账)
+    inputs = ai.inputs_from_preflight(PREFLIGHT) + [
+        ROOT / q for q in ai.QC_ARTIFACTS if (ROOT / q).exists()]
+    before = ai.gate_snapshot(inputs)
+
     pf = json.loads(PREFLIGHT.read_text(encoding="utf-8"))
     rows_by_file = {r["file"]: r for r in pf["rows"]}
 
@@ -178,6 +184,7 @@ def main():
         "batchc_units": batchc_units,
         "named_claims": named,
     }
+    ai.gate_assert_unchanged(before, inputs, "r48_audit_recompute")
     Path(OUT).write_text(json.dumps(report, ensure_ascii=False,
                                     indent=1) + "\n",
                          encoding="utf-8", newline="")

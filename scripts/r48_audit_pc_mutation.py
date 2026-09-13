@@ -18,6 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from resolver_contract_preflight import check_manifest  # noqa: E402
+import audit_integrity as ai  # noqa: E402
 
 PREFLIGHT = ROOT / "data/resolver_contract_preflight.json"
 WORK = ROOT / ".pytest_work"
@@ -76,6 +77,14 @@ def main():
     results = []
     orig_man = (ROOT / md_rel).with_suffix(".manifest.json")
     orig_man_sha = sha(orig_man)
+    # R50 Input Integrity Gate:变异全程原件集(切片/manifest/源/annotated/
+    # preflight)零变化,staging 污染(自我覆盖)类缺陷将直接 fail-closed。
+    _man = json.loads(orig_man.read_text(encoding="utf-8"))
+    orig_inputs = [PREFLIGHT, ROOT / md_rel, orig_man,
+                   Path(_man["source_file"]),
+                   (ROOT / md_rel).with_suffix(".annotated.md")]
+    orig_inputs = [p for p in orig_inputs if p.exists()]
+    gate_before = ai.gate_snapshot(orig_inputs)
 
     # ---- 控制组:零变异拷贝必须复现原件结论 ----
     d, md_c, man_c, src_c, _, _ = fresh(md_rel)
@@ -189,6 +198,7 @@ def main():
     run("M10_源缺失", m10, ["pc10"])
 
     assert sha(orig_man) == orig_man_sha, "原件 manifest 被变异触碰!"
+    ai.gate_assert_unchanged(gate_before, orig_inputs, "r48_audit_pc_mutation")
     ok = all(r["ok"] for r in results)
     Path(OUT).write_text(json.dumps(
         {"sample": md_rel, "all_ok": ok, "results": results},

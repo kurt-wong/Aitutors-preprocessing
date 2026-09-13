@@ -1090,3 +1090,34 @@ M1(BUG-29 复发变异)期间,被变异的代码把**真实默认报告** `data/
 ### 审查发现汇总
 
 **无结论级翻转、无新生生产缺陷**;5 项发现 = 1 时点口径(R19 数字)+ 1 设计边界定性(孤立 keep)+ 1 审查工具 staging 缺陷(控制组抓获)+ 1 CI/本地口径措辞 + 1 契约覆盖矩阵缺口,全部当场修正并复验。套件 **134 passed + 1 xfailed**(本地;CI 117+17 skip)。
+
+---
+
+## R50(2026-09-13):用户 R49 评价与架构级裁定落盘 + 审计治理机制实施(Audit Snapshot Manifest + Input Integrity Gate)
+
+**输入**:用户对 R49 报告的架构级评价与裁定(原样入库要点):
+
+### 用户裁定要点
+
+1. **R49 定性 = PAC 阶段最后一类高价值攻击:攻击审查体系自身的可信度**——验证"之前的绿色结论是不是测试体系自证循环造成的假安全"。独立重算(不 import 被审脚本)被点名为正确审计方式(import 式审计只能证明"两套代码共享同一个错误");pc mutation 12/12 命中排除了"规则存在但永远不会执行"的系统性风险。
+2. **最终裁决:PAC + Identity 阶段 🟢 通过冻结;Identity v2 可作为 V3 Resolver 输入协议;不建议继续扩大 preprocessing 规则**。最大风险已从 `文件 → identity` 迁移到 `identity → question model`。
+3. **下一轮正式启动:Resolver Consumer Adversarial Audit**——审查目标不是"resolver 能不能跑",而是 **resolver 是否会重新解释已冻结的事实层、重新制造 V2 式隐性错误**(V3 进入业务核心前最后一个高风险边界)。用户指定攻击清单:① section 丢失 ② basis 被重新解释 ③ provenance 丢失 ④ composite material 合并错误 ⑤ single question material 丢失 ⑥ shared material duplication。
+4. **优先序(用户排序)**:① Resolver Identity Consumer Audit → ② BUG-11/14/15 数据卫生(结构对但内容错,直接影响教学质量)→ ③ basis schema-only **正式批准**(严格限定:只做 invalid enum detection;**schema violation => REVIEW(PENDING_REVIEW),不得 FAIL**,不得静默 PASS)→ ④ printed 硬化(unknown > wrong certainty:宁可 printed=null,不写猜测值)。
+5. **治理指令两条(用户原话级)**:① R19 时点漂移(14/304 vs 15/305)不要只修文档,**建立 Audit Snapshot Manifest**——报告引用 `R19@sha256(xxxx)` 而非动态目录,否则未来 R60 还会再现;② R49 staging 缺陷定性 **Test Oracle Pollution**(测试数据被污染,"全绿"在非原数据上得出),**所有审查工具必须有 Input Integrity Gate**(执行前后输入文件数/hash/manifest 对应关系,`before_sha == after_sha`)。
+6. **provenance 必须成为一等公民**:IR provenance 不得只是 metadata,应接近 `EvidenceProvenance(source_version, source_line, extraction_method, confidence_state)` 结构(并入 C-OUT-2 实施基准)。
+
+### 本轮落盘(治理机制实施,审计基建,零生产代码变更)
+
+1. **`scripts/audit_integrity.py`(新)**:`gate_snapshot`/`gate_assert_unchanged`(Input Integrity Gate,漂移即 RuntimeError fail-closed)+ `record`/`verify`/`inputs_from_preflight`(Audit Snapshot Manifest:确定性快照,同一输入集字节级相同、无时间戳;`corpus_sha256` = 全文件 sha 的 sha)。
+2. **Gate 接线**:`r48_audit_recompute.py`(输入面 = preflight + 88 份切片/manifest/annotated/源 + 3 份 QC 工件)与 `r48_audit_pc_mutation.py`(原件集 5 类 + preflight)执行前后 sha 对账——R49 staging 自我覆盖类污染今后将直接 fail-closed。**接线后重跑实证**:recompute 输出与已提交工件**字节级一致**(findings=0);mutation 重跑 **12/12 all_ok**,输出唯一差异 = pc10 raw 文本内的随机 staging uuid(benign,已 checkout 恢复已提交版本)。
+3. **R50 输入基线冻结**:88 份输入面共 **356 文件**快照 → `data/audit_snapshot_R50_input_baseline.json`,引用口径 **`R50_input_baseline@sha256:795ee1e7663424c1245e651d2139573d3bd2322f06662cc677bc0e7e3bc89beb`**;`verify` 实测 0 drift / 0 missing。Resolver 审查轮输入以此为准,数字声明引用快照摘要(BUG-30 类时点漂移治理)。
+4. **CI 契约测试 +8** `tests/test_audit_integrity.py`:gate 放行/变异注入咬住(改写输入→RuntimeError 指出漂移文件)/缺失咬住/record→verify 回路/快照后漂移与缺失检出/record 字节确定性/inputs_from_preflight 完整输入面推导且去重/缺失输入 fail-closed。沙箱约束如实:pytest 内建 tmp_path 不可用(WinError 5),按仓库惯例用 conftest.workdir。
+5. **台账同步**:`question_identity_design.md` §10.7 补 R50 批准(basis schema-only 正式批准,限定三条,排期优先序③);`resolver_contract_design.md` 新增**附录 B**(R50 裁决:攻击清单 6 条 / provenance 一等公民方向 / 输入基线引用口径 / Input Integrity Gate 纪律 / printed 硬化方向);`status.md` 阶段切换。
+
+### 边界(如实)
+
+- 本轮零生产代码变更(`scripts/audit_integrity.py` 为审计治理工具,不进生产链路;两个 r48 审计工具为 R49 既有审计资产);
+- Audit Snapshot 机制从本轮起生效,历史轮次(R19 等)时点数字不可回溯快照(当时未建机制),台账以"时点口径"注记保留;
+- Resolver Consumer Adversarial Audit 的审查对象问题:resolver 实体仍 NOT_BUILT——按用户裁定"下一轮正式启动",该轮的可审对象与实施路径(参考实现 vs 纸面+语料预备)作为下一轮的开审前置,待用户在下一轮指令中明确或按契约附录 A 开审条件执行。
+
+**结果**:用户裁定全部入库;两项治理机制从建议变为带 CI 测试的实现;下一阶段输入基线冻结。套件 **142 passed + 1 xfailed**(本地;CI 口径 125 passed + 17 skipped + 1 xfailed)。

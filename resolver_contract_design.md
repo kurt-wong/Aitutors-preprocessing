@@ -102,3 +102,11 @@ R49 纸面审查发现 v0.1 的 C 条款→R-ACC 映射存在缺口(C-IN-5 / C-I
 | R30 语义探针校准卷 | 政治 U35 / 地理 U13-14 等 | material 边界污染、答案区 OCR 丢字取数 |
 
 **开审条件**:resolver 实现存在且 R-ACC 清单有对应测试骨架;开审纪律同 PAC(R46 级对抗:独立重算 + 变异 + 穷举,不得抽样冒充全称)。
+
+## 附录 B · R50 用户裁决补记(2026-09-13)
+
+1. **阶段裁决**:PAC + Identity 阶段 🟢 冻结(R49 为该阶段最后一类高价值攻击——审查体系自身可信度);**下一阶段正式启动 Resolver Consumer Adversarial Audit**。审查目标不是"resolver 能不能跑",而是 **resolver 是否会重新解释已冻结的事实层、重新制造 V2 式隐性错误**。用户指定攻击清单:① section 丢失 ② basis 被重新解释 ③ provenance 丢失 ④ composite material 合并错误 ⑤ single question material 丢失 ⑥ shared material duplication。
+2. **provenance 一等公民(R50 用户方向,C-OUT-2 实施基准)**:IR provenance 不得埋在 metadata 里,应接近结构化对象 `EvidenceProvenance(source_version, source_line, extraction_method, confidence_state)`;否则后续追责困难。Resolver 实现轮按此形态细化 schema。
+3. **输入基线冻结(BUG-30 类 Audit Snapshot Drift 治理)**:本阶段 88 份输入面(batch-C 50 + pilot 16 + PAC 22 的切片/manifest/annotated/源 + preflight + 三份 QC 工件,共 356 文件)已快照为 `data/audit_snapshot_R50_input_baseline.json`,引用口径 **`R50_input_baseline@sha256:795ee1e7663424c1245e651d2139573d3bd2322f06662cc677bc0e7e3bc89beb`**。Resolver 审查轮的输入以此为准;数字声明引用快照摘要,不再引用动态目录。
+4. **审计工具纪律(R50 机制化)**:所有审查工具必须过 **Input Integrity Gate**(`scripts/audit_integrity.py`:执行前后输入集 sha256 对账,漂移即 fail-closed)——出处 R49 staging 自我覆盖事件(Test Oracle Pollution);R49 两个审计工具已接线。
+5. **printed 硬化(优先序④)批准方向不变**:unknown > wrong certainty,宁可 `printed_number=null` 不写猜测值。
