@@ -193,7 +193,17 @@ def resolve_file(md_path: Path):
         rec["reasons"].append("identity_version < 2 (C-IN-1)")
         return rec
 
-    src = Path(man.get("source_file") or "")
+    # BUG-32(R63 修复):非字符串 provenance(int/dict/list/bool)→ 显式
+    # MISSING(invalid provenance)。禁 str() 强转(损坏事实不得洗成合法
+    # 事实)、禁把 123 当文件名、禁猜路径、禁降级 ADMITTED。
+    sf = man.get("source_file")
+    if sf is not None and not isinstance(sf, str):
+        rec["disposition"] = "MISSING"
+        rec["reasons"].append(
+            f"source_file not a string: {sf!r} "
+            f"(invalid provenance, fail-closed)")
+        return rec
+    src = Path(sf or "")
     # BUG-31(R61 修复):provenance fail-closed——source_file 缺失/非文件
     # (Path("") 的存在性语义是目录 ".",or "" 不是安全网)必须显式 MISSING,
     # 禁崩溃、禁猜路径、禁 fallback、禁降级 ADMITTED(缺事实 ≠ 推测事实)。
@@ -251,7 +261,19 @@ def run(md_paths, out_dir: Path):
     """批量消费并落盘(--out 派生,C-OUT-1)。确定性输出(无时间戳)。"""
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    results = [resolve_file(p) for p in md_paths]
+
+    def _safe(p):
+        # 批处理隔离(R63 BUG-32 K13):单文件异常不得杀死整批 →
+        # 显式拒收(C-IN-3 UNCOMPUTABLE 态);禁静默、禁放行。
+        try:
+            return resolve_file(p)
+        except Exception as e:  # noqa: BLE001
+            return {"file": str(p), "ir": None,
+                    "disposition": "REJECTED_UNCOMPUTABLE",
+                    "reasons": [f"resolver exception contained: {e!r}"
+                                f" (batch isolation, fail-closed)"]}
+
+    results = [_safe(p) for p in md_paths]
 
     ir_doc = {"ir_version": IR_VERSION, "files": results}
     (out_dir / "resolver_ir.json").write_text(

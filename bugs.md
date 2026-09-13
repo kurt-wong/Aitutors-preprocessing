@@ -125,23 +125,26 @@
 - **修复证据**:t7 转正(strict xfail→普通通过,断言三层全显式失败态 + QC 理由含 C15)+ **t7b 新增:批处理继续**(一份坏 manifest 不杀整批:{ADMITTED:1, MISSING:1});变异 M4(resolver 守卫回退)/M5(QC C15 回退)/M6(F1 守卫回退)/M7(登记册范围回退致 C15 幽灵行)4/4 咬合,还原后文件逐字节一致。M4 附带实证:resolver 的 is_file 守卫与 OSError 兜底互为双层,单层回退仍 fail-closed(t7b 如实过),t7 靠理由串区分两层。
 - **教训**：fail-closed 必须覆盖**自身**的每一条 I/O 路径,不能只包下游调用;`Path("")` 的存在性语义是 `.`(目录恒存在),`or ""` 默认值不是安全网,是通往目录读取的暗门。
 
-### BUG-32 · 非字符串 `source_file`(int/dict/list/bool)三组件 TypeError 全崩 + 批处理整批死　🟠（Resolver 边界 / R62 审查发现 / 待裁定）
-- **状态**：**PENDING_REVIEW**(R62 对抗审查发现;R62 不擅改生产件,修复方案待用户裁定)
+### BUG-32 · 非字符串 `source_file`(int/dict/list/bool)三组件 TypeError 全崩 + 批处理整批死　🟢（Resolver 边界 / R62 审查发现 / R63 修复）
+- **状态**：**已修复(R63,用户 R62 裁决批准;对抗回归通过)**
 - **登记**：2026-09-13(R62,BUG-31 修复边界的对抗延伸:值类型攻击面)
 - **现象**：manifest `source_file` 为非字符串 JSON 值时,三组件全部 `TypeError: argument should be a str or an os.PathLike object ... not 'int'` 崩溃,无一 fail-closed;批处理 `resolver_reference.run()` 一份此类 manifest 即杀死整批(L254 列表推导无逐文件兜底)。实测 K7(int)/K8(dict)/K9(list)/K10(bool)四形态全崩,K13 批处理 BATCH_KILLED。
 - **性质定性**：**预存缺口,非 R61 回归**(R61 前 `Path(123)` 同样 TypeError);数据安全无损(崩溃≠静默 PASS),但违反 C-FAIL-1(不可计算必须机器可读拒收,禁崩)。可达性:生产 `write_outputs` 恒写字符串,缺口仅经篡改/损坏/手编 manifest 触达——低概率,但 t7b 承诺的"一份坏 manifest 不杀整批"对本家族不成立。
 - **位置**：三组件的 `Path(man.get("source_file") or "")` 家族构造点;`resolver_reference.run()` L254。
-- **修复方向（待裁定）**：显式类型校验 `isinstance(str)` 否则同 MISSING/C15/DRIFT 家族;run() 逐文件兜底。禁 fallback、禁猜测(同 BUG-31 边界)。
-- **证据**：`data/r62_boundary_audit.json` K7–K10/K13;义务钉 `tests/test_r62_boundary.py`(strict xfail,修复转正时强制翻绿)。
+- **修复(R63,三组件 + 三批入口,全部只加显式失败态)**:① `isinstance(str)` 类型守卫——resolver → **MISSING("source_file not a string … invalid provenance, fail-closed")**;QC `src_of` 非字符串折 `""` 哨兵 + check() **C15 显式 FAIL("必需 provenance 无效…非字符串")**;F1 → **DRIFT(note 显式)**;② 批处理隔离——resolver `run()` `_safe` 逐文件兜底(异常 → `REJECTED_UNCOMPUTABLE`,C-IN-3 第五态)、QC `main()` 逐文件兜底(异常 → 显式 FAIL 行)、F1 `run()` 逐文件兜底(异常 → 显式 DRIFT 行)+ 门禁面 manifest 读取防崩。**禁 `str()` 强转(损坏事实不得洗成合法事实)、禁猜路径、禁降级 ADMITTED**。
+- **修复证据**:义务钉 t4 strict-xfail 转正并参数化 4 形态(int/dict/list/bool)全过;新增 t6(good+bad+good 批续行 {ADMITTED:2, MISSING:1})/t7(坏 JSON → REJECTED_UNCOMPUTABLE 批续行)/t8(QC 批入口)/t9(F1 批入口);冻结 R62 武器零改动重放 K7–K10 CRASH_GAP→NO_CRASH、K13 BATCH_KILLED→BATCH_CONTINUED(`data/r63_fix_verification.json` overall=PASS:A 零缺口/B 反洗白/C K1–K6 逐态不变/D 基线三绿);变异 M1–M3(类型守卫逐组件回退)3/3 咬合。
+- **证据**：`data/r62_boundary_audit.json`(R62 发现)+ `data/r63_fix_verification.json`/`data/r63_rerun_k_matrix.json`(R63 修复复证);回归钉 `tests/test_r62_boundary.py`。
 
-### BUG-33 · 源文件拒读(OSError)时 QC/F1 未兜底崩溃(resolver 已兜底)　🟠（QC/F1 层 / R62 审查发现 / 待裁定）
-- **状态**：**PENDING_REVIEW**(R62 对抗审查发现;R62 不擅改生产件,修复方案待用户裁定)
+### BUG-33 · 源文件拒读(OSError)时 QC/F1 未兜底崩溃(resolver 已兜底)　🟢（QC/F1 层 / R62 审查发现 / R63 修复）
+- **状态**：**已修复(R63,用户 R62 裁决批准;对抗回归通过)**
 - **登记**：2026-09-13(R62,BUG-31 修复边界的对抗延伸:文件系统态攻击面 K12)
 - **现象**：源文件存在但拒读(Windows 独占句柄 sharing violation → `PermissionError`,沙箱内真实制造成功并实证)时:resolver 经 R61 的 `except OSError` 兜底 **MISSING("source unreadable ... fail-closed")** ✅(该兜底层首次获得活体实证,非纸面推断);但 QC `src.read_text`(C15 之后)与 F1 `check_file` 读源**无 OSError 守卫 → 两组件 CRASH**。
 - **性质定性**：**预存缺口,非 R61 回归**(R61 前 QC/F1 同样裸读);违反 C-FAIL-1。可达性:文件被其它进程独占(OCR 守护写入中)/ACL 变更/网络盘抖动——低概率瞬态,但 QC 是冻结生产链组件,批处理中同样整批死。
 - **位置**：`reslice_qc.check()` C15 之后的 `src.read_text`;`audit_f1_consistency.check_file` 读源 + `read_bytes`。
-- **修复方向（待裁定）**：QC/F1 同 resolver 双层口径(C15 扩到"不可读"语义或新增守卫),只加显式失败态。
-- **证据**：`data/r62_boundary_audit.json` K12(condition=PRODUCIBLE(PermissionError) 条件先实证后观测);义务钉 `tests/test_r62_boundary.py`(strict xfail)。
+- **修复(R63,只加显式失败态,与 resolver 双层口径同族)**:① QC `src.read_text` 包 `except OSError` → **C15 显式 FAIL("源文件不可读…fail-closed")**;② F1 读源 + `read_bytes` 包 `except OSError` → **DRIFT(note="source unreadable … fail-closed")**;③ 顺带修复同族缺口:check_file 快捷 DRIFT 返回缺 `n_units/n_match` 键致 `run()` 批汇总 KeyError(R62 观测器只调 check_file 未暴露,本轮 t9 钉住算术完整性)。
+- **修复证据**:t5 strict-xfail 转正(C15 不可读 + DRIFT + resolver MISSING,独占句柄条件先实证);冻结武器重放 K12 CRASH_GAP(qc,f1)→NO_CRASH(条件 PRODUCIBLE(PermissionError) 再次先实证);变异 M4(QC 拒读守卫回退)/M5(F1 拒读守卫回退)/M9(resolver R61 兜底回退)3/3 咬合。
+- **证据**：`data/r62_boundary_audit.json` K12 + `data/r63_fix_verification.json`;回归钉 `tests/test_r62_boundary.py` t3/t5/t9(win-only 钉 CI ubuntu 如实 skip)。
+- **教训(R63)**:分层防御下**裁决级断言会吞掉守卫回退变异**(M5/M6 曾变等价变异:NO-BITE 但裁决仍 fail-closed)——回归钉必须带**消息级/理由族断言**才能区分是哪一层在 fail-closed;t1 已升级(非文件族 vs 不可读族不可互顶)。
 
 ## 二、已修复 / 已规避（Fixed / Mitigated）
 

@@ -51,7 +51,10 @@ def src_of(md_path: Path):
     man = json.loads(man_path.read_text(encoding="utf-8"))
     # BUG-31(R61):.get 而非裸下标——缺失键由 check() 的 C15 守卫显式
     # FAIL,不在这里 KeyError 崩溃(Path("") 恒指向目录 "." 也不得漏过)。
-    src = Path(man.get("source_file") or "")
+    # BUG-32(R63):非字符串 source_file 折成 "" 哨兵,由 check() 的 C15
+    # 守卫显式 FAIL;禁 str() 强转(损坏事实不得洗成合法事实)。
+    sf = man.get("source_file")
+    src = Path(sf) if isinstance(sf, str) else Path("")
     return src, man
 
 
@@ -59,6 +62,16 @@ def check(md_path: Path):
     issues = []
     text = md_path.read_text(encoding="utf-8", errors="replace")
     src, man = src_of(md_path)
+    # BUG-32(R63,C-FAIL-1):非字符串 provenance(int/dict/list/bool)→
+    # 显式 FAIL;禁 str() 强转、禁猜路径、禁降级 PASS。
+    sf = man.get("source_file")
+    if sf is not None and not isinstance(sf, str):
+        issues.append(f"C15 必需 provenance 无效:source_file={sf!r} "
+                      f"非字符串({type(sf).__name__})")
+        return {"file": str(md_path), "units": len(man.get("units") or []),
+                "questions": 0, "issues": issues, "review_notes": [],
+                "identity_version": man.get("identity_version") or 1,
+                "verdict": "FAIL"}
     # C15 provenance 完整性(BUG-31 fail-closed 修复,R60 C1 攻击面):
     # manifest 必需 provenance 缺失/非文件 → 显式 FAIL,禁崩溃。
     if not src.is_file():
@@ -68,7 +81,16 @@ def check(md_path: Path):
                 "questions": 0, "issues": issues, "review_notes": [],
                 "identity_version": man.get("identity_version") or 1,
                 "verdict": "FAIL"}
-    src_text = re.sub(r"<!--\s*META:[^>]*-->\n?", "", src.read_text(encoding="utf-8", errors="replace"))
+    try:
+        src_text = re.sub(r"<!--\s*META:[^>]*-->\n?", "", src.read_text(encoding="utf-8", errors="replace"))
+    except OSError as e:
+        # BUG-33(R63,C-FAIL-1):源存在但拒读(OSError)→ 显式 FAIL,
+        # 与 resolver 兜底层 / F1 DRIFT 同族语义;禁崩。
+        issues.append(f"C15 源文件不可读:{e!r}(fail-closed)")
+        return {"file": str(md_path), "units": len(man.get("units") or []),
+                "questions": 0, "issues": issues, "review_notes": [],
+                "identity_version": man.get("identity_version") or 1,
+                "verdict": "FAIL"}
 
     # C1 标记配对
     for tag in ("题干区开始", "题干区结束", "答案区开始", "答案区结束"):
@@ -258,7 +280,18 @@ def main():
     result_path = Path(args.result) if args.result else (ROOT / "data/reslice_pilot_qc.json")
     mds = sorted(p for p in out_root.rglob("*.md")
                  if not (p.name.endswith(".annotated.md") or p.name.endswith(".restored.md")))
-    results = [check(p) for p in mds]
+    results = []
+    for p in mds:
+        # 批处理隔离(R63 BUG-32/33):单文件异常不得杀死整批 →
+        # 显式 FAIL 记录(禁静默 PASS、禁整批崩)。
+        try:
+            results.append(check(p))
+        except Exception as e:  # noqa: BLE001
+            results.append({"file": str(p), "units": 0, "questions": 0,
+                            "issues": [f"QC exception contained: {e!r}"
+                                       f" (batch isolation, fail-closed)"],
+                            "review_notes": [], "identity_version": 0,
+                            "verdict": "FAIL"})
     result_path.write_text(
         json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     npass = sum(1 for r in results if r["verdict"] == "PASS")

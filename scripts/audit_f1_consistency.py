@@ -304,16 +304,35 @@ def check_file(md_path: Path, ir_index=None):
     md_path = Path(md_path)
     man_path = md_path.with_suffix(".manifest.json")
     man = json.loads(man_path.read_text(encoding="utf-8"))
-    src = Path(man.get("source_file") or "")
+    # BUG-32(R63):非字符串 provenance(int/dict/list/bool)→ 显式 DRIFT;
+    # 禁 str() 强转(损坏事实不得洗成合法事实)。
+    sf = man.get("source_file")
+    if sf is not None and not isinstance(sf, str):
+        return {"file": str(md_path), "status": "DRIFT", "n_units": 0,
+                "n_match": 0,
+                "note": f"source_file not a string: {sf!r} "
+                        f"(invalid provenance, fail-closed)", "units": []}
+    src = Path(sf or "")
     if not src.is_file():  # BUG-31(R61):缺 provenance 显式 DRIFT,禁崩
         return {"file": str(md_path), "status": "DRIFT",
-                "note": f"source_file missing or not a file: {src}", "units": []}
-    lines = strip_meta(src.read_text(encoding="utf-8",
-                                     errors="replace")).splitlines()
-    src_sha = hashlib.sha256(src.read_bytes()).hexdigest()
+                "n_units": 0, "n_match": 0,
+                "note": f"source_file missing or not a file: {src}",
+                "units": []}
+    # BUG-33(R63,C-FAIL-1):源存在但拒读(OSError)→ 显式 DRIFT,
+    # 与 resolver MISSING / QC C15 FAIL 同族;禁崩。
+    try:
+        lines = strip_meta(src.read_text(encoding="utf-8",
+                                         errors="replace")).splitlines()
+        src_sha = hashlib.sha256(src.read_bytes()).hexdigest()
+    except OSError as e:
+        return {"file": str(md_path), "status": "DRIFT",
+                "n_units": 0, "n_match": 0,
+                "note": f"source unreadable: {e!r} (fail-closed)",
+                "units": []}
     ann_path = md_path.with_name(md_path.stem + ".annotated.md")
     if not ann_path.exists():
         return {"file": str(md_path), "status": "DRIFT",
+                "n_units": 0, "n_match": 0,
                 "note": "annotated missing", "units": []}
     ANN_SRC["lines"] = [l for l in ann_path.read_text(
         encoding="utf-8", errors="replace").splitlines()
@@ -446,13 +465,30 @@ def run(md_paths, out_dir: Path, ir_path=None):
                 inputs.append(q)
         mp = p.with_suffix(".manifest.json")
         if mp.exists():
-            s = json.loads(mp.read_text(encoding="utf-8")).get("source_file")
-            if s and Path(s).exists() and str(Path(s)) not in seen:
+            # BUG-32/33(R63):门禁面读 manifest 也不得崩——损坏 manifest
+            # 的 source 不入输入面,由 check_file 显式 DRIFT 承接。
+            try:
+                s = json.loads(mp.read_text(encoding="utf-8")).get(
+                    "source_file")
+            except (OSError, ValueError):
+                s = None
+            if (isinstance(s, str) and s and Path(s).exists()
+                    and str(Path(s)) not in seen):
                 seen.add(str(Path(s)))
                 inputs.append(Path(s))
     gate_before = ai.gate_snapshot(inputs)
 
-    files = [check_file(p, ir_index) for p in md_paths]
+    files = []
+    for p in md_paths:
+        # 批处理隔离(R63 BUG-32/33):单文件异常不得杀死整批 →
+        # 显式 DRIFT 记录(禁整批崩、禁静默 MATCH)。
+        try:
+            files.append(check_file(p, ir_index))
+        except Exception as e:  # noqa: BLE001
+            files.append({"file": str(p), "status": "DRIFT",
+                          "n_units": 0, "n_match": 0, "units": [],
+                          "note": f"f1 exception contained: {e!r}"
+                                  f" (batch isolation, fail-closed)"})
 
     ai.gate_assert_unchanged(gate_before, inputs, "f1_consistency")
 

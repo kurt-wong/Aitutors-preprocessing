@@ -1,0 +1,174 @@
+{
+ "meta": {
+  "round": "R62",
+  "date": "2026-09-13",
+  "weapon": "scripts/r62_boundary_audit.py (one-off)",
+  "note": "黑盒观测;所有变异仅落在 .pytest_work/r62 合成件"
+ },
+ "manifest_cases": {
+  "K1_missing_key": {
+   "mutation": "pop source_file key",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file missing or not a file: . (provenance break, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K2_null": {
+   "mutation": "source_file=null",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file missing or not a file: . (provenance break, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K3_empty": {
+   "mutation": "source_file=''",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file missing or not a file: . (provenance break, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K4_whitespace": {
+   "mutation": "source_file='   '",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file missing or not a file:     (provenance break, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K5_nonexistent": {
+   "mutation": "source_file='nope.md'",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file missing or not a file: nope.md (provenance break, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K6_directory": {
+   "mutation": "source_file=已存在目录(out_dir)",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file missing or not a file: D:\\Project\\Papers\\.pytest_work\\r62\\K6_directory\\out (provenance break, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K7_int": {
+   "mutation": "source_file=123",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file not a string: 123 (invalid provenance, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K8_dict": {
+   "mutation": "source_file={'a':1}",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file not a string: {'a': 1} (invalid provenance, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K9_list": {
+   "mutation": "source_file=['x']",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file not a string: ['x'] (invalid provenance, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K10_bool": {
+   "mutation": "source_file=true",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file not a string: True (invalid provenance, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  }
+ },
+ "K11": {
+  "mutation": "源文件追加非法 UTF-8 字节",
+  "verdict": "NO_CRASH",
+  "obs": {
+   "resolver": "REJECTED_QC_FAIL",
+   "resolver_reason_head": "C8 锚点版与源文件不一致（32 vs 33 行, 前缀差异 0）",
+   "resolver_content_q1_stem": null,
+   "qc": "FAIL",
+   "f1": "MATCH",
+   "f1_drift_zones": []
+  }
+ },
+ "K12": {
+  "mutation": "源文件拒读",
+  "method": "CreateFileW-exclusive",
+  "condition": "PRODUCIBLE(PermissionError)",
+  "icacls_rc": 5,
+  "verdict": "NO_CRASH",
+  "obs": {
+   "resolver": "MISSING",
+   "resolver_reason_head": "source unreadable: PermissionError(13, 'Permission denied') (fail-closed)",
+   "resolver_content_q1_stem": null,
+   "qc": "FAIL",
+   "f1": "DRIFT",
+   "f1_drift_zones": []
+  }
+ },
+ "K13": {
+  "mutation": "批处理:good + source_file=123 bad",
+  "verdict": "BATCH_CONTINUED",
+  "dispositions": {
+   "ADMITTED": 1,
+   "MISSING": 1
+  },
+  "files": {
+   "numerator": 1,
+   "denominator": 2,
+   "proof": "qc.check verdict==PASS via reslice_qc.check"
+  }
+ },
+ "summary": {
+  "crash_gap_cases": [],
+  "gap_count": 0
+ }
+}

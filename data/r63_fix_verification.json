@@ -1,0 +1,228 @@
+{
+ "meta": {
+  "round": "R63",
+  "date": "2026-09-13",
+  "weapon": "scripts/r63_fix_verification.py (one-off)",
+  "baseline": "data/r62_boundary_audit.json (frozen R62)",
+  "note": "冻结 R62 武器零改动重放;变异仅落 .pytest_work"
+ },
+ "rows": {
+  "K1_missing_key": {
+   "before": "NO_CRASH",
+   "after": "NO_CRASH",
+   "before_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_reason": "source_file missing or not a file: . (provenance break, fail-closed)"
+  },
+  "K2_null": {
+   "before": "NO_CRASH",
+   "after": "NO_CRASH",
+   "before_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_reason": "source_file missing or not a file: . (provenance break, fail-closed)"
+  },
+  "K3_empty": {
+   "before": "NO_CRASH",
+   "after": "NO_CRASH",
+   "before_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_reason": "source_file missing or not a file: . (provenance break, fail-closed)"
+  },
+  "K4_whitespace": {
+   "before": "NO_CRASH",
+   "after": "NO_CRASH",
+   "before_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_reason": "source_file missing or not a file:     (provenance break, fail-closed)"
+  },
+  "K5_nonexistent": {
+   "before": "NO_CRASH",
+   "after": "NO_CRASH",
+   "before_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_reason": "source_file missing or not a file: nope.md (provenance break, fail-closed)"
+  },
+  "K6_directory": {
+   "before": "NO_CRASH",
+   "after": "NO_CRASH",
+   "before_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_reason": "source_file missing or not a file: D:\\Project\\Papers\\.pytest_work\\r62\\K6_directory\\out (provenance break, fail-closed)"
+  },
+  "K7_int": {
+   "before": "CRASH_GAP:resolver,qc,f1",
+   "after": "NO_CRASH",
+   "before_states": {
+    "resolver": "CRASH",
+    "qc": "CRASH",
+    "f1": "CRASH"
+   },
+   "after_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_reason": "source_file not a string: 123 (invalid provenance, fail-closed)"
+  },
+  "K8_dict": {
+   "before": "CRASH_GAP:resolver,qc,f1",
+   "after": "NO_CRASH",
+   "before_states": {
+    "resolver": "CRASH",
+    "qc": "CRASH",
+    "f1": "CRASH"
+   },
+   "after_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_reason": "source_file not a string: {'a': 1} (invalid provenance, fail-closed)"
+  },
+  "K9_list": {
+   "before": "CRASH_GAP:resolver,qc,f1",
+   "after": "NO_CRASH",
+   "before_states": {
+    "resolver": "CRASH",
+    "qc": "CRASH",
+    "f1": "CRASH"
+   },
+   "after_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_reason": "source_file not a string: ['x'] (invalid provenance, fail-closed)"
+  },
+  "K10_bool": {
+   "before": "CRASH_GAP:resolver,qc,f1",
+   "after": "NO_CRASH",
+   "before_states": {
+    "resolver": "CRASH",
+    "qc": "CRASH",
+    "f1": "CRASH"
+   },
+   "after_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   },
+   "after_reason": "source_file not a string: True (invalid provenance, fail-closed)"
+  },
+  "K11": {
+   "before": "NO_CRASH",
+   "after": "NO_CRASH",
+   "after_states": {
+    "resolver": "REJECTED_QC_FAIL",
+    "qc": "FAIL",
+    "f1": "MATCH"
+   }
+  },
+  "K12": {
+   "before": "CRASH_GAP:qc,f1",
+   "after": "NO_CRASH",
+   "after_states": {
+    "resolver": "MISSING",
+    "qc": "FAIL",
+    "f1": "DRIFT"
+   }
+  },
+  "K13": {
+   "before": "BATCH_KILLED",
+   "after": "BATCH_CONTINUED",
+   "after_dispositions": {
+    "ADMITTED": 1,
+    "MISSING": 1
+   }
+  }
+ },
+ "assertions": {
+  "A": {
+   "claim": "K1-K13 修复后全部 NO_CRASH/BATCH_CONTINUED",
+   "gaps": [],
+   "pass": true
+  },
+  "B": {
+   "claim": "K2-K12 篡改件无一 ADMITTED(反洗白)",
+   "violations": [],
+   "pass": true
+  },
+  "C": {
+   "claim": "K1-K6(R61 防线)before/after 逐态不变",
+   "violations": [],
+   "pass": true
+  },
+  "D": {
+   "claim": "未篡改基线保持 ADMITTED/PASS/MATCH",
+   "obs": {
+    "resolver": "ADMITTED",
+    "resolver_content_q1_stem": [
+     "<div><img src=\"box_100_100_200_200.jpg\" /></div>",
+     "1. 下列说法正确的是（ ）",
+     "",
+     "A. 甲",
+     "B. 乙"
+    ],
+    "qc": "PASS",
+    "f1": "MATCH",
+    "f1_drift_zones": []
+   },
+   "pass": true
+  }
+ },
+ "verdicts": {
+  "A_no_crash": true,
+  "B_no_washthrough": true,
+  "C_no_weakening": true,
+  "D_baseline_green": true
+ },
+ "overall": "PASS"
+}

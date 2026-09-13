@@ -1501,3 +1501,31 @@ R58 七项结论:**6 项成立、1 项措辞级证伪(已更正)**;0 代码行�
 ### R62 台账更正(2026-09-13,当轮 CI 实测后)
 
 **R62 结尾"CI 预期 185 passed / 21 skipped / 3 xfailed"为算术口误**——把 win-only 的 `test_r62_t5`(本地即 xfail)重复从 passed 里扣减了一次。正确闭合:本地 206 passed 已含 `test_r62_t3`(win-only,本地通过);CI(ubuntu)仅 t3 由 passed→skip、t5 由 xfail→skip,故正确预期 = **186 passed / 21 skipped / 2 xfailed**。**CI Run 34744003063(headSha 5c53d53,conclusion=success)实测原文"186 passed, 21 skipped, 2 xfailed"与正确算术逐项一致**:186+21+2 = 209 = 本地 206 passed + 3 xfailed 总数闭合 ✅。按纪律:预期数字错误照实入账,不改写上文原文。
+
+
+---
+
+## R63(2026-09-13):用户 R62 审核裁决落盘 + BUG-32/33 修复(同一 source_file fail-closed 攻击族一次完成)
+
+**输入**:用户 R62 裁决——R62 🟢 ACCEPTED;BUG-31 关闭保持;**BUG-32/33 批准修复(P0,同一攻击族)**;修复原则 = 显式失败、fail-closed、批处理隔离,禁 fallback、禁猜测(不把 123 当文件名)、禁 `str()` 强转、禁自动修正 manifest、禁降级 ADMITTED;修完做针对性对抗回归,**随即转 BUG-14-DATA**,不对 source_file 做无限边界枚举(BUG-31/32/33 = 完整攻击族,非新语义类别不再拆 BUG-34+)。
+
+**修复面(三组件 + 三批入口,全部只加显式失败态)**:
+
+1. **BUG-32 非字符串 provenance**:`isinstance(str)` 守卫——resolver → MISSING("source_file not a string … invalid provenance, fail-closed");QC `src_of` 折 `""` 哨兵 + check() C15 显式 FAIL("必需 provenance 无效…非字符串");F1 → DRIFT(note 显式)。
+2. **BUG-33 源拒读(OSError)**:QC `src.read_text` 包 `except OSError` → C15 显式 FAIL("源文件不可读");F1 读源 + `read_bytes` 包 `except OSError` → DRIFT("source unreadable … fail-closed")。与 resolver R61 兜底层形成三层同族语义。
+3. **批处理隔离(用户裁定原则落三个批入口)**:resolver `run()` `_safe` 逐文件兜底(异常 → `REJECTED_UNCOMPUTABLE`,即 C-IN-3 第五态 UNCOMPUTABLE);QC `main()` 逐文件兜底(异常 → 显式 FAIL 行);F1 `run()` 逐文件兜底(异常 → 显式 DRIFT 行)+ 输入门禁面 manifest 读取防崩(损坏 manifest 的 source 不入输入面,由 check_file 显式 DRIFT 承接)。
+4. **顺带修复同族缺口(如实入账,非扩面)**:F1 `check_file` 快捷 DRIFT 返回缺 `n_units/n_match` 键 → `run()` 批汇总必 KeyError(R62 观测器只调 check_file 单件,未暴露批面);补齐键 + t9 钉算术完整性。
+
+**对抗回归(R63,全部真实测试)**:
+
+- **冻结武器零改动重放**:`scripts/r62_boundary_audit.py` 原样重放(仅重定向输出 → `data/r63_rerun_k_matrix.json`,R62 冻结工件未触碰),K1–K13 全矩阵:**crash_gaps=NONE**;K7–K10 CRASH_GAP:resolver,qc,f1 → NO_CRASH(MISSING/C15 FAIL/DRIFT);K12 CRASH_GAP:qc,f1 → NO_CRASH(条件 CreateFileW 独占句柄再次先实证 PRODUCIBLE(PermissionError) 后观测);K13 BATCH_KILLED → **BATCH_CONTINUED**{ADMITTED:1, MISSING:1}。
+- **`scripts/r63_fix_verification.py`(一次性验证武器,`data/r63_fix_verification.json` overall=PASS)**:A 全矩阵零缺口 ✅ / B K2–K12 篡改件无一 ADMITTED(反洗白)✅ / C **K1–K6(R61 既有防线)before/after 逐态不变**(修复不得削弱旧防线)✅ / D 未篡改基线保持 ADMITTED/PASS/MATCH(修复不得误伤)✅。
+- **义务钉转正**:`test_r62_t4`(strict xfail → 正式,参数化 int/dict/list/bool 四形态)、`test_r62_t5`(strict xfail → 正式,独占句柄条件先实证)全绿;新增 t6(resolver good+bad+good 批续行)/t7(坏 JSON → REJECTED_UNCOMPUTABLE)/t8(QC 批入口)/t9(F1 批入口 + 算术)。
+- **变异咬合 13/13**(`.pytest_work/r63_mutation_driver.py`,全部 restored=True 逐字节还原):M1–M3 三组件类型守卫逐个回退、M4–M5 QC/F1 拒读守卫回退(re-raise)、M6–M8 三批入口隔离移除、M9 resolver R61 OSError 兜底回退 + R61 的 M4–M7 重放。
+
+**审查工具自身缺陷/教训(如实入账)**:
+
+- **F-r63-1(变异分辨率缺陷,当轮处置)**:首轮重跑 R61 驱动 M5/M6 **NO-BITE**——根因非防线漏洞,而是 BUG-33 新增 OSError 守卫把 is_file 守卫回退变异**等价补偿**(裁决仍 fail-closed,但裁决级断言分辨不出哪层在守)。处置:回归钉升级**消息级断言**(t1:QC 必须"非文件"族、F1 note 必须 "missing or not a file",不得被"不可读"族顶替),R61-M5/M6 重放恢复咬合。教训入 bugs.md:分层防御下回归钉必须带理由族断言。
+- **武器脚本自身 bug**:r63 验证武器首版用短名(K2)索引全名行(K2_null)→ KeyError;当轮修复后重跑,结论不变。
+
+**结果**:BUG-32/33 关闭(fix + 对抗回归 + 变异咬合三证);生产链三组件 + 三批入口 fail-closed 语义统一(C-FAIL-1 跨组件贯彻,未建大型公共异常框架——按用户裁定先最小修改);全量套件 **215 passed + 1 xfailed**(xfail = 锚点顺序义务钉;较 R62 的 206+3:新增 9 钉全过,t4/t5 两 xfail 转正)。下一项(用户排序)= **BUG-14-DATA**(未分类跑步机 + 73 重复源)。
