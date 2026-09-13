@@ -1497,3 +1497,7 @@ R58 七项结论:**6 项成立、1 项措辞级证伪(已更正)**;0 代码行�
 **审计纪律自证**:K12 首跑条件未成立(NOT_PRODUCIBLE)即如实 SKIP 而非宣称通过,换手段把条件真实制造出来后才出结论;BUG-32/33 定性"预存非回归"以 R61 前代码路径为据(`Path(123)` TypeError / 裸 `read_text` 均先于 R61 存在)。
 
 **结果**:R61 八项主张全部复证成立;F-r62-1/F-r62-2 当轮修复;BUG-32/BUG-33 登记待裁定;套件 **206 passed + 3 xfailed**(CI 预期 185 passed / 21 skipped / 3 xfailed = 本地 −19 corpus −2 win-only +2 skip)。下一项维持用户排序 = **BUG-14-DATA**。
+
+### R62 台账更正(2026-09-13,当轮 CI 实测后)
+
+**R62 结尾"CI 预期 185 passed / 21 skipped / 3 xfailed"为算术口误**——把 win-only 的 `test_r62_t5`(本地即 xfail)重复从 passed 里扣减了一次。正确闭合:本地 206 passed 已含 `test_r62_t3`(win-only,本地通过);CI(ubuntu)仅 t3 由 passed→skip、t5 由 xfail→skip,故正确预期 = **186 passed / 21 skipped / 2 xfailed**。**CI Run 34744003063(headSha 5c53d53,conclusion=success)实测原文"186 passed, 21 skipped, 2 xfailed"与正确算术逐项一致**:186+21+2 = 209 = 本地 206 passed + 3 xfailed 总数闭合 ✅。按纪律:预期数字错误照实入账,不改写上文原文。
