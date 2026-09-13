@@ -1699,3 +1699,7 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 **Gate C2(加载证据)**:两次 `[MANIFEST_LOAD] entries=698 sha256=68762c3c…38ca`(23:56:15 首次拉起 / 00:09:46 SCM 重启),digest 与 Gate A 落盘记录**逐字符合**;加载后 fail-closed 语义既有(损坏 → SystemExit(2),t5 实测),无静默降级路径。
 **Gate C3(首扫决策路径,本次运行窗口 ≥00:09:46)**:武器 `scripts/r67_1_runtime_evidence.py` → `data/r67_1_runtime_evidence.json`,并经独立 Select-String 交叉复核一致——**[DECIDE:MANIFEST_DONE]=515**(bootstrap 来源零 OCR 跳过,recorded_output_status 全部 present=审计 to 在位,missing-or-moved 0 属正确语义)、**[DECIDE:NO_MANIFEST_ENTRY]=3 → 真实 OCR**([OK] 46 页,2 份完成);**manifest 698→700,追加 2 条经 validate_entry 全合法,bootstrap 698 条未被改动**(append-only 实证);加载 digest 每轮自证。配额新日 22+/20000 页,watchdog 正常监护。
 **边界**:D5-B/reclassify/canonical identity/BUG-14-CHAIN/语义去重全部未触碰;daemon 持续运行将按配额消化 ~9,658 份未建历史证明的 backlog(正常业务,非本轮结论);manifest/日志为运行时账本,后续轮次随运行状态增量提交。
+
+### R67.1 收口(CI 实测,2026-09-14)
+
+仪表提交 3613d1a → CI Run 34766898910 = success;**主体提交 a366fcf → CI Run 34768042470 = success,日志原文 "240 passed, 24 skipped, 1 xfailed"**。算术闭合:240+24+1 = 265 = 本地 264 passed + 1 xfailed(264−24 skip = 240;skip 24 = 19 corpus + 4 win-only + t13 语料冒烟)。main = a366fcf。R67.1 全链:仪表(先于激活)→ C1 进程归属 → C2 加载 digest 逐字符合 → C3 决策路径 + append-only 实证 → 台账 → CI 绿。**daemon 运行中;D5-B 前置条件(R67-A PASS + R67.1 PASS + runtime proof)已齐,待用户裁定启动。**
