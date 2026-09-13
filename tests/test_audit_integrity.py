@@ -114,3 +114,12 @@ def test_record_fails_closed_on_missing_input(workdir):
     paths.append(workdir / "ghost.md")
     with pytest.raises(FileNotFoundError):
         ai.record("t8", paths, root=workdir)
+
+
+def test_record_is_path_order_independent(workdir):
+    """R51:record/digest 只依赖输入集内容,与传入顺序无关(files 排序)。"""
+    paths = _mk_inputs(workdir)
+    r1 = ai.record("t9a", list(paths), root=workdir)
+    r2 = ai.record("t9b", list(reversed(paths)), root=workdir)
+    assert r1["corpus_sha256"] == r2["corpus_sha256"]
+    assert r1["files"] == r2["files"]

@@ -104,8 +104,11 @@ def main():
             write_man(man_c, man)
             f, meta = check_manifest(md_c)
         got = pcs(f)
+        # 工件复现性(R51 发现 3 修复):raw findings 内的随机 staging 路径
+        # 归一,使已提交工件可字节级复现(Audit Snapshot 纪律)。
+        raw = [rf.replace(str(d), "<STAGING>") for rf in f[:4]]
         results.append({"m": tag, "expected": expected, "got": got,
-                        "ok": got == expected, "raw": f[:4]})
+                        "ok": got == expected, "raw": raw})
         shutil.rmtree(d, ignore_errors=True)
 
     # M0 pc0:manifest 缺失

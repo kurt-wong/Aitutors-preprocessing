@@ -1121,3 +1121,26 @@ M1(BUG-29 复发变异)期间,被变异的代码把**真实默认报告** `data/
 - Resolver Consumer Adversarial Audit 的审查对象问题:resolver 实体仍 NOT_BUILT——按用户裁定"下一轮正式启动",该轮的可审对象与实施路径(参考实现 vs 纸面+语料预备)作为下一轮的开审前置,待用户在下一轮指令中明确或按契约附录 A 开审条件执行。
 
 **结果**:用户裁定全部入库;两项治理机制从建议变为带 CI 测试的实现;下一阶段输入基线冻结。套件 **142 passed + 1 xfailed**(本地;CI 口径 125 passed + 17 skipped + 1 xfailed)。
+
+---
+
+## R51(2026-09-13):对 R50 治理轮的对抗性审查(收口)+ 用户裁定:参考 Resolver 先行
+
+**输入**:用户指令"针对 R50 的内容开启一轮严格的对抗性审查,每个结论必须有真实测试作为证据;不降标准、不自我合理化、不强行解释、不推测"。审查中途用户追加裁定:**"先做严格按冻结契约实现的参考 resolver,再基于该实现启动 Resolver Consumer Adversarial Audit(R-ACC-1~11 + 附录 A 语料);不要先纸面审查"**——理由:风险已从"设计是否合理"转移到"契约是否被代码真实执行",必须有可攻击的实现对象。本行为在途 R50 审查的收口(审的正是下一轮要用的治理工具与台账声明),收口后立即开工参考实现。
+
+### 攻击面与裁决(`scripts/r50_audit_governance.py` → `data/r50_audit_governance.json`)
+
+- **A1 快照独立重算 🟢**:不 import 被审模块,独立重实现输入面推导 + sha256——**356/356 文件集零对称差、逐文件 sha 0 不一致、corpus_sha256 摘要一致**(795ee1e7…beb);356 个 resolved path 互异(无同文件重复计入);ROOT 外文件 0。
+- **A2 record 字节确定性 🟢(首跑假阴性,审计工具自身缺陷,如实入册)**:真实语料重跑 record 与已提交快照**字节级全等**。首跑 A2 MISS——审计脚本漏传 metrics,比对对象不等价(与 R49 control-group 教训同族:比对必须等价);修正后全绿。
+- **A3 Gate 作用域攻击 🔴 证实过强主张**:重建 R49 staging 自我覆盖形态(原件零触碰、staging 拷贝被同名源覆盖)——**Gate 对原件集放行(绿),而 oracle 已被污染**。证伪 R50 台账"R49 staging 自我覆盖类污染今后将直接 fail-closed":Gate 的真实作用域 = 防"审查/变异代码改动原件"(R46 BUG-29 家族);staging 拷贝污染仍靠控制组保真检查——**两道防线缺一不可,不可互相替代**。已勘误 `audit_integrity.py` docstring / 契约设计稿附录 B / status.md。
+- **A4 Gate 接线活性(sabotage 变异注入)🟢**:备份后把 `gate_assert_unchanged` 改为无条件 raise,真实重跑两个审计工具——**双双被 `[SABOTAGE]` 咬住(exit 1)**,证明调用点在真实语料运行中确实执行(非死代码);还原后 sha 与备份一致,干净重跑 exit 0。
+- **A5 台账声明复证 🟢**:recompute 重跑输出与已提交工件字节级稳定;mutation 工件 all_ok=True、12 条结果在册。
+
+### 发现汇总与修正(全部当场修正并复验)
+
+1. **R50 过强主张(A3 证伪)**:Gate 防 staging 污染不成立 → 三处台账按真实作用域勘误(log.md append-only 以本条为准);
+2. **死代码**:`gate_assert_unchanged` 的 `added` 分支不可达(前后同一 paths 派生键集,恒空)→ 删除,新增输入由调用方加入 paths 声明;
+3. **工件复现性缺陷**:`r48_audit_pc_mutation.json` 含随机 staging uuid,永远无法字节复现 → raw findings 归一为 `<STAGING>`,重跑两轮**字节级一致**,工件 1 行变更入库;
+4. 审计工具自身缺陷 2 处(A2 漏传 metrics、A4 锚点随函数修订失配)→ 均当场修复并留痕;另补 CI 测试 t9(record 顺序无关性)。
+
+**结果**:R50 治理机制经对抗审查维持成立(快照确定性/摘要/接线活性全部实证),1 处过强主张已勘误;套件 **143 passed + 1 xfailed**(本地;CI 口径 126+17 skip)。**下一工作物 = 用户裁定的参考 Resolver 实现**(scripts/resolver_reference.py,严格按冻结契约),实现存在后开 R-ACC-1~11 + 附录 A 实现级对抗审查。

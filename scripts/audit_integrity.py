@@ -1,9 +1,10 @@
-r"""审计治理机制(R50 落地,R49 用户建议转实施):
+r"""审计治理机制(R50 落地,R49 用户建议转实施;R51 对抗审查收口):
 
-1) **Input Integrity Gate**:审计工具执行前后,输入文件集的 sha256 必须逐个
-   不变(before == after),不一致即 RuntimeError 失败。出处:R49 审查工具
-   staging 自我覆盖事件(Test Oracle Pollution——测试数据在测试过程中被
-   污染,"全绿"是在非原数据上得出的)。所有审查工具必须过此门。
+1) **Input Integrity Gate**:审计工具执行前后,**原件输入文件集**的 sha256
+   必须逐个不变(before == after),不一致即 RuntimeError 失败。
+   动机出处:R46 BUG-29 家族(审查/变异代码吞真实工件)与 Test Oracle
+   Pollution 总类。**作用域限定(R51 A3 实测)**:不覆盖 staging 拷贝污染
+   (R49 自我覆盖家族)——拷贝保真由控制组检查负责,两道防线缺一不可。
 
 2) **Audit Snapshot Manifest**:审计输入集(+度量)的确定性快照;后续报告
    引用快照摘要(如 `R50_input_baseline@sha256:xxxx`)而非引用动态目录,
@@ -69,7 +70,14 @@ def gate_snapshot(paths, root: Path = ROOT):
 
 def gate_assert_unchanged(before: dict, paths, context: str = "",
                           root: Path = ROOT) -> bool:
-    """Input Integrity Gate:执行后断言输入集零漂移,不一致即抛。"""
+    """Input Integrity Gate:执行后断言输入集零漂移,不一致即抛。
+
+    作用域(R51 A3 实测限定):只保证**原件集**在审查运行前后不变,
+    防御 R46 BUG-29 家族(变异/审查代码吞真实工件);**不覆盖** staging
+    拷贝污染(R49 自我覆盖家族)——拷贝保真仍由控制组检查负责。
+    新增输入文件由调用方加入 paths 列表声明(gate_snapshot 即校验存在;
+    R51 删除了不可达的 added 分支:前后同一 paths 派生键集,added 恒空)。
+    """
     after = {}
     missing = []
     for p in paths:
@@ -79,11 +87,10 @@ def gate_assert_unchanged(before: dict, paths, context: str = "",
             continue
         after[rel_key(p, root)] = sha256_file(p)
     drift = sorted(k for k, v in before.items() if after.get(k) != v)
-    added = sorted(set(after) - set(before))
-    if drift or missing or added:
+    if drift or missing:
         raise RuntimeError(
             f"[audit-integrity] input drift in {context or 'audit'}: "
-            f"changed={drift} missing={missing} added={added}")
+            f"changed={drift} missing={missing}")
     return True
 
 

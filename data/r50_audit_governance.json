@@ -1,0 +1,44 @@
+{
+ "a1_snapshot_independent_recompute": {
+  "n_independent": 356,
+  "n_committed": 356,
+  "set_symmetric_diff": [],
+  "sha_mismatch": [],
+  "digest_match": true,
+  "digest_independent": "795ee1e7663424c1245e651d2139573d3bd2322f06662cc677bc0e7e3bc89beb",
+  "distinct_resolved_paths": 356,
+  "relative_source_file": 0,
+  "ok": true
+ },
+ "a2_record_byte_determinism": {
+  "byte_equal_committed": true,
+  "ok": true
+ },
+ "a3_gate_scope_r49_staging_shape": {
+  "gate_passed_despite_polluted_oracle": true,
+  "staged_artifact_polluted": true,
+  "finding": "Gate 只保护原件集;staging 拷贝污染不触发 Gate",
+  "ok": true
+ },
+ "a4_gate_wiring_liveness": {
+  "r48_audit_recompute.py": {
+   "exit": 1,
+   "sabotage_hit": true
+  },
+  "r48_audit_pc_mutation.py": {
+   "exit": 1,
+   "sabotage_hit": true
+  },
+  "module_sha_restored": true,
+  "clean_rerun_exit": 0,
+  "ok": true
+ },
+ "a5_ledger_claims": {
+  "recompute_rerun_byte_stable": true,
+  "recompute_exit": 0,
+  "mutation_all_ok_committed": true,
+  "mutation_n_results": 12,
+  "ok": true
+ },
+ "all_ok": true
+}

@@ -149,7 +149,7 @@
    ],
    "ok": true,
    "raw": [
-    "pc10 源文件缺失: D:\\Project\\Papers\\.pytest_work\\r48_mut_93d7acb6\\nonexistent_source.md"
+    "pc10 源文件缺失: <STAGING>\\nonexistent_source.md"
    ]
   }
  ]
