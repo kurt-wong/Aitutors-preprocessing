@@ -1661,3 +1661,15 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 4. **真实语料 dry-run(零落盘)**:`planned=698,全部 provenance=r63-audit-bootstrap,excluded=0,B_pending=0,already_in_manifest=0`;日志富化 698/698 补到真实页数(pages null=0);报告 `data/r67_bootstrap_report.json`。**apply 未执行,待用户审 diff 授权**。
 **⚠ F-r67-1(当轮自查更正,结论反转)**:设计轮探针 `_r67_design_probe.py` 的统计循环 `hit += 1; break` 早退,把 **625/625 审计可证** 误报为"仅 1 份";由此设计轮"审计回填只保 D5-B 不保首扫"的说法**作废**。修正探针复证 625/625,与 dry-run(624 受害者全经审计入账、B=0;差 1 份系 md 索引按口径排除 reslice 试验目录,其 source 仍作为审计源入账)一致。**更正后结论:审计回填同时保护首扫(重 OCR 规模 10,282 → ~9,658)与 D5-B 搬移拦截**。教训与 F-r65-2 同族:审计统计禁止 early-break,计数必须穷举。
 **边界**:manifest 生产文件未创建、daemon 未重启、D5-B 未跑;下一动作 = 用户审 698 条 diff(data/r67_bootstrap_report.json)→ 授权 apply → daemon 激活验收 → D5-B。
+
+---
+
+## R67 闸门轮(2026-09-13):双向一致性复核 + preview/hash guard(apply 仍未授权)
+**输入**:用户 R67 裁决——设计/实现/dry-run/mutation/CI 五项 PASS,但 **apply 暂不批准**;前置两检查:① 698 条 bootstrap↔审计源**双向一致性复核**(PDF 路径/输出路径/sha256/pages 四字段逐项);② 生成**不可变 apply preview + hash guard**(base manifest sha + entries sha,漂移即拒);顺序冻结 apply→daemon→D5-B,禁先 D5-B;措辞谨慎化:剩余 ~9,658 是**未处理 source 而非错误 source**,只写"bootstrap 消除约 625 个历史搬移受害源的重复 OCR 风险,其余由真实 runner 决定"。
+**实施**:
+1. **preview/hash guard**(工具内):`--preview` 冻结 written_at + 双指纹(base_manifest_sha256,manifest 不存在=None,区别于空文件;entries_sha256=canonical JSON sha256);`--apply` 必须有未漂移 preview,否则 BootstrapError 显式拒绝零写入——防"dry-run 后语料/清单被改,旧 diff 写入新状态"。
+2. **双向闸门武器** `scripts/r67_apply_gate.py`:枚举/净化/年级科目/路径归一/哈希/日志解析**全部独立重推**(不复用 bootstrap 推导,G-AUDTB-1 精神);forward(审计→条目,逐行恰一条)+ backward(条目→审计行合法且 to 一致)+ 四字段逐项;log-archaeology 条目单列核日志。
+3. **F-r67-2(闸门首跑抓获,当轮修复)**:闸门初版把"日志行多次出现"(跑步机双次处理的正常证据)误当归属歧义 → 129 处 PAGES 假错配;修正为候选侧两个 PDF 共享 fragment 才算歧义、多次出现取最近一次 [OK](与 bootstrap 同语义、独立实现)。修正后真实语料 **consistent=True:698/698 双向一致、forward_missing=0、forward_dup=0、mismatches=0**。
+4. **测试 19 钉全绿**(新增 t14 preview 确定性/t15 base 漂移拒/t16 规划漂移拒/t17 无 preview 拒/t18 闸门咬住错误 bootstrap 输出/t19 闸门咬住 forward 缺口);**变异 9/9 BITE 字节还原**(M6 base 指纹拆除/M7 entries 指纹拆除/M8 闸门 sha 比对拆除/M9 forward 静默);全量 **261 passed + 1 xfailed**。
+5. **真实语料 preview 已生成**(`data/r67_manifest_apply_preview.json`):append_count=698,base_manifest_sha256=null(manifest 仍不存在),entries_sha256=7e197088…1246;闸门报告 `data/r67_apply_gate_report.json`。
+**边界**:apply 未执行、manifest 生产文件不存在、daemon 未重启、D5-B 未跑。剩余动作等用户批准:`--apply`(将校验 preview 未漂移)→ daemon 激活验收 → D5-B。

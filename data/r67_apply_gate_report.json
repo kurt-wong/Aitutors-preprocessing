@@ -1,0 +1,11 @@
+{
+ "purpose": "R67 apply gate: bidirectional consistency (independent re-derivation)",
+ "audit_rows": 698,
+ "entries_total": 698,
+ "audit_entries": 698,
+ "log_entries": 0,
+ "forward_missing": [],
+ "forward_dup": [],
+ "backward_mismatches": [],
+ "consistent": true
+}

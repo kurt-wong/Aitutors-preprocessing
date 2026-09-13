@@ -51,6 +51,7 @@ AUDIT_FILE = os.path.join(BASE, "data", "reclassify_audit.jsonl")
 OCR_LOG_FILE = os.path.join(BASE, "logs", "ocr_batch_log.txt")
 MANIFEST_FILE = os.path.join(BASE, "data", "ocr_output_manifest.jsonl")
 REPORT_FILE = os.path.join(BASE, "data", "r67_bootstrap_report.json")
+PREVIEW_FILE = os.path.join(BASE, "data", "r67_manifest_apply_preview.json")
 
 EXCLUDE_TOP_PREFIXES = ("reslice-", "resliced-")
 
@@ -305,16 +306,93 @@ def plan(*, pdf_root, output_root, audit_file, log_file, manifest_file,
             "victim_candidates": len(victims)}
 
 
-def run(apply=False, *, pdf_root=PDF_ROOT, output_root=OUTPUT_ROOT,
-        audit_file=AUDIT_FILE, log_file=OCR_LOG_FILE,
-        manifest_file=MANIFEST_FILE, report_file=REPORT_FILE,
-        written_at=None):
+def _entries_fingerprint(entries):
+    """条目集的确定性指纹(canonical JSON → sha256,与写入顺序无关)。"""
+    import hashlib
+    blob = json.dumps(entries, ensure_ascii=False, sort_keys=True)
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest()
+
+
+def base_manifest_sha(manifest_file):
+    """当前 manifest 文件指纹;不存在 = None(区别于'空文件')。"""
+    if not os.path.exists(manifest_file):
+        return None
+    import hashlib
+    return hashlib.sha256(open(manifest_file, "rb").read()).hexdigest()
+
+
+def make_preview(*, written_at=None, preview_file=PREVIEW_FILE,
+                 report_file=REPORT_FILE, pdf_root=PDF_ROOT,
+                 output_root=OUTPUT_ROOT, audit_file=AUDIT_FILE,
+                 log_file=OCR_LOG_FILE, manifest_file=MANIFEST_FILE):
+    """生成不可变 apply 预览(用户 R67 裁决 §四-B):冻结 written_at 与双指纹。
+
+    apply 时必须:base_manifest_sha256 仍相等(防'dry-run 后语料/清单被改')且
+    entries_sha256 重规划仍相等(防'旧 diff 写入新状态'),否则显式拒绝。
+    """
     if written_at is None:
         import time
         written_at = time.strftime("%Y-%m-%d %H:%M:%S")
     plan_out = plan(pdf_root=pdf_root, output_root=output_root,
                     audit_file=audit_file, log_file=log_file,
                     manifest_file=manifest_file, written_at=written_at)
+    preview = {
+        "written_at": written_at,
+        "base_manifest_sha256": base_manifest_sha(manifest_file),
+        "append_count": len(plan_out["entries"]),
+        "entries_sha256": _entries_fingerprint(plan_out["entries"]),
+    }
+    with open(preview_file, "w", encoding="utf-8") as f:
+        json.dump(preview, f, ensure_ascii=False, indent=1)
+    return preview
+
+
+def _verify_preview(preview_file, *, pdf_root, output_root, audit_file,
+                    log_file, manifest_file):
+    """apply 闸门:preview 存在 + 双指纹未漂移,否则 BootstrapError(fail-closed)。"""
+    if not os.path.exists(preview_file):
+        raise BootstrapError(
+            f"apply 被拒绝:preview 不存在({preview_file});先生成并经人工批准")
+    with open(preview_file, encoding="utf-8") as f:
+        preview = json.load(f)
+    for k in ("written_at", "base_manifest_sha256", "append_count",
+              "entries_sha256"):
+        if k not in preview:
+            raise BootstrapError(f"preview 缺键 {k}: {preview_file}")
+    if base_manifest_sha(manifest_file) != preview["base_manifest_sha256"]:
+        raise BootstrapError(
+            "apply 被拒绝:manifest 已漂移(base sha 与 preview 不符)"
+            "——dry-run 之后清单被改动,须重新 preview + 审批")
+    plan_out = plan(pdf_root=pdf_root, output_root=output_root,
+                    audit_file=audit_file, log_file=log_file,
+                    manifest_file=manifest_file,
+                    written_at=preview["written_at"])
+    if _entries_fingerprint(plan_out["entries"]) != preview["entries_sha256"]:
+        raise BootstrapError(
+            "apply 被拒绝:规划已漂移(entries sha 与 preview 不符)"
+            "——语料/审计/日志在 dry-run 后变动,须重新 preview + 审批")
+    return preview, plan_out
+
+
+
+def run(apply=False, *, pdf_root=PDF_ROOT, output_root=OUTPUT_ROOT,
+        audit_file=AUDIT_FILE, log_file=OCR_LOG_FILE,
+        manifest_file=MANIFEST_FILE, report_file=REPORT_FILE,
+        preview_file=PREVIEW_FILE, written_at=None):
+    if apply:
+        # 用户 R67 裁决 §四-B:apply 必须走 preview 闸门(冻结 written_at + 双指纹)
+        preview, plan_out = _verify_preview(
+            preview_file, pdf_root=pdf_root, output_root=output_root,
+            audit_file=audit_file, log_file=log_file,
+            manifest_file=manifest_file)
+        written_at = preview["written_at"]
+    else:
+        if written_at is None:
+            import time
+            written_at = time.strftime("%Y-%m-%d %H:%M:%S")
+        plan_out = plan(pdf_root=pdf_root, output_root=output_root,
+                        audit_file=audit_file, log_file=log_file,
+                        manifest_file=manifest_file, written_at=written_at)
     report = {
         "purpose": "R67 manifest bootstrap (dry-run unless apply)",
         "applied": bool(apply),
@@ -339,8 +417,18 @@ def run(apply=False, *, pdf_root=PDF_ROOT, output_root=OUTPUT_ROOT,
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--preview", action="store_true",
+                    help="生成不可变 apply 预览(双指纹),供人工批准")
+    ap.add_argument("--apply", action="store_true",
+                    help="落盘(必须已有未漂移的 preview)")
     args = ap.parse_args()
+    if args.preview:
+        pv = make_preview()
+        print(f"preview: append_count={pv['append_count']} "
+              f"base={pv['base_manifest_sha256']} "
+              f"entries_sha={pv['entries_sha256'][:16]}...")
+        print(f"-> {PREVIEW_FILE}")
+        return
     rep = run(apply=args.apply)
     print(f"planned_entries={rep['planned_entries']} "
           f"(A={len(rep['buckets']['A_seeded'])} "

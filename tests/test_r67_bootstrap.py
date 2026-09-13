@@ -96,6 +96,21 @@ def _std_env(work):
                    "[2026-09-08 10:00:05]   [OK] 7 pages"])
 
 
+def _pv_env(env):
+    """make_preview 用 kwargs(env + preview_file)。"""
+    return dict(env, preview_file=os.path.join(
+        os.path.dirname(env["manifest_file"]), "preview.json"))
+
+
+def _apply(env, written_at):
+    """apply 前置流程(用户裁决 §四-B):先生成 preview,再走 hash guard 落盘。"""
+    env = dict(env)
+    env.setdefault("preview_file",
+                   os.path.join(os.path.dirname(env["manifest_file"]), "preview.json"))
+    BOOT.make_preview(written_at=written_at, **env)
+    return BOOT.run(apply=True, **env)
+
+
 def _mk_to(env, rel="高考真题/地理/2022北京西城高二（下）期末地理参考答案(1).md",
            content=b"x" * 200):
     p = os.path.join(env["output_root"], *rel.split("/"))
@@ -120,7 +135,7 @@ def test_r67_t1_dry_run_zero_write(work):
 def test_r67_t2_apply_entries_valid_and_loadable(work):
     env = _std_env(work)
     _mk_to(env)
-    BOOT.run(apply=True, written_at="2026-09-13 00:00:00", **env)
+    _apply(env, "2026-09-13 00:00:00")
     man = load_manifest(env["manifest_file"])
     assert len(man) == 1
     e = list(man.values())[0]
@@ -134,10 +149,10 @@ def test_r67_t2_apply_entries_valid_and_loadable(work):
 def test_r67_t3_never_overwrites_existing_entry(work):
     env = _std_env(work)
     _mk_to(env)
-    BOOT.run(apply=True, written_at="2026-09-13 00:00:00", **env)
+    _apply(env, "2026-09-13 00:00:00")
     before = open(env["manifest_file"], "rb").read()
-    # 再次 apply:已有条目必须原样保留(禁覆盖),不得追加重复
-    rep = BOOT.run(apply=True, written_at="2026-09-13 01:00:00", **env)
+    # 再次 preview + apply:已有条目必须原样保留(禁覆盖),不得追加重复
+    rep = _apply(env, "2026-09-13 01:00:00")
     after = open(env["manifest_file"], "rb").read()
     assert before == after, "bootstrap 禁止覆盖/重复追加已有条目"
     assert rep["appended"] == 0
@@ -149,8 +164,8 @@ def test_r67_t3_never_overwrites_existing_entry(work):
 def test_r67_t4_idempotent_second_apply_appends_zero(work):
     env = _std_env(work)
     _mk_to(env)
-    r1 = BOOT.run(apply=True, written_at="2026-09-13 00:00:00", **env)
-    r2 = BOOT.run(apply=True, written_at="2026-09-13 00:00:01", **env)
+    r1 = _apply(env, "2026-09-13 00:00:00")
+    r2 = _apply(env, "2026-09-13 00:00:01")
     assert r1["appended"] == 1 and r2["appended"] == 0
     assert len(load_manifest(env["manifest_file"])) == 1
 
@@ -227,7 +242,7 @@ def test_r67_t9_decide_skip_with_bootstrap_entry(work):
         log_lines=["[2026-09-08 10:00:00] [1/1] 高二/地理/" + PDF_NAME[:50] + "...",
                    "[2026-09-08 10:00:05]   [OK] 5 pages"])
     _mk_to(env, rel="高考真题/地理/2022北京西城高二（下）期末地理参考答案(1).md")
-    rep = BOOT.run(apply=True, written_at="2026-09-13 00:00:00", **env)
+    rep = _apply(env, "2026-09-13 00:00:00")
     assert rep["appended"] == 1
     e = list(load_manifest(env["manifest_file"]).values())[0]
     assert e["provenance"] == "ocr-log-archaeology" and e["pages"] == 5
@@ -242,7 +257,7 @@ def test_r67_t9_decide_skip_with_bootstrap_entry(work):
     # 审计条目(to 在位)集成:记录输出状态 present
     env2 = _std_env(work / "s2")
     _mk_to(env2)
-    BOOT.run(apply=True, written_at="2026-09-13 00:00:00", **env2)
+    _apply(env2, "2026-09-13 00:00:00")
     out_md2 = os.path.join(env2["output_root"], "高二", "地理",
                            "2022北京西城高二（下）期末地理参考答案(1).md")
     skip2, reason2, detail2 = decide_skip(
@@ -263,7 +278,7 @@ def test_r67_t10_log_archaeology_seeds_victim(work):
         log_lines=["[2026-09-08 10:00:00] [5/12703] 未分类/历史/" + long_name[:50] + "...",
                    "[2026-09-08 10:00:06]   [OK] 34 pages"])
     _mk_to(env, rel="高考真题/历史/" + long_name[:-4] + ".md")  # 同名 md 在别处 = 受害者
-    rep = BOOT.run(apply=True, written_at="2026-09-13 00:00:00", **env)
+    rep = _apply(env, "2026-09-13 00:00:00")
     assert rep["appended"] == 1
     e = list(load_manifest(env["manifest_file"]).values())[0]
     assert e["provenance"] == "ocr-log-archaeology"
@@ -284,7 +299,7 @@ def test_r67_t11_weak_evidence_goes_pending_not_manifest(work):
                    "[2026-09-08 10:00:05] [ERROR] submit failed"])
     _mk_to(env, rel="高考真题/数学/" + n1[:-4] + ".md")
     _mk_to(env, rel="高考真题/数学/" + n2[:-4] + ".md")
-    rep = BOOT.run(apply=True, written_at="2026-09-13 00:00:00", **env)
+    rep = _apply(env, "2026-09-13 00:00:00")
     assert rep["appended"] == 0, "弱证据绝不入账"
     reasons = {b["reason"] for b in rep["buckets"]["B_pending_review"]}
     assert "LOG_FRAGMENT_AMBIGUOUS" in reasons  # n1/n2 截断后同 fragment
@@ -300,11 +315,89 @@ def test_r67_t12_truncation_rule_pin(work):
         log_lines=["[2026-09-08 10:00:00] [9/9] 未分类/未分类/" + long_name[:50] + "...",
                    "[2026-09-08 10:00:02]   [OK] 3 pages"])
     _mk_to(env, rel="其他/" + long_name[:-4] + ".md")
-    rep = BOOT.run(apply=True, written_at="2026-09-13 00:00:00", **env)
+    rep = _apply(env, "2026-09-13 00:00:00")
     assert rep["appended"] == 1, "必须按 filename[:50] 截断规则匹配日志"
 
 
-# ---------------------- t13 真实语料冒烟(corpus 门控;CI skip 如实入账)
+# ============ preview + hash guard(用户裁决 §四-B)============
+
+def test_r67_t14_preview_frozen_fingerprints(work):
+    env = _std_env(work)
+    _mk_to(env)
+    pv1 = BOOT.make_preview(written_at="2026-09-13 00:00:00", **_pv_env(env))
+    pv2 = BOOT.make_preview(written_at="2026-09-13 00:00:00", **_pv_env(env))
+    assert pv1 == pv2, "同 written_at 的 preview 必须确定性一致"
+    assert pv1["base_manifest_sha256"] is None  # manifest 不存在 = None,区别于空文件
+    assert pv1["append_count"] == 1 and len(pv1["entries_sha256"]) == 64
+    with open(_pv_env(env)["preview_file"], encoding="utf-8") as f:
+        assert json.load(f) == pv1
+
+
+def test_r67_t15_apply_refused_on_base_drift(work):
+    env = _std_env(work)
+    _mk_to(env)
+    BOOT.make_preview(written_at="2026-09-13 00:00:00", **_pv_env(env))
+    # dry-run 之后 manifest 被改动(模拟并发写入)
+    with open(env["manifest_file"], "w", encoding="utf-8") as f:
+        f.write('{"tampered": true}\n')
+    before = open(env["manifest_file"], "rb").read()
+    with pytest.raises(BOOT.BootstrapError, match="manifest 已漂移"):
+        BOOT.run(apply=True, **_pv_env(env))
+    assert open(env["manifest_file"], "rb").read() == before, "拒绝后零写入"
+
+
+def test_r67_t16_apply_refused_on_plan_drift(work):
+    env = _std_env(work)
+    to = _mk_to(env)
+    BOOT.make_preview(written_at="2026-09-13 00:00:00", **_pv_env(env))
+    os.remove(to)  # 语料变动:审计 to 消失 → 规划漂移
+    with pytest.raises(BOOT.BootstrapError, match="规划已漂移"):
+        BOOT.run(apply=True, **_pv_env(env))
+    assert not os.path.exists(env["manifest_file"]), "拒绝后零写入"
+
+
+def test_r67_t17_apply_without_preview_refused(work):
+    env = _std_env(work)
+    _mk_to(env)
+    with pytest.raises(BOOT.BootstrapError, match="preview 不存在"):
+        BOOT.run(apply=True, **_pv_env(env))
+    assert not os.path.exists(env["manifest_file"])
+
+
+# ============ 双向一致性闸门(用户裁决 §四-A)============
+
+def test_r67_t18_gate_catches_wrong_bootstrap_output(work, monkeypatch):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "r67_apply_gate", os.path.join(ROOT, "scripts", "r67_apply_gate.py"))
+    GATE = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(GATE)
+    env = _std_env(work)
+    _mk_to(env)
+    # 正常规划 → 闸门一致
+    rep = GATE.run_gate(**dict(env, report_file=os.path.join(str(work), "gate1.json")))
+    assert rep["consistent"] is True and rep["audit_rows"] == 1
+    # 破坏 bootstrap 输出(sha 计算错误)→ 闸门独立重推必须咬住
+    # (闸门内部 import 的 BOOT 是独立实例,必须 patch GATE.BOOT)
+    monkeypatch.setattr(GATE.BOOT, "file_sha256", lambda p: "deadbeef")
+    rep2 = GATE.run_gate(**dict(env, report_file=os.path.join(str(work), "gate2.json")))
+    assert rep2["consistent"] is False
+    assert any(m["kind"] == "SHA256" for m in rep2["backward_mismatches"])
+
+
+def test_r67_t19_gate_catches_forward_missing(work, monkeypatch):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "r67_apply_gate", os.path.join(ROOT, "scripts", "r67_apply_gate.py"))
+    GATE = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(GATE)
+    env = _std_env(work)
+    _mk_to(env)
+    # bootstrap 侧枚举丢失该 PDF → 审计行无对应条目 → forward 缺口必须被咬
+    monkeypatch.setattr(GATE.BOOT, "enumerate_pdfs", lambda root: [])
+    rep = GATE.run_gate(**dict(env, report_file=os.path.join(str(work), "gate3.json")))
+    assert rep["consistent"] is False
+    assert rep["forward_missing"] == [1]
 @pytest.mark.skipif(not HAS_CORPUS, reason="corpus 不在(CI 离线)")
 def test_r67_t13_real_corpus_smoke(work):
     rep = BOOT.run(
