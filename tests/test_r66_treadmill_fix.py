@@ -46,33 +46,52 @@ MD_NAME = "2012-2021高考真题历史汇编：跑步机测试（教师版）(1)
 OUT_REL = "未分类/历史/" + MD_NAME
 
 
+def _ensure_stub(name, factory):
+    """幂等注入(F-r66-1):已在 sys.modules → 直接返回;
+    find_spec 对 spec-less 模块抛 ValueError(CI 实测),防御为"未安装"。"""
+    if name in sys.modules:
+        return
+    try:
+        spec = importlib.util.find_spec(name)
+    except ValueError:
+        spec = None
+    if spec is None:
+        sys.modules[name] = factory()
+
+
+def _requests_stub():
+    req = types.ModuleType("requests")
+
+    class _Session:
+        verify = True
+        proxies = {}
+
+        def get(self, *a, **k):
+            raise RuntimeError("测试禁网")
+
+        def post(self, *a, **k):
+            raise RuntimeError("测试禁网")
+
+    req.Session = _Session
+    return req
+
+
+def _urllib3_stub():
+    u3 = types.ModuleType("urllib3")
+
+    class _Exceptions:
+        class InsecureRequestWarning(Warning):
+            pass
+
+    u3.exceptions = _Exceptions
+    u3.disable_warnings = lambda *a, **k: None
+    return u3
+
+
 def _stub_optional_deps():
     """CI 仅装 pytest:requests/urllib3 缺席时注入 import 级 stub(测试禁网)。"""
-    if importlib.util.find_spec("requests") is None:
-        req = types.ModuleType("requests")
-
-        class _Session:
-            verify = True
-            proxies = {}
-
-            def get(self, *a, **k):
-                raise RuntimeError("测试禁网")
-
-            def post(self, *a, **k):
-                raise RuntimeError("测试禁网")
-
-        req.Session = _Session
-        sys.modules["requests"] = req
-    if importlib.util.find_spec("urllib3") is None:
-        u3 = types.ModuleType("urllib3")
-
-        class _Exceptions:
-            class InsecureRequestWarning(Warning):
-                pass
-
-        u3.exceptions = _Exceptions
-        u3.disable_warnings = lambda *a, **k: None
-        sys.modules["urllib3"] = u3
+    _ensure_stub("requests", _requests_stub)
+    _ensure_stub("urllib3", _urllib3_stub)
 
 
 class Harness:
@@ -352,3 +371,22 @@ def test_r66_t10_快照武器阳性控制(workdir):
         import r64_data_inventory as inv
         importlib.reload(inv)
         importlib.reload(snap)
+
+
+def test_r66_t11_stub幂等与specless短路():
+    """F-r66-1 回归钉:CI 上 stub 注入后二次 find_spec 曾抛
+    ValueError('requests.__spec__ is None')(4 failed);成员检查先行后必须幂等。"""
+    name = "r66_fake_dep_for_stub"
+    sys.modules.pop(name, None)
+    try:
+        calls = []
+        _ensure_stub(name, lambda: calls.append(1) or types.ModuleType(name))
+        assert calls == [1] and name in sys.modules, "缺席时必须注入"
+
+        sys.modules.pop(name)
+        sys.modules[name] = types.ModuleType(name)  # __spec__ is None(CI 形态)
+        calls2 = []
+        _ensure_stub(name, lambda: calls2.append(1))
+        assert calls2 == [], "spec-less 模块在 sys.modules 必须短路(不抛 ValueError)"
+    finally:
+        sys.modules.pop(name, None)
