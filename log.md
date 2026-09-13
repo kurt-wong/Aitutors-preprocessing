@@ -1703,3 +1703,15 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 ### R67.1 收口(CI 实测,2026-09-14)
 
 仪表提交 3613d1a → CI Run 34766898910 = success;**主体提交 a366fcf → CI Run 34768042470 = success,日志原文 "240 passed, 24 skipped, 1 xfailed"**。算术闭合:240+24+1 = 265 = 本地 264 passed + 1 xfailed(264−24 skip = 240;skip 24 = 19 corpus + 4 win-only + t13 语料冒烟)。main = a366fcf。R67.1 全链:仪表(先于激活)→ C1 进程归属 → C2 加载 digest 逐字符合 → C3 决策路径 + append-only 实证 → 台账 → CI 绿。**daemon 运行中;D5-B 前置条件(R67-A PASS + R67.1 PASS + runtime proof)已齐,待用户裁定启动。**
+
+### R67.2:D5-B.0 观察 + F-r67.2-1 daemon 生命周期缺陷 + D5-B.1 dry-run(2026-09-14)
+
+**输入**:用户 R67.1 裁决——R67.1 PASS,批准进入 D5-B,分阶段 **D5-B.0 观察 → D5-B.1 dry-run → D5-B.2 小批 apply → D5-B.3 全量**(apply 不得跳过 dry-run);边界冻结 canonical identity / duplicate merge / semantic dedup / Question identity;建议登记"长驻 daemon 启动验收须含脱离 harness 后的生命周期证明"规则。
+
+**⚠ F-r67.2-1(运行时缺陷,本轮取证+修复,零损害)**:06:07 复查发现 00:09:46 SCM 直建 daemon 链(cmd 27532→watchdog 50500→runner 32908)已死亡——watchdog 日志尾部 `^C`(控制台控件事件回显,无 traceback),batch log 冻结 00:14:59;uptime 自 09-09 无重启、00:10–00:20 窗口无电源/关机事件,**死因不可判定**。零损害核实:在途英语卷无半成品输出、manifest 702 条末笔 00:14:58 与物理卷 [OK] 对齐、无孤儿条目。结论:**SCM 直建(Win32_Process.Create)一级存活证明不足** → 升级 Task Scheduler 托管(`ocr_service/run_watchdog.cmd`,schtasks 任务 OcrWatchdogDaemon)。06:17:51 重启实证:链 watchdog 50412→runner 38864,`[MANIFEST_LOAD] entries=702` digest 与在盘一致,配额连续 79/20000,恢复 OCR。**§8 R-DAEMON-LIFE-1 登记**(用户建议+本轮证据):启动须 OS 级持久设施托管;验收必须含脱离 harness 会话的存活证明,`process exists` 不构成验收;层级 Job 对象 < SCM 直建 < Task Scheduler。
+
+**D5-B.0 观察快照**(`data/d5_b0_observation.json`,双窗口口径):窗口 ≥00:09:46 = MANIFEST_DONE 1030 / NO_MANIFEST_ENTRY 12 / ok 9 / fail 1;窗口 ≥06:17:51 = MANIFEST_DONE 515 / NO_MANIFEST_ENTRY 7 / ok 5 / fail 1;唯一 FAIL 为 paddleocr 代理瞬断(06:18:34 单次,runner 继续,非治理缺陷)。manifest 698→707 append-only,bootstrap 存量未动。
+
+**D5-B.1 dry-run(零写入)**:`scripts/d5b_reclassify_dryrun.py` + `tests/test_d5b_dryrun.py`(8 钉)+ 变异 **7/7 BITE**(逐字节还原)。规则单源(import reclassify_unknown 的 classify/detect_subject,禁复制规则);分桶 fail-closed:moves / needs_ruling(禁猜测)/ collisions(禁覆盖)/ conflicts(禁择一)/ read_error。**生产快照**(`data/d5b_reclassify_plan.json`,plan_sha256=`a3c74c18…805e52f`):scanned=148、moves=70(合格考 13 + 高考真题 57)、needs_ruling=6、collisions=72、conflicts=0、read_error=0;**72 碰撞中 66 份同名不同字节**(R64 两次 OCR 家族,属冻结 D5-E 领地,本轮零裁定零覆盖)、6 份字节全同;needs_ruling 6 份(月考/答案/初三卷等无类型关键词)清单入 plan 待逐份裁定。plan 为时点冻结,daemon 仍向未分类投放新产出,**D5-B.2 apply 必须重校验**(逐条 sha + 碰射复查 + 指纹比对)。
+
+**边界**:本轮未执行任何移动;canonical identity / duplicate merge / semantic dedup / BUG-14-CHAIN 零触碰。全量回归 **272 passed + 1 xfailed**(新增 8 钉,零回退)。

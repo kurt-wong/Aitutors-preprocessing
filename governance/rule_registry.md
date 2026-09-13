@@ -96,3 +96,11 @@ R-ACC-17(provenance 断裂 fail-closed,含 BUG-31 义务钉)/ R-ACC-18(Resolver�
 | ID | 类 | purpose / attack surface | evidence | retirement |
 |---|---|---|---|---|
 | R-OHM-1 | FACT_INTEGRITY + EVIDENCE | runner 每次成功 OCR 写出后追加 append-only 输出清单(JSONL:source_rel/source_size/source_sha256/output_rel/written_at/pages);skip 决策在期望输出路径落空时必须查清单:同一 source(size+sha256 级一致)已在册 → skip(MANIFEST_DONE),记录输出当前在位与否只入日志留证、不参与决策(输出被搬移/丢失后的重跑权在人,runner 不自动重跑=禁 auto-fix)。防的就是跑步机:reclassify 搬移 md 后 skip-check 落空 → 同 PDF 重 OCR 回流(BUG-14-DATA 根因)。清单损坏/缺键/校验失败一律 fail-closed 显式中止,禁止静默降级为重跑(把"前置条件不存在"伪装成"事实不存在")。语义边界(用户 R66 裁定):清单是 processing history(证明"该 source 已成功执行过 OCR"),**不是** output availability index(不承诺"该 source 当前拥有有效输出");禁止未来以"恢复丢失输出"为由加自动重跑 fallback。R67 扩展(用户 2026-09-13 裁决):schema 允许 `pages: null` 表示页数未知(**仅当 provenance 在场**,禁 -1 哨兵/禁假 0),bootstrap 条目 `processed_at: null`(recorded_at 语义=系统何时知道,不冒充 OCR 何时发生);**bootstrap 只可为 missing source_rel 补新记录,禁止覆盖/修改任何已有条目**(append-only history);无证据(仅"文件看起来存在")永不入账——manifest 是事实账本,不是推测账本 | R64 D4 边界钉(副本+锚);R65 日志级证据:62/67 字节不同组直接证明重复处理、6/6 字节相同组亦为双次处理(重复处理证据而非复制证据);R66 修复变异咬合(见 tests/test_r66_treadmill_fix.py) | runner/OCR 工作流退役且语料转长期归档时 |
+
+## 8. 长驻 daemon 生命周期治理(R67.2 / 用户 2026-09-14 建议登记)
+
+**用户原话(裁定书)**:"长驻 worker/daemon 的启动验收必须包含脱离测试 harness 后的生命周期证明。"
+
+| ID | 类 | purpose / attack surface | evidence | retirement |
+|---|---|---|---|---|
+| R-DAEMON-LIFE-1 | OPS + EVIDENCE | 长驻 worker/daemon 的启动机制必须由操作系统级持久设施托管(**Windows Task Scheduler 任务**,启动器 `ocr_service/run_watchdog.cmd`),禁止经编排器(agent harness)子进程树启动;**验收必须包含脱离 harness 会话后的存活证明**(跨本轮会话结束继续运行),`process exists` 一级证据不构成验收。已证伪的两级启动方式:① `Start-Process` 子进程落入 harness Job 对象随会话连带死亡(F-r67.1-1);② SCM 直建 `Win32_Process.Create` 仍被控制台控件事件(`^C` 回显)终止于 ~00:15(F-r67.2-1,死因不可判定,无重启/无电源事件/零半成品)。层级:Job 对象 < SCM 直建 < Task Scheduler。任何重启后须重取 Gate C2 级证据(`[MANIFEST_LOAD] entries+sha256` 与落盘本体逐字符合) | F-r67.1-1(零损害);F-r67.2-1(零损害:无半成品、manifest 702 条一致、在途英语卷未完成→重启后正常重试);R67.2 重启实证(Task Scheduler 托管,watchdog 50412→runner 38864,MANIFEST_LOAD entries=702) | daemon/runner 工作流退役时 |
