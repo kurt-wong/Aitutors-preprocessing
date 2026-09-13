@@ -1,5 +1,6 @@
 {
  "purpose": "R67 apply gate: bidirectional consistency (independent re-derivation)",
+ "source": "manifest",
  "audit_rows": 698,
  "entries_total": 698,
  "audit_entries": 698,

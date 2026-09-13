@@ -18,7 +18,8 @@ G-AUDTB-1 精神:审计工具不复用被审对象的推导逻辑)。
     provenance=ocr-log-archaeology 条目无审计行,单独核日志证据。
 
 输出 data/r67_apply_gate_report.json(确定性);一致才 exit 0。
-用法:python scripts/r67_apply_gate.py
+用法:python scripts/r67_apply_gate.py          # apply 前:审规划
+     python scripts/r67_apply_gate.py --manifest # apply 后(R67.1 Gate B):审落盘 manifest
 """
 import hashlib
 import json
@@ -111,19 +112,36 @@ def gate_log_pages(log_file, fragments, candidate_counts):
     return pages
 
 
+def load_manifest_entries(manifest_file):
+    """独立读取落盘 manifest 全部条目(jsonl,每行一对象;空行忽略)。"""
+    entries = []
+    with open(manifest_file, encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                entries.append(json.loads(line))
+    return entries
+
+
 def run_gate(*, pdf_root=PDF_ROOT, output_root=OUTPUT_ROOT, audit_file=AUDIT_FILE,
              log_file=OCR_LOG_FILE, manifest_file=MANIFEST_FILE,
-             report_file=REPORT_FILE, written_at="gate-probe"):
+             report_file=REPORT_FILE, written_at="gate-probe", source="plan"):
+    """source="plan"    :apply 前,审 bootstrap 规划输出(t18/t19 语义);
+    source="manifest":apply 后(R67.1 Gate B),审**落盘 manifest 本体**——
+      apply 后 plan 因 no-overwrite 全部 ALREADY_IN_MANIFEST,条目为空,
+      再审 plan 会假报不一致;落盘状态才是被审事实。"""
     expected = gate_expected_outputs(pdf_root)
     audit_rows = []
     with open(audit_file, encoding="utf-8") as f:
         for lineno, line in enumerate(f, 1):
             if line.strip():
                 audit_rows.append((lineno, json.loads(line)))
-    plan_out = BOOT.plan(pdf_root=pdf_root, output_root=output_root,
-                         audit_file=audit_file, log_file=log_file,
-                         manifest_file=manifest_file, written_at=written_at)
-    entries = plan_out["entries"]
+    if source == "manifest":
+        entries = load_manifest_entries(manifest_file)
+    else:
+        plan_out = BOOT.plan(pdf_root=pdf_root, output_root=output_root,
+                             audit_file=audit_file, log_file=log_file,
+                             manifest_file=manifest_file, written_at=written_at)
+        entries = plan_out["entries"]
     audit_entries = [e for e in entries if e["provenance"] == "r63-audit-bootstrap"]
     log_entries = [e for e in entries if e["provenance"] == "ocr-log-archaeology"]
 
@@ -189,6 +207,7 @@ def run_gate(*, pdf_root=PDF_ROOT, output_root=OUTPUT_ROOT, audit_file=AUDIT_FIL
 
     report = {
         "purpose": "R67 apply gate: bidirectional consistency (independent re-derivation)",
+        "source": source,
         "audit_rows": len(audit_rows),
         "entries_total": len(entries),
         "audit_entries": len(audit_entries),
@@ -205,7 +224,12 @@ def run_gate(*, pdf_root=PDF_ROOT, output_root=OUTPUT_ROOT, audit_file=AUDIT_FIL
 
 
 def main():
-    rep = run_gate()
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--manifest", action="store_true",
+                    help="apply 后模式:审落盘 manifest 本体而非规划")
+    args = ap.parse_args()
+    rep = run_gate(source="manifest" if args.manifest else "plan")
     print(f"audit_rows={rep['audit_rows']} audit_entries={rep['audit_entries']} "
           f"log_entries={rep['log_entries']}")
     print(f"forward_missing={len(rep['forward_missing'])} "

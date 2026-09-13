@@ -1,0 +1,75 @@
+{
+ "purpose": "R67.1 Gate A: manifest write correctness (independent)",
+ "consistent": true,
+ "manifest_sha256": "68762c3c68c61e7115c9528fee9b8916e512ba4da5c50b5a28625017522938ca",
+ "outputs_combo_sha256": "8b2e7f7563c264b033c252c031e07441b2a8d50799dd5c9882d06c47a37bcdb8",
+ "checks": {
+  "append_count": {
+   "ok": true,
+   "detail": [
+    698,
+    698
+   ]
+  },
+  "duplicate_zero": {
+   "ok": true,
+   "detail": [
+    0,
+    0
+   ]
+  },
+  "entries_sha256": {
+   "ok": true,
+   "detail": [
+    "7e1970882cf4e43a403e40c7eace5f7af22cfbc234270650c4963e2b70621246",
+    "7e1970882cf4e43a403e40c7eace5f7af22cfbc234270650c4963e2b70621246"
+   ]
+  },
+  "written_at_frozen": {
+   "ok": true,
+   "detail": [
+    [
+     "2026-09-13 21:40:50"
+    ],
+    "2026-09-13 21:40:50"
+   ]
+  },
+  "processed_at_all_null": {
+   "ok": true,
+   "detail": [
+    0
+   ]
+  },
+  "provenance_uniform": {
+   "ok": true,
+   "detail": [
+    []
+   ]
+  },
+  "pages_int": {
+   "ok": true,
+   "detail": [
+    0
+   ]
+  },
+  "pdf_rehash": {
+   "ok": true,
+   "detail": [
+    0
+   ]
+  },
+  "output_rehash": {
+   "ok": true,
+   "detail": [
+    0
+   ]
+  },
+  "audit_rows_intact": {
+   "ok": true,
+   "detail": [
+    698,
+    698
+   ]
+  }
+ }
+}

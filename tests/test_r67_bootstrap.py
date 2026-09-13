@@ -419,3 +419,113 @@ def test_r67_t13_real_corpus_smoke(work):
           f"B_pending={len(rep['buckets']['B_pending_review'])} "
           f"victims={rep['victim_candidates']} "
           f"already={len(rep['skipped_already_present'])}")
+
+
+# ---------------- t20 manifest 模式(R67.1 Gate B:审落盘本体,非规划)
+def _load_gate():
+    spec = importlib.util.spec_from_file_location(
+        "r67_apply_gate", os.path.join(ROOT, "scripts", "r67_apply_gate.py"))
+    GATE = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(GATE)
+    return GATE
+
+
+def _load_manifest(mf):
+    return [json.loads(l) for l in open(mf, encoding="utf-8") if l.strip()]
+
+
+def _write_manifest(mf, rows):
+    with open(mf, "w", encoding="utf-8") as f:
+        for r in rows:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+
+def test_r67_t20_gate_manifest_mode_reads_landed_entries(work):
+    GATE = _load_gate()
+    env = _std_env(work)
+    _mk_to(env)
+    _apply(env, "2026-09-13 21:40:50")
+    mf = env["manifest_file"]
+
+    def _gate(tag):
+        return GATE.run_gate(source="manifest", **dict(
+            env, report_file=os.path.join(str(work), f"g_{tag}.json")))
+
+    # 落盘后 plan 因 no-overwrite 全空;manifest 模式必须审到落盘条目本体
+    rep = _gate("clean")
+    assert rep["source"] == "manifest"
+    assert rep["consistent"] is True and rep["audit_entries"] == 1
+    # 篡改落盘条目的 source_sha256 → 独立重推必须咬住
+    orig = _load_manifest(mf)
+    rows = [dict(r) for r in orig]
+    rows[0]["source_sha256"] = "deadbeef"
+    _write_manifest(mf, rows)
+    rep2 = _gate("sha")
+    assert rep2["consistent"] is False
+    assert any(m["kind"] == "SHA256" for m in rep2["backward_mismatches"])
+    # 仅篡改 pages(sha 恢复正确)→ PAGES 独立日志重推必须咬住
+    rows = [dict(r) for r in orig]
+    rows[0]["pages"] = rows[0]["pages"] + 1
+    _write_manifest(mf, rows)
+    rep3 = _gate("pages")
+    assert rep3["consistent"] is False
+    assert any(m["kind"] == "PAGES" for m in rep3["backward_mismatches"])
+
+
+def test_r67_t21_verify_gate_a_catches_tamper(work):
+    """Gate A 十项检查逐项可咬:每场景独立 fresh apply + 单点篡改。"""
+    spec = importlib.util.spec_from_file_location(
+        "r67_apply_verify", os.path.join(ROOT, "scripts", "r67_apply_verify.py"))
+    VER = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(VER)
+
+    def _t_processed_at(rows):
+        rows[0]["processed_at"] = "2020-01-01 00:00:00"
+
+    def _t_drop_row(rows):
+        del rows[-1]
+
+    def _t_duplicate(rows):
+        rows.append(dict(rows[0]))
+
+    def _t_provenance(rows):
+        rows[0]["provenance"] = "looks-processed"
+
+    def _t_pages(rows):
+        rows[0]["pages"] = rows[0]["pages"] + 1  # 仅指纹可侦测的单点漂移
+
+    def _t_pdf_sha(rows):
+        rows[0]["source_sha256"] = "deadbeef"
+
+    def _t_output_missing(rows, env):
+        os.remove(os.path.join(env["output_root"], rows[0]["output_rel"]))
+
+    cases = [
+        ("processed_at_all_null", _t_processed_at),
+        ("append_count", _t_drop_row),
+        ("duplicate_zero", _t_duplicate),
+        ("provenance_uniform", _t_provenance),
+        ("entries_sha256", _t_pages),
+        ("pdf_rehash", _t_pdf_sha),
+        ("output_rehash", _t_output_missing),
+    ]
+    import uuid
+    for i, (expect_check, tamp) in enumerate(cases):
+        sub = os.path.join(str(work), f"case{i}")
+        os.makedirs(sub, exist_ok=True)
+        env = _std_env(sub)
+        _mk_to(env)
+        pv = _pv_env(env)
+        _apply(env, "2026-09-13 21:40:50")
+        kw = dict(pdf_root=env["pdf_root"], output_root=env["output_root"],
+                  audit_file=env["audit_file"], manifest_file=env["manifest_file"],
+                  preview_file=pv["preview_file"])
+        clean = VER.run_verify(**dict(kw, report_file=os.path.join(sub, "v0.json")))
+        assert clean["consistent"] is True, (expect_check, clean["checks"])
+        rows = _load_manifest(env["manifest_file"])
+        tamp(rows, env) if tamp is _t_output_missing else tamp(rows)
+        _write_manifest(env["manifest_file"], rows)
+        dirty = VER.run_verify(**dict(kw, report_file=os.path.join(sub, "v1.json")))
+        assert dirty["consistent"] is False, expect_check
+        assert dirty["checks"][expect_check]["ok"] is False, (
+            expect_check, dirty["checks"])

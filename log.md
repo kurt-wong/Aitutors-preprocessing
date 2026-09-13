@@ -1673,3 +1673,14 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 4. **测试 19 钉全绿**(新增 t14 preview 确定性/t15 base 漂移拒/t16 规划漂移拒/t17 无 preview 拒/t18 闸门咬住错误 bootstrap 输出/t19 闸门咬住 forward 缺口);**变异 9/9 BITE 字节还原**(M6 base 指纹拆除/M7 entries 指纹拆除/M8 闸门 sha 比对拆除/M9 forward 静默);全量 **261 passed + 1 xfailed**。
 5. **真实语料 preview 已生成**(`data/r67_manifest_apply_preview.json`):append_count=698,base_manifest_sha256=null(manifest 仍不存在),entries_sha256=7e197088…1246;闸门报告 `data/r67_apply_gate_report.json`。
 **边界**:apply 未执行、manifest 生产文件不存在、daemon 未重启、D5-B 未跑。剩余动作等用户批准:`--apply`(将校验 preview 未漂移)→ daemon 激活验收 → D5-B。
+
+---
+
+## R67-A apply 轮(2026-09-13):698 条落盘 + Gate A/B 落盘后验收(用户批准,仅限 bootstrap append)
+**输入**:用户裁定**批准 apply,范围严格限定为 manifest bootstrap append(698 条)**;禁止同时 D5-B / reclassify / canonical identity / BUG-14-CHAIN / 语义去重;daemon 重启 ⏸ 等 apply 验收后;并预置 R67.1 验收清单(Gate A 写入正确性 / Gate B 不可污染 / Gate C daemon 激活前检查)。
+**执行**:
+1. **apply 前置复核 + 落盘**:manifest 仍不存在、preview 未漂移(base=null / append_count=698 / entries_sha=7e197088…1246 / written_at 冻结 2026-09-13 21:40:50)→ `python scripts/r67_manifest_bootstrap.py --apply` → **appended=698,exit 0**(逐条 validate-then-write + fsync,preview 闸门通过)。
+2. **Gate A(写入正确性,新武器 `scripts/r67_apply_verify.py`:不 import bootstrap/gate,十项独立重算)**:全 PASS——append_count 698/698、duplicate 0(source_rel/output_rel 双零)、entries_sha256 重算 = `7e197088…1246` 与 preview 逐字符合、written_at 唯一值 = 冻结值(recorded_at 语义)、**processed_at 全 null**(OCR 时刻未知不伪造)、provenance 全 `r63-audit-bootstrap`、pages 全 int≥1、**PDF 698 份重哈希 0 漂移**(source_sha256/source_size 逐份重算)、**输出 698 份重哈希 0 缺失**(全在位 >100B,组合指纹 outputs_combo_sha256=`8b2e7f75…cdb8`)、审计源 698 行完好;manifest 落盘 sha256=`68762c3c…38ca`;报告 `data/r67_apply_verify_report.json`,consistent=True。
+3. **Gate B(不可污染,双向闸门升级)**:设计要点——apply 后 bootstrap plan 因 no-overwrite 全部 ALREADY_IN_MANIFEST(条目为空),再审 plan 会假报不一致;`r67_apply_gate.py` 新增 `--manifest` 模式**审落盘 manifest 本体**(独立重推期望值逻辑不变)。实测:`audit_entries=698、forward_missing=0、forward_dup=0、mismatches=0、consistent=True`;报告 `data/r67_apply_gate_report.json`。
+4. **测试 21 钉全绿**(t20 manifest 模式三阶段:clean 一致 / sha 篡改咬 SHA256 / pages 篡改咬 PAGES;t21 Gate A 七场景逐项可咬:processed_at 伪造 / 行丢失 / 条目重复 / provenance 伪造 / pages 单点漂移(仅指纹可侦测)/ PDF sha 伪造 / 输出删除,每场景 fresh apply + 单点篡改 + 期望检查项名断言);**变异 10/10 BITE 字节还原**(MV1–MV7 Gate A 七检查逐个恒真化、MG1 manifest 分支读空、MG2 落盘 sha 比对拆除、MG3 落盘 PAGES 比对拆除);全量 **263 passed + 1 xfailed**(261+2)。
+**边界(严格执行用户范围)**:本轮**只做 manifest 落盘**——daemon 未重启、D5-B 未跑、canonical identity/BUG-14-CHAIN/语义去重零触碰;9,658 份为**未建立处理历史证明的 source**(非错误 source),由 runner 按正常业务处理。下一动作 = R67.1 生效验收(Gate C:旧 PID 消亡 / 新 PID 创建时间 > manifest 写入时间 / runner 加载新 manifest / 首扫 MANIFEST_DONE 观察),验收通过后再议 D5-B。
