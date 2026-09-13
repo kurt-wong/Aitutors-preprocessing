@@ -1615,3 +1615,28 @@ R58 七项结论:**6 项成立、1 项措辞级证伪(已更正)**;0 代码行�
 **F-r66-1(测试线缺陷,CI 抓获,当轮修复)**:首轮 CI Run 34752098948(8f8ef26,ubuntu)失败——`_stub_optional_deps` 不幂等:首测注入 spec-less stub 后,后续调用 `importlib.util.find_spec("requests")` 对 `__spec__ is None` 模块抛 ValueError(4 failed,214 passed,23 skipped,1 xfailed;本地装有 requests 走不到该分支,属 CI-only 路径未本地覆盖)。修复 = 成员检查先行 + ValueError 防御(`_ensure_stub`),本地以 CI 形态 subprocess 复现验证("OK: idempotent, no ValueError")+ t11 回归钉(spec-less 短路)。**缺陷属测试线,机制代码(output_manifest/runner)零改动;失败计数算术自洽:214+4+23+1=242=本地 241+1。**
 
 **收口**:修复提交 aa9065f → **CI Run 34752741370 = success,日志原文 "219 passed, 23 skipped, 1 xfailed"**。算术闭合:219+23+1 = 243 = 本地 242 passed + 1 xfailed(242−23 skip=219;skip 23 = 19 corpus + 4 win-only,历轮已逐节点点名)。main = aa9065f(前序:8f8ef26 D5-A 主体)。R66 全链:修复前快照 → 登记 → 机制实现 → 10+1 钉 → 变异 5/5 → 修复后快照字节一致 → 台账 → CI 绿。**下一步待用户:重启 daemon(修复生效)→ 观察首跑 → D5-B 全量 reclassify(生效前禁止)。**
+
+---
+
+## R66.1(2026-09-13):D5-A 生效验收(Runtime Activation Verification)
+**输入**:用户 R66 裁定 = PASS(code-level complete,**runtime activation pending**);明令下一步只做 R66.1 三项(进程归属 / 首次真实运行 / 二次扫描零 OCR),**证据拿到前禁止 D5-B**;并裁定 manifest 语义必须写死为 processing history(≠ output availability index)。
+
+### 进程取证与旧 daemon 终止(A 前半)
+Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.py`(09-10 21:21 启动)→ PID 33036 = runner `batch_convert_pdf.py`(21:27 拉起),均 Python312 解释器、持旧代码;PID 42124 = hermes 网关,无关未触碰。**runner 卡死实锤**:ocr_batch_log 停笔于 09-10 21:27:45(75/12703,当日 6481/20000 页),进程存活 2.7 天零输出。终止顺序先看门狗后 runner(防 5 分钟自动重拉),BOTH DEAD 确认。**今日配额 293 页矛盾排查**:page_usage mtime=09-13 01:11:38 与 reslice-pac 26 个 pac-c*.md 写入时间(01:11:22–01:11:38)完全吻合 → 系 reslice-pac 流水线自身 OCR 所耗,非 daemon。
+
+### 激活前预检(只读,发现清单引导缺口)
+武器 `scripts/r66_1_preflight.py` + `r66_1_victim_split.py`。全量 12,703 PDF,EXISTS 在位 skip 仅 2,421;**清单从零开始 → 首扫将真实 OCR 10,282 份(20.2 GB)**。拆分(md 名==sanitize_stem 精确等值,runner 自身输出路径语义,非语义去重):**625 份跑步机受害者候选**(语料已有同名 md=历史已处理、输出被搬走,重 OCR=重复+污染)+ **9,657 份从未处理**(daemon 本职,配额闸门约束)。结论:**直启看门狗 ≠ 最小验证,生产重启暂停,待用户裁决引导策略**(甲 审计记录回填 manifest=证据级引导 / 乙 接受直启如实入账 / 丙 维持停机先做引导工具)。证据 `data/r66_1_preflight.json` / `r66_1_victim_split.json`。
+
+### 受控激活验证(B/C,真实 runner + 真实 OCR API + 沙箱根,生产代码零改动)
+武器 `scripts/r66_1_activation_driver.py`:import 真实 batch_convert_pdf,仅进程内重定向 PDF_ROOT/OUTPUT_ROOT/MANIFEST_FILE/LOG_FILE 至 `.pytest_work\r66_1_activation`;**PAGE_USAGE_FILE 保持生产路径,真实页数诚实入账**;source = 真实 PDF 沙箱副本(西城高二地理参考答案,228,485B,sha256 dd239c…);Ocr-markdown 零写入。实测 4/4:
+- **P1 首跑**:`[DECIDE:NO_MANIFEST_ENTRY]` → 真实 OCR `[OK] 2 pages` → output 写出 + manifest 0→1(含 source_sha256/pages);配额 293→295;
+- **P2 复扫(在位)**:EXISTS 静默 skip,manifest 字节不变,零 OCR;
+- **P3 搬移复扫(模拟 reclassify)**:**`[DECIDE:MANIFEST_DONE]`(recorded_output_status="missing-or-moved")→ 零 OCR、零回流、manifest 不变——跑步机切断在真实运行时的直接证据**(t2 测试用 stub,此处真实 API 闭环);
+- **P4 归位**:manifest 不变。
+证据全文 `data/r66_1_activation_evidence.json`。
+
+### 语义边界写死(用户 R66 裁定 §4)
+`output_manifest.py` 模块头 + 登记册 §7 增补:manifest = **processing history / execution ledger**(证明"该 source 已成功执行过 OCR"),**不是 output availability index**;禁止未来以"恢复丢失输出"为由给 output-missing 加自动重跑 fallback(丢失输出恢复 = 人工删清单记录,显式授权)。
+
+### 结果与边界
+全量回归 **242 passed + 1 xfailed**(与 R66 收口态一致,零回退)。**R66.1 = B/C 受控通过、A(生产 daemon 重启+新代码进程归属)暂停待用户裁决;D5-B 继续禁止**。625/9,657 拆分是风险预检口径,不构成逐份"已处理"裁定;引导回填若实施须逐份日志证据 + 新轮治理(登记+测试+变异)。报告 `reports/r66_1_activation.md`。

@@ -12,6 +12,14 @@ output_manifest.py — runner 输出清单(R-OHM-1,BUG-14-DATA D5-A 跑步机切
      处置权在人,runner 不自动重跑(自动重跑 = auto-fix,且正是回流污染源);
      需要重跑时由操作者删除对应清单记录(显式动作)。
 
+语义边界(用户 R66 裁定,防未来语义漂移):
+  本清单是 **processing history / execution ledger** —— 只证明
+  "该 source 已成功执行过一次 OCR 并记账";
+  它**不是 output availability index** —— 不承诺"该 source 当前拥有有效输出"。
+  两者混淆的典型事故:以"恢复丢失的输出"为由给 output-missing 加 fallback
+  自动重跑 = 复活跑步机。丢失输出的恢复属于人工授权动作(删清单记录),
+  绝不回写为 runner 的自动行为。
+
 fail-closed 铁律(R-OHM-1 登记于 governance/rule_registry.md §7):
   - 清单坏行/缺键/非法类型 → ManifestError 显式中止;禁止静默跳过坏行
     (静默跳过会把"清单前置条件损坏"伪装成"无历史记录",退回重跑=跑步机复活)。
