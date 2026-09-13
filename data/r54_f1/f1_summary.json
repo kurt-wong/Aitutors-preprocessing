@@ -1,0 +1,641 @@
+{
+ "f1_version": "f1-consistency-0.1",
+ "scope": "audit invariant only — not a Gate, not an admission rule; structural consistency (source_version_sha / start_line / end_line / span hash); semantics belong to QC/Admission",
+ "ir_crosscheck": true,
+ "summary": {
+  "files_match": {
+   "numerator": 88,
+   "denominator": 88,
+   "proof": "per-file status = MATCH iff no unit DRIFT and no structural note"
+  },
+  "units_match": {
+   "numerator": 2403,
+   "denominator": 2403,
+   "proof": "annotated anchor (line+hash) + slice zone text vs manifest spans on current source"
+  },
+  "units_drift": 0,
+  "zones_uncomparable": 294
+ },
+ "full_report": {
+  "path": "f1_report.json",
+  "sha256": "97b145d880b6326225069fb796114bc334459ea01624689b12c7a744178fe54f"
+ },
+ "files": [
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\会考\\化学\\2018北京春季高中会考化学（教师版）(1).md",
+   "n_units": 40,
+   "n_match": 40,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\会考\\历史\\2018北京夏季高中会考历史（教师版）(1).md",
+   "n_units": 53,
+   "n_match": 53,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\会考\\地理\\2018北京春季高中会考地理（教师版）(1).md",
+   "n_units": 25,
+   "n_match": 25,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\会考\\政治\\2018北京夏季高中会考政治（教师版）(1).md",
+   "n_units": 36,
+   "n_match": 36,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\会考\\数学\\2018北京春季高中会考数学（教师版）(1).md",
+   "n_units": 30,
+   "n_match": 30,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\会考\\物理\\2018北京春季高中会考物理（教师版）(1).md",
+   "n_units": 22,
+   "n_match": 22,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\会考\\生物\\2018北京春季高中会考生物（教师版）(1).md",
+   "n_units": 50,
+   "n_match": 50,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\会考\\英语\\2018北京春季高中会考英语（教师版）(1).md",
+   "n_units": 18,
+   "n_match": 18,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\会考\\语文\\2018北京春季高中会考语文（教师版）(1).md",
+   "n_units": 10,
+   "n_match": 10,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md",
+   "n_units": 18,
+   "n_match": 18,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\理综\\14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+   "n_units": 35,
+   "n_match": 35,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\其他汇编\\英语\\2015-2021北京高中英语期中汇编：代词（教师版）(1).md",
+   "n_units": 12,
+   "n_match": 12,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\合格考\\化学\\2020北京高中合格考化学（第一次）（教师版）(1).md",
+   "n_units": 34,
+   "n_match": 34,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\合格考\\历史\\2021北京高中合格考历史（第一次）（教师版）(1).md",
+   "n_units": 42,
+   "n_match": 42,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\合格考\\地理\\2017-2019北京高中地理合格考试汇编：人口（教师版）(1).md",
+   "n_units": 7,
+   "n_match": 7,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\合格考\\政治\\2021北京高中合格考政治（第一次）（教师版）(1).md",
+   "n_units": 31,
+   "n_match": 31,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\合格考\\数学\\2021北京高中合格考数学（第二次）（教师版）(1).md",
+   "n_units": 28,
+   "n_match": 28,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\合格考\\物理\\2021北京高中合格考物理（第二次）（教师版）(1).md",
+   "n_units": 15,
+   "n_match": 15,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\合格考\\生物\\2020北京高中合格考生物（第二次）（教师版）(1).md",
+   "n_units": 44,
+   "n_match": 44,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\合格考\\英语\\2020北京高中合格考英语（第二次）（教师版）(1).md",
+   "n_units": 15,
+   "n_match": 15,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\合格考\\语文\\2021北京高中合格考语文（第二次）（教师版）(1).md",
+   "n_units": 9,
+   "n_match": 9,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\学业水平考试\\化学\\12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+   "n_units": 19,
+   "n_match": 19,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\历史\\2021北京高考压轴卷历史（教师版）(1).md",
+   "n_units": 20,
+   "n_match": 20,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\政治\\2019北京大学博雅计划模拟政治（教师版）(1).md",
+   "n_units": 5,
+   "n_match": 5,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\数学\\2020北京大学强基计划数学（教师版）(1).md",
+   "n_units": 20,
+   "n_match": 20,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\物理\\2019北京清华大学领军计划物理（教师版）(1).md",
+   "n_units": 19,
+   "n_match": 19,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\竞赛自招\\语文\\2019北京大学博雅计划模拟语文（教师版）(1).md",
+   "n_units": 4,
+   "n_match": 4,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\化学\\2022北京首都师大附中高一12月月考化学（教师版）(1).md",
+   "n_units": 20,
+   "n_match": 20,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\历史\\2020北京平谷高一（上）期末历史含答案.md",
+   "n_units": 54,
+   "n_match": 54,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\地理\\2022北京东城高一（上）期末地理（教师版）.md",
+   "n_units": 16,
+   "n_match": 16,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\政治\\2021北京四十三中高一（上）期中政治（教师版）.md",
+   "n_units": 41,
+   "n_match": 41,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\数学\\2021北京师大二附中高一（上）期中数学（教师版）.md",
+   "n_units": 21,
+   "n_match": 21,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\物理\\2018北京十四中高一（下）期中物理（教师版）(1).md",
+   "n_units": 23,
+   "n_match": 23,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\生物\\2021北京四中高一（上）期中生物（教师版）.md",
+   "n_units": 35,
+   "n_match": 35,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\英语\\2019北京三十五中新高一分班考试英语含答案(1).md",
+   "n_units": 39,
+   "n_match": 39,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高一\\语文\\2022北京首都师大附中高一12月月考语文（教师版）(1).md",
+   "n_units": 9,
+   "n_match": 9,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\1_16_专题十六　化学实验综合　教师用书PDF.md",
+   "n_units": 84,
+   "n_match": 84,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\2017-2019北京高三化学上学期期末汇编：化学实验（教师版）(1).md",
+   "n_units": 89,
+   "n_match": 89,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\化学\\2021北京四中高三（上）期中化学（教师版）(1).md",
+   "n_units": 19,
+   "n_match": 19,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\历史\\2022北京丰台高三一模历史（教师版）(1).md",
+   "n_units": 20,
+   "n_match": 20,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\地理\\2021北京东城高三二模地理（教师版）(1).md",
+   "n_units": 12,
+   "n_match": 12,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\政治\\2021北京房山高三二模政治（教师版）(1).md",
+   "n_units": 20,
+   "n_match": 20,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期中汇编：立体几何（教师版）(1).md",
+   "n_units": 17,
+   "n_match": 17,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\数学\\2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).md",
+   "n_units": 74,
+   "n_match": 74,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\物理\\2022北京首都师大附中高三9月月考物理（教师版）(1).md",
+   "n_units": 18,
+   "n_match": 18,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\生物\\2021北京顺义高三（上）期末（一模）生物（教师版）(1).md",
+   "n_units": 21,
+   "n_match": 21,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高三\\英语\\2020北京大兴高三（上）期末英语（教师版）(1).md",
+   "n_units": 11,
+   "n_match": 11,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：空间向量与立体几何（2）（教师版）(1).md",
+   "n_units": 60,
+   "n_match": 60,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高考真题\\数学\\2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).md",
+   "n_units": 60,
+   "n_match": 60,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-batch-C\\高考真题\\生物\\2012-2021高考真题生物汇编：基因工程（1）（教师版）(1).md",
+   "n_units": 60,
+   "n_match": 60,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高一\\化学\\2021北京三十一中高一（下）期中化学（教师版）(1).md",
+   "n_units": 56,
+   "n_match": 56,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高一\\历史\\2021北京四十三中高一（上）12月月考历史（教师版）(1).md",
+   "n_units": 43,
+   "n_match": 43,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高一\\地理\\2019北京人大附中高一（上）期中地理含答案.md",
+   "n_units": 19,
+   "n_match": 19,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高一\\政治\\2018北京师大附中高一（下）期中政治含答案(1).md",
+   "n_units": 35,
+   "n_match": 35,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高一\\数学\\2021北京顺义一中高一（下）期中数学（教师版）(1).md",
+   "n_units": 21,
+   "n_match": 21,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高一\\生物\\2018北京市西城区高一（下）期末生物含答案(1).md",
+   "n_units": 42,
+   "n_match": 42,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高一\\英语\\2020北京东城高一（上）期末英语（教师版）.md",
+   "n_units": 19,
+   "n_match": 19,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高一\\语文\\2020北京平谷五中高一（下）4月月考语文含答案(1).md",
+   "n_units": 10,
+   "n_match": 10,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高一\\语文\\2020北京石景山高一（上）期末语文含答案.md",
+   "n_units": 10,
+   "n_match": 10,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高三\\化学\\2019北京交大附中高三（上）12月月考化学含答案(1).md",
+   "n_units": 19,
+   "n_match": 19,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高三\\数学\\2021北京八十中高三考前练习数学（教师版）(1).md",
+   "n_units": 21,
+   "n_match": 21,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高三\\物理\\2021北京石景山高三一模物理（教师版）(1).md",
+   "n_units": 20,
+   "n_match": 20,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高三\\生物\\2020北京西城高三（上）期末生物含答案(1).md",
+   "n_units": 21,
+   "n_match": 21,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高三\\英语\\2021北京丰台高三二模英语（教师版）(1).md",
+   "n_units": 9,
+   "n_match": 9,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高二\\数学\\2018北京五十六中高二（下）期中数学（理）（教师版）(1).md",
+   "n_units": 20,
+   "n_match": 20,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\resliced-pilot\\高二\\物理\\2019北京四中高二（下）期末物理（教师版）(1).md",
+   "n_units": 24,
+   "n_match": 24,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-01.md",
+   "n_units": 30,
+   "n_match": 30,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-02.md",
+   "n_units": 28,
+   "n_match": 28,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c02-01.md",
+   "n_units": 20,
+   "n_match": 20,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c02-02.md",
+   "n_units": 32,
+   "n_match": 32,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c05-01.md",
+   "n_units": 20,
+   "n_match": 20,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c05-02.md",
+   "n_units": 21,
+   "n_match": 21,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c06-01.md",
+   "n_units": 19,
+   "n_match": 19,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c06-02.md",
+   "n_units": 20,
+   "n_match": 20,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c07-01.md",
+   "n_units": 35,
+   "n_match": 35,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c07-02.md",
+   "n_units": 21,
+   "n_match": 21,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c08-01.md",
+   "n_units": 9,
+   "n_match": 9,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c08-02.md",
+   "n_units": 12,
+   "n_match": 12,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c09-01.md",
+   "n_units": 34,
+   "n_match": 34,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c09-02.md",
+   "n_units": 35,
+   "n_match": 35,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c10-01.md",
+   "n_units": 20,
+   "n_match": 20,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c10-02.md",
+   "n_units": 18,
+   "n_match": 18,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c11-01.md",
+   "n_units": 56,
+   "n_match": 56,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c11-02.md",
+   "n_units": 19,
+   "n_match": 19,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c12-01.md",
+   "n_units": 27,
+   "n_match": 27,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c12-02.md",
+   "n_units": 25,
+   "n_match": 25,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c13-01.md",
+   "n_units": 19,
+   "n_match": 19,
+   "status": "MATCH",
+   "notes": []
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c13-02.md",
+   "n_units": 10,
+   "n_match": 10,
+   "status": "MATCH",
+   "notes": []
+  }
+ ]
+}

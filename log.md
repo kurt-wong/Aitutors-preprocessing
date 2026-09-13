@@ -1201,3 +1201,57 @@ t1 ADMITTED + 身份逐字段只读(R-ACC-3)+ provenance 齐全(R-ACC-11)+ 材�
 R-ACC-1 ✅(真实 v1 + C1)/ 2 ✅(16 真实 FAIL + C2/C3 + CI t3t4)/ 3 ✅(1664 单元穷举)/ 4 ✅(t12 import 面 + R2 穷举复制证明;间接依赖经生产 QC 本体如实声明)/ 5 ✅(c13-02)/ 6 ✅ 限定口径(528 机器穷举 + 键位抽验,502 unresolved 诚实)/ 7 ✅(M6 Gate + 盲区声明)/ 8 ✅(附录 A 88 份全量,处置全可归因)/ 9 ✅(C6)/ 10 ✅(C7)/ 11 ✅(provenance 穷举 + C4/C5)。
 
 **结果**:参考 Resolver 通过首轮实现级对抗审查——**0 结论级翻转、0 新生 resolver 缺陷**;1 项防御纵深候选(F1)+ 3 处审计工具自身缺陷(当场修)。套件 **155 passed + 1 xfailed**(本地;CI 138+17 skip);受审工件审查期间零变更。
+
+---
+
+## R54(2026-09-13):用户 R53 验收裁决落盘 + F1 Audit Invariant 实施 + Resolver 审查第二轮边界攻击
+
+**输入**:用户对 R51–R53 的验收裁决(原样入库要点):
+
+### 用户裁定要点
+
+1. **R53 第一轮验收:通过 🟢**;但定性必须区分:"没有证明 Resolver 正确,而是证明 **Resolver 按冻结契约实现时,没有发现违反契约的行为**"。Reference Resolver **继续保持审查对象,不进入生产链路**;"参考实现 → 对抗验证 → 再消费"隔离策略维持。
+2. **F1:实施,但定位 = Audit Invariant only,不是 Resolver admission rule,不升硬 Gate**——不得让 Resolver 变成第二套 QC(否则违反"Resolver 不重新判断事实,只消费已过 QC 的事实"的冻结原则)。检查面严格限定四项:**source_version_sha / start_line / end_line / span hash 必须一致**;不检查语义正确性/题目完整性/答案合理性(属 QC/Admission)。输出形态:`{question_id, qc_span_hash, resolver_span_hash, status: MATCH}`。
+3. **STALE 检测边界:维持不扩大**。STALE 三分类:Structural stale(Resolver 可检)/ Source stale(provenance 检)/ Semantic stale(人工/LLM 审);Resolver 只负责第一类,检测 semantic stale = V2 失败模式回归。
+4. **进入 Resolver Consumer Adversarial Audit 第二轮**(非 rollout),目标从"Resolver 是否违反契约"转为"**Resolver 周边系统是否能制造契约合法但语义错误的数据**"——重点是边界组合攻击:
+   - **R-ACC-12 QC→Resolver 边界攻击**:QC PASS + manifest 合法 + Resolver ADMITTED,但题目事实错误(如题干 span 缺最后一个条件)——结构完全合法,当前最大剩余风险;
+   - **R-ACC-13 Material Consumer Attack**:material 顺序交换 / shared material 错绑定 / single question 错继承 material / composite material 泄漏;
+   - **R-ACC-14 答案表 unresolved 消费攻击**:unresolved → 下游默认值 → 误变 admitted(尤其未来 Agent/UI 层)。
+5. **优先级(用户排序)**:P0 = F1 + Resolver 第二轮边界攻击;P1 = BUG-11/14/15 数据卫生、basis schema-only;P2 = 三十一中 keep 三方裁决;P3 = 生产 Resolver(最后一步)。
+6. 项目价值定性(用户):当前最重要的价值不是"能解析题目",而是已形成"事实来源冻结 → 确定性身份 → 证据绑定 → 结构解析 → 可攻击验证"链路;**下一阶段重点继续攻击边界,不增加功能**。
+
+### 本轮执行(R54,裁定后随即开工)
+
+(本轮执行结果见下方 R54 收口补记;本节为裁决落盘。)
+
+---
+
+## R54 收口补记(2026-09-13):F1 落地 + 第二轮边界攻击实测结果
+
+### 交付
+
+1. **F1 Audit Invariant**:`scripts/audit_f1_consistency.py`(f1-consistency-0.1)。三方对账:resolver 侧(manifest spans × 当前源)vs QC 侧(annotated META 锚点区间 + 切片区文本),四项检查 = source_version_sha / start_line / end_line / span hash;期望值独立重实现(不 import 生产 compile);可选 `--ir` 与运行时刻 provenance 三方对账;共享答案表区如实 UNCOMPARABLE;确定性输出 + Input Integrity Gate 接线。**定位严格按裁决:Audit invariant only,零生产代码变更,resolver_reference.py 审查期间零触碰。**
+2. **CI 契约测试 +11**(`tests/test_audit_f1.py`):干净产物全 MATCH / manifest 漂移 / 切片漂移 / 源内容漂移(行数不变)四类注入 + 确定性 + C-OUT 收敛 + IR cross-check 精确隔离 source_version + R-ACC-14 消费不变量 I0–I3(含 shape 防回归 t11)。
+3. **第二轮攻击脚本**:`scripts/r54_round2_attack.py`(R-ACC-12/13/14 + F1 灵敏度),工件 `data/r54_round2_attack.json`。
+
+### 实测结果(全部真实测试证据)
+
+- **F1 真实语料控制组(输入 = R50 冻结基线 88 份)**:**88/88 文件、2403/2403 单元 MATCH、0 漂移**;294 shared-answer 区 UNCOMPARABLE(内容不回引,行号注释逐字比对)。工件:`data/r54_f1/f1_summary.json`(入库)+ `f1_report.json`(4.8MB,`sha256` 见 summary,不入库,R52 先例)。
+- **F1 灵敏度**:代码变异 **4/4** 被 CI 咬住(含 Gate sabotage 接线活性);真实语料 staged manifest 漂移(不重编译)→ F1 报 DRIFT(1 单元)而 **Resolver 同一态照常 ADMITTED**——F1 必要性直接实证;控制组零变异 staging 复现原件 MATCH。
+- **R-ACC-12**:stem 尾行丢弃 **6/6**、answer 错绑下一单元 **6/6** 全链绿(QC PASS + ADMITTED + F1 MATCH)——**结构链全绿而语义已错,量化坐实语义正确性只能由 Admission 承接**(用户预判的"当前最大剩余风险"获实测确认);answer 错绑 6/6 未触发 answer_number_mismatch(flag 为结构观察非保证)。options 丢尾 1/1 绿;material 外扩族样本无合格单元(0/0 如实)。
+- **R-ACC-13**:material 交换/错绑定/丢失三族 resolver 与独立重算期望 **consumers 精确相等、文本单份、零重塑**;composite 泄漏被 C12 咬住 fail-closed;控制组复现原件。
+- **R-ACC-14**:真实 IR 528 表单元消费不变量 **0 findings**;口径对账 26 键位单元/30 键、502 全 unresolved 单元/596 unresolved 槽位(与 R53 互洽);负向对照 6/6 咬住。**下游默认值攻击面:`answers.get(q,"")` 会把 596 个 unresolved 槽位静默变"已解为空"** → 登记 C-OUT 消费侧条款候选(未来 Agent/UI 必须显式处理 unresolved)。
+
+### 审计工具自身缺陷(本轮抓获,如实入册)
+
+1. **R-ACC-14 检查器首版 schema 误读**(审计工具缺陷,非 resolver 缺陷):按"逐题映射"错误形状编码,真实 IR 产生 **2210 条伪 findings**;真实数据校准后按 `{cells, method, answers, unresolved}` 表对象重写 → 0 findings;I0 形状检查 + t11 防回归入 CI。
+2. **F1 匹配逻辑缺陷**:无 span 单元误消费同题号键下他单元锚点(教师用书汇编 84 单元/20 重复键触发,首跑 2 份文件 92 单元伪 DRIFT)——88 份控制组抓获,修复后 2403/2403。
+3. 全量套件复跑时 `-W error` 放大下既有 `test_run_paths.py`(R28 子进程集成)报 thread exception warning(本轮未触碰该路径;正常口径绿灯)——如实记录,不属本轮缺陷。
+
+### 套件与治理
+
+- 套件 **166 passed + 1 xfailed**(本地;R53 155 + 本轮 11);生产链路脚本(`reslice_pipeline`/`reslice_qc`/`question_identity`/`resolver_reference`)零变更。
+- 两个新工具均过 Input Integrity Gate;staging 规范执行(源拷贝 `src_*` 防自我覆盖、控制组、备份还原 sha 闭环、原件零触碰)。
+- 设计稿:`resolver_contract_design.md` 新增**附录 C**(R54 裁决 + F1 定义 + 二轮结果 + 边界)。
+
+**结果**:用户 R53 裁决全部落地;F1 以 Audit Invariant 形态实施并经真实语料 + 变异双向验证;Resolver 审查第二轮(R-ACC-12/13/14)完成——**0 新生 resolver 缺陷**,最大剩余风险(结构合法但语义错误)获量化证据,归宿 = Admission 层。待用户裁定下一轮(优先序:P1 BUG-11/14/15 数据卫生 / basis schema-only;或对本轮验收 + 攻击面扩样)。

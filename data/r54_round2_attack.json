@@ -1,0 +1,380 @@
+{
+ "samples": {
+  "a12": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-01.md",
+  "a13": "Ocr-markdown\\reslice-batch-C\\会考\\历史\\2018北京夏季高中会考历史（教师版）(1).md"
+ },
+ "part_a_racc12": {
+  "a12_1_stem尾行丢弃(题干缺最后一个条件)": {
+   "rows": [
+    {
+     "qc": "PASS",
+     "resolver": "ADMITTED",
+     "f1": "MATCH",
+     "resolver_flags": [],
+     "attack": "a12_1",
+     "unit": "Q5",
+     "qnums": [
+      5
+     ],
+     "chain_green": true
+    },
+    {
+     "qc": "PASS",
+     "resolver": "ADMITTED",
+     "f1": "MATCH",
+     "resolver_flags": [],
+     "attack": "a12_1",
+     "unit": "Q15",
+     "qnums": [
+      15
+     ],
+     "chain_green": true
+    },
+    {
+     "qc": "PASS",
+     "resolver": "ADMITTED",
+     "f1": "MATCH",
+     "resolver_flags": [],
+     "attack": "a12_1",
+     "unit": "Q17",
+     "qnums": [
+      17
+     ],
+     "chain_green": true
+    },
+    {
+     "qc": "PASS",
+     "resolver": "ADMITTED",
+     "f1": "MATCH",
+     "resolver_flags": [],
+     "attack": "a12_1",
+     "unit": "Q22",
+     "qnums": [
+      22
+     ],
+     "chain_green": true
+    },
+    {
+     "qc": "PASS",
+     "resolver": "ADMITTED",
+     "f1": "MATCH",
+     "resolver_flags": [],
+     "attack": "a12_1",
+     "unit": "Q25",
+     "qnums": [
+      25
+     ],
+     "chain_green": true
+    },
+    {
+     "qc": "PASS",
+     "resolver": "ADMITTED",
+     "f1": "MATCH",
+     "resolver_flags": [],
+     "attack": "a12_1",
+     "unit": "Q26",
+     "qnums": [
+      26
+     ],
+     "chain_green": true
+    }
+   ],
+   "chain_green": {
+    "numerator": 6,
+    "denominator": 6,
+    "proof": "qc PASS + resolver ADMITTED + f1 MATCH on recompiled production-representable artifacts"
+   }
+  },
+  "a12_2_options尾行丢弃": {
+   "rows": [
+    {
+     "qc": "PASS",
+     "resolver": "ADMITTED",
+     "f1": "MATCH",
+     "resolver_flags": [],
+     "attack": "a12_2",
+     "unit": "Q4",
+     "qnums": [
+      4
+     ],
+     "chain_green": true
+    }
+   ],
+   "chain_green": {
+    "numerator": 1,
+    "denominator": 1,
+    "proof": "qc PASS + resolver ADMITTED + f1 MATCH on recompiled production-representable artifacts"
+   }
+  },
+  "a12_3_answer错绑下一单元": {
+   "rows": [
+    {
+     "qc": "PASS",
+     "resolver": "ADMITTED",
+     "f1": "MATCH",
+     "resolver_flags": [],
+     "attack": "a12_3",
+     "unit": "Q1",
+     "borrowed_from": "Q2",
+     "chain_green": true
+    },
+    {
+     "qc": "PASS",
+     "resolver": "ADMITTED",
+     "f1": "MATCH",
+     "resolver_flags": [],
+     "attack": "a12_3",
+     "unit": "Q2",
+     "borrowed_from": "Q3",
+     "chain_green": true
+    },
+    {
+     "qc": "PASS",
+     "resolver": "ADMITTED",
+     "f1": "MATCH",
+     "resolver_flags": [],
+     "attack": "a12_3",
+     "unit": "Q3",
+     "borrowed_from": "Q4",
+     "chain_green": true
+    },
+    {
+     "qc": "PASS",
+     "resolver": "ADMITTED",
+     "f1": "MATCH",
+     "resolver_flags": [],
+     "attack": "a12_3",
+     "unit": "Q4",
+     "borrowed_from": "Q5",
+     "chain_green": true
+    },
+    {
+     "qc": "PASS",
+     "resolver": "ADMITTED",
+     "f1": "MATCH",
+     "resolver_flags": [],
+     "attack": "a12_3",
+     "unit": "Q5",
+     "borrowed_from": "Q6",
+     "chain_green": true
+    },
+    {
+     "qc": "PASS",
+     "resolver": "ADMITTED",
+     "f1": "MATCH",
+     "resolver_flags": [],
+     "attack": "a12_3",
+     "unit": "Q6",
+     "borrowed_from": "Q7",
+     "chain_green": true
+    }
+   ],
+   "chain_green": {
+    "numerator": 6,
+    "denominator": 6,
+    "proof": "同 a12 家族;另记录 resolver 是否产生 answer_number_mismatch 结构 flag"
+   }
+  },
+  "a12_4_material尾行外扩": {
+   "rows": [],
+   "chain_green": {
+    "numerator": 0,
+    "denominator": 0,
+    "proof": "qc PASS + resolver ADMITTED + f1 MATCH on recompiled production-representable artifacts"
+   }
+  }
+ },
+ "part_b_racc13": {
+  "b1_material顺序交换": {
+   "attack": "b1",
+   "disposition": "ADMITTED",
+   "qc": "PASS",
+   "note": "swap U51 x U52",
+   "expected_materials": {
+    "L569-592": [
+     "U51"
+    ],
+    "L536-567": [
+     "U52"
+    ],
+    "L594-627": [
+     "U53"
+    ]
+   },
+   "actual_materials": {
+    "L569-592": [
+     "U51"
+    ],
+    "L536-567": [
+     "U52"
+    ],
+    "L594-627": [
+     "U53"
+    ]
+   },
+   "consumers_exact": true,
+   "text_single_copy": true
+  },
+  "b2_shared错绑定": {
+   "attack": "b2",
+   "disposition": "ADMITTED",
+   "qc": "PASS",
+   "note": "U52 错绑定到 U51 的材料",
+   "expected_materials": {
+    "L536-567": [
+     "U51",
+     "U52"
+    ],
+    "L594-627": [
+     "U53"
+    ]
+   },
+   "actual_materials": {
+    "L536-567": [
+     "U51",
+     "U52"
+    ],
+    "L594-627": [
+     "U53"
+    ]
+   },
+   "consumers_exact": true,
+   "text_single_copy": true
+  },
+  "b3_material丢失": {
+   "attack": "b3",
+   "disposition": "ADMITTED",
+   "qc": "PASS",
+   "note": "U51 material 丢失",
+   "expected_materials": {
+    "L569-592": [
+     "U52"
+    ],
+    "L594-627": [
+     "U53"
+    ]
+   },
+   "actual_materials": {
+    "L569-592": [
+     "U52"
+    ],
+    "L594-627": [
+     "U53"
+    ]
+   },
+   "consumers_exact": true,
+   "text_single_copy": true
+  },
+  "b4_composite泄漏": {
+   "attack": "b4",
+   "disposition": "REJECTED_QC_FAIL",
+   "qc": "FAIL",
+   "note": "U51 material 外扩越过 questions(相交不嵌套 → C12 面)"
+  },
+  "control": {
+   "disposition": "ADMITTED",
+   "materials_equal_original": true,
+   "ok": true
+  }
+ },
+ "part_c_racc14": {
+  "real_ir_findings": [],
+  "n_findings": 0,
+  "table_units": 528,
+  "answers_keys": 30,
+  "unresolved_slots": 596,
+  "naive_default_conversions": 596,
+  "controls": {
+   "c1_overlap": {
+    "expect": "overlap",
+    "findings": [
+     "X: overlap 题1 同时在 answers 与 unresolved",
+     "X: missing_from_unresolved 题2 既不在 answers 也不在 unresolved"
+    ],
+    "ok": true
+   },
+   "c2_missing_unresolved": {
+    "expect": "missing_from_unresolved",
+    "findings": [
+     "X: missing_from_unresolved 题2 既不在 answers 也不在 unresolved"
+    ],
+    "ok": true
+   },
+   "c3_sentinel_empty": {
+    "expect": "sentinel",
+    "findings": [
+     "X: sentinel answers['1']='' (空值会被下游默认值误读为已解)"
+    ],
+    "ok": true
+   },
+   "c4_sentinel_none": {
+    "expect": "sentinel",
+    "findings": [
+     "X: sentinel answers['1']=None (空值会被下游默认值误读为已解)"
+    ],
+    "ok": true
+   },
+   "c5_shape_violation": {
+    "expect": "shape",
+    "findings": [
+     "X: shape 表对象缺内层 answers/unresolved 键: dict"
+    ],
+    "ok": true
+   },
+   "c6_clean_zero_findings": {
+    "ok": true
+   }
+  },
+  "controls_all_ok": true
+ },
+ "part_d_f1_sensitivity": [
+  {
+   "m": "D1_unit状态硬编码MATCH",
+   "exit": 1,
+   "expected_test": "test_f1_t2",
+   "caught": true,
+   "ok": true
+  },
+  {
+   "m": "D2_slice检查失效",
+   "exit": 1,
+   "expected_test": "test_f1_t3",
+   "caught": true,
+   "ok": true
+  },
+  {
+   "m": "D3_消费不变量检查器失效",
+   "exit": 1,
+   "expected_test": "test_f1_t8",
+   "caught": true,
+   "ok": true
+  },
+  {
+   "m": "D4_Gatesabotage(接线活性)",
+   "exit": 1,
+   "expected_test": "test_f1_t1",
+   "caught": true,
+   "ok": true
+  },
+  {
+   "m": "restore_clean",
+   "exit": 0,
+   "ok": true
+  },
+  {
+   "m": "E1_staged_manifest漂移",
+   "mutated": "stem_lines",
+   "mutated_unit": "Q1",
+   "resolver_disposition": "ADMITTED",
+   "f1_file_status": "DRIFT",
+   "f1_drift_units": 1,
+   "ok": true
+  },
+  {
+   "m": "E2_control_zero_mutation",
+   "f1_file_status": "MATCH",
+   "ok": true
+  }
+ ],
+ "all_ok": true
+}
