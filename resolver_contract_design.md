@@ -169,3 +169,7 @@ Resolver 的职责边界 = **structural extraction + provenance attach**,以下�
 ### D.4 审计惯性防线
 
 用户裁定采纳"审计惯性"预警:规则增长须以登记册为闸口(新增必登记、退役须裁定),**默认拒绝"为审计工具新增审计工具"**(登记册 §6.5)。复杂度倒挂(审计 ≈ 生产链 5.4×,R56 实测)定性为维护成本风险而非正确性风险,治理手段 = 冻结增长 + 分类学 + 退役政策,而非削减已证明必要的检查。
+
+### D.5 Admission ≠ 语义真值(G-TRUTH-1,R60 用户裁定写入契约)
+
+**Resolver Admission ≠ Semantic Truth Validation**。Resolver 契约是"结构有效 = 可以解析",不是"语义正确 = 可以解析"——R60 B 面实测:界内 span 平移(start-1/end+1)结构合法,Resolver 如实 ADMITTED 且内容被平移,**这不是 Resolver bug**;要求 Resolver 拒绝语义错位区间 = 让它重新膨胀成 V2 的问题中心,违反 G-RES-1。分层事实(R60 D 面双绿实证):QC 裁决对象是切片(准入前事实约束)、Resolver 裁决对象是 manifest spans × 当前源(结构解析)、F1 承担跨产物一致性证明——**三者是不同层级的不变量保护,不是重复防线**;跨阶段事实漂移的检出义务在 F1(Audit Invariant),不在 Resolver。据此,**F1 冻结不再扩面**(用户裁定:先稳定,F1→F2→F3 是规则膨胀路径)。

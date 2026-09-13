@@ -305,9 +305,9 @@ def check_file(md_path: Path, ir_index=None):
     man_path = md_path.with_suffix(".manifest.json")
     man = json.loads(man_path.read_text(encoding="utf-8"))
     src = Path(man.get("source_file") or "")
-    if not src.exists():
+    if not src.is_file():  # BUG-31(R61):缺 provenance 显式 DRIFT,禁崩
         return {"file": str(md_path), "status": "DRIFT",
-                "note": f"source missing: {src}", "units": []}
+                "note": f"source_file missing or not a file: {src}", "units": []}
     lines = strip_meta(src.read_text(encoding="utf-8",
                                      errors="replace")).splitlines()
     src_sha = hashlib.sha256(src.read_bytes()).hexdigest()

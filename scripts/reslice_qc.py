@@ -49,7 +49,9 @@ PAPER_LINE = re.compile(
 def src_of(md_path: Path):
     man_path = md_path.with_suffix(".manifest.json")
     man = json.loads(man_path.read_text(encoding="utf-8"))
-    src = Path(man["source_file"])
+    # BUG-31(R61):.get 而非裸下标——缺失键由 check() 的 C15 守卫显式
+    # FAIL,不在这里 KeyError 崩溃(Path("") 恒指向目录 "." 也不得漏过)。
+    src = Path(man.get("source_file") or "")
     return src, man
 
 
@@ -57,6 +59,15 @@ def check(md_path: Path):
     issues = []
     text = md_path.read_text(encoding="utf-8", errors="replace")
     src, man = src_of(md_path)
+    # C15 provenance 完整性(BUG-31 fail-closed 修复,R60 C1 攻击面):
+    # manifest 必需 provenance 缺失/非文件 → 显式 FAIL,禁崩溃。
+    if not src.is_file():
+        issues.append(f"C15 必需 provenance 缺失:source_file="
+                      f"{man.get('source_file')!r} 非文件")
+        return {"file": str(md_path), "units": len(man.get("units") or []),
+                "questions": 0, "issues": issues, "review_notes": [],
+                "identity_version": man.get("identity_version") or 1,
+                "verdict": "FAIL"}
     src_text = re.sub(r"<!--\s*META:[^>]*-->\n?", "", src.read_text(encoding="utf-8", errors="replace"))
 
     # C1 标记配对

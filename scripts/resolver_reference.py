@@ -194,12 +194,22 @@ def resolve_file(md_path: Path):
         return rec
 
     src = Path(man.get("source_file") or "")
-    if not src.exists():
+    # BUG-31(R61 修复):provenance fail-closed——source_file 缺失/非文件
+    # (Path("") 的存在性语义是目录 ".",or "" 不是安全网)必须显式 MISSING,
+    # 禁崩溃、禁猜路径、禁 fallback、禁降级 ADMITTED(缺事实 ≠ 推测事实)。
+    if not src.is_file():
         rec["disposition"] = "MISSING"
-        rec["reasons"].append(f"source missing: {src}")
+        rec["reasons"].append(
+            f"source_file missing or not a file: {src!s} "
+            f"(provenance break, fail-closed)")
         return rec
-    lines = strip_meta(src.read_text(encoding="utf-8",
-                                     errors="replace")).splitlines()
+    try:
+        lines = strip_meta(src.read_text(encoding="utf-8",
+                                         errors="replace")).splitlines()
+    except OSError as e:
+        rec["disposition"] = "MISSING"
+        rec["reasons"].append(f"source unreadable: {e!r} (fail-closed)")
+        return rec
 
     stale = check_stale(man, len(lines))
     if stale:

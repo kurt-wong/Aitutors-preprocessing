@@ -1446,3 +1446,23 @@ R58 七项结论:**6 项成立、1 项措辞级证伪(已更正)**;0 代码行�
 4. `tests/test_r60_fact_drift.py` 14 用例(13 passed + t7 strict xfail);生产/冻结链(reslice_pipeline/reslice_qc/question_identity/resolver_reference/audit_f1)**本轮零变更**(变异全部还原)。
 
 **结果**:用户 R59 裁定全部落盘;四攻击面**无一静默放行事件漏网**(A 面 C8 拦、B 面越界拦+界内平移 F1 拦、C 面 1 崩溃如实入账、D 面分叉 F1 拦);唯一新缺陷 BUG-31(崩溃型,非静默型);套件 **197 passed + 2 xfailed**(CI 预期 178 passed / 19 skipped / 2 xfailed,t13 语料冒烟 CI skip 算术 +1)。
+
+## R61(2026-09-13):用户 R60 审核裁决落盘 + BUG-31 修复(fail-closed 三处)+ BUG-14 命名拆分
+
+**输入**:用户 R60 审核裁决——R60 ✅ 收口通过;核心架构裁定:**QC/Resolver/F1 不是重复防线,是不同层级的不变量保护**(QC=准入前事实约束 / Resolver=结构解析不承担全部事实证明 / F1=跨阶段一致性检测);**Resolver Admission ≠ Semantic Truth Validation 写入契约(改文档不改代码)**;BUG-31 **批准修复**,修复边界严格限定:只加"missing required provenance → explicit failure state",**禁止**新增 fallback / 自动补 source_file / 猜测路径 / 降级 ADMITTED(缺事实 ≠ 推测事实);BUG-14 命名**拆分不重写历史**(BUG-14-DATA / BUG-14-CHAIN);F1 冻结不扩面(防规则膨胀);下一阶段序:BUG-31 → BUG-14-DATA。
+
+**执行(先登记后实施)**:
+
+1. **契约**:`resolver_contract_design.md` 新增 **D.5 G-TRUTH-1**(Admission ≠ 语义真值;三层不变量分层事实;F1 冻结不扩面)。
+2. **规则登记册**:§1 新增 **C15**(FACT_INTEGRITY:manifest 必需 provenance 缺失/非文件必须显式 FAIL,禁崩溃);§4 新增 **G-TRUTH-1** 行;`test_rule_registry.py` 双向钉住范围 14→15。
+3. **BUG-31 修复(三处,全部只加显式失败态,零 fallback)**:
+   - `resolver_reference.resolve_file`:`src.is_file()` 守卫 → **MISSING**("source_file missing or not a file (provenance break, fail-closed)");另加 `OSError` 兜底 → MISSING("source unreadable")——**双层防御**;
+   - `reslice_qc.check`:**C15** 守卫 → 显式 **FAIL**(三态内,非新裁决态),`src_of` 裸下标改 `.get`;
+   - `audit_f1_consistency.check_file`:`is_file` 守卫 → **DRIFT**(note 显式)。
+4. **测试**:`test_t7` 由 strict xfail **转正**(断言 resolver MISSING + 理由串 + QC FAIL 含 C15 + F1 DRIFT,三层无 exc);**新增 t7b 批处理继续**(一份坏 manifest 不杀整批:{ADMITTED:1, MISSING:1}——用户要求的"记录原因 + 继续处理其它单元"实证)。
+5. **命名拆分(bugs.md)**:BUG-14 → **BUG-14-DATA**(原数据卫生,历史引用稳定);新增 **BUG-14-CHAIN**(事实一致性轨道,PHASE-1 DONE,关闭条件三项核对全 ✅,扩面暂缓);BUG-31 → ✅ 修复结案。
+6. **变异咬合(4/4,还原逐字节一致)**:M4 回退 resolver 守卫 → t7 拦(附带实证:守卫回退后 OSError 兜底层仍 fail-closed,t7b 如实过——双层防御各司其职,t7 靠理由串区分);M5 回退 QC C15 → t7 拦;M6 回退 F1 守卫 → t7 拦;M7 登记册范围回退 → rr_t2 幽灵规则拦。
+
+**冻结链变更申报**:`reslice_qc.py` 本轮有变更(C15,用户批准的 BUG-31 修复范围),变更面 = `src_of` 裸下标改 `.get` + `check()` 顶部 provenance 守卫(FAIL 早退),**既有 C1–C14 检查逻辑零改动**;`resolver_reference.py` / `audit_f1_consistency.py` 同轮变更均为 fail-closed 守卫。R60 攻击脚本与 R60 工件**未修改**(provenance 纪律;t7 改断言而非改武器)。
+
+**结果**:BUG-31 🟢 CLOSED(修复边界内);G-TRUTH-1 + C15 入册;BUG-14 命名拆分落地;套件 **199 passed + 1 xfailed**(197+2: t7 转正 + t7b 新增;CI 预期 180 passed / 19 skipped / 1 xfailed)。下一项按用户排序 = **BUG-14-DATA**(未分类跑步机 + 73 重复源)。

@@ -17,7 +17,7 @@ QC = (ROOT / "scripts/reslice_qc.py").read_text(encoding="utf-8")
 
 def qc_verdict_ids():
     ids = {int(m.group(1)) for m in re.finditer(r"C(\d{1,2})", QC)
-           if 1 <= int(m.group(1)) <= 14}
+           if 1 <= int(m.group(1)) <= 15}
     return {f"C{i}" for i in ids}
 
 

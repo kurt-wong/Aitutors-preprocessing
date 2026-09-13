@@ -18,7 +18,7 @@ evidence(哪轮攻击/实测证明必要)/ retirement(退役条件)。
 
 ---
 
-## 1. 生产 QC(reslice_qc.py,Gate 裁决面 C1–C14)
+## 1. 生产 QC(reslice_qc.py,Gate 裁决面 C1–C15)
 
 | ID | 类 | purpose / attack surface | evidence | retirement |
 |---|---|---|---|---|
@@ -36,6 +36,7 @@ evidence(哪轮攻击/实测证明必要)/ retirement(退役条件)。
 | C12 | STRUCTURE | material ⊆ questions 嵌套不变量 | B1 审查;R54 composite 泄漏 fail-closed | 同 C1 |
 | C13 | IDENTITY | 非 keep 持有者间题号身份冲突 | R34 v2 / BUG-23 guard soundness | 同 C1 |
 | C14 | IDENTITY | 缺 section 不得静默 PASS(identity_scope_missing 复核项) | BUG-23;R55 覆盖穷举 | 同 C1 |
+| C15 | FACT_INTEGRITY | manifest 必需 provenance(source_file)缺失/非文件必须显式 FAIL,禁崩溃(BUG-31 fail-closed 修复;R60 C1 攻击:此前三组件 PermissionError/KeyError 全崩,批处理整批死且错误信息失焦) | R60 事实漂移攻击 C1;R61 修复 + 回归钉 | 同 C1 |
 
 ## 2. 语义探针(semantic_probe.py,**测量仪,不是 QC**)
 
@@ -67,6 +68,7 @@ F1 定位铁律(用户 R53 裁决):**非 Gate、非 resolver admission rule**;�
 | Audit Snapshot Manifest | EVIDENCE | 确定性快照,报告引用摘要而非动态目录 | R50 基线 356 文件;R51 独立重算一致 | 永久 |
 | Audit Tool Trust Boundary(G-AUDTB-1) | EVIDENCE | 审计工具自身也是不可信面:①禁止复用生产 parser 做裁决依据;②必须带阳性/阴性控制样本;③解析器必须显式声明覆盖范围(supports / does_not_support);④审计工具缺陷与生产缺陷同级发现、当轮修复并记账 | R49/R53/R54/R55/R59/R60 六轮实证(审计工具自身缺陷家族:R59-F2 十二字面误判 12,302 假阳性;R60 攻击脚本 v1 观测缺陷 A3 未挂 ir 索引) | 永久(治理基础设施) |
 | 三边界纪律 | EVIDENCE | Resolver 只做结构/Gate 只证明约束/PENDING_REVIEW 不得为提 PASS 率扩自动规则 | R47 用户裁定 | 永久(架构原则) |
+| G-TRUTH-1 | EVIDENCE | Resolver Admission ≠ Semantic Truth Validation:结构有效≠语义正确;QC/Resolver/F1 是不同层级不变量保护,非重复防线;跨阶段漂移检出义务在 F1;F1 冻结不扩面 | R60 B/D 面实测(界内平移静默属契约;双绿分叉 F1 拦);用户 R60 裁定写入契约附录 D.5 | Resolver 存续期内不退役 |
 
 ## 5. 攻击面套件(R-ACC-1…14,审查武器非规则)
 

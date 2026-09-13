@@ -22,14 +22,22 @@
 - **教训**：一个流程改了目录布局，凡硬编码目录白名单的其它流程都会静默失配；目录清单应单一来源或全树遍历。**且"修复覆盖盲区"与"盲区内恰有欠账"是两件事**——修复价值要用真实数据分别度量，别拿潜伏风险冒充已挽回损失。
 - **⚠ R59 对抗性审查更正（2026-09-13）**：R58 台账措辞"误纳派生目录的代价只是多扫（幂等跳过），不会漏修"**经实测证伪**——无排除政策下 **84 份派生 md**（auto-annotated-v3 82 + reslice-batch-C 2，含裸 `imgs/*.jpg` 且 basename 命中 PDF 索引）会被 `process_one` **真实处理**（提取图片 + 就地重写 + 审计记录），不是只读扫描。**当前代码行为正确**（11 个派生目录全被现有排除表覆盖，现实风险=0），错的是反事实代价评估：机制性残余风险 = 未来新增**前缀不匹配**的派生目录会被误纳并就地重写。不改排除制（改回白名单即复发本 bug），以措辞更正 + 风险登记收口。**风险已按用户裁定登记为 RISK-FUTURE-001（GOVERNANCE/Boundary,非生产缺陷,不进缺陷统计）,见 `governance/risk_register.md`**。R59 其余复证：视野账目 3119/2421/698 独立重算全对账；盲区 0 缺图在扩展语法下稳健（12,316 处 `src` 全指 `_imgs` 且落盘在，悬空形态 0）；dry-run 重跑统计逐项复现 + 账目 sha 闭环；变异 M3–M6 补 4 组全咬合。明细 `log.md` R59 / `data/r59_r58_review.json`。
 
-### BUG-14 · 未分类"跑步机" + 重复源　🟡
+### BUG-14-DATA · 未分类"跑步机" + 重复源(原 BUG-14)　🟡
 - **状态**：待修复
+- **⚠ R61 命名拆分(用户 R60 审核裁定,不重写历史)**:原 BUG-14 与 R60 执行的"BUG-14 第一阶段(事实一致性攻击)"是两件事。按用户裁定:**历史引用 BUG-14 保持稳定**,本条定名 **BUG-14-DATA**;事实一致性轨道另立 **BUG-14-CHAIN**(见下)。未来"BUG-14-DATA CLOSED"只指数据卫生关闭。(R60 期间的命名澄清记录见 log.md R60,不改写。)
 - **⚠ R60 命名澄清（2026-09-13）**：用户 R59 审核裁定的下一轮"BUG-14 第一阶段"经实测核对为 **Source → Resolver → IR 事实一致性攻击**(已于 R60 执行完毕,证据 `data/r60_fact_drift_attack.json`),与本条登记的**数据卫生问题**(未分类跑步机 + 73 重复 basename)是两件事。本条保持开放、顺延;命名冲突留待用户裁定是否重编号。
 - **现象**：`未分类` 目录现存 145 份且**仍在接收**（OCR 日志实证 `未分类/历史/2012-2021高考真题汇编…`）；`status.md` 曾误称"已清除"。全库 **73 个重复 basename**（多为高考真题汇编），会重复 OCR/重切/入题库。
 - **根因**：`batch_convert_pdf.py:75-88` 的 `extract_grade_subject` 对文件名不含年级的 PDF 默认落 `未分类`；重归类清过一次又被 OCR 灌回。重复源来自同一 PDF 在根目录与子目录各存一份。
 - **位置**：`ocr_service\batch_convert_pdf.py:75-88`；`Ocr-markdown\未分类\`。
 - **解决**：① OCR 端按源 PDF 相对路径归位，或定期跑 `reclassify_unknown`；② 去重 73 份（保一份、归档另一份）。
 - **教训**：上游不断产出时，"清理目标目录"是治标；要么改上游归位逻辑，要么周期任务；重复源须在入库前去重。
+
+### BUG-14-CHAIN · Source→Resolver→IR 事实一致性轨道(用户命名"BUG-14 第一阶段")　🟢 PHASE-1 DONE
+- **状态**：第一阶段 ✅ 完成(R60 执行,用户 R60 审核裁决通过);**后续扩面暂缓**(用户裁定:F1 已证明价值,先稳定,F1→F2→F3 是规则膨胀路径)
+- **登记**：2026-09-13(R61 命名拆分落地;R60 期间以"BUG-14 第一阶段"名义执行)
+- **第一阶段结论(R60)**:四攻击面无一静默漏网——A 字节篡改由 C8 整文件锚点保真拦(F1 区级不变量对 span 外漂移如实 MATCH,C8/F1 互补);B 越界 REJECTED_STALE、界内平移 resolver 静默属契约(已写入 G-TRUTH-1/附录 D.5)而 F1 捕获;C provenance 断裂抓获 BUG-31(已修复);D "QC PASS+ADMITTED 双绿而答案错归属"坐实,F1 为唯一防线。证据 `data/r60_fact_drift_attack.json` + `tests/test_r60_fact_drift.py` + 变异 M1–M7(R60 M1–M3 + R61 M4–M7)。
+- **架构结论(用户 R60 审核裁决原文级)**:QC/Resolver/F1 不是重复防线,是不同层级的不变量保护;Resolver Admission ≠ Semantic Truth Validation(契约附录 D.5 G-TRUTH-1)。
+- **关闭条件核对**:① 契约澄清落地 ✅(D.5);② BUG-31 修复 ✅(R61);③ 用户第一阶段验收 ✅(R60 裁决)。**本条作为轨道登记保留,不再扩面**;重启须用户裁定并新开轮次。
 
 ### BUG-04-residual · 括号式裸 LaTeX 漏网（105 行）　🟡
 - **状态**：待处理（BUG-04 收紧正则的取舍代价）
@@ -107,14 +115,20 @@
 
 ---
 
-### BUG-31 · resolver/QC 对缺 `source_file` 的 manifest 非 fail-closed(三组件崩溃)　🟡（Resolver 边界 / R60 发现）
-- **状态**：待修复（R60 事实漂移攻击 C1 发现;strict xfail 义务钉已就位）
+### BUG-14-CHAIN · Source→Resolver→IR 事实一致性轨道(用户命名"BUG-14 第一阶段")　🟢 PHASE-1 DONE
+- **状态**:第一阶段 ✅ 完成(R60,用户 R60 审核裁定通过);**后续扩面暂缓**(用户裁定:先稳定,F1→F2→F3 是规则膨胀路径)
+- **登记**:2026-09-13(R61 命名拆分落地;R60 期间以"BUG-14 第一阶段"名义执行)
+- **第一阶段结论(R60)**:四攻击面无一静默漏网——A 字节篡改由 C8 整文件锚点保真拦(F1 区级不变量对 span 外漂移如实 MATCH,互补);B 越界 REJECTED_STALE、界内平移 resolver 静默属契约(G-TRUTH-1)而 F1 捕获;C provenance 断裂抓获 BUG-31(已修复);D "QC PASS+ADMITTED 双绿而答案错归属"坐实,F1 为唯一防线。证据 `data/r60_fact_drift_attack.json` + `tests/test_r60_fact_drift.py` + 变异 M1–M7。
+- **关闭条件(全部满足才可 CLOSED)**:① 契约澄清 G-TRUTH-1 落地 ✅(附录 D.5);② BUG-31 修复 ✅(R61);③ 用户对第一阶段验收 ✅(R60 审核裁决)。**本条按用户裁定作为轨道登记保留,不再扩面**;若未来重启扩面须用户裁定并新开轮次。
+
+### BUG-31 · resolver/QC 对缺 `source_file` 的 manifest 非 fail-closed(三组件崩溃)　🟡（Resolver 边界 / R60 发现 / R61 修复）
+- **状态**：✅ 修复(2026-09-13 R61,用户 R60 审核裁定批准;修复边界=只加显式失败态,禁 fallback/禁补 source_file/禁猜路径/禁降级 ADMITTED)
 - **登记**：2026-09-13(R60,用户 R59 裁定的 Source→Resolver→IR 攻击面 C)
 - **现象**：manifest 缺 `source_file` 键时三组件全崩,无一 fail-closed——resolver `man.get("source_file") or ""` → `Path(".")` 存在性为真 → `read_text` 崩 **PermissionError: Permission denied: '.'**;`reslice_qc.check` 直接 `man["source_file"]` 崩 **KeyError**;`audit_f1_consistency.check_file` 同 resolver 家族崩溃。批处理中一份坏 manifest 即杀死整批,且错误信息("Permission denied: '.'")完全失焦,不指向真因(source_file 缺失)。
-- **位置**：`scripts/resolver_reference.py:196-202`(resolve_file 源读取无 fail-closed 守卫);`scripts/reslice_qc.py:52`(src_of 裸下标)。
-- **性质定性**：数据安全无损(崩溃 ≠ 静默 PASS),但违反 fail-closed 契约族(C-FAIL-1/2:不可计算必须以机器可读理由拒收,不得崩)。同族参照:resolver 对 `qc.check` 抛异常有兜底(REJECTED_QC_UNCOMPUTABLE),对自己读源却无。
-- **修复方向（待用户裁定,未擅动冻结件）**：resolver 读源前 `if not src.is_file()` → MISSING("source_file missing or not a file");QC `src_of` 同向处理。修复后转正 `tests/test_r60_fact_drift.py::test_t7_c1_missing_source_file_must_fail_closed`(strict xfail 会强制翻绿,防"修了一半忘了转正")。
-- **证据**：`data/r60_fact_drift_attack.json` C1 块(三组件 CRASH 逐条留档)。
+- **位置**：`scripts/resolver_reference.py`(resolve_file 源读取);`scripts/reslice_qc.py`(src_of 裸下标);`scripts/audit_f1_consistency.py`(check_file 源守卫)。
+- **性质定性**：数据安全无损(崩溃 ≠ 静默 PASS),但违反 fail-closed 契约族(C-FAIL-1/2:不可计算必须以机器可读理由拒收,不得崩)。
+- **修复(R61,三处,全部只加显式失败态)**:① resolver:`src.is_file()` 守卫 → MISSING("source_file missing or not a file (provenance break, fail-closed)"),另加 `OSError` 兜底 → MISSING("source unreadable");② QC:**新 C15**(规则登记册 §1 已登记,CI 双向钉住范围 14→15):provenance 缺失/非文件 → 显式 **FAIL**(verdict 三态内,不是新裁决态),`src_of` 改 `.get`;③ F1:`is_file` 守卫 → DRIFT(note 显式)。**未新增任何 fallback/猜测/路径补全,未降级任何 ADMITTED**。
+- **修复证据**:t7 转正(strict xfail→普通通过,断言三层全显式失败态 + QC 理由含 C15)+ **t7b 新增:批处理继续**(一份坏 manifest 不杀整批:{ADMITTED:1, MISSING:1});变异 M4(resolver 守卫回退)/M5(QC C15 回退)/M6(F1 守卫回退)/M7(登记册范围回退致 C15 幽灵行)4/4 咬合,还原后文件逐字节一致。M4 附带实证:resolver 的 is_file 守卫与 OSError 兜底互为双层,单层回退仍 fail-closed(t7b 如实过),t7 靠理由串区分两层。
 - **教训**：fail-closed 必须覆盖**自身**的每一条 I/O 路径,不能只包下游调用;`Path("")` 的存在性语义是 `.`(目录恒存在),`or ""` 默认值不是安全网,是通往目录读取的暗门。
 
 ## 二、已修复 / 已规避（Fixed / Mitigated）

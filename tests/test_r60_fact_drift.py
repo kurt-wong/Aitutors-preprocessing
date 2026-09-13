@@ -12,8 +12,9 @@
       F1 捕获 DRIFT;IR 题干内容实测被平移(事实漂移坐实)
   t5  B2 end+1 越界 → REJECTED_STALE(结构信号)
   t6  B3 answer end+1 界内 → 同 B1 家族:ADMITTED + F1 捕获
-  t7  C1 manifest 缺 source_file → 现状三组件 CRASH(非 fail-closed),
-      xfail 修复义务钉(BUG-31;修复转正时 strict xfail 会强制翻绿)
+  t7  C1 manifest 缺 source_file → BUG-31 修复后(R61)三层 fail-closed:
+      resolver MISSING / QC FAIL(C15)/ F1 DRIFT,禁崩;并验证批处理
+      记录原因后继续处理其它单元(t7b)
   t8  C2 source_file 重定向诱饵 → C8 拦 + F1 全区 DRIFT
   t9  C3 IR provenance.source_version 删除 → F1 ir DRIFT
   t10 D1 只改 manifest 不重编译 → resolver+QC 双绿而答案归属已错位,
@@ -100,15 +101,33 @@ def test_t6_b3_answer_end_plus_1_in_bounds_same_family(workdir):
 
 # ------------------------------------------------------------------ C 面
 
-@pytest.mark.xfail(
-    strict=True,
-    reason="BUG-31 修复义务钉:manifest 缺 source_file 应 fail-closed "
-           "MISSING,现状 resolver/F1 PermissionError、QC KeyError 三崩")
-def test_t7_c1_missing_source_file_must_fail_closed(workdir):
+def test_t7_c1_missing_source_file_fails_closed(workdir):
+    """BUG-31 修复转正(R61):缺 source_file → 三层全部显式失败态,禁崩。"""
     obs = r60.attack_C(_fresh(workdir, "t7"))["C1_manifest_no_source_file"]
     assert obs["resolver"] == "MISSING", (
-        f"非 fail-closed:resolver={obs['resolver']} "
-        f"({obs.get('resolver_exc')})")
+        f"resolver 非 fail-closed:{obs['resolver']} ({obs.get('resolver_exc')})")
+    assert "source_file missing or not a file" in obs["resolver_reason_head"]
+    assert obs["qc"] == "FAIL" and "qc_exc" not in obs
+    assert obs["f1"] == "DRIFT" and "f1_exc" not in obs
+    # QC 显式理由含 C15(独立直查,不依赖 observe 采样字段)
+    r = r60.stage_repo(workdir / "t7b")
+    r60._man_edit(r, lambda m: m.pop("source_file"))
+    import reslice_qc as _qc
+    q = _qc.check(r["md"])
+    assert q["verdict"] == "FAIL"
+    assert any("C15" in i for i in q["issues"])
+
+
+def test_t7b_batch_continues_after_provenance_break(workdir):
+    """用户裁定要求:记录原因 + 继续处理其它单元(一份坏 manifest 不杀整批)。"""
+    import resolver_reference as rr
+    good = r60.stage_repo(workdir / "t7c" / "good")
+    bad = r60.stage_repo(workdir / "t7c" / "bad")
+    r60._man_edit(bad, lambda m: m.pop("source_file"))
+    _, report = rr.run([good["md"], bad["md"]], workdir / "t7c" / "ir_out")
+    assert report["dispositions"] == {"ADMITTED": 1, "MISSING": 1}
+    assert report["files"]["numerator"] == 1
+    assert report["files"]["denominator"] == 2
 
 
 def test_t8_c2_source_retarget_decoy_caught(workdir):
