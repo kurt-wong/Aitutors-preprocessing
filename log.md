@@ -1529,3 +1529,8 @@ R58 七项结论:**6 项成立、1 项措辞级证伪(已更正)**;0 代码行�
 - **武器脚本自身 bug**:r63 验证武器首版用短名(K2)索引全名行(K2_null)→ KeyError;当轮修复后重跑,结论不变。
 
 **结果**:BUG-32/33 关闭(fix + 对抗回归 + 变异咬合三证);生产链三组件 + 三批入口 fail-closed 语义统一(C-FAIL-1 跨组件贯彻,未建大型公共异常框架——按用户裁定先最小修改);全量套件 **215 passed + 1 xfailed**(xfail = 锚点顺序义务钉;较 R62 的 206+3:新增 9 钉全过,t4/t5 两 xfail 转正)。下一项(用户排序)= **BUG-14-DATA**(未分类跑步机 + 73 重复源)。
+
+
+### R63 收口(CI 实测,2026-09-13)
+
+**CI Run 34745890960(headSha 62739e8,conclusion=success)日志原文"194 passed, 21 skipped, 1 xfailed"**。算术闭合:194+21+1 = 216 = 本地 215 passed + 1 xfailed;skip 21 = 19 corpus + 2 win-only(t3/t5,ubuntu 无 Windows 共享语义);win-only 两钉本地均真实通过(非 xfail)。R63 全链收口:修复 → 冻结武器重放 → 验证武器 PASS → 变异 13/13 → 全量本地绿 → CI 绿。下一项(用户排序)= BUG-14-DATA。
