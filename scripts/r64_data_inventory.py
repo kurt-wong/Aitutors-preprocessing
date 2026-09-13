@@ -287,6 +287,11 @@ def classify_unknown_file(rec, path, basename_index):
       UNDETERMINED          名+正文均无信号 → 真正孤儿候选 PENDING_REVIEW
     附加 flags(不改变 bucket):dup_twin / download_dup_suffix / non_nfc / derived_artifact
     """
+    if not DUPLICATE_BASENAME_INDEX:
+        # F-r65-3 fail-closed:索引未构建时禁止静默给出空孪生证据
+        raise RuntimeError(
+            "DUPLICATE_BASENAME_INDEX 未构建:必须先经 main() 构建索引"
+            "(F-r65-3 fail-closed,拒绝静默降级)")
     preds = {}
     if rec.get("errors"):
         return "UNREADABLE", {"error": rec["errors"]}
@@ -507,12 +512,22 @@ def main():
 
     src_recs = [r for r in records if r["tree"] == "source"]
     der_recs = [r for r in records if r["tree"] == "derived"]
+    # F-r65-1 范围披露:inventory 只遍历顶层目录内的 md;OCR_ROOT 根级文件
+    # (如 README.md)不入账 —— 如实点名,不静默。
+    try:
+        root_level_md = sorted(
+            f.name for f in OCR_ROOT.iterdir()
+            if f.is_file() and f.name.lower().endswith(".md"))
+    except OSError as e:
+        root_level_md = [f"LISTDIR_ERROR: {e!r}"]
     meta = {
         "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
         "weapon": "scripts/r64_data_inventory.py",
         "read_only": True,
         "norm_algo": NORM_ALGO,
         "source_dirs": SOURCE_DIRS,
+        "scope_note": "D0 口径 = 顶层目录内的 md;OCR_ROOT 根级文件不入账(F-r65-1 披露)",
+        "root_level_md_excluded": root_level_md,
         "counts": {
             "md_total": len(records),
             "md_source": len(src_recs),

@@ -326,3 +326,31 @@ def test_r64_t14_大小写歧义(workdir):
     md_lower = runner_output_md(str(out), "x.pdf")
     assert os.path.basename(md_lower) == "x.md"
     assert runner_skip(md_lower), "事实钉:大小写不同的另一文件被 exists 判真 → 静默跳过"
+
+
+# ---------------------------------------------------------------------------
+# R65 审查修复钉
+# ---------------------------------------------------------------------------
+def test_r64_t15_全局索引未构建fail_closed(monkeypatch):
+    """F-r65-3:索引未构建时必须显式失败,禁止静默给出空孪生证据。"""
+    monkeypatch.setattr(inv, "DUPLICATE_BASENAME_INDEX", {}, raising=True)
+    rec = {"rel_path": "未分类/历史/X.md", "basename": "X.md"}
+    with pytest.raises(RuntimeError):
+        inv.classify_unknown_file(rec, "不存在/无关路径/X.md", "X.md")
+
+
+def test_r64_t16_根级md范围披露(workdir):
+    """F-r65-1:OCR_ROOT 根级 md 不入账但必须在 meta 中点名披露。"""
+    ocr, pdf, data = build_synthetic(workdir)
+    (ocr / "README.md").write_bytes("# 说明文档\n".encode("utf-8"))
+    _set_env(ocr, pdf, data)
+    try:
+        mod = importlib.reload(inv)
+        mod.main()
+        payload = json.loads(
+            (data / "r64_corpus_inventory.json").read_text(encoding="utf-8"))
+        assert payload["meta"]["root_level_md_excluded"] == ["README.md"]
+        assert not any(r["rel_path"] == "README.md" for r in payload["records"])
+    finally:
+        _clear_env()
+        importlib.reload(inv)

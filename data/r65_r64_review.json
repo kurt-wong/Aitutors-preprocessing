@@ -1,0 +1,851 @@
+{
+ "meta": {
+  "generated_at": "2026-09-13 17:17:25",
+  "weapon": "scripts/r65_r64_review.py",
+  "elapsed_sec": 9.4
+ },
+ "A_cross_consistency": {
+  "findings": [],
+  "rejudged_buckets": {
+   "main:NAME_RULE_COVERED": 141,
+   "main:UNDETERMINED": 4,
+   "stray:PLACEMENT_MISMATCH": 2
+  },
+  "twin_counts": {
+   "main_with_twin": 72,
+   "main_without_twin": 73,
+   "stray_with_twin": 2
+  },
+  "dup_suffix_rows": 143,
+  "n_main": 145,
+  "n_stray": 2
+ },
+ "B_fs_resha": {
+  "frozen_total": 4881,
+  "seen_total": 4882,
+  "missing_from_fs": [],
+  "n_missing": 0,
+  "changes": [
+   [
+    "NEW",
+    "README.md"
+   ]
+  ],
+  "n_changes": 1,
+  "unreadable": []
+ },
+ "C_treadmill_log_evidence": {
+  "log_file": "D:\\Project\\Papers\\logs\\ocr_batch_log.txt",
+  "log_parse_error": null,
+  "log_stems_indexed": 4226,
+  "groups_direct_log_evidence": 67,
+  "groups_entry_other_time": 1,
+  "groups_no_entry": 5,
+  "findings": []
+ },
+ "C_per_group": [
+  {
+   "basename": "12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+   "later_rel": "学业水平考试/化学/12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+   "later_mtime": "2026-09-12 07:33:42",
+   "log_evidence": "NO_ENTRY(log covers 09-06..09-10 only)",
+   "expected_log_path": "学业水平考试/化学/12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+   "later_rel": "其他汇编/理综/14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+   "later_mtime": "2026-09-12 07:33:41",
+   "log_evidence": "NO_ENTRY(log covers 09-06..09-10 only)",
+   "expected_log_path": "其他汇编/理综/14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md",
+   "later_rel": "其他汇编/化学/19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md",
+   "later_mtime": "2026-09-12 07:33:41",
+   "log_evidence": "NO_ENTRY(log covers 09-06..09-10 only)",
+   "expected_log_path": "其他汇编/化学/19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).md",
+   "later_rel": "未分类/化学/2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:32:59",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:32:58"
+   ],
+   "expected_log_path": "未分类/化学/2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).md",
+   "later_rel": "未分类/化学/2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).md",
+   "later_mtime": "2026-09-10 22:45:10",
+   "log_evidence": "ENTRY_OTHER_TIME",
+   "expected_log_path": "未分类/化学/2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021全国高考英语真题汇编：代词（教师版）(1).md",
+   "later_rel": "未分类/英语/2012-2021全国高考英语真题汇编：代词（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:33:00",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:33:00"
+   ],
+   "expected_log_path": "未分类/英语/2012-2021全国高考英语真题汇编：代词（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:33:01",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:33:01"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:33:02",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:33:02"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:41",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:41"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:42",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:42"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:43",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:42"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:44",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:43"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:45",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:44"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:46",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:46"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:47",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:46"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).md",
+   "later_rel": "高考真题/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).md",
+   "later_mtime": "2026-09-11 10:55:14",
+   "log_evidence": "NO_ENTRY(log covers 09-06..09-10 only)",
+   "expected_log_path": "高考真题/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).p",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:48",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:48"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).p",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:49",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:49"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).p",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:50",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:50"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:51",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:51"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:52",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:51"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:52",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:52"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:53",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:53"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:54",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:54"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:55",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:54"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:55",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:55"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:56",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:56"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).md",
+   "later_mtime": "2026-09-10 08:38:57",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 08:38:57"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:03:24",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:03:22"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:30",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:03:25",
+    "2026-09-10 21:07:29"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:31",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:30"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:32",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:31"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:33",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:32"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:34",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:33"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:35",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:34"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:36",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:35"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:37",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:36"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:38",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:37"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:39",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:38"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:39",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:39"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:40",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:40"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:41",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:41"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:42",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:42"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:43",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:43"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:44",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:43"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:44",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:44"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:45",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:45"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:46",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:46"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:47",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:46"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:47",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:47"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:07:48",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:07:48"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).md",
+   "later_rel": "高考真题/历史/2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).md",
+   "later_mtime": "2026-09-11 10:55:14",
+   "log_evidence": "NO_ENTRY(log covers 09-06..09-10 only)",
+   "expected_log_path": "高考真题/历史/2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:13",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:13"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:14",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:14"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:15",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:15"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:31",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:16"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:32",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:32"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:33",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:33"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:34",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:33"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:35",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:34"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:36",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:35"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:36",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:36"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:38",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:37"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:38",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:38"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:39",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:39"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:40",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:40"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:41",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:40"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:41",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:41"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:42",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:42"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:43",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:43"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:44",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:43"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:44",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:44"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  },
+  {
+   "basename": "2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).md",
+   "later_rel": "未分类/历史/2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).md",
+   "later_mtime": "2026-09-10 21:27:45",
+   "log_evidence": "DIRECT(±6h)",
+   "log_ts": [
+    "2026-09-10 21:27:45"
+   ],
+   "expected_log_path": "未分类/历史/2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).pdf",
+   "audit_paths_match_members": true
+  }
+ ],
+ "D_pdf_uniqueness": {
+  "pdf_total": 12707,
+  "exact_count_distribution": {
+   "1": 73
+  }
+ },
+ "E_reproducibility": {
+  "verdict": "REPRODUCIBLE",
+  "n_changed": 0,
+  "changed_sample": [],
+  "n_new_since_freeze": 0,
+  "new_sample": []
+ },
+ "findings": [
+  "B_CHANGES:1"
+ ],
+ "verdict": "FINDINGS:1"
+}
