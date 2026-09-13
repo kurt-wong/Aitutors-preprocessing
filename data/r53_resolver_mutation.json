@@ -1,0 +1,102 @@
+{
+ "sample": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-01.md",
+ "all_ok": true,
+ "results": [
+  {
+   "m": "M1_pending转admitted",
+   "exit": 1,
+   "expected_test": "test_t4",
+   "caught": true,
+   "ok": true
+  },
+  {
+   "m": "M2_basis重解释",
+   "exit": 1,
+   "expected_test": "test_t1",
+   "caught": true,
+   "ok": true
+  },
+  {
+   "m": "M3撤销v1拒收",
+   "exit": 1,
+   "expected_test": "test_t2",
+   "caught": true,
+   "ok": true
+  },
+  {
+   "m": "M4猜unresolved",
+   "exit": 1,
+   "expected_test": "test_t7",
+   "caught": true,
+   "ok": true
+  },
+  {
+   "m": "M5丢source_version",
+   "exit": 1,
+   "expected_test": "test_t1",
+   "caught": true,
+   "ok": true
+  },
+  {
+   "m": "M6硬编码写data",
+   "gate_hit": true,
+   "new_files": [
+    "data\\resolver_hardcoded_probe.json"
+   ],
+   "ok": true
+  },
+  {
+   "m": "restore_clean",
+   "exit": 0,
+   "ok": true
+  },
+  {
+   "m": "control",
+   "disposition": "ADMITTED",
+   "content_equal_original": true,
+   "ok": true
+  },
+  {
+   "m": "C1_v1剥离",
+   "expected": "REJECTED_V1",
+   "got": "REJECTED_V1",
+   "ok": true
+  },
+  {
+   "m": "C2_切片答案区破坏",
+   "expected": "REJECTED_QC_FAIL",
+   "got": "REJECTED_QC_FAIL",
+   "ok": true
+  },
+  {
+   "m": "C3_pending_review通道",
+   "expected": "ADMITTED_PENDING_REVIEW",
+   "got": "ADMITTED_PENDING_REVIEW",
+   "ok": true
+  },
+  {
+   "m": "C4_源缺失",
+   "expected": "MISSING",
+   "got": "MISSING",
+   "ok": true
+  },
+  {
+   "m": "C5_截断源_STALE",
+   "expected": "REJECTED_STALE",
+   "got": "REJECTED_STALE",
+   "ok": true
+  },
+  {
+   "m": "C6_跨节非keep重号",
+   "expected": "REJECTED_QC_FAIL",
+   "got": "REJECTED_QC_FAIL",
+   "ok": true
+  },
+  {
+   "m": "C7_标题变异_行号锚定",
+   "disposition": "ADMITTED",
+   "content_equal_control": true,
+   "ok": true
+  }
+ ]
+}

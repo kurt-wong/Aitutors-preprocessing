@@ -1170,3 +1170,34 @@ t1 ADMITTED + 身份逐字段只读(R-ACC-3)+ provenance 齐全(R-ACC-11)+ 材�
 - STALE 检测当前只有 span 越界一个结构信号(源内容漂移但行数不变时不可检出——如实记录为已知检测边界,审查轮须攻击此面)。
 
 **结果**:参考 Resolver 落地并跑通真实 88 份语料;套件 **155 passed + 1 xfailed**(本地;CI 口径 138+17 skip)。
+
+---
+
+## R53(2026-09-13):Resolver Consumer Adversarial Audit——R-ACC-1~11 逐条实测 + 附录 A 全量 + 独立重算 + 变异攻击
+
+**输入**:Goal 轮(用户裁定的实现级对抗审查);纪律同 R46:独立重算 + 变异 + 穷举,不得抽样冒充全称;受审工件 `resolver_reference.py` 审查期间字节冻结(git diff 复证)。
+
+### (a) 独立重算:`scripts/r53_resolver_audit_recompute.py` → `data/r53_resolver_audit_recompute.json`
+
+不信任 IR 任何字段,正则/映射/判定全部独立重实现(仅裁决源复用生产共用 qc.check,契约 C-IN-2 即如此要求):**88 份 / 1664 单元穷举,0 findings**——disposition 全链重算逐文件相等(71/16/1);身份 8 字段逐单元只读(R-ACC-3);provenance 七字段完备且 source_version 与独立计算源 sha 逐文件核对(R-ACC-11);反伪造贯穿(unknown → printed 必空);内容切片逐 zone 与独立源行切片全等(行号锚定 C-IN-8);**材料 278 条** consumers 集合精确(共享不复制、单题不丢);section 全解析(R50 攻击清单①);flags 独立重算逐条相等;IR 工件 sha 与台账引用一致。
+
+- **答案表实测(限定口径:71 份 ADMITTED 内)**:**528 单元** answer span 指向单行 `<table>`——键位可解析 **26**(按题号取,抽验正确:值全部 ∈ td 原文)、**502 如实 unresolved 不猜**(全量 v2 口径 554 为 R49 数字,含 FAIL 文件);R19 答案表格级切分前置任务仍然成立;
+- **answer_number_mismatch 91 例(b-C 26 / pilot 11 / PAC 54)逐例分诊**:全部为正确结构观察——答案区局部编号(`1. 本题共10分…`、`1. (5分)`)vs 全卷 canonical(51/41…),即 BUG-22 家族在答案区的体现;flag 观察而不重绑,零误报;
+- **c13-02 具名样本**:ADMITTED / 10 单元 / 1 mismatch flag——不崩、不静默错配、处置留痕(R-ACC-5)。
+
+### (b) 变异攻击:`scripts/r53_resolver_mutation.py` → `data/r53_resolver_mutation.json`
+
+**15/15 全中**(原件 sha 前后不变,Gate 在场):**代码变异 6 条**(PENDING 悄转 ADMITTED→t4 咬、basis 重解释→t1 咬、撤销 v1 拒收→t2 咬、猜 unresolved→t7 咬、丢 source_version→t1 咬、硬编码写 data/→**data/ 目录 Gate 咬住**)+ 还原复绿;**真实语料 staged 变异 7 条**(控制组逐字复现原件内容):v1 剥离→REJECTED_V1、切片答案区破坏→REJECTED_QC_FAIL、剥 section_ref→PENDING_REVIEW 通道、源缺失→MISSING、截断→STALE、跨节非 keep 重号→fail-closed 且 basis 不动(R-ACC-9)、**标题变异→IR 内容切片与控制组全等**(R-ACC-10 行号锚定实证)。
+
+### 发现汇总(全部如实入册)
+
+1. **F1(边界事实,C2 首跑 MISS 定性产物)**:QC 的 C3 裁决对象是**切片 md 锚点**,resolver 抽取对象是 **manifest spans**——二者漂移(改 manifest 不改切片)时 QC 与 resolver 均无检测;该态生产不可产生(pipeline 同编译),首跑 MISS 定性为**变异设计缺陷**(改用生产可 representable 的切片破坏后咬住);登记为消费侧防御纵深候选(结构性 flag 可加,受审工件审查期间冻结不改,实施待批);
+2. **t10 盲区如实**:CI t10 只断言 --out 内容,捕捉不到越界写 data/——M6 证明 data/ 目录 Gate 是必要补位(C-OUT-7 证据 = Gate 咬住);
+3. 审计工具自身缺陷 3 处当场修:重算脚本 IR 键路径形态不匹配(绝对 vs 相对,归一化)、unresolved∩answers 并存误判(键位部分命中为合法态,t7 实证)、变异脚本 c6 note 类型错;
+4. STALE 检测边界沿 R52 声明:仅 span 越界信号(源内容漂移但行数不变不可检出),provenance 已嵌源 sha256 供下游检测。
+
+### R-ACC 逐条裁决(全部真实测试)
+
+R-ACC-1 ✅(真实 v1 + C1)/ 2 ✅(16 真实 FAIL + C2/C3 + CI t3t4)/ 3 ✅(1664 单元穷举)/ 4 ✅(t12 import 面 + R2 穷举复制证明;间接依赖经生产 QC 本体如实声明)/ 5 ✅(c13-02)/ 6 ✅ 限定口径(528 机器穷举 + 键位抽验,502 unresolved 诚实)/ 7 ✅(M6 Gate + 盲区声明)/ 8 ✅(附录 A 88 份全量,处置全可归因)/ 9 ✅(C6)/ 10 ✅(C7)/ 11 ✅(provenance 穷举 + C4/C5)。
+
+**结果**:参考 Resolver 通过首轮实现级对抗审查——**0 结论级翻转、0 新生 resolver 缺陷**;1 项防御纵深候选(F1)+ 3 处审计工具自身缺陷(当场修)。套件 **155 passed + 1 xfailed**(本地;CI 138+17 skip);受审工件审查期间零变更。
