@@ -34,6 +34,7 @@
   - **D4 runner 边界攻击(合成夹具 14 钉)**:source identity = 输出路径存在且 >100B 仅此而已(无内容指纹);净化碰撞 `a<b`/`a>b` 同名静默跳过;大小写差异被 exists 判真(win);搬移机制复现钉 t12。
   - **D5 修复顺序裁定点(待用户)**:**先修机制再谈清理**——若先跑 reclassify,145 份会全部触发重 OCR;4 份规则缺口逐份裁定;67 组孪生 canonical 语义裁定后才可去重(禁自动归并)。
   - 对抗回归:`tests/test_r64_data_inventory.py` 14 钉;武器变异 5/5 咬合、字节级还原。
+  - **F-r64-1(CI 抓获,当轮修复)**:审计 JSONL 为 Windows 反斜杠路径,武器 `os.path.basename` 在 ubuntu 不切 `\` → 索引键错位(t3 咬合);修复=basename 前双分隔符归一;真实语料结论不变(73/73 复证)。教训:跨平台审计武器必须显式归一外来路径分隔符。
 - **根因**:`batch_convert_pdf.py:75-88` 的 `extract_grade_subject` 对文件名不含年级的 PDF 默认落 `未分类`;重归类清过一次又被 OCR 灌回(R64 实测机制见上:搬移击败 skip-check)。
 - **位置**：`ocr_service\batch_convert_pdf.py:75-88`；`Ocr-markdown\未分类\`。
 - **解决**：**顺序 = 先修跑步机机制,再跑周期 reclassify,最后语义裁定后去重**(R64 D5 细化见 `reports/r64_bug14_data_d0_d5.md`;全部待用户裁定,本轮未实施)。
