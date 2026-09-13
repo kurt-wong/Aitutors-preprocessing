@@ -78,3 +78,22 @@ D5-A 停跑步机 → D5-B 全量 reclassify 一次 → D5-C 幂等复跑 → D5
 证据:`data/r66_d5a_snapshot_check.json`(修复前后字节一致)、
 `governance/rule_registry.md` §7、`tests/test_r66_treadmill_fix.py`、
 `.pytest_work/r66_fix_mutation_driver.py`(一次性武器,不入库)。
+
+---
+
+## 五、收口(CI 实测)
+
+**F-r66-1(CI 抓获,当轮修复)**:首轮 CI Run 34752098948(ubuntu)失败——
+`_stub_optional_deps` 不幂等:首测注入 spec-less stub 后,后续
+`find_spec("requests")` 对 `__spec__ is None` 模块抛 ValueError(4 failed /
+214 passed / 23 skipped / 1 xfailed)。本地装有 requests,该分支为 CI-only 路径,
+本地未覆盖——如实入账。修复 = `_ensure_stub` 成员检查先行 + ValueError 防御;
+本地以 CI 形态 subprocess 复现("OK: idempotent, no ValueError")+ t11 回归钉。
+**测试线缺陷,机制代码零改动**;失败计数算术自洽(214+4+23+1=242=本地 241+1)。
+
+**收口**:aa9065f → **CI Run 34752741370 = success,日志原文
+"219 passed, 23 skipped, 1 xfailed"**;算术闭合 219+23+1 = 243 = 本地
+242 passed + 1 xfailed(skip 23 = 19 corpus + 4 win-only)。main = aa9065f。
+
+**下一步(待用户)**:重启 daemon(修复对现存两个旧进程无效)→ 观察首跑
+([DECIDE:*] 日志 + 清单建立)→ D5-B 全量 reclassify(**生效前禁止**)。

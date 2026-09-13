@@ -1609,3 +1609,9 @@ R58 七项结论:**6 项成立、1 项措辞级证伪(已更正)**;0 代码行�
 - D5-B/C/D/E 本轮不启动;reclassify --apply 仍未运行过。
 
 报告 `reports/r66_d5a_treadmill_fix.md`;证据 `data/r66_d5a_snapshot_check.json`。
+
+### R66 收口(CI 实测,2026-09-13)
+
+**F-r66-1(测试线缺陷,CI 抓获,当轮修复)**:首轮 CI Run 34752098948(8f8ef26,ubuntu)失败——`_stub_optional_deps` 不幂等:首测注入 spec-less stub 后,后续调用 `importlib.util.find_spec("requests")` 对 `__spec__ is None` 模块抛 ValueError(4 failed,214 passed,23 skipped,1 xfailed;本地装有 requests 走不到该分支,属 CI-only 路径未本地覆盖)。修复 = 成员检查先行 + ValueError 防御(`_ensure_stub`),本地以 CI 形态 subprocess 复现验证("OK: idempotent, no ValueError")+ t11 回归钉(spec-less 短路)。**缺陷属测试线,机制代码(output_manifest/runner)零改动;失败计数算术自洽:214+4+23+1=242=本地 241+1。**
+
+**收口**:修复提交 aa9065f → **CI Run 34752741370 = success,日志原文 "219 passed, 23 skipped, 1 xfailed"**。算术闭合:219+23+1 = 243 = 本地 242 passed + 1 xfailed(242−23 skip=219;skip 23 = 19 corpus + 4 win-only,历轮已逐节点点名)。main = aa9065f(前序:8f8ef26 D5-A 主体)。R66 全链:修复前快照 → 登记 → 机制实现 → 10+1 钉 → 变异 5/5 → 修复后快照字节一致 → 台账 → CI 绿。**下一步待用户:重启 daemon(修复生效)→ 观察首跑 → D5-B 全量 reclassify(生效前禁止)。**
