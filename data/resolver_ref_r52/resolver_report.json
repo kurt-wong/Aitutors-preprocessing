@@ -1,0 +1,28 @@
+{
+ "ir_version": "resolver-ir-0.1",
+ "files": {
+  "numerator": 71,
+  "denominator": 88,
+  "proof": "qc.check verdict==PASS via reslice_qc.check"
+ },
+ "pending_review_files": {
+  "numerator": 0,
+  "denominator": 88,
+  "proof": "qc verdict==PENDING_REVIEW; Admission channel, never auto-PASS"
+ },
+ "units_in_ir": {
+  "numerator": 1664,
+  "denominator": 1664,
+  "proof": "manifest units of admitted files, span-sliced line-anchored"
+ },
+ "units_pending_review": {
+  "numerator": 0,
+  "denominator": 1664,
+  "proof": "units of PENDING_REVIEW files"
+ },
+ "dispositions": {
+  "ADMITTED": 71,
+  "REJECTED_QC_FAIL": 16,
+  "REJECTED_V1": 1
+ }
+}

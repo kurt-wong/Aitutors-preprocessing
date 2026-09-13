@@ -1144,3 +1144,29 @@ M1(BUG-29 复发变异)期间,被变异的代码把**真实默认报告** `data/
 4. 审计工具自身缺陷 2 处(A2 漏传 metrics、A4 锚点随函数修订失配)→ 均当场修复并留痕;另补 CI 测试 t9(record 顺序无关性)。
 
 **结果**:R50 治理机制经对抗审查维持成立(快照确定性/摘要/接线活性全部实证),1 处过强主张已勘误;套件 **143 passed + 1 xfailed**(本地;CI 口径 126+17 skip)。**下一工作物 = 用户裁定的参考 Resolver 实现**(scripts/resolver_reference.py,严格按冻结契约),实现存在后开 R-ACC-1~11 + 附录 A 实现级对抗审查。
+
+---
+
+## R52(2026-09-13):参考 Resolver 实现(用户裁定:实现先行,不做纸面审)+ 真实语料首跑
+
+**输入**:用户裁定"先做严格按冻结契约实现的参考 resolver,再基于该实现启动 Resolver Consumer Adversarial Audit(R-ACC-1~11 + 附录 A);不要先纸面审查——风险已从设计合理性转移到契约是否被代码真实执行,必须有可攻击的实现对象"。
+
+### 交付:`scripts/resolver_reference.py`(参考实现,不进生产链路)
+
+契约条款逐条落地:**C-IN-1** v1 fail-closed 拒收(在 QC 之前);**C-IN-2** 唯一裁决来源 = 生产共用 `reslice_qc.check`(不看产物存在性,不重新发明校验);**C-IN-3** 四态传播(REJECTED_V1 / REJECTED_QC_FAIL / REJECTED_STALE / MISSING / REJECTED_QC_UNCOMPUTABLE / ADMITTED_PENDING_REVIEW / ADMITTED),PENDING_REVIEW 走 Admission 通道**永不自动转 PASS**;**C-IN-4/5** 身份与 basis 只读搬运(逐字段,不重塑);**C-IN-6** answer 区题号与本单元无关 → `answer_number_mismatch` 结构 flag,不重绑不崩;**C-IN-7** 答案表 td 双形态(键位按题号取 / 纯位置按序对齐),推不出标 unresolved **不猜**;**C-IN-8** 内容只按 span 行号切片,不重解析标题;**C-OUT-1** 输出全部派生自 --out;**C-OUT-2** 逐单元一等公民 provenance(EvidenceProvenance:source_version=源 sha256 / source_lines=spans / extraction_method / confidence_state,含 materials 去重引用——shared material 不复制、single material 不丢);**C-OUT-3** 报告按规则 4 带 numerator/denominator/proof。三边界:只做 structural 判断;**import 面零身份推断逻辑**(不 import question_identity,身份唯一来源 = manifest 字段,R-ACC-4);STALE 结构信号 = span 越界(先于 QC 判定)。
+
+### CI 契约测试 +12(`tests/test_resolver_reference.py`)
+
+t1 ADMITTED + 身份逐字段只读(R-ACC-3)+ provenance 齐全(R-ACC-11)+ 材料去重 + 行号锚定;t2 v1 拒收(R-ACC-1);t3 QC FAIL 拒收(R-ACC-2);t4 PENDING_REVIEW 进 Admission 通道不转 PASS(C-FAIL-2);t5 STALE(源截断);t6 MISSING(源缺失);t7 答案表 td 三形态(键位/位置/unresolved 不猜,C-IN-7);t8 题号错位 flag 不重绑(C-IN-6/R-ACC-5);t9 跨节重号 fail-closed 且 basis 不被重解释(R-ACC-9/C-IN-5);t10 输出仅落 --out(C-OUT-1);t11 run 字节确定性;t12 import 面审计(R-ACC-4)。
+
+### 真实语料首跑(88 份,输入 = R50 冻结基线)
+
+`--preflight data/resolver_contract_preflight.json --out data/resolver_ref_r52`:**ADMITTED 71 / REJECTED_QC_FAIL 16 / REJECTED_V1 1(三十一中化学)——与 preflight QC verdict 分布(PASS 71 / FAIL 16)+ v1 拒收路径精确对账**;units_in_ir **1664**;0 MISSING / 0 STALE / 0 UNCOMPUTABLE。**字节确定性**:同输入重跑两轮输出逐字节一致。工件策略:report(0.6KB)入库;IR(11MB)**不入库**——字节确定性已证,可从冻结基线复现,按 Audit Snapshot 纪律以摘要引用 `resolver_ir.json@sha256:fbcf41ab025fd786…65b04a5`。
+
+### 边界(如实)
+
+- **本实现尚未经对抗审查**——"71 ADMITTED"只是首跑观测,不是正确性证明;
+- R-ACC 逐条实测(R-ACC-6 真实答案表 15 份/305 单元、R-ACC-8 附录 A 全量、R-ACC-2/7/9/10 变异敏感性、独立重算)属下一轮 **Resolver Consumer Adversarial Audit**;
+- STALE 检测当前只有 span 越界一个结构信号(源内容漂移但行数不变时不可检出——如实记录为已知检测边界,审查轮须攻击此面)。
+
+**结果**:参考 Resolver 落地并跑通真实 88 份语料;套件 **155 passed + 1 xfailed**(本地;CI 口径 138+17 skip)。
