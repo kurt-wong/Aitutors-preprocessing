@@ -84,6 +84,14 @@
 7. **R-ACC-7**:输出工件遵守 C-OUT-1(变异验证:写死路径即测试红,BUG-28/29 教训,且此类变异必须先备份目标工件——R46 补记);
 8. **R-ACC-8**:附录 A 对抗语料全量跑通,每样本处置可解释(与 PAC 同纪律:FAIL 必须非静默、可归因)。
 
+### 7.1 R49 审查补充:覆盖矩阵闭合
+
+R49 纸面审查发现 v0.1 的 C 条款→R-ACC 映射存在缺口(C-IN-5 / C-IN-8 / C-OUT-2 / C-FAIL-1 的 MISSING·STALE 两态无验收条款),补:
+
+9. **R-ACC-9(C-IN-5)**:resolver 不得根据重号形态自行补 keep/豁免——构造跨节重号输入,断言 resolver 输出保持原 basis 且按 C-FAIL-3 fail-closed;
+10. **R-ACC-10(C-IN-8)**:同内容不同标题形态(答案行标题化随机漂移,c06-02/c10-02 实测形态)输入,断言 resolver 定位结果按行号区间不变——禁止重新解析标题层级;
+11. **R-ACC-11(C-OUT-2 / C-FAIL-1 补全)**:IR 逐单元携带 provenance(源文件/行号区间/verdict/identity 原样);MISSING(工件缺失)与 STALE(manifest 与源漂移)两态进入与 FAIL 同级的拒绝通道,不得静默降级。
+
 ## 附录 A · 对抗语料登记(ready-to-fire)
 
 | 语料 | 量 | 攻击目标 |

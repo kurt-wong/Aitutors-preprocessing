@@ -1,0 +1,40 @@
+{
+ "n_files": 88,
+ "mismatch_preflight_vs_independent": [],
+ "qc_verdict_tally": {
+  "?/FAIL": 16,
+  "?/PASS": 71
+ },
+ "basis_dist": {
+  "printed_as_is": 1546,
+  "unverified": 667,
+  "keep": 93,
+  "shift": 31,
+  "answer_key": 9,
+  "explicit": 1
+ },
+ "prov_dist": {
+  "source_line": 1546,
+  "unknown": 667,
+  "migration_report": 134
+ },
+ "batchc_units": {
+  "total": 1484,
+  "unknown": 402,
+  "keep": 93
+ },
+ "named_claims": {
+  "c09-01": {
+   "units": 34,
+   "printed_nonnull": 23
+  },
+  "c01-02": {
+   "units": 28,
+   "printed_nonnull": 0
+  },
+  "r19_answer_table": {
+   "files": 29,
+   "units": 554
+  }
+ }
+}

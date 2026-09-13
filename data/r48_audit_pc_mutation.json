@@ -1,0 +1,156 @@
+{
+ "sample": "Ocr-markdown\\reslice-pac-annotated\\reslice-pac\\ocr\\pac-c01-01.md",
+ "all_ok": true,
+ "results": [
+  {
+   "m": "control",
+   "expected": [],
+   "got": [],
+   "ok": true,
+   "qc": "PASS"
+  },
+  {
+   "m": "M0_manifest缺失",
+   "expected": [
+    "pc0"
+   ],
+   "got": [
+    "pc0"
+   ],
+   "ok": true,
+   "raw": [
+    "pc0 manifest 缺失"
+   ]
+  },
+  {
+   "m": "M1_v1输入",
+   "expected": [
+    "pc1"
+   ],
+   "got": [
+    "pc1"
+   ],
+   "ok": true,
+   "raw": [
+    "pc1 非 identity v2(pipeline 原生 v1,须经回填;resolver 只消费 v2)"
+   ]
+  },
+  {
+   "m": "M2_跨节非keep重号",
+   "expected": [
+    "pc2"
+   ],
+   "got": [
+    "pc2"
+   ],
+   "ok": true,
+   "raw": [
+    "pc2 identity fail: C13 canonical身份冲突(跨分节重号含多个非 keep): 题号 1 → ['Q1', 'Q26']"
+   ]
+  },
+  {
+   "m": "M3_keep无证据",
+   "expected": [
+    "pc3"
+   ],
+   "got": [
+    "pc3"
+   ],
+   "ok": true,
+   "raw": [
+    "pc3 identity pending: C13 keep 依据不足(证据缺失/越界/无编号语义,需人工复核): 题号 1 → ['Q26']"
+   ]
+  },
+  {
+   "m": "M4_QC不可计算",
+   "expected": [
+    "pc4"
+   ],
+   "got": [
+    "pc4"
+   ],
+   "ok": true,
+   "raw": [
+    "pc4 QC verdict 不可计算: KeyError('units')"
+   ]
+  },
+  {
+   "m": "M5_basis大小写",
+   "expected": [
+    "pc5"
+   ],
+   "got": [
+    "pc5"
+   ],
+   "ok": true,
+   "raw": [
+    "pc5 basis schema violation: Q1 basis='Explicit'"
+   ]
+  },
+  {
+   "m": "M6_provenance非法",
+   "expected": [
+    "pc6"
+   ],
+   "got": [
+    "pc6"
+   ],
+   "ok": true,
+   "raw": [
+    "pc6 printed_provenance schema violation: Q1 prov='source'"
+   ]
+  },
+  {
+   "m": "M7_伪造printed",
+   "expected": [
+    "pc7"
+   ],
+   "got": [
+    "pc7"
+   ],
+   "ok": true,
+   "raw": [
+    "pc7 provenance=unknown 但 printed_number 非空: Q1=[1]"
+   ]
+  },
+  {
+   "m": "M8_section悬空",
+   "expected": [
+    "pc8"
+   ],
+   "got": [
+    "pc8"
+   ],
+   "ok": true,
+   "raw": [
+    "pc8 section_ref 悬空: Q1 -> 'sec-999-dangling'"
+   ]
+  },
+  {
+   "m": "M9_span越界",
+   "expected": [
+    "pc9"
+   ],
+   "got": [
+    "pc9"
+   ],
+   "ok": true,
+   "raw": [
+    "pc9 行号区间越界: Q1 stem_lines=[7, 99999] 源行数=749"
+   ]
+  },
+  {
+   "m": "M10_源缺失",
+   "expected": [
+    "pc10"
+   ],
+   "got": [
+    "pc10"
+   ],
+   "ok": true,
+   "raw": [
+    "pc10 源文件缺失: D:\\Project\\Papers\\.pytest_work\\r48_mut_93d7acb6\\nonexistent_source.md"
+   ]
+  }
+ ]
+}
