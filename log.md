@@ -1688,3 +1688,14 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 ### R67-A 收口(CI 实测,2026-09-13)
 
 **提交 7247c12 → CI Run 34762363957 = success,日志原文 "239 passed, 24 skipped, 1 xfailed"**。算术闭合:239+24+1 = 264 = 本地 263 passed + 1 xfailed(263−24 skip = 239;skip 24 = 19 corpus + 4 win-only + t13 语料冒烟,历轮已逐节点点名)。main = 7247c12(前序 17fd66a)。
+
+---
+
+## R67.1(2026-09-14):daemon 激活 + 运行时消费验证(Gate C1/C2/C3)
+**输入**:用户 R67-A 收口裁定——apply 验收通过、manifest 生产文件可信,批准进入 R67.1(仅 daemon 激活与运行时消费验证);Gate C1 进程生命周期 / C2 manifest 加载证据 / C3 首扫决策路径;D5-B 继续冻结;"不要追求全部 0 OCR"。
+**Gate C2 仪表先行(重启前,提交 3613d1a)**:runner 加载清单后输出结构化证据 `[MANIFEST_LOAD] entries=N sha256=<加载时点文件 digest|absent>`(absent=文件不存在,不冒充空文件;fail-closed 既有 t5)。**t12 钉**(digest 必须等于磁盘真实字节、首跑 absent)+ t9 源码锚扩展;**变异 3/3 BITE 字节还原**(证据改走 stdout 不入日志 / digest 恒 absent / 条数虚报);全量 **264 passed + 1 xfailed**。
+**⚠ F-r67.1-1(启动方式缺陷,当轮修复,非 daemon 代码缺陷)**:首次激活用 `Start-Process` 拉起 watchdog(PID 45776,23:56:15),子进程落在 harness pwsh 的 **Job 对象**内,会话结束即被连带杀死(watchdog 日志无退出记录、child_err 空、tasklist 无 python.exe、日志冻结 23:56:16)。**零损害**:唯一在途 OCR 被杀半途,无输出、无清单记账(manifest mtime/size 不变)。修法 = **SCM 直建(Win32_Process.Create,Job 对象外)+ 输出重定向**,二次激活后跨会话存活实证。教训:长驻 daemon 不得经由编排器子进程树启动。
+**Gate C1(进程生命周期)**:重启前旧 PID 38160/33036 确认消亡(仅存 hermes 网关 42124 与本轮无关);新链 **cmd 27532 → watchdog python 50500 → runner 32908**,父子关系 27532→50500→32908,创建时间 **2026-09-14 00:09:46** > manifest written_at(09-13 21:40:50)/apply mtime(22:05:52),命令行 = 目标 watchdog/runner 本体,解释器 = Python312。
+**Gate C2(加载证据)**:两次 `[MANIFEST_LOAD] entries=698 sha256=68762c3c…38ca`(23:56:15 首次拉起 / 00:09:46 SCM 重启),digest 与 Gate A 落盘记录**逐字符合**;加载后 fail-closed 语义既有(损坏 → SystemExit(2),t5 实测),无静默降级路径。
+**Gate C3(首扫决策路径,本次运行窗口 ≥00:09:46)**:武器 `scripts/r67_1_runtime_evidence.py` → `data/r67_1_runtime_evidence.json`,并经独立 Select-String 交叉复核一致——**[DECIDE:MANIFEST_DONE]=515**(bootstrap 来源零 OCR 跳过,recorded_output_status 全部 present=审计 to 在位,missing-or-moved 0 属正确语义)、**[DECIDE:NO_MANIFEST_ENTRY]=3 → 真实 OCR**([OK] 46 页,2 份完成);**manifest 698→700,追加 2 条经 validate_entry 全合法,bootstrap 698 条未被改动**(append-only 实证);加载 digest 每轮自证。配额新日 22+/20000 页,watchdog 正常监护。
+**边界**:D5-B/reclassify/canonical identity/BUG-14-CHAIN/语义去重全部未触碰;daemon 持续运行将按配额消化 ~9,658 份未建历史证明的 backlog(正常业务,非本轮结论);manifest/日志为运行时账本,后续轮次随运行状态增量提交。

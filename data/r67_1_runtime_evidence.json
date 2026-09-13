@@ -1,0 +1,41 @@
+{
+ "purpose": "R67.1 Gate C2/C3: runtime consumption of bootstrapped manifest",
+ "activated_at": "2026-09-14 00:09:46",
+ "gate_c2": {
+  "manifest_load_lines": [
+   {
+    "ts": "2026-09-13 23:56:15",
+    "entries": 698,
+    "sha256": "68762c3c68c61e7115c9528fee9b8916e512ba4da5c50b5a28625017522938ca"
+   },
+   {
+    "ts": "2026-09-14 00:09:46",
+    "entries": 698,
+    "sha256": "68762c3c68c61e7115c9528fee9b8916e512ba4da5c50b5a28625017522938ca"
+   }
+  ],
+  "gate_a_digest": "68762c3c68c61e7115c9528fee9b8916e512ba4da5c50b5a28625017522938ca",
+  "load_matches_gate_a": true
+ },
+ "gate_c3": {
+  "decision_counts_this_run": {
+   "MANIFEST_DONE": 515,
+   "NO_MANIFEST_ENTRY": 3
+  },
+  "ok_pages_this_run": 46,
+  "manifest_done_expected": "bootstrap sources skipped via MANIFEST_DONE",
+  "process_expected": "NO_MANIFEST_ENTRY sources go to real OCR"
+ },
+ "manifest_now": {
+  "entries": 700,
+  "sha256": "ebf4b81063d179275c9e4a105073bc2167359b6f1a91909b42883b133887fe86",
+  "bootstrap_entries": 698,
+  "appended_by_runner": 2,
+  "appended_source_rels": [
+   "2021北京师大附中高三（上）期中化学（教师版）(1).pdf",
+   "2021北京延庆高一（下）期末政治（教师版）(1).pdf"
+  ],
+  "all_entries_valid": true
+ },
+ "consistent": true
+}
