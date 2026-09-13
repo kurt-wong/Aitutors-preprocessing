@@ -1404,3 +1404,45 @@ R-ACC-1 ✅(真实 v1 + C1)/ 2 ✅(16 真实 FAIL + C2/C3 + CI t3t4)/ 3 ✅(1664
 ### 结果
 
 R58 七项结论:**6 项成立、1 项措辞级证伪(已更正)**;0 代码行为缺陷;0 生产/语料写入。套件复验见提交。
+
+## R60(2026-09-13):用户 R59 审核裁定落盘 + Source→Resolver→IR 事实漂移攻击(A/B/C/D 四面)
+
+**输入**:用户对 R59 的审核裁定——R59 🟢 通过收口;F-r59-1 定性为**治理文档过度推论**,应登记 **RISK-FUTURE(GOVERNANCE/Boundary)而非生产 BUG**(当前未发生,防污染缺陷统计);F-r59-2 点名为本轮最高价值发现("审计工具也必须被审计"),建议固化 **Audit Tool Trust Boundary** 规则;下一轮目标 = **"BUG-14 第一阶段:Source → Resolver → IR 事实一致性攻击,不增加生产能力,只验证边界是否可靠"**,四攻击面 A 字节事实保持(改源行→必须 STALE)/ B Span 边界(start-1/end+1 不得静默裁剪)/ C provenance 断裂(Admission 拒绝)/ D Resolver↔QC 分叉(必须 F1 结构漂移,禁"两系统各自正确")。
+
+**命名澄清(如实上报,不吞并)**:用户命名"BUG-14 第一阶段"所指内容(事实一致性攻击)与 `bugs.md` BUG-14 原登记(未分类跑步机 + 73 重复 basename,数据卫生)**不是同一件事**。本轮按用户明确指定的内容执行(攻击面 A/B/C/D 原文级落地);BUG-14 原登记条目保持开放顺延,命名冲突已在 bugs.md 标注留待用户裁定。
+
+**执行**:`scripts/r60_fact_drift_attack.py`(一次性武器,含 G-AUDTB-1 首个覆盖范围声明)——全部变异只作用于 `.pytest_work` staged 合成副本(生产同构四件套经 `rp.write_outputs` 真实编译),SUT(resolver_reference / reslice_qc / audit_f1_consistency)黑盒观测三层(resolver disposition / QC verdict / F1 zone);`--corpus` 模式对 88 份真实控制组只读复核(audit_f1 内建 Input Integrity Gate)。工件 `data/r60_fact_drift_attack.json`。
+
+### 四攻击面实测裁定
+
+| 攻击 | 变异 | 实测结果 | 裁定 |
+|---|---|---|---|
+| A1 界内字节篡改 | 源题干行改字,行数不变 | resolver **REJECTED_QC_FAIL**(理由=C8 锚点保真,非 STALE)+ F1 DRIFT | ✅ 无静默 PASS;**防线身份如实:C8 整文件比对**,不是 STALE(冻结契约 STALE=结构信号,R53 裁定不扩大) |
+| A2 span 外字节篡改 | L2 空行→文本 | C8 拦(FAIL);**F1 如实 MATCH** | ✅ 拦截成立 + **互补性事实入账:F1 是区级不变量,看不见 span 外漂移**,与 C8 互为补集,谁都不是全集 |
+| A3 旧 IR + 篡改源 | IR 产出于原始源后改源 | F1 --ir:**source_version_match=false → DRIFT** | ✅ 陈旧 IR 必须被三方对账捕获 |
+| B1 start-1 界内平移 | stem [5,9]→[4,9] | resolver **ADMITTED(静默)**,IR 内容实测被平移(多吸入空行+图行);QC PASS;F1 DRIFT:stem | ⚠️ **resolver 层静默 = 已裁定边界**(结构性 STALE 语义);**捕获层=F1 实证有效**;事实漂移坐实(非纸面推演) |
+| B2 end+1 越界 | stem end→33(源 32 行) | **REJECTED_STALE** + F1 DRIFT | ✅ 结构信号按契约工作 |
+| B3 answer end+1 界内 | answer [25,25]→[25,26] | 同 B1 家族:ADMITTED + F1 DRIFT:answer | ⚠️ 同上,家族行为一致 |
+| C1 manifest 缺 source_file | 删键 | **resolver CRASH(PermissionError: '.')/ QC CRASH(KeyError)/ F1 CRASH** | 🔴 **新缺陷 BUG-31**:三组件无一 fail-closed;崩溃≠静默 PASS(数据安全无损),但违 C-FAIL 契约族 + 批处理整批死 + 错误信息失焦 |
+| C2 source 重定向诱饵 | source_file→诱饵文件 | C8 拦(前缀差异 32)+ F1 全区 DRIFT(9 zone) | ✅ |
+| C3 IR provenance 删 source_version | 删键 | F1 ir zone DRIFT | ✅ |
+| D1 只改 manifest 不重编译 | Q1/Q2 answer_lines 互换 | **resolver ADMITTED + QC PASS(双绿)**;IR 里 Q1 答案实测="2.【答案】B"(错归属坐实);**F1 DRIFT:answer+answer_zone** | ✅ 用户 D 面核心命题实证:**双绿≠系统正确,分叉必须被 F1 捕获**;QC 看切片(旧)、Resolver 看 manifest(新)的裁决对象分离再次坐实 |
+| D2 阴性对照 | 未变异 | ADMITTED + PASS + MATCH 全绿 | ✅ 对照成立(无假阳性) |
+
+### 变异咬合(3/3)与语料复核
+
+- M1 禁用 QC C8 → t1/t2/t8 拦;M2 F1 恒 MATCH → t4/t9/t10 拦;M3 Resolver 去 STALE 上界 → t5 拦;**全部还原后文件 sha256 与改前逐字节一致**(`.pytest_work/r60_mutation_driver.py`,一次性)。
+- 语料复核 `--corpus`:**88/88 文件、2,403/2,403 单元、0 DRIFT**——R54 基线在 R60 独立复现(gate 保护,零语料写入)。
+
+### 审查工具自身缺陷(同族纪律,R49/R53/R54/R55/R59 后第 6 次)
+
+- **攻击脚本 v1 观测缺陷**:A3 首版未把旧 IR 索引真正传入 F1(`observe(resolve_first=True)` 后又 `observe()` 覆盖),ir zone 根本没跑——探针 JSON 读出后当场发现,改为 resolve→edit→`check_file(md, idx)` 直连,复跑确认 `source_version_match=false`。已作为 G-AUDTB-1 evidence 入册。
+
+### 治理落盘(按"先登记后实施")
+
+1. `governance/rule_registry.md` §4 新增 **G-AUDTB-1 Audit Tool Trust Boundary**(禁复用生产 parser/须阳性阴性控制/解析器声明覆盖范围/审计工具缺陷与生产缺陷同级当轮修复记账);§5 追加 R-ACC-15~18 攻击家族。
+2. `governance/risk_register.md` 新建:**RISK-FUTURE-001 Unclassified Derived Tree Admission Risk**(F-r59-1 按用户裁定登记为风险而非缺陷,含触发路径/监测/关闭条件)。
+3. `bugs.md`:新登记 **BUG-31**(resolver/QC 缺 source_file 非 fail-closed,strict xfail 修复义务钉 `test_t7` 已就位);BUG-14 条目补命名澄清;BUG-11 R59 更正块补风险登记指针。
+4. `tests/test_r60_fact_drift.py` 14 用例(13 passed + t7 strict xfail);生产/冻结链(reslice_pipeline/reslice_qc/question_identity/resolver_reference/audit_f1)**本轮零变更**(变异全部还原)。
+
+**结果**:用户 R59 裁定全部落盘;四攻击面**无一静默放行事件漏网**(A 面 C8 拦、B 面越界拦+界内平移 F1 拦、C 面 1 崩溃如实入账、D 面分叉 F1 拦);唯一新缺陷 BUG-31(崩溃型,非静默型);套件 **197 passed + 2 xfailed**(CI 预期 178 passed / 19 skipped / 2 xfailed,t13 语料冒烟 CI skip 算术 +1)。

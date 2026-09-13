@@ -20,10 +20,11 @@
 - **修复证据（全部实测）**：① 视野 2,421→**3,119** 份（新可见 **698**：高考真题 599/合格考 71/会考 17/竞赛自招 6/其他汇编 4/学业水平考试 1，`data/r58_bug11_coverage.json`，只读测量）；② dry-run 端到端 3,119 份零异常，统计与证据脚本逐项一致（with_refs 499/already_done 2182/pdf_miss 0），账目文件备份-还原 sha 闭环；③ 回归钉 `tests/test_recover_images_scan.py` 5 用例（合成契约 t1–t4 + 真实语料冒烟 t5），变异 M1 回退旧白名单 → t1+t5 双拦、M2 去 `_imgs` 排除 → t2+t4 双拦，还原后 5/5 过；全套件 184 passed + 1 xfailed。
 - **⚠ 实测修正（防夸大）**：盲区 698 份中**当前缺图候选 = 0**——迁出文件在迁移前（还在旧目录时）已被恢复（高考真题 515/599 已标记 `_imgs`，余 84 无引用）。本 bug 的现实危害是**流程性潜伏风险**（今后带悬空引用的文件一经重归类即逃出恢复视野），而非既成数据缺失。当前 499 份/10,439 处缺图积压**全部在旧视野内**（OCR 新产出的常规增量积压，未分类 129/高二 136/高三 130/高一 104），是否执行恢复跑属独立决策，未在本轮擅自执行。
 - **教训**：一个流程改了目录布局，凡硬编码目录白名单的其它流程都会静默失配；目录清单应单一来源或全树遍历。**且"修复覆盖盲区"与"盲区内恰有欠账"是两件事**——修复价值要用真实数据分别度量，别拿潜伏风险冒充已挽回损失。
-- **⚠ R59 对抗性审查更正（2026-09-13）**：R58 台账措辞"误纳派生目录的代价只是多扫（幂等跳过），不会漏修"**经实测证伪**——无排除政策下 **84 份派生 md**（auto-annotated-v3 82 + reslice-batch-C 2，含裸 `imgs/*.jpg` 且 basename 命中 PDF 索引）会被 `process_one` **真实处理**（提取图片 + 就地重写 + 审计记录），不是只读扫描。**当前代码行为正确**（11 个派生目录全被现有排除表覆盖，现实风险=0），错的是反事实代价评估：机制性残余风险 = 未来新增**前缀不匹配**的派生目录会被误纳并就地重写。不改排除制（改回白名单即复发本 bug），以措辞更正 + 风险登记收口。R59 其余复证：视野账目 3119/2421/698 独立重算全对账；盲区 0 缺图在扩展语法下稳健（12,316 处 `src` 全指 `_imgs` 且落盘在，悬空形态 0）；dry-run 重跑统计逐项复现 + 账目 sha 闭环；变异 M3–M6 补 4 组全咬合。明细 `log.md` R59 / `data/r59_r58_review.json`。
+- **⚠ R59 对抗性审查更正（2026-09-13）**：R58 台账措辞"误纳派生目录的代价只是多扫（幂等跳过），不会漏修"**经实测证伪**——无排除政策下 **84 份派生 md**（auto-annotated-v3 82 + reslice-batch-C 2，含裸 `imgs/*.jpg` 且 basename 命中 PDF 索引）会被 `process_one` **真实处理**（提取图片 + 就地重写 + 审计记录），不是只读扫描。**当前代码行为正确**（11 个派生目录全被现有排除表覆盖，现实风险=0），错的是反事实代价评估：机制性残余风险 = 未来新增**前缀不匹配**的派生目录会被误纳并就地重写。不改排除制（改回白名单即复发本 bug），以措辞更正 + 风险登记收口。**风险已按用户裁定登记为 RISK-FUTURE-001（GOVERNANCE/Boundary,非生产缺陷,不进缺陷统计）,见 `governance/risk_register.md`**。R59 其余复证：视野账目 3119/2421/698 独立重算全对账；盲区 0 缺图在扩展语法下稳健（12,316 处 `src` 全指 `_imgs` 且落盘在，悬空形态 0）；dry-run 重跑统计逐项复现 + 账目 sha 闭环；变异 M3–M6 补 4 组全咬合。明细 `log.md` R59 / `data/r59_r58_review.json`。
 
 ### BUG-14 · 未分类"跑步机" + 重复源　🟡
 - **状态**：待修复
+- **⚠ R60 命名澄清（2026-09-13）**：用户 R59 审核裁定的下一轮"BUG-14 第一阶段"经实测核对为 **Source → Resolver → IR 事实一致性攻击**(已于 R60 执行完毕,证据 `data/r60_fact_drift_attack.json`),与本条登记的**数据卫生问题**(未分类跑步机 + 73 重复 basename)是两件事。本条保持开放、顺延;命名冲突留待用户裁定是否重编号。
 - **现象**：`未分类` 目录现存 145 份且**仍在接收**（OCR 日志实证 `未分类/历史/2012-2021高考真题汇编…`）；`status.md` 曾误称"已清除"。全库 **73 个重复 basename**（多为高考真题汇编），会重复 OCR/重切/入题库。
 - **根因**：`batch_convert_pdf.py:75-88` 的 `extract_grade_subject` 对文件名不含年级的 PDF 默认落 `未分类`；重归类清过一次又被 OCR 灌回。重复源来自同一 PDF 在根目录与子目录各存一份。
 - **位置**：`ocr_service\batch_convert_pdf.py:75-88`；`Ocr-markdown\未分类\`。
@@ -105,6 +106,16 @@
 - **教训**:正则类源结构规则必须有"同一字符的转义/全半角/变体形态"专项攻击面;R37 的抽样人检未覆盖该形态,直到穷举审计才暴露——规则 1(全称命题必须穷尽验证)的直接实证。
 
 ---
+
+### BUG-31 · resolver/QC 对缺 `source_file` 的 manifest 非 fail-closed(三组件崩溃)　🟡（Resolver 边界 / R60 发现）
+- **状态**：待修复（R60 事实漂移攻击 C1 发现;strict xfail 义务钉已就位）
+- **登记**：2026-09-13(R60,用户 R59 裁定的 Source→Resolver→IR 攻击面 C)
+- **现象**：manifest 缺 `source_file` 键时三组件全崩,无一 fail-closed——resolver `man.get("source_file") or ""` → `Path(".")` 存在性为真 → `read_text` 崩 **PermissionError: Permission denied: '.'**;`reslice_qc.check` 直接 `man["source_file"]` 崩 **KeyError**;`audit_f1_consistency.check_file` 同 resolver 家族崩溃。批处理中一份坏 manifest 即杀死整批,且错误信息("Permission denied: '.'")完全失焦,不指向真因(source_file 缺失)。
+- **位置**：`scripts/resolver_reference.py:196-202`(resolve_file 源读取无 fail-closed 守卫);`scripts/reslice_qc.py:52`(src_of 裸下标)。
+- **性质定性**：数据安全无损(崩溃 ≠ 静默 PASS),但违反 fail-closed 契约族(C-FAIL-1/2:不可计算必须以机器可读理由拒收,不得崩)。同族参照:resolver 对 `qc.check` 抛异常有兜底(REJECTED_QC_UNCOMPUTABLE),对自己读源却无。
+- **修复方向（待用户裁定,未擅动冻结件）**：resolver 读源前 `if not src.is_file()` → MISSING("source_file missing or not a file");QC `src_of` 同向处理。修复后转正 `tests/test_r60_fact_drift.py::test_t7_c1_missing_source_file_must_fail_closed`(strict xfail 会强制翻绿,防"修了一半忘了转正")。
+- **证据**：`data/r60_fact_drift_attack.json` C1 块(三组件 CRASH 逐条留档)。
+- **教训**：fail-closed 必须覆盖**自身**的每一条 I/O 路径,不能只包下游调用;`Path("")` 的存在性语义是 `.`(目录恒存在),`or ""` 默认值不是安全网,是通往目录读取的暗门。
 
 ## 二、已修复 / 已规避（Fixed / Mitigated）
 

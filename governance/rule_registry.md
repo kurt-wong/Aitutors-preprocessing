@@ -63,14 +63,21 @@ F1 定位铁律(用户 R53 裁决):**非 Gate、非 resolver admission rule**;�
 
 | ID | 类 | purpose / attack surface | evidence | retirement |
 |---|---|---|---|---|
-| Input Integrity Gate | FACT_INTEGRITY | 审查工具执行前后原件集 sha 对账,漂移 fail-closed | R50 建;R51 sabotage 咬合;作用域=原件集(staging 污染另靠控制组) | 永久(治理基础设施) |
+| Input Integrity Gate | FACT_INTEGRITY | 审查工具执行前后原件集 sha 对账,漂移 fail-closed | R50 建;R51 sabotage 咬合;作用域=原件集(staging 汱染另靠控制组) | 永久(治理基础设施) |
 | Audit Snapshot Manifest | EVIDENCE | 确定性快照,报告引用摘要而非动态目录 | R50 基线 356 文件;R51 独立重算一致 | 永久 |
+| Audit Tool Trust Boundary(G-AUDTB-1) | EVIDENCE | 审计工具自身也是不可信面:①禁止复用生产 parser 做裁决依据;②必须带阳性/阴性控制样本;③解析器必须显式声明覆盖范围(supports / does_not_support);④审计工具缺陷与生产缺陷同级发现、当轮修复并记账 | R49/R53/R54/R55/R59/R60 六轮实证(审计工具自身缺陷家族:R59-F2 十二字面误判 12,302 假阳性;R60 攻击脚本 v1 观测缺陷 A3 未挂 ir 索引) | 永久(治理基础设施) |
 | 三边界纪律 | EVIDENCE | Resolver 只做结构/Gate 只证明约束/PENDING_REVIEW 不得为提 PASS 率扩自动规则 | R47 用户裁定 | 永久(架构原则) |
 
 ## 5. 攻击面套件(R-ACC-1…14,审查武器非规则)
 
 登记为攻击家族:实现级审查 1–11(R53,15/15 变异)+ 边界攻击 12–14(R54:语义错误 13/13 全链绿、material 零重塑、unresolved 0 findings + 596 槽位登记)。
 退役条件:对应契约条款废弃;否则随 Resolver 存续。
+
+R60 追加事实漂移攻击家族(用户 R59 裁定"Source → Resolver → IR 事实一致性攻击"):
+R-ACC-15(字节事实保持,含 C8/F1 互补实测)/ R-ACC-16(Span 界内平移静默边界)/
+R-ACC-17(provenance 断裂 fail-closed,含 BUG-31 义务钉)/ R-ACC-18(Resolver↔QC
+分叉必须 F1 捕获,禁"两系统各自正确")。证据:`data/r60_fact_drift_attack.json` +
+`tests/test_r60_fact_drift.py`(变异 M1–M3 全咬合)。
 
 ## 6. Rule Retirement Policy(登记册运行规则)
 

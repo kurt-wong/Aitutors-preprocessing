@@ -1,0 +1,173 @@
+{
+ "attack_version": "r60-fact-drift-0.1",
+ "parser_coverage": {
+  "parser": "staged mutation harness + SUT black-box observation",
+  "supports": [
+   "synthetic v2 full-chain staged attacks",
+   "resolver/qc/f1 three-layer observation",
+   "read-only corpus F1 recheck (--corpus)"
+  ],
+  "does_not_support": [
+   "source recompile attacks",
+   "semantic adjudication",
+   "LLM output attacks"
+  ]
+ },
+ "A_byte_fact": {
+  "A1_stem_byte_edit": {
+   "resolver": "REJECTED_QC_FAIL",
+   "resolver_reason_head": "C8 锚点版与源文件不一致（32 vs 32 行, 前缀差异 1）",
+   "resolver_content_q1_stem": null,
+   "qc": "FAIL",
+   "f1": "DRIFT",
+   "f1_drift_zones": [
+    "DRIFT:stem",
+    "DRIFT:stem_zone"
+   ]
+  },
+  "A2_outside_span_edit": {
+   "resolver": "REJECTED_QC_FAIL",
+   "resolver_reason_head": "C8 锚点版与源文件不一致（32 vs 32 行, 前缀差异 1）",
+   "resolver_content_q1_stem": null,
+   "qc": "FAIL",
+   "f1": "MATCH",
+   "f1_drift_zones": []
+  },
+  "A3_stale_ir_then_edit": {
+   "resolver": "see A1 family (source edited, C8 same)",
+   "f1": "DRIFT",
+   "f1_ir_zone": {
+    "source_version_match": false,
+    "source_lines_match": true,
+    "status": "DRIFT"
+   }
+  }
+ },
+ "B_span_boundary": {
+  "B1_start_minus_1_in_bounds": {
+   "resolver": "ADMITTED",
+   "resolver_content_q1_stem": [
+    "",
+    "<div><img src=\"box_100_100_200_200.jpg\" /></div>",
+    "1. 下列说法正确的是（ ）",
+    "",
+    "A. 甲",
+    "B. 乙"
+   ],
+   "qc": "PASS",
+   "f1": "DRIFT",
+   "f1_drift_zones": [
+    "DRIFT:stem"
+   ]
+  },
+  "B2_end_plus_1_oob": {
+   "resolver": "REJECTED_STALE",
+   "resolver_reason_head": "STALE: Q1 stem_lines=[5, 33] 源行数=32",
+   "resolver_content_q1_stem": null,
+   "qc": "FAIL",
+   "f1": "DRIFT",
+   "f1_drift_zones": [
+    "DRIFT:stem",
+    "DRIFT:stem_zone"
+   ]
+  },
+  "B3_answer_end_plus_1_in_bounds": {
+   "resolver": "ADMITTED",
+   "resolver_content_q1_stem": [
+    "<div><img src=\"box_100_100_200_200.jpg\" /></div>",
+    "1. 下列说法正确的是（ ）",
+    "",
+    "A. 甲",
+    "B. 乙"
+   ],
+   "qc": "PASS",
+   "f1": "DRIFT",
+   "f1_drift_zones": [
+    "DRIFT:answer"
+   ]
+  }
+ },
+ "C_provenance_break": {
+  "C1_manifest_no_source_file": {
+   "resolver": "CRASH",
+   "resolver_exc": "PermissionError: [Errno 13] Permission denied: '.'",
+   "qc": "CRASH",
+   "qc_exc": "KeyError: 'source_file'",
+   "f1": "CRASH",
+   "f1_exc": "PermissionError: [Errno 13] Permission denied: '.'",
+   "f1_trace": "ppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1027, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Kurtw\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: '.'\n"
+  },
+  "C2_source_retarget_decoy": {
+   "resolver": "REJECTED_QC_FAIL",
+   "resolver_reason_head": "C8 锚点版与源文件不一致（32 vs 32 行, 前缀差异 32）",
+   "resolver_content_q1_stem": null,
+   "qc": "FAIL",
+   "f1": "DRIFT",
+   "f1_drift_zones": [
+    "DRIFT:answer",
+    "DRIFT:answer_zone",
+    "DRIFT:explanation",
+    "DRIFT:explanation_zone",
+    "DRIFT:material",
+    "DRIFT:options",
+    "DRIFT:questions",
+    "DRIFT:stem",
+    "DRIFT:stem_zone"
+   ]
+  },
+  "C3_ir_provenance_deleted": {
+   "f1": "DRIFT",
+   "f1_ir_zone": {
+    "source_version_match": false,
+    "source_lines_match": true,
+    "status": "DRIFT"
+   }
+  }
+ },
+ "D_resolver_qc_divergence": {
+  "D1_recut_no_recompile": {
+   "resolver": "ADMITTED",
+   "resolver_content_q1_stem": [
+    "<div><img src=\"box_100_100_200_200.jpg\" /></div>",
+    "1. 下列说法正确的是（ ）",
+    "",
+    "A. 甲",
+    "B. 乙"
+   ],
+   "qc": "PASS",
+   "f1": "DRIFT",
+   "f1_drift_zones": [
+    "DRIFT:answer",
+    "DRIFT:answer_zone"
+   ]
+  },
+  "D1_ir_q1_answer": [
+   "2.【答案】B"
+  ],
+  "D2_control_untouched": {
+   "resolver": "ADMITTED",
+   "resolver_content_q1_stem": [
+    "<div><img src=\"box_100_100_200_200.jpg\" /></div>",
+    "1. 下列说法正确的是（ ）",
+    "",
+    "A. 甲",
+    "B. 乙"
+   ],
+   "qc": "PASS",
+   "f1": "MATCH",
+   "f1_drift_zones": []
+  }
+ },
+ "corpus_recheck": {
+  "status": "OK",
+  "files": {
+   "numerator": 88,
+   "denominator": 88
+  },
+  "units": {
+   "numerator": 2403,
+   "denominator": 2403
+  },
+  "units_drift": 0
+ }
+}
