@@ -1,0 +1,999 @@
+{
+ "claims": {
+  "L1_probe_counts": {
+   "n_files": {
+    "claim": 22,
+    "recomputed": 22
+   },
+   "n_units": {
+    "claim": 530,
+    "recomputed": 530
+   },
+   "n_alarms": {
+    "claim": 78,
+    "recomputed": 78
+   },
+   "by_check": {
+    "claim": {
+     "P13": 24,
+     "P14": 32,
+     "P15": 22
+    },
+    "recomputed": {
+     "P13": 24,
+     "P14": 32,
+     "P15": 22
+    }
+   },
+   "flagged_files": {
+    "claim": 11,
+    "recomputed": 11
+   },
+   "per_file_units_vs_manifest": "all_equal",
+   "ok": true
+  },
+  "L1b_probe_replay": {
+   "method": "import-based deterministic replay (drift check only)",
+   "n_units": 530,
+   "flags_by_check": {
+    "P13": 24,
+    "P14": 32,
+    "P15": 22
+   },
+   "counts_equal_committed": true,
+   "ok": true
+  },
+  "L2_classifier_crosscheck": {
+   "total": 78,
+   "agree": 43,
+   "disagree": 35,
+   "my_counts": {
+    "M0": 22,
+    "M1": 21,
+    "M2": 8,
+    "M3": 8,
+    "M4": 6,
+    "M5": 13
+   },
+   "r46_counts": {
+    "M0": 24,
+    "M1": 21,
+    "M2": 5,
+    "M3": 11,
+    "M4": 5,
+    "M5": 12
+   },
+   "disagreements": [
+    {
+     "file": "pac-c01-02.manifest.json",
+     "unit": "Q21",
+     "check": "P13",
+     "mine": "M2",
+     "r46": "M5",
+     "evidence": {
+      "n_paren": 2
+     },
+     "sample": "(21)  $ [0,+\\infty) $. (22)  $ \\underline{2} $ ;  $ \\underli"
+    },
+    {
+     "file": "pac-c01-02.manifest.json",
+     "unit": "Q22",
+     "check": "P13",
+     "mine": "M2",
+     "r46": "M5",
+     "evidence": {
+      "n_paren": 2
+     },
+     "sample": "(21)  $ [0,+\\infty) $. (22)  $ \\underline{2} $ ;  $ \\underli"
+    },
+    {
+     "file": "pac-c01-02.manifest.json",
+     "unit": "Q23",
+     "check": "P13",
+     "mine": "M2",
+     "r46": "M5",
+     "evidence": {
+      "n_paren": 2
+     },
+     "sample": "(21)  $ [0,+\\infty) $. (22)  $ \\underline{2} $ ;  $ \\underli"
+    },
+    {
+     "file": "pac-c01-02.manifest.json",
+     "unit": "Q24",
+     "check": "P13",
+     "mine": "M2",
+     "r46": "M5",
+     "evidence": {
+      "n_paren": 2
+     },
+     "sample": "(21)  $ [0,+\\infty) $. (22)  $ \\underline{2} $ ;  $ \\underli"
+    },
+    {
+     "file": "pac-c02-01.manifest.json",
+     "unit": "Q24",
+     "check": "P14",
+     "mine": "M3",
+     "r46": "M2",
+     "evidence": {
+      "prefix_num": 1
+     },
+     "sample": "1）当小球的角速度为 $ \\omega=10rad/s $时，细线拉力大小；"
+    },
+    {
+     "file": "pac-c02-01.manifest.json",
+     "unit": "Q24",
+     "check": "P14",
+     "mine": "M3",
+     "r46": "M2",
+     "evidence": {
+      "prefix_num": 2
+     },
+     "sample": "2）当细线断裂时，小球的线速度大小；"
+    },
+    {
+     "file": "pac-c02-01.manifest.json",
+     "unit": "Q25",
+     "check": "P14",
+     "mine": "M3",
+     "r46": "M2",
+     "evidence": {
+      "prefix_num": 2
+     },
+     "sample": "2）当绳子跟竖直方向的夹角为 $ \\theta $时，求小球运动的向心力大小；"
+    },
+    {
+     "file": "pac-c02-01.manifest.json",
+     "unit": "Q25",
+     "check": "P14",
+     "mine": "M3",
+     "r46": "M2",
+     "evidence": {
+      "prefix_num": 3
+     },
+     "sample": "3）通过计算说明：要增大夹角 $ \\theta $，应该增大小球运动的角速度 $ \\omega $。"
+    },
+    {
+     "file": "pac-c05-01.manifest.json",
+     "unit": "Q9",
+     "check": "P13",
+     "mine": "M5",
+     "r46": "M0",
+     "evidence": {
+      "compact": true,
+      "latex": false
+     },
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "file": "pac-c05-01.manifest.json",
+     "unit": "Q10",
+     "check": "P13",
+     "mine": "M5",
+     "r46": "M0",
+     "evidence": {
+      "compact": true,
+      "latex": false
+     },
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "file": "pac-c05-01.manifest.json",
+     "unit": "Q11",
+     "check": "P13",
+     "mine": "M5",
+     "r46": "M0",
+     "evidence": {
+      "compact": true,
+      "latex": false
+     },
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "file": "pac-c05-01.manifest.json",
+     "unit": "Q12",
+     "check": "P13",
+     "mine": "M5",
+     "r46": "M0",
+     "evidence": {
+      "compact": true,
+      "latex": false
+     },
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "file": "pac-c05-01.manifest.json",
+     "unit": "Q13",
+     "check": "P13",
+     "mine": "M5",
+     "r46": "M0",
+     "evidence": {
+      "compact": true,
+      "latex": false
+     },
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "file": "pac-c05-01.manifest.json",
+     "unit": "Q14",
+     "check": "P13",
+     "mine": "M5",
+     "r46": "M0",
+     "evidence": {
+      "compact": true,
+      "latex": false
+     },
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "file": "pac-c07-02.manifest.json",
+     "unit": "Q17",
+     "check": "P15",
+     "mine": "M3",
+     "r46": "M2",
+     "evidence": {
+      "prefix_num": 2
+     },
+     "sample": "2）物质循环（1分）"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-RE-40-43",
+     "check": "P15",
+     "mine": "M0",
+     "r46": "M3",
+     "evidence": {},
+     "sample": "1. 如抄写原文，不扣分。"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-RE-40-43",
+     "check": "P15",
+     "mine": "M0",
+     "r46": "M3",
+     "evidence": {},
+     "sample": "2. 如能恰当地运用名词短语回答，不扣分。"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-RE-40-43",
+     "check": "P15",
+     "mine": "M0",
+     "r46": "M3",
+     "evidence": {},
+     "sample": "1. 如抄写原文，不扣分。"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-RE-40-43",
+     "check": "P15",
+     "mine": "M0",
+     "r46": "M3",
+     "evidence": {},
+     "sample": "2.  $ \\underline{\\text{so people get less from nonverbal exp"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-RE-40-43",
+     "check": "P15",
+     "mine": "M0",
+     "r46": "M3",
+     "evidence": {},
+     "sample": "3. 整句全划等情况不得分。"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-RE-40-43",
+     "check": "P15",
+     "mine": "M0",
+     "r46": "M3",
+     "evidence": {},
+     "sample": "1. 内容：内容意义上言之有理即可得分。"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-RE-40-43",
+     "check": "P15",
+     "mine": "M0",
+     "r46": "M3",
+     "evidence": {},
+     "sample": "2. 语言：准确、连贯；如有错误，酌情扣分。"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-RE-40-43",
+     "check": "P15",
+     "mine": "M0",
+     "r46": "M3",
+     "evidence": {},
+     "sample": "3. 字数要求"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-Essay-44",
+     "check": "P14",
+     "mine": "M0",
+     "r46": "M4",
+     "evidence": {},
+     "sample": "1. 表达歉意："
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-Essay-44",
+     "check": "P14",
+     "mine": "M4",
+     "r46": "M0",
+     "evidence": {
+      "kw": "开头与结尾"
+     },
+     "sample": "2. 文章开头与结尾已给出，不计入总词数。"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-Essay-44",
+     "check": "P15",
+     "mine": "M4",
+     "r46": "M0",
+     "evidence": {
+      "kw": "语言准确性"
+     },
+     "sample": "2. 语言准确性：包括语法、用词、拼写、大小写及标点符号等要素。其中，语法包括主谓一致、时态、数、人称、冠词、代词、介词"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-Essay-44",
+     "check": "P15",
+     "mine": "M4",
+     "r46": "M0",
+     "evidence": {
+      "kw": "得体性"
+     },
+     "sample": "3. 得体性：是指语言表达恰当，考虑到了情境、交际对象和语体变化等因素。"
+    },
+    {
+     "file": "pac-c09-02.manifest.json",
+     "unit": "Q96",
+     "check": "P13",
+     "mine": "M4",
+     "r46": "M0",
+     "evidence": {
+      "kw": "写作"
+     },
+     "sample": "## 九、 写作（共10分）略"
+    },
+    {
+     "file": "pac-c11-01.manifest.json",
+     "unit": "Q52",
+     "check": "P13",
+     "mine": "M2",
+     "r46": "M0",
+     "evidence": {
+      "n_paren": 4
+     },
+     "sample": "7. （5分）（1）Na（2）H_{2}O （3）H_{2}SiO_{3}（4）NH_{4}NO_{3} 取少量该化合物"
+    },
+    {
+     "file": "pac-c11-01.manifest.json",
+     "unit": "Q54",
+     "check": "P13",
+     "mine": "M2",
+     "r46": "M5",
+     "evidence": {
+      "n_paren": 3
+     },
+     "sample": "9. （6分）（1）a （2）b （3） $ 2H_2SO_3 + O_2 = 2SO_4^{2-} + 4H^+ $"
+    }
+   ],
+   "family_agreement": {
+    "numerator": 78,
+    "denominator": 78,
+    "proof": "族映射:P13→格式盲区;M1/R1→printed-canon 观察;其余→编号行首族;桶界差异不构成事实分歧",
+    "cross_family_rows": []
+   }
+  },
+  "L2b_residual_audit": {
+   "n_unclassified_claim": 24,
+   "n_unclassified_actual": 24,
+   "my_buckets": {
+    "printed=None题号族": 3,
+    "写作提示/评分细则": 5,
+    "括号子问答案连写": 2,
+    "散文式解析答案": 1,
+    "略式答案": 2,
+    "答案键字母超A-D": 1,
+    "紧凑答案行": 6,
+    "题干/材料内编号": 4
+   },
+   "my_bucket_sum": 24,
+   "r46_log_itemization_sum": 23,
+   "r46_itemization_arithmetic_ok": false,
+   "rows": [
+    {
+     "file": "pac-c01-02.manifest.json",
+     "unit": "Q27",
+     "check": "P13",
+     "bucket": "略式答案",
+     "evidence": {
+      "has_略": true
+     },
+     "sample": "## （27） 略"
+    },
+    {
+     "file": "pac-c02-02.manifest.json",
+     "unit": "Q25",
+     "check": "P14",
+     "bucket": "题干/材料内编号",
+     "evidence": {
+      "raw": "1. 削弱了帝国主义和殖民主义力量"
+     },
+     "sample": "1. 削弱了帝国主义和殖民主义力量"
+    },
+    {
+     "file": "pac-c02-02.manifest.json",
+     "unit": "Q25",
+     "check": "P14",
+     "bucket": "题干/材料内编号",
+     "evidence": {
+      "raw": "2. 动摇了欧洲的世界优势地位"
+     },
+     "sample": "2. 动摇了欧洲的世界优势地位"
+    },
+    {
+     "file": "pac-c02-02.manifest.json",
+     "unit": "Q25",
+     "check": "P14",
+     "bucket": "题干/材料内编号",
+     "evidence": {
+      "raw": "3. ___"
+     },
+     "sample": "3. ___"
+    },
+    {
+     "file": "pac-c02-02.manifest.json",
+     "unit": "Q25",
+     "check": "P14",
+     "bucket": "题干/材料内编号",
+     "evidence": {
+      "raw": "4. 促进了殖民地半殖民地国家的民族觉醒"
+     },
+     "sample": "4. 促进了殖民地半殖民地国家的民族觉醒"
+    },
+    {
+     "file": "pac-c05-01.manifest.json",
+     "unit": "Q9",
+     "check": "P13",
+     "bucket": "紧凑答案行",
+     "evidence": {
+      "compact": true
+     },
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "file": "pac-c05-01.manifest.json",
+     "unit": "Q10",
+     "check": "P13",
+     "bucket": "紧凑答案行",
+     "evidence": {
+      "compact": true
+     },
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "file": "pac-c05-01.manifest.json",
+     "unit": "Q11",
+     "check": "P13",
+     "bucket": "紧凑答案行",
+     "evidence": {
+      "compact": true
+     },
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "file": "pac-c05-01.manifest.json",
+     "unit": "Q12",
+     "check": "P13",
+     "bucket": "紧凑答案行",
+     "evidence": {
+      "compact": true
+     },
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "file": "pac-c05-01.manifest.json",
+     "unit": "Q13",
+     "check": "P13",
+     "bucket": "紧凑答案行",
+     "evidence": {
+      "compact": true
+     },
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "file": "pac-c05-01.manifest.json",
+     "unit": "Q14",
+     "check": "P13",
+     "bucket": "紧凑答案行",
+     "evidence": {
+      "compact": true
+     },
+     "sample": "9.1 10.-1 11.(0,2) 12.1 13.a<0 14.①②⑤"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-7to5-35-39",
+     "check": "P13",
+     "bucket": "答案键字母超A-D",
+     "evidence": {
+      "beyond_D": true
+     },
+     "sample": "35-39 DEFGB"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-Essay-44",
+     "check": "P14",
+     "bucket": "写作提示/评分细则",
+     "evidence": {
+      "unit_is_essay": true
+     },
+     "sample": "2. 不能参加的原因："
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-Essay-44",
+     "check": "P14",
+     "bucket": "写作提示/评分细则",
+     "evidence": {
+      "unit_is_essay": true
+     },
+     "sample": "3. 解决办法的建议。"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-Essay-44",
+     "check": "P14",
+     "bucket": "写作提示/评分细则",
+     "evidence": {
+      "kw": "开头与结尾"
+     },
+     "sample": "2. 文章开头与结尾已给出，不计入总词数。"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-Essay-44",
+     "check": "P15",
+     "bucket": "写作提示/评分细则",
+     "evidence": {
+      "kw": "语言准确性"
+     },
+     "sample": "2. 语言准确性：包括语法、用词、拼写、大小写及标点符号等要素。其中，语法包括主谓一致、时态、数、人称、冠词、代词、介词"
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "unit": "U-Essay-44",
+     "check": "P15",
+     "bucket": "写作提示/评分细则",
+     "evidence": {
+      "kw": "得体性"
+     },
+     "sample": "3. 得体性：是指语言表达恰当，考虑到了情境、交际对象和语体变化等因素。"
+    },
+    {
+     "file": "pac-c09-01.manifest.json",
+     "unit": "Q26",
+     "check": "P14",
+     "bucket": "printed=None题号族",
+     "evidence": {
+      "printed": []
+     },
+     "sample": "1\\. （3分）补齐物质及其用途的连线。"
+    },
+    {
+     "file": "pac-c09-01.manifest.json",
+     "unit": "Q30",
+     "check": "P14",
+     "bucket": "printed=None题号族",
+     "evidence": {
+      "printed": []
+     },
+     "sample": "5. （8分）阅读短文，回答问题。"
+    },
+    {
+     "file": "pac-c09-02.manifest.json",
+     "unit": "Q96",
+     "check": "P13",
+     "bucket": "略式答案",
+     "evidence": {
+      "has_略": true
+     },
+     "sample": "## 九、 写作（共10分）略"
+    },
+    {
+     "file": "pac-c11-01.manifest.json",
+     "unit": "Q52",
+     "check": "P13",
+     "bucket": "括号子问答案连写",
+     "evidence": {
+      "paren": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ]
+     },
+     "sample": "7. （5分）（1）Na（2）H_{2}O （3）H_{2}SiO_{3}（4）NH_{4}NO_{3} 取少量该化合物"
+    },
+    {
+     "file": "pac-c12-02.manifest.json",
+     "unit": "Q20",
+     "check": "P13",
+     "bucket": "括号子问答案连写",
+     "evidence": {
+      "paren": [
+       "1",
+       "2",
+       "3"
+      ]
+     },
+     "sample": "20. （1）铯（2）b（3）a"
+    },
+    {
+     "file": "pac-c12-02.manifest.json",
+     "unit": "Q24",
+     "check": "P13",
+     "bucket": "散文式解析答案",
+     "evidence": {
+      "has_解析": true
+     },
+     "sample": "24. （6分）【解析】"
+    },
+    {
+     "file": "pac-c13-02.manifest.json",
+     "unit": "Q20",
+     "check": "P15",
+     "bucket": "printed=None题号族",
+     "evidence": {
+      "printed": []
+     },
+     "sample": "1\\. 整体性原则：新材料作文的审题要有全局意识，要从材料的整体着眼，不能纠缠局部的细节。否则很有可能出现偏题走题现象。"
+    }
+   ]
+  },
+  "L3_r45_itemization": {
+   "itemized_sum": 65,
+   "plus_noise": 2,
+   "total_claim": 78,
+   "arithmetic_ok": false
+  },
+  "L5_coverage_exhaustive": {
+   "claim_scope": "R45 声明域 = 10 份抽验卷(含具名 3 份);22/22 为本轮扩展攻击域,不据以翻转 R45 声明",
+   "named_files_ok": true,
+   "all22_perfect": true,
+   "n_files": 22,
+   "rows": [
+    {
+     "file": "pac-c01-01.manifest.json",
+     "ok": true,
+     "max": 30,
+     "n_units_numbers": 30,
+     "missing": [],
+     "dups": {},
+     "named_claim": {
+      "max": 30,
+      "n_nums": 30
+     },
+     "named_match": true
+    },
+    {
+     "file": "pac-c01-02.manifest.json",
+     "ok": true,
+     "max": 28,
+     "n_units_numbers": 28,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c02-01.manifest.json",
+     "ok": true,
+     "max": 26,
+     "n_units_numbers": 26,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c02-02.manifest.json",
+     "ok": true,
+     "max": 32,
+     "n_units_numbers": 32,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c05-01.manifest.json",
+     "ok": true,
+     "max": 20,
+     "n_units_numbers": 20,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c05-02.manifest.json",
+     "ok": true,
+     "max": 21,
+     "n_units_numbers": 21,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c06-01.manifest.json",
+     "ok": true,
+     "max": 19,
+     "n_units_numbers": 19,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c06-02.manifest.json",
+     "ok": true,
+     "max": 20,
+     "n_units_numbers": 20,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c07-01.manifest.json",
+     "ok": true,
+     "max": 35,
+     "n_units_numbers": 35,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c07-02.manifest.json",
+     "ok": true,
+     "max": 21,
+     "n_units_numbers": 21,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c08-01.manifest.json",
+     "ok": true,
+     "max": 44,
+     "n_units_numbers": 44,
+     "missing": [],
+     "dups": {},
+     "named_claim": {
+      "max": 44,
+      "n_nums": 44
+     },
+     "named_match": true
+    },
+    {
+     "file": "pac-c08-02.manifest.json",
+     "ok": true,
+     "max": 20,
+     "n_units_numbers": 20,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c09-01.manifest.json",
+     "ok": true,
+     "max": 34,
+     "n_units_numbers": 34,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c09-02.manifest.json",
+     "ok": true,
+     "max": 96,
+     "n_units_numbers": 96,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c10-01.manifest.json",
+     "ok": true,
+     "max": 20,
+     "n_units_numbers": 20,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c10-02.manifest.json",
+     "ok": true,
+     "max": 18,
+     "n_units_numbers": 18,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c11-01.manifest.json",
+     "ok": true,
+     "max": 56,
+     "n_units_numbers": 56,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c11-02.manifest.json",
+     "ok": true,
+     "max": 19,
+     "n_units_numbers": 19,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c12-01.manifest.json",
+     "ok": true,
+     "max": 28,
+     "n_units_numbers": 28,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c12-02.manifest.json",
+     "ok": true,
+     "max": 25,
+     "n_units_numbers": 25,
+     "missing": [],
+     "dups": {}
+    },
+    {
+     "file": "pac-c13-01.manifest.json",
+     "ok": true,
+     "max": 34,
+     "n_units_numbers": 34,
+     "missing": [],
+     "dups": {},
+     "named_claim": {
+      "max": 34,
+      "n_nums": 34
+     },
+     "named_match": true
+    },
+    {
+     "file": "pac-c13-02.manifest.json",
+     "ok": true,
+     "max": 20,
+     "n_units_numbers": 20,
+     "missing": [],
+     "dups": {}
+    }
+   ]
+  },
+  "L6_printed_c01_02": {
+   "n_units_claim": 28,
+   "n_units_actual": 28,
+   "unverified_claim": "28/28",
+   "unverified_recomputed": "28/28",
+   "stems_parenthesized": 28,
+   "stems_matched_by_PRINTED_LINE": 0,
+   "stems_other": 0,
+   "regex": "^\\s*(\\d{1,3})\\s*[.、．]",
+   "positive_control_c01_01_matched": 29,
+   "ok": true
+  },
+  "L4_c13_02_noise": {
+   "evidence_lines": {
+    "题干区共1小题": [
+     "L275:六、本大题共1小题，共40分。",
+     "L341:## 二、 本大题共1小题，共13分",
+     "L489:## 四、 本大题共1小题，共7分",
+     "L509:## 五、 本大题共1小题，共10分"
+    ],
+    "解析区共2小题": [
+     "L203:四、本大题共2小题，共7分。",
+     "L237:五、本大题共2小题，共10分。",
+     "L531:六、本大题共2小题，共40分．从下面两个题目中任选一题，按要求作答．不少于700字．将题目抄写在答题"
+    ]
+   },
+   "Q20_printed_number": null,
+   "Q20_printed_provenance": "unknown",
+   "Q20_canon": [
+    20
+   ],
+   "printed_none_not_forged": true,
+   "ok": true
+  },
+  "L7_track_deep_review": {
+   "n": 22,
+   "method_深度": 22,
+   "verdict_pass": 18,
+   "verdict_fail": 4,
+   "header_qc": [
+    18,
+    4
+   ],
+   "empty_notes": [],
+   "artifact_level_ok": true,
+   "boundary": "artifact 字段级可证;'人类确实逐题阅读'是过程声明,机器不可证,如实限定"
+  }
+ },
+ "p0_input_integrity": {
+  "baseline": "R50_input_baseline",
+  "corpus_sha256": "795ee1e7663424c1245e651d2139573d3bd2322f06662cc677bc0e7e3bc89beb",
+  "ok": true,
+  "drift": [],
+  "missing": []
+ },
+ "p0_evidence_snapshot": {
+  "audit_id": "R55_r45_evidence",
+  "n_files": 3,
+  "corpus_sha256": "e4a5a19756ff9ec4e235456a2587f0fc379aa005c59ec54afc2c496b112b79c4"
+ },
+ "p9_mutations": [
+  {
+   "m": "M-a探针工件删报警",
+   "expected_recompute_mismatch": true,
+   "recomputed": 77,
+   "caught": true,
+   "ok": true
+  },
+  {
+   "m": "M-b答案值篡改X→Z(重编译,生产可representable)",
+   "target_file": "pac-c06-02.md",
+   "unit": "Q1",
+   "text_changed": true,
+   "qc_verdict": "PASS",
+   "probe_alarms_after": 0,
+   "interpretation": "结构链(QC/探针)对答案值级语义错误无检出义务——'0 新缺陷'=78 报警的分诊结论,非语料无缺陷证明",
+   "ok": true
+  },
+  {
+   "m": "RM1_撤销转义点容忍",
+   "exit": 1,
+   "expected_test": "test_r55_t2",
+   "caught": true,
+   "ok": true
+  },
+  {
+   "m": "RM2_M1退回P15限定",
+   "exit": 1,
+   "expected_test": "test_r55_t1",
+   "caught": true,
+   "ok": true
+  },
+  {
+   "m": "RM3_md_of退回with_suffix陷阱",
+   "exit": 1,
+   "expected_test": "test_r55_t9",
+   "caught": true,
+   "ok": true
+  },
+  {
+   "m": "restore_clean",
+   "restored_sha": true,
+   "exit": 0,
+   "ok": true
+  }
+ ],
+ "findings": [
+  {
+   "id": "F-r55-1",
+   "severity": "ledger-arithmetic",
+   "statement": "R45 分项算术不成立(65+2=67≠78)——R46 已更正,本轮独立复证该更正成立",
+   "evidence": "L3_r45_itemization"
+  },
+  {
+   "id": "F-r55-2",
+   "severity": "ledger-arithmetic",
+   "statement": "R46 对 R45 的更正自身亦有分项缺口:残差 24 条的分项之和 = 23(紧凑答案行 6+1 计入 c11-01 Q52,漏计 pac-c12-02 Q20 P13 '20. （1）铯（2）b（3）a'——同为括号子问答案连写族,良性盲区)",
+   "evidence": "L2b_residual_audit(my_bucket_sum=24 vs r46_log_itemization_sum=23,rows 逐条留档)"
+  },
+  {
+   "id": "F-r55-3",
+   "severity": "methodology",
+   "statement": "分项数字(R45/R46/R55 三套)桶界互异、均非事实层;顶层命题『78 报警 = 探针盲区/源卷噪音,无新缺陷』在族级一致 78/78 下独立复证成立",
+   "evidence": "L2_classifier_crosscheck.family_agreement"
+  },
+  {
+   "id": "F-r55-4",
+   "severity": "audit-tool-defect",
+   "statement": "R55 独立分类器首版两处缺陷(check==P15 错误限定致 M1 漏检;行首正则不认 OCR 转义点 `1\\.`)由与 R46 分类的交叉比对抓获并修复;修复后族级一致78/78",
+   "evidence": "本文件版本历史 + L2 crosscheck 前后对比"
+  }
+ ],
+ "all_ok": true
+}
