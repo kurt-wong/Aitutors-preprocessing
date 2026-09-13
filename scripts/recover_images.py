@@ -35,8 +35,6 @@ import re
 import sys
 import time
 
-import fitz  # PyMuPDF
-
 BASE = r"D:\Project\Papers"
 OCR_ROOT = os.path.join(BASE, "Ocr-markdown")
 PDF_ROOT = os.path.join(BASE, "maintainess", "PDF")
@@ -45,13 +43,22 @@ AUDIT = os.path.join(BASE, "data", "recover_images_audit.jsonl")
 LOG = os.path.join(BASE, "logs", "recover_images_log.txt")
 SUMMARY = os.path.join(BASE, "data", "recover_images_summary.json")
 
-SCAN_DIRS = ["高一", "高二", "高三", "未分类"]      # 原始 OCR md
-EXTRA_REWRITE_DIRS = [os.path.join("auto-annotated-v6")]  # 同步重写引用
+# BUG-11 修复:不再硬编码源目录白名单(目录布局变更会静默失配),
+# 改为"排除派生目录,其余顶层目录一律视为源"——新增源目录自动纳入;
+# 误纳派生目录的代价只是多扫(已重写/无引用文件幂等跳过),不会漏修。
+EXCLUDED_TOP_NAMES = {"_imgs", ".cache"}                     # 精确排除
+EXCLUDED_TOP_PREFIXES = ("auto-annotated", "reslice")        # 前缀排除(派生/输出目录)
 
 PAGE_SEP = re.compile(r"(?m)^---\r?\n")
 REF = re.compile(r"(?<!_)imgs/([^)\"'\s\>]+?\.jpg)")
 BOX = re.compile(r"_box_(\d+)_(\d+)_(\d+)_(\d+)")
 BASE_ZOOM = 2.0  # 144DPI
+
+
+def _fitz():
+    """惰性导入 PyMuPDF:扫描/干跑/测试离线可用,CI 无需安装 fitz。"""
+    import fitz
+    return fitz
 
 
 def log(msg):
@@ -70,17 +77,26 @@ def build_pdf_index():
     return idx
 
 
-def scan_md_files():
+def is_source_top_dir(name):
+    """顶层目录是否为源 md 目录(排除派生/输出目录)。"""
+    if name in EXCLUDED_TOP_NAMES:
+        return False
+    return not name.startswith(EXCLUDED_TOP_PREFIXES)
+
+
+def scan_md_files(root=OCR_ROOT):
     out = []
-    for d in SCAN_DIRS:
-        full = os.path.join(OCR_ROOT, d)
+    for name in sorted(os.listdir(root)):
+        if not is_source_top_dir(name):
+            continue
+        full = os.path.join(root, name)
         if not os.path.isdir(full):
             continue
-        for root, dirs, files in os.walk(full):
+        for r, dirs, files in os.walk(full):
             dirs[:] = [x for x in dirs if x != "_imgs"]
             for fn in files:
                 if fn.lower().endswith(".md"):
-                    out.append(os.path.join(root, fn))
+                    out.append(os.path.join(r, fn))
     return sorted(out)
 
 
@@ -97,6 +113,7 @@ def refs_by_page(text):
 
 def crop_page(pdf, page_idx, names, zoom=BASE_ZOOM):
     """渲染指定页并按引用名中的坐标裁剪。返回 {name: bytes|None}"""
+    fitz = _fitz()
     page = pdf[page_idx]
     pw, ph = page.rect.width, page.rect.height
 
@@ -183,7 +200,7 @@ def process_one(md_path, pdf_index, audit_f, stats, dry_run):
     manifest = {"md": md_path, "pdf": pdf_path, "pages": n_pages, "images": []}
 
     try:
-        pdf = fitz.open(pdf_path)
+        pdf = _fitz().open(pdf_path)
     except Exception as e:
         stats["pdf_error"] += 1
         log(f"  [PDF-ERR] {base}: {e}")

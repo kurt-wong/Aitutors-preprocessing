@@ -1,0 +1,106 @@
+{
+ "round": "R58 BUG-11",
+ "scanned_total_new_scope": 3119,
+ "scanned_total_old_scope": 2421,
+ "newly_visible": 698,
+ "pdf_index_size": 12707,
+ "per_dir": {
+  "会考": {
+   "md_total": 17,
+   "with_dangling_refs": 0,
+   "dangling_ref_total": 0,
+   "already_marked": 15,
+   "recover_candidate": 0,
+   "pdf_miss": 0
+  },
+  "其他汇编": {
+   "md_total": 4,
+   "with_dangling_refs": 0,
+   "dangling_ref_total": 0,
+   "already_marked": 2,
+   "recover_candidate": 0,
+   "pdf_miss": 0
+  },
+  "合格考": {
+   "md_total": 71,
+   "with_dangling_refs": 0,
+   "dangling_ref_total": 0,
+   "already_marked": 60,
+   "recover_candidate": 0,
+   "pdf_miss": 0
+  },
+  "学业水平考试": {
+   "md_total": 1,
+   "with_dangling_refs": 0,
+   "dangling_ref_total": 0,
+   "already_marked": 1,
+   "recover_candidate": 0,
+   "pdf_miss": 0
+  },
+  "未分类": {
+   "md_total": 145,
+   "with_dangling_refs": 129,
+   "dangling_ref_total": 2374,
+   "already_marked": 0,
+   "recover_candidate": 129,
+   "pdf_miss": 0
+  },
+  "竞赛自招": {
+   "md_total": 6,
+   "with_dangling_refs": 0,
+   "dangling_ref_total": 0,
+   "already_marked": 2,
+   "recover_candidate": 0,
+   "pdf_miss": 0
+  },
+  "高一": {
+   "md_total": 884,
+   "with_dangling_refs": 104,
+   "dangling_ref_total": 1984,
+   "already_marked": 655,
+   "recover_candidate": 104,
+   "pdf_miss": 0
+  },
+  "高三": {
+   "md_total": 798,
+   "with_dangling_refs": 130,
+   "dangling_ref_total": 3116,
+   "already_marked": 556,
+   "recover_candidate": 130,
+   "pdf_miss": 0
+  },
+  "高二": {
+   "md_total": 594,
+   "with_dangling_refs": 136,
+   "dangling_ref_total": 2965,
+   "already_marked": 376,
+   "recover_candidate": 136,
+   "pdf_miss": 0
+  },
+  "高考真题": {
+   "md_total": 599,
+   "with_dangling_refs": 0,
+   "dangling_ref_total": 0,
+   "already_marked": 515,
+   "recover_candidate": 0,
+   "pdf_miss": 0
+  }
+ },
+ "totals_new_scope": {
+  "md_total": 3119,
+  "with_dangling_refs": 499,
+  "dangling_ref_total": 10439,
+  "already_marked": 2182,
+  "recover_candidate": 499,
+  "pdf_miss": 0
+ },
+ "totals_old_scope": {
+  "md_total": 2421,
+  "with_dangling_refs": 499,
+  "dangling_ref_total": 10439,
+  "already_marked": 1587,
+  "recover_candidate": 499,
+  "pdf_miss": 0
+ },
+ "delta_recover_candidates": 0
+}
