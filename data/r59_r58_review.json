@@ -1,0 +1,129 @@
+{
+ "round": "R59",
+ "target": "R58 BUG-11",
+ "findings": [
+  "P4 '误纳仅多扫'不成立:无排除政策下 84 份派生 md 会被真实处理(提取图片+就地重写+审计记录)"
+ ],
+ "P1_scope_ledger": {
+  "per_dir_md_independent": {
+   "会考": 17,
+   "其他汇编": 4,
+   "合格考": 71,
+   "学业水平考试": 1,
+   "未分类": 145,
+   "竞赛自招": 6,
+   "高一": 884,
+   "高三": 798,
+   "高二": 594,
+   "高考真题": 599
+  },
+  "total_independent": 3119,
+  "old_scope_independent": 2421,
+  "newly_visible_independent": 698,
+  "r58_total": 3119,
+  "r58_old": 2421,
+  "r58_newly": 698,
+  "per_dir_match_r58": {
+   "未分类": true,
+   "其他汇编": true,
+   "合格考": true,
+   "高一": true,
+   "学业水平考试": true,
+   "竞赛自招": true,
+   "高考真题": true,
+   "会考": true,
+   "高二": true,
+   "高三": true
+  },
+  "derived_tops": [
+   ".cache",
+   "_imgs",
+   "auto-annotated-v3",
+   "auto-annotated-v6",
+   "reslice-audit-a5",
+   "reslice-batch-C",
+   "reslice-pac",
+   "reslice-pac-annotated",
+   "reslice-stress10",
+   "reslice-test-v21",
+   "resliced-pilot"
+  ],
+  "root_level_md": [
+   "README.md"
+  ],
+  "classification_gap": [],
+  "scan_list_deterministic_sorted": true,
+  "total_match": true,
+  "old_match": true,
+  "newly_match": true
+ },
+ "P2_blind_zero_dangling": {
+  "blind_files": 698,
+  "imgs_ref_anyext_hits": 0,
+  "src_total": 12321,
+  "src_to_imgs_recovered": 12316,
+  "src_dangling_imgs": 0,
+  "src_other": 5,
+  "src_other_samples": [
+   "https://latex.codecogs.com/svg.image?\\inline&space;\\bigcirc",
+   "https://latex.codecogs.com/svg.image?\\inline&space;\\bigcirc",
+   "https://latex.codecogs.com/svg.image?\\inline&space;\\bigcirc",
+   "https://latex.codecogs.com/svg.image?\\inline&space;\\bigcirc",
+   "https://latex.codecogs.com/svg.image?\\inline&space;\\bigcirc"
+  ],
+  "markdown_img_syntax": 0,
+  "marked_gaokao": 515,
+  "marked_dir_missing": [],
+  "unmarked_gaokao": 84,
+  "unmarked_with_imgs_ref": [],
+  "r58_claim_dangling_candidates_in_blind": 0,
+  "claim_robust_wide_grammar": true
+ },
+ "P4_overinclusion_cost": {
+  "derived_dirs_md": 1762,
+  "with_raw_refs": 143,
+  "raw_ref_total": 2542,
+  "would_process_pdf_hit": 84,
+  "per_dir": {
+   "auto-annotated-v3": {
+    "md": 101,
+    "with_raw_refs": 82,
+    "raw_refs": 1468,
+    "would_process": 82
+   },
+   "auto-annotated-v6": {
+    "md": 1434
+   },
+   "reslice-audit-a5": {
+    "md": 4
+   },
+   "reslice-batch-C": {
+    "md": 100,
+    "with_raw_refs": 4,
+    "raw_refs": 98,
+    "would_process": 2
+   },
+   "reslice-pac": {
+    "md": 22,
+    "with_raw_refs": 19,
+    "raw_refs": 329
+   },
+   "reslice-pac-annotated": {
+    "md": 44,
+    "with_raw_refs": 38,
+    "raw_refs": 647
+   },
+   "reslice-stress10": {
+    "md": 18
+   },
+   "reslice-test-v21": {
+    "md": 6
+   },
+   "resliced-pilot": {
+    "md": 33
+   }
+  },
+  "r58_claim": "误纳派生目录的代价只是多扫(幂等跳过),不会漏修",
+  "claim_holds": false
+ }
+}
