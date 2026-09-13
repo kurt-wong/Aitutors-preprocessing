@@ -1466,3 +1466,34 @@ R58 七项结论:**6 项成立、1 项措辞级证伪(已更正)**;0 代码行�
 **冻结链变更申报**:`reslice_qc.py` 本轮有变更(C15,用户批准的 BUG-31 修复范围),变更面 = `src_of` 裸下标改 `.get` + `check()` 顶部 provenance 守卫(FAIL 早退),**既有 C1–C14 检查逻辑零改动**;`resolver_reference.py` / `audit_f1_consistency.py` 同轮变更均为 fail-closed 守卫。R60 攻击脚本与 R60 工件**未修改**(provenance 纪律;t7 改断言而非改武器)。
 
 **结果**:BUG-31 🟢 CLOSED(修复边界内);G-TRUTH-1 + C15 入册;BUG-14 命名拆分落地;套件 **199 passed + 1 xfailed**(197+2: t7 转正 + t7b 新增;CI 预期 180 passed / 19 skipped / 1 xfailed)。下一项按用户排序 = **BUG-14-DATA**(未分类跑步机 + 73 重复源)。
+
+---
+
+## R62(2026-09-13):R61 全部结果对抗性审查(用户令:每结论必须真实测试证据)
+
+**输入**:用户令——对 R61 全部结果开启严格对抗审查;不降低测试标准、不自我合理化、不强行解释未通过项、不靠推测下结论。
+
+**审查结论一览(9 主张:8 成立 / 1 项发现台账重复缺陷;另获 2 个新缺陷 + 1 测试隐患,均已处置)**:
+
+1. ✅ **R61 diff 面核对**:变更集恰为预期 10 文件(`git diff --stat 5335adc 0d64549`);"C1–C14 逻辑零改动"经完整 diff 逐 hunk 复核成立(reslice_qc 仅 2 hunk:`src_of` 改 `.get` + C15 守卫,插在 `src_text` 读取之前);R60 武器 `r60_fact_drift_attack.py` + `data/r60_fact_drift_attack.json` diff 为空(provenance 纪律)✅。
+2. ✅ **本地套件独立重跑**:199 passed + 1 xfailed(xfail 落点 = `test_anchor.py` 锚点顺序义务钉,与 R61 无关);t7/t7b 单独跑 PASSED ✅。
+3. ✅ **CI 复核(按 sha)**:run 34742571215 headSha 精确匹配 `0d64549`,conclusion=success,CI 日志原文 **"180 passed, 19 skipped, 1 xfailed"** 逐字复现 ✅。
+4. ✅ **M4–M7 变异独立复跑**(`.pytest_work/r61_mutation_driver.py`):4/4 BITE + 全部 restored=True(逐字节还原)✅。
+5. ✅ **G-TRUTH-1/C15 实证文本核对**:契约 D.5 全文在册(含"F1 冻结不扩面");rule_registry C15 行(L39)+ G-TRUTH-1 行(L71)在册;双向钉靠 rr_t1/rr_t2 + M7 咬合(注:登记册测试钉的是文本存在,行为钉在 t7——分工如实记录)✅。
+6. ✅ **BUG-31 修复边界(值域族)对抗延伸**:`source_file` = null/""/纯空白/不存在路径/**已存在目录**(K2–K6,新攻击面,R61 未测)全部三层 fail-closed(MISSING/C15 FAIL/DRIFT),无一崩、无一降级 ADMITTED ✅。"禁 fallback/禁猜路径/禁降级"经 diff + 行为双证 ✅。
+7. ✅ **K11 非法 UTF-8 源**:三组件零崩溃(`errors="replace"` 契约成立);resolver 如实消费 QC 裁决 REJECTED_QC_FAIL(篡改使 C8 保真失败);F1 无 IR 索引时区级 MATCH 属如实(sha 比对在 IR zone)——观察入账,非缺陷。
+8. 🔴 **F-r62-1(台账缺陷,当轮修复)**:R61 在 bugs.md **重复插入 BUG-14-CHAIN 两次**(L35/L118,措辞分歧)——保留 L35(位置与 BUG-14-DATA 相邻,条款等义),删除 L118 副本。
+9. 🟠 **F-r62-2(测试隐患,当轮修复)**:`test_no_config_import.py:27` / `test_run_paths.py:48` 的 `subprocess.run(text=True)` 未指定编码 → 读线程按宿主 GBK 解码子进程 UTF-8 输出失败(全量跑实测 `PytestUnhandledThreadExceptionWarning: 'gbk' codec can't decode byte 0x8c`)。修:显式 `encoding="utf-8", errors="replace"`。**前后对比**:修前全量 1 warning,修后 0 warning。
+
+**新缺陷(对抗延伸抓获,PENDING_REVIEW,本轮不擅改生产件)**:
+
+- **BUG-32(🟠)**:非字符串 `source_file`(int/dict/list/bool,K7–K10)三组件全部 `TypeError` 崩;**K13 实测批处理整批死**(`run()` L254 列表推导无逐文件兜底)。预存(非 R61 回归),违反 C-FAIL-1;生产 `write_outputs` 恒写字符串,可达性=篡改/损坏/手编。义务钉 `test_r62_t4`(strict xfail,修复转正强制翻绿)。
+- **BUG-33(🟠)**:源文件拒读(OSError)时 **resolver 兜底层活体实证 MISSING("source unreadable")**(R61 新增层首次获得真实条件证明,非纸面推断),但 QC(C15 之后裸读)/ F1 无 OSError 守卫 → 双 CRASH(K12)。预存,违反 C-FAIL-1;可达性=进程独占/ACL/网络盘瞬态。K12 条件制造过程如实入账:icacls 被沙箱拒(rc=5)→ 改用 CreateFileW 独占句柄,条件先实证(PermissionError)后观测。义务钉 `test_r62_t5`(strict xfail)+ `test_r62_t3`(resolver 兜底活体证明,现即通过,Windows-only)。
+
+**新增回归钉**:`tests/test_r62_boundary.py` 9 用例(t1×5 值族 fail-closed / t2 非法 UTF-8 禁崩 / t3 resolver 兜底活体 / t4 BUG-32 xfail / t5 BUG-33 xfail;t3/t5 Windows-only skipif,CI ubuntu 如实 skip)。
+
+**武器**:`scripts/r62_boundary_audit.py`(一次性,黑盒观测,变异只落 `.pytest_work/r62` 合成件)+ 工件 `data/r62_boundary_audit.json`(13 用例全量观测)。
+
+**审计纪律自证**:K12 首跑条件未成立(NOT_PRODUCIBLE)即如实 SKIP 而非宣称通过,换手段把条件真实制造出来后才出结论;BUG-32/33 定性"预存非回归"以 R61 前代码路径为据(`Path(123)` TypeError / 裸 `read_text` 均先于 R61 存在)。
+
+**结果**:R61 八项主张全部复证成立;F-r62-1/F-r62-2 当轮修复;BUG-32/BUG-33 登记待裁定;套件 **206 passed + 3 xfailed**(CI 预期 185 passed / 21 skipped / 3 xfailed = 本地 −19 corpus −2 win-only +2 skip)。下一项维持用户排序 = **BUG-14-DATA**。

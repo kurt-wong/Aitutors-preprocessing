@@ -1,0 +1,179 @@
+{
+ "meta": {
+  "round": "R62",
+  "date": "2026-09-13",
+  "weapon": "scripts/r62_boundary_audit.py (one-off)",
+  "note": "黑盒观测;所有变异仅落在 .pytest_work/r62 合成件"
+ },
+ "manifest_cases": {
+  "K1_missing_key": {
+   "mutation": "pop source_file key",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file missing or not a file: . (provenance break, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K2_null": {
+   "mutation": "source_file=null",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file missing or not a file: . (provenance break, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K3_empty": {
+   "mutation": "source_file=''",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file missing or not a file: . (provenance break, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K4_whitespace": {
+   "mutation": "source_file='   '",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file missing or not a file:     (provenance break, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K5_nonexistent": {
+   "mutation": "source_file='nope.md'",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file missing or not a file: nope.md (provenance break, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K6_directory": {
+   "mutation": "source_file=已存在目录(out_dir)",
+   "verdict": "NO_CRASH",
+   "obs": {
+    "resolver": "MISSING",
+    "resolver_reason_head": "source_file missing or not a file: D:\\Project\\Papers\\.pytest_work\\r62\\K6_directory\\out (provenance break, fail-closed)",
+    "resolver_content_q1_stem": null,
+    "qc": "FAIL",
+    "f1": "DRIFT",
+    "f1_drift_zones": []
+   }
+  },
+  "K7_int": {
+   "mutation": "source_file=123",
+   "verdict": "CRASH_GAP:resolver,qc,f1",
+   "obs": {
+    "resolver": "CRASH",
+    "resolver_exc": "TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'int'",
+    "qc": "CRASH",
+    "qc_exc": "TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'int'",
+    "f1": "CRASH",
+    "f1_exc": "TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'int'",
+    "f1_trace": "ts\\audit_f1_consistency.py\", line 307, in check_file\n    src = Path(man.get(\"source_file\") or \"\")\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Kurtw\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1162, in __init__\n    super().__init__(*args)\n  File \"C:\\Users\\Kurtw\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 373, in __init__\n    raise TypeError(\nTypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'int'\n"
+   }
+  },
+  "K8_dict": {
+   "mutation": "source_file={'a':1}",
+   "verdict": "CRASH_GAP:resolver,qc,f1",
+   "obs": {
+    "resolver": "CRASH",
+    "resolver_exc": "TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'dict'",
+    "qc": "CRASH",
+    "qc_exc": "TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'dict'",
+    "f1": "CRASH",
+    "f1_exc": "TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'dict'",
+    "f1_trace": "s\\audit_f1_consistency.py\", line 307, in check_file\n    src = Path(man.get(\"source_file\") or \"\")\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Kurtw\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1162, in __init__\n    super().__init__(*args)\n  File \"C:\\Users\\Kurtw\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 373, in __init__\n    raise TypeError(\nTypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'dict'\n"
+   }
+  },
+  "K9_list": {
+   "mutation": "source_file=['x']",
+   "verdict": "CRASH_GAP:resolver,qc,f1",
+   "obs": {
+    "resolver": "CRASH",
+    "resolver_exc": "TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'list'",
+    "qc": "CRASH",
+    "qc_exc": "TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'list'",
+    "f1": "CRASH",
+    "f1_exc": "TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'list'",
+    "f1_trace": "s\\audit_f1_consistency.py\", line 307, in check_file\n    src = Path(man.get(\"source_file\") or \"\")\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Kurtw\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1162, in __init__\n    super().__init__(*args)\n  File \"C:\\Users\\Kurtw\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 373, in __init__\n    raise TypeError(\nTypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'list'\n"
+   }
+  },
+  "K10_bool": {
+   "mutation": "source_file=true",
+   "verdict": "CRASH_GAP:resolver,qc,f1",
+   "obs": {
+    "resolver": "CRASH",
+    "resolver_exc": "TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'bool'",
+    "qc": "CRASH",
+    "qc_exc": "TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'bool'",
+    "f1": "CRASH",
+    "f1_exc": "TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'bool'",
+    "f1_trace": "s\\audit_f1_consistency.py\", line 307, in check_file\n    src = Path(man.get(\"source_file\") or \"\")\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Kurtw\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1162, in __init__\n    super().__init__(*args)\n  File \"C:\\Users\\Kurtw\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 373, in __init__\n    raise TypeError(\nTypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'bool'\n"
+   }
+  }
+ },
+ "K11": {
+  "mutation": "源文件追加非法 UTF-8 字节",
+  "verdict": "NO_CRASH",
+  "obs": {
+   "resolver": "REJECTED_QC_FAIL",
+   "resolver_reason_head": "C8 锚点版与源文件不一致（32 vs 33 行, 前缀差异 0）",
+   "resolver_content_q1_stem": null,
+   "qc": "FAIL",
+   "f1": "MATCH",
+   "f1_drift_zones": []
+  }
+ },
+ "K12": {
+  "mutation": "源文件拒读",
+  "method": "CreateFileW-exclusive",
+  "condition": "PRODUCIBLE(PermissionError)",
+  "icacls_rc": 5,
+  "verdict": "CRASH_GAP:qc,f1",
+  "obs": {
+   "resolver": "MISSING",
+   "resolver_reason_head": "source unreadable: PermissionError(13, 'Permission denied') (fail-closed)",
+   "resolver_content_q1_stem": null,
+   "qc": "CRASH",
+   "qc_exc": "PermissionError: [Errno 13] Permission denied: 'D:\\\\Project\\\\Papers\\\\.pytest_work\\\\r62\\\\K12_acl_unreadable\\\\synthetic.md'",
+   "f1": "CRASH",
+   "f1_exc": "PermissionError: [Errno 13] Permission denied: 'D:\\\\Project\\\\Papers\\\\.pytest_work\\\\r62\\\\K12_acl_unreadable\\\\synthetic.md'",
+   "f1_trace": "ead_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Kurtw\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: 'D:\\\\Project\\\\Papers\\\\.pytest_work\\\\r62\\\\K12_acl_unreadable\\\\synthetic.md'\n"
+  }
+ },
+ "K13": {
+  "mutation": "批处理:good + source_file=123 bad",
+  "verdict": "BATCH_KILLED",
+  "exc": "TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'int'"
+ },
+ "summary": {
+  "crash_gap_cases": [
+   "K7_int",
+   "K8_dict",
+   "K9_list",
+   "K10_bool",
+   "K12",
+   "K13"
+  ],
+  "gap_count": 6
+ }
+}

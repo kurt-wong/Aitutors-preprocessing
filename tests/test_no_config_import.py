@@ -24,8 +24,11 @@ def _run(code, reslice_root, payload=None):
     if payload is not None:
         env["TEST_PAYLOAD"] = json.dumps(payload, ensure_ascii=False)
     # cwd=workdir:子进程产生的任何相对路径产物都落在临时目录,不污染仓库
+    # encoding 显式 utf-8:子进程输出含中文,禁依赖宿主区域设置(GBK 下读线
+    # 程 UnicodeDecodeError,R62 实测告警;见 log.md R62 F-r62-2)
     return subprocess.run([sys.executable, "-c", code], capture_output=True,
-                          text=True, env=env, cwd=str(reslice_root), timeout=180)
+                          text=True, encoding="utf-8", errors="replace",
+                          env=env, cwd=str(reslice_root), timeout=180)
 
 
 def test_import_succeeds_without_config(workdir):

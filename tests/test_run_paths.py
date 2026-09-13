@@ -45,10 +45,12 @@ def test_file_mode_with_out_end_to_end(workdir):
     src.write_text("1. 题干\n", encoding="utf-8", newline="")
     out = workdir / "out-x"
     env = dict(os.environ, RESLICE_ROOT=str(workdir), PYTHONPATH=str(SCRIPTS))
+    # encoding 显式 utf-8:禁依赖宿主区域设置(R62 F-r62-2,同 test_no_config_import)
     r = subprocess.run(
         [sys.executable, str(SCRIPTS / "reslice_pipeline.py"),
          "--file", str(src), "--out", str(out)],
-        capture_output=True, text=True, env=env, cwd=str(workdir), timeout=180)
+        capture_output=True, text=True, encoding="utf-8", errors="replace",
+        env=env, cwd=str(workdir), timeout=180)
     assert r.returncode == 0, r.stderr                     # 单文件失败不炸进程
     derived = workdir / "data" / "reslice_out-x_result.json"
     assert derived.exists(), "派生账目缺失:BUG-21 未修复"

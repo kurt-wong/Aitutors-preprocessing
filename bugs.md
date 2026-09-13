@@ -115,12 +115,6 @@
 
 ---
 
-### BUG-14-CHAIN · Source→Resolver→IR 事实一致性轨道(用户命名"BUG-14 第一阶段")　🟢 PHASE-1 DONE
-- **状态**:第一阶段 ✅ 完成(R60,用户 R60 审核裁定通过);**后续扩面暂缓**(用户裁定:先稳定,F1→F2→F3 是规则膨胀路径)
-- **登记**:2026-09-13(R61 命名拆分落地;R60 期间以"BUG-14 第一阶段"名义执行)
-- **第一阶段结论(R60)**:四攻击面无一静默漏网——A 字节篡改由 C8 整文件锚点保真拦(F1 区级不变量对 span 外漂移如实 MATCH,互补);B 越界 REJECTED_STALE、界内平移 resolver 静默属契约(G-TRUTH-1)而 F1 捕获;C provenance 断裂抓获 BUG-31(已修复);D "QC PASS+ADMITTED 双绿而答案错归属"坐实,F1 为唯一防线。证据 `data/r60_fact_drift_attack.json` + `tests/test_r60_fact_drift.py` + 变异 M1–M7。
-- **关闭条件(全部满足才可 CLOSED)**:① 契约澄清 G-TRUTH-1 落地 ✅(附录 D.5);② BUG-31 修复 ✅(R61);③ 用户对第一阶段验收 ✅(R60 审核裁决)。**本条按用户裁定作为轨道登记保留,不再扩面**;若未来重启扩面须用户裁定并新开轮次。
-
 ### BUG-31 · resolver/QC 对缺 `source_file` 的 manifest 非 fail-closed(三组件崩溃)　🟡（Resolver 边界 / R60 发现 / R61 修复）
 - **状态**：✅ 修复(2026-09-13 R61,用户 R60 审核裁定批准;修复边界=只加显式失败态,禁 fallback/禁补 source_file/禁猜路径/禁降级 ADMITTED)
 - **登记**：2026-09-13(R60,用户 R59 裁定的 Source→Resolver→IR 攻击面 C)
@@ -130,6 +124,24 @@
 - **修复(R61,三处,全部只加显式失败态)**:① resolver:`src.is_file()` 守卫 → MISSING("source_file missing or not a file (provenance break, fail-closed)"),另加 `OSError` 兜底 → MISSING("source unreadable");② QC:**新 C15**(规则登记册 §1 已登记,CI 双向钉住范围 14→15):provenance 缺失/非文件 → 显式 **FAIL**(verdict 三态内,不是新裁决态),`src_of` 改 `.get`;③ F1:`is_file` 守卫 → DRIFT(note 显式)。**未新增任何 fallback/猜测/路径补全,未降级任何 ADMITTED**。
 - **修复证据**:t7 转正(strict xfail→普通通过,断言三层全显式失败态 + QC 理由含 C15)+ **t7b 新增:批处理继续**(一份坏 manifest 不杀整批:{ADMITTED:1, MISSING:1});变异 M4(resolver 守卫回退)/M5(QC C15 回退)/M6(F1 守卫回退)/M7(登记册范围回退致 C15 幽灵行)4/4 咬合,还原后文件逐字节一致。M4 附带实证:resolver 的 is_file 守卫与 OSError 兜底互为双层,单层回退仍 fail-closed(t7b 如实过),t7 靠理由串区分两层。
 - **教训**：fail-closed 必须覆盖**自身**的每一条 I/O 路径,不能只包下游调用;`Path("")` 的存在性语义是 `.`(目录恒存在),`or ""` 默认值不是安全网,是通往目录读取的暗门。
+
+### BUG-32 · 非字符串 `source_file`(int/dict/list/bool)三组件 TypeError 全崩 + 批处理整批死　🟠（Resolver 边界 / R62 审查发现 / 待裁定）
+- **状态**：**PENDING_REVIEW**(R62 对抗审查发现;R62 不擅改生产件,修复方案待用户裁定)
+- **登记**：2026-09-13(R62,BUG-31 修复边界的对抗延伸:值类型攻击面)
+- **现象**：manifest `source_file` 为非字符串 JSON 值时,三组件全部 `TypeError: argument should be a str or an os.PathLike object ... not 'int'` 崩溃,无一 fail-closed;批处理 `resolver_reference.run()` 一份此类 manifest 即杀死整批(L254 列表推导无逐文件兜底)。实测 K7(int)/K8(dict)/K9(list)/K10(bool)四形态全崩,K13 批处理 BATCH_KILLED。
+- **性质定性**：**预存缺口,非 R61 回归**(R61 前 `Path(123)` 同样 TypeError);数据安全无损(崩溃≠静默 PASS),但违反 C-FAIL-1(不可计算必须机器可读拒收,禁崩)。可达性:生产 `write_outputs` 恒写字符串,缺口仅经篡改/损坏/手编 manifest 触达——低概率,但 t7b 承诺的"一份坏 manifest 不杀整批"对本家族不成立。
+- **位置**：三组件的 `Path(man.get("source_file") or "")` 家族构造点;`resolver_reference.run()` L254。
+- **修复方向（待裁定）**：显式类型校验 `isinstance(str)` 否则同 MISSING/C15/DRIFT 家族;run() 逐文件兜底。禁 fallback、禁猜测(同 BUG-31 边界)。
+- **证据**：`data/r62_boundary_audit.json` K7–K10/K13;义务钉 `tests/test_r62_boundary.py`(strict xfail,修复转正时强制翻绿)。
+
+### BUG-33 · 源文件拒读(OSError)时 QC/F1 未兜底崩溃(resolver 已兜底)　🟠（QC/F1 层 / R62 审查发现 / 待裁定）
+- **状态**：**PENDING_REVIEW**(R62 对抗审查发现;R62 不擅改生产件,修复方案待用户裁定)
+- **登记**：2026-09-13(R62,BUG-31 修复边界的对抗延伸:文件系统态攻击面 K12)
+- **现象**：源文件存在但拒读(Windows 独占句柄 sharing violation → `PermissionError`,沙箱内真实制造成功并实证)时:resolver 经 R61 的 `except OSError` 兜底 **MISSING("source unreadable ... fail-closed")** ✅(该兜底层首次获得活体实证,非纸面推断);但 QC `src.read_text`(C15 之后)与 F1 `check_file` 读源**无 OSError 守卫 → 两组件 CRASH**。
+- **性质定性**：**预存缺口,非 R61 回归**(R61 前 QC/F1 同样裸读);违反 C-FAIL-1。可达性:文件被其它进程独占(OCR 守护写入中)/ACL 变更/网络盘抖动——低概率瞬态,但 QC 是冻结生产链组件,批处理中同样整批死。
+- **位置**：`reslice_qc.check()` C15 之后的 `src.read_text`;`audit_f1_consistency.check_file` 读源 + `read_bytes`。
+- **修复方向（待裁定）**：QC/F1 同 resolver 双层口径(C15 扩到"不可读"语义或新增守卫),只加显式失败态。
+- **证据**：`data/r62_boundary_audit.json` K12(condition=PRODUCIBLE(PermissionError) 条件先实证后观测);义务钉 `tests/test_r62_boundary.py`(strict xfail)。
 
 ## 二、已修复 / 已规避（Fixed / Mitigated）
 
