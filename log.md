@@ -1255,3 +1255,5 @@ R-ACC-1 ✅(真实 v1 + C1)/ 2 ✅(16 真实 FAIL + C2/C3 + CI t3t4)/ 3 ✅(1664
 - 设计稿:`resolver_contract_design.md` 新增**附录 C**(R54 裁决 + F1 定义 + 二轮结果 + 边界)。
 
 **结果**:用户 R53 裁决全部落地;F1 以 Audit Invariant 形态实施并经真实语料 + 变异双向验证;Resolver 审查第二轮(R-ACC-12/13/14)完成——**0 新生 resolver 缺陷**,最大剩余风险(结构合法但语义错误)获量化证据,归宿 = Admission 层。待用户裁定下一轮(优先序:P1 BUG-11/14/15 数据卫生 / basis schema-only;或对本轮验收 + 攻击面扩样)。
+
+**闭环证据**:提交 `971c887`(8 文件,+2386)→ 推送 `d18307e..971c887` → **CI Run 34734417644 = success,`149 passed, 17 skipped, 1 xfailed`**(本地 166 − 17 语料 skip = 149,算术闭合)。受审对象 `resolver_reference.py` 与生产三脚本本轮零变更(git diff 复证)。
