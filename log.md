@@ -1574,3 +1574,7 @@ R58 七项结论:**6 项成立、1 项措辞级证伪(已更正)**;0 代码行�
 **审查发现 3 项,全部当轮处置**:F-r65-1(轻微)D0"全库"口径遗漏 Ocr-markdown 根级 README.md(非语料)→ 修复=meta 点名披露 + t16 钉 + M7 咬合;F-r65-2 审查工具日志匹配两次自纠(日志行 filename[:50] 截断且为 PDF 名;v1 61DIRECT/v2 6DIRECT 均误,v3 67DIRECT 经原始行抽验+双次统计复证;中间错误数字未被采用)——教训:**对截断日志的匹配必须按截断规则构造期望串,扩展名替换先于截断**;F-r65-3 classify_unknown_file 全局索引未构建时静默空孪生证据(python 进程实测)→ 修复=显式 RuntimeError + t15 钉 + M6 咬合,对已发布证据无影响(A4 独立重算吻合)。
 
 **结果**:R64 复证成立;修复变异 2/2 咬合;全量套件 **231 passed + 1 xfailed**(229+2 新钉;CI 预期 208 passed / 23 skipped / 1 xfailed = −19 corpus −4 win-only)。R64 D5 修复决策维持,待用户裁定。
+
+### R65 收口(CI 实测,2026-09-13)
+
+**提交 7122765 → CI Run 34750043799 = success,日志原文 "208 passed, 23 skipped, 1 xfailed"**。算术闭合:208+23+1 = 232 = 本地 231 passed + 1 xfailed;skip 23 = 19 corpus + 4 win-only(R62 t3/t5 + R64 t7/t14),本轮前已逐节点点名枚举。main = 7122765。R65 审查全链收口:审查武器 → 11 主张复证 → 3 发现当轮修复+咬合 → 台账 → CI 绿。下一项待用户裁定(R64 D5:先修跑步机机制 → 周期 reclassify → 语义去重)。
