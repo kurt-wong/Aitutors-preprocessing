@@ -401,7 +401,9 @@ def build_audit_index():
                     errors.append(f"AUDIT_BAD_RECORD {i}: from/to not str")
                     continue
                 n += 1
-                by_base.setdefault(os.path.basename(src), []).append(
+                # 审计由 Windows 写入(反斜杠路径);跨平台索引须双分隔符归一
+                # (F-r64-1:CI ubuntu 上 os.path.basename 不切 '\' → 键错位)
+                by_base.setdefault(os.path.basename(src.replace("\\", "/")), []).append(
                     {"from": src, "to": dst})
     except OSError as e:
         errors.append(f"AUDIT_UNREADABLE: {e!r}")
