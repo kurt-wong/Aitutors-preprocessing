@@ -1298,3 +1298,33 @@ R-ACC-1 ✅(真实 v1 + C1)/ 2 ✅(16 真实 FAIL + C2/C3 + CI t3t4)/ 3 ✅(1664
 **结果**:R45 顶层声明 L1/L2/L4–L8 全部以真实测试复证成立;L3 分项算术为已知更正在案;新增 F-r55-2(R46 更正自身的分项缺口)与 F-r55-3(方法论:分项数字非事实层)。**0 新的 PAC/生产缺陷**;本轮审计工具自身缺陷 3 项当场修(R49/R53/R54 同族纪律第四次实证)。审计结论待用户裁定收口(R42 先例)。
 
 **闭环证据**:提交 `1f32952`(5 文件,+1811)→ 推送 `3c3d2a5..1f32952` → **CI Run 34736885133 = success,`158 passed, 17 skipped, 1 xfailed`**(本地 175 − 17 语料 skip = 158,算术闭合)。受审对象 `resolver_reference.py`/生产三脚本/`audit_f1_consistency.py` 本轮零变更(git diff 复证)。过程记录:首次推送因本地代理(127.0.0.1)瞬断失败,重试成功;R45 时点 CI 日志 blob 拉取 TLS 超时,以 worktree 可复现重跑 + run 结论(success)替代,证据局限已如实声明。
+
+---
+
+## R56(2026-09-13):外部架构级审核意见登记 + 实测定量回应 + 治理候选登记
+
+**输入**:用户转交一份外部架构审核意见(基于 R31–R55 台账/报告/提交记录)。**审核方自述边界:未拉取仓库源码,非代码级扫描**;其对系统的事实描述与本台账一致,无新增可证伪事实主张,唯一可测断言由本轮实测定量回应。
+
+### 实测定量(本轮真实测量,非认可式背书)
+
+- **代码规模账目**(`scripts/` 48 文件 10,384 行;`tests/` 25 文件 2,882 行 172 个测试函数):
+  - 冻结生产链核心(reslice_pipeline 804 + reslice_qc 266 + question_identity 281)= **1,351 行 / 3 文件**;
+  - 审计/轮次/变异家族(r53×2/r54/r55/r48×2/r50/pac_audit×3/audit_integrity/audit_f1/semantic_probe/phase2_adversarial_probe/pac_ocr_drift 等)≈ **4,400 行 / 17 文件**;
+  - 审计+测试合计 ≈ 7,300 行,为冻结生产链的 **~5.4 倍**。
+- **结论:审核意见"测试/审计代码复杂度超过核心生产代码"的断言成立**(按冻结生产链口径定量;即便放宽到全部 scripts 亦同量级)。同时如实记录另一面:审计脚本是历轮一次性武器 + 工件产生方式的 provenance 证据,其复杂度不进入运行时生产面;复杂度倒挂是**维护成本风险**,不是正确性风险。
+- **规则面实测**:QC verdict C1–C14(14 项,`reslice_qc.py` 内机器计数);语义探针 P13–P15(3 项,测量仪非 QC);F1 不变量 I0–I3 + MATCH/DRIFT;Gate 快照/对账机制(audit_integrity 209 行)。规则总量远未失控,但**缺统一分类学**——审核意见的"规则森林"预警在增长趋势上成立。
+
+### 审核意见要点与本方立场(逐条)
+
+1. **事实源/推理源分离、Resolver 只做结构判断**——与 R50 冻结裁定及三边界纪律一致,维持。
+2. **basis 字段拆分建议**(`identity_policy` + `evidence`)——方向认可(事实/决策/来源三概念混于单字段确有 schema 压力);但 **manifest v2 已冻结(R50),不得原地改 schema**;候选落点 = IR/Admission 层字段演进,与排期③ basis schema-only(仅检测)不冲突。登记 **G-SCHEMA-1(候选,实施待批)**。
+3. **Rule Taxonomy**(FACT_INTEGRITY/STRUCTURE/IDENTITY/EVIDENCE/QUALITY)——采纳为治理候选 **G-TAX-1**:给 Gate/QC/探针/审计不变量打类型标签,防"规则森林"。实施待批。
+4. **统一审计框架**(audit/runner + assertions + mutations + reports,替代 r45_xxx/r55_xxx 无限增长)——采纳为治理候选 **G-AUD-1**,但加一条本项目特有约束:**历史轮次脚本冻结为 provenance 证据**(它们证明了各工件如何产生),统一框架自批准后的下一轮起用,不做历史迁移。实施待批。
+5. **不继续加 regex 防"OCR 规则地狱"**——与既有三边界(机器=结构/证据存在/范围;人工=语义真实性)一致;④ printed 硬化维持 unknown > 错误确定性。
+6. **Resolver 禁能力膨胀("顺便判断是不是同一道题"= 禁止,归 Question Similarity 层)**——三边界已有,建议在 `resolver_contract_design.md` 显式写入禁令条款(**候选 G-RES-1,实施待批**)。
+7. **阶段定位:preprocessing = V3 Data Admission Layer;V3 backend 不得重复 OCR/section/identity 判断**——与 R50 冻结一致,登记为跨仓库边界原则(候选 G-BOUND-1)。
+8. **下一阶段转向"稳定接口"**:① BUG-11/14/15 数据卫生(= 既有优先序②)② Question IR → Admission → V3 Backend 消费链验证 ③ 端到端重放测试——与现有待裁定清单同向;②③ 需用户排期。
+
+### 本轮动作边界
+
+**仅登记,零执行**:无代码/契约/schema 变更;所有候选(G-SCHEMA-1/G-TAX-1/G-AUD-1/G-RES-1/G-BOUND-1)待用户裁定采纳与排期。R55 结论仍待收口。
