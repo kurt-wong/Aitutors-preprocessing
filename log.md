@@ -1715,3 +1715,7 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 **D5-B.1 dry-run(零写入)**:`scripts/d5b_reclassify_dryrun.py` + `tests/test_d5b_dryrun.py`(8 钉)+ 变异 **7/7 BITE**(逐字节还原)。规则单源(import reclassify_unknown 的 classify/detect_subject,禁复制规则);分桶 fail-closed:moves / needs_ruling(禁猜测)/ collisions(禁覆盖)/ conflicts(禁择一)/ read_error。**生产快照**(`data/d5b_reclassify_plan.json`,plan_sha256=`a3c74c18…805e52f`):scanned=148、moves=70(合格考 13 + 高考真题 57)、needs_ruling=6、collisions=72、conflicts=0、read_error=0;**72 碰撞中 66 份同名不同字节**(R64 两次 OCR 家族,属冻结 D5-E 领地,本轮零裁定零覆盖)、6 份字节全同;needs_ruling 6 份(月考/答案/初三卷等无类型关键词)清单入 plan 待逐份裁定。plan 为时点冻结,daemon 仍向未分类投放新产出,**D5-B.2 apply 必须重校验**(逐条 sha + 碰射复查 + 指纹比对)。
 
 **边界**:本轮未执行任何移动;canonical identity / duplicate merge / semantic dedup / BUG-14-CHAIN 零触碰。全量回归 **272 passed + 1 xfailed**(新增 8 钉,零回退)。
+
+### R67.2 收口(CI 实测,2026-09-14)
+
+主体提交 52f5be7 → **CI Run 34786844380 = success,日志原文 "248 passed, 24 skipped, 1 xfailed"**。算术闭合:248+24+1 = 273 = 本地 272 passed + 1 xfailed(272−24 skip = 248;skip 24 = 19 corpus + 4 win-only + t13 语料冒烟)。main = 52f5be7。R67.2 全链:F-r67.2-1 取证(死因不可判定,零损害)→ Task Scheduler 托管重启 + MANIFEST_LOAD 复证 → §8 登记 → D5-B.0 双窗口快照 → D5-B.1 dry-run(8 钉+变异 7/7,生产 plan 冻结)→ 台账 → CI 绿。**D5-B.2 小批 apply ⏸ 等用户批准。**
