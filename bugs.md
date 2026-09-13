@@ -27,9 +27,16 @@
 - **⚠ R61 命名拆分(用户 R60 审核裁定,不重写历史)**:原 BUG-14 与 R60 执行的"BUG-14 第一阶段(事实一致性攻击)"是两件事。按用户裁定:**历史引用 BUG-14 保持稳定**,本条定名 **BUG-14-DATA**;事实一致性轨道另立 **BUG-14-CHAIN**(见下)。未来"BUG-14-DATA CLOSED"只指数据卫生关闭。(R60 期间的命名澄清记录见 log.md R60,不改写。)
 - **⚠ R60 命名澄清（2026-09-13）**：用户 R59 审核裁定的下一轮"BUG-14 第一阶段"经实测核对为 **Source → Resolver → IR 事实一致性攻击**(已于 R60 执行完毕,证据 `data/r60_fact_drift_attack.json`),与本条登记的**数据卫生问题**(未分类跑步机 + 73 重复 basename)是两件事。本条保持开放、顺延;命名冲突留待用户裁定是否重编号。
 - **现象**：`未分类` 目录现存 145 份且**仍在接收**（OCR 日志实证 `未分类/历史/2012-2021高考真题汇编…`）；`status.md` 曾误称"已清除"。全库 **73 个重复 basename**（多为高考真题汇编），会重复 OCR/重切/入题库。
-- **根因**：`batch_convert_pdf.py:75-88` 的 `extract_grade_subject` 对文件名不含年级的 PDF 默认落 `未分类`；重归类清过一次又被 OCR 灌回。重复源来自同一 PDF 在根目录与子目录各存一份。
+- **⚠ R64 D0–D5 实测(2026-09-13,只读审计,零修改生产数据;武器 `scripts/r64_data_inventory.py`,证据 `data/r64_corpus_inventory.json` / `r64_unknown_buckets.json` / `r64_collision_fingerprint.json`,报告 `reports/r64_bug14_data_d0_d5.md`)**:
+  - **D1 归因(145 不是单一 bug)**:141 NAME_RULE_COVERED(高考真题 125/合格考 15/学业水平 1,文件名规则即可覆盖;其中 72 有孪生=跑步机回流件,69 无孪生=首轮积压)+ **4 UNDETERMINED 真实规则缺口**(`高—`笔误×2 / 高考适应性月考×1 / **初三学段越界**×1,→ PENDING_REVIEW)+ 2 散落(高三/未分类,PLACEMENT_MISMATCH)。
+  - **D2/D3 重复真实性(四层证据)**:73 组中 byte-identical 仅 **6**、byte-different **67**(两次独立 OCR);归一化层无新增相同;PDF 侧 **73/73 exact stem 命中**;搬移审计 **73/73 在册**(reclassify_audit.jsonl 698 条)。
+  - **⚠ 根因更正(推翻旧登记)**:重复源**不是**"同一 PDF 在根目录与子目录各存一份"——实测为**跑步机机制**:reclassify `--apply` 搬移 X.md → runner skip-check(`未分类/科目/X.md` 存在且 >100B,`batch_convert_pdf.py:118`)落空 → 同一 PDF 重 OCR → 回流未分类(mtime 未分类份更晚 68/73)。每转一圈烧一次配额、多一份重复。
+  - **D4 runner 边界攻击(合成夹具 14 钉)**:source identity = 输出路径存在且 >100B 仅此而已(无内容指纹);净化碰撞 `a<b`/`a>b` 同名静默跳过;大小写差异被 exists 判真(win);搬移机制复现钉 t12。
+  - **D5 修复顺序裁定点(待用户)**:**先修机制再谈清理**——若先跑 reclassify,145 份会全部触发重 OCR;4 份规则缺口逐份裁定;67 组孪生 canonical 语义裁定后才可去重(禁自动归并)。
+  - 对抗回归:`tests/test_r64_data_inventory.py` 14 钉;武器变异 5/5 咬合、字节级还原。
+- **根因**:`batch_convert_pdf.py:75-88` 的 `extract_grade_subject` 对文件名不含年级的 PDF 默认落 `未分类`;重归类清过一次又被 OCR 灌回(R64 实测机制见上:搬移击败 skip-check)。
 - **位置**：`ocr_service\batch_convert_pdf.py:75-88`；`Ocr-markdown\未分类\`。
-- **解决**：① OCR 端按源 PDF 相对路径归位，或定期跑 `reclassify_unknown`；② 去重 73 份（保一份、归档另一份）。
+- **解决**：**顺序 = 先修跑步机机制,再跑周期 reclassify,最后语义裁定后去重**(R64 D5 细化见 `reports/r64_bug14_data_d0_d5.md`;全部待用户裁定,本轮未实施)。
 - **教训**：上游不断产出时，"清理目标目录"是治标；要么改上游归位逻辑，要么周期任务；重复源须在入库前去重。
 
 ### BUG-14-CHAIN · Source→Resolver→IR 事实一致性轨道(用户命名"BUG-14 第一阶段")　🟢 PHASE-1 DONE

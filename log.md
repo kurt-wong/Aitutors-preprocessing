@@ -1534,3 +1534,21 @@ R58 七项结论:**6 项成立、1 项措辞级证伪(已更正)**;0 代码行�
 ### R63 收口(CI 实测,2026-09-13)
 
 **CI Run 34745890960(headSha 62739e8,conclusion=success)日志原文"194 passed, 21 skipped, 1 xfailed"**。算术闭合:194+21+1 = 216 = 本地 215 passed + 1 xfailed;skip 21 = 19 corpus + 2 win-only(t3/t5,ubuntu 无 Windows 共享语义);win-only 两钉本地均真实通过(非 xfail)。R63 全链收口:修复 → 冻结武器重放 → 验证武器 PASS → 变异 13/13 → 全量本地绿 → CI 绿。下一项(用户排序)= BUG-14-DATA。
+
+---
+
+## R64(2026-09-13)BUG-14-DATA D0~D5:数据事实冻结与归因(只读,零修改生产数据)
+
+**用户 R63 裁决落盘**:R63 PASS;BUG-31/32/33 攻击族正式关闭(不拆 BUG-34;唯一 xfail 保留不顺手处理);转 BUG-14-DATA,严格 D0→D5:"数据事实 → 分类归因 → identity fingerprint → 攻击 runner 边界 → 决定修复",**本轮不写清理/归并代码**;BUG-14-DATA 与 BUG-14-CHAIN 保持分账,不重编号。
+
+**D0 冻结(武器 scripts/r64_data_inventory.py,只读+fail-closed+确定性)**:全库 md 4,881(源树 3,119 + 派生树 1,762)逐份冻结 path/basename/suffix/size/SHA-256/归一化 SHA-256/目录/derived/runner 分类/manifest 状态;口径对账全中台账(未分类 145 / 碰撞 73 组 146 文件 / PDF 索引 12,707);**新事实**:散落 高三/未分类 2 份、源树 manifest 为零(源文件身份=落位路径)、reclassify 搬移审计 698 条。工件:data/r64_corpus_inventory.json。
+
+**D1 归因(145 → 机器可复现 buckets)**:141 NAME_RULE_COVERED(高考真题 125/合格考 15/学业水平 1;72 有孪生=回流件,69 无孪生=积压)+ 4 UNDETERMINED(高—笔误×2 / 高考适应性月考 / 初三越界,→ PENDING_REVIEW)+ 2 stray PLACEMENT_MISMATCH。**145 不是单一 bug,是 1 机制缺陷 + 4 类数据事实**。
+
+**D2/D3 碰撞指纹与重复真实性**:73 组四层证据——SHA-256:6 组字节全同/67 组字节不同(两次独立 OCR);归一化层无新增;PDF 侧 73/73 exact stem 命中;**搬移审计 73/73 在册**。跑步机机制实锤:reclassify 搬移 → runner skip-check(batch_convert_pdf.py:118,身份=输出路径存在且>100B)落空 → 同一 PDF 重 OCR 回流(mtime 未分类份更晚 68/73)。**⚠ 根因更正:推翻旧登记"根目录+子目录各一份"**。语义层(哪份 canonical)一律 PENDING_REVIEW。
+
+**D4 runner 边界攻击(tests/test_r64_data_inventory.py 14 钉全过,合成夹具零 API)**:身份=输出路径仅此而已(t11);搬移机制复现钉(t12);净化碰撞 a<b/a>b 同名静默跳过(t13);大小写歧义 exists 判真(win,t14);副本行为电池含高—/初三缺口钉(t10);runner/reclassify 源码锚防副本漂移(t8/t9);武器自身 fail-closed(非法 UTF-8 t6 / 独占句柄不可读 t7 win)+ 确定性(t1)。
+
+**D5 修复决策(仅决策,未实施,待用户裁定)**:① 先修跑步机机制(skip-check 咨询搬移审计/自维护输出清单)——否则现在跑 reclassify 会触发 145 份重 OCR(烧配额+造新重复);② 机制修复后才谈周期 reclassify;③ 4 份规则缺口逐份裁定;④ 67 组孪生 canonical 语义裁定后才可去重;⑤ 2 份散落并入①。报告:reports/r64_bug14_data_d0_d5.md。
+
+**对抗与质量**:武器变异 5/5 咬合(M1 fail-closed 移除/M2 bucket 守卫失效/M3 审计静默/M4 指纹判层放宽/M5 UTF-8 strict 放松),全部字节级还原;全量套件 **229 passed + 1 xfailed**(215+14 新钉;CI 预期 206 passed / 23 skipped / 1 xfailed = −19 corpus −4 win-only)。本轮零修改生产数据(只读审计;未跑 reclassify、未移动/删除/归并任何文件、未改 runner)。下一项待用户裁定(BUG-14-DATA 修复域 / 其余排序)。

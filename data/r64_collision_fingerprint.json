@@ -1,0 +1,3416 @@
+{
+ "meta": {
+  "generated_at": "2026-09-13 16:12:49",
+  "weapon": "scripts/r64_data_inventory.py",
+  "read_only": true,
+  "norm_algo": "sha256(NFC(text); CRLF/CR->LF; per-line rstrip; whole strip)",
+  "source_dirs": [
+   "高一",
+   "高二",
+   "高三",
+   "高考真题",
+   "未分类",
+   "合格考",
+   "会考",
+   "竞赛自招",
+   "其他汇编",
+   "学业水平考试"
+  ],
+  "counts": {
+   "md_total": 4881,
+   "md_source": 3119,
+   "md_derived": 1762,
+   "pdf_total_indexed": 12707,
+   "unknown_main": 145,
+   "unknown_stray": 2,
+   "collision_groups": 73,
+   "collision_files": 146,
+   "audit_moves_indexed": 698
+  },
+  "inventory_errors": [],
+  "audit_errors": [],
+  "elapsed_sec": 6.6
+ },
+ "d2_d3": {
+  "groups": [
+   {
+    "basename": "12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+    "n_files": 2,
+    "top_dirs": [
+     "学业水平考试",
+     "未分类"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "学业水平考试/化学/12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+      "top_dir": "学业水平考试",
+      "size": 43485,
+      "sha256": "b855131b1694700d97823719f90d30c6e6c0f927b5569bb2ef59d8885c070930",
+      "norm_sha256": "7efb7f4768ff552388cc1e9599eb9e7c7066dd87a2a3e10148260145a0d4008c",
+      "mtime": 1789169622.0129733
+     },
+     {
+      "rel_path": "未分类/化学/12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+      "top_dir": "未分类",
+      "size": 42867,
+      "sha256": "9cdad1d4b8b1c9ae041f41584e2d4c96d7ea30330ff5791ae991d9dfdefb7f75",
+      "norm_sha256": "084d71c41651c03bbb158ee2185fc3795a439596ea4b8df0e1ab9981433b40ce",
+      "mtime": 1789051510.9513533
+     }
+    ],
+    "mtime_order": [
+     "未分类/化学/12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+     "学业水平考试/化学/12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\化学\\12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\学业水平考试\\化学\\12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md"
+     }
+    ]
+   },
+   {
+    "basename": "14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+    "n_files": 2,
+    "top_dirs": [
+     "其他汇编",
+     "高三"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "其他汇编/理综/14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+      "top_dir": "其他汇编",
+      "size": 11392,
+      "sha256": "8aff73e58f633ca1b2381d533161cdcd72b3afca6a3f5adb5850d9fd04ac5b21",
+      "norm_sha256": "d467f5f873be693be703d51e1e41973b80ca7d2ac3ab1e65ab20d51374ad3939",
+      "mtime": 1789169621.9963613
+     },
+     {
+      "rel_path": "高三/未分类/14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+      "top_dir": "高三",
+      "size": 10951,
+      "sha256": "197c4d2f90ca21e641f3097e2d81105218bda40bda56b7a2ecd037cffe39fe9e",
+      "norm_sha256": "9225c6c600f586969aa5a10c206ec6954ffc36732f756dbeb2bffab82a350524",
+      "mtime": 1789000377.335884
+     }
+    ],
+    "mtime_order": [
+     "高三/未分类/14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+     "其他汇编/理综/14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\高三\\未分类\\14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\其他汇编\\理综\\14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md"
+     }
+    ]
+   },
+   {
+    "basename": "19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md",
+    "n_files": 2,
+    "top_dirs": [
+     "其他汇编",
+     "未分类"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "其他汇编/化学/19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md",
+      "top_dir": "其他汇编",
+      "size": 23736,
+      "sha256": "dd7cc94c6c128f4362266d320fac8e90fe010df0d6987825011e9a568b96460f",
+      "norm_sha256": "f92993baf00bb0dafbd5ae0b229cb5be28fdc712626d0ddccf5128b996291494",
+      "mtime": 1789169621.9933455
+     },
+     {
+      "rel_path": "未分类/化学/19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md",
+      "top_dir": "未分类",
+      "size": 23096,
+      "sha256": "3e592c6bdbd8dbb7af907f38a48dc4f00b2d1a8fd1b05afd387a112db0f620e6",
+      "norm_sha256": "9e1f6b8ee19fa3127da8b78ba79c80d798b2fec2df2453696be6ade5c9d410d5",
+      "mtime": 1789051510.9543538
+     }
+    ],
+    "mtime_order": [
+     "未分类/化学/19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md",
+     "其他汇编/化学/19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\其他汇编\\化学\\19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md"
+     }
+    ]
+   },
+   {
+    "basename": "2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "合格考",
+     "未分类"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "合格考/化学/2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).md",
+      "top_dir": "合格考",
+      "size": 18664,
+      "sha256": "23079e233de86ae3d41562017ad7edd29c407d197928b0fb325ffe07a5606e14",
+      "norm_sha256": "8585208158b22deac80b20c729f3a6961c90139ae7a2926e766d8f7a85097797",
+      "mtime": 1788956007.1367674
+     },
+     {
+      "rel_path": "未分类/化学/2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 18960,
+      "sha256": "96fcd995ca8a8dea225188a2cc3a02510ef9c6dc9303b5371b12031bb78a4656",
+      "norm_sha256": "b67290a97949cfd0a1202726443ac1569ca833972d51739f95f6eea3e9c626c0",
+      "mtime": 1789000379.0728545
+     }
+    ],
+    "mtime_order": [
+     "合格考/化学/2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).md",
+     "未分类/化学/2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\化学\\2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\合格考\\化学\\2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "合格考",
+     "未分类"
+    ],
+    "byte_identical": true,
+    "norm_identical": true,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "合格考/化学/2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).md",
+      "top_dir": "合格考",
+      "size": 10829,
+      "sha256": "f0e803735a5f15b7d0b8c01c94f00364392956aea5e85c4c6198733367c45411",
+      "norm_sha256": "ce802a686b126abfe49da2daec9f229bffc00f5a5e727ac533fa28206ed3b36a",
+      "mtime": 1789051510.9090102
+     },
+     {
+      "rel_path": "未分类/化学/2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 10829,
+      "sha256": "f0e803735a5f15b7d0b8c01c94f00364392956aea5e85c4c6198733367c45411",
+      "norm_sha256": "ce802a686b126abfe49da2daec9f229bffc00f5a5e727ac533fa28206ed3b36a",
+      "mtime": 1789051510.9573605
+     }
+    ],
+    "mtime_order": [
+     "合格考/化学/2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).md",
+     "未分类/化学/2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\化学\\2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\合格考\\化学\\2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021全国高考英语真题汇编：代词（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": true,
+    "norm_identical": true,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/英语/2012-2021全国高考英语真题汇编：代词（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 28750,
+      "sha256": "a97866c513fffdabe66c9a53fa43fbaa1cac83018017957a2450b5ab46eae5be",
+      "norm_sha256": "d54bcdb55a026eda88525915b87d6d1b3d73674da88c9522c2f29989bc2bc984",
+      "mtime": 1789000380.6097455
+     },
+     {
+      "rel_path": "高考真题/英语/2012-2021全国高考英语真题汇编：代词（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 28750,
+      "sha256": "a97866c513fffdabe66c9a53fa43fbaa1cac83018017957a2450b5ab46eae5be",
+      "norm_sha256": "d54bcdb55a026eda88525915b87d6d1b3d73674da88c9522c2f29989bc2bc984",
+      "mtime": 1788662882.3845599
+     }
+    ],
+    "mtime_order": [
+     "高考真题/英语/2012-2021全国高考英语真题汇编：代词（教师版）(1).md",
+     "未分类/英语/2012-2021全国高考英语真题汇编：代词（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021全国高考英语真题汇编：代词（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\英语\\2012-2021全国高考英语真题汇编：代词（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\英语\\2012-2021全国高考英语真题汇编：代词（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 107418,
+      "sha256": "64ed647cdad1185246465bf7287f818555b1e7882d535484be75ce959281eead",
+      "norm_sha256": "e72a91d7a5ac1e68e35c9cac1e312b990422e4abe91a07daac688b9039f5987d",
+      "mtime": 1789000381.5010498
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 107725,
+      "sha256": "d57135cd95a7f80bc507312c5c6f92b581fa5b78818b3dabb3aeee33adfef6e5",
+      "norm_sha256": "cb4269b01f41ef65f0d83e1ee0f0a8af16a5ee6afeaa004b25232b72760ee619",
+      "mtime": 1788956057.8677943
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 105039,
+      "sha256": "26bb010fc7011ae9c48147623af54fb13f03128db4be34a4c115307a6e5b8f78",
+      "norm_sha256": "f4bc49edde95cf471247210fa0b5a92e99fbe04b9be23922770cb10c5cbe5f70",
+      "mtime": 1789000382.558549
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 105679,
+      "sha256": "4e47e0404937e37c97e65cd196e0e94dc4d9901198eca3e8d5fcf747d8e427eb",
+      "norm_sha256": "517286e230cececfc57905318f74d015d4a854b525b1d7d8b32acc62cc072ae9",
+      "mtime": 1788956058.174598
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 62388,
+      "sha256": "1c49af57d0ed3628287500e4790252c738eecca4dc420d523cae96cc8adf341d",
+      "norm_sha256": "ea0135b991a0f71b2a4d5d365e9c03b22ddc72d9e4913bb8dd15e3a10c0ee66e",
+      "mtime": 1789000721.5383227
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 62164,
+      "sha256": "31c746d45b24b32f7ed02ac937fed27c13a5b9beb5d3f0e19a2f17432311dba3",
+      "norm_sha256": "685de5e2ff425dc92d0f413cac3c59c39060c74536e41563ed774cb7b29dffa5",
+      "mtime": 1788956058.2542195
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 62383,
+      "sha256": "86cb1e125bb22c69fec1d3299806a7e12aa12d42a01d158f4c5c9b92e86f427c",
+      "norm_sha256": "d60919ba2484de6a93d4084d6983fc736510d8dadd43103e5be880130f105bc3",
+      "mtime": 1789000722.3286812
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 62163,
+      "sha256": "f78a37b5780067ff60153e910e9ae58b8de0c3bb183da38a47d6c15cac98de29",
+      "norm_sha256": "e2aed6b0a3415150e3ca80c97bef8e3ca3d63cdb28a1eb5b86ded5f593cab840",
+      "mtime": 1788956058.3383799
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 119982,
+      "sha256": "6bce69c87f01a03ff943e9393d3d74825f926014a5d541428ac1fd0fd88a0fbc",
+      "norm_sha256": "2e9e55deb7e19ce6e8404a96325170b0e317eaed16f592e0d8a08176dad70d86",
+      "mtime": 1789000723.402096
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 120069,
+      "sha256": "e257129fa2fcdfa617d1c8926a063aadcb750b57e5e5252b18fd670fdcf99ccc",
+      "norm_sha256": "5d9d97dacceab76e221b37bc763e9768e6f28cce97cac27b1d2848156cb36c51",
+      "mtime": 1788956058.452022
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 84873,
+      "sha256": "cb4b6e11f1fc9c5e36cb58274666e2870ee051d95f27b76d57478992f9b0da06",
+      "norm_sha256": "1dda8283fc8fae609e7449cc7d103d13d97bdda389ef024d66c9821f322dc454",
+      "mtime": 1789000724.4682608
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 85603,
+      "sha256": "b01fcf6a623437747f286ecbb8cd0a34fd8d59a0570e1d90ba5d53a0cc5552bf",
+      "norm_sha256": "b01fcf6a623437747f286ecbb8cd0a34fd8d59a0570e1d90ba5d53a0cc5552bf",
+      "mtime": 1788956058.6546762
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 82318,
+      "sha256": "a3e57e80b4cb5cd505b93aa96ee61d609bffb2faffa90457b9259b25765ef306",
+      "norm_sha256": "3571e33f79f1af5f472deee583df1a59fdc401cbab0733335590da7fc297ba4c",
+      "mtime": 1789000725.504253
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 83072,
+      "sha256": "71526730d72eb86ed6397e34cb5dbc748ddcd8510b2d29bac3828493aba6166b",
+      "norm_sha256": "71526730d72eb86ed6397e34cb5dbc748ddcd8510b2d29bac3828493aba6166b",
+      "mtime": 1788956058.8475733
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 86620,
+      "sha256": "0dcabee23673f6a6b1348f458e50a7fd8fbf3ea05dab492bf99839b9606e6df5",
+      "norm_sha256": "3883ea432452ad53ae56700c10b0160fb76e11f93a1f3fa214a67748e3a81372",
+      "mtime": 1789000726.2019894
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 85728,
+      "sha256": "4f4d32d71d80673cbcdc0fcf31c088a7c0a9533d04393d2a87b6241e66458752",
+      "norm_sha256": "4f4d32d71d80673cbcdc0fcf31c088a7c0a9533d04393d2a87b6241e66458752",
+      "mtime": 1788956058.970281
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 45282,
+      "sha256": "a3877c25c2a26772c8cf06bcabc4ffea2cfddc97863101bc24a960ac28307ba1",
+      "norm_sha256": "3d229e4b4c6c6accc82f0414d9f5dd817239a9d90c87a36741c8f87d9a7f4972",
+      "mtime": 1789000727.1837835
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 45514,
+      "sha256": "94129b6910989825eb40ebc63f13d440823fcc02df98b989002bf7cf142dc9b9",
+      "norm_sha256": "cbc62e9debefd897f5bad03650594437dcef3115054c7ab0944e52280f5c9d73",
+      "mtime": 1788956059.0778966
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 139019,
+      "sha256": "18c649f953942f19fc05f7cb6ef37a2c49fd562005ca532b43705492ebf7aa06",
+      "norm_sha256": "41abb0fa792d2da25a4d76b7910f45100d77d5d3161af59429af6ad0c0f9a27d",
+      "mtime": 1789000727.952922
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 141835,
+      "sha256": "5f59503e0b5cffc9f39da7f2ec144c45f73dea3b6b52a77d6b57ad4c068882ac",
+      "norm_sha256": "712a4b6b14079c28378a043399b3e762e9894bd16cb3ffbc7b4b888b75e30267",
+      "mtime": 1789095314.9347708
+     }
+    ],
+    "mtime_order": [
+     "未分类/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).md",
+     "高考真题/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 85816,
+      "sha256": "c0304ac068dbfc1bab6134231e574a61b48dcfa59ffa51cfa5656dbec0cb4e81",
+      "norm_sha256": "8afcf3ab873d5f70ff8547008801cefca9ce2f0dbca0f0afa91849f21d7a63e0",
+      "mtime": 1789000728.9387133
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 85318,
+      "sha256": "5bb6bd8091850fe133cb81c1084d3c2ea7f3bc5d11f3ab24400f26ff1817f91d",
+      "norm_sha256": "5bb6bd8091850fe133cb81c1084d3c2ea7f3bc5d11f3ab24400f26ff1817f91d",
+      "mtime": 1788956059.331805
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 92043,
+      "sha256": "69c3c8b3ed6c6cec6212717a518155b1dbe8d0f19c7a3581e9e75ab3a2750f97",
+      "norm_sha256": "c8fa1a84e7ca10fd4723ab8fdf584fd000dde302284d213fdbc5fb5928ea270f",
+      "mtime": 1789000729.8056564
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 92897,
+      "sha256": "c92a5e3baa00a305df0eaaf0174d55352a923bf46b1e56b35a5772374c50ab17",
+      "norm_sha256": "c92a5e3baa00a305df0eaaf0174d55352a923bf46b1e56b35a5772374c50ab17",
+      "mtime": 1788956059.5738177
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 69702,
+      "sha256": "5ce406747a270b6adb3523fff1291a74259b46dced18f9794cb3979d674b4354",
+      "norm_sha256": "514e910eaea0c056f83a9729b2ab375904dae8f1cd685cc0c21b6f950ec6b701",
+      "mtime": 1789000730.5842392
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 69932,
+      "sha256": "c7d1119552056a220d79def292bee42f850857e3a9ac6b727e60a7a5aa86dd09",
+      "norm_sha256": "c2a310046c49eddc5004439ff4a42cadc90aa6960d3822f9629c5dd522a22c40",
+      "mtime": 1788956059.72253
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 64062,
+      "sha256": "e27a3ee9cc82b24cfb587091ca9be1dd7a5b00d740abe64ce2c7270a89a42654",
+      "norm_sha256": "373d1c6a0bfa705373cbc058c5f9524a3e09b52dc1c25e55a35459ed10788410",
+      "mtime": 1789000731.3446634
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 64238,
+      "sha256": "1f6e4cef81058f5652b86b8255f434be156c9dddaaa0ce4c4a9df43cf15e1d06",
+      "norm_sha256": "8bdc9f06b394cdfe58a68501e1f142e11cc82603e62dce3f3ec2dd2c482001e2",
+      "mtime": 1788956059.9537814
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 85200,
+      "sha256": "5c0eaecad563e719cae102c2cbad5b81bc745694fe2e0764c19c13e2ab39634d",
+      "norm_sha256": "cc3d73ce8af73726d835ebaf13db66bb55d1d831ece9e6c15c0744313ac4af3b",
+      "mtime": 1789000732.110755
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 87463,
+      "sha256": "8aa1585ece08c558ca573d1d4b301d39e5b57146d4b02b919933b09c9b6c7ec6",
+      "norm_sha256": "d178999927f672102efc5a764a12d380a0b982b4b8622005117d5db033c69b76",
+      "mtime": 1788956060.301677
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 67872,
+      "sha256": "04d299365cb58fd1a0b4af95a69afbfbf0f59dcdea5ec93e95d2a7c6e74f9011",
+      "norm_sha256": "288cd7a64cd9a14da9ef683057d35c6aafb1ab8e061bee5ee6789d672aa8660f",
+      "mtime": 1789000732.845263
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 68687,
+      "sha256": "f88870743f52bc0f9000fdd64c8defb73323a766cd952c61da710efa742a8108",
+      "norm_sha256": "f88870743f52bc0f9000fdd64c8defb73323a766cd952c61da710efa742a8108",
+      "mtime": 1788956060.621515
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 7485,
+      "sha256": "36776d29dcbaa6cbe7fa7df3c492bd6be693ee5d4a083b80bf48433b2040e7df",
+      "norm_sha256": "3d3d6ab2912fddc9704166ce94c824a8df4e053920266c26697d3e8e71480065",
+      "mtime": 1789000733.5178645
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 7962,
+      "sha256": "63caf5371d40285ae73b4fa1d4c54fe1bf59dad2e2d5f17613c20eaa6160566f",
+      "norm_sha256": "63caf5371d40285ae73b4fa1d4c54fe1bf59dad2e2d5f17613c20eaa6160566f",
+      "mtime": 1788956060.674585
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 160484,
+      "sha256": "e063eb1c04404a86229cf8eb2f768acc76c4ddf9a1ec2b0255127b9d98e50c95",
+      "norm_sha256": "3aef87c8097f67c3d63eb4385076a1fd4081384b88dccbce4a19e600d7450bde",
+      "mtime": 1789000734.331002
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 163855,
+      "sha256": "a799d176620d87a55774684cbad3b680e043c26a933b8fe4484d49a82f6459f7",
+      "norm_sha256": "242fa9f4b2267a2bbcffa1eb010fce0f58e0f3d894cbff6405dd6007f8736e0a",
+      "mtime": 1788956061.2203622
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 133996,
+      "sha256": "18563dc9f2b6c2d6b2bc4b6a5b2c6472368bba8f1167c82bf056303218f55e94",
+      "norm_sha256": "c0ee1e406cf859eccec816e088dbd97eaf1e19e19978c9d20ad802426e8a8da6",
+      "mtime": 1789000735.1438437
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 135607,
+      "sha256": "017e4f3c2e1cef50560eead0335036f6ace5a88dba4f1380c0b638757448ea61",
+      "norm_sha256": "017e4f3c2e1cef50560eead0335036f6ace5a88dba4f1380c0b638757448ea61",
+      "mtime": 1788956061.4396608
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 132609,
+      "sha256": "b4fbd23849379b7c271414f50971c632aa9edd136d88672f65afe03092a150a4",
+      "norm_sha256": "fab910d1b0f1a221edec3d24154ab54152cb565fe48484ab441d496ae7bf14e0",
+      "mtime": 1789000735.8897505
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 132940,
+      "sha256": "8586b31d8caa0bb76903769762df779cf3dff88baa23439ee6f50a5d6873f69a",
+      "norm_sha256": "5dbd50ff13688af6db1d17b4b99b8a48ea5a35343893d5fa6414e805d450fbdd",
+      "mtime": 1788956061.5928676
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 103733,
+      "sha256": "1145a4f4e515b8f156973373ffe08b8f3d39e0090be4701f002122b7a3c757f5",
+      "norm_sha256": "07c9ade24a6135d96c4598b6bfcc29fa8e1c7ae6720c9f2cfdf0ae6585b54a76",
+      "mtime": 1789000736.7261686
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 106610,
+      "sha256": "57215b4fae1f51913863456a95d343939a66a0b033eaf2b5f35c28efbd62ab8d",
+      "norm_sha256": "57215b4fae1f51913863456a95d343939a66a0b033eaf2b5f35c28efbd62ab8d",
+      "mtime": 1788956062.031552
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": true,
+    "norm_identical": true,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 72714,
+      "sha256": "795c5c84a1f6f2adc99e46d432d4b563b9ad759fbcaa5306192e8ee6d3767c58",
+      "norm_sha256": "e0516169a0dddb397a3fb39a698b6b6235fdd749d541803d30ab23fbaa500288",
+      "mtime": 1789000737.477302
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 72714,
+      "sha256": "795c5c84a1f6f2adc99e46d432d4b563b9ad759fbcaa5306192e8ee6d3767c58",
+      "norm_sha256": "e0516169a0dddb397a3fb39a698b6b6235fdd749d541803d30ab23fbaa500288",
+      "mtime": 1788665386.0751593
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 27308,
+      "sha256": "bf95538bc0bd7fd6e8abad25b9298968e2e06c95d0e70c4675bb2639028646cc",
+      "norm_sha256": "11b3cc7aed846b8a788a879d4ea0eed1fa34a6eb760cae99ff855d4f7dfe2e2a",
+      "mtime": 1789045404.5079265
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 27077,
+      "sha256": "6118ad19ec790426f99607cff16fb886243ba13c62c95738f5be06eb4fde6f06",
+      "norm_sha256": "cd173be1a34d790558bc01b8fa860e6f81eb6089c116efb658b85ef7eccb9f7e",
+      "mtime": 1788956062.066597
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 114978,
+      "sha256": "e0c6917f270e3e47b9f1fc6939308940902119d1362f2f844b90d4d8576f0276",
+      "norm_sha256": "f02ef4945163fe078cf7287f2647b2a45988d8fdbcaa9622080e74b4959e0b8f",
+      "mtime": 1789045650.4124107
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 113514,
+      "sha256": "b999d4ca054f1ad8dabb4c164b67746084726e64763e4e6bb6bff72e6f6ddeb6",
+      "norm_sha256": "b999d4ca054f1ad8dabb4c164b67746084726e64763e4e6bb6bff72e6f6ddeb6",
+      "mtime": 1788956062.2181408
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 78819,
+      "sha256": "682f39ffcf08814deaa47a5176417944d5bfca2851d4f06b603541d93f0fce93",
+      "norm_sha256": "36fb1af96e059ba713c1b603195f554bb50c7a1546ec33bdd265049df0fda7b8",
+      "mtime": 1789045651.316647
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 77823,
+      "sha256": "10b00d931d82f40b5e2a27071bc8d692375852df7d5bcc46a60e10dd19b3a1c7",
+      "norm_sha256": "10b00d931d82f40b5e2a27071bc8d692375852df7d5bcc46a60e10dd19b3a1c7",
+      "mtime": 1788956062.2814822
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 114019,
+      "sha256": "69edb08b8a280502b0e9620e63619feb55901475cd07f48a594c8418737d4240",
+      "norm_sha256": "0961956bdd2fd21fa63c06ca8424e876671cf1931f05d74118d30bab72eea8e6",
+      "mtime": 1789045652.4159622
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 115842,
+      "sha256": "e80aed5208b0311edd3faa607005480f96607eb8c5e0f720a57b720b4351b084",
+      "norm_sha256": "e80aed5208b0311edd3faa607005480f96607eb8c5e0f720a57b720b4351b084",
+      "mtime": 1788956062.592294
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 104130,
+      "sha256": "d33b65963534089c77dec21f6239d467917839ac2803d2f1995fc55bf78a4072",
+      "norm_sha256": "14362b478180646b8b72f268d68528250ec8e9d8f54900c560b7b4e816a93323",
+      "mtime": 1789045653.212095
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 104015,
+      "sha256": "6ba554ddd10317f16b0b46c0d40baa7f11f8505c24607103b78ad20dc7e28dd9",
+      "norm_sha256": "f83c3050233201cf14c4f6df07df11f86e27909c08d3584d0f3ef2b89bea84c4",
+      "mtime": 1788956062.8248284
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 113388,
+      "sha256": "3d757f173878a7c5c116b721a0a2fd51e9895b6f646a65b567143ade16b6a15e",
+      "norm_sha256": "9fbf0d92888f69667af9932486dfdd74c4993c6964cab439919749c4e0837614",
+      "mtime": 1789045654.333837
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 114305,
+      "sha256": "0be6960f55ddc971157f2f0ab513ec967eae0601d7d5fb23d6cf87fa73fad9ff",
+      "norm_sha256": "f4b7c5efd3ebe6d488fa78a0dfac3e41baba86de6db9f32cd07674badd9a1d89",
+      "mtime": 1788956063.2990007
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 64472,
+      "sha256": "f45572f34edac8f7a5295995cc578e39e7072b28a582965bbf6293ab297297b4",
+      "norm_sha256": "6a5189f210091d78c1f203233c1a3756045f8154fde0101d8e2926718224d99a",
+      "mtime": 1789045655.371645
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 64412,
+      "sha256": "e3d2900e32c012ba89fa612acbfc669527127f12145f2e2480e34409fdb0076b",
+      "norm_sha256": "e3d2900e32c012ba89fa612acbfc669527127f12145f2e2480e34409fdb0076b",
+      "mtime": 1788956063.427655
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 84826,
+      "sha256": "3c0b5b80e545c6ecec27fb9bc4a45fa4cbae7b1ebae8e3003061128314815055",
+      "norm_sha256": "7bb3934e3d2dc31c9158f83d706f78030ced2de30fa3d646b678b605de097bc8",
+      "mtime": 1789045656.4496372
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 87930,
+      "sha256": "37a945f56aeea04986eab0e142a51c22b8734ae0620a7a1adaf4482adb61a1ee",
+      "norm_sha256": "e1c09033a41def062dbd0cb19ba13ad2b7b9df1b52261d988e472316cdf82c66",
+      "mtime": 1788956064.0062797
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 71815,
+      "sha256": "ed9d3d0ca3d0c7e3d808c32f379954ce063f81754fff7ce1889d975941acda5f",
+      "norm_sha256": "6273f378f395eb0e945296427fa94c57d88e4343a621ba8722027643f65e04fc",
+      "mtime": 1789045657.3498192
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 72229,
+      "sha256": "d989ec72f78dcd3a09cf37464b767c069858e4feb84d0c2c9b17f4d7d8837cd2",
+      "norm_sha256": "d989ec72f78dcd3a09cf37464b767c069858e4feb84d0c2c9b17f4d7d8837cd2",
+      "mtime": 1788956064.264668
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 25769,
+      "sha256": "52b103f2f6a73b26c3ec6297861fc1b48aafae8d988c1ec393761529672bc589",
+      "norm_sha256": "1f8cd0a8d5a7cee7d56635ffcfb816eb027b101da8b8c5c4bfce3a49b9e7e343",
+      "mtime": 1789045658.1365907
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 25823,
+      "sha256": "0d07d4ec79628aee86fcc2124640bf047e6d80a2700d3211ff6cddcc0fc1e52f",
+      "norm_sha256": "0d07d4ec79628aee86fcc2124640bf047e6d80a2700d3211ff6cddcc0fc1e52f",
+      "mtime": 1788956064.3519115
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 100378,
+      "sha256": "ec9d9c040c7cb641d45748987115ba709e32ce38f20d36d268be3f4590ab8c5a",
+      "norm_sha256": "22a26a2e5f4c22e9dfffb466a62b6bea88ebea7a614b39b4cccb542d2d12f0f0",
+      "mtime": 1789045659.0329368
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 98985,
+      "sha256": "f80c88a74e2aac63b2365c645c201e870fa440c396dab33de3d02ce1aa6fcc0c",
+      "norm_sha256": "11db97e9ce5591122ed6d15bd69d7c754566709660e4a4ba9e362af0150eca8b",
+      "mtime": 1788956064.4324672
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 147132,
+      "sha256": "a48c3f357c96ce479b1f7db6305145b897e8ea12f89761c52e259cdf0882dbe5",
+      "norm_sha256": "e45b882d7126eeb7bf45c3bbac19c856ab9a886604ba981929ad2e9360de6efd",
+      "mtime": 1789045659.9707732
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 147301,
+      "sha256": "8f5b27cae35252f53dbe792331e58d6bf41e22c271caa6cc6c02f7f2710e8aea",
+      "norm_sha256": "7bfcefce2b4dcf6990fb3f7d93bd3f00c7f2e6347969165858d0b33e15868cfa",
+      "mtime": 1788956064.7540886
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 87460,
+      "sha256": "071f2c5bde3fe994eff4269a807df99bc616f94bc18fbc9d25d1171469cc68a5",
+      "norm_sha256": "e988f7d63203f911b0255e71da282ed149f0ae00b62080ac0b28a41356ad3802",
+      "mtime": 1789045660.9716625
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 87384,
+      "sha256": "6869f281bd5d2a80883c2054a95c07a83abbe1fe8e855bba4cc1a948451f8d88",
+      "norm_sha256": "6869f281bd5d2a80883c2054a95c07a83abbe1fe8e855bba4cc1a948451f8d88",
+      "mtime": 1788956064.882801
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 121069,
+      "sha256": "1b835c58075c8e1703d3aa5a2e696e6beb9f0532d7f22b20b53eb60a33d91a56",
+      "norm_sha256": "ec30c1aeb7bbe155779bfb2b3868f8858505cf516e6a250d5b0b4316f2856acf",
+      "mtime": 1789045661.7911627
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 123617,
+      "sha256": "299d30b9d788aa45932dfe5592536ebf282725c4c1ec5d2dab6f36a0d6808d84",
+      "norm_sha256": "299d30b9d788aa45932dfe5592536ebf282725c4c1ec5d2dab6f36a0d6808d84",
+      "mtime": 1788956065.2367349
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 137696,
+      "sha256": "163efc40098f205c05ee1a8a971760852a4dd08a51b85eda84b3bc890d26f90d",
+      "norm_sha256": "81385e8814fad14c60ce44ca4d3c23297a152b220fbc66c1631cfb30b8abf2fe",
+      "mtime": 1789045662.5646398
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 139102,
+      "sha256": "a0d5f3c5c8a0dffd77e91072619e54e216ed6f0df68aeb3e55f83d4fcfdf4ef8",
+      "norm_sha256": "fb3545ecd47ce77f518a4c19b7f8ef810d0c3b2ae8ff717eb73a818030ce7e16",
+      "mtime": 1788956065.5190046
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 85993,
+      "sha256": "32ec60c9718825c827164da3c9e04dd42f1150f45fb4f9e28749e455cf87e244",
+      "norm_sha256": "b5f4ad40dc0962dca494020cc1f2128298c4c4a63d347e9d1cc72ff7c130efd2",
+      "mtime": 1789045663.3514938
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 85694,
+      "sha256": "c60a0b25e05e5f9c77c35f4075a29da374690e4bc8162c9725142b078669b764",
+      "norm_sha256": "65efa67cb16c363d8a992a65b8ded3c824f9532251327e71eac0e261df1c80d7",
+      "mtime": 1788956065.6716585
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 108516,
+      "sha256": "3c7c5d21068902f1a77ee67b8bc26db886a6617cbb86e1c89103b1f0eb5f9f8b",
+      "norm_sha256": "84ca02bbfae0bc440fe46346d855bd4c83e340894f24031b9ef1104233504f2d",
+      "mtime": 1789045664.137756
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 108583,
+      "sha256": "1f6a0e60beb4682fb2bf424e3724601355b2954d5c095f4dd61db590f474eee3",
+      "norm_sha256": "e29b2c4c32a648cd6c09138e25b726095f6a7a2fb5b67b93f790b850f8a83f52",
+      "mtime": 1788956065.8332512
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 59071,
+      "sha256": "dbfa3150df2fdc4c570160980c825265906a0938962d4152c2d18de450b7dfd1",
+      "norm_sha256": "3646334c2acce66c34717293836e47866306b66a130d57dbec0c850bfaaa9053",
+      "mtime": 1789045664.8871682
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 58688,
+      "sha256": "90cf05789abab3f383972b9894173268ef0bb56d4b8822efc6554c46c0486acc",
+      "norm_sha256": "2aa54f2ca4eca70b1ca0a2b8a418dbd5cb2be7335a1d38ce03968efa6bc01ded",
+      "mtime": 1788956065.8858328
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 116199,
+      "sha256": "ab31b7ba6be199a08e876389f2277c1fd96f12cdebc356bcf6aa60d4ede1acb4",
+      "norm_sha256": "d0d165c2794b2fd08068eef444e822d73c0e01db86a2e21cd8eadb866c1164ef",
+      "mtime": 1789045665.706679
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 115784,
+      "sha256": "b44848cec56064fb674e1f6217b5f67f9eca0f2582642fd9e8853269e84e9e05",
+      "norm_sha256": "1a9c86cb456e2f51aff0d393e4d6d4a0ce5a35040b62781821988eec8019baeb",
+      "mtime": 1788956066.1067314
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 102952,
+      "sha256": "4618663a8dc6c7bc97d4fe4a1a2c5f0cd4f111998557209e7fab72572d046413",
+      "norm_sha256": "830af34a851bdcb747cd4e887101e9521c88e31b82839b89b4ad342098ab9a4d",
+      "mtime": 1789045666.4595928
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 101862,
+      "sha256": "32b629d65de3b023d955d594fd5b01718d46998d942036df89186a0c61e0e761",
+      "norm_sha256": "78fe8e15eaf2c6552ec301c776672567ebb9feba718a2e1aa15abecf856537f9",
+      "mtime": 1788956066.181343
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 147768,
+      "sha256": "c4b60248b6e6c3af3d5fb07349c36df5888cfc7e7db4fc47aef8fd0b1ab03a58",
+      "norm_sha256": "d479eb59986ac1732368e86d30e8450162ec61ecd8f30d462c3220f4dd282f93",
+      "mtime": 1789045667.2298384
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 146443,
+      "sha256": "9284da90292d98ba1569f9cc1a2b96f2db35c290d2abc04626ded32f7eb5ddbf",
+      "norm_sha256": "9284da90292d98ba1569f9cc1a2b96f2db35c290d2abc04626ded32f7eb5ddbf",
+      "mtime": 1788956066.2798128
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 91375,
+      "sha256": "5ca27abb2167cdc3e2aa2d86929c64365243ec9200db879178eb6082b2acc5eb",
+      "norm_sha256": "cd2abba0645af73975ab9ad4b9d3df17e8a91fe628d95b2947ad44c18a6c9c76",
+      "mtime": 1789045667.9509795
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 90209,
+      "sha256": "057eb43bd1482c719e9633c3391d416a1b51dbbb1fe67a533320a5821b3cd324",
+      "norm_sha256": "057eb43bd1482c719e9633c3391d416a1b51dbbb1fe67a533320a5821b3cd324",
+      "mtime": 1788956066.4125297
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 101964,
+      "sha256": "0d2561bde8baa5bf0fb4c54dec9dc739a0b61c39aeecd1ec632198fc5d68d86d",
+      "norm_sha256": "8476e01cdbcbfe3664548e6ef4848d5edbac0ffb0a5612aea2de00c6169d2367",
+      "mtime": 1789045668.748612
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 100471,
+      "sha256": "57cec4e6f7450e89be30534c706531c9388b967707e10294f1da107c64a3e937",
+      "norm_sha256": "57cec4e6f7450e89be30534c706531c9388b967707e10294f1da107c64a3e937",
+      "mtime": 1788956066.4806333
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 106361,
+      "sha256": "903acb9d208d689f92da8f68a7e48f490282fa967fe4469823e69eb4767ba6fa",
+      "norm_sha256": "eb819768fcf26358bb1730c65d3c033bf438493a2315a2fda8427bebc9a70499",
+      "mtime": 1789046832.8903656
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 107909,
+      "sha256": "ea770a88959f6a316006d821ac614710da24977464766c6d640dc12800ccf893",
+      "norm_sha256": "1b21a2ab23c0db5309e1599a8457422ee0201c77b53b22a650abfa185821a792",
+      "mtime": 1789095314.9382904
+     }
+    ],
+    "mtime_order": [
+     "未分类/历史/2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).md",
+     "高考真题/历史/2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 123772,
+      "sha256": "5fdb93f941ce544043645fa227f2151dae092db173be95f98e25f6d0c6f3eb23",
+      "norm_sha256": "8b3611a736480e0874bc8fd1e99843328a43e18fd74722244d4ca31a47c2cd09",
+      "mtime": 1789046833.9758434
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 122180,
+      "sha256": "4782d3549d30b8594280e18f17a6f10d6594f0b10d24ebe2cddcc073f3aad34a",
+      "norm_sha256": "682a726eea3f9f88e19ad4950ddf19497bda5fceae40fb587f6adf3c51866ef1",
+      "mtime": 1788956066.7244854
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 45660,
+      "sha256": "3f915c6531e6e2a3cbcab842a9c560e5178783e21352dbee9cd7c832af111f23",
+      "norm_sha256": "bdc3b89f7fce3c58981ca057b44617f5e97c2342bdfde42510d342c46a525509",
+      "mtime": 1789046834.7512698
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 45351,
+      "sha256": "a6d4f510f9a160e0afc811ce954b8b7ae6c410b2445edff88c254bb2d37f0152",
+      "norm_sha256": "a6d4f510f9a160e0afc811ce954b8b7ae6c410b2445edff88c254bb2d37f0152",
+      "mtime": 1788956066.8301551
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 137156,
+      "sha256": "86ab665ecaeb804accf588547f3ed582b91820f47d23e6d6bcc557ff45fab4da",
+      "norm_sha256": "22ebb55072f9c8fd8a9588430a122992c75c74482f9b711cf1b66e3757db44a8",
+      "mtime": 1789046835.8476171
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 136865,
+      "sha256": "e1f7bca5712910123efc3c84e5131ff42db9aa9525b57d5b2c153f31b427bb37",
+      "norm_sha256": "e1f7bca5712910123efc3c84e5131ff42db9aa9525b57d5b2c153f31b427bb37",
+      "mtime": 1788956066.9767618
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 62288,
+      "sha256": "fc8ab2343ea209ce3ebf0b2f6114912517eafe329c4d616d6821e66f0aad247e",
+      "norm_sha256": "3ddfcd684a793ba22751c439f052909e5997793601e29294371896933fe5f9d8",
+      "mtime": 1789046851.6430602
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 61746,
+      "sha256": "5a3fab785467263a9d739d1a20599bcd94d1d4580930bf4dd6dca51c5f48f4d3",
+      "norm_sha256": "5a3fab785467263a9d739d1a20599bcd94d1d4580930bf4dd6dca51c5f48f4d3",
+      "mtime": 1788956067.0527933
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 136889,
+      "sha256": "7c5637b858cd5c47fc2fa1218686b554d48b7cfca7d1ab76a2a61df0a710bb15",
+      "norm_sha256": "0f5c0b617cdbfa0d1b90871ac9723ab666e17f8b4ff6ee066be0bfbc1d606ac9",
+      "mtime": 1789046852.7310839
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 135809,
+      "sha256": "cc2e8a5ce7df65007f66f331f9881faa7b5c76f9defd6ef9c41b2cb3de4560f7",
+      "norm_sha256": "3aa675f3eff93f55428f6dbd250fe6bfc3a57a376155344f15e2812fae872a0c",
+      "mtime": 1788956067.1869047
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 64344,
+      "sha256": "a9b82e691e24bddf4f53cfe71635ca889aa15e97bbe5540c594c45baedeb3a0e",
+      "norm_sha256": "596359faef312c45a89a91b501ccd757c47723eb8bff53b4822724c669aa071e",
+      "mtime": 1789046853.4758909
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 63672,
+      "sha256": "fca5532542abc5cf65f6b206d1f4da4f0defb7e78900811f9372971aa18d6a3d",
+      "norm_sha256": "fca5532542abc5cf65f6b206d1f4da4f0defb7e78900811f9372971aa18d6a3d",
+      "mtime": 1788956067.224465
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": true,
+    "norm_identical": true,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 23196,
+      "sha256": "b0795cfe3c073bec0df1251c605ba44602fb547fb9178adbe76bdbc8e571b4a6",
+      "norm_sha256": "d12fbe1218edbba1d39f4202a04030db17f93b8e2a692a265a0b5288bd1b841f",
+      "mtime": 1789046854.211962
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 23196,
+      "sha256": "b0795cfe3c073bec0df1251c605ba44602fb547fb9178adbe76bdbc8e571b4a6",
+      "norm_sha256": "d12fbe1218edbba1d39f4202a04030db17f93b8e2a692a265a0b5288bd1b841f",
+      "mtime": 1788667814.7457204
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 105310,
+      "sha256": "b5896ed75b80c73781b5a8a325d0e88c1bb3465165b627acd7f1b5cc2e1208af",
+      "norm_sha256": "d70cdbeee2e4ce01c0318853e856bc9cff6105cb78ee97f7732cce528680b4bc",
+      "mtime": 1789046855.3542948
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 105895,
+      "sha256": "421ea9a8af575507b53872184b2e30c60e5943425793f710edf775c80e678352",
+      "norm_sha256": "421ea9a8af575507b53872184b2e30c60e5943425793f710edf775c80e678352",
+      "mtime": 1788956067.6816823
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 63007,
+      "sha256": "07d021371e1d9f398134f87bf52fc5b3981448c8e2fe0c5b0e603b1b3dbfc0c2",
+      "norm_sha256": "5c21bf35e75ab38445777d0ba4fb514fbf392870b543d21b0c93b1f98b293ece",
+      "mtime": 1789046856.2418494
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 62355,
+      "sha256": "3d6cc1ce0ebee4afe91ddaa5c93d71400c43dd066685ac8589e1469ef585edb2",
+      "norm_sha256": "3d6cc1ce0ebee4afe91ddaa5c93d71400c43dd066685ac8589e1469ef585edb2",
+      "mtime": 1788956067.7317774
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 102787,
+      "sha256": "8aef54d64b25bf235dbd618e5177f29619d1a9053972e85a929e2aaa4b4f11cb",
+      "norm_sha256": "e66b251df8fd19e573a81f531ddf19cc8c27ee65ce7d3aeae2c94f06b8937121",
+      "mtime": 1789046856.9616113
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 101007,
+      "sha256": "e3ae504f490532fef88416690264cd983a796b71197a4744846ccc0eb7d8fc10",
+      "norm_sha256": "e3ae504f490532fef88416690264cd983a796b71197a4744846ccc0eb7d8fc10",
+      "mtime": 1788956067.7576666
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": true,
+    "norm_identical": true,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 86725,
+      "sha256": "44684386ebe62b9dcdc45c655c0f34e9e46be6ceaecc478ed402a33f463130a8",
+      "norm_sha256": "b42e8d1fc4409d63aff7c25e1c93e93e8b08f963b3a63e75814e23a325994d4b",
+      "mtime": 1789046858.0063262
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 86725,
+      "sha256": "44684386ebe62b9dcdc45c655c0f34e9e46be6ceaecc478ed402a33f463130a8",
+      "norm_sha256": "b42e8d1fc4409d63aff7c25e1c93e93e8b08f963b3a63e75814e23a325994d4b",
+      "mtime": 1788667893.5413914
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 111786,
+      "sha256": "fb8fd692ea91cde4d1aa3d2aa2d5e2fa39dab8ebeb7fff44ddc6ed6cc8fd8865",
+      "norm_sha256": "0229a40dc504df7c6b33da0e66c2fc9d09ed84d182e43062af8867c23ee6de2a",
+      "mtime": 1789046858.7358675
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 110044,
+      "sha256": "2245c5f9a22a94a6da371cd518e0370c8ad003308ff2f9db033aff7254ce5475",
+      "norm_sha256": "2245c5f9a22a94a6da371cd518e0370c8ad003308ff2f9db033aff7254ce5475",
+      "mtime": 1788956067.7842264
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 122370,
+      "sha256": "d99d40723be17c1b31b3f0ab311c04d494490d3a80213ca0cd872c52f559cec7",
+      "norm_sha256": "3f34da44c1a265096c4946e522ea81adc60245b382f9b18dbefa5e6ff7821079",
+      "mtime": 1789046859.549335
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 120871,
+      "sha256": "8b2c90a28d267a5dacabe8052363581156224e05f67f67adacb3ac10741e543a",
+      "norm_sha256": "8b2c90a28d267a5dacabe8052363581156224e05f67f67adacb3ac10741e543a",
+      "mtime": 1788956067.9027336
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": true,
+    "norm_identical": true,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 48520,
+      "sha256": "5c89a7344cfd1cb6836ef9acfc833c449780273102207dcb11f0cb1b8d2c2961",
+      "norm_sha256": "c5de45873b2ff6971bd24a09622912b7a99630b1576acd1b07a71e9a386b6b40",
+      "mtime": 1789046860.2963598
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 48520,
+      "sha256": "5c89a7344cfd1cb6836ef9acfc833c449780273102207dcb11f0cb1b8d2c2961",
+      "norm_sha256": "c5de45873b2ff6971bd24a09622912b7a99630b1576acd1b07a71e9a386b6b40",
+      "mtime": 1788668222.9012496
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 115547,
+      "sha256": "cf9636943253b6dd4ecb8008f5a5881201532c5049e3408a4fc44c619dc75830",
+      "norm_sha256": "e0c600c43e89b66c28bf07f1e13281ca8a5268ff9d4fb05a6fcc7695d328f1b5",
+      "mtime": 1789046861.0688229
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 114404,
+      "sha256": "b1297593f8bb4f7c20458ba32213cb048e447ffbe86de3219d99f02cbc42cac4",
+      "norm_sha256": "b1297593f8bb4f7c20458ba32213cb048e447ffbe86de3219d99f02cbc42cac4",
+      "mtime": 1788956068.0442078
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 127039,
+      "sha256": "8c6b79ade796d30f679c3c1c5e65da4c826f0bed5318441e7366e4b4702d9211",
+      "norm_sha256": "b6a011b4b73e93c2ecbac90c8387476aa158df48b540152cbf329d054578fd77",
+      "mtime": 1789046861.8519597
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 126666,
+      "sha256": "da27024c6f6414f4d61e3f2935ea7d306f8c9e09fd48e2e74e066ea10e5e2391",
+      "norm_sha256": "66558e8a00ff07c6f07043d7cf2afd7543c0b3cbc52eb7d8b85351fb9be9473f",
+      "mtime": 1788956068.1963637
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 89127,
+      "sha256": "136f004bfc3c83b60dcddae5f1d908d802adf29b877beb1b503da6e1c7df1801",
+      "norm_sha256": "12ce6d563bf98c1a724b01e438ce52763ce70a1e0226ab28d4001367454a6e4d",
+      "mtime": 1789046862.57682
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 88238,
+      "sha256": "4c917254b5b1adafaa0ee80f39e0796f0b79f4325a08dd342831b714c469b418",
+      "norm_sha256": "4c917254b5b1adafaa0ee80f39e0796f0b79f4325a08dd342831b714c469b418",
+      "mtime": 1788956068.282663
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 80563,
+      "sha256": "f1498137096c30f19a2bdbffe1761e0ae2696f4992e7a4520304eb2c85daf3c0",
+      "norm_sha256": "cc668e3a4d91ec153ce5a095c51289e26bea6a2c3a61320c9230dd556eac725a",
+      "mtime": 1789046863.3347847
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 80895,
+      "sha256": "f9caf2a8952a217ae5166231059adac3e1be06bf2c477b6f31c8d3722c5ac786",
+      "norm_sha256": "f9caf2a8952a217ae5166231059adac3e1be06bf2c477b6f31c8d3722c5ac786",
+      "mtime": 1788956068.405996
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 15814,
+      "sha256": "64aea4c0eb921ca2f5b58d822367b6bbd4c77f1c5bb512e092d8f3291ac1dba1",
+      "norm_sha256": "5578d2a04600c8fbafa6c66aed5885998218f794ec86ea8b1772dc86fe96c7ab",
+      "mtime": 1789046864.0218732
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 15664,
+      "sha256": "2bcf23faf8f8c138aaca8d578aeca4c330285a7ae30efb82cc7266c78d556921",
+      "norm_sha256": "2bcf23faf8f8c138aaca8d578aeca4c330285a7ae30efb82cc7266c78d556921",
+      "mtime": 1788956068.4310026
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 119955,
+      "sha256": "b1b007eca029e45a691d3adf414139ed7bd4c139094e2576b865575df4cd4b1c",
+      "norm_sha256": "ffb9fa0bad45f29a8666cfdc009e5edd1c3c3e743239804b008e91168c781ffe",
+      "mtime": 1789046864.813459
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 118757,
+      "sha256": "8f57b880d58caaf7d65ba4989b9ed8e95f8629e895c2eb3787e13b0126855b69",
+      "norm_sha256": "1eaf5dfd1c13ddc5e8cc1dc383879ce55c6ce6eb07605fd6af53d6ca75bfa8b4",
+      "mtime": 1788956068.5144625
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).md"
+     }
+    ]
+   },
+   {
+    "basename": "2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).md",
+    "n_files": 2,
+    "top_dirs": [
+     "未分类",
+     "高考真题"
+    ],
+    "byte_identical": false,
+    "norm_identical": false,
+    "unreadable": false,
+    "members": [
+     {
+      "rel_path": "未分类/历史/2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).md",
+      "top_dir": "未分类",
+      "size": 104159,
+      "sha256": "724d2357a3f21cf9acbcec8078c48fcbb64567022ef5c4c9c3224d6efe5835fa",
+      "norm_sha256": "063375e2f5199ecda910c69f0414bfb09db2e26d637ef49b3d7a86f979415837",
+      "mtime": 1789046865.5462208
+     },
+     {
+      "rel_path": "高考真题/历史/2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).md",
+      "top_dir": "高考真题",
+      "size": 102809,
+      "sha256": "2ed7df58a5360046795c4895c61285444450f1a64dc8c299f94f4fa5168e8d9e",
+      "norm_sha256": "50afbba47ff92a5de1e809ab3e358f946b6bb4ad4b23a7a829edcd312a324343",
+      "mtime": 1788956068.6141088
+     }
+    ],
+    "mtime_order": [
+     "高考真题/历史/2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).md",
+     "未分类/历史/2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).md"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).pdf"
+    ],
+    "pdf_stripped_match_count": 0,
+    "pdf_stripped_matches": [],
+    "in_reclassify_audit": true,
+    "audit_moves": [
+     {
+      "from": "D:\\Project\\Papers\\Ocr-markdown\\未分类\\历史\\2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).md",
+      "to": "D:\\Project\\Papers\\Ocr-markdown\\高考真题\\历史\\2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).md"
+     }
+    ]
+   }
+  ],
+  "summary": {
+   "n_groups": 73,
+   "n_files_in_groups": 146,
+   "byte_identical_groups": 6,
+   "norm_identical_groups": 6,
+   "byte_different_groups": 67,
+   "unreadable_groups": 0,
+   "pdf_exact_hit_groups": 73,
+   "pdf_only_stripped_hit_groups": 0,
+   "pdf_no_hit_groups": 0,
+   "audit_hit_groups": 73,
+   "top_dir_pair_kinds": {
+    "学业水平考试+未分类": 1,
+    "其他汇编+高三": 1,
+    "其他汇编+未分类": 1,
+    "合格考+未分类": 2,
+    "未分类+高考真题": 68
+   }
+  },
+  "d3_verdict": "D3 裁决域外:本武器只提供机器证据层(basename → SHA-256 → 归一化文本 → PDF 侧同源)。'是否同一 logical source'属业务语义层,一律 PENDING_REVIEW,禁止自动归并。"
+ }
+}

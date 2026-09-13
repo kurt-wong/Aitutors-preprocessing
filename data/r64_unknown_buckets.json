@@ -1,0 +1,3355 @@
+{
+ "meta": {
+  "generated_at": "2026-09-13 16:12:49",
+  "weapon": "scripts/r64_data_inventory.py",
+  "read_only": true,
+  "norm_algo": "sha256(NFC(text); CRLF/CR->LF; per-line rstrip; whole strip)",
+  "source_dirs": [
+   "高一",
+   "高二",
+   "高三",
+   "高考真题",
+   "未分类",
+   "合格考",
+   "会考",
+   "竞赛自招",
+   "其他汇编",
+   "学业水平考试"
+  ],
+  "counts": {
+   "md_total": 4881,
+   "md_source": 3119,
+   "md_derived": 1762,
+   "pdf_total_indexed": 12707,
+   "unknown_main": 145,
+   "unknown_stray": 2,
+   "collision_groups": 73,
+   "collision_files": 146,
+   "audit_moves_indexed": 698
+  },
+  "inventory_errors": [],
+  "audit_errors": [],
+  "elapsed_sec": 6.6
+ },
+ "d1": {
+  "rows": [
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+    "basename": "12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": "学业水平考试",
+     "reclassify_with_text": "学业水平考试",
+     "dup_twins_outside_unknown": [
+      "学业水平考试/化学/12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md"
+     ],
+     "flags": [
+      "dup_twin"
+     ]
+    },
+    "pdf_exact_matches": [
+     "12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md",
+    "basename": "19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md",
+    "bucket": "UNDETERMINED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": null,
+     "reclassify_with_text": "其他汇编",
+     "dup_twins_outside_unknown": [
+      "其他汇编/化学/19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.md"
+     ],
+     "flags": [
+      "dup_twin"
+     ]
+    },
+    "pdf_exact_matches": [
+     "19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).md",
+    "basename": "2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [
+      "合格考/化学/2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2010-2019北京高中化学合格考汇编：元素周期律（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).md",
+    "basename": "2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [
+      "合格考/化学/2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2011-2019北京高中化学合格考汇编：化学键与物质的性质（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/2022北京高中合格考化学（第一次）（教师版）(1).md",
+    "basename": "2022北京高中合格考化学（第一次）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高中合格考化学（第一次）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/2022北京高中合格考化学（第二次）（教师版）(1).md",
+    "basename": "2022北京高中合格考化学（第二次）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高中合格考化学（第二次）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/2022北京高考真题化学（教师版）(1).md",
+    "basename": "2022北京高考真题化学（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高考真题化学（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/2022广东高考真题化学（教师版）(1).md",
+    "basename": "2022广东高考真题化学（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022广东高考真题化学（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/2022浙江高考真题化学（1月）（教师版）(1).md",
+    "basename": "2022浙江高考真题化学（1月）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022浙江高考真题化学（1月）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/2022浙江高考真题化学（6月）（教师版）(1).md",
+    "basename": "2022浙江高考真题化学（6月）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022浙江高考真题化学（6月）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/2022湖南高考真题化学（教师版）(1).md",
+    "basename": "2022湖南高考真题化学（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022湖南高考真题化学（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/2023全国乙卷高考真题化学（教师版）(1).md",
+    "basename": "2023全国乙卷高考真题化学（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国乙卷高考真题化学（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/2023全国新课标卷高考真题化学（教师版）(1).md",
+    "basename": "2023全国新课标卷高考真题化学（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国新课标卷高考真题化学（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/化学/2023全国甲卷高考真题化学（教师版）(1).md",
+    "basename": "2023全国甲卷高考真题化学（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "化学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国甲卷高考真题化学（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：20世纪下半叶世界的新变化（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：三国两晋南北朝的民族交融与隋唐统一多民族封建国家的发展（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（三）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：世界大战、十月革命与国际秩序的演变（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：世界文化的多元传统（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：世界殖民体系与亚非拉民族独立运动（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（三）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中华人民共和国成立和社会主义革命与建设（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中华民族的抗日战争和人民解放战争（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：中国共产党成立与新民主主义革命兴起（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：交通与社会变迁（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：人口迁徙与文化认同（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（三）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：从中华文明起源到秦汉统一多民族封建国家的建立与巩固（四）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：医疗与公共卫生（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：古代文明的产生与发展（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：古代文明的产生与发展（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：商业贸易与日常生活（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：商业贸易与日常生活（三）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：商业贸易与日常生活（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：商业贸易与日常生活（四）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：商路、贸易与文化交流（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：商路、贸易与文化交流（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：基层治理与社会保障（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：官员的选拔与管理（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：工业革命与马克思主义的诞生（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：当代世界发展的特点与主要趋势（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：战争与文化碰撞（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：战争与文化碰撞（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：改革开放与社会主义现代化建设新时期（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：政治制度（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：政治制度（三）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：政治制度（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：政治制度（五）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：政治制度（四）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：文化的传承与保护（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：明清中国版图的奠定与面临的挑战（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（三）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：晚清时期的内忧外患与救亡图存（四）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：村落、城镇与居住环境（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：民族关系与国家关系（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：民族关系与国家关系（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：法律与教化（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：法律与教化（三）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：法律与教化（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：源远流长的中华文化（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：源远流长的中华文化（三）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：源远流长的中华文化（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：生产工具与劳作方式（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：生产工具与劳作方式（三）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：生产工具与劳作方式（二）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：货币与赋税制度（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：资本主义制度的确立（一）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).md",
+    "basename": "2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/历史/2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021高考真题历史汇编：资本主义制度的确立（三）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2022北京高中合格考历史（第一次）（教师版）(1).md",
+    "basename": "2022北京高中合格考历史（第一次）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高中合格考历史（第一次）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2022北京高中合格考历史（第二次）（教师版）(1).md",
+    "basename": "2022北京高中合格考历史（第二次）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高中合格考历史（第二次）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2022广东高考真题历史（教师版）(1).md",
+    "basename": "2022广东高考真题历史（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022广东高考真题历史（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2022浙江高考真题历史（1月）（教师版）(1).md",
+    "basename": "2022浙江高考真题历史（1月）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022浙江高考真题历史（1月）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2022浙江高考真题历史（6月）（教师版）(1).md",
+    "basename": "2022浙江高考真题历史（6月）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022浙江高考真题历史（6月）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2022湖南省高考真题历史（教师版）(1).md",
+    "basename": "2022湖南省高考真题历史（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022湖南省高考真题历史（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2023全国乙卷高考真题历史（教师版）(1).md",
+    "basename": "2023全国乙卷高考真题历史（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国乙卷高考真题历史（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/历史/2023全国甲卷高考真题历史（教师版）(1).md",
+    "basename": "2023全国甲卷高考真题历史（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "历史",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国甲卷高考真题历史（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/地理/2022北京高中合格考地理（第一次）（教师版）(1).md",
+    "basename": "2022北京高中合格考地理（第一次）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "地理",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高中合格考地理（第一次）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/地理/2022北京高考真题地理（教师版）(1).md",
+    "basename": "2022北京高考真题地理（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "地理",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高考真题地理（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/地理/2022广东高考真题地理（教师版）(1).md",
+    "basename": "2022广东高考真题地理（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "地理",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022广东高考真题地理（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/地理/2022浙江高考真题地理（1月）（教师版）(1).md",
+    "basename": "2022浙江高考真题地理（1月）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "地理",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022浙江高考真题地理（1月）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/地理/2022浙江高考真题地理（6月）（教师版）(1).md",
+    "basename": "2022浙江高考真题地理（6月）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "地理",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022浙江高考真题地理（6月）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/地理/2022湖南高考真题地理（教师版）(1).md",
+    "basename": "2022湖南高考真题地理（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "地理",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022湖南高考真题地理（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/地理/2023全国乙卷高考真题地理（教师版）(1).md",
+    "basename": "2023全国乙卷高考真题地理（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "地理",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国乙卷高考真题地理（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/地理/2023全国甲卷高考真题地理（教师版）(1).md",
+    "basename": "2023全国甲卷高考真题地理（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "地理",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国甲卷高考真题地理（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/政治/2022北京高中合格考政治（第一次）（教师版）(1).md",
+    "basename": "2022北京高中合格考政治（第一次）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "政治",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高中合格考政治（第一次）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/政治/2022北京高中合格考政治（第二次）（教师版）(1).md",
+    "basename": "2022北京高中合格考政治（第二次）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "政治",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高中合格考政治（第二次）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/政治/2022北京高考真题政治（教师版）(1).md",
+    "basename": "2022北京高考真题政治（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "政治",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高考真题政治（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/政治/2022浙江高考真题政治（1月）（教师版）(1).md",
+    "basename": "2022浙江高考真题政治（1月）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "政治",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022浙江高考真题政治（1月）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/政治/2022浙江高考真题政治（6月）（教师版）(1).md",
+    "basename": "2022浙江高考真题政治（6月）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "政治",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022浙江高考真题政治（6月）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/政治/2022湖南高考真题政治（教师版）(1).md",
+    "basename": "2022湖南高考真题政治（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "政治",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022湖南高考真题政治（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/政治/2023全国乙卷高考真题政治（教师版）(1).md",
+    "basename": "2023全国乙卷高考真题政治（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "政治",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国乙卷高考真题政治（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/政治/2023全国甲卷高考真题政治（教师版）(1).md",
+    "basename": "2023全国甲卷高考真题政治（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "政治",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国甲卷高考真题政治（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/数学/2022北京高中合格考数学（第一次）（教师版）(1).md",
+    "basename": "2022北京高中合格考数学（第一次）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "数学",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高中合格考数学（第一次）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/数学/2022北京高考真题数学（教师版）(1).md",
+    "basename": "2022北京高考真题数学（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "数学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高考真题数学（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/数学/2023全国Ⅰ卷新高考真题数学（教师版）(1).md",
+    "basename": "2023全国Ⅰ卷新高考真题数学（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "数学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国Ⅰ卷新高考真题数学（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/数学/2023全国Ⅱ卷新高考真题数学（教师版）(1).md",
+    "basename": "2023全国Ⅱ卷新高考真题数学（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "数学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国Ⅱ卷新高考真题数学（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/数学/2023全国乙卷高考真题数学（文）（教师版）(1).md",
+    "basename": "2023全国乙卷高考真题数学（文）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "数学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国乙卷高考真题数学（文）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/数学/2023全国乙卷高考真题数学（理）（教师版）(1).md",
+    "basename": "2023全国乙卷高考真题数学（理）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "数学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国乙卷高考真题数学（理）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/数学/2023全国甲卷高考真题数学（文）（教师版）(1).md",
+    "basename": "2023全国甲卷高考真题数学（文）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "数学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国甲卷高考真题数学（文）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/数学/2023全国甲卷高考真题数学（理）（教师版）(1).md",
+    "basename": "2023全国甲卷高考真题数学（理）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "数学",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国甲卷高考真题数学（理）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/物理/2022北京人大翠微学校高—10月月考物理（教师版）(1).md",
+    "basename": "2022北京人大翠微学校高—10月月考物理（教师版）(1).md",
+    "bucket": "UNDETERMINED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "物理",
+     "reclassify_name": null,
+     "reclassify_with_text": "其他汇编",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京人大翠微学校高—10月月考物理（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/物理/2022北京人大附中翠微学校高—10月月考物理（教师版）(1).md",
+    "basename": "2022北京人大附中翠微学校高—10月月考物理（教师版）(1).md",
+    "bucket": "UNDETERMINED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "物理",
+     "reclassify_name": null,
+     "reclassify_with_text": "其他汇编",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京人大附中翠微学校高—10月月考物理（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/物理/2022山东高考真题物理（教师版）(1).md",
+    "basename": "2022山东高考真题物理（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "物理",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022山东高考真题物理（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/物理/2022年浙江高考真题物理（1月）（教师版）(1).md",
+    "basename": "2022年浙江高考真题物理（1月）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "物理",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022年浙江高考真题物理（1月）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/物理/2022广东高考真题物理（教师版）(1).md",
+    "basename": "2022广东高考真题物理（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "物理",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022广东高考真题物理（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/物理/2022湖南高考真题物理（教师版）(1).md",
+    "basename": "2022湖南高考真题物理（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "物理",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022湖南高考真题物理（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/物理/2023全国乙卷高考真题物理（教师版）(1).md",
+    "basename": "2023全国乙卷高考真题物理（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "物理",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国乙卷高考真题物理（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/物理/2023全国甲卷高考真题物理（教师版）(1).md",
+    "basename": "2023全国甲卷高考真题物理（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "物理",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国甲卷高考真题物理（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/生物/2022北京高中合格考生物（第一次）（教师版）(1).md",
+    "basename": "2022北京高中合格考生物（第一次）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "生物",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高中合格考生物（第一次）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/生物/2022北京高中合格考生物（第二次）（教师版）(1).md",
+    "basename": "2022北京高中合格考生物（第二次）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "生物",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高中合格考生物（第二次）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/生物/2022北京高考真题生物（教师版）(1).md",
+    "basename": "2022北京高考真题生物（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "生物",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高考真题生物（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/生物/2022广东高考真题生物（教师版）(1).md",
+    "basename": "2022广东高考真题生物（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "生物",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022广东高考真题生物（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/生物/2022浙江高考真题生物（1月）（教师版）(1).md",
+    "basename": "2022浙江高考真题生物（1月）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "生物",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022浙江高考真题生物（1月）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/生物/2022浙江高考真题生物（6月）（教师版）(1).md",
+    "basename": "2022浙江高考真题生物（6月）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "生物",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022浙江高考真题生物（6月）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/生物/2022湖南高考真题生物（教师版）(1).md",
+    "basename": "2022湖南高考真题生物（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "生物",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022湖南高考真题生物（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/生物/2023全国乙卷高考真题生物（教师版）(1).md",
+    "basename": "2023全国乙卷高考真题生物（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "生物",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国乙卷高考真题生物（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/生物/2023全国甲卷高考真题生物（教师版）(1).md",
+    "basename": "2023全国甲卷高考真题生物（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "生物",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国甲卷高考真题生物（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/英语/2012-2021全国高考英语真题汇编：代词（教师版）(1).md",
+    "basename": "2012-2021全国高考英语真题汇编：代词（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "英语",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [
+      "高考真题/英语/2012-2021全国高考英语真题汇编：代词（教师版）(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2012-2021全国高考英语真题汇编：代词（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/英语/2022北京高中合格考英语（第一次）（教师版）(1).md",
+    "basename": "2022北京高中合格考英语（第一次）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "英语",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高中合格考英语（第一次）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/英语/2022浙江卷高考真题英语（1月）（教师版）(1).md",
+    "basename": "2022浙江卷高考真题英语（1月）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "英语",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022浙江卷高考真题英语（1月）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/英语/2023全国II卷新高考真题英语（教师版）(1).md",
+    "basename": "2023全国II卷新高考真题英语（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "英语",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国II卷新高考真题英语（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/英语/2023全国I卷新高考真题英语（教师版）(1).md",
+    "basename": "2023全国I卷新高考真题英语（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "英语",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国I卷新高考真题英语（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/英语/2023全国乙卷高考真题英语（教师版）(1).md",
+    "basename": "2023全国乙卷高考真题英语（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "英语",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国乙卷高考真题英语（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/英语/2023全国甲卷高考真题英语（教师版）(1).md",
+    "basename": "2023全国甲卷高考真题英语（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "英语",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国甲卷高考真题英语（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/语文/2022北京高中合格考语文（第一次）（教师版）(1).md",
+    "basename": "2022北京高中合格考语文（第一次）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "语文",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高中合格考语文（第一次）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/语文/2022北京高中合格考语文（第二次）（教师版）(1).md",
+    "basename": "2022北京高中合格考语文（第二次）（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "语文",
+     "reclassify_name": "合格考",
+     "reclassify_with_text": "合格考",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022北京高中合格考语文（第二次）（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/语文/2022浙江高考真题语文（教师版）(1).md",
+    "basename": "2022浙江高考真题语文（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "语文",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2022浙江高考真题语文（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/语文/2023全国II卷新高考真题语文（教师版）(1).md",
+    "basename": "2023全国II卷新高考真题语文（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "语文",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国II卷新高考真题语文（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/语文/2023全国Ⅰ卷新高考真题语文（教师版）(1).md",
+    "basename": "2023全国Ⅰ卷新高考真题语文（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "语文",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国Ⅰ卷新高考真题语文（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/语文/2023全国乙卷高考真题语文（教师版）(1).md",
+    "basename": "2023全国乙卷高考真题语文（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "语文",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国乙卷高考真题语文（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/语文/2023全国甲卷高考真题语文（教师版）(1).md",
+    "basename": "2023全国甲卷高考真题语文（教师版）(1).md",
+    "bucket": "NAME_RULE_COVERED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "语文",
+     "reclassify_name": "高考真题",
+     "reclassify_with_text": "高考真题",
+     "dup_twins_outside_unknown": [],
+     "flags": [
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023全国甲卷高考真题语文（教师版）(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "main",
+    "rel_path": "未分类/语文/2023北京一七一中初三（上）第一次月考语文（教师版）.md",
+    "basename": "2023北京一七一中初三（上）第一次月考语文（教师版）.md",
+    "bucket": "UNDETERMINED",
+    "predicates": {
+     "runner_grade": "未分类",
+     "runner_subject": "语文",
+     "reclassify_name": null,
+     "reclassify_with_text": "其他汇编",
+     "dup_twins_outside_unknown": [],
+     "flags": []
+    },
+    "pdf_exact_matches": [
+     "2023北京一七一中初三（上）第一次月考语文（教师版）.pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "stray",
+    "rel_path": "高三/未分类/14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+    "basename": "14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+    "bucket": "PLACEMENT_MISMATCH",
+    "predicates": {
+     "runner_grade": "高三",
+     "runner_subject": "未分类",
+     "reclassify_name": null,
+     "reclassify_with_text": "其他汇编",
+     "dup_twins_outside_unknown": [
+      "其他汇编/理综/14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md",
+      "高三/未分类/14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.md"
+     ],
+     "flags": [
+      "dup_twin"
+     ]
+    },
+    "pdf_exact_matches": [
+     "14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   },
+   {
+    "scope": "stray",
+    "rel_path": "高三/未分类/2023丰台高三答案(1).md",
+    "basename": "2023丰台高三答案(1).md",
+    "bucket": "PLACEMENT_MISMATCH",
+    "predicates": {
+     "runner_grade": "高三",
+     "runner_subject": "未分类",
+     "reclassify_name": null,
+     "reclassify_with_text": "其他汇编",
+     "dup_twins_outside_unknown": [
+      "高三/未分类/2023丰台高三答案(1).md"
+     ],
+     "flags": [
+      "dup_twin",
+      "download_dup_suffix"
+     ]
+    },
+    "pdf_exact_matches": [
+     "2023丰台高三答案(1).pdf"
+    ],
+    "pdf_exact_match_count": 1,
+    "pdf_casefold_extra_matches": []
+   }
+  ],
+  "summary": {
+   "main:NAME_RULE_COVERED": 141,
+   "main:UNDETERMINED": 4,
+   "stray:PLACEMENT_MISMATCH": 2
+  },
+  "bucket_meanings": {
+   "UNREADABLE": "无法读取,归因不可判定(fail-closed)→ PENDING_REVIEW",
+   "PLACEMENT_MISMATCH": "文件名含年级关键词但落位未分类 → 目录/来源异常(真实落位 bug 候选)",
+   "NAME_RULE_COVERED": "文件名即可被 reclassify 类型规则覆盖 → 正常但重归类未跑/跑步机回流(规则缺口)",
+   "CONTENT_RULE_COVERED": "仅正文内容可判类型 → 文件名无信号,需内容推断",
+   "UNDETERMINED": "文件名+正文均无信号 → 真正孤儿候选 → PENDING_REVIEW(不自动归类)"
+  }
+ }
+}
