@@ -5,6 +5,7 @@
 每日限制: 20000页
 """
 
+import hashlib
 import json
 import os
 import re
@@ -69,6 +70,16 @@ def log(msg):
     print(log_msg, flush=True)
     with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(log_msg + "\n")
+
+def _manifest_digest(path):
+    """R67.1 Gate C2:manifest 加载时点文件 sha256(absent = 文件不存在,非空文件)。"""
+    if not os.path.exists(path):
+        return "absent"
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
 
 def load_page_usage():
     """加载页数使用记录"""
@@ -215,6 +226,9 @@ def main():
         log(f"[FATAL] 输出清单损坏,拒绝继续(R-OHM-1 fail-closed): {e}")
         raise SystemExit(2)
     log(f"输出清单载入: {len(manifest)} 条 source 记录")
+    # R67.1 Gate C2:结构化加载证据(条数 + 加载时点 digest;fail-closed 在上方,禁静默降级)
+    log(f"[MANIFEST_LOAD] entries={len(manifest)} "
+        f"sha256={_manifest_digest(MANIFEST_FILE)}")
 
     # 收集所有PDF文件
     all_files = []

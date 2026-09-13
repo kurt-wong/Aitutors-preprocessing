@@ -310,6 +310,8 @@ def test_r66_t9_runner接线锚():
         "[FATAL] 输出清单损坏,拒绝继续(R-OHM-1 fail-closed)",
         "[FATAL] 输出清单写入失败,拒绝静默继续(R-OHM-1)",
         "append_entry(MANIFEST_FILE, entry)",
+        # R67.1 Gate C2:结构化加载证据(条数 + 加载时点 digest)
+        "[MANIFEST_LOAD] entries=",
         # process_pdf 既有 skip-check 原样保留(R25 冻结语义,防 t8 锚漂移)
         "    if os.path.exists(output_md) and os.path.getsize(output_md) > 100:",
     ]:
@@ -390,3 +392,16 @@ def test_r66_t11_stub幂等与specless短路():
         assert calls2 == [], "spec-less 模块在 sys.modules 必须短路(不抛 ValueError)"
     finally:
         sys.modules.pop(name, None)
+
+
+def test_r66_t12_MANIFEST_LOAD证据(monkeypatch, workdir):
+    """R67.1 Gate C2 钉:结构化加载证据 = 条数 + 加载时点文件 sha256;
+    文件缺失必须报 absent(禁把不存在冒充空文件);digest 必须等于落盘真实字节。"""
+    import hashlib
+    h = Harness(workdir, monkeypatch)
+    h.run_main()  # manifest 不存在 → entries=0 sha256=absent
+    assert "[MANIFEST_LOAD] entries=0 sha256=absent" in h.log_text()
+    digest = hashlib.sha256(h.manifest.read_bytes()).hexdigest()
+    assert len(h.manifest_lines()) == 1
+    h.run_main()  # 1 条在册 → digest 必须与磁盘字节真实一致
+    assert f"[MANIFEST_LOAD] entries=1 sha256={digest}" in h.log_text()
