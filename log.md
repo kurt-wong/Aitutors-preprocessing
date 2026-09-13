@@ -1684,3 +1684,7 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 3. **Gate B(不可污染,双向闸门升级)**:设计要点——apply 后 bootstrap plan 因 no-overwrite 全部 ALREADY_IN_MANIFEST(条目为空),再审 plan 会假报不一致;`r67_apply_gate.py` 新增 `--manifest` 模式**审落盘 manifest 本体**(独立重推期望值逻辑不变)。实测:`audit_entries=698、forward_missing=0、forward_dup=0、mismatches=0、consistent=True`;报告 `data/r67_apply_gate_report.json`。
 4. **测试 21 钉全绿**(t20 manifest 模式三阶段:clean 一致 / sha 篡改咬 SHA256 / pages 篡改咬 PAGES;t21 Gate A 七场景逐项可咬:processed_at 伪造 / 行丢失 / 条目重复 / provenance 伪造 / pages 单点漂移(仅指纹可侦测)/ PDF sha 伪造 / 输出删除,每场景 fresh apply + 单点篡改 + 期望检查项名断言);**变异 10/10 BITE 字节还原**(MV1–MV7 Gate A 七检查逐个恒真化、MG1 manifest 分支读空、MG2 落盘 sha 比对拆除、MG3 落盘 PAGES 比对拆除);全量 **263 passed + 1 xfailed**(261+2)。
 **边界(严格执行用户范围)**:本轮**只做 manifest 落盘**——daemon 未重启、D5-B 未跑、canonical identity/BUG-14-CHAIN/语义去重零触碰;9,658 份为**未建立处理历史证明的 source**(非错误 source),由 runner 按正常业务处理。下一动作 = R67.1 生效验收(Gate C:旧 PID 消亡 / 新 PID 创建时间 > manifest 写入时间 / runner 加载新 manifest / 首扫 MANIFEST_DONE 观察),验收通过后再议 D5-B。
+
+### R67-A 收口(CI 实测,2026-09-13)
+
+**提交 7247c12 → CI Run 34762363957 = success,日志原文 "239 passed, 24 skipped, 1 xfailed"**。算术闭合:239+24+1 = 264 = 本地 263 passed + 1 xfailed(263−24 skip = 239;skip 24 = 19 corpus + 4 win-only + t13 语料冒烟,历轮已逐节点点名)。main = 7247c12(前序 17fd66a)。
