@@ -3,7 +3,7 @@
 > **冻结文档**：本文件是项目的规格基准（single source of truth）。背景、结构、数据契约、
 > 实现逻辑以本文为准；`status.md` 记录进度快照，`log.md` 记录逐轮变更，`bugs.md` 记录缺陷与修复，
 > `README.md` 只做目录导航。
-> 冻结日期：2026-09-10 · 负责人：Kurt
+> 冻结日期：2026-09-10 · 最近规格校准：2026-09-15(项目定位重校准,charter §12) · 负责人：Kurt
 
 ---
 
@@ -22,8 +22,10 @@
 
 ## 0. 文档目的
 
-把北京高中试卷扫描 PDF，稳定地转成**可入库的"完整题目单元"**，供智能题库消费。本 PRD 冻结：
-目标与非目标、核心概念、系统架构、数据契约、批注规则、各模块实现逻辑、质检体系、已知局限、路线图。
+把北京高中试卷扫描 PDF，稳定地转成**可验证、可定位、可追溯的 Source Evidence(Document Evidence Manifest)**，
+供 V3 `Source → Evidence → Resolver/IR → Gate → Admission` 链路消费。**preprocessing 不负责生产最终 Question/Instance**。
+
+本 PRD 冻结：目标与非目标、核心概念、系统架构、数据契约、批注规则、各模块实现逻辑、质检体系、已知局限、路线图。
 
 ---
 
@@ -34,16 +36,36 @@
 试卷 PDF，需先 OCR 成 Markdown，再把线性文本**切分成题目单元**并打上结构化元数据。
 
 ### 1.2 核心目标
+> **【2026-09-15 项目定位重校准,详见 `governance/phase_p2_charter.md` §12】**
+> preprocessing = **Source Evidence Producer**:从异构考试文档生产可验证、可定位、可追溯的
+> **Source Evidence(Document Evidence Manifest)**,作为 V3 `Source → Evidence → Resolver/IR → Gate → Admission`
+> 链路的上游事实输入。**不负责**把这些事实解释为最终知识资产(Question/Instance)。
+>
+> **preprocessing:原文有什么、在哪里。V3:它意味着什么、能不能进知识库。**
+> (精确版:preprocessing 发现并表达"文档中的结构事实";V3 把结构事实解释为领域语义并决定是否准入。)
+
 1. **保真**：批注绝不改写、生成题目内容，只插入锚点元数据（`去锚点 == 源文件原文`）。
 2. **完整**：每个入库单元是完整可解的题；综合题（共享材料）整合为一个原子单元，子题/答案齐全。
 3. **可溯源**：一切产出都能回指到源 `.md` 的具体行号；一切源修复都确定性、可回滚。
 4. **可规模化**：从 16 份试点扩展到全库 ~3120 份，流程可断点续跑、可回归校验。
+
+**已实证的 Evidence 类型(P3 冻结候选)**:`source_identity` / `producer_provenance` / `unit_boundary` /
+`question_numbers` / `unit_type` / `stem_region` / `options_region` / `answer_evidence` /
+`explanation_region` / `material_region` / `figure_reference`。provenance 保持轻量
+(`source_hash`/`manifest_version`/`producer_version`/`generated_at`),不建版本图/血缘平台/事件溯源。
 
 ### 1.3 非目标（明确不做）
 - **不判答案对错**，只判结构与完整性。
 - **LLM 不誊写正文**，只输出行号引用（消除幻觉污染正文的风险）。
 - **不做本地小模型训练**（早期"BERT+Span+CRF"路线已废弃，见 §12 决策记录）。
 - 卷面指令（"本大题共X小题""请在答题卡作答"）不入库；解题必需的作答要求保留。
+- **【2026-09-15 §12 Boundary 2】不做 V3 语义/准入职责**:Question canonicalization / dedup /
+  similarity·family / knowledge mapping / canonical Question identity / QuestionInstance identity /
+  Admission·Gate decision / semantic correctness judgment / V3 domain lifecycle。
+  不得因为 preprocessing"知道两道题一样"就在此合并 Question。
+- **【2026-09-15 §12.7】不规划仓库合并**:preprocessing 与 V3 保持独立仓库,只验证 Evidence Producer →
+  V3 Consumer 稳定接口;合并/嵌入/独立**依据真实维护成本决定,不提前设计**(不设计 monorepo /
+  domains/preprocessing / internal package migration / service extraction)。
 
 ---
 
@@ -283,12 +305,18 @@
 
 ---
 
-## 9. 当前状态（诚实快照，2026-09-10）
+## 9. 当前状态（诚实快照，2026-09-15）
+
+> **阶段:P2 收口 → P3 Evidence Contract Validation**(定位重校准见 charter §12)。
 
 - **重切路线成立**：试点 16 份 / 9 科 × 3 学段，用户全部签核；QC C1–C10 16/16 PASS。
+- **P2.1 ✅ CLOSED**：Question / Answer Evidence Boundary(prompt v2.4→v2.5;contamination 76→3,残留 3 例 accepted exception)。
+- **P2.2 ✅ CLOSED**：Figure Evidence Boundary(prompt v2.7;题面图引用 154 条 b1→b2 **lost=0**、admission 272/272=100%、
+  adjacent orphan 14→0;剩余 58 条 100% 为解析区重复配图,不影响 V3 契约,按裁定不修;产物 `Ocr-markdown/reslice-p2-b2/` 8 卷全 v2.7)。
+- **V3 对接实测**:Phase 0 Span Compatibility / 0.2-R2 Evidence→IR Compatibility / 0.3-B source-grounded Option Resolution(527/548)——
+  **证明两项目接口是 Source Evidence / Resolved Evidence,不是 Question IR**。
 - **源缺陷已量化**（corpus_scan，3120 份）：双重识别 138 份/148 处；裸 LaTeX 954 份（简单 4918 / 复杂 610）。
-- **源修复进行中**：裸 LaTeX 已自动修 4388 行（其中 **36 行需回修**，见 §10-A）；残留 715 行待半自动；双重识别 148 处待逐个删。
-- **全量推广一步未迈**：3120 份里仅重切 16 份。生产化就绪度 ≈ 原型验证 100% / 生产化 30%。
+- **全量推广一步未迈**：3120 份里仅重切试点 + P2 小批。**P4 之前不全量重跑**(charter §12.8)。
 
 ---
 
@@ -331,15 +359,25 @@
 **决策记录**
 - 2026-09-09：放弃 v6 规则批注（预审合格率仅 4.0%）；**废弃** "BERT+Span+CRF 本地训练" 路线，改 **LLM 驱动重切**。
 - 2026-09-10：确立"锚点式批注"（源不动、只插锚点、LLM 只给行号）为根本形态；试点 16/16 通过。
+- 2026-09-15：**项目定位重校准**(charter §12)——preprocessing 从"输出 V3 Admission 可消费的 Question IR"
+  收缩为 **Source Evidence Producer**;接口 = Evidence Manifest(非 Question IR);P2.3 更名 P3;
+  不规划仓库合并;preprocessing 新增功能必须是"生产 V3 当前实际缺失的 Source Evidence",否则不做。
 
-**推广前准备清单**
-- [ ] 源修复收尾：回修 36 行残损（§10-A）+ 处理 715 行复杂裸 LaTeX + 删 148 处双重识别。
-- [ ] 修 §10-B/C/D/E（LIFO、图片目录、stdout 死锁、token 外部化）。
+**当前路线(P2 已收口,进入 P3)**
+- [x] P2.1 Question / Answer Evidence Boundary — CLOSED。
+- [x] P2.2 Figure Evidence Boundary — CLOSED。
+- [ ] **P3.1 Producer Output Freeze Candidate**:冻结 Evidence 类型集合(§1.2),只定义事实。
+- [ ] **P3.2 V3 Consumer Compatibility**:真实产物 + 小批卷 + V3 实际 Gate/Admission 验证
+      `Manifest → EvidenceAdapter → Resolved Evidence → IR → Gate → Admission`(**不建正式 import API**)。
+- [ ] **P3.3 Gap-driven Repair**:只修真实 gap,**问题在哪层就在哪层修**。
+- [ ] **P4 Small-scale Real Admission**:小批真实卷 + 实际 V3 Gate + Admission + Question/Instance 产物验证;
+      之后再决定是否扩大规模 / 全量重跑 / 正式 import path。
+
+**推广前准备清单(P4 后再启)**
+- [ ] 源修复收尾：回修残损行(§10-A) + 处理复杂裸 LaTeX + 删双重识别。
 - [ ] 数据卫生：去重 73 份、周期重归类 `未分类`、归档 `.restored.md`。
 - [ ] `reslice_pipeline` 加**全量 runner**（枚举全库 + 吞吐/配额控制）；现 CLI 仅试点版。
-- [ ] **大文件冒烟 + 50 份测速批**：验证长扫描质量 + 定价吞吐（§11）。
-- [ ] 全量重切（v2.1 嵌套格式）+ QC C1–C10 回归 + 渲染预览抽查。
-- [ ] 待用户给 Phase I-4「42 个 ambiguous target」定义 → 设计 manifest 对照验证（覆盖率/准确率）→ 定 Phase I-5。
+- [ ] 全量重切 + QC C1–C10 回归 + 渲染预览抽查(**须 V3 Consumer Path 稳定后**,charter §12.8)。
 
 ---
 

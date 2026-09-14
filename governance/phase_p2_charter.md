@@ -9,6 +9,10 @@ preprocessing 项目定位:**为 AITutor-V3 提供高质量、可追溯、可消
 
 > **够用的可靠性 + 快速业务闭环 > 极致工程完整性。**
 
+> **【2026-09-15 §12 重校准后的一句话定位】** preprocessing = **Source Evidence Producer**:
+> 从异构考试文档生产可验证、可定位、可追溯的 Source Evidence(Evidence Manifest),**不负责**解释为最终知识资产;
+> V3 负责 Resolve / IR / Gate / Admission。详见 §12。
+
 个人系统优势:数据规模有限 / 使用者单一 / 迭代快 / 可人工纠错。
 禁止按百万级数据平台、多人协作 SaaS、企业数据湖的标准继续扩展。
 
@@ -48,6 +52,10 @@ R66–R67 基础治理阶段**到此收口**,已交付且足够支撑长期运�
 题干 → 图片 / 表格 / 化学结构式 / 几何图 的绑定,形成 `Question → Material[]`,直接对应 V3。此为项目真正壁垒之一。
 
 ### P2.3 输出 V3 Admission 格式
+
+> **【已被 §12 取代(2026-09-15)】** 本节"直接生成 V3 可消费链 Source → … → Question"的方向已作废:
+> preprocessing 不再承诺输出 Question IR,改为输出 Source Evidence(Document Evidence Manifest);
+> P2.3 更名为 **P3 Evidence Contract Validation**(见 §12.5)。以下原表述仅存档参考。
 
 目标不是漂亮 markdown,而是直接生成 V3 可消费链:
 
@@ -216,3 +224,113 @@ P2 的实质 = 把既有切片链路推到**真实批量**并输出 V3 可消费
 
 - ❌ 图片治理平台 / 图片语义理解 / 图片自动分类 / 图像知识抽取 / 视觉 embedding / 图谱预设计;
 - 保持纪律:小批量 → 测量 → 针对性修复 → 收口,不设计平台。
+
+---
+
+## 12. 用户裁定(2026-09-15,P2.2 收口后):项目定位重校准——preprocessing = Source Evidence Producer
+
+> 裁定背景:P2.2 收口(题面图 lost=0、admission 100%)+ V3 Phase 0 / 0.2-R2 / 0.3-B 真实对接实验共同证明:
+> 两项目的真正接口**不是"Question IR",而是"Source Evidence / Resolved Evidence"**。据此重新校准 preprocessing 的终点定义,
+> 防止其滑向"半个 V3"或企业化无限建设。本轮是**职责归位 + 减法**,不是新增功能。
+
+### 12.1 项目目标重定义(取代 §3 的"输出 V3 Admission 格式")
+
+**preprocessing 一句话**:
+
+> **从异构考试文档中生产可验证、可定位、可追溯的 Source Evidence,不负责将其解释为最终知识资产。**
+> (原文有什么、在哪里。)
+
+**V3 一句话**:
+
+> **将可信 Source Evidence 解析、编译、验证并准入为结构化知识资产。**
+> (它意味着什么、能不能进知识库。)
+
+精确版(防止把 preprocessing 误限为纯 OCR):preprocessing 负责**发现并表达"文档中的结构事实"**;
+V3 负责把这些结构事实**解释为领域语义**,并决定是否构成可信知识资产。
+——"如图所示引用了图片""这个 region 是答案区"本身就是文档结构语义,属 preprocessing;但"这是否构成一道题"属 V3。
+
+**preprocessing 不再承诺输出 V3 Admission 可消费的 Question IR**(§11.2/§3 原表述作废,以本节为准)。
+
+### 12.2 最终分层(Evidence Manifest 是边界,不是 Question IR)
+
+```
+原始 PDF / DOCX / OCR
+        │
+        ▼
+┌──────────────────────────────┐
+│ AITutors-preprocessing        │
+│  Source Evidence Producer     │
+│  • source identity            │
+│  • unit boundary              │
+│  • stem span                  │
+│  • options region             │
+│  • answer evidence            │
+│  • explanation span           │
+│  • material                   │
+│  • figure reference           │
+│  • provenance                 │
+│  输出:Document Evidence Manifest│
+└──────────────┬───────────────┘
+               │ Evidence Manifest(项目边界)
+               ▼
+┌──────────────────────────────┐
+│ AITutors-V3                   │
+│  EvidenceAdapter → Canonical  │
+│  Resolver → Resolved Evidence │
+│  → Semantic IR → Gate →       │
+│  Admission → Question/Instance│
+└──────────────────────────────┘
+```
+
+### 12.3 已实证的 Evidence 类型(P3 冻结候选,只列事实不列 V3 Domain Object)
+
+`source_identity` / `producer_provenance` / `unit_boundary` / `question_numbers` / `unit_type` /
+`stem_region` / `options_region` / `answer_evidence` / `explanation_region` / `material_region` / `figure_reference`。
+
+P2 已 CLOSED 的两块证据边界:P2.1 = Question/Answer Evidence Boundary;P2.2 = Figure Evidence Boundary。
+provenance 保持轻量:`source_hash` + `manifest_version` + `producer_version` + `generated_at` 即可,**不建**版本图/血缘平台/事件溯源。
+
+### 12.4 四条冻结边界
+
+- **Boundary 1(preprocessing 可做)**:OCR/文档解析、source normalization、question/unit boundary、material boundary、
+  answer evidence、figure reference、source span、document structure classification、source-grounded options region/marker discovery、provenance。
+- **Boundary 2(preprocessing 不做,禁)**:Question canonicalization、dedup、similarity/family、knowledge mapping、
+  canonical Question identity、QuestionInstance identity、Admission/Gate decision、semantic correctness judgment、V3 domain lifecycle。
+  **不得因为 preprocessing"知道两道题一样"就在此合并 Question。**
+- **Boundary 3(V3 不重猜已存在的 Source Fact)**:preprocessing 已给 `options_region=L45-L52` 时,
+  V3 不得再问"options 大概在哪",只在 authoritative region 内做细粒度解析(0.3-B 实测 527/548 的价值所在)。
+- **Boundary 4(Evidence Contract 当前仍是 Candidate)**:**不改 V3 Frozen L0**;
+  走 Candidate → 真实消费验证 → 发现缺口 → 必要时才 normative,避免"实验设计反过来绑架架构"。
+
+### 12.5 阶段改名:P2.3 → P3 Evidence Contract Validation(P4 小批真实 Admission)
+
+- **P3.1 Producer Output Freeze Candidate**:明确 preprocessing 真正承诺输出的 Evidence 集合(见 12.3),只定义事实。
+- **P3.2 V3 Consumer Compatibility**:用真实产物 + 小批真实卷 + V3 实际 Gate/Admission 验证
+  `Manifest → EvidenceAdapter → Resolved Evidence → IR → Gate → Admission`,**不立刻建正式 import API**。
+- **P3.3 Gap-driven Repair**:只修真实 gap,**问题在哪层就在哪层修**
+  (source span 不可映射→preprocessing;options marker 解析不足→V3 Resolver;Evidence role 不够表达→Manifest schema;IR 表达不了组合结构→V3 IR;Admission policy 不合理→V3 Gate)。
+  不能因为 V3 不会消费就让 preprocessing 多做一层,也不能因为 preprocessing 产出方便就污染 V3 Domain Model。
+- **P4 Small-scale Real Admission**:小批真实卷 + 实际 V3 Gate + 实际 Admission + Question/Instance 产物验证;
+  之后再决定是否扩大数据规模 / 全量重跑 / 正式 import path。
+
+### 12.6 新增功能准入原则(减法纪律)
+
+> **preprocessing 的任何新功能必须回答:它是不是为了生产 V3 当前实际缺失的 Source Evidence?不是就不做。**
+
+- ❌ Question Similarity / 自动题族识别 / 提前把 A/B/C/D 变成最终 IR;
+- ✅ V3 消费发现 figure provenance 缺 source identity / 某类 material 无明确 boundary / 新的 options region 表达方式。
+
+### 12.7 长期仓库形态:暂不裁定(取代任何"preprocessing 进 V3 生产模块"的表述)
+
+> **不规划仓库合并。** 当前只验证 Evidence Producer → V3 Consumer 的稳定接口;
+> 只要跨仓库消费成本可接受,保持两仓库独立。未来合并/嵌入/独立**依据真实维护成本决定,不提前设计**
+> (不设计 monorepo / domains/preprocessing / internal package migration / service extraction)。
+> 理由:preprocessing 仍高频实验(prompt/OCR/parsing/数据集验证),V3 是稳定 Domain Model,变化节奏不同;
+> 当前实验只证明"preprocessing 的 Evidence 可被 V3 消费",**未证明**"OCR/reslice/QC 应搬进 V3 仓库"。
+
+### 12.8 本轮明令禁止(P3 阶段,叠加既有冻结)
+
+- ❌ 正式企业级集成:Import Service / Import API / Message Queue / Workflow Engine / Task Scheduler / Distributed Worker;
+- ❌ 复杂治理体系:Evidence Event Store / Contract Registry / Schema Governance Platform / Version Graph / Producer Registry Service;
+- ❌ 因 38 卷验证成功就数千卷全量重跑(等 V3 Consumer Path 基本稳定再定,避免 V2 式"上游大量跑、架构一改全返工");
+- ❌ preprocessing 生产最终 Question(manifest → LLM → Question JSON → 直接入库),这会破坏已验证的 Evidence Producer → Canonical V3 Consumer 边界。

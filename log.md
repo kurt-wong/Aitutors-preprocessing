@@ -1947,3 +1947,32 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 **结论:P2.2 正式 CLOSED。** 8b 规则解决了真正的题面图片 span omission(adjacent 14→0、真未圈入 0),同时未引入距离误绑、未破坏 admission(100%)、未破坏题面图契约(lost 0)。**不再继续 prompt iteration,不再增加图片规则。** 下一步转入 **P2.3 V3 Admission 输出**:直接消费 `reslice-p2-b2`,不全库重切。
 
 **版本链**:P2.1 → P2.2 baseline(b1) → P2.2 minimal fix v2.7 → 8-volume validated outputs(b2) → P2.3。
+
+---
+
+## 项目定位重校准:preprocessing = Source Evidence Producer(P2.3 → P3)(2026-09-15)
+
+**性质**:文档级职责归位,**零代码变更、零重跑、零 prompt 变更**。用户裁定基于 P2.2 收口 + V3 Phase 0/0.2-R2/0.3-B 真实对接证据。
+
+**核心裁定**:两项目的真正接口**不是"Question IR",而是"Source Evidence / Resolved Evidence"**。据此把 preprocessing 终点定义从"输出 V3 Admission 可消费的 Question IR"收缩为:
+
+> **preprocessing = Source Evidence Producer**:从异构考试文档生产可验证、可定位、可追溯的 Source Evidence(Document Evidence Manifest),不负责解释为最终知识资产。**原文有什么、在哪里。**
+> **V3 = Knowledge Asset Admission System**:把可信 Source Evidence 解析/编译/验证/准入为知识资产。**它意味着什么、能不能进知识库。**
+
+精确版(防止把 preprocessing 误限为纯 OCR):preprocessing 发现并表达"文档中的结构事实"(如"如图所示引用了图片""此 region 是答案区"本身就是文档结构语义);V3 把结构事实解释为领域语义并决定是否准入。
+
+**文档改动**:
+- `governance/phase_p2_charter.md` 新增 **§12**(定位重校准):12.1 目标重定义 / 12.2 最终分层(Evidence Manifest 是边界,非 Question IR)/ 12.3 已实证 Evidence 类型(P3 冻结候选)/ 12.4 四条冻结边界 / 12.5 阶段改名 P2.3→P3 + P4 / 12.6 新增功能准入原则(减法纪律)/ 12.7 长期仓库形态暂不裁定 / 12.8 P3 明令禁止。§0 一句话定位同步,§3 P2.3 标注"已被 §12 取代"。
+- `prd.md`:§0 文档目的、§1.2 核心目标、§1.3 非目标(Boundary 2 + 不规划仓库合并)、§9 当前状态(P2 收口→P3)、§12 路线图(P3.1/P3.2/P3.3/P4 路线)全部对齐新定位。
+
+**四条冻结边界(§12.4)**:Boundary 1 preprocessing 可做(OCR/边界/证据/span/provenance);Boundary 2 禁做(Question canonicalization/dedup/family/identity/Admission·Gate decision/语义正确性判断/V3 lifecycle,不得因"知道两题一样"就合并);Boundary 3 V3 不重猜已存在的 Source Fact(options_region 权威区内细粒度解析,0.3-B 实测 527/548 的价值);Boundary 4 Evidence Contract 仍是 **Candidate,不改 V3 Frozen L0**(避免实验绑架架构)。
+
+**阶段改名**:~~P2.3 V3 Admission 输出~~ → **P3 Evidence Contract Validation**(P3.1 Producer Output Freeze Candidate / P3.2 V3 Consumer Compatibility / P3.3 Gap-driven Repair,问题在哪层就在哪层修)→ **P4 Small-scale Real Admission**。
+
+**减法纪律(§12.6)**:preprocessing 任何新功能必须回答"是不是为了生产 V3 当前实际缺失的 Source Evidence",不是就不做。❌ Question Similarity / 题族识别 / 提前把选项变最终 IR;✅ figure provenance 补 source identity / material boundary / 新 options region 表达。
+
+**明令禁止(§12.8,叠加既有冻结)**:企业级集成(Import API/Message Queue/Workflow Engine/Distributed Worker)、复杂治理体系(Event Store/Contract Registry/Schema Governance/Version Graph/Producer Registry)、因 38 卷成功就全量重跑(等 V3 Consumer Path 稳定)、preprocessing 生产最终 Question(manifest→LLM→Question JSON→直接入库)。
+
+**长期仓库形态(§12.7)**:**不规划仓库合并**。保持两仓库独立,只验证 Evidence Producer → V3 Consumer 稳定接口;合并/嵌入/独立依真实维护成本决定,不提前设计。理由:preprocessing 高频实验、V3 稳定 Domain Model,节奏不同;实验只证明"Evidence 可被消费",未证明"OCR/reslice/QC 应搬进 V3 仓库"。
+
+**下一步**:P3.1 冻结 Evidence 类型集合 → P3.2 用真实产物(b2 8 卷)+ V3 实际 Gate/Admission 做 Consumer Compatibility 验证(不建正式 import API)→ P3.3 只修真实 gap。
