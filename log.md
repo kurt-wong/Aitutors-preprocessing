@@ -1733,3 +1733,7 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 **真实执行**:preflight(PREFLIGHT_OK,batch=13,指纹=冻结值 `a3c74c18…805e52f`,13 条 sha 全无漂移,目标零碰撞)→ **apply:APPLIED 13/13**,逐条 source_gone/dest_present/sha256_unchanged/audit_appended 全 True,**manifest_untouched=True grew=0**。**独立复核**(不依赖 apply 工具,PowerShell 重算):13/13 src 消失、dest 在位、sha 与 plan 记录逐字符合,bad=0;审计 698→**711**(追加 13)。daemon 观察:进程链 50412→38864 在线,manifest 816 条 append-only 增长,配额 2187/20000,扫描 2846/12703。移动后 MANIFEST_DONE 运行时实证按冻结协议归 D5-C 幂等复跑(机制已由 R66.1 受控实证:搬移复扫零回流)。
 
 **边界**:57 份高考真题 moves 未执行(第二批待令);collisions/needs_ruling/identity/semantic 零触碰。全量回归 **284 passed + 1 xfailed**(新增 12 钉,零回退)。
+
+### R67.3 收口(CI 实测,2026-09-14)
+
+主体提交 b59f055 → **CI Run 34795493079 = success,日志原文 "260 passed, 24 skipped, 1 xfailed"**。算术闭合:260+24+1 = 285 = 本地 284 passed + 1 xfailed(284−24 skip = 260;skip 24 = 19 corpus + 4 win-only + t13 语料冒烟)。main = b59f055。R67.3 全链:四闸武器 → 12 钉 + 变异 8/8 → F-r67.3-1 当轮修 → 预检 PREFLIGHT_OK → apply 13/13 APPLIED → 独立复核 bad=0 → 台账 → CI 绿。**第二批 57 份高考真题 moves ⏸ 等用户批准。**
