@@ -1766,3 +1766,7 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 **资产盘点(P2 不白手起家)**:`reslice_pipeline.py` 锚点式 LLM 切片(v2.1,试点 16/16 用户签核)、`reslice_qc.py`(C1–C15)、`recover_images.py`(43,463 张配图已恢复、悬空引用已修)、`render_lint/preview`、question identity phase2/resolver/F1(PAC 冻结,P2 只消费产出格式不扩面)。**P2 实质 = 既有切片链路推到真实批量 + V3 可消费输出,用真实错误推动迭代。**
 
 **边界**:本轮零代码零迁移零审计动作;daemon 继续运行(正常业务);72 collisions/6 needs_ruling/identity/semantic 维持冻结。**下一动作待用户确认首批 100 份抽样口径后启动 P2.1 最小闭环。**
+
+### P2-0 收口(CI 实测,2026-09-14)
+
+主体提交 8bfbb0b → **CI Run 34798572959 = success**。main = 8bfbb0b。纯落盘轮(零代码),套件维持 286 passed + 1 xfailed 无回退。Phase P2 章程生效,等用户确认首批 100 份抽样口径。
