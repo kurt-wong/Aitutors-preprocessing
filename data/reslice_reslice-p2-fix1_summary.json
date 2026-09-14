@@ -1,0 +1,60 @@
+{
+ "when": "2026-09-14 19:31",
+ "n_files": 4,
+ "n_ok": 2,
+ "n_error": 0,
+ "n_no_issues": 2,
+ "total_src_bytes": 123559,
+ "total_prompt_tokens": 56559,
+ "total_completion_tokens": 23912,
+ "total_llm_seconds": 2060,
+ "avg_llm_seconds_per_file": 515.0,
+ "tokens_per_1k_chars": 651.28,
+ "by_tier": {
+  "P2-fix1-p2": {
+   "n": 4,
+   "bytes": 123559,
+   "llm_s": 2060.1,
+   "prompt_tokens": 56559,
+   "completion_tokens": 23912
+  }
+ },
+ "files": [
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\英语\\2021北京高三（下）综合能力测试英语（教师版）(1).md",
+   "tier": "P2-fix1-p2",
+   "elapsed_s": 53.0,
+   "prompt_tokens": 12257,
+   "completion_tokens": 3071,
+   "units": 9,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\地理\\2021北京通州高三（上）期中地理教师版图片(1).md",
+   "tier": "P2-fix1-p2",
+   "elapsed_s": 59.6,
+   "prompt_tokens": 10369,
+   "completion_tokens": 3323,
+   "units": 12,
+   "n_issues": 2
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\英语\\2010北京上地一零一中高一分班考英语（教师版）(1).md",
+   "tier": "P2-fix1-p2",
+   "elapsed_s": 685.3,
+   "prompt_tokens": 7026,
+   "completion_tokens": 3698,
+   "units": 20,
+   "n_issues": 1
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\历史\\2022北京丰台高一（下）期末历史（教师版）(1).md",
+   "tier": "P2-fix1-p2",
+   "elapsed_s": 1262.2,
+   "prompt_tokens": 26907,
+   "completion_tokens": 13820,
+   "units": 30,
+   "n_issues": 0
+  }
+ ]
+}

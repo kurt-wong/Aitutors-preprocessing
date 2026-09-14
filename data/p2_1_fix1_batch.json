@@ -1,0 +1,38 @@
+[
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\英语\\2020北京交大附中高三（下）开学考试英语（教师版）(1).md",
+  "subject": "英语",
+  "tier": "P2-fix1",
+  "reason": "SPLIT S038 题干混入答案(题区内联答案块)"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\英语\\2021北京高三（下）综合能力测试英语（教师版）(1).md",
+  "subject": "英语",
+  "tier": "P2-fix1",
+  "reason": "SPLIT S041-S044 相邻串题(连写答案行共享)"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2018北京101中学高一（上）期中地理含答案.md",
+  "subject": "地理",
+  "tier": "P2-fix1",
+  "reason": "SPLIT S059-S068 整表污染(单行 HTML 答案表)"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\地理\\2021北京通州高三（上）期中地理教师版图片(1).md",
+  "subject": "地理",
+  "tier": "P2-fix1",
+  "reason": "SPLIT S069 相邻串题(连写行含1,2答案)"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\历史\\2022北京丰台高一（下）期末历史（教师版）(1).md",
+  "subject": "历史",
+  "tier": "P2-fix1",
+  "reason": "SPLIT S057 答案区混入题干内容"
+ },
+ {
+  "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\英语\\2010北京上地一零一中高一分班考英语（教师版）(1).md",
+  "subject": "英语",
+  "tier": "P2-fix1",
+  "reason": "KEEP 备注污染 S024-S026(答案区混入他篇答案)"
+ }
+]

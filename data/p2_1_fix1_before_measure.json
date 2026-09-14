@@ -1,0 +1,261 @@
+{
+ "schema_version": 2,
+ "batch": "D:\\Project\\Papers\\data\\p2_1_fix1_batch.json",
+ "out": "D:\\Project\\Papers\\Ocr-markdown\\reslice-p2-b1",
+ "totals": {
+  "papers": 6,
+  "ok": 6,
+  "validation_issues": 0,
+  "no_manifest": 0,
+  "parse_success_rate": 1.0,
+  "questions": 127,
+  "answered": 127,
+  "answer_rate": 1.0,
+  "admission_ready": 127,
+  "admission_ready_rate": 1.0,
+  "answer_credibility": {
+   "suspect": 36,
+   "exact": 86,
+   "partial": 5
+  },
+  "answer_evidence_types": {},
+  "answer_contamination": {
+   "stem_has_answer_line": 1,
+   "answer_has_stem_heading": 5,
+   "shared_unmarked": 70,
+   "shared_missing_value": 0,
+   "total": 76
+  },
+  "composite_total": 48,
+  "composite_intact": 7,
+  "sub_question_integrity": 0.1458,
+  "image_dependent_questions": 36
+ },
+ "by_subject": {
+  "英语": {
+   "papers": 3,
+   "ok": 3,
+   "questions": 41,
+   "admission_ready": 41
+  },
+  "地理": {
+   "papers": 2,
+   "ok": 2,
+   "questions": 56,
+   "admission_ready": 56
+  },
+  "历史": {
+   "papers": 1,
+   "ok": 1,
+   "questions": 30,
+   "admission_ready": 30
+  }
+ },
+ "papers": [
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\英语\\2020北京交大附中高三（下）开学考试英语（教师版）(1).md",
+   "subject": "英语",
+   "manifest_exists": true,
+   "status": "OK",
+   "source_readable": true,
+   "units": 12,
+   "questions": 12,
+   "answered": 12,
+   "answer_rate": 1.0,
+   "admission_ready": 12,
+   "admission_ready_rate": 1.0,
+   "answer_credibility": {
+    "suspect": 11,
+    "exact": 1
+   },
+   "answer_evidence_types": {},
+   "answer_contamination": {
+    "stem_has_answer_line": 1,
+    "answer_has_stem_heading": 0,
+    "shared_unmarked": 0,
+    "shared_missing_value": 0,
+    "total": 1
+   },
+   "composite_total": 11,
+   "composite_intact": 0,
+   "sub_question_integrity": 0.0,
+   "image_dependent_questions": 1,
+   "qnum_min": 1,
+   "qnum_max": 63,
+   "qnum_missing": [],
+   "validation_issues": [],
+   "warnings": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\英语\\2021北京高三（下）综合能力测试英语（教师版）(1).md",
+   "subject": "英语",
+   "manifest_exists": true,
+   "status": "OK",
+   "source_readable": true,
+   "units": 9,
+   "questions": 9,
+   "answered": 9,
+   "answer_rate": 1.0,
+   "admission_ready": 9,
+   "admission_ready_rate": 1.0,
+   "answer_credibility": {
+    "suspect": 8,
+    "exact": 1
+   },
+   "answer_evidence_types": {},
+   "answer_contamination": {
+    "stem_has_answer_line": 0,
+    "answer_has_stem_heading": 0,
+    "shared_unmarked": 4,
+    "shared_missing_value": 0,
+    "total": 4
+   },
+   "composite_total": 8,
+   "composite_intact": 0,
+   "sub_question_integrity": 0.0,
+   "image_dependent_questions": 0,
+   "qnum_min": 1,
+   "qnum_max": 44,
+   "qnum_missing": [],
+   "validation_issues": [],
+   "warnings": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2018北京101中学高一（上）期中地理含答案.md",
+   "subject": "地理",
+   "manifest_exists": true,
+   "status": "OK",
+   "source_readable": true,
+   "units": 44,
+   "questions": 44,
+   "answered": 44,
+   "answer_rate": 1.0,
+   "admission_ready": 44,
+   "admission_ready_rate": 1.0,
+   "answer_credibility": {
+    "exact": 34,
+    "suspect": 10
+   },
+   "answer_evidence_types": {},
+   "answer_contamination": {
+    "stem_has_answer_line": 0,
+    "answer_has_stem_heading": 0,
+    "shared_unmarked": 40,
+    "shared_missing_value": 0,
+    "total": 40
+   },
+   "composite_total": 14,
+   "composite_intact": 4,
+   "sub_question_integrity": 0.2857,
+   "image_dependent_questions": 22,
+   "qnum_min": 1,
+   "qnum_max": 60,
+   "qnum_missing": [],
+   "validation_issues": [],
+   "warnings": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\地理\\2021北京通州高三（上）期中地理教师版图片(1).md",
+   "subject": "地理",
+   "manifest_exists": true,
+   "status": "OK",
+   "source_readable": true,
+   "units": 12,
+   "questions": 12,
+   "answered": 12,
+   "answer_rate": 1.0,
+   "admission_ready": 12,
+   "admission_ready_rate": 1.0,
+   "answer_credibility": {
+    "partial": 5,
+    "suspect": 1,
+    "exact": 6
+   },
+   "answer_evidence_types": {},
+   "answer_contamination": {
+    "stem_has_answer_line": 0,
+    "answer_has_stem_heading": 2,
+    "shared_unmarked": 7,
+    "shared_missing_value": 0,
+    "total": 9
+   },
+   "composite_total": 6,
+   "composite_intact": 0,
+   "sub_question_integrity": 0.0,
+   "image_dependent_questions": 10,
+   "qnum_min": 1,
+   "qnum_max": 20,
+   "qnum_missing": [],
+   "validation_issues": [],
+   "warnings": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\历史\\2022北京丰台高一（下）期末历史（教师版）(1).md",
+   "subject": "历史",
+   "manifest_exists": true,
+   "status": "OK",
+   "source_readable": true,
+   "units": 30,
+   "questions": 30,
+   "answered": 30,
+   "answer_rate": 1.0,
+   "admission_ready": 30,
+   "admission_ready_rate": 1.0,
+   "answer_credibility": {
+    "exact": 29,
+    "suspect": 1
+   },
+   "answer_evidence_types": {},
+   "answer_contamination": {
+    "stem_has_answer_line": 0,
+    "answer_has_stem_heading": 3,
+    "shared_unmarked": 0,
+    "shared_missing_value": 0,
+    "total": 3
+   },
+   "composite_total": 4,
+   "composite_intact": 3,
+   "sub_question_integrity": 0.75,
+   "image_dependent_questions": 3,
+   "qnum_min": 1,
+   "qnum_max": 30,
+   "qnum_missing": [],
+   "validation_issues": [],
+   "warnings": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\英语\\2010北京上地一零一中高一分班考英语（教师版）(1).md",
+   "subject": "英语",
+   "manifest_exists": true,
+   "status": "OK",
+   "source_readable": true,
+   "units": 20,
+   "questions": 20,
+   "answered": 20,
+   "answer_rate": 1.0,
+   "admission_ready": 20,
+   "admission_ready_rate": 1.0,
+   "answer_credibility": {
+    "exact": 15,
+    "suspect": 5
+   },
+   "answer_evidence_types": {},
+   "answer_contamination": {
+    "stem_has_answer_line": 0,
+    "answer_has_stem_heading": 0,
+    "shared_unmarked": 19,
+    "shared_missing_value": 0,
+    "total": 19
+   },
+   "composite_total": 5,
+   "composite_intact": 0,
+   "sub_question_integrity": 0.0,
+   "image_dependent_questions": 0,
+   "qnum_min": 1,
+   "qnum_max": 20,
+   "qnum_missing": [],
+   "validation_issues": [],
+   "warnings": 0
+  }
+ ]
+}

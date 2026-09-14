@@ -1,0 +1,396 @@
+{
+ "source_file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\英语\\2021北京高三（下）综合能力测试英语（教师版）(1).md",
+ "model": "mimo-x-pro-preview",
+ "annotation_meta": {
+  "prompt_version": "reslice-pilot-v2.5",
+  "validation_issues": [],
+  "warnings": []
+ },
+ "units": [
+  {
+   "unit_id": "Q1-10",
+   "unit_type": "composite_question",
+   "section": "第一部分：知识运用 第一节 完形填空",
+   "printed_number": "1",
+   "question_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "original_question_type": "cloze",
+   "material_lines": [
+    13,
+    31
+   ],
+   "questions_lines": [
+    13,
+    53
+   ],
+   "answer_lines": [
+    383,
+    383
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     383,
+     383
+    ],
+    "value": "1\\. B 2\\. A 3\\. A 4\\. C 5\\. D 6\\. B 7\\. D 8\\. D 9\\. A 10\\. C",
+    "shared": false
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q11-14",
+   "unit_type": "composite_question",
+   "section": "第一部分：知识运用 第二节 语法填空",
+   "printed_number": "A",
+   "question_numbers": [
+    11,
+    12,
+    13,
+    14
+   ],
+   "original_question_type": "grammar_fill",
+   "material_lines": [
+    61,
+    63
+   ],
+   "questions_lines": [
+    61,
+    63
+   ],
+   "answer_lines": [
+    387,
+    389
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     387,
+     389
+    ],
+    "value": "11. broke 12. carefully 13. to give 14. Although/Though",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q15-17",
+   "unit_type": "composite_question",
+   "section": "第一部分：知识运用 第二节 语法填空",
+   "printed_number": "B",
+   "question_numbers": [
+    15,
+    16,
+    17
+   ],
+   "original_question_type": "grammar_fill",
+   "material_lines": [
+    67,
+    67
+   ],
+   "questions_lines": [
+    67,
+    67
+   ],
+   "answer_lines": [
+    387,
+    389
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     387,
+     389
+    ],
+    "value": "15. were used 16. in 17. struck",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q18-20",
+   "unit_type": "composite_question",
+   "section": "第一部分：知识运用 第二节 语法填空",
+   "printed_number": "C",
+   "question_numbers": [
+    18,
+    19,
+    20
+   ],
+   "original_question_type": "grammar_fill",
+   "material_lines": [
+    71,
+    71
+   ],
+   "questions_lines": [
+    71,
+    71
+   ],
+   "answer_lines": [
+    387,
+    389
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     387,
+     389
+    ],
+    "value": "18. fewer 19. themselves 20. which",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q21-23",
+   "unit_type": "composite_question",
+   "section": "第二部分：阅读理解 第一节",
+   "printed_number": "A",
+   "question_numbers": [
+    21,
+    22,
+    23
+   ],
+   "original_question_type": "reading",
+   "material_lines": [
+    83,
+    103
+   ],
+   "questions_lines": [
+    105,
+    131
+   ],
+   "answer_lines": [
+    395,
+    395
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     395,
+     395
+    ],
+    "value": "21\\. B 22\\. C 23\\. A",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q24-27",
+   "unit_type": "composite_question",
+   "section": "第二部分：阅读理解 第一节",
+   "printed_number": "B",
+   "question_numbers": [
+    24,
+    25,
+    26,
+    27
+   ],
+   "original_question_type": "reading",
+   "material_lines": [
+    135,
+    147
+   ],
+   "questions_lines": [
+    149,
+    185
+   ],
+   "answer_lines": [
+    395,
+    395
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     395,
+     395
+    ],
+    "value": "24\\. B 25\\. C 26\\. A 27\\. D",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q28-30",
+   "unit_type": "composite_question",
+   "section": "第二部分：阅读理解 第一节",
+   "printed_number": "C",
+   "question_numbers": [
+    28,
+    29,
+    30
+   ],
+   "original_question_type": "reading",
+   "material_lines": [
+    189,
+    199
+   ],
+   "questions_lines": [
+    201,
+    227
+   ],
+   "answer_lines": [
+    395,
+    397
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     395,
+     397
+    ],
+    "value": "28\\. C 29\\. B 30\\. D",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q31-34",
+   "unit_type": "composite_question",
+   "section": "第二部分：阅读理解 第一节",
+   "printed_number": "D",
+   "question_numbers": [
+    31,
+    32,
+    33,
+    34
+   ],
+   "original_question_type": "reading",
+   "material_lines": [
+    231,
+    249
+   ],
+   "questions_lines": [
+    251,
+    285
+   ],
+   "answer_lines": [
+    395,
+    397
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     395,
+     397
+    ],
+    "value": "31\\. A 32\\. C 33. D 34. A",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q35-39",
+   "unit_type": "composite_question",
+   "section": "第二部分：阅读理解 第二节（七选五）",
+   "printed_number": null,
+   "question_numbers": [
+    35,
+    36,
+    37,
+    38,
+    39
+   ],
+   "original_question_type": "seven_to_five",
+   "material_lines": [
+    291,
+    303
+   ],
+   "questions_lines": [
+    291,
+    317
+   ],
+   "answer_lines": [
+    401,
+    401
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     401,
+     401
+    ],
+    "value": "35. E 36. C 37. B 38. F 39. D",
+    "shared": false
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q40-43",
+   "unit_type": "composite_question",
+   "section": "第三部分：书面表达 第一节 阅读表达",
+   "printed_number": null,
+   "question_numbers": [
+    40,
+    41,
+    42,
+    43
+   ],
+   "original_question_type": "reading_expression",
+   "material_lines": [
+    325,
+    341
+   ],
+   "questions_lines": [
+    343,
+    349
+   ],
+   "answer_lines": [
+    407,
+    423
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     407,
+     423
+    ],
+    "value": "40. To lead in the topic (of gendered stereotype/bias). / 41. Gender-related biases are everywhere. / 42. Confirmation bias is a kind of bias where people are more likely to choose or associate positive qualities to people more like themselves... / 43. 参考范文见解析",
+    "shared": false
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q44",
+   "unit_type": "composite_question",
+   "section": "第三部分：书面表达 第二节",
+   "printed_number": null,
+   "question_numbers": [
+    44
+   ],
+   "original_question_type": "essay",
+   "material_lines": [
+    353,
+    373
+   ],
+   "questions_lines": [
+    353,
+    373
+   ],
+   "answer_lines": [
+    427,
+    459
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     427,
+     459
+    ],
+    "value": "Possible Version 1 / Possible Version 2（参考范文）",
+    "shared": false
+   },
+   "explanation_lines": null
+  }
+ ]
+}

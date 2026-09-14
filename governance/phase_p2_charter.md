@@ -168,3 +168,26 @@ P2 的实质 = 把既有切片链路推到**真实批量**并输出 V3 可消费
 
 - **P2.1 known limitation: large prompt provider truncation**——平谷生物 49,485 字符 prompt 重跑 4 连败,其中 3 次固定 `IncompleteRead(59 bytes read)`(字节数一致),判定为 provider/request limit 而非网络抖动;
 - 不加重试设施(失败→重试→失败→加成本);P2.1 全部结束后统一决策:prompt 压缩 / 分段请求 / provider 切换,禁局部修。
+
+## 10. 用户裁定(2026-09-15,71/71 人工标注后):答案区间污染 bug fix,直接实施
+
+> 原文要点:71/71 标注推翻"组合题需要拆分"假设——KEEP 52(73%)/UNCERTAIN 0;17 条 SPLIT 的备注语义全部是"答案区混入多余答案",正式更名 **Answer Span Contamination(答案区间污染)**,不得再称"SPLIT 问题"。批准直接进入小修复闭环,不开设计轮。
+
+### 10.1 实证结论(标注结果)
+
+- **组合题拆成多个 QuestionInstance:证据不支持**;**Question + 多小问 + 共享 Material:实证支持**(V3 主体模型方向确认,不需要重构身份模型);
+- 污染三形态(同一缺陷族,不拆企业化 BUG 编号):**整表污染**(101 地理 10 单元,整张答案表单行 HTML 被圈进每个单元)/ **相邻串题**(综合英语 4 + 通州地理 1 + 上地英语 3,答案连写行含他题答案)/ **题干混入**(交大英语 U-trans-60-62 题区内联答案块混入 questions_lines;丰台历史 U28 answer_lines 吞入答案区里复述的题干);
+- LOST 2 条**分别处理,不建通用框架**:延庆语文 U10 = 复核后判定源卷【答案】块本身如此(第二问为作答指引,完整示例答案在【详解】内已随 explanation_lines 入库),非 answer span 缺陷,不动;交大英语 U-gram-A = **source defect / upstream OCR-source issue**(PDF 有 "3.that",源 md 缺),reslice 无法凭空恢复,**禁止**为它让 LLM 补答案。
+
+### 10.2 批准的修复边界(严格最小)
+
+1. **prompt v2.5 只改答案边界语义**:answer_lines 只圈本单元实际消费的答案证据;共享答案表/连写串允许多 Unit 引用,但不得伪装成某 Unit 私有答案区——`answer_evidence` 增加极轻量 `shared: true|false`,shared=true 必须给逐题明文 value;
+2. **最小确定性校验**:题干区含未圈定的【答案】行(题干混入答案)/答案区含本单元题号的题干标题行(答案混入题干)/共享区未标 shared 或 shared 缺 value → issue;重复答案块(同题两处【答案】)未覆盖第二处 → warning(不逼 LLM 切碎答案表制造边界漂移);
+3. **问题卷小批重跑**(约 7 卷:SPLIT 所在 5 卷 + KEEP 备注污染 1 卷 + LOST 真实切分缺陷卷复核),**禁全库重跑**;
+4. **measure 只看**:contamination 下降 / exact 不受损 / admission 不回退 / sub_question_integrity 变化 / 新 issue——不发明新质量指标。
+
+### 10.3 明令禁止(本轮)
+
+- ❌ 组合题身份重构 / QuestionInstance 拆分策略 / 新治理体系 / 新审计体系 / 新生命周期机制 / 全库重跑 / 为两个 LOST 个案建通用框架;
+- ❌ AnswerTable / AnswerGroup / AnswerReference / AnswerOwnership / AnswerMapping / AnswerResolver 等任何"共享答案子系统"——最小模型只有 `answer_evidence{type, lines, value, shared}`;
+- 当前 preprocessing 只解决一个问题:**进入 V3 的每个 Question/SubQuestion 能否找到准确且可追溯的答案证据**。

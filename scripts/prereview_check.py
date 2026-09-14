@@ -107,6 +107,26 @@ def parse_range_answers(text):
     return mapping
 
 
+# ---- 密集行内逐题答案解析（P2.1-e 答案区间污染修复）：
+# "21\. B 22\. C 23\. A"(markdown 转义点)/ "1. A 2. D" / "33. D 34. A" ——
+# 多题答案连写在同一行,是共享答案区的实测形态(综合能力测试英语/通州地理)。
+# 只认"题号+单字母"对,绝不把 "60. While browsing..." 这类句子型答案当答案值。
+INLINE_ANS = re.compile(
+    r"(?<![\d.])(\d{1,3})\s*\\?\.\s*([A-DＡ-Ｄ])(?![a-zA-Z\u4e00-\u9fff])")
+
+
+def parse_inline_answers(text):
+    """从密集连写行解析 题号->字母 答案映射（共享行级证据,非私有答案区）。"""
+    mapping = {}
+    for line in text.splitlines():
+        pairs = INLINE_ANS.findall(line)
+        # 单行 ≥2 对才视为连写答案串;孤对(如句中 "1. A 项")误报风险高,不认。
+        if len(pairs) >= 2:
+            for num, ch in pairs:
+                mapping.setdefault(int(num), ch.translate(_FW))
+    return mapping
+
+
 def parse_blocks(text):
     """解析 META 标记，返回有序事件列表。"""
     events = []

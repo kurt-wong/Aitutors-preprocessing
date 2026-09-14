@@ -1,0 +1,407 @@
+{
+ "source_file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\地理\\2021北京通州高三（上）期中地理教师版图片(1).md",
+ "model": "mimo-x-pro-preview",
+ "annotation_meta": {
+  "prompt_version": "reslice-pilot-v2.5",
+  "validation_issues": [
+   "Q19: 答案区 L379 含本题题干标题行: ### 19. （15分）",
+   "Q20: 答案区 L391 含本题题干标题行: ### 20. （8分）"
+  ],
+  "warnings": []
+ },
+ "units": [
+  {
+   "unit_id": "U1-2",
+   "unit_type": "composite_question",
+   "section": "第一部分（共45分）",
+   "printed_number": "1",
+   "question_numbers": [
+    1,
+    2
+   ],
+   "original_question_type": "single_choice",
+   "material_lines": [
+    9,
+    15
+   ],
+   "questions_lines": [
+    9,
+    25
+   ],
+   "answer_lines": [
+    335,
+    335
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     335,
+     335
+    ],
+    "value": "1.A 2.D",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "U3-5",
+   "unit_type": "composite_question",
+   "section": "第一部分（共45分）",
+   "printed_number": "3",
+   "question_numbers": [
+    3,
+    4,
+    5
+   ],
+   "original_question_type": "single_choice",
+   "material_lines": [
+    27,
+    27
+   ],
+   "questions_lines": [
+    27,
+    57
+   ],
+   "answer_lines": [
+    335,
+    335
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     335,
+     335
+    ],
+    "value": "3.D 4.B 5.C",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "U6-7",
+   "unit_type": "composite_question",
+   "section": "第一部分（共45分）",
+   "printed_number": "6",
+   "question_numbers": [
+    6,
+    7
+   ],
+   "original_question_type": "single_choice",
+   "material_lines": [
+    59,
+    64
+   ],
+   "questions_lines": [
+    59,
+    73
+   ],
+   "answer_lines": [
+    337,
+    337
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     337,
+     337
+    ],
+    "value": "6.D 7.B",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "U8-9",
+   "unit_type": "composite_question",
+   "section": "第一部分（共45分）",
+   "printed_number": "8",
+   "question_numbers": [
+    8,
+    9
+   ],
+   "original_question_type": "single_choice",
+   "material_lines": [
+    75,
+    83
+   ],
+   "questions_lines": [
+    75,
+    104
+   ],
+   "answer_lines": [
+    337,
+    337
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     337,
+     337
+    ],
+    "value": "8.B 9.D",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "U10-11",
+   "unit_type": "composite_question",
+   "section": "第一部分（共45分）",
+   "printed_number": "10",
+   "question_numbers": [
+    10,
+    11
+   ],
+   "original_question_type": "single_choice",
+   "material_lines": [
+    108,
+    113
+   ],
+   "questions_lines": [
+    108,
+    152
+   ],
+   "answer_lines": [
+    337,
+    339
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     337,
+     339
+    ],
+    "value": "10.A 11.B",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q12",
+   "unit_type": "standalone_question",
+   "section": "第一部分（共45分）",
+   "printed_number": "12",
+   "question_numbers": [
+    12
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    154,
+    156
+   ],
+   "options_lines": [
+    158,
+    158
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    339,
+    339
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     339,
+     339
+    ],
+    "value": "12.C",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "U13-15",
+   "unit_type": "composite_question",
+   "section": "第一部分（共45分）",
+   "printed_number": "13",
+   "question_numbers": [
+    13,
+    14,
+    15
+   ],
+   "original_question_type": "single_choice",
+   "material_lines": [
+    160,
+    165
+   ],
+   "questions_lines": [
+    160,
+    186
+   ],
+   "answer_lines": [
+    339,
+    339
+   ],
+   "answer_evidence": {
+    "type": "range_string",
+    "lines": [
+     339,
+     339
+    ],
+    "value": "13.A 14.C 15.D",
+    "shared": true
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q16",
+   "unit_type": "composite_question",
+   "section": "第二部分（共55分）",
+   "printed_number": "16",
+   "question_numbers": [
+    16
+   ],
+   "original_question_type": "short_answer",
+   "material_lines": [
+    194,
+    208
+   ],
+   "questions_lines": [
+    192,
+    232
+   ],
+   "answer_lines": [
+    343,
+    357
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     343,
+     357
+    ],
+    "value": "见343-357行参考答案",
+    "shared": false
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q17",
+   "unit_type": "composite_question",
+   "section": "第二部分（共55分）",
+   "printed_number": "17",
+   "question_numbers": [
+    17
+   ],
+   "original_question_type": "short_answer",
+   "material_lines": [
+    239,
+    244
+   ],
+   "questions_lines": [
+    237,
+    251
+   ],
+   "answer_lines": [
+    359,
+    367
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     359,
+     367
+    ],
+    "value": "见359-367行参考答案",
+    "shared": false
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q18",
+   "unit_type": "composite_question",
+   "section": "第二部分（共55分）",
+   "printed_number": "18",
+   "question_numbers": [
+    18
+   ],
+   "original_question_type": "short_answer",
+   "material_lines": [
+    255,
+    270
+   ],
+   "questions_lines": [
+    253,
+    277
+   ],
+   "answer_lines": [
+    369,
+    377
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     369,
+     377
+    ],
+    "value": "见369-377行参考答案",
+    "shared": false
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q19",
+   "unit_type": "composite_question",
+   "section": "第二部分（共55分）",
+   "printed_number": "19",
+   "question_numbers": [
+    19
+   ],
+   "original_question_type": "short_answer",
+   "material_lines": [
+    281,
+    292
+   ],
+   "questions_lines": [
+    279,
+    303
+   ],
+   "answer_lines": [
+    379,
+    389
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     379,
+     389
+    ],
+    "value": "见379-389行参考答案",
+    "shared": false
+   },
+   "explanation_lines": null
+  },
+  {
+   "unit_id": "Q20",
+   "unit_type": "composite_question",
+   "section": "第二部分（共55分）",
+   "printed_number": "20",
+   "question_numbers": [
+    20
+   ],
+   "original_question_type": "short_answer",
+   "material_lines": [
+    307,
+    318
+   ],
+   "questions_lines": [
+    305,
+    323
+   ],
+   "answer_lines": [
+    391,
+    396
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     391,
+     396
+    ],
+    "value": "见391-396行参考答案",
+    "shared": false
+   },
+   "explanation_lines": null
+  }
+ ]
+}

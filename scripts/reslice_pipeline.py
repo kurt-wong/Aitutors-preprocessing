@@ -31,7 +31,8 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from prereview_check import parse_answer_tables, parse_range_answers, normalize_qnum  # noqa: E402
+from prereview_check import (parse_answer_tables, parse_range_answers,  # noqa: E402
+                             parse_inline_answers, normalize_qnum)
 
 # ROOT 不再硬编码开发机绝对路径(H-01):RESLICE_ROOT 环境变量可覆盖,
 # 默认取本仓库根(scripts/ 的上一级)——任何 checkout 在任意机器上都成立。
@@ -157,7 +158,7 @@ INTERVAL_ROLES = ("stem_lines", "options_lines", "answer_lines", "explanation_li
 # P2.1-c 答案证据类型词表(prompt v2.4;absent=源卷确无答案,不猜测)
 AE_TYPES = ("answer_lines", "inline_in_explanation", "answer_table", "range_string", "absent")
 
-PROMPT_VERSION = "reslice-pilot-v2.4"
+PROMPT_VERSION = "reslice-pilot-v2.5"
 
 
 def clamp_intervals(man, n_lines):
@@ -192,7 +193,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    独立的【答案】行（如 "2.【答案】D"、"5. 【答案】B"）本身必须落在 answer_lines
    区间内——answer_lines 至少要覆盖【答案】标记行，即使它与【解析】【详解】相邻。
 4b. 答案证据：每个题目单元必须输出 "answer_evidence" 对象：
-   {"type": "...", "lines": [起始行号, 结束行号] 或 null, "value": "..." 或 null}
+   {"type": "...", "lines": [起始行号, 结束行号] 或 null, "value": "..." 或 null, "shared": true 或 false}
    - type=answer_lines:存在独立答案行/答案区且 answer_lines 已圈中它;evidence lines 填同一区间。
    - type=inline_in_explanation:全卷无独立答案行,答案结论内嵌在【解答】【详解】块中
      （如块内"故选 D。""C符合题意"）：此时 answer_lines 填 null,evidence lines 圈结论所在行。
@@ -201,6 +202,16 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    - type=absent:源卷确无本题答案;lines 和 value 都填 null。
    - value:只允许抄录源文明文写出的答案值（"故选 D"→"D","1-5 ACDBA"第3题→"B"）;
      源文无明文答案值就填 null。绝不推断、绝不补全一个看似合理的答案。
+   - shared:证据行区内含有**不属于本单元题号**的答案（整张答案表、多题连写答案串
+     如"21\. B 22\. C 23\. A"、多题共用一行）时必须 true;区内只有本单元答案时填 false。
+     shared=true 时 value 必须给出本单元各题的明文答案值（逐题定位,如多小题 "21.B 22.C 23.A"）。
+4c. 答案边界（硬性,P2.1-e 答案区间污染修复）：
+   - answer_lines 只圈本单元实际需要消费的答案证据:绝不圈题干/材料,绝不圈只属于他题的答案行。
+   - 紧跟题目的题区内联【答案】块属于答案区:不圈入 stem/questions 区间,由 answer_lines 圈定。
+   - 同一题答案在卷中出现两处（题区一份、卷末答案区一份）时,answer_lines 圈其中一处即可
+     （优先卷末答案区）,另一处不圈入任何区间。
+   - 答案表/连写答案串为多题共享时,answer_lines 允许圈整个共享区,但 answer_evidence 必须
+     shared=true 且 value 给本题明文答案值。绝不为了"只圈自己的"把共享答案表切碎。
 5. 题干中与解题无关的卷面指令（"本大题共3小题，共12分""请将答案填涂在答题卡上"
    "考试时间""注意事项"）不纳入任何单元的行区间。但解题必需的要求（"任选三小题作答"
    "结果保留两位小数""不少于100词"）属于题干。
@@ -233,7 +244,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    "options_lines": [起始行号, 结束行号] 或 null,
    "extra_lines": [起始行号, 结束行号] 或 null,
    "answer_lines": [起始行号, 结束行号] 或 null,
-   "answer_evidence": {"type": "answer_lines|inline_in_explanation|answer_table|range_string|absent", "lines": [起始行号, 结束行号] 或 null, "value": "答案值原文" 或 null},
+   "answer_evidence": {"type": "answer_lines|inline_in_explanation|answer_table|range_string|absent", "lines": [起始行号, 结束行号] 或 null, "value": "答案值原文" 或 null, "shared": true 或 false},
    "explanation_lines": [起始行号, 结束行号] 或 null
   },
   {
@@ -246,7 +257,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    "material_lines": [起始行号, 结束行号],
    "questions_lines": [起始行号, 结束行号],
    "answer_lines": [起始行号, 结束行号] 或 null,
-   "answer_evidence": {"type": "answer_lines|inline_in_explanation|answer_table|range_string|absent", "lines": [起始行号, 结束行号] 或 null, "value": "答案值原文" 或 null},
+   "answer_evidence": {"type": "answer_lines|inline_in_explanation|answer_table|range_string|absent", "lines": [起始行号, 结束行号] 或 null, "value": "答案值原文" 或 null, "shared": true 或 false},
    "explanation_lines": [起始行号, 结束行号] 或 null
   }
  ]
@@ -297,6 +308,18 @@ PAPER_LINE = re.compile(
     r"|共\s*\d+\s*(小题|题).{0,12}(共\s*\d+\s*分|每题|每小题)"
     r"|^班级[：:]|^\s*姓名[：:]|^\s*学号[：:]"
     r"|考试时间\s*\d|满分\s*\d+|^\s*注意事项")
+
+
+_ANS_NUM_AFTER = re.compile(r"【答案】\s*(\d{1,3})\s*[\.．、]")
+_ANS_NUM_BEFORE = re.compile(r"(\d{1,3})\s*[\.．、]\s*【答案】")
+
+
+def answer_line_nums(text):
+    """从【答案】行解析题号(前缀"2.【答案】D"/后缀"【答案】60. …"两种版式)。
+    用于 P2.1-e 重复答案块判定:同题答案已在他处圈定时,未覆盖的第二处降 warning。"""
+    nums = {int(m.group(1)) for m in _ANS_NUM_AFTER.finditer(text)}
+    nums |= {int(m.group(1)) for m in _ANS_NUM_BEFORE.finditer(text)}
+    return nums
 
 
 def validate_manifest(man, n_lines, lines=None):
@@ -374,6 +397,11 @@ def validate_manifest(man, n_lines, lines=None):
                     v = ae.get("value")
                     if v is not None and not isinstance(v, str):
                         issues.append(f"{uid}: answer_evidence.value 非字符串")
+                    sh = ae.get("shared")
+                    if sh is not None and not isinstance(sh, bool):
+                        issues.append(f"{uid}: answer_evidence.shared 非布尔")
+                    elif sh is True and not v:
+                        issues.append(f"{uid}: answer_evidence.shared=true 必须给本题明文 value(逐题定位)")
         if u.get("answer_lines") is None and not ae_locates:
             issues.append(f"{uid}: 无 answer_lines（题号 {nums}）")
         # R11 入库的是 question 不是 paper：试卷级结构行不得进入任何单元区间
@@ -387,20 +415,91 @@ def validate_manifest(man, n_lines, lines=None):
                 for i in range(max(1, rg[0]), min(rg[1], len(lines)) + 1):
                     if PAPER_LINE.match(lines[i - 1].strip()):
                         issues.append(f"{uid}: L{i} 试卷结构行混入单元区间: {lines[i-1].strip()[:40]}")
-    # P2.1-c 答案映射完整性:【答案】标记行必须被某个单元区间覆盖(规则4),
-    # 遗漏 = 答案映射缺口(实测抓获形态:答案行紧贴【解析】块之前而漏圈)。
+    # P2.1-e 答案区间污染族(Answer Span Contamination)最小确定性校验
+    # (71/71 人工标注实测形态:整表污染/相邻串题/题干混入,见 charter §10):
+    # C-A4 【答案】行覆盖检测(重复答案块放宽) + C-A1 题干区混入答案 + C-A2 答案区混入题干
+    # + C-A3 共享答案区必须显式(shared=true + 逐题 value)。
     if lines is not None and units:
+        def _rows(rg):
+            if isinstance(rg, list) and len(rg) == 2 and all(isinstance(x, int) for x in rg):
+                return range(max(1, rg[0]), min(rg[1], len(lines)) + 1)
+            return ()
         covered_rows = set()
+        ans_rows = set()      # answer_lines/answer_evidence.lines 圈定行(答案身份)
+        ans_nums_cov = set()  # 已覆盖【答案】行上解析出的题号(重复答案块判定)
         for u in units:
             for role in INTERVAL_ROLES:
-                rg = u.get(role)
-                if isinstance(rg, list) and len(rg) == 2 and all(isinstance(x, int) for x in rg):
-                    covered_rows.update(range(max(1, rg[0]), min(rg[1], len(lines)) + 1))
+                covered_rows.update(_rows(u.get(role)))
+            ae0 = u.get("answer_evidence") if isinstance(u.get("answer_evidence"), dict) else {}
+            for rg0 in (u.get("answer_lines"), ae0.get("lines")):
+                ans_rows.update(_rows(rg0))
+        for i in sorted(ans_rows):
+            if "【答案】" in lines[i - 1]:
+                ans_nums_cov |= answer_line_nums(lines[i - 1])
         for i, l in enumerate(lines, 1):
             if "【答案】" in l and i not in covered_rows:
-                issues.append(f"L{i}: 【答案】行未被任何单元区间覆盖: {l.strip()[:40]}")
+                # C-A4 重复答案块放宽:同题答案已在他处圈定 → warning,
+                # 不为消灭 issue 逼 LLM 把共享/重复答案切碎(用户裁定 §10.2)。
+                if answer_line_nums(l) & ans_nums_cov:
+                    warns.append(f"L{i}: 【答案】行未覆盖,同题答案已在他处圈定(重复答案块): {l.strip()[:40]}")
+                else:
+                    issues.append(f"L{i}: 【答案】行未被任何单元区间覆盖: {l.strip()[:40]}")
+        for u in units:
+            uid = u.get("unit_id", "?")
+            own = {n for n in (u.get("question_numbers") or [])}
+            # C-A1 题干区混入未圈定的【答案】行(实测:交大英语题区内联答案块并入 questions_lines)。
+            # 题干+答案同行的行内版式因 answer_lines 同时圈定该行,不误伤。
+            for role in ("stem_lines", "material_lines", "questions_lines"):
+                hit = [i for i in _rows(u.get(role))
+                       if "【答案】" in lines[i - 1] and i not in ans_rows]
+                if hit:
+                    issues.append(f"{uid}: 题干区 L{hit[0]} 混入未圈定的【答案】行: {lines[hit[0]-1].strip()[:40]}")
+            # C-A2 答案区混入本题题干标题行(实测:丰台历史 U28 answer_lines 吞入答案区复述的题干)
+            for i in _rows(u.get("answer_lines")):
+                m = re.match(r"\s*#{1,6}\s*(\d{1,3})\s*[\.．、\s]", lines[i - 1])
+                if m and int(m.group(1)) in own and "【答案】" not in lines[i - 1]:
+                    issues.append(f"{uid}: 答案区 L{i} 含本题题干标题行: {lines[i-1].strip()[:40]}")
+            # C-A3 共享答案区必须显式(实测:101地理整表/综合英语连写串/通州地理连写串):
+            # 答案行区内解析出他题号 → 必须 shared=true 且逐题 value,否则 V3 无法定位本题答案。
+            ae = u.get("answer_evidence") if isinstance(u.get("answer_evidence"), dict) else {}
+            rg = u.get("answer_lines") or ae.get("lines")
+            rows = list(_rows(rg))
+            if rows:
+                txt = "\n".join(lines[i - 1] for i in rows)
+                loc = (set(parse_answer_tables(txt)) | set(parse_range_answers(txt))
+                       | set(parse_inline_answers(txt)))
+                foreign = loc - own
+                if foreign:
+                    if ae.get("shared") is not True:
+                        issues.append(f"{uid}: 答案区含他题答案(题号{sorted(foreign)})但未标 answer_evidence.shared")
+                    elif not ae.get("value"):
+                        issues.append(f"{uid}: shared 答案区必须给本题明文 value(逐题定位)")
     return issues, {"units": len(units), "covered_questions": len({n for _, n in covered}),
                     "covered_sorted": sorted({n for _, n in covered}), "warnings": warns}
+
+
+def contamination_report(man, lines):
+    """P2.1-e 答案区间污染度量(charter §10.2:只看 contamination 升降,不发明新指标)。
+
+    口径 = validate_manifest 污染族 issue 按形态计数(71/71 人工标注实测三形态):
+      stem_has_answer_line       题干区混入未圈定【答案】行(交大英语题区内联答案)
+      answer_has_stem_heading    答案区含本题题干标题行(丰台历史答案区复述题干)
+      shared_unmarked            共享答案区未标 shared(101地理整表/连写串)
+      shared_missing_value       shared 缺逐题明文 value
+    """
+    issues, _ = validate_manifest(man, len(lines), lines)
+    marks = {"stem_has_answer_line": "混入未圈定的【答案】行",
+             "answer_has_stem_heading": "含本题题干标题行",
+             "shared_unmarked": "但未标 answer_evidence.shared",
+             "shared_missing_value": "shared 答案区必须给本题明文 value"}
+    counts = {k: 0 for k in marks}
+    for it in issues:
+        for k, mark in marks.items():
+            if mark in it:
+                counts[k] += 1
+                break
+    counts["total"] = sum(counts.values())
+    return counts
 
 
 def span_text(lines, rg):
@@ -419,6 +518,7 @@ def compile_slices(lines, man, src_name, src_path, model=DEFAULT_MODEL):
     """
     tbl_ans = parse_answer_tables("\n".join(lines))
     rng_ans = parse_range_answers("\n".join(lines))
+    inl_ans = parse_inline_answers("\n".join(lines))
     slices = []
     for u in man["units"]:
         out = []
@@ -450,12 +550,14 @@ def compile_slices(lines, man, src_name, src_path, model=DEFAULT_MODEL):
         ans_span = span_text(lines, rg)
         loc_tbl = parse_answer_tables(ans_span) if ans_span else {}
         loc_rng = parse_range_answers(ans_span) if ans_span else {}
-        values = {str(n): loc_tbl.get(n) or loc_rng.get(n)
-                            or tbl_ans.get(n) or rng_ans.get(n)
+        loc_inl = parse_inline_answers(ans_span) if ans_span else {}
+        values = {str(n): loc_tbl.get(n) or loc_rng.get(n) or loc_inl.get(n)
+                            or tbl_ans.get(n) or rng_ans.get(n) or inl_ans.get(n)
                   for n in u.get("question_numbers", [])}
         values = {k: v for k, v in values.items() if v}
         # 共享判定：答案区间内解析出的题号超出了本单元 → 区间为多单元共享
-        loc_nums = set(loc_tbl) | set(loc_rng)
+        # (表格/区间连写/密集连写行 "21\. B 22\. C" 三种实测形态,P2.1-e 扩展)
+        loc_nums = set(loc_tbl) | set(loc_rng) | set(loc_inl)
         shared = bool(loc_nums) and not loc_nums <= set(u.get("question_numbers", []))
         out.append("“答案区开始”")
         if values:
@@ -472,7 +574,8 @@ def compile_slices(lines, man, src_name, src_path, model=DEFAULT_MODEL):
             ln = ae.get("lines")
             loc = f"L{ln[0]:04d}-L{ln[1]:04d}" if ln else "无行号"
             val = f" 值={ae['value']}" if ae.get("value") else ""
-            out.append(f"<!-- 答案证据 type={ae.get('type')} {loc}{val}(源文行区间引用,非生成) -->")
+            sh = " shared=true" if ae.get("shared") else ""
+            out.append(f"<!-- 答案证据 type={ae.get('type')} {loc}{val}{sh}(源文行区间引用,非生成) -->")
         out.append("“答案区结束”")
         exp = span_text(lines, u.get("explanation_lines"))
         if exp:
@@ -482,7 +585,8 @@ def compile_slices(lines, man, src_name, src_path, model=DEFAULT_MODEL):
         slices.append("\n".join(out))
     header = (f"<!-- resliced by {model} | source: {src_name} | 展示视图，非批注正文 -->\n")
     return header + "\n\n".join(slices) + "\n", {k: v for k, v in
-                                                 {n: (tbl_ans.get(n) or rng_ans.get(n))
+                                                 {n: (tbl_ans.get(n) or rng_ans.get(n)
+                                                      or inl_ans.get(n))
                                                   for n in range(1, 1000)}.items() if v}
 
 

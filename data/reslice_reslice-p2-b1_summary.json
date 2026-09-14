@@ -1,0 +1,375 @@
+{
+ "when": "2026-09-14 15:12",
+ "n_files": 39,
+ "n_ok": 38,
+ "n_error": 1,
+ "n_no_issues": 38,
+ "total_src_bytes": 1839629,
+ "total_prompt_tokens": 869185,
+ "total_completion_tokens": 366542,
+ "total_llm_seconds": 15111,
+ "avg_llm_seconds_per_file": 397.7,
+ "tokens_per_1k_chars": 671.73,
+ "by_tier": {
+  "P2-b1": {
+   "n": 38,
+   "bytes": 1839629,
+   "llm_s": 15111.2,
+   "prompt_tokens": 869185,
+   "completion_tokens": 366542
+  }
+ },
+ "files": [
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\语文\\2018北京丰台高一（下）期中语文（B卷）（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 909.2,
+   "prompt_tokens": 23298,
+   "completion_tokens": 13549,
+   "units": 13,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\语文\\2021北京延庆高一（下）期末语文（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 594.8,
+   "prompt_tokens": 35070,
+   "completion_tokens": 14550,
+   "units": 13,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\语文\\2021北京丰台高三（上）期末语文（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 1467.0,
+   "prompt_tokens": 17366,
+   "completion_tokens": 9600,
+   "units": 10,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\语文\\2022北京东城高三二模语文（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 268.4,
+   "prompt_tokens": 33655,
+   "completion_tokens": 20114,
+   "units": 14,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\语文\\2021北京五中高二（上）期中语文（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 1316.2,
+   "prompt_tokens": 23265,
+   "completion_tokens": 13512,
+   "units": 12,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2017-2019北京高一数学上学期期中汇编：集合填空题（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 85.2,
+   "prompt_tokens": 15233,
+   "completion_tokens": 3869,
+   "units": 30,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2021北京朝阳高一（下）期末数学（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 140.2,
+   "prompt_tokens": 21863,
+   "completion_tokens": 9645,
+   "units": 21,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2017-2019北京高三数学上学期期中汇编：函数（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 172.4,
+   "prompt_tokens": 18358,
+   "completion_tokens": 4466,
+   "units": 24,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\数学\\2022北京一六一中高三12月月考数学（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 64.8,
+   "prompt_tokens": 22850,
+   "completion_tokens": 2827,
+   "units": 21,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\数学\\2021北京丰台高二（上）期中数学（A）（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 1150.5,
+   "prompt_tokens": 22126,
+   "completion_tokens": 5737,
+   "units": 21,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\英语\\2010北京上地一零一中高一分班考英语（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 1169.8,
+   "prompt_tokens": 6284,
+   "completion_tokens": 9456,
+   "units": 20,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\英语\\2021北京延庆高一（下）期末英语（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 513.4,
+   "prompt_tokens": 17536,
+   "completion_tokens": 8624,
+   "units": 8,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\英语\\2020北京交大附中高三（下）开学考试英语（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 50.7,
+   "prompt_tokens": 21003,
+   "completion_tokens": 3880,
+   "units": 12,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\英语\\2021北京高三（下）综合能力测试英语（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 30.6,
+   "prompt_tokens": 11515,
+   "completion_tokens": 2174,
+   "units": 9,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\英语\\2021北京东城高二（上）期末英语（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 49.8,
+   "prompt_tokens": 10141,
+   "completion_tokens": 2335,
+   "units": 11,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2018北京一零一中学高一（下）期中物理（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 219.4,
+   "prompt_tokens": 13383,
+   "completion_tokens": 4386,
+   "units": 28,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京十二中高一（下）期中物理（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 387.7,
+   "prompt_tokens": 24574,
+   "completion_tokens": 4416,
+   "units": 19,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2022北京顺义一中高一（下）期中物理（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 93.7,
+   "prompt_tokens": 21864,
+   "completion_tokens": 5009,
+   "units": 21,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2022北京一七一中高三（上）期中物理（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 214.9,
+   "prompt_tokens": 21247,
+   "completion_tokens": 12517,
+   "units": 20,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2021北京农大附中高二（上）期中物理（合格考）（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 263.7,
+   "prompt_tokens": 23643,
+   "completion_tokens": 13556,
+   "units": 25,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2016-2019北京高一化学下学期期末汇编：化学反应原理（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 113.7,
+   "prompt_tokens": 25397,
+   "completion_tokens": 5331,
+   "units": 17,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京昌平高一（下）期末化学（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 430.4,
+   "prompt_tokens": 26170,
+   "completion_tokens": 5865,
+   "units": 27,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2018北京牛栏山一中高三（上）期中化学含答案(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 222.3,
+   "prompt_tokens": 16415,
+   "completion_tokens": 10992,
+   "units": 19,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2022北京一零一中高三（上）统练六化学（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 282.2,
+   "prompt_tokens": 31082,
+   "completion_tokens": 13793,
+   "units": 19,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\化学\\2021北京四中顺义分校高二（上）期中化学（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 245.1,
+   "prompt_tokens": 24283,
+   "completion_tokens": 13401,
+   "units": 26,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2017-2019北京高中生物高一上期末汇编：分子与细胞（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 1163.6,
+   "prompt_tokens": 106842,
+   "completion_tokens": 18906,
+   "units": 90,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\生物\\2020北京八十中高三（下）开学考生物含答案(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 183.0,
+   "prompt_tokens": 24702,
+   "completion_tokens": 10233,
+   "units": 21,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\生物\\2021北京高三一模二模生物汇编：种群和群落（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 213.8,
+   "prompt_tokens": 15218,
+   "completion_tokens": 13568,
+   "units": 15,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2019北京101中学高二（下）期中生物含答案(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 38.0,
+   "prompt_tokens": 10494,
+   "completion_tokens": 3042,
+   "units": 21,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\历史\\2018北京101中学高一（下）期中历史含答案(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 163.3,
+   "prompt_tokens": 14845,
+   "completion_tokens": 12849,
+   "units": 52,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\历史\\2022北京丰台高一（下）期末历史（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 1409.9,
+   "prompt_tokens": 26165,
+   "completion_tokens": 8082,
+   "units": 30,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\历史\\2021北京高三一模二模历史汇编：近代中国的经济（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 160.3,
+   "prompt_tokens": 14806,
+   "completion_tokens": 11747,
+   "units": 12,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2018北京101中学高一（上）期中地理含答案.md",
+   "tier": "P2-b1",
+   "elapsed_s": 290.2,
+   "prompt_tokens": 21657,
+   "completion_tokens": 23486,
+   "units": 44,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2021北京高一地理上学期期末汇编：地球上的水（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 97.0,
+   "prompt_tokens": 8170,
+   "completion_tokens": 1909,
+   "units": 7,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\地理\\2021北京通州高三（上）期中地理教师版图片(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 45.6,
+   "prompt_tokens": 9627,
+   "completion_tokens": 3272,
+   "units": 12,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\政治\\2017-2019北京高一政治上学期期末汇编：科学社会主义常识与中国特色社会主义（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 184.4,
+   "prompt_tokens": 18347,
+   "completion_tokens": 14000,
+   "units": 27,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\政治\\2022北京师大附中高一（下）期中政治（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 446.5,
+   "prompt_tokens": 30721,
+   "completion_tokens": 9031,
+   "units": 35,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\政治\\2021北京高三一模二模政治汇编：生活与哲学（选择题）（教师版）(1).md",
+   "tier": "P2-b1",
+   "elapsed_s": 259.5,
+   "prompt_tokens": 39970,
+   "completion_tokens": 22813,
+   "units": 45,
+   "n_issues": 0
+  },
+  {
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2021北京平谷高一（上）期末生物（教师版）.md",
+   "tier": "P2-b1",
+   "elapsed_s": null,
+   "prompt_tokens": null,
+   "completion_tokens": null,
+   "units": null,
+   "n_issues": 0
+  }
+ ]
+}

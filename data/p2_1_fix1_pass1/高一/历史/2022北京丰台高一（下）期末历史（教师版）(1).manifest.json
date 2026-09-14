@@ -1,0 +1,1095 @@
+{
+ "source_file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\历史\\2022北京丰台高一（下）期末历史（教师版）(1).md",
+ "model": "mimo-x-pro-preview",
+ "annotation_meta": {
+  "prompt_version": "reslice-pilot-v2.5",
+  "validation_issues": [
+   "Q27: 答案区 L782 含本题题干标题行: ### 27. 中国古代赋税制度变革",
+   "Q28: 答案区 L820 含本题题干标题行: ### 28. 新民主主义革命时期中国共产党党章的演变",
+   "Q29: 答案区 L845 含本题题干标题行: ### 29. 思想解放推动社会变革"
+  ],
+  "warnings": []
+ },
+ "units": [
+  {
+   "unit_id": "Q1",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "1",
+   "question_numbers": [
+    1
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    7,
+    7
+   ],
+   "options_lines": [
+    9,
+    15
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    352,
+    366
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     362,
+     362
+    ],
+    "value": "D",
+    "shared": false
+   },
+   "explanation_lines": [
+    364,
+    366
+   ]
+  },
+  {
+   "unit_id": "Q2",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "2",
+   "question_numbers": [
+    2
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    17,
+    17
+   ],
+   "options_lines": [
+    19,
+    19
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    368,
+    376
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     372,
+     372
+    ],
+    "value": "A",
+    "shared": false
+   },
+   "explanation_lines": [
+    374,
+    376
+   ]
+  },
+  {
+   "unit_id": "Q3",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "3",
+   "question_numbers": [
+    3
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    21,
+    21
+   ],
+   "options_lines": [
+    23,
+    23
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    378,
+    388
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     382,
+     382
+    ],
+    "value": "D",
+    "shared": false
+   },
+   "explanation_lines": [
+    384,
+    388
+   ]
+  },
+  {
+   "unit_id": "Q4",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "4",
+   "question_numbers": [
+    4
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    25,
+    28
+   ],
+   "options_lines": [
+    30,
+    36
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    390,
+    407
+   ],
+   "answer_evidence": {
+    "type": "inline_in_explanation",
+    "lines": [
+     407,
+     407
+    ],
+    "value": "C",
+    "shared": false
+   },
+   "explanation_lines": [
+    403,
+    407
+   ]
+  },
+  {
+   "unit_id": "Q5",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "5",
+   "question_numbers": [
+    5
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    38,
+    38
+   ],
+   "options_lines": [
+    40,
+    46
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    409,
+    419
+   ],
+   "answer_evidence": {
+    "type": "inline_in_explanation",
+    "lines": [
+     419,
+     419
+    ],
+    "value": "A",
+    "shared": false
+   },
+   "explanation_lines": [
+    419,
+    419
+   ]
+  },
+  {
+   "unit_id": "Q6",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "6",
+   "question_numbers": [
+    6
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    48,
+    64
+   ],
+   "options_lines": [
+    66,
+    66
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    421,
+    439
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     435,
+     435
+    ],
+    "value": "C",
+    "shared": false
+   },
+   "explanation_lines": [
+    437,
+    439
+   ]
+  },
+  {
+   "unit_id": "Q7",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "7",
+   "question_numbers": [
+    7
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    68,
+    68
+   ],
+   "options_lines": [
+    70,
+    76
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    441,
+    457
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     451,
+     451
+    ],
+    "value": "A",
+    "shared": false
+   },
+   "explanation_lines": [
+    453,
+    457
+   ]
+  },
+  {
+   "unit_id": "Q8",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "8",
+   "question_numbers": [
+    8
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    78,
+    78
+   ],
+   "options_lines": [
+    80,
+    80
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    459,
+    467
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     463,
+     463
+    ],
+    "value": "D",
+    "shared": false
+   },
+   "explanation_lines": [
+    465,
+    467
+   ]
+  },
+  {
+   "unit_id": "Q9",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "9",
+   "question_numbers": [
+    9
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    84,
+    87
+   ],
+   "options_lines": [
+    89,
+    89
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    469,
+    484
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     476,
+     476
+    ],
+    "value": "D",
+    "shared": false
+   },
+   "explanation_lines": [
+    478,
+    484
+   ]
+  },
+  {
+   "unit_id": "Q10",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "10",
+   "question_numbers": [
+    10
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    91,
+    91
+   ],
+   "options_lines": [
+    93,
+    99
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    486,
+    500
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     496,
+     496
+    ],
+    "value": "C",
+    "shared": false
+   },
+   "explanation_lines": [
+    498,
+    500
+   ]
+  },
+  {
+   "unit_id": "Q11",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "11",
+   "question_numbers": [
+    11
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    101,
+    109
+   ],
+   "options_lines": [
+    111,
+    111
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    502,
+    518
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     514,
+     514
+    ],
+    "value": "B",
+    "shared": false
+   },
+   "explanation_lines": [
+    516,
+    518
+   ]
+  },
+  {
+   "unit_id": "Q12",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "12",
+   "question_numbers": [
+    12
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    113,
+    115
+   ],
+   "options_lines": [
+    118,
+    124
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    520,
+    537
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     533,
+     533
+    ],
+    "value": "B",
+    "shared": false
+   },
+   "explanation_lines": [
+    535,
+    537
+   ]
+  },
+  {
+   "unit_id": "Q13",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "13",
+   "question_numbers": [
+    13
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    126,
+    132
+   ],
+   "options_lines": [
+    134,
+    134
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    539,
+    553
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     549,
+     549
+    ],
+    "value": "A",
+    "shared": false
+   },
+   "explanation_lines": [
+    551,
+    553
+   ]
+  },
+  {
+   "unit_id": "Q14",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "14",
+   "question_numbers": [
+    14
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    136,
+    136
+   ],
+   "options_lines": [
+    138,
+    144
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    555,
+    569
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     565,
+     565
+    ],
+    "value": "B",
+    "shared": false
+   },
+   "explanation_lines": [
+    567,
+    569
+   ]
+  },
+  {
+   "unit_id": "Q15",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "15",
+   "question_numbers": [
+    15
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    146,
+    157
+   ],
+   "options_lines": [
+    159,
+    159
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    571,
+    594
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     586,
+     586
+    ],
+    "value": "A",
+    "shared": false
+   },
+   "explanation_lines": [
+    588,
+    594
+   ]
+  },
+  {
+   "unit_id": "Q16",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "16",
+   "question_numbers": [
+    16
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    161,
+    169
+   ],
+   "options_lines": [
+    171,
+    171
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    596,
+    612
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     608,
+     608
+    ],
+    "value": "C",
+    "shared": false
+   },
+   "explanation_lines": [
+    610,
+    612
+   ]
+  },
+  {
+   "unit_id": "Q17",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "17",
+   "question_numbers": [
+    17
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    173,
+    181
+   ],
+   "options_lines": [
+    183,
+    183
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    614,
+    625
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     621,
+     621
+    ],
+    "value": "D",
+    "shared": false
+   },
+   "explanation_lines": [
+    623,
+    625
+   ]
+  },
+  {
+   "unit_id": "Q18",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "18",
+   "question_numbers": [
+    18
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    185,
+    187
+   ],
+   "options_lines": [
+    190,
+    196
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    629,
+    646
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     642,
+     642
+    ],
+    "value": "C",
+    "shared": false
+   },
+   "explanation_lines": [
+    644,
+    646
+   ]
+  },
+  {
+   "unit_id": "Q19",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "19",
+   "question_numbers": [
+    19
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    198,
+    198
+   ],
+   "options_lines": [
+    200,
+    206
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    648,
+    662
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     658,
+     658
+    ],
+    "value": "B",
+    "shared": false
+   },
+   "explanation_lines": [
+    660,
+    662
+   ]
+  },
+  {
+   "unit_id": "Q20",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "20",
+   "question_numbers": [
+    20
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    208,
+    208
+   ],
+   "options_lines": [
+    210,
+    216
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    664,
+    678
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     674,
+     674
+    ],
+    "value": "D",
+    "shared": false
+   },
+   "explanation_lines": [
+    676,
+    678
+   ]
+  },
+  {
+   "unit_id": "Q21",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "21",
+   "question_numbers": [
+    21
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    218,
+    218
+   ],
+   "options_lines": [
+    220,
+    226
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    680,
+    696
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     692,
+     692
+    ],
+    "value": "C",
+    "shared": false
+   },
+   "explanation_lines": [
+    694,
+    696
+   ]
+  },
+  {
+   "unit_id": "Q22",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "22",
+   "question_numbers": [
+    22
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    228,
+    228
+   ],
+   "options_lines": [
+    230,
+    236
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    698,
+    708
+   ],
+   "answer_evidence": {
+    "type": "inline_in_explanation",
+    "lines": [
+     708,
+     708
+    ],
+    "value": "D",
+    "shared": false
+   },
+   "explanation_lines": [
+    708,
+    708
+   ]
+  },
+  {
+   "unit_id": "Q23",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "23",
+   "question_numbers": [
+    23
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    238,
+    238
+   ],
+   "options_lines": [
+    240,
+    248
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    710,
+    724
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     720,
+     720
+    ],
+    "value": "B",
+    "shared": false
+   },
+   "explanation_lines": [
+    722,
+    724
+   ]
+  },
+  {
+   "unit_id": "Q24",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "24",
+   "question_numbers": [
+    24
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    250,
+    253
+   ],
+   "options_lines": [
+    255,
+    261
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    726,
+    745
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     741,
+     741
+    ],
+    "value": "D",
+    "shared": false
+   },
+   "explanation_lines": [
+    743,
+    745
+   ]
+  },
+  {
+   "unit_id": "Q25",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "25",
+   "question_numbers": [
+    25
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    263,
+    263
+   ],
+   "options_lines": [
+    265,
+    271
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    747,
+    757
+   ],
+   "answer_evidence": {
+    "type": "inline_in_explanation",
+    "lines": [
+     757,
+     757
+    ],
+    "value": "C",
+    "shared": false
+   },
+   "explanation_lines": [
+    757,
+    757
+   ]
+  },
+  {
+   "unit_id": "Q26",
+   "unit_type": "standalone_question",
+   "section": "一、选择题",
+   "printed_number": "26",
+   "question_numbers": [
+    26
+   ],
+   "original_question_type": "single_choice",
+   "stem_lines": [
+    273,
+    275
+   ],
+   "options_lines": [
+    278,
+    284
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    759,
+    776
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     772,
+     772
+    ],
+    "value": "B",
+    "shared": false
+   },
+   "explanation_lines": [
+    774,
+    776
+   ]
+  },
+  {
+   "unit_id": "Q27",
+   "unit_type": "composite_question",
+   "section": "二、非选择题",
+   "printed_number": "27",
+   "question_numbers": [
+    27
+   ],
+   "original_question_type": "short_answer",
+   "material_lines": [
+    290,
+    296
+   ],
+   "questions_lines": [
+    288,
+    300
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    782,
+    804
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     796,
+     804
+    ],
+    "value": null,
+    "shared": false
+   },
+   "explanation_lines": [
+    806,
+    818
+   ]
+  },
+  {
+   "unit_id": "Q28",
+   "unit_type": "composite_question",
+   "section": "二、非选择题",
+   "printed_number": "28",
+   "question_numbers": [
+    28
+   ],
+   "original_question_type": "essay",
+   "material_lines": [
+    305,
+    307
+   ],
+   "questions_lines": [
+    302,
+    309
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    820,
+    839
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     829,
+     839
+    ],
+    "value": null,
+    "shared": false
+   },
+   "explanation_lines": [
+    841,
+    843
+   ]
+  },
+  {
+   "unit_id": "Q29",
+   "unit_type": "composite_question",
+   "section": "二、非选择题",
+   "printed_number": "29",
+   "question_numbers": [
+    29
+   ],
+   "original_question_type": "short_answer",
+   "material_lines": [
+    313,
+    329
+   ],
+   "questions_lines": [
+    311,
+    335
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    845,
+    883
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     869,
+     883
+    ],
+    "value": null,
+    "shared": false
+   },
+   "explanation_lines": [
+    885,
+    897
+   ]
+  },
+  {
+   "unit_id": "Q30",
+   "unit_type": "composite_question",
+   "section": "二、非选择题",
+   "printed_number": "30",
+   "question_numbers": [
+    30
+   ],
+   "original_question_type": "essay",
+   "material_lines": [
+    340,
+    340
+   ],
+   "questions_lines": [
+    337,
+    344
+   ],
+   "extra_lines": null,
+   "answer_lines": [
+    899,
+    919
+   ],
+   "answer_evidence": {
+    "type": "answer_lines",
+    "lines": [
+     913,
+     919
+    ],
+    "value": null,
+    "shared": false
+   },
+   "explanation_lines": [
+    921,
+    929
+   ]
+  }
+ ]
+}

@@ -1844,3 +1844,23 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 - 钉:`tests/test_p2_1_review_html.py` t1–t4;套件 309 passed + 1 xfailed。
 
 **边界**:零生产代码变更(reslice/measure 逻辑不动),纯审核界面;不触碰冻结域。
+
+---
+
+## P2.1-e:答案区间污染 bug fix——prompt v2.5 + 最小确定性校验 + 问题卷小批重跑(2026-09-15)
+
+**输入**:用户 71/71 标注裁定(charter §10):17 条 SPLIT 备注语义全部是"答案区混入多余答案",正式更名 **Answer Span Contamination(答案区间污染)**,组合题拆分假设被证据否定(KEEP 52/73% + UNCERTAIN 0);批准直接小修复闭环 = prompt 语义 + 最小确定性校验 + 问题卷重跑;禁身份重构/新治理/新答案子系统(AnswerTable/AnswerGroup/AnswerResolver 全禁)/全库重跑。
+
+**分类结果归档**(data/p2_1_c_suspect_labels.json,KEEP 52 / SPLIT 17 / LOST 2 / UNCERTAIN 0)。**行级取证(6 问题卷)**:整表污染=101地理 L839 单行 HTML 答案表圈进 10 单元(行粒度不可再分,共享是事实);相邻串题=综合英语 L395 "21\. B …32\. C" 连写行 4 单元共享、通州 L335 "1. A …5. C"、上地 L199 "(A) 1.B…" 篇内局域编号;题干混入=交大英语 questions_lines[369,381] 吞入题区内联答案块 L377-381(该卷答案出现两处)+ 丰台历史 answer_lines[820,839] 吞入答案区复述题干 L820-827。**LOST 2 条分别处理不建框架**:延庆语文 U10 复核=源卷【答案】块本身止于 L667、第二问完整示例答案在【详解】(explanation_lines[669,695] 已入库),非 answer span 缺陷不修;交大英语 U-gram-A=source defect(PDF 有"3.that"源 md 缺失),禁 LLM 补答案,不修。
+
+**修复(答案域 bug fix 级,严格最小)**:
+1. **prompt v2.5**:4b 增 nswer_evidence.shared(共享区必须 true 且给逐题明文 value)+ **4c 答案边界硬性规则**(answer_lines 只圈本单元消费的答案证据/题区内联【答案】块归 answer_lines 不进 stem/同题两处答案圈一处优先卷末/共享表连写串不切碎但必须声明);
+2. **确定性校验四条**:C-A1 题干区混入未圈定【答案】行 / C-A2 答案区含本题题干标题行 / C-A3 共享区(解析出他题号)必须 shared=true+逐题 value / C-A4 重复答案块 uncovered 降 warning(不逼 LLM 切碎答案表制造边界漂移,用户 §10.2);新增 parse_inline_answers("N\. X" 连写对,单对不认防句中误报;词形答案"16. in"不认);
+3. **compile_slices**:共享判定扩密集连写行,共享行不整段回引(逐题取值+行号引用,继承整表共享逻辑);
+4. **measure** 新增 nswer_contamination 口径(污染族 issue 计数,用户 §10.2 指定维度,不发明其他新指标);钉 	ests/test_p2_1e_answer_span_contamination.py t1–t10。套件 **319 passed + 1 xfailed**。
+
+**小批重跑(仅 6 问题卷,禁全量)**:pass-1 6/6 成功(100,703 prompt + 49,135 completion tok,LLM 2208s);残留 6 例中 4 例经 pass-2(4 卷,56,559+23,912 tok,2060s)清除(丰台历史 3×C-A2 清、综合英语 C7 清);**确定性重复残留 3 例(两轮同形,如实入账)**:通州 Q19/Q20 C-A2(答案区"### 19.（15分）"标题行被圈)、上地 U16 C-A3(篇内局域编号答案串未标 shared)。账目规则注记:pass-1 的 result/summary json 按 derive_run_paths 派生规则被 pass-2 同 --out 覆盖,pass-1 证据以 manifest 快照 data/p2_1_fix1_pass1/ + 本台账为准。
+
+**复测(6 卷 before→after,data/p2_1_fix1_before_measure.json → data/p2_1_fix1_measure.json)**:contamination **76→3(−96%)**(题干混入 1→0 / 答案吞题干 5→2 / 共享未声明 70→1 / shared 缺值 0→0);answer_rate 100%→100%、admission_ready 100%→100%(**零回退**);credibility exact 86→85 / suspect 36→37 / partial 5→5(持平);sub_q_integrity 0.1458→0.2222;QC(data/p2_1_fix1_qc.json)6/6 PASS → 5/6:**综合英语新增 C7**(U44 作文题 questions_lines 含 L373"考生务必将答案答在答题卡上"指令行,v2.5 重跑漂移,两轮同形,已知 C7 家族,如实记账为新问题)。修复形态抽验:101地理 U2-3 evidence={type:answer_table, shared:true, value:"2.C 3.B"};交大英语 Q11(60-62) questions 收窄 [367,375] 排除题区内联答案、卷末答案 [792,796] 圈定、内联副本 L377 降重复答案块 warning——用户标注的"答案混入题干区"根因消除。
+
+**边界**:零身份重构/零 QuestionInstance 拆分/零新治理审计/零全库重跑/LOST 个案零通用框架;答案域冻结保持(仅 bug fix);V3 模型结论固化:Question + sub_questions + 共享 Material(73% KEEP 实证),不需要重构。**下一项 = P2.2 图片绑定 baseline(223 题)**。

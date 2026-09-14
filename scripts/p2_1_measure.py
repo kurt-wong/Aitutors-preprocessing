@@ -125,6 +125,10 @@ def measure_paper(out_root: Path, entry: dict) -> dict:
     nums = sorted({n for u in qs for n in (u.get("question_numbers") or [])})
     meta = man.get("annotation_meta") or {}
 
+    # P2.1-e 答案区间污染口径(用户 §10.2):确定性复算,与 manifest 存的 issues 版本无关
+    from reslice_pipeline import contamination_report
+    contam = contamination_report(man, src_lines) if source_readable else None
+
     admission, cred, comp_total, comp_intact, img_dep = 0, {}, 0, 0, 0
     ev_types = {}
     for u in qs:
@@ -168,6 +172,7 @@ def measure_paper(out_root: Path, entry: dict) -> dict:
         "admission_ready_rate": round(admission / len(qs), 4) if qs else None,
         "answer_credibility": cred,
         "answer_evidence_types": ev_types,
+        "answer_contamination": contam,
         "composite_total": comp_total,
         "composite_intact": comp_intact,
         "sub_question_integrity": round(comp_intact / comp_total, 4) if comp_total else None,
@@ -320,11 +325,14 @@ def main():
     timg = sum(p.get("image_dependent_questions") or 0 for p in papers)
     cred = {}
     ev = {}
+    tcont = {}
     for p in papers:
         for k, v in (p.get("answer_credibility") or {}).items():
             cred[k] = cred.get(k, 0) + v
         for k, v in (p.get("answer_evidence_types") or {}).items():
             ev[k] = ev.get(k, 0) + v
+        for k, v in (p.get("answer_contamination") or {}).items():
+            tcont[k] = tcont.get(k, 0) + v
     by_subject = {}
     for p in papers:
         s = by_subject.setdefault(p["subject"], {"papers": 0, "ok": 0, "questions": 0,
@@ -348,6 +356,7 @@ def main():
             "admission_ready_rate": round(tadm / tq, 4) if tq else None,
             "answer_credibility": cred,
             "answer_evidence_types": ev,
+            "answer_contamination": tcont,
             "composite_total": tcomp, "composite_intact": tci,
             "sub_question_integrity": round(tci / tcomp, 4) if tcomp else None,
             "image_dependent_questions": timg,
@@ -365,6 +374,7 @@ def main():
           "answer_rate={answer_rate} admission_ready_rate={admission_ready_rate} "
           "sub_q_integrity={sub_question_integrity} img_dep={image_dependent_questions}".format(**t))
     print("credibility=" + json.dumps(cred, ensure_ascii=False))
+    print("contamination=" + json.dumps(tcont, ensure_ascii=False))
     print("result: " + args.result)
 
     if args.human_sample:
