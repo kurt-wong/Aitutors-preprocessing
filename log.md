@@ -1756,3 +1756,13 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 ### R67.4 收口(CI 实测,2026-09-14)
 
 主体提交 8e33810 → **CI Run 34797495995 = success,日志原文 "262 passed, 24 skipped, 1 xfailed"**。算术闭合:262+24+1 = 287 = 本地 286 passed + 1 xfailed(286−24 skip = 262;skip 24 = 19 corpus + 4 win-only + t13 语料冒烟)。main = 8e33810。R67.4 全链:--limit 子批选择(14 钉+变异 9/9)→ 封闭性核查 → B2.2-a 20/20 → 再生指纹 → B2.2-b 37/37 → 终态 moves=0 → 台账 → CI 绿。**D5-B.2 完成(70/70);下一阶段 = D5-E 前证据整理,等用户指示。**
+
+### P2-0:用户方向裁定落盘——R67 基础治理收口,转入 Phase P2 知识生产(2026-09-14)
+
+**输入**:用户「DSH 后续开发方向调整裁定」——总原则:preprocessing 定位 = 为 AITutor-V3 提供高质量可追溯可消费的数据输入,**够用的可靠性 + 快速业务闭环 > 极致工程完整性**;R66–R67 已解决 OCR 重复执行风险 / 文件整理安全 / 基础追溯,作为基础治理阶段**收口**;立即冻结:① 审计体系扩张(R68/R69 类审查轮、审查工具自审、审计框架企业化)② collision 深度治理(72 家族只做事实整理,禁自动合并/canonical identity/版本选择,归宿 = V3 Question/QuestionInstance/Material 模型)③ daemon 工程化增强(保持"能运行+有日志+出错可发现",禁企业级监控/编排/复杂恢复,含挂起的 worker heartbeat 项);转入 Phase P2:P2.1 OCR md→QuestionCandidate 切分(不要求一次 100%,要求规则可解释/错误可发现/可人工修正)→ P2.2 图片/公式绑定(Question→Material[],项目壁垒)→ P2.3 V3 Admission 格式输出;开发纪律 = **先闭环再优化**(最小版本→真实 100 份→发现问题→修正,禁框架先行);两周目标 = 100–500 份真实试卷,指标:解析成功 >90% / 切分准确 >90% / 图片绑定 >95% / 人工修正时间明显低于手工整理。
+
+**本轮动作(纯落盘,零代码)**:`governance/phase_p2_charter.md` 新建(裁定全文要点 + 冻结清单 + P2 目标 + 指标 + 已有资产盘点);status.md 阶段头更新 + P2 清单置顶 + 阶段链补 R63→R67 收口段。
+
+**资产盘点(P2 不白手起家)**:`reslice_pipeline.py` 锚点式 LLM 切片(v2.1,试点 16/16 用户签核)、`reslice_qc.py`(C1–C15)、`recover_images.py`(43,463 张配图已恢复、悬空引用已修)、`render_lint/preview`、question identity phase2/resolver/F1(PAC 冻结,P2 只消费产出格式不扩面)。**P2 实质 = 既有切片链路推到真实批量 + V3 可消费输出,用真实错误推动迭代。**
+
+**边界**:本轮零代码零迁移零审计动作;daemon 继续运行(正常业务);72 collisions/6 needs_ruling/identity/semantic 维持冻结。**下一动作待用户确认首批 100 份抽样口径后启动 P2.1 最小闭环。**
