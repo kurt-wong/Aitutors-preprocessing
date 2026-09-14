@@ -2020,3 +2020,42 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 当前暂停项(等 P3.2 结果):优化 option detector / 增 marker regex / 追 96.2% / 处理 21 pending / 扩大 P2.2 / 设计 import API / 讨论仓库合并 / 增 provenance·governance / 全库重跑。preprocessing 由此从"不断增加能力"进入**收敛期**——停止条件明确,非人为宣布"做到这里"。
 
 **对 `0276f80` 的用户判定**:可作为新的 preprocessing 基线;三大边界同时成立:① preprocessing 不再生产 Question;② V3 不再重猜 preprocessing 已确定的 Source Fact;③ Resolver 可读 Source 但只能在 Producer 声明的 Evidence scope 内 resolution。**零代码 + 零重跑 + CI 绿 = 真正的定位/职责重构,没有趁机把实验结果包装成代码变化。**
+
+---
+
+## 2026-09-15 · 跨仓库协调基线对齐 + DSH 源侧归因(charter §14)
+
+**触发**:用户下发《AITutors-preprocessing ↔ AITutors-V3 Evidence Boundary 协同架构与下一阶段工作报告》(v2026-09-15),明确 DSH = 本仓库,Claude = V3 仓库;要求 DSH 执行 §35 八条指令。**核心原则:不改 V3 Frozen Spec、不直接改 Resolver、不为提高数字而修补;先完成 Evidence Boundary 架构收敛。**
+
+**性质**:文档级对齐 + 源侧只读归因探针,**零 pipeline 代码变更、零 prompt 变更、零重跑**——严格遵守 charter §13.10 收敛期停止条件。
+
+### DSH 对协调基线的对齐(§14.1)
+
+- 报告架构定位与既有 §12(Source Evidence Producer)+ §13(Resolver bounded Source access)**完全一致**,DSH 无需推翻任何既有结论;
+- **确认接受**共同边界模型五条 Rule + §28 五问工作模型;**协同纪律**:任何新结论先与边界模型对照,与 Claude 冲突时先报告冲突、不自行修改另一方职责;
+- DSH-1/2/3/6/7/8 已由 §12/§13 落地,本轮复核确认成立;**DSH-4(失败逐例归因)为本轮唯一实质执行项**。
+
+### DSH-4 证据边界(§14.2,不凭空归因)
+
+V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库不持有**(grep 全库仅聚合数字,无 unit 级列表)。按"无法证明→不臆断",DSH **不对不存在于本仓库的 case 做 unit 级归因**,改用真实持有的 b2 8 卷 manifest + 源 md 做**源侧可自证归因**。
+
+### 源侧归因实测(§14.3,227 choice-type units,prompt 全 v2.7)
+
+探针 `.pytest_work/bdr_attribution.py` + `bdr_a_class.py`(只读,gitignored):**不做 option resolution、不判定 A=哪行、不制造 per-option spans**。
+
+| 类 | 实测 | 定性 | 归属 |
+|---|---|---|---|
+| **A 真缺口** | **1** | 生物汇编 **Q51**:options 真实存在但为 **HTML `<table>` 表格型选项**(A/B/C/D 在 `<td>` 内),v2.7 未圈入 → `options_lines=null` | A(Producer 圈定未覆盖表格版式) |
+| A′ 非本轮缺口 | 10 | 101 地理 U2-3…U52-55 全 `composite_question`(子题选项标准 `A.` 文本、真实存在) | §10.3 组合题身份重构禁令冻结 |
+| **B Source repr 不足** | 2 | 101 地理 **Q13/Q37**:选项为**图片型**(A/B/C/D 四张 `<div>` 居中图) | B,§11.3 图片语义理解铁令冻结 |
+| C/D/E | 0/0/0 | DSH 侧不持有 Resolver 执行证据,不由 DSH 判定 C/D;8 卷源均可读,E=0 | (C/D 留 Claude 侧) |
+
+**214/216 region 内含 canonical 标记**(`(A)`/`A.`/`A、`)——Producer 圈定对常规行文本选项成立。
+
+### 结论与处置(§14.4,全部不修)
+
+- **DSH 修复数 = 0**。Q51 表格型选项 = candidate known limitation 登记不修(修它 = 扩 prompt 覆盖表格版式 = 收敛期暂停项,且属 `Region→per-option` 边界问题,应先由 P3.2 确认是否构成 V3 实际缺口);Q13/Q37 图片型登记不修(§11.3);10 条 composite 不动(§10.3)。
+- **对协调基线回执**:DSH 侧**未发现任何"Producer 必须现在补 per-option / observed option labels / expected_option_count"的证据**——与报告 §19/§20 一致,`options_region` 仍是充分的最小 Evidence handoff。
+- **交还 P3.2**:V3 用真实 b2 产物走 `Manifest → EvidenceAdapter → Canonical Resolver → Resolved Evidence → IR → Gate → Admission`,采四类指标 + §13.9 负面验收。**P3.2 暴露新 Source Evidence 缺口前,DSH 不增加任何能力。**
+
+**落盘**:`governance/phase_p2_charter.md` 新增 §14(对齐确认/证据边界/归因实测/处置);`status.md` 顶部 + 下一步同步;探针脚本 gitignored 不入库。**待用户裁定是否放行 P3.2。**

@@ -462,3 +462,51 @@ Adapter/Resolver/IR/Gate 哪一层)。**不以最终 Admission 率为核心 KPI�
 当前暂停项(等 P3.2 结果):优化 option detector / 增加 marker regex / 追 96.2% / 处理 21 pending /
 扩大 P2.2 / 设计 import API / 讨论仓库合并 / 增加 provenance·governance / 全库重跑。
 preprocessing 项目已从"不断增加能力"进入**收敛期**——停止条件是明确的,不是人为宣布"做到这里"。
+
+---
+
+## 14. 跨仓库协调基线对齐 + DSH 源侧归因(2026-09-15)
+
+> 来源:用户下发《Evidence Boundary 协同架构与下一阶段工作报告》(v2026-09-15),DSH = 本仓库(AITutors-preprocessing),
+> Claude = AITutors-V3 仓库。本节是 DSH 对该协调基线的**对齐确认 + 源侧归因执行**。
+> **本轮零代码、零 prompt 变更、零重跑**,严格遵守 §13.10 收敛期停止条件。
+
+### 14.1 DSH 对协调基线的对齐确认
+
+- 该报告的架构定位 = §12(Source Evidence Producer)+ §13(Resolver bounded Source access)**完全一致**,DSH 无需推翻任何既有结论;
+- DSH 在此**确认接受**共同边界模型:① Producer declares regions, not interpretations;② Resolver may inspect Source, only inside declared Evidence scope;③ may resolve but may not reinterpret;④ Uncertainty must decrease resolution, never decrease truth;⑤ 两侧不重复 structural intelligence;
+- **协同纪律**:DSH 任何新结论必须先与本边界模型对照;若与 Claude 侧冲突,**先报告冲突,不自行修改另一方职责**。
+- DSH-1/2/3/6/7/8(定位收敛为 Source Evidence Producer、核心输出清单、保留 `options_region` 不强推 per-option、
+  不反向固化 V3 实现为 Contract、不扩张到 Question/IR/Gate/Admission、新字段一律 candidate)——**已由 §12/§13 落地,本轮复核确认成立**。
+- **DSH-4(失败案例逐例归因)为本轮唯一实质执行项**,见 §14.2–§14.4。
+
+### 14.2 DSH-4 的证据边界声明(不凭空归因)
+
+- V3 Phase 0.3-B 的 **21 pending(16 no_labels + 5 incomplete)与 10 高风险样本的逐例清单属 V3 侧证据,本仓库不持有**;
+- 按 Rule"无法证明 → 不臆断",DSH **不对不存在于本仓库的 case 做 unit 级归因**;
+- DSH 侧改用**本仓库真实持有的证据**(b2 8 卷 manifest + 源 md)做**源侧可自证归因**,回答 Producer 层:
+  *每个 choice-type unit 的 options_region 是否完整、Region 内源侧呈现方式如何*——为 A/B/C/D/E 五类归因提供 Producer/Source 侧输入。
+
+### 14.3 DSH 源侧归因实测(b2 8 卷,227 choice-type units,prompt 全 v2.7)
+
+探针(只读,gitignored `.pytest_work/bdr_attribution.py`、`bdr_a_class.py`)**不做 option resolution、不判定 A=哪行、不制造 per-option spans**,只读 manifest + 源行。
+
+| 归因类 | 实测 | 逐例定性 | 归属层 |
+|---|---|---|---|
+| **A. Producer Region 不完整(真缺口)** | **1** | 生物汇编 **Q51**:options 真实存在但为 **HTML `<table>` 表格型选项**(A/B/C/D 在 `<td>` 单元格内,非 `A.`/`(A)` 行文本),v2.7 未圈入 → `options_lines=null` | **A**(Producer 圈定未覆盖表格版式) |
+| A′(非本轮缺口) | 10 | 101 地理 U2-3/U4-6/…/U52-55,全部 `composite_question`(`questions_lines` 有、`options_lines` null),源 L11–27 子题选项为标准 `A.` 文本、真实存在 | 组合题子选项圈定**已冻结**(§10.3 身份重构禁令),**不在本轮修复面** |
+| **B. Source representation 不足** | 2 | 101 地理 **Q13 / Q37**:选项为**图片型**——A/B/C/D 是四张 `<div>` 居中图,标记 `<div>A</div>` 独立成行 | **B**(Region 已声明,但"标记↔图"边界属视觉/图片语义),按 §11.3 图片语义理解**铁令冻结** |
+| C. Resolver deterministic rule 不足 | 0 | DSH 侧不持有 Resolver 执行证据,不由 DSH 判定 | (留 Claude 侧) |
+| D. 真需 semantic interpretation | 0 | 同上;图片型 Q13/Q37 若需"哪张图配哪个字母"属 D,但已被 §11.3 冻结不碰 | (留 Claude 侧) |
+| E. Source 本身缺陷 | 0 | 8 卷源文件均存在、可读,B 类"有 region 但源缺失"= 0 | — |
+
+**其余 214/216 region 内含 canonical 标记(`(A)`/`A.`/`A、`)**,Producer 圈定对常规行文本选项成立。
+
+### 14.4 DSH 源侧归因结论 + 处置(全部不修)
+
+- **本轮 DSH 修复数 = 0**。三个非平凡 finding 全部落在已冻结边界内:
+  - **Q51 表格型选项**(真 A 类缺口):**登记为 candidate known limitation,不修**。理由:修它 = 扩 prompt 覆盖表格版式 = §13.10 收敛期停止条件明令暂停项("优化 option detector");且属 `Region → per-option` 边界问题,应先由 P3.2 真实消费实验确认是否构成 V3 实际 Source Evidence 缺口,再决定是否解冻。
+  - **Q13/Q37 图片型选项**(B 类):**登记不修**,§11.3 图片语义理解禁令冻结。
+  - **10 条 composite**(冻结):不动,§10.3。
+- **对协调基线的回执**:DSH 侧**未发现任何"必须 Producer 现在补 per-option / 补 observed option labels / 补 expected_option_count"的证据**——与报告 §19/§20 结论一致,`options_region` 仍是充分的最小 Evidence handoff。
+- **下一步交还 P3.2**(V3 Consumer Compatibility):由 V3 用真实 b2 产物走完 `Manifest → EvidenceAdapter → Canonical Resolver → Resolved Evidence → IR → Gate → Admission`,采集四类指标 + 执行 §13.9 负面验收。DSH 在 P3.2 结果暴露**新的 Source Evidence 缺口**前,不增加任何能力。
