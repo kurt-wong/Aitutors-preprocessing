@@ -510,3 +510,26 @@ preprocessing 项目已从"不断增加能力"进入**收敛期**——停止条
   - **10 条 composite**(冻结):不动,§10.3。
 - **对协调基线的回执**:DSH 侧**未发现任何"必须 Producer 现在补 per-option / 补 observed option labels / 补 expected_option_count"的证据**——与报告 §19/§20 结论一致,`options_region` 仍是充分的最小 Evidence handoff。
 - **下一步交还 P3.2**(V3 Consumer Compatibility):由 V3 用真实 b2 产物走完 `Manifest → EvidenceAdapter → Canonical Resolver → Resolved Evidence → IR → Gate → Admission`,采集四类指标 + 执行 §13.9 负面验收。DSH 在 P3.2 结果暴露**新的 Source Evidence 缺口**前,不增加任何能力。
+
+### 14.5 跨侧互证(Claude 侧审计结果同步,2026-09-15)
+
+> Claude(AITutors-V3)完成 Claude-2(Resolver bounded access 审计)+ Claude-3(31 case 归因)后回传,DSH 侧同步登记。**本节纯记录,零 DSH 行动项。**
+
+**两侧独立发现同一 failure pattern,互证成立**:
+
+| DSH 侧(源侧,b2 8 卷 v2.7) | Claude 侧(Resolver 侧,reslice-p2-b1 38 卷) | 对齐 |
+|---|---|---|
+| Q51 HTML `<table>` 选项(`A/B/C/D` 在 `<td>` 内) | 5 pending HTML table cases | ✓ 同一模式 |
+| Q13/Q37 图片型选项(`<div>A</div>` + 图) | 7 pending + high-risk HTML div cases | ✓ 同一模式 |
+
+**关键新增事实——跨语料系统性坐实**:Q51 **不在** Claude 的 31 case 清单内——两侧语料不同(V3 测 b1 38 卷,DSH 测 b2 8 卷 v2.7)、**case 零重叠,但 failure pattern 相同**。这证明 **HTML table / HTML div(图片型)选项呈现是系统性 Source representation 缺口(B 类),不是某套语料的个案**。
+
+**Claude 侧结论(记录)**:
+- 31 case Attribution Matrix = **B 14 / C 8 / D 6 / F 1**;**A 类(Producer Region 不完整)= 0**——31 case 的 `options_region` 全部正确指向 options 所在区域;
+- 与 DSH 回执互证:`options_region` 是充分的最小 Evidence handoff,**两侧均无"Producer 现在必须补 per-option spans / observed option labels / expected_option_count"的证据**;
+- Claude-2 发现 `_locate_options()` `region_upper = None` 时的 bounded access 越界风险——**属 V3 侧待裁决项,DSH 只登记不动**(Boundary 3:Resolver 实现归 V3);
+- 另有 4 个待裁决问题在 Claude 侧,未回传细节,DSH 不预判。
+
+**集合关系(钉死,防混称)**:V3 侧 31 cases(b1 38 卷)∪ DSH 侧 3 cases(b2 8 卷)= 两套语料、零 case 重叠;**任何统计不得跨集合合并分母**。
+
+**状态**:两侧均停在 §37 停止点 Evidence Boundary Decision。P3.2 放行与否待用户裁定。

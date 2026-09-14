@@ -2059,3 +2059,17 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 - **交还 P3.2**:V3 用真实 b2 产物走 `Manifest → EvidenceAdapter → Canonical Resolver → Resolved Evidence → IR → Gate → Admission`,采四类指标 + §13.9 负面验收。**P3.2 暴露新 Source Evidence 缺口前,DSH 不增加任何能力。**
 
 **落盘**:`governance/phase_p2_charter.md` 新增 §14(对齐确认/证据边界/归因实测/处置);`status.md` 顶部 + 下一步同步;探针脚本 gitignored 不入库。**待用户裁定是否放行 P3.2。**
+
+---
+
+## 2026-09-15 · 跨侧互证同步:Claude 审计结果回传(charter §14.5)
+
+**触发**:Claude(AITutors-V3)完成 Claude-2(Resolver bounded access 审计)+ Claude-3(31 case 归因)后回传结果,用户令 DSH 同步。**性质:纯记录,零代码、零行动项。**
+
+**互证结论**:两侧独立发现同一 failure pattern——DSH 源侧 Q51(HTML `<table>` 选项)↔ Claude 5 pending HTML table cases;DSH Q13/Q37(图片型选项 `<div>A</div>`)↔ Claude 7 pending+high-risk HTML div cases。
+
+**关键新增——跨语料系统性坐实**:Q51 **不在** Claude 31 case 清单内(V3 测 b1 38 卷,DSH 测 b2 8 卷 v2.7,**case 零重叠**),failure pattern 相同 → **HTML table / div 图片型选项呈现是系统性 Source representation 缺口(B 类),非个案**。
+
+**Claude 侧记录**:31 case 归因 = **B 14 / C 8 / D 6 / F 1**,**A 类 = 0**(options_region 全部正确指向)——与 DSH 回执互证 `options_region` 是充分的最小 Evidence handoff;`_locate_options()` `region_upper=None` 越界风险 + 4 个待裁决问题属 V3 侧,DSH 只登记不动(Boundary 3)。**集合关系钉死:两套语料零 case 重叠,统计不得跨集合合并分母。**
+
+**落盘**:charter §14.5;两侧均停在 §37 停止点,P3.2 待用户裁定。
