@@ -1,0 +1,402 @@
+[
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\化学\\2016-2019北京高一化学下学期期末汇编：化学反应原理（教师版）(1).md",
+  "units": 17,
+  "questions": 17,
+  "issues": [
+   "C5 12 个图片行未被任何单元覆盖: ['L312:(1)/img_in_chart_box_249_167_829_567.jpg', 'L339:）(1)/img_in_chart_box_108_84_419_307.jpg', 'L375:）(1)/img_in_image_box_124_76_269_200.jpg']",
+   "C6 2 个表格行未被任何单元覆盖: [375, 785]"
+  ],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\化学\\2021北京昌平高一（下）期末化学（教师版）(1).md",
+  "units": 27,
+  "questions": 27,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\历史\\2018北京101中学高一（下）期中历史含答案(1).md",
+  "units": 52,
+  "questions": 52,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\历史\\2022北京丰台高一（下）期末历史（教师版）(1).md",
+  "units": 30,
+  "questions": 30,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\地理\\2018北京101中学高一（上）期中地理含答案.md",
+  "units": 44,
+  "questions": 60,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\地理\\2021北京高一地理上学期期末汇编：地球上的水（教师版）(1).md",
+  "units": 7,
+  "questions": 13,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\政治\\2017-2019北京高一政治上学期期末汇编：科学社会主义常识与中国特色社会主义（教师版）(1).md",
+  "units": 27,
+  "questions": 27,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\政治\\2022北京师大附中高一（下）期中政治（教师版）(1).md",
+  "units": 35,
+  "questions": 35,
+  "issues": [
+   "C3 第19单元答案区为空",
+   "C3 第20单元答案区为空",
+   "C5 1 个图片行未被任何单元覆盖: ['L1242:gs/img_in_image_box_78_1020_690_1287.jpg']",
+   "C6 1 个表格行未被任何单元覆盖: [1194]"
+  ],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\数学\\2017-2019北京高一数学上学期期中汇编：集合填空题（教师版）(1).md",
+  "units": 30,
+  "questions": 30,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\数学\\2021北京朝阳高一（下）期末数学（教师版）(1).md",
+  "units": 21,
+  "questions": 21,
+  "issues": [
+   "C3 第1单元答案区为空",
+   "C3 第2单元答案区为空",
+   "C3 第3单元答案区为空",
+   "C3 第4单元答案区为空",
+   "C3 第5单元答案区为空",
+   "C3 第6单元答案区为空",
+   "C3 第7单元答案区为空",
+   "C3 第8单元答案区为空",
+   "C3 第9单元答案区为空",
+   "C3 第10单元答案区为空",
+   "C3 第11单元答案区为空",
+   "C3 第12单元答案区为空",
+   "C3 第13单元答案区为空",
+   "C3 第14单元答案区为空",
+   "C3 第15单元答案区为空",
+   "C3 第16单元答案区为空",
+   "C3 第17单元答案区为空",
+   "C3 第18单元答案区为空",
+   "C3 第19单元答案区为空",
+   "C3 第20单元答案区为空",
+   "C3 第21单元答案区为空"
+  ],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\物理\\2018北京一零一中学高一（下）期中物理（教师版）(1).md",
+  "units": 28,
+  "questions": 28,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\物理\\2021北京十二中高一（下）期中物理（教师版）(1).md",
+  "units": 19,
+  "questions": 19,
+  "issues": [
+   "C5 19 个图片行未被任何单元覆盖: ['L326:1)/img_in_image_box_85_1210_326_1359.jpg', 'L399:(1)/img_in_image_box_73_866_355_1047.jpg', 'L465:）(1)/img_in_image_box_82_348_284_531.jpg']"
+  ],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\物理\\2022北京顺义一中高一（下）期中物理（教师版）(1).md",
+  "units": 21,
+  "questions": 21,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\生物\\2017-2019北京高中生物高一上期末汇编：分子与细胞（教师版）(1).md",
+  "units": 90,
+  "questions": 90,
+  "issues": [
+   "C5 21 个图片行未被任何单元覆盖: ['L997:(1)/img_in_image_box_104_258_384_438.jpg', 'L1584:(1)/img_in_image_box_102_643_149_767.jpg', 'L1590:(1)/img_in_image_box_221_646_269_770.jpg']",
+   "C6 8 个表格行未被任何单元覆盖: [1193, 1254, 1702, 1818, 1823, 1906, 1911, 2588]"
+  ],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\生物\\2021北京平谷高一（上）期末生物（教师版）.md",
+  "units": 38,
+  "questions": 38,
+  "issues": [
+   "C3 第15单元答案区为空",
+   "C3 第16单元答案区为空",
+   "C3 第24单元答案区为空"
+  ],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\英语\\2010北京上地一零一中高一分班考英语（教师版）(1).md",
+  "units": 20,
+  "questions": 20,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\英语\\2021北京延庆高一（下）期末英语（教师版）(1).md",
+  "units": 8,
+  "questions": 8,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\语文\\2018北京丰台高一（下）期中语文（B卷）（教师版）(1).md",
+  "units": 13,
+  "questions": 23,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高一\\语文\\2021北京延庆高一（下）期末语文（教师版）(1).md",
+  "units": 13,
+  "questions": 26,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\化学\\2018北京牛栏山一中高三（上）期中化学含答案(1).md",
+  "units": 19,
+  "questions": 19,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\化学\\2022北京一零一中高三（上）统练六化学（教师版）(1).md",
+  "units": 19,
+  "questions": 19,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\历史\\2021北京高三一模二模历史汇编：近代中国的经济（教师版）(1).md",
+  "units": 12,
+  "questions": 12,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\地理\\2021北京通州高三（上）期中地理教师版图片(1).md",
+  "units": 12,
+  "questions": 20,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\政治\\2021北京高三一模二模政治汇编：生活与哲学（选择题）（教师版）(1).md",
+  "units": 45,
+  "questions": 45,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\数学\\2017-2019北京高三数学上学期期中汇编：函数（教师版）(1).md",
+  "units": 24,
+  "questions": 24,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\数学\\2022北京一六一中高三12月月考数学（教师版）(1).md",
+  "units": 21,
+  "questions": 21,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\物理\\2022北京一七一中高三（上）期中物理（教师版）(1).md",
+  "units": 20,
+  "questions": 20,
+  "issues": [
+   "C7 含卷面指令: ['注意事项']"
+  ],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\生物\\2020北京八十中高三（下）开学考生物含答案(1).md",
+  "units": 21,
+  "questions": 21,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\生物\\2021北京高三一模二模生物汇编：种群和群落（教师版）(1).md",
+  "units": 15,
+  "questions": 15,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\英语\\2020北京交大附中高三（下）开学考试英语（教师版）(1).md",
+  "units": 12,
+  "questions": 63,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\英语\\2021北京高三（下）综合能力测试英语（教师版）(1).md",
+  "units": 9,
+  "questions": 44,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\语文\\2021北京丰台高三（上）期末语文（教师版）(1).md",
+  "units": 10,
+  "questions": 24,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高三\\语文\\2022北京东城高三二模语文（教师版）(1).md",
+  "units": 14,
+  "questions": 27,
+  "issues": [
+   "C5 1 个图片行未被任何单元覆盖: ['L375:(1)/img_in_chart_box_414_269_791_474.jpg']",
+   "C6 2 个表格行未被任何单元覆盖: [447, 452]",
+   "C7 含卷面指令: ['在答题卡上']"
+  ],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高二\\化学\\2021北京四中顺义分校高二（上）期中化学（教师版）(1).md",
+  "units": 26,
+  "questions": 26,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高二\\数学\\2021北京丰台高二（上）期中数学（A）（教师版）(1).md",
+  "units": 21,
+  "questions": 21,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高二\\物理\\2021北京农大附中高二（上）期中物理（合格考）（教师版）(1).md",
+  "units": 25,
+  "questions": 25,
+  "issues": [
+   "C5 26 个图片行未被任何单元覆盖: ['L430:1)/img_in_image_box_76_1125_183_1219.jpg', 'L433:)/img_in_image_box_197_1203_349_1329.jpg', 'L461:(1)/img_in_image_box_105_322_294_512.jpg']"
+  ],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "FAIL"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高二\\生物\\2019北京101中学高二（下）期中生物含答案(1).md",
+  "units": 21,
+  "questions": 21,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高二\\英语\\2021北京东城高二（上）期末英语（教师版）(1).md",
+  "units": 11,
+  "questions": 49,
+  "issues": [],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "PASS"
+ },
+ {
+  "file": "Ocr-markdown\\reslice-p2-b1\\高二\\语文\\2021北京五中高二（上）期中语文（教师版）(1).md",
+  "units": 12,
+  "questions": 27,
+  "issues": [
+   "C7 含卷面指令: ['在答题卡上']"
+  ],
+  "review_notes": [],
+  "identity_version": 1,
+  "verdict": "FAIL"
+ }
+]

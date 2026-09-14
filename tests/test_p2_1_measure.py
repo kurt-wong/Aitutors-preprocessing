@@ -193,3 +193,23 @@ def test_t7_aggregate_v3_totals(env, workdir):
     assert t["image_dependent_questions"] == 0
     hs = json.loads((workdir / "hs.json").read_text(encoding="utf-8"))
     assert hs["questions"] == 1 and hs["items"][0]["unit_id"] == "Q1"
+
+
+def test_t8_composite_questions_lines_schema(env):
+    """真实 v2.3 组合题无 stem_lines,用 material_lines/questions_lines(实测 schema)。"""
+    lines = ["材料一。<img src=\"f.jpg\" />", "（1）问一", "（2）问二",
+             "（1）答一", "（2）答二"]
+    _write_src(env, "高一/历史/y.md", lines)
+    env["put"]("高一/历史/y.manifest.json", [
+        {"unit_id": "Q51", "unit_type": "composite_question", "question_numbers": [51],
+         "original_question_type": "short_answer",
+         "material_lines": [1, 1], "questions_lines": [1, 3],
+         "answer_lines": [4, 5]}])
+    rec = M.measure_paper(env["out"], {
+        "file": str(env["src"] / "高一" / "历史" / "y.md"), "subject": "历史"})
+    # 修复前:stem_lines=None → 全部组合题误判 suspect / 不计 admission
+    assert rec["admission_ready"] == 1
+    assert rec["answer_credibility"] == {"exact": 1}
+    assert rec["composite_total"] == 1 and rec["composite_intact"] == 1
+    assert rec["sub_question_integrity"] == 1.0
+    assert rec["image_dependent_questions"] == 1   # 材料区含图

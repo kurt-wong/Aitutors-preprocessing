@@ -58,6 +58,18 @@ def _span_text(src_lines, span):
     return True, "\n".join(src_lines[s - 1:e])
 
 
+def stem_span(unit):
+    """题干行区间:独立题用 stem_lines;组合题 v2.3 用 questions_lines(退化 material_lines)。"""
+    return (unit.get("stem_lines") or unit.get("questions_lines")
+            or unit.get("material_lines"))
+
+
+def img_span(unit):
+    """图片依赖检查区间:题干 + 组合题材料区。"""
+    spans = [s for s in (stem_span(unit), unit.get("material_lines")) if s]
+    return spans
+
+
 def _credibility(unit, src_lines):
     """启发式答案可信度分桶(见模块 docstring)。"""
     ok, ans = _span_text(src_lines, unit.get("answer_lines"))
@@ -65,7 +77,7 @@ def _credibility(unit, src_lines):
         return "missing"
     if unit.get("unit_type") != "composite_question":
         return "exact"
-    stem_ok, stem = _span_text(src_lines, unit.get("stem_lines"))
+    stem_ok, stem = _span_text(src_lines, stem_span(unit))
     stem_subs = {int(m) for m in SUB_MARK_RE.findall(stem)} if stem_ok else set()
     ans_subs = {int(m) for m in SUB_MARK_RE.findall(ans)}
     if not stem_subs:
@@ -105,9 +117,10 @@ def measure_paper(out_root: Path, entry: dict) -> dict:
 
     admission, cred, comp_total, comp_intact, img_dep = 0, {}, 0, 0, 0
     for u in qs:
-        stem_ok, stem = _span_text(src_lines, u.get("stem_lines"))
+        span = stem_span(u)
+        stem_ok, stem = _span_text(src_lines, span)
         ans_ok, ans = _span_text(src_lines, u.get("answer_lines"))
-        anchor_ok = (stem_ok and stem.strip()) if source_readable else bool(u.get("stem_lines"))
+        anchor_ok = (stem_ok and stem.strip()) if source_readable else bool(span)
         answer_loc = (ans_ok and ans.strip()) if source_readable else bool(u.get("answer_lines"))
         type_ok = bool(u.get("original_question_type"))
         if anchor_ok and answer_loc and type_ok:
@@ -119,7 +132,9 @@ def measure_paper(out_root: Path, entry: dict) -> dict:
             comp_total += 1
             if stem_ok and len({int(m) for m in SUB_MARK_RE.findall(stem)}) >= 2:
                 comp_intact += 1
-        if stem_ok and IMG_MARK_RE.search(stem):
+        if source_readable and any(
+                IMG_MARK_RE.search(_span_text(src_lines, sp)[1])
+                for sp in img_span(u)):
             img_dep += 1
 
     rec.update({
@@ -164,7 +179,7 @@ def build_human_sample(out_root: Path, entries, per_paper: int = 10) -> dict:
                 "unit_id": u.get("unit_id"),
                 "question_numbers": u.get("question_numbers"),
                 "unit_type": u.get("unit_type"),
-                "stem_lines": u.get("stem_lines"),
+                "stem_lines": stem_span(u),
                 "answer_lines": u.get("answer_lines"),
             })
     return {"per_paper": per_paper, "papers": len({s["file"] for s in sample}),

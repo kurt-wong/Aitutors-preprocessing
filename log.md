@@ -1770,3 +1770,27 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 ### P2-0 收口(CI 实测,2026-09-14)
 
 主体提交 8bfbb0b → **CI Run 34798572959 = success**。main = 8bfbb0b。纯落盘轮(零代码),套件维持 286 passed + 1 xfailed 无回退。Phase P2 章程生效,等用户确认首批 100 份抽样口径。
+
+---
+
+## P2.1-b1:首批 39 卷真实批切分最小闭环 + V3 口径度量(2026-09-14)
+
+**输入**:用户 P2.1 方向批准裁定(charter §7):核心产物 = 真实错误分布而非通过率;度量五口径(admission_ready / 小问完整 / 图片基线 / 答案可信度分桶 / 人工抽检);收口标准卷级≥95% / 切分≥90% / 答案≥90%;决策树四分支;禁止新增治理防线审计。
+
+**执行**:抽样清单 `data/p2_1_batch1.json`(39 卷 = 语数英理化生×5 + 史地政×3,确定性等距)→ `reslice_pipeline --batch --out Ocr-markdown/reslice-p2-b1 --workers 3`。首轮 36/39(3 单卷失败:2× IncompleteRead 网络抖动 + 1× JSON 提取失败,批次零污染);`--resume` 补跑 3/3 全恢复 → **39/39 产出**。成本:prompt 898,716 + completion 367,208 tokens,LLM 累计 16,039s,均 411s/卷。可恢复性 = 实证而非声明。
+
+**度量结果(`data/p2_1_b1_measure.json` v2)**:
+- 卷级:ok=36 / vi=3 / no_manifest=0,**parse_success=92.31%**(两周目标 >90% 达;用户收口 ≥95% 差 1 卷);
+- 题目:909 题,**answer_rate=97.14% ≥90% 达**;**admission_ready_rate=97.14%**;
+- 答案可信度:exact 797 / suspect 71 / missing 26 / partial 15;
+- 组合题 128,stem 保留 (1)(2) 小问层级 45(intact 35.2%)——suspect 71 须人工抽检确认是"真单问材料题"还是"拍平";
+- **图片依赖 240 题(26.4%)= P2.2 目标输入**;
+- 人工抽检清单 `data/p2_1_b1_human_review.json`:39 卷 × 每卷 10 题(实出 384,部分卷 <10 题),确定性散列可复现。
+
+**QC(reslice_qc C1–C15,`data/p2_1_b1_qc.json`)**:29 PASS / 10 FAIL,失败分桶 = C5 孤儿图片行 6 卷 / C6 孤儿表格行 4 卷 / C3 答案区为空 3 卷(朝阳数学整卷 21 题 + 平谷生物 3 + 师大附中政治 2 = 26 题,与 credibility missing=26 闭合)/ C7 卷面指令混入 3 卷(注意事项/在答题卡上)。
+
+**F-p2.1-1(测量工具口径缺陷,发布前抓获当轮修)**:首版 measure 假设所有 unit 用 `stem_lines`,而实测 v2.3 schema 组合题用 `material_lines/questions_lines` → 104 组合题全被误判 suspect、admission_ready 被低估(85.1%→修复后 97.1%)。修复:`stem_span()/img_span()` 适配双 schema + t8 钉(真实 schema 形态)。教训:度量器口径必须对齐产物实测 schema,不能对齐设计想象。
+
+**下一轮决策(严格按用户决策树,基于 measure 实测)**:主问题 ① 答案定位缺失 26 题/3 卷(最大 VI 来源)→ 优化 LLM schema/答案定位;② 组合题小问完整性 suspect 71 → 人工抽检(384 题清单)定性后决定 reslice 或题型策略;③ 孤儿图片 ~80 行 → P2.2 输入。边界:零新增治理/防线/审计;冻结面零触碰。
+
+**套件**:294 passed + 1 xfailed(+4 钉:t5 V3 口径/t6 抽检确定性/t7 汇总/t8 组合题 schema)。
