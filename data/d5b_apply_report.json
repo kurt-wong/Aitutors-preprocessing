@@ -1,0 +1,121 @@
+{
+ "schema_version": 1,
+ "run_at": "2026-09-14 08:04:32",
+ "mode": "apply",
+ "ocr_root": "D:\\Project\\Papers\\Ocr-markdown",
+ "plan_path": "D:\\Project\\Papers\\data\\d5b_reclassify_plan.json",
+ "category_filter": "合格考",
+ "applied": [
+  {
+   "from_rel": "未分类/化学/2022北京高中合格考化学（第一次）（教师版）(1).md",
+   "to_rel": "合格考/化学/2022北京高中合格考化学（第一次）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/化学/2022北京高中合格考化学（第二次）（教师版）(1).md",
+   "to_rel": "合格考/化学/2022北京高中合格考化学（第二次）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/历史/2022北京高中合格考历史（第一次）（教师版）(1).md",
+   "to_rel": "合格考/历史/2022北京高中合格考历史（第一次）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/历史/2022北京高中合格考历史（第二次）（教师版）(1).md",
+   "to_rel": "合格考/历史/2022北京高中合格考历史（第二次）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/地理/2022北京高中合格考地理（第一次）（教师版）(1).md",
+   "to_rel": "合格考/地理/2022北京高中合格考地理（第一次）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/政治/2022北京高中合格考政治（第一次）（教师版）(1).md",
+   "to_rel": "合格考/政治/2022北京高中合格考政治（第一次）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/政治/2022北京高中合格考政治（第二次）（教师版）(1).md",
+   "to_rel": "合格考/政治/2022北京高中合格考政治（第二次）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/数学/2022北京高中合格考数学（第一次）（教师版）(1).md",
+   "to_rel": "合格考/数学/2022北京高中合格考数学（第一次）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/生物/2022北京高中合格考生物（第一次）（教师版）(1).md",
+   "to_rel": "合格考/生物/2022北京高中合格考生物（第一次）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/生物/2022北京高中合格考生物（第二次）（教师版）(1).md",
+   "to_rel": "合格考/生物/2022北京高中合格考生物（第二次）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/英语/2022北京高中合格考英语（第一次）（教师版）(1).md",
+   "to_rel": "合格考/英语/2022北京高中合格考英语（第一次）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/语文/2022北京高中合格考语文（第一次）（教师版）(1).md",
+   "to_rel": "合格考/语文/2022北京高中合格考语文（第一次）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/语文/2022北京高中合格考语文（第二次）（教师版）(1).md",
+   "to_rel": "合格考/语文/2022北京高中合格考语文（第二次）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  }
+ ],
+ "violations": [],
+ "stopped_after": null,
+ "plan_sha256_recomputed": "a3c74c1807d9b694e92a22fa6bf636b62ab8160d5c42e121eb1729a5c805e52f",
+ "batch_size": 13,
+ "manifest_untouched": true,
+ "manifest_grew_bytes": 0,
+ "result": "APPLIED"
+}

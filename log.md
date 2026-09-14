@@ -1719,3 +1719,17 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 ### R67.2 收口(CI 实测,2026-09-14)
 
 主体提交 52f5be7 → **CI Run 34786844380 = success,日志原文 "248 passed, 24 skipped, 1 xfailed"**。算术闭合:248+24+1 = 273 = 本地 272 passed + 1 xfailed(272−24 skip = 248;skip 24 = 19 corpus + 4 win-only + t13 语料冒烟)。main = 52f5be7。R67.2 全链:F-r67.2-1 取证(死因不可判定,零损害)→ Task Scheduler 托管重启 + MANIFEST_LOAD 复证 → §8 登记 → D5-B.0 双窗口快照 → D5-B.1 dry-run(8 钉+变异 7/7,生产 plan 冻结)→ 台账 → CI 绿。**D5-B.2 小批 apply ⏸ 等用户批准。**
+
+### R67.3:D5-B.2 首批小批 apply(合格考 13 份,四闸门)(2026-09-14)
+
+**输入**:用户 R67.2 裁决——R67.2 PASS,批准 D5-B.2 小批 apply,**范围严格限定 plan moves 桶首批 13 份合格考**;57 份高考真题留第二批;72 collisions(锁 D5-E)/ 6 needs_ruling(锁人工裁定)/ identity / semantic 全冻结;预置四闸门 B2-1 plan 指纹 / B2-2 逐文件 hash ABORT 禁重算续行 / B2-3 目标碰撞(文件/目录/大小写/父级为文件)/ B2-4 移动后反验证(source 消失+dest 在位+sha 不变+audit append+manifest 不受影响)。
+
+**武器**:`scripts/d5b_reclassify_apply.py`——两阶段模型:Phase 1 整批预检(B2-2/B2-3 任一失败→整批拒绝零移动),Phase 2 逐条移动+B2-4 反验证(失败→立即停止并如实报告已移动清单);审计逐条即时 append(崩溃安全,schema 与 legacy `reclassify_audit.jsonl` 一致 {from,to} 绝对路径);manifest"不受影响"实现为 **after bytes 以 before bytes 为前缀**(append-only,daemon 并发尾部追加不误报,前缀改写必拒);rel 路径禁绝对/`..`/空段。
+
+**测试**:`tests/test_d5b_apply.py` **12 钉**——t1 首跑+审计 schema、t2/t2b/t10 B2-1 三面(自报指纹/冻结期望/自报值独立性)、t3 B2-2 漂移整批拒绝(未篡改者亦不动)、t4 B2-3 四变体(文件/同名目录/大小写差异/父级为文件)、t5 B2-4 移动后污染检出并停止、t6 manifest 前缀守卫(并发追加 True/前缀改写 False)、t7 批过滤、t8 preflight 零写、t9 路径穿越拒绝、t11 CLI preflight 不崩(F-r67.3-1 钉)。**变异 8/8 BITE 逐字节还原**(MA1–MA8 覆盖四闸每一面)。
+
+**⚠ F-r67.3-1(当轮自查,CLI 缺陷)**:preflight 分支报告无 `manifest_untouched` 键,main 无条件打印 → KeyError;修为 `.get(..., "n/a_preflight")` + t11 钉;发生于生产执行前(预检调用即暴露),零损害。
+
+**真实执行**:preflight(PREFLIGHT_OK,batch=13,指纹=冻结值 `a3c74c18…805e52f`,13 条 sha 全无漂移,目标零碰撞)→ **apply:APPLIED 13/13**,逐条 source_gone/dest_present/sha256_unchanged/audit_appended 全 True,**manifest_untouched=True grew=0**。**独立复核**(不依赖 apply 工具,PowerShell 重算):13/13 src 消失、dest 在位、sha 与 plan 记录逐字符合,bad=0;审计 698→**711**(追加 13)。daemon 观察:进程链 50412→38864 在线,manifest 816 条 append-only 增长,配额 2187/20000,扫描 2846/12703。移动后 MANIFEST_DONE 运行时实证按冻结协议归 D5-C 幂等复跑(机制已由 R66.1 受控实证:搬移复扫零回流)。
+
+**边界**:57 份高考真题 moves 未执行(第二批待令);collisions/needs_ruling/identity/semantic 零触碰。全量回归 **284 passed + 1 xfailed**(新增 12 钉,零回退)。

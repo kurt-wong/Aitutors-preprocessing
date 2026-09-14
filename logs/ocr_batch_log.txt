@@ -12275,3 +12275,475 @@
 [2026-09-14 06:22:31]   [OK] 21 pages
 [2026-09-14 06:22:31] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高三二模生物（教师版）(1).pdf -> {"source_rel": "2021北京房山高三二模生物（教师版）(1).pdf"}
 [2026-09-14 06:22:31] [1678/12703] 高三/生物/2021北京房山高三二模生物（教师版）(1).pdf...
+[2026-09-14 06:27:09]   [OK] 24 pages
+[2026-09-14 06:27:09] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高三二模英语（教师版）(1).pdf -> {"source_rel": "2021北京房山高三二模英语（教师版）(1).pdf"}
+[2026-09-14 06:27:09] [1679/12703] 高三/英语/2021北京房山高三二模英语（教师版）(1).pdf...
+[2026-09-14 06:36:42]   [OK] 10 pages
+[2026-09-14 06:36:43] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高三二模语文（教师版） (1)(1).pdf -> {"source_rel": "2021北京房山高三二模语文（教师版） (1)(1).pdf"}
+[2026-09-14 06:36:43] [1680/12703] 高三/语文/2021北京房山高三二模语文（教师版） (1)(1).pdf...
+[2026-09-14 06:37:44]   [OK] 13 pages
+[2026-09-14 06:37:44] 
+--- 进度: 1680/12703 | 成功:8 跳过:1671 失败:1 | 今日已用:212/20000页 ---
+
+[2026-09-14 06:37:44] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高三（上）期末化学（教师版）(1).pdf -> {"source_rel": "2021北京房山高三（上）期末化学（教师版）(1).pdf"}
+[2026-09-14 06:37:44] [1681/12703] 高三/化学/2021北京房山高三（上）期末化学（教师版）(1).pdf...
+[2026-09-14 06:39:10]   [OK] 12 pages
+[2026-09-14 06:39:10] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高三（上）期末数学（教师版）(1).pdf -> {"source_rel": "2021北京房山高三（上）期末数学（教师版）(1).pdf"}
+[2026-09-14 06:39:10] [1682/12703] 高三/数学/2021北京房山高三（上）期末数学（教师版）(1).pdf...
+[2026-09-14 06:45:35]   [OK] 16 pages
+[2026-09-14 06:45:35] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高三（上）期末生物（教师版）(1).pdf -> {"source_rel": "2021北京房山高三（上）期末生物（教师版）(1).pdf"}
+[2026-09-14 06:45:35] [1683/12703] 高三/生物/2021北京房山高三（上）期末生物（教师版）(1).pdf...
+[2026-09-14 06:48:09]   [OK] 11 pages
+[2026-09-14 06:48:10] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高三（上）期末英语（教师版）(1).pdf -> {"source_rel": "2021北京房山高三（上）期末英语（教师版）(1).pdf"}
+[2026-09-14 06:48:10] [1684/12703] 高三/英语/2021北京房山高三（上）期末英语（教师版）(1).pdf...
+[2026-09-14 06:48:20]   [OK] 19 pages
+[2026-09-14 06:48:21] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高三（上）期末语文（教师版）(1).pdf -> {"source_rel": "2021北京房山高三（上）期末语文（教师版）(1).pdf"}
+[2026-09-14 06:48:21] [1685/12703] 高三/语文/2021北京房山高三（上）期末语文（教师版）(1).pdf...
+[2026-09-14 06:48:31]   [OK] 14 pages
+[2026-09-14 06:48:32] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高二（上）期中地理（教师版）(1).pdf -> {"source_rel": "2021北京房山高二（上）期中地理（教师版）(1).pdf"}
+[2026-09-14 06:48:32] [1686/12703] 高二/地理/2021北京房山高二（上）期中地理（教师版）(1).pdf...
+[2026-09-14 06:48:55]   [OK] 22 pages
+[2026-09-14 06:48:56] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高二（上）期中数学（教师版）(1).pdf -> {"source_rel": "2021北京房山高二（上）期中数学（教师版）(1).pdf"}
+[2026-09-14 06:48:56] [1687/12703] 高二/数学/2021北京房山高二（上）期中数学（教师版）(1).pdf...
+[2026-09-14 06:52:43]   [OK] 17 pages
+[2026-09-14 06:52:43] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高二（上）期中语文（教师版）(1).pdf -> {"source_rel": "2021北京房山高二（上）期中语文（教师版）(1).pdf"}
+[2026-09-14 06:52:43] [1688/12703] 高二/语文/2021北京房山高二（上）期中语文（教师版）(1).pdf...
+[2026-09-14 06:55:14]   [OK] 18 pages
+[2026-09-14 06:55:15] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高二（上）期末化学（教师版）(1).pdf -> {"source_rel": "2021北京房山高二（上）期末化学（教师版）(1).pdf"}
+[2026-09-14 06:55:15] [1689/12703] 高二/化学/2021北京房山高二（上）期末化学（教师版）(1).pdf...
+[2026-09-14 06:59:59]   [OK] 10 pages
+[2026-09-14 07:00:00] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高二（上）期末政治（教师版）(1).pdf -> {"source_rel": "2021北京房山高二（上）期末政治（教师版）(1).pdf"}
+[2026-09-14 07:00:00] [1690/12703] 高二/政治/2021北京房山高二（上）期末政治（教师版）(1).pdf...
+[2026-09-14 07:01:12]   [OK] 11 pages
+[2026-09-14 07:01:12] 
+--- 进度: 1690/12703 | 成功:18 跳过:1671 失败:1 | 今日已用:362/20000页 ---
+
+[2026-09-14 07:01:12] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高二（上）期末数学（教师版）(1).pdf -> {"source_rel": "2021北京房山高二（上）期末数学（教师版）(1).pdf"}
+[2026-09-14 07:01:12] [1691/12703] 高二/数学/2021北京房山高二（上）期末数学（教师版）(1).pdf...
+[2026-09-14 07:01:38]   [OK] 12 pages
+[2026-09-14 07:01:39] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高二（上）期末物理（教师版）(1).pdf -> {"source_rel": "2021北京房山高二（上）期末物理（教师版）(1).pdf"}
+[2026-09-14 07:01:39] [1692/12703] 高二/物理/2021北京房山高二（上）期末物理（教师版）(1).pdf...
+[2026-09-14 07:05:04]   [OK] 11 pages
+[2026-09-14 07:05:05] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高二（上）期末生物（教师版）(1).pdf -> {"source_rel": "2021北京房山高二（上）期末生物（教师版）(1).pdf"}
+[2026-09-14 07:05:05] [1693/12703] 高二/生物/2021北京房山高二（上）期末生物（教师版）(1).pdf...
+[2026-09-14 07:05:15]   [OK] 22 pages
+[2026-09-14 07:05:16] [DECIDE:NO_MANIFEST_ENTRY] 2021北京房山高二（上）期末英语（教师版）(1).pdf -> {"source_rel": "2021北京房山高二（上）期末英语（教师版）(1).pdf"}
+[2026-09-14 07:05:16] [1694/12703] 高二/英语/2021北京房山高二（上）期末英语（教师版）(1).pdf...
+[2026-09-14 07:07:37]   [OK] 9 pages
+[2026-09-14 07:07:37] [DECIDE:NO_MANIFEST_ENTRY] 2021北京日坛中学高一（下）期中政治（教师版）(1).pdf -> {"source_rel": "2021北京日坛中学高一（下）期中政治（教师版）(1).pdf"}
+[2026-09-14 07:07:37] [1695/12703] 高一/政治/2021北京日坛中学高一（下）期中政治（教师版）(1).pdf...
+[2026-09-14 07:10:08]   [OK] 38 pages
+[2026-09-14 07:10:09] [DECIDE:NO_MANIFEST_ENTRY] 2021北京昌平一中高一（下）期中物理（教师版）(1).pdf -> {"source_rel": "2021北京昌平一中高一（下）期中物理（教师版）(1).pdf"}
+[2026-09-14 07:10:09] [1696/12703] 高一/物理/2021北京昌平一中高一（下）期中物理（教师版）(1).pdf...
+[2026-09-14 07:12:57]   [OK] 10 pages
+[2026-09-14 07:12:58] [DECIDE:NO_MANIFEST_ENTRY] 2021北京昌平一中高三（上）期中数学（教师版）(1).pdf -> {"source_rel": "2021北京昌平一中高三（上）期中数学（教师版）(1).pdf"}
+[2026-09-14 07:12:58] [1697/12703] 高三/数学/2021北京昌平一中高三（上）期中数学（教师版）(1).pdf...
+[2026-09-14 07:16:04]   [OK] 16 pages
+[2026-09-14 07:16:05] [DECIDE:NO_MANIFEST_ENTRY] 2021北京昌平一中高三（上）期中英语（教师版）(1).pdf -> {"source_rel": "2021北京昌平一中高三（上）期中英语（教师版）(1).pdf"}
+[2026-09-14 07:16:05] [1698/12703] 高三/英语/2021北京昌平一中高三（上）期中英语（教师版）(1).pdf...
+[2026-09-14 07:16:16]   [OK] 23 pages
+[2026-09-14 07:16:17] [DECIDE:NO_MANIFEST_ENTRY] 2021北京昌平一中高二（上）期中数学（教师版）(1).pdf -> {"source_rel": "2021北京昌平一中高二（上）期中数学（教师版）(1).pdf"}
+[2026-09-14 07:16:17] [1699/12703] 高二/数学/2021北京昌平一中高二（上）期中数学（教师版）(1).pdf...
+[2026-09-14 07:18:58]   [OK] 14 pages
+[2026-09-14 07:18:58] [DECIDE:NO_MANIFEST_ENTRY] 2021北京昌平临川学校高三（上）期末语文（教师版）(1).pdf -> {"source_rel": "2021北京昌平临川学校高三（上）期末语文（教师版）(1).pdf"}
+[2026-09-14 07:18:58] [1700/12703] 高三/语文/2021北京昌平临川学校高三（上）期末语文（教师版）(1).pdf...
+[2026-09-14 07:23:10]   [OK] 20 pages
+[2026-09-14 07:23:10] 
+--- 进度: 1700/12703 | 成功:28 跳过:1671 失败:1 | 今日已用:537/20000页 ---
+
+[2026-09-14 07:23:10] [DECIDE:NO_MANIFEST_ENTRY] 2021北京昌平二中高一（下）期中数学（教师版）(1).pdf -> {"source_rel": "2021北京昌平二中高一（下）期中数学（教师版）(1).pdf"}
+[2026-09-14 07:23:10] [1701/12703] 高一/数学/2021北京昌平二中高一（下）期中数学（教师版）(1).pdf...
+[2026-09-14 07:23:21]   [OK] 12 pages
+[2026-09-14 07:23:21] [DECIDE:NO_MANIFEST_ENTRY] 2021北京昌平二中高三（上）期中物理（教师版）(1).pdf -> {"source_rel": "2021北京昌平二中高三（上）期中物理（教师版）(1).pdf"}
+[2026-09-14 07:23:21] [1702/12703] 高三/物理/2021北京昌平二中高三（上）期中物理（教师版）(1).pdf...
+[2026-09-14 07:24:05]   [OK] 11 pages
+[2026-09-14 07:24:05] [DECIDE:NO_MANIFEST_ENTRY] 2021北京昌平二中高三（上）期中英语（教师版）(1).pdf -> {"source_rel": "2021北京昌平二中高三（上）期中英语（教师版）(1).pdf"}
+[2026-09-14 07:24:05] [1703/12703] 高三/英语/2021北京昌平二中高三（上）期中英语（教师版）(1).pdf...
+[2026-09-14 07:25:26]   [OK] 29 pages
+[2026-09-14 07:25:26] [DECIDE:NO_MANIFEST_ENTRY] 2021北京昌平二中高二（上）期中地理（教师版）(1).pdf -> {"source_rel": "2021北京昌平二中高二（上）期中地理（教师版）(1).pdf"}
+[2026-09-14 07:25:26] [1704/12703] 高二/地理/2021北京昌平二中高二（上）期中地理（教师版）(1).pdf...
+[2026-09-14 07:25:42]   [OK] 11 pages
+[2026-09-14 07:25:42] [DECIDE:NO_MANIFEST_ENTRY] 2021北京昌平二中高二（上）期中数学（教师版）(1).pdf -> {"source_rel": "2021北京昌平二中高二（上）期中数学（教师版）(1).pdf"}
+[2026-09-14 07:25:42] [1705/12703] 高二/数学/2021北京昌平二中高二（上）期中数学（教师版）(1).pdf...
+[2026-09-14 07:25:53]   [OK] 14 pages
+[2026-09-14 07:25:53] [DECIDE:NO_MANIFEST_ENTRY] 2021北京昌平二中高二（上）期中英语（教师版）(1).pdf -> {"source_rel": "2021北京昌平二中高二（上）期中英语（教师版）(1).pdf"}
+[2026-09-14 07:25:53] [1706/12703] 高二/英语/2021北京昌平二中高二（上）期中英语（教师版）(1).pdf...
+[2026-09-14 07:26:34]   [OK] 21 pages
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考历史（第一次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考历史（第一次）（教师版）(1).pdf", "recorded_output_rel": "合格考/历史/2021北京高中合格考历史（第一次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考历史（第二次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考历史（第二次）（教师版）(1).pdf", "recorded_output_rel": "合格考/历史/2021北京高中合格考历史（第二次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考地理（第一次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考地理（第一次）（教师版）(1).pdf", "recorded_output_rel": "合格考/地理/2021北京高中合格考地理（第一次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考地理（第二次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考地理（第二次）（教师版）(1).pdf", "recorded_output_rel": "合格考/地理/2021北京高中合格考地理（第二次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考政治（第一次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考政治（第一次）（教师版）(1).pdf", "recorded_output_rel": "合格考/政治/2021北京高中合格考政治（第一次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考政治（第二次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考政治（第二次）（教师版）(1).pdf", "recorded_output_rel": "合格考/政治/2021北京高中合格考政治（第二次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考数学（第一次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考数学（第一次）（教师版）(1).pdf", "recorded_output_rel": "合格考/数学/2021北京高中合格考数学（第一次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考数学（第二次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考数学（第二次）（教师版）(1).pdf", "recorded_output_rel": "合格考/数学/2021北京高中合格考数学（第二次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考物理（第一次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考物理（第一次）（教师版）(1).pdf", "recorded_output_rel": "合格考/物理/2021北京高中合格考物理（第一次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考物理（第二次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考物理（第二次）（教师版）(1).pdf", "recorded_output_rel": "合格考/物理/2021北京高中合格考物理（第二次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考生物（第一次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考生物（第一次）（教师版）(1).pdf", "recorded_output_rel": "合格考/生物/2021北京高中合格考生物（第一次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考生物（第二次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考生物（第二次）（教师版）(1).pdf", "recorded_output_rel": "合格考/生物/2021北京高中合格考生物（第二次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考英语（第一次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考英语（第一次）（教师版）(1).pdf", "recorded_output_rel": "合格考/英语/2021北京高中合格考英语（第一次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考英语（第二次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考英语（第二次）（教师版）(1).pdf", "recorded_output_rel": "合格考/英语/2021北京高中合格考英语（第二次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考语文（第一次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考语文（第一次）（教师版）(1).pdf", "recorded_output_rel": "合格考/语文/2021北京高中合格考语文（第一次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中合格考语文（第二次）（教师版）(1).pdf -> {"source_rel": "2021北京高中合格考语文（第二次）（教师版）(1).pdf", "recorded_output_rel": "合格考/语文/2021北京高中合格考语文（第二次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高中数学合格性考试汇编：常用逻辑用语（教师版）.pdf -> {"source_rel": "2021北京高中数学合格性考试汇编：常用逻辑用语（教师版）.pdf", "recorded_output_rel": "合格考/数学/2021北京高中数学合格性考试汇编：常用逻辑用语（教师版）.md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高考压轴卷历史（教师版）(1).pdf -> {"source_rel": "2021北京高考压轴卷历史（教师版）(1).pdf", "recorded_output_rel": "竞赛自招/历史/2021北京高考压轴卷历史（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高考真题化学（教师版）(1).pdf -> {"source_rel": "2021北京高考真题化学（教师版）(1).pdf", "recorded_output_rel": "高考真题/化学/2021北京高考真题化学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高考真题历史（教师版）(1).pdf -> {"source_rel": "2021北京高考真题历史（教师版）(1).pdf", "recorded_output_rel": "高考真题/历史/2021北京高考真题历史（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高考真题地理（教师版）(1).pdf -> {"source_rel": "2021北京高考真题地理（教师版）(1).pdf", "recorded_output_rel": "高考真题/地理/2021北京高考真题地理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高考真题政治（教师版）(1).pdf -> {"source_rel": "2021北京高考真题政治（教师版）(1).pdf", "recorded_output_rel": "高考真题/政治/2021北京高考真题政治（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高考真题数学（教师版）(1).pdf -> {"source_rel": "2021北京高考真题数学（教师版）(1).pdf", "recorded_output_rel": "高考真题/数学/2021北京高考真题数学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高考真题物理（教师版）(1).pdf -> {"source_rel": "2021北京高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2021北京高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高考真题生物（教师版）(1).pdf -> {"source_rel": "2021北京高考真题生物（教师版）(1).pdf", "recorded_output_rel": "高考真题/生物/2021北京高考真题生物（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高考真题英语（教师版）(1).pdf -> {"source_rel": "2021北京高考真题英语（教师版）(1).pdf", "recorded_output_rel": "高考真题/英语/2021北京高考真题英语（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021北京高考真题语文（教师版）(1).pdf -> {"source_rel": "2021北京高考真题语文（教师版）(1).pdf", "recorded_output_rel": "高考真题/语文/2021北京高考真题语文（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021天津高考真题化学（教师版）(1).pdf -> {"source_rel": "2021天津高考真题化学（教师版）(1).pdf", "recorded_output_rel": "高考真题/化学/2021天津高考真题化学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021天津高考真题历史（教师版）(1).pdf -> {"source_rel": "2021天津高考真题历史（教师版）(1).pdf", "recorded_output_rel": "高考真题/历史/2021天津高考真题历史（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021天津高考真题地理（教师版）(1).pdf -> {"source_rel": "2021天津高考真题地理（教师版）(1).pdf", "recorded_output_rel": "高考真题/地理/2021天津高考真题地理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021天津高考真题政治（教师版）(1).pdf -> {"source_rel": "2021天津高考真题政治（教师版）(1).pdf", "recorded_output_rel": "高考真题/政治/2021天津高考真题政治（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021天津高考真题数学（教师版）(1).pdf -> {"source_rel": "2021天津高考真题数学（教师版）(1).pdf", "recorded_output_rel": "高考真题/数学/2021天津高考真题数学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021天津高考真题物理（教师版）(1).pdf -> {"source_rel": "2021天津高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2021天津高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021天津高考真题生物（教师版）(1).pdf -> {"source_rel": "2021天津高考真题生物（教师版）(1).pdf", "recorded_output_rel": "高考真题/生物/2021天津高考真题生物（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021天津高考真题英语（第一次）（教师版）(1).pdf -> {"source_rel": "2021天津高考真题英语（第一次）（教师版）(1).pdf", "recorded_output_rel": "高考真题/英语/2021天津高考真题英语（第一次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021天津高考真题英语（第二次）（教师版）(1).pdf -> {"source_rel": "2021天津高考真题英语（第二次）（教师版）(1).pdf", "recorded_output_rel": "高考真题/英语/2021天津高考真题英语（第二次）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021天津高考真题语文（教师版）(1).pdf -> {"source_rel": "2021天津高考真题语文（教师版）(1).pdf", "recorded_output_rel": "高考真题/语文/2021天津高考真题语文（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021山东新高考真题化学（教师版）(1).pdf -> {"source_rel": "2021山东新高考真题化学（教师版）(1).pdf", "recorded_output_rel": "高考真题/化学/2021山东新高考真题化学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021山东新高考真题物理（教师版）(1).pdf -> {"source_rel": "2021山东新高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2021山东新高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021山东新高考真题生物（教师版）(1).pdf -> {"source_rel": "2021山东新高考真题生物（教师版）(1).pdf", "recorded_output_rel": "高考真题/生物/2021山东新高考真题生物（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021山东高考真题历史（教师版）(1).pdf -> {"source_rel": "2021山东高考真题历史（教师版）(1).pdf", "recorded_output_rel": "高考真题/历史/2021山东高考真题历史（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021山东高考真题地理（教师版）(1).pdf -> {"source_rel": "2021山东高考真题地理（教师版）(1).pdf", "recorded_output_rel": "高考真题/地理/2021山东高考真题地理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021山东高考真题政治（教师版）(1).pdf -> {"source_rel": "2021山东高考真题政治（教师版）(1).pdf", "recorded_output_rel": "高考真题/政治/2021山东高考真题政治（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021广东新高考真题化学（教师版）(1).pdf -> {"source_rel": "2021广东新高考真题化学（教师版）(1).pdf", "recorded_output_rel": "高考真题/化学/2021广东新高考真题化学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021广东新高考真题地理（教师版）(1).pdf -> {"source_rel": "2021广东新高考真题地理（教师版）(1).pdf", "recorded_output_rel": "高考真题/地理/2021广东新高考真题地理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021广东新高考真题政治（教师版）(1).pdf -> {"source_rel": "2021广东新高考真题政治（教师版）(1).pdf", "recorded_output_rel": "高考真题/政治/2021广东新高考真题政治（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021广东新高考真题物理（教师版）(1).pdf -> {"source_rel": "2021广东新高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2021广东新高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021广东新高考真题生物（教师版）(1).pdf -> {"source_rel": "2021广东新高考真题生物（教师版）(1).pdf", "recorded_output_rel": "高考真题/生物/2021广东新高考真题生物（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021广东高考真题历史（教师版）(1).pdf -> {"source_rel": "2021广东高考真题历史（教师版）(1).pdf", "recorded_output_rel": "高考真题/历史/2021广东高考真题历史（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021江苏高考真题物理（教师版）(1).pdf -> {"source_rel": "2021江苏高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2021江苏高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021河北新高考真题化学（教师版）(1).pdf -> {"source_rel": "2021河北新高考真题化学（教师版）(1).pdf", "recorded_output_rel": "高考真题/化学/2021河北新高考真题化学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021河北新高考真题政治（教师版）(1).pdf -> {"source_rel": "2021河北新高考真题政治（教师版）(1).pdf", "recorded_output_rel": "高考真题/政治/2021河北新高考真题政治（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021河北新高考真题物理（教师版）(1).pdf -> {"source_rel": "2021河北新高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2021河北新高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021河北新高考真题生物（教师版）(1).pdf -> {"source_rel": "2021河北新高考真题生物（教师版）(1).pdf", "recorded_output_rel": "高考真题/生物/2021河北新高考真题生物（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021河北高考真题地理（教师版）(1).pdf -> {"source_rel": "2021河北高考真题地理（教师版）(1).pdf", "recorded_output_rel": "高考真题/地理/2021河北高考真题地理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021浙江高考真题化学（教师版）(1).pdf -> {"source_rel": "2021浙江高考真题化学（教师版）(1).pdf", "recorded_output_rel": "高考真题/化学/2021浙江高考真题化学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021浙江高考真题历史（教师版）(1).pdf -> {"source_rel": "2021浙江高考真题历史（教师版）(1).pdf", "recorded_output_rel": "高考真题/历史/2021浙江高考真题历史（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021浙江高考真题地理（教师版）(1).pdf -> {"source_rel": "2021浙江高考真题地理（教师版）(1).pdf", "recorded_output_rel": "高考真题/地理/2021浙江高考真题地理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021浙江高考真题政治（教师版）(1).pdf -> {"source_rel": "2021浙江高考真题政治（教师版）(1).pdf", "recorded_output_rel": "高考真题/政治/2021浙江高考真题政治（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021浙江高考真题数学（教师版）(1).pdf -> {"source_rel": "2021浙江高考真题数学（教师版）(1).pdf", "recorded_output_rel": "高考真题/数学/2021浙江高考真题数学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021浙江高考真题物理（教师版）(1).pdf -> {"source_rel": "2021浙江高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2021浙江高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021浙江高考真题生物（教师版）(1).pdf -> {"source_rel": "2021浙江高考真题生物（教师版）(1).pdf", "recorded_output_rel": "高考真题/生物/2021浙江高考真题生物（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021浙江高考真题英语（教师版）(1).pdf -> {"source_rel": "2021浙江高考真题英语（教师版）(1).pdf", "recorded_output_rel": "高考真题/英语/2021浙江高考真题英语（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021浙江高考真题语文（教师版）(1).pdf -> {"source_rel": "2021浙江高考真题语文（教师版）(1).pdf", "recorded_output_rel": "高考真题/语文/2021浙江高考真题语文（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021海南高考真题化学（教师版）(1).pdf -> {"source_rel": "2021海南高考真题化学（教师版）(1).pdf", "recorded_output_rel": "高考真题/化学/2021海南高考真题化学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021海南高考真题物理（教师版）(1).pdf -> {"source_rel": "2021海南高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2021海南高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021湖北高考真题化学（教师版）(1).pdf -> {"source_rel": "2021湖北高考真题化学（教师版）(1).pdf", "recorded_output_rel": "高考真题/化学/2021湖北高考真题化学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021湖北高考真题历史（教师版）(1).pdf -> {"source_rel": "2021湖北高考真题历史（教师版）(1).pdf", "recorded_output_rel": "高考真题/历史/2021湖北高考真题历史（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021湖北高考真题地理（教师版）(1).pdf -> {"source_rel": "2021湖北高考真题地理（教师版）(1).pdf", "recorded_output_rel": "高考真题/地理/2021湖北高考真题地理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021湖北高考真题物理（教师版）(1).pdf -> {"source_rel": "2021湖北高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2021湖北高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021湖北高考真题生物（教师版）(1).pdf -> {"source_rel": "2021湖北高考真题生物（教师版）(1).pdf", "recorded_output_rel": "高考真题/生物/2021湖北高考真题生物（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021湖南新高考真题化学（教师版）(1).pdf -> {"source_rel": "2021湖南新高考真题化学（教师版）(1).pdf", "recorded_output_rel": "高考真题/化学/2021湖南新高考真题化学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021湖南新高考真题政治（教师版）(1).pdf -> {"source_rel": "2021湖南新高考真题政治（教师版）(1).pdf", "recorded_output_rel": "高考真题/政治/2021湖南新高考真题政治（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021湖南新高考真题物理（教师版）(1).pdf -> {"source_rel": "2021湖南新高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2021湖南新高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021湖南新高考真题生物（教师版）(1).pdf -> {"source_rel": "2021湖南新高考真题生物（教师版）(1).pdf", "recorded_output_rel": "高考真题/生物/2021湖南新高考真题生物（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021湖南高考真题地理（教师版）(1).pdf -> {"source_rel": "2021湖南高考真题地理（教师版）(1).pdf", "recorded_output_rel": "高考真题/地理/2021湖南高考真题地理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021福建高考真题化学（教师版）(1).pdf -> {"source_rel": "2021福建高考真题化学（教师版）(1).pdf", "recorded_output_rel": "高考真题/化学/2021福建高考真题化学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021福建高考真题历史（教师版）(1).pdf -> {"source_rel": "2021福建高考真题历史（教师版）(1).pdf", "recorded_output_rel": "高考真题/历史/2021福建高考真题历史（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021福建高考真题地理（教师版）(1).pdf -> {"source_rel": "2021福建高考真题地理（教师版）(1).pdf", "recorded_output_rel": "高考真题/地理/2021福建高考真题地理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021福建高考真题政治（教师版）(1).pdf -> {"source_rel": "2021福建高考真题政治（教师版）(1).pdf", "recorded_output_rel": "高考真题/政治/2021福建高考真题政治（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021福建高考真题物理（教师版）(1).pdf -> {"source_rel": "2021福建高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2021福建高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021福建高考真题生物（教师版）(1).pdf -> {"source_rel": "2021福建高考真题生物（教师版）(1).pdf", "recorded_output_rel": "高考真题/生物/2021福建高考真题生物（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021辽宁高考真题化学（教师版）(1).pdf -> {"source_rel": "2021辽宁高考真题化学（教师版）(1).pdf", "recorded_output_rel": "高考真题/化学/2021辽宁高考真题化学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021辽宁高考真题历史（教师版）(1).pdf -> {"source_rel": "2021辽宁高考真题历史（教师版）(1).pdf", "recorded_output_rel": "高考真题/历史/2021辽宁高考真题历史（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021辽宁高考真题地理（教师版）(1).pdf -> {"source_rel": "2021辽宁高考真题地理（教师版）(1).pdf", "recorded_output_rel": "高考真题/地理/2021辽宁高考真题地理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021辽宁高考真题政治（教师版）(1).pdf -> {"source_rel": "2021辽宁高考真题政治（教师版）(1).pdf", "recorded_output_rel": "高考真题/政治/2021辽宁高考真题政治（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021辽宁高考真题物理（教师版）(1).pdf -> {"source_rel": "2021辽宁高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2021辽宁高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2021辽宁高考真题生物（教师版）(1).pdf -> {"source_rel": "2021辽宁高考真题生物（教师版）(1).pdf", "recorded_output_rel": "高考真题/生物/2021辽宁高考真题生物（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国I卷新高考真题数学（教师版）(1).pdf -> {"source_rel": "2022全国I卷新高考真题数学（教师版）(1).pdf", "recorded_output_rel": "高考真题/数学/2022全国I卷新高考真题数学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国I卷新高考真题英语（教师版）(1).pdf -> {"source_rel": "2022全国I卷新高考真题英语（教师版）(1).pdf", "recorded_output_rel": "高考真题/英语/2022全国I卷新高考真题英语（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国I卷新高考真题语文（教师版）(1).pdf -> {"source_rel": "2022全国I卷新高考真题语文（教师版）(1).pdf", "recorded_output_rel": "高考真题/语文/2022全国I卷新高考真题语文（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国Ⅱ卷新高考真题数学（教师版）(1).pdf -> {"source_rel": "2022全国Ⅱ卷新高考真题数学（教师版）(1).pdf", "recorded_output_rel": "高考真题/数学/2022全国Ⅱ卷新高考真题数学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国乙卷高考真题化学（教师版）(1).pdf -> {"source_rel": "2022全国乙卷高考真题化学（教师版）(1).pdf", "recorded_output_rel": "高考真题/化学/2022全国乙卷高考真题化学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国乙卷高考真题历史（教师版）(1).pdf -> {"source_rel": "2022全国乙卷高考真题历史（教师版）(1).pdf", "recorded_output_rel": "高考真题/历史/2022全国乙卷高考真题历史（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国乙卷高考真题地理（教师版）(1).pdf -> {"source_rel": "2022全国乙卷高考真题地理（教师版）(1).pdf", "recorded_output_rel": "高考真题/地理/2022全国乙卷高考真题地理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国乙卷高考真题政治（教师版）(1).pdf -> {"source_rel": "2022全国乙卷高考真题政治（教师版）(1).pdf", "recorded_output_rel": "高考真题/政治/2022全国乙卷高考真题政治（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国乙卷高考真题数学（文）（教师版）(1).pdf -> {"source_rel": "2022全国乙卷高考真题数学（文）（教师版）(1).pdf", "recorded_output_rel": "高考真题/数学/2022全国乙卷高考真题数学（文）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国乙卷高考真题数学（理）（教师版）(1).pdf -> {"source_rel": "2022全国乙卷高考真题数学（理）（教师版）(1).pdf", "recorded_output_rel": "高考真题/数学/2022全国乙卷高考真题数学（理）（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国乙卷高考真题物理（教师版）(1).pdf -> {"source_rel": "2022全国乙卷高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2022全国乙卷高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国乙卷高考真题生物（教师版）(1).pdf -> {"source_rel": "2022全国乙卷高考真题生物（教师版）(1).pdf", "recorded_output_rel": "高考真题/生物/2022全国乙卷高考真题生物（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国乙卷高考真题语文（教师版）(1).pdf -> {"source_rel": "2022全国乙卷高考真题语文（教师版）(1).pdf", "recorded_output_rel": "高考真题/语文/2022全国乙卷高考真题语文（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国甲卷高考真题化学（教师版）(1).pdf -> {"source_rel": "2022全国甲卷高考真题化学（教师版）(1).pdf", "recorded_output_rel": "高考真题/化学/2022全国甲卷高考真题化学（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国甲卷高考真题历史（教师版）(1).pdf -> {"source_rel": "2022全国甲卷高考真题历史（教师版）(1).pdf", "recorded_output_rel": "高考真题/历史/2022全国甲卷高考真题历史（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国甲卷高考真题地理（教师版）(1).pdf -> {"source_rel": "2022全国甲卷高考真题地理（教师版）(1).pdf", "recorded_output_rel": "高考真题/地理/2022全国甲卷高考真题地理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国甲卷高考真题政治（教师版）(1).pdf -> {"source_rel": "2022全国甲卷高考真题政治（教师版）(1).pdf", "recorded_output_rel": "高考真题/政治/2022全国甲卷高考真题政治（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国甲卷高考真题物理（教师版）(1).pdf -> {"source_rel": "2022全国甲卷高考真题物理（教师版）(1).pdf", "recorded_output_rel": "高考真题/物理/2022全国甲卷高考真题物理（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国甲卷高考真题生物（教师版）(1).pdf -> {"source_rel": "2022全国甲卷高考真题生物（教师版）(1).pdf", "recorded_output_rel": "高考真题/生物/2022全国甲卷高考真题生物（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国甲卷高考真题英语（教师版）(1).pdf -> {"source_rel": "2022全国甲卷高考真题英语（教师版）(1).pdf", "recorded_output_rel": "高考真题/英语/2022全国甲卷高考真题英语（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:MANIFEST_DONE] 2022全国甲卷高考真题语文（教师版）(1).pdf -> {"source_rel": "2022全国甲卷高考真题语文（教师版）(1).pdf", "recorded_output_rel": "高考真题/语文/2022全国甲卷高考真题语文（教师版）(1).md", "recorded_output_status": "present"}
+[2026-09-14 07:26:34] [DECIDE:NO_MANIFEST_ENTRY] 2022北京一六一中高二（下）期中数学（教师版）(1).pdf -> {"source_rel": "2022北京一六一中高二（下）期中数学（教师版）(1).pdf"}
+[2026-09-14 07:26:34] [2370/12703] 高二/数学/2022北京一六一中高二（下）期中数学（教师版）(1).pdf...
+[2026-09-14 07:27:00]   [OK] 17 pages
+[2026-09-14 07:27:00] 
+--- 进度: 2370/12703 | 成功:35 跳过:2334 失败:1 | 今日已用:652/20000页 ---
+
+[2026-09-14 07:27:01] [DECIDE:NO_MANIFEST_ENTRY] 2022北京一零一中学高三三模物理（教师版）(1).pdf -> {"source_rel": "2022北京一零一中学高三三模物理（教师版）(1).pdf"}
+[2026-09-14 07:27:01] [2390/12703] 高三/物理/2022北京一零一中学高三三模物理（教师版）(1).pdf...
+[2026-09-14 07:29:12]   [OK] 28 pages
+[2026-09-14 07:29:12] 
+--- 进度: 2390/12703 | 成功:36 跳过:2353 失败:1 | 今日已用:680/20000页 ---
+
+[2026-09-14 07:29:12] [DECIDE:NO_MANIFEST_ENTRY] 2022北京一零一中学高三三模语文（教师版）(1).pdf -> {"source_rel": "2022北京一零一中学高三三模语文（教师版）(1).pdf"}
+[2026-09-14 07:29:12] [2391/12703] 高三/语文/2022北京一零一中学高三三模语文（教师版）(1).pdf...
+[2026-09-14 07:30:23]   [OK] 28 pages
+[2026-09-14 07:30:23] [DECIDE:NO_MANIFEST_ENTRY] 2022北京一零一中学高二（下）期中物理（教师版）(1).pdf -> {"source_rel": "2022北京一零一中学高二（下）期中物理（教师版）(1).pdf"}
+[2026-09-14 07:30:23] [2392/12703] 高二/物理/2022北京一零一中学高二（下）期中物理（教师版）(1).pdf...
+[2026-09-14 07:30:39]   [OK] 44 pages
+[2026-09-14 07:30:40] [DECIDE:NO_MANIFEST_ENTRY] 2022北京一零一中学高二（下）期中英语（教师版）(1).pdf -> {"source_rel": "2022北京一零一中学高二（下）期中英语（教师版）(1).pdf"}
+[2026-09-14 07:30:40] [2393/12703] 高二/英语/2022北京一零一中学高二（下）期中英语（教师版）(1).pdf...
+[2026-09-14 07:31:51]   [OK] 30 pages
+[2026-09-14 07:31:51] [DECIDE:NO_MANIFEST_ENTRY] 2022北京一零一中学高二（下）统练三数学（教师版）(1).pdf -> {"source_rel": "2022北京一零一中学高二（下）统练三数学（教师版）(1).pdf"}
+[2026-09-14 07:31:51] [2394/12703] 高二/数学/2022北京一零一中学高二（下）统练三数学（教师版）(1).pdf...
+[2026-09-14 07:34:47]   [OK] 14 pages
+[2026-09-14 07:34:48] [DECIDE:NO_MANIFEST_ENTRY] 2022北京一零一中矿大分校高二（下）期中数学（教师版）(1).pdf -> {"source_rel": "2022北京一零一中矿大分校高二（下）期中数学（教师版）(1).pdf"}
+[2026-09-14 07:34:48] [2395/12703] 高二/数学/2022北京一零一中矿大分校高二（下）期中数学（教师版）(1).pdf...
+[2026-09-14 07:35:03]   [OK] 11 pages
+[2026-09-14 07:35:04] [DECIDE:NO_MANIFEST_ENTRY] 2022北京一零一中高一（上）期中化学（教师版）.pdf -> {"source_rel": "2022北京一零一中高一（上）期中化学（教师版）.pdf"}
+[2026-09-14 07:35:04] [2396/12703] 高一/化学/2022北京一零一中高一（上）期中化学（教师版）.pdf...
+[2026-09-14 07:37:33]   [OK] 17 pages
+[2026-09-14 07:37:34] [DECIDE:NO_MANIFEST_ENTRY] 2022北京三十五中高一10月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京三十五中高一10月月考数学（教师版）(1).pdf"}
+[2026-09-14 07:37:34] [2449/12703] 高一/数学/2022北京三十五中高一10月月考数学（教师版）(1).pdf...
+[2026-09-14 07:40:40]   [OK] 7 pages
+[2026-09-14 07:40:41] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高一（上）期末生物（教师版）.pdf -> {"source_rel": "2022北京人大附中高一（上）期末生物（教师版）.pdf"}
+[2026-09-14 07:40:41] [2775/12703] 高一/生物/2022北京人大附中高一（上）期末生物（教师版）.pdf...
+[2026-09-14 07:41:17]   [OK] 37 pages
+[2026-09-14 07:41:17] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高一（上）期末语文（教师版）.pdf -> {"source_rel": "2022北京人大附中高一（上）期末语文（教师版）.pdf"}
+[2026-09-14 07:41:17] [2776/12703] 高一/语文/2022北京人大附中高一（上）期末语文（教师版）.pdf...
+[2026-09-14 07:42:08]   [OK] 24 pages
+[2026-09-14 07:42:08] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高一（下）期中数学（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高一（下）期中数学（教师版）(1).pdf"}
+[2026-09-14 07:42:08] [2777/12703] 高一/数学/2022北京人大附中高一（下）期中数学（教师版）(1).pdf...
+[2026-09-14 07:43:04]   [OK] 20 pages
+[2026-09-14 07:43:05] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高一（下）期中物理（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高一（下）期中物理（教师版）(1).pdf"}
+[2026-09-14 07:43:05] [2778/12703] 高一/物理/2022北京人大附中高一（下）期中物理（教师版）(1).pdf...
+[2026-09-14 07:45:26]   [OK] 18 pages
+[2026-09-14 07:45:26] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高一（下）期中英语（教师版） (1)(1).pdf -> {"source_rel": "2022北京人大附中高一（下）期中英语（教师版） (1)(1).pdf"}
+[2026-09-14 07:45:26] [2779/12703] 高一/英语/2022北京人大附中高一（下）期中英语（教师版） (1)(1).pdf...
+[2026-09-14 07:45:47]   [OK] 29 pages
+[2026-09-14 07:45:47] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高一（下）期中英语（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高一（下）期中英语（教师版）(1).pdf"}
+[2026-09-14 07:45:47] [2780/12703] 高一/英语/2022北京人大附中高一（下）期中英语（教师版）(1).pdf...
+[2026-09-14 07:46:04]   [OK] 29 pages
+[2026-09-14 07:46:04] 
+--- 进度: 2780/12703 | 成功:49 跳过:2730 失败:1 | 今日已用:988/20000页 ---
+
+[2026-09-14 07:46:04] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高一（下）期末物理（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高一（下）期末物理（教师版）(1).pdf"}
+[2026-09-14 07:46:04] [2781/12703] 高一/物理/2022北京人大附中高一（下）期末物理（教师版）(1).pdf...
+[2026-09-14 07:46:15]   [OK] 16 pages
+[2026-09-14 07:46:15] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高三10月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高三10月月考数学（教师版）(1).pdf"}
+[2026-09-14 07:46:15] [2782/12703] 高三/数学/2022北京人大附中高三10月月考数学（教师版）(1).pdf...
+[2026-09-14 07:46:26]   [OK] 18 pages
+[2026-09-14 07:46:26] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高三三模化学（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高三三模化学（教师版）(1).pdf"}
+[2026-09-14 07:46:26] [2783/12703] 高三/化学/2022北京人大附中高三三模化学（教师版）(1).pdf...
+[2026-09-14 07:49:33]   [OK] 23 pages
+[2026-09-14 07:49:34] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高三三模历史（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高三三模历史（教师版）(1).pdf"}
+[2026-09-14 07:49:34] [2784/12703] 高三/历史/2022北京人大附中高三三模历史（教师版）(1).pdf...
+[2026-09-14 07:49:44]   [OK] 19 pages
+[2026-09-14 07:49:45] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高三三模政治（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高三三模政治（教师版）(1).pdf"}
+[2026-09-14 07:49:45] [2785/12703] 高三/政治/2022北京人大附中高三三模政治（教师版）(1).pdf...
+[2026-09-14 07:51:26]   [OK] 12 pages
+[2026-09-14 07:51:26] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高三三模数学（教师版）.pdf -> {"source_rel": "2022北京人大附中高三三模数学（教师版）.pdf"}
+[2026-09-14 07:51:26] [2786/12703] 高三/数学/2022北京人大附中高三三模数学（教师版）.pdf...
+[2026-09-14 07:52:27]   [OK] 22 pages
+[2026-09-14 07:52:28] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高三三模生物（教师版）.pdf -> {"source_rel": "2022北京人大附中高三三模生物（教师版）.pdf"}
+[2026-09-14 07:52:28] [2787/12703] 高三/生物/2022北京人大附中高三三模生物（教师版）.pdf...
+[2026-09-14 07:52:53]   [OK] 32 pages
+[2026-09-14 07:52:54] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高三三模英语（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高三三模英语（教师版）(1).pdf"}
+[2026-09-14 07:52:54] [2788/12703] 高三/英语/2022北京人大附中高三三模英语（教师版）(1).pdf...
+[2026-09-14 07:54:26]   [OK] 24 pages
+[2026-09-14 07:54:27] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高三三模语文（教师版）.pdf -> {"source_rel": "2022北京人大附中高三三模语文（教师版）.pdf"}
+[2026-09-14 07:54:27] [2789/12703] 高三/语文/2022北京人大附中高三三模语文（教师版）.pdf...
+[2026-09-14 07:58:43]   [OK] 29 pages
+[2026-09-14 07:58:44] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高二12月月考化学（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高二12月月考化学（教师版）(1).pdf"}
+[2026-09-14 07:58:44] [2790/12703] 高二/化学/2022北京人大附中高二12月月考化学（教师版）(1).pdf...
+[2026-09-14 07:58:54]   [OK] 19 pages
+[2026-09-14 07:58:54] 
+--- 进度: 2790/12703 | 成功:59 跳过:2730 失败:1 | 今日已用:1202/20000页 ---
+
+[2026-09-14 07:58:55] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高二（上）期中数学（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高二（上）期中数学（教师版）(1).pdf"}
+[2026-09-14 07:58:55] [2791/12703] 高二/数学/2022北京人大附中高二（上）期中数学（教师版）(1).pdf...
+[2026-09-14 07:59:05]   [OK] 7 pages
+[2026-09-14 07:59:06] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高二（上）期中物理（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高二（上）期中物理（教师版）(1).pdf"}
+[2026-09-14 07:59:06] [2792/12703] 高二/物理/2022北京人大附中高二（上）期中物理（教师版）(1).pdf...
+[2026-09-14 08:01:12]   [OK] 18 pages
+[2026-09-14 08:01:12] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高二（上）期中英语（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高二（上）期中英语（教师版）(1).pdf"}
+[2026-09-14 08:01:12] [2793/12703] 高二/英语/2022北京人大附中高二（上）期中英语（教师版）(1).pdf...
+[2026-09-14 08:02:02]   [OK] 18 pages
+[2026-09-14 08:02:03] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高二（上）期末物理（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高二（上）期末物理（教师版）(1).pdf"}
+[2026-09-14 08:02:03] [2794/12703] 高二/物理/2022北京人大附中高二（上）期末物理（教师版）(1).pdf...
+[2026-09-14 08:04:49]   [OK] 25 pages
+[2026-09-14 08:04:49] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高二（下）期中化学参考答案（图片版）(1).pdf -> {"source_rel": "2022北京人大附中高二（下）期中化学参考答案（图片版）(1).pdf"}
+[2026-09-14 08:04:49] [2795/12703] 高二/化学/2022北京人大附中高二（下）期中化学参考答案（图片版）(1).pdf...
+[2026-09-14 08:05:56]   [OK] 2 pages
+[2026-09-14 08:05:56] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高二（下）期中化学（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高二（下）期中化学（教师版）(1).pdf"}
+[2026-09-14 08:05:56] [2796/12703] 高二/化学/2022北京人大附中高二（下）期中化学（教师版）(1).pdf...
+[2026-09-14 08:08:32]   [OK] 28 pages
+[2026-09-14 08:08:33] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高二（下）期中英语（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高二（下）期中英语（教师版）(1).pdf"}
+[2026-09-14 08:08:33] [2797/12703] 高二/英语/2022北京人大附中高二（下）期中英语（教师版）(1).pdf...
+[2026-09-14 08:12:52]   [OK] 17 pages
+[2026-09-14 08:12:52] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附中高二（下）统练三数学（教师版）(1).pdf -> {"source_rel": "2022北京人大附中高二（下）统练三数学（教师版）(1).pdf"}
+[2026-09-14 08:12:52] [2798/12703] 高二/数学/2022北京人大附中高二（下）统练三数学（教师版）(1).pdf...
+[2026-09-14 08:13:03]   [OK] 14 pages
+[2026-09-14 08:13:03] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人大附高二（上）期末数学 （教师版）(1).pdf -> {"source_rel": "2022北京人大附高二（上）期末数学 （教师版）(1).pdf"}
+[2026-09-14 08:13:03] [2799/12703] 高二/数学/2022北京人大附高二（上）期末数学 （教师版）(1).pdf...
+[2026-09-14 08:15:04]   [OK] 27 pages
+[2026-09-14 08:15:05] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人朝分校高一9月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京人朝分校高一9月月考数学（教师版）(1).pdf"}
+[2026-09-14 08:15:05] [2800/12703] 高一/数学/2022北京人朝分校高一9月月考数学（教师版）(1).pdf...
+[2026-09-14 08:15:15]   [OK] 5 pages
+[2026-09-14 08:15:15] 
+--- 进度: 2800/12703 | 成功:69 跳过:2730 失败:1 | 今日已用:1363/20000页 ---
+
+[2026-09-14 08:15:16] [DECIDE:NO_MANIFEST_ENTRY] 2022北京人朝分校高二（下）期中数学（教师版）(1).pdf -> {"source_rel": "2022北京人朝分校高二（下）期中数学（教师版）(1).pdf"}
+[2026-09-14 08:15:16] [2801/12703] 高二/数学/2022北京人朝分校高二（下）期中数学（教师版）(1).pdf...
+[2026-09-14 08:15:26]   [OK] 15 pages
+[2026-09-14 08:15:27] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高一10月月考物理（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高一10月月考物理（教师版）(1).pdf"}
+[2026-09-14 08:15:27] [2802/12703] 高一/物理/2022北京八一学校高一10月月考物理（教师版）(1).pdf...
+[2026-09-14 08:17:23]   [OK] 16 pages
+[2026-09-14 08:17:23] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高一12月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高一12月月考数学（教师版）(1).pdf"}
+[2026-09-14 08:17:23] [2803/12703] 高一/数学/2022北京八一学校高一12月月考数学（教师版）(1).pdf...
+[2026-09-14 08:18:30]   [OK] 13 pages
+[2026-09-14 08:18:30] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高一3月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高一3月月考数学（教师版）(1).pdf"}
+[2026-09-14 08:18:30] [2804/12703] 高一/数学/2022北京八一学校高一3月月考数学（教师版）(1).pdf...
+[2026-09-14 08:20:37]   [OK] 11 pages
+[2026-09-14 08:20:37] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高一6月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高一6月月考数学（教师版）(1).pdf"}
+[2026-09-14 08:20:37] [2805/12703] 高一/数学/2022北京八一学校高一6月月考数学（教师版）(1).pdf...
+[2026-09-14 08:20:53]   [OK] 15 pages
+[2026-09-14 08:20:53] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高一（下）3月月考数学（教师版）图片(1).pdf -> {"source_rel": "2022北京八一学校高一（下）3月月考数学（教师版）图片(1).pdf"}
+[2026-09-14 08:20:53] [2806/12703] 高一/数学/2022北京八一学校高一（下）3月月考数学（教师版）图片(1).pdf...
+[2026-09-14 08:21:11]   [OK] 10 pages
+[2026-09-14 08:21:11] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高一（下）期中数学（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高一（下）期中数学（教师版）(1).pdf"}
+[2026-09-14 08:21:11] [2807/12703] 高一/数学/2022北京八一学校高一（下）期中数学（教师版）(1).pdf...
+[2026-09-14 08:21:32]   [OK] 12 pages
+[2026-09-14 08:21:32] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高三10月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高三10月月考数学（教师版）(1).pdf"}
+[2026-09-14 08:21:32] [2808/12703] 高三/数学/2022北京八一学校高三10月月考数学（教师版）(1).pdf...
+[2026-09-14 08:23:58]   [OK] 15 pages
+[2026-09-14 08:23:59] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高三12月月考化学（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高三12月月考化学（教师版）(1).pdf"}
+[2026-09-14 08:23:59] [2809/12703] 高三/化学/2022北京八一学校高三12月月考化学（教师版）(1).pdf...
+[2026-09-14 08:26:30]   [OK] 22 pages
+[2026-09-14 08:26:30] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高三12月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高三12月月考数学（教师版）(1).pdf"}
+[2026-09-14 08:26:30] [2810/12703] 高三/数学/2022北京八一学校高三12月月考数学（教师版）(1).pdf...
+[2026-09-14 08:27:02]   [OK] 20 pages
+[2026-09-14 08:27:02] 
+--- 进度: 2810/12703 | 成功:79 跳过:2730 失败:1 | 今日已用:1512/20000页 ---
+
+[2026-09-14 08:27:02] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高三一模数学（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高三一模数学（教师版）(1).pdf"}
+[2026-09-14 08:27:02] [2811/12703] 高三/数学/2022北京八一学校高三一模数学（教师版）(1).pdf...
+[2026-09-14 08:27:18]   [OK] 15 pages
+[2026-09-14 08:27:18] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高二6月月考生物（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高二6月月考生物（教师版）(1).pdf"}
+[2026-09-14 08:27:18] [2812/12703] 高二/生物/2022北京八一学校高二6月月考生物（教师版）(1).pdf...
+[2026-09-14 08:28:39]   [OK] 26 pages
+[2026-09-14 08:28:40] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高二6月月考语文（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高二6月月考语文（教师版）(1).pdf"}
+[2026-09-14 08:28:40] [2813/12703] 高二/语文/2022北京八一学校高二6月月考语文（教师版）(1).pdf...
+[2026-09-14 08:28:50]   [OK] 22 pages
+[2026-09-14 08:28:51] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高二（上）期中数学（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高二（上）期中数学（教师版）(1).pdf"}
+[2026-09-14 08:28:51] [2814/12703] 高二/数学/2022北京八一学校高二（上）期中数学（教师版）(1).pdf...
+[2026-09-14 08:29:50]   [OK] 17 pages
+[2026-09-14 08:29:51] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高二（下）期中化学（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高二（下）期中化学（教师版）(1).pdf"}
+[2026-09-14 08:29:51] [2815/12703] 高二/化学/2022北京八一学校高二（下）期中化学（教师版）(1).pdf...
+[2026-09-14 08:31:35]   [OK] 25 pages
+[2026-09-14 08:31:36] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八一学校高二（下）期中数学（教师版）(1).pdf -> {"source_rel": "2022北京八一学校高二（下）期中数学（教师版）(1).pdf"}
+[2026-09-14 08:31:36] [2816/12703] 高二/数学/2022北京八一学校高二（下）期中数学（教师版）(1).pdf...
+[2026-09-14 08:33:25]   [OK] 14 pages
+[2026-09-14 08:33:26] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高一12月月考化学（教师版）(1).pdf -> {"source_rel": "2022北京八中高一12月月考化学（教师版）(1).pdf"}
+[2026-09-14 08:33:26] [2817/12703] 高一/化学/2022北京八中高一12月月考化学（教师版）(1).pdf...
+[2026-09-14 08:34:02]   [OK] 15 pages
+[2026-09-14 08:34:02] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高一6月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京八中高一6月月考数学（教师版）(1).pdf"}
+[2026-09-14 08:34:02] [2818/12703] 高一/数学/2022北京八中高一6月月考数学（教师版）(1).pdf...
+[2026-09-14 08:35:23]   [OK] 17 pages
+[2026-09-14 08:35:24] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高一（上）期中化学（合格考）（教师版）.pdf -> {"source_rel": "2022北京八中高一（上）期中化学（合格考）（教师版）.pdf"}
+[2026-09-14 08:35:24] [2819/12703] 高一/化学/2022北京八中高一（上）期中化学（合格考）（教师版）.pdf...
+[2026-09-14 08:36:40]   [OK] 18 pages
+[2026-09-14 08:36:41] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高一（上）期中化学（选考）（教师版）.pdf -> {"source_rel": "2022北京八中高一（上）期中化学（选考）（教师版）.pdf"}
+[2026-09-14 08:36:41] [2820/12703] 高一/化学/2022北京八中高一（上）期中化学（选考）（教师版）.pdf...
+[2026-09-14 08:36:42]   [OK] 20 pages
+[2026-09-14 08:36:42] 
+--- 进度: 2820/12703 | 成功:89 跳过:2730 失败:1 | 今日已用:1701/20000页 ---
+
+[2026-09-14 08:36:43] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高一（下）期中数学（教师版）(1).pdf -> {"source_rel": "2022北京八中高一（下）期中数学（教师版）(1).pdf"}
+[2026-09-14 08:36:43] [2821/12703] 高一/数学/2022北京八中高一（下）期中数学（教师版）(1).pdf...
+[2026-09-14 08:36:56]   [OK] 13 pages
+[2026-09-14 08:36:57] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高一（下）期中英语（教师版）(1).pdf -> {"source_rel": "2022北京八中高一（下）期中英语（教师版）(1).pdf"}
+[2026-09-14 08:36:57] [2822/12703] 高一/英语/2022北京八中高一（下）期中英语（教师版）(1).pdf...
+[2026-09-14 08:38:39]   [OK] 25 pages
+[2026-09-14 08:38:39] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高三10月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京八中高三10月月考数学（教师版）(1).pdf"}
+[2026-09-14 08:38:39] [2823/12703] 高三/数学/2022北京八中高三10月月考数学（教师版）(1).pdf...
+[2026-09-14 08:39:13]   [OK] 19 pages
+[2026-09-14 08:39:13] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高三12月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京八中高三12月月考数学（教师版）(1).pdf"}
+[2026-09-14 08:39:13] [2824/12703] 高三/数学/2022北京八中高三12月月考数学（教师版）(1).pdf...
+[2026-09-14 08:39:49]   [OK] 20 pages
+[2026-09-14 08:39:50] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高三12月月考英语（教师版）(1).pdf -> {"source_rel": "2022北京八中高三12月月考英语（教师版）(1).pdf"}
+[2026-09-14 08:39:50] [2825/12703] 高三/英语/2022北京八中高三12月月考英语（教师版）(1).pdf...
+[2026-09-14 08:42:06]   [OK] 19 pages
+[2026-09-14 08:42:07] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高三12月月考语文（教师版）(1).pdf -> {"source_rel": "2022北京八中高三12月月考语文（教师版）(1).pdf"}
+[2026-09-14 08:42:07] [2826/12703] 高三/语文/2022北京八中高三12月月考语文（教师版）(1).pdf...
+[2026-09-14 08:42:17]   [OK] 21 pages
+[2026-09-14 08:42:18] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高三8月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京八中高三8月月考数学（教师版）(1).pdf"}
+[2026-09-14 08:42:18] [2827/12703] 高三/数学/2022北京八中高三8月月考数学（教师版）(1).pdf...
+[2026-09-14 08:42:28]   [OK] 15 pages
+[2026-09-14 08:42:29] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高二6月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京八中高二6月月考数学（教师版）(1).pdf"}
+[2026-09-14 08:42:29] [2828/12703] 高二/数学/2022北京八中高二6月月考数学（教师版）(1).pdf...
+[2026-09-14 08:42:49]   [OK] 16 pages
+[2026-09-14 08:42:50] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高二6月月考语文（教师版）(1).pdf -> {"source_rel": "2022北京八中高二6月月考语文（教师版）(1).pdf"}
+[2026-09-14 08:42:50] [2829/12703] 高二/语文/2022北京八中高二6月月考语文（教师版）(1).pdf...
+[2026-09-14 08:44:56]   [OK] 21 pages
+[2026-09-14 08:44:56] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高二（上）期中数学（教师版）(1).pdf -> {"source_rel": "2022北京八中高二（上）期中数学（教师版）(1).pdf"}
+[2026-09-14 08:44:56] [2830/12703] 高二/数学/2022北京八中高二（上）期中数学（教师版）(1).pdf...
+[2026-09-14 08:47:24]   [OK] 16 pages
+[2026-09-14 08:47:24] 
+--- 进度: 2830/12703 | 成功:99 跳过:2730 失败:1 | 今日已用:1886/20000页 ---
+
+[2026-09-14 08:47:24] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高二（上）期末化学（教师版）(1).pdf -> {"source_rel": "2022北京八中高二（上）期末化学（教师版）(1).pdf"}
+[2026-09-14 08:47:24] [2831/12703] 高二/化学/2022北京八中高二（上）期末化学（教师版）(1).pdf...
+[2026-09-14 08:48:41]   [OK] 17 pages
+[2026-09-14 08:48:42] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高二（上）期末数学（教师版）(1).pdf -> {"source_rel": "2022北京八中高二（上）期末数学（教师版）(1).pdf"}
+[2026-09-14 08:48:42] [2832/12703] 高二/数学/2022北京八中高二（上）期末数学（教师版）(1).pdf...
+[2026-09-14 08:51:33]   [OK] 17 pages
+[2026-09-14 08:51:34] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高二（下）期中化学（教师版）(1).pdf -> {"source_rel": "2022北京八中高二（下）期中化学（教师版）(1).pdf"}
+[2026-09-14 08:51:34] [2833/12703] 高二/化学/2022北京八中高二（下）期中化学（教师版）(1).pdf...
+[2026-09-14 08:54:49]   [OK] 19 pages
+[2026-09-14 08:54:49] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高二（下）期中数学（教师版）(1).pdf -> {"source_rel": "2022北京八中高二（下）期中数学（教师版）(1).pdf"}
+[2026-09-14 08:54:49] [2834/12703] 高二/数学/2022北京八中高二（下）期中数学（教师版）(1).pdf...
+[2026-09-14 08:57:48]   [OK] 15 pages
+[2026-09-14 08:57:49] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高二（下）期末化学（教师版）(1).pdf -> {"source_rel": "2022北京八中高二（下）期末化学（教师版）(1).pdf"}
+[2026-09-14 08:57:49] [2835/12703] 高二/化学/2022北京八中高二（下）期末化学（教师版）(1).pdf...
+[2026-09-14 09:00:30]   [OK] 28 pages
+[2026-09-14 09:00:30] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高二（下）期末数学（教师版）(1).pdf -> {"source_rel": "2022北京八中高二（下）期末数学（教师版）(1).pdf"}
+[2026-09-14 09:00:30] [2836/12703] 高二/数学/2022北京八中高二（下）期末数学（教师版）(1).pdf...
+[2026-09-14 09:01:44]   [OK] 20 pages
+[2026-09-14 09:01:45] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八中高二（下）期末英语（教师版）(1).pdf -> {"source_rel": "2022北京八中高二（下）期末英语（教师版）(1).pdf"}
+[2026-09-14 09:01:45] [2837/12703] 高二/英语/2022北京八中高二（下）期末英语（教师版）(1).pdf...
+[2026-09-14 09:02:15]   [OK] 24 pages
+[2026-09-14 09:02:16] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八十中高一6月月考物理（教师版）(1).pdf -> {"source_rel": "2022北京八十中高一6月月考物理（教师版）(1).pdf"}
+[2026-09-14 09:02:16] [2838/12703] 高一/物理/2022北京八十中高一6月月考物理（教师版）(1).pdf...
+[2026-09-14 09:02:26]   [OK] 19 pages
+[2026-09-14 09:02:27] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八十中高一9月月考数学（教师版）(1).pdf -> {"source_rel": "2022北京八十中高一9月月考数学（教师版）(1).pdf"}
+[2026-09-14 09:02:27] [2839/12703] 高一/数学/2022北京八十中高一9月月考数学（教师版）(1).pdf...
+[2026-09-14 09:03:12]   [OK] 11 pages
+[2026-09-14 09:03:13] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八十中高一（上）期中数学（教师版）.pdf -> {"source_rel": "2022北京八十中高一（上）期中数学（教师版）.pdf"}
+[2026-09-14 09:03:13] [2840/12703] 高一/数学/2022北京八十中高一（上）期中数学（教师版）.pdf...
+[2026-09-14 09:03:23]   [OK] 14 pages
+[2026-09-14 09:03:23] 
+--- 进度: 2840/12703 | 成功:109 跳过:2730 失败:1 | 今日已用:2070/20000页 ---
+
+[2026-09-14 09:03:24] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八十中高一（上）期中生物（教师版）.pdf -> {"source_rel": "2022北京八十中高一（上）期中生物（教师版）.pdf"}
+[2026-09-14 09:03:24] [2841/12703] 高一/生物/2022北京八十中高一（上）期中生物（教师版）.pdf...
+[2026-09-14 09:03:50]   [OK] 27 pages
+[2026-09-14 09:03:50] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八十中高一（上）期中语文（教师版）.pdf -> {"source_rel": "2022北京八十中高一（上）期中语文（教师版）.pdf"}
+[2026-09-14 09:03:50] [2842/12703] 高一/语文/2022北京八十中高一（上）期中语文（教师版）.pdf...
+[2026-09-14 09:05:26]   [OK] 19 pages
+[2026-09-14 09:05:27] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八十中高一（下）期中化学（教师版）(1).pdf -> {"source_rel": "2022北京八十中高一（下）期中化学（教师版）(1).pdf"}
+[2026-09-14 09:05:27] [2843/12703] 高一/化学/2022北京八十中高一（下）期中化学（教师版）(1).pdf...
+[2026-09-14 09:07:58]   [OK] 31 pages
+[2026-09-14 09:07:58] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八十中高一（下）期中历史（选考）（教师版）(1).pdf -> {"source_rel": "2022北京八十中高一（下）期中历史（选考）（教师版）(1).pdf"}
+[2026-09-14 09:07:58] [2844/12703] 高一/历史/2022北京八十中高一（下）期中历史（选考）（教师版）(1).pdf...
+[2026-09-14 09:09:09]   [OK] 25 pages
+[2026-09-14 09:09:10] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八十中高一（下）期中地理（教师版）(1).pdf -> {"source_rel": "2022北京八十中高一（下）期中地理（教师版）(1).pdf"}
+[2026-09-14 09:09:10] [2845/12703] 高一/地理/2022北京八十中高一（下）期中地理（教师版）(1).pdf...
+[2026-09-14 09:09:20]   [OK] 15 pages
+[2026-09-14 09:09:21] [DECIDE:NO_MANIFEST_ENTRY] 2022北京八十中高一（下）期中数学（教师版）(1).pdf -> {"source_rel": "2022北京八十中高一（下）期中数学（教师版）(1).pdf"}
+[2026-09-14 09:09:21] [2846/12703] 高一/数学/2022北京八十中高一（下）期中数学（教师版）(1).pdf...
