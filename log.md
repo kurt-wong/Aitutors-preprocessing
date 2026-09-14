@@ -1737,3 +1737,18 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 ### R67.3 收口(CI 实测,2026-09-14)
 
 主体提交 b59f055 → **CI Run 34795493079 = success,日志原文 "260 passed, 24 skipped, 1 xfailed"**。算术闭合:260+24+1 = 285 = 本地 284 passed + 1 xfailed(284−24 skip = 260;skip 24 = 19 corpus + 4 win-only + t13 语料冒烟)。main = b59f055。R67.3 全链:四闸武器 → 12 钉 + 变异 8/8 → F-r67.3-1 当轮修 → 预检 PREFLIGHT_OK → apply 13/13 APPLIED → 独立复核 bad=0 → 台账 → CI 绿。**第二批 57 份高考真题 moves ⏸ 等用户批准。**
+
+### R67.4:D5-B.2 第二批迁移完成(B2.2-a 20 份 + B2.2-b 37 份,高考真题清零)(2026-09-14)
+
+**输入**:用户 R67.3 裁决——批准第二批 57 份高考真题 moves,拆 **B2.2-a(~20,验证目录层级/年份/命名多样性)→ B2.2-b(剩余)**;约束:协议四闸不变、**每批重新生成 plan 指纹、禁复用上批 preview**、每批独立 migration report、collisions/needs_ruling 继续隔离;并指示下一阶段重点转入 **D5-E 之前的证据整理**,不再增强迁移防线。
+
+**子批选择扩展**:`d5b_reclassify_apply.py` 增 `--limit N`(category 命中后按 dry-run 冻结的 from_rel 序取前 N,确定性;≤0 拒绝)——四闸协议零改动;t12/t13 钉 + 变异 MA9(limit 拆除)BITE,套件 14 钉 + 变异 **9/9**。
+
+**B2.2-a**:新 plan `d5b_reclassify_plan_b2_2a.json`(fresh 指纹 `d4912895…`,与原 57 集合封闭性核查 **0 新增 0 漂移**)→ 预检 PREFLIGHT_OK → **apply APPLIED 20/20**(limit=20),report `d5b_apply_report_b2_2a.json`,manifest_untouched=True。
+**B2.2-b**:再次新 plan `d5b_reclassify_plan_b2_2b.json`(再生成指纹 `6ba215b4…`,封闭性 0 新增 0 漂移)→ PREFLIGHT_OK → **apply APPLIED 37/37**,report `d5b_apply_report_b2_2b.json`,manifest_untouched=True。
+
+**⚠ 复核方法学教训(自查更正,非迁移缺陷)**:B2.2-a 独立复核初报 1 FAIL——根因为 PowerShell `Sort-Object`(文化排序)与 Python `sorted`(码点排序)对"历史/地理"前缀取序不同,复核选了不同的"前 20";**以执行 report 清单为基准重核 bad=0**。规则:独立复核必须以执行报告清单为基准,禁止自行重排序选样。
+
+**终态闭合**:迁移后 dry-run(再生成 plan `d5b_reclassify_plan_post.json`):**moves=0**、needs_ruling=6、collisions=72(两者继续冻结);审计 **768 = 698 bootstrap + 13 + 20 + 37** 算术闭合;未分类余 78 份 md = 72 collisions + 6 needs_ruling。daemon 全程无感:进程链 50412→38864 在线,manifest 844 条 append-only,配额 2745/20000。**D5-B.2 三批(13+20+37)合计 70/70 完成,D5-B moves 桶清零。**全量回归 **286 passed + 1 xfailed**(新增 2 钉,零回退)。
+
+**边界**:collisions/needs_ruling/canonical identity/semantic dedup/BUG-14-CHAIN 零触碰。下一阶段按用户指示 = **D5-E 前证据整理**(collision 家族分析材料,不做归并)。

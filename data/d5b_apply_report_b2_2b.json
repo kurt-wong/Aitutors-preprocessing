@@ -1,0 +1,315 @@
+{
+ "schema_version": 1,
+ "run_at": "2026-09-14 09:45:59",
+ "mode": "apply",
+ "ocr_root": "D:\\Project\\Papers\\Ocr-markdown",
+ "plan_path": "D:\\Project\\Papers\\data\\d5b_reclassify_plan_b2_2b.json",
+ "category_filter": "高考真题",
+ "applied": [
+  {
+   "from_rel": "未分类/地理/2023全国甲卷高考真题地理（教师版）(1).md",
+   "to_rel": "高考真题/地理/2023全国甲卷高考真题地理（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/政治/2022北京高考真题政治（教师版）(1).md",
+   "to_rel": "高考真题/政治/2022北京高考真题政治（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/政治/2022浙江高考真题政治（1月）（教师版）(1).md",
+   "to_rel": "高考真题/政治/2022浙江高考真题政治（1月）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/政治/2022浙江高考真题政治（6月）（教师版）(1).md",
+   "to_rel": "高考真题/政治/2022浙江高考真题政治（6月）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/政治/2022湖南高考真题政治（教师版）(1).md",
+   "to_rel": "高考真题/政治/2022湖南高考真题政治（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/政治/2023全国乙卷高考真题政治（教师版）(1).md",
+   "to_rel": "高考真题/政治/2023全国乙卷高考真题政治（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/政治/2023全国甲卷高考真题政治（教师版）(1).md",
+   "to_rel": "高考真题/政治/2023全国甲卷高考真题政治（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/数学/2022北京高考真题数学（教师版）(1).md",
+   "to_rel": "高考真题/数学/2022北京高考真题数学（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/数学/2023全国Ⅰ卷新高考真题数学（教师版）(1).md",
+   "to_rel": "高考真题/数学/2023全国Ⅰ卷新高考真题数学（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/数学/2023全国Ⅱ卷新高考真题数学（教师版）(1).md",
+   "to_rel": "高考真题/数学/2023全国Ⅱ卷新高考真题数学（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/数学/2023全国乙卷高考真题数学（文）（教师版）(1).md",
+   "to_rel": "高考真题/数学/2023全国乙卷高考真题数学（文）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/数学/2023全国乙卷高考真题数学（理）（教师版）(1).md",
+   "to_rel": "高考真题/数学/2023全国乙卷高考真题数学（理）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/数学/2023全国甲卷高考真题数学（文）（教师版）(1).md",
+   "to_rel": "高考真题/数学/2023全国甲卷高考真题数学（文）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/数学/2023全国甲卷高考真题数学（理）（教师版）(1).md",
+   "to_rel": "高考真题/数学/2023全国甲卷高考真题数学（理）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/物理/2022山东高考真题物理（教师版）(1).md",
+   "to_rel": "高考真题/物理/2022山东高考真题物理（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/物理/2022年浙江高考真题物理（1月）（教师版）(1).md",
+   "to_rel": "高考真题/物理/2022年浙江高考真题物理（1月）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/物理/2022广东高考真题物理（教师版）(1).md",
+   "to_rel": "高考真题/物理/2022广东高考真题物理（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/物理/2022湖南高考真题物理（教师版）(1).md",
+   "to_rel": "高考真题/物理/2022湖南高考真题物理（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/物理/2023全国乙卷高考真题物理（教师版）(1).md",
+   "to_rel": "高考真题/物理/2023全国乙卷高考真题物理（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/物理/2023全国甲卷高考真题物理（教师版）(1).md",
+   "to_rel": "高考真题/物理/2023全国甲卷高考真题物理（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/生物/2022北京高考真题生物（教师版）(1).md",
+   "to_rel": "高考真题/生物/2022北京高考真题生物（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/生物/2022广东高考真题生物（教师版）(1).md",
+   "to_rel": "高考真题/生物/2022广东高考真题生物（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/生物/2022浙江高考真题生物（1月）（教师版）(1).md",
+   "to_rel": "高考真题/生物/2022浙江高考真题生物（1月）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/生物/2022浙江高考真题生物（6月）（教师版）(1).md",
+   "to_rel": "高考真题/生物/2022浙江高考真题生物（6月）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/生物/2022湖南高考真题生物（教师版）(1).md",
+   "to_rel": "高考真题/生物/2022湖南高考真题生物（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/生物/2023全国乙卷高考真题生物（教师版）(1).md",
+   "to_rel": "高考真题/生物/2023全国乙卷高考真题生物（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/生物/2023全国甲卷高考真题生物（教师版）(1).md",
+   "to_rel": "高考真题/生物/2023全国甲卷高考真题生物（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/英语/2022浙江卷高考真题英语（1月）（教师版）(1).md",
+   "to_rel": "高考真题/英语/2022浙江卷高考真题英语（1月）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/英语/2023全国II卷新高考真题英语（教师版）(1).md",
+   "to_rel": "高考真题/英语/2023全国II卷新高考真题英语（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/英语/2023全国I卷新高考真题英语（教师版）(1).md",
+   "to_rel": "高考真题/英语/2023全国I卷新高考真题英语（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/英语/2023全国乙卷高考真题英语（教师版）(1).md",
+   "to_rel": "高考真题/英语/2023全国乙卷高考真题英语（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/英语/2023全国甲卷高考真题英语（教师版）(1).md",
+   "to_rel": "高考真题/英语/2023全国甲卷高考真题英语（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/语文/2022浙江高考真题语文（教师版）(1).md",
+   "to_rel": "高考真题/语文/2022浙江高考真题语文（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/语文/2023全国II卷新高考真题语文（教师版）(1).md",
+   "to_rel": "高考真题/语文/2023全国II卷新高考真题语文（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/语文/2023全国Ⅰ卷新高考真题语文（教师版）(1).md",
+   "to_rel": "高考真题/语文/2023全国Ⅰ卷新高考真题语文（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/语文/2023全国乙卷高考真题语文（教师版）(1).md",
+   "to_rel": "高考真题/语文/2023全国乙卷高考真题语文（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/语文/2023全国甲卷高考真题语文（教师版）(1).md",
+   "to_rel": "高考真题/语文/2023全国甲卷高考真题语文（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  }
+ ],
+ "violations": [],
+ "stopped_after": null,
+ "plan_sha256_recomputed": "6ba215b4295a618feca2197f626f995548da3b9fb75a17f70435d53e221986af",
+ "category_matched": 37,
+ "limit": null,
+ "batch_size": 37,
+ "manifest_untouched": true,
+ "manifest_grew_bytes": 0,
+ "result": "APPLIED"
+}

@@ -1,0 +1,179 @@
+{
+ "schema_version": 1,
+ "run_at": "2026-09-14 09:43:54",
+ "mode": "apply",
+ "ocr_root": "D:\\Project\\Papers\\Ocr-markdown",
+ "plan_path": "D:\\Project\\Papers\\data\\d5b_reclassify_plan_b2_2a.json",
+ "category_filter": "高考真题",
+ "applied": [
+  {
+   "from_rel": "未分类/化学/2022北京高考真题化学（教师版）(1).md",
+   "to_rel": "高考真题/化学/2022北京高考真题化学（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/化学/2022广东高考真题化学（教师版）(1).md",
+   "to_rel": "高考真题/化学/2022广东高考真题化学（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/化学/2022浙江高考真题化学（1月）（教师版）(1).md",
+   "to_rel": "高考真题/化学/2022浙江高考真题化学（1月）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/化学/2022浙江高考真题化学（6月）（教师版）(1).md",
+   "to_rel": "高考真题/化学/2022浙江高考真题化学（6月）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/化学/2022湖南高考真题化学（教师版）(1).md",
+   "to_rel": "高考真题/化学/2022湖南高考真题化学（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/化学/2023全国乙卷高考真题化学（教师版）(1).md",
+   "to_rel": "高考真题/化学/2023全国乙卷高考真题化学（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/化学/2023全国新课标卷高考真题化学（教师版）(1).md",
+   "to_rel": "高考真题/化学/2023全国新课标卷高考真题化学（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/化学/2023全国甲卷高考真题化学（教师版）(1).md",
+   "to_rel": "高考真题/化学/2023全国甲卷高考真题化学（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/历史/2022广东高考真题历史（教师版）(1).md",
+   "to_rel": "高考真题/历史/2022广东高考真题历史（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/历史/2022浙江高考真题历史（1月）（教师版）(1).md",
+   "to_rel": "高考真题/历史/2022浙江高考真题历史（1月）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/历史/2022浙江高考真题历史（6月）（教师版）(1).md",
+   "to_rel": "高考真题/历史/2022浙江高考真题历史（6月）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/历史/2022湖南省高考真题历史（教师版）(1).md",
+   "to_rel": "高考真题/历史/2022湖南省高考真题历史（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/历史/2023全国乙卷高考真题历史（教师版）(1).md",
+   "to_rel": "高考真题/历史/2023全国乙卷高考真题历史（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/历史/2023全国甲卷高考真题历史（教师版）(1).md",
+   "to_rel": "高考真题/历史/2023全国甲卷高考真题历史（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/地理/2022北京高考真题地理（教师版）(1).md",
+   "to_rel": "高考真题/地理/2022北京高考真题地理（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/地理/2022广东高考真题地理（教师版）(1).md",
+   "to_rel": "高考真题/地理/2022广东高考真题地理（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/地理/2022浙江高考真题地理（1月）（教师版）(1).md",
+   "to_rel": "高考真题/地理/2022浙江高考真题地理（1月）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/地理/2022浙江高考真题地理（6月）（教师版）(1).md",
+   "to_rel": "高考真题/地理/2022浙江高考真题地理（6月）（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/地理/2022湖南高考真题地理（教师版）(1).md",
+   "to_rel": "高考真题/地理/2022湖南高考真题地理（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  },
+  {
+   "from_rel": "未分类/地理/2023全国乙卷高考真题地理（教师版）(1).md",
+   "to_rel": "高考真题/地理/2023全国乙卷高考真题地理（教师版）(1).md",
+   "source_gone": true,
+   "dest_present": true,
+   "sha256_unchanged": true,
+   "audit_appended": true
+  }
+ ],
+ "violations": [],
+ "stopped_after": null,
+ "plan_sha256_recomputed": "d4912895dc2ab05722378b4927bfa20e71e6afc35e53c985705149df010c2457",
+ "category_matched": 57,
+ "limit": 20,
+ "batch_size": 20,
+ "manifest_untouched": true,
+ "manifest_grew_bytes": 0,
+ "result": "APPLIED"
+}

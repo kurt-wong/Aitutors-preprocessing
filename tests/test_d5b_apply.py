@@ -48,10 +48,11 @@ def _mk(root):
             "report": os.path.join(root, "report.json")}
 
 
-def _run(cfg, category="合格考", apply=True, expect=None):
+def _run(cfg, category="合格考", apply=True, expect=None, limit=None):
     return AP.run(cfg["root"], cfg["plan_path"], category,
                   cfg["expect"] if expect is None else expect,
-                  apply, cfg["audit"], cfg["manifest"], cfg["report"])
+                  apply, cfg["audit"], cfg["manifest"], cfg["report"],
+                  limit=limit)
 
 
 def _moved(cfg, rel):
@@ -252,3 +253,22 @@ def test_t11_cli_preflight_no_crash(workdir, monkeypatch, capsys):
     AP.main()
     out = capsys.readouterr().out
     assert "result=PREFLIGHT_OK" in out and "manifest_untouched=n/a_preflight" in out
+
+
+# ------------------------------------------------- t12/t13 子批 --limit
+def test_t12_limit_selects_first_n_deterministic(workdir):
+    cfg = _mk(str(workdir))
+    rep = _run(cfg, limit=1)
+    assert rep["result"] == "APPLIED" and rep["batch_size"] == 1
+    assert rep["category_matched"] == 2 and rep["limit"] == 1
+    # from_rel 序:g1 先;g2 源必须原地未动
+    assert rep["applied"][0]["from_rel"] == SRC_A
+    assert not _moved(cfg, SRC_A) and _moved(cfg, DST_A)
+    assert _moved(cfg, SRC_B)
+
+
+def test_t13_limit_invalid_refused(workdir):
+    cfg = _mk(str(workdir))
+    with pytest.raises(AP.GateViolation, match="limit"):
+        _run(cfg, limit=0)
+    assert _moved(cfg, SRC_A) and _moved(cfg, SRC_B)

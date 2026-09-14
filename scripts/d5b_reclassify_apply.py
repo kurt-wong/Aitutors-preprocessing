@@ -152,7 +152,7 @@ def preflight(ocr_root, entries):
 
 
 def run(ocr_root, plan_path, category, expect_sha256, apply,
-        audit_path, manifest_path, report_path):
+        audit_path, manifest_path, report_path, limit=None):
     ocr_root = os.path.abspath(ocr_root)
     with io.open(plan_path, encoding="utf-8") as f:
         plan = json.load(f)
@@ -176,6 +176,13 @@ def run(ocr_root, plan_path, category, expect_sha256, apply,
     report["plan_sha256_recomputed"] = check_b2_1(plan, expect_sha256)
 
     batch = [e for e in plan["moves"] if e["category"] == category]
+    report["category_matched"] = len(batch)
+    report["limit"] = limit
+    if limit is not None:
+        # 子批选择:dry-run 保证 moves 已按 from_rel 排序 → 确定性取前 N
+        if limit <= 0:
+            raise GateViolation("非法 limit: %d(必须为正整数)" % limit)
+        batch = batch[:limit]
     report["batch_size"] = len(batch)
     if not batch:
         raise GateViolation("批选择为空: category=%s 无 moves" % category)
@@ -259,6 +266,8 @@ def main():
     ap.add_argument("--expect-sha256", default="",
                     help="冻结的 plan 指纹(强烈建议提供)")
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--limit", type=int, default=None,
+                    help="子批选择:category 命中后按 from_rel 序取前 N 条")
     ap.add_argument("--audit", default=DEFAULT_AUDIT)
     ap.add_argument("--manifest", default=DEFAULT_MANIFEST)
     ap.add_argument("--report", default=DEFAULT_REPORT)
@@ -266,7 +275,7 @@ def main():
     try:
         report = run(args.ocr_root, args.plan, args.category,
                      args.expect_sha256, args.apply, args.audit,
-                     args.manifest, args.report)
+                     args.manifest, args.report, limit=args.limit)
     except GateViolation as e:
         print("[GATE-REJECT] %s" % e)
         sys.exit(2)
