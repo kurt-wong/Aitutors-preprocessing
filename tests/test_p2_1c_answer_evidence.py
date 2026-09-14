@@ -201,3 +201,30 @@ def test_t10_credibility_counts_evidence_value(workdir):
     rec = M.measure_paper(out, {"file": str(src / "高一" / "数学" / "d.md"),
                                 "subject": "数学"})
     assert rec["answer_credibility"] == {"exact": 1, "missing": 1}
+
+
+def test_t11_suspect_worksheet_contains_source_text(workdir):
+    src = workdir / "src5"
+    out = workdir / "out5"
+    (src / "高一" / "历史").mkdir(parents=True)
+    out.mkdir()
+    (src / "高一" / "历史" / "e.md").write_text(
+        "材料一：古代中国经济。\n12. 依据材料回答", encoding="utf-8")
+    man = {"source_file": "x", "model": "m",
+           "annotation_meta": {"prompt_version": "v", "validation_issues": [],
+                               "warnings": []},
+           "units": [{"unit_id": "C1", "unit_type": "composite_question",
+                      "question_numbers": [12], "original_question_type": "solve",
+                      "material_lines": [1, 1], "questions_lines": [1, 2],
+                      "answer_lines": None,
+                      "answer_evidence": {"type": "absent", "lines": None,
+                                          "value": None}}]}
+    (out / "高一" / "历史").mkdir(parents=True, exist_ok=True)
+    (out / "高一" / "历史" / "e.manifest.json").write_text(
+        json.dumps(man, ensure_ascii=False), encoding="utf-8")
+    M.SRC = src
+    ws = M.build_suspect_worksheet(out, [{"file": str(src / "高一" / "历史" / "e.md"),
+                                          "subject": "历史"}])
+    assert "材料一：古代中国经济。" in ws          # 源文原文摘录
+    assert "label: ____" in ws and "KEEP" in ws  # 四值标签模板
+    assert "S001" in ws

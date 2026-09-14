@@ -1819,3 +1819,13 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 **套件**:304 passed + 1 xfailed(+10 钉)。
 
 **补记(P2.1-c 尾)**:生物卷第 4 次重跑再败,失败形态固定 `IncompleteRead(59 bytes read)`(字节数每次一致,4 次中 3 次同形)——与批内随机网络抖动不同,疑似该特定 49,485 字符长请求被服务端确定性截断。升级为独立失败形态记账(非随机抖动),留待后续轮次换时段/换参数验证,不为此建重试基础设施(用户裁定:禁为指标设计复杂机制)。
+
+---
+
+## P2.1-d:用户裁定落盘——答案域冻结,suspect 人工分类置顶(2026-09-15)
+
+**输入**:用户 P2.1-c 收口裁定(charter §9):① **答案域冻结**(Answer extraction: DONE (P2.1), only bug fix;禁更多 answer type/fallback/heuristic;原则固化"可信答案 > 完整答案");② P2.1 remaining ONLY:suspect 71 人工分类(禁 LLM 自动判断)→ 据分类结果决定是否改 reslice → P2.2 图片绑定 baseline;③ 禁止:新治理框架/新审计体系/新生命周期管理/新数据迁移/新身份系统;④ 生物卷记 **known limitation: large prompt provider truncation**(固定 59 字节截断,判定 provider limit 非网络抖动),不加重试设施,P2.1 结束后统一决策(压缩/分段/切 provider)。
+
+**本轮动作(零生产代码变更)**:charter §9 落盘;`p2_1_measure.py` 新增 `--suspect-worksheet`——71 条 suspect 组合题人工标注工作单(`data/p2_1_c_suspect_worksheet.md`,1599 行),每条附题号/unit_id/源文原文摘录(前 18 行)+ 四值标签空位(KEEP/SPLIT/LOST/UNCERTAIN);t11 钉。套件 305 passed + 1 xfailed。
+
+**边界**:答案域零触碰(冻结);未启动任何新治理/审计;图片绑定暂缓(用户裁定:组合题对 V3 Question/QuestionInstance/Material/SubQuestion 模型的影响面 > 图片)。**下一项 = 人工标注 71 条(需用户/人工执行),分类结果决定 P2.3 方向**。

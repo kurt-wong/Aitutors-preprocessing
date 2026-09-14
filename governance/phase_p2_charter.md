@@ -126,3 +126,45 @@ P2 的实质 = 把既有切片链路推到**真实批量**并输出 V3 可消费
 - 不得回到 `P2.1.1 / P2.1.2 / R68 / R69 / R70` 式治理扩展;
 - 允许真实错误暴露——没有错误就不知道系统是否真实工作;
 - 卷级独立状态(逐卷 `status`,可恢复),禁止"batch failed"整体污染(现状已满足:批内单卷 FAIL 不影响其余卷,`--resume` 可续跑)。
+
+## 8. 用户裁定(2026-09-15):P2.1-b1 收口,进入针对性优化
+
+> 原文要点:P2.1-b1 收口。当前 preprocessing 已达到进入 V3 联调条件。下一轮不扩基础设施,仅针对真实错误分布优化。优先级:① 答案 evidence/schema(26 题,最大确定性收益);② 人工抽检组合题 suspect(71 条,不预设修复方向);③ 图片绑定进入 P2.2(240 题基线)。禁止重新引入 R 系列治理扩展。
+
+### 8.1 路线(P2.1-c → P2.2 → P2.3)
+
+| 轮次 | 目标 | 范围约束 |
+|---|---|---|
+| **P2.1-c** | 答案定位:answer extraction schema + evidence mapping | 只改答案抽取/evidence;不碰图片/identity/semantic dedup |
+| **P2.2** | 图片绑定:Question → Material → Figure 稳定关联 | 输入 = 240 题图片依赖基线;目标不是"所有图片 OCR" |
+| **P2.3** | 组合题策略 | 基于 384 题人工抽检结果,不预设修复方向 |
+
+### 8.2 用户指定设计要点
+
+- **Answer Evidence Schema**(替代裸 `answer`):`{source_span, answer_type, confidence, mapping_method}`——答案必须带证据区间与映射方法,符合 V3 Source-first;
+- 答案区现实形态至少四类:集中答案表(A)/ 答案与解析混合(B)/ 分节答案串(C)/ 小问分散(D);数学"选择集中 + 解答分散 + 解析混合"最易失败;
+- **组合题 suspect ≠ 错误**:大量"材料 + (1)(2)"是正常一题多小问(V3 = 一个 QuestionInstance + 多 role content),不得为提拆分率破坏 material/role 结构;抽检标签 = **KEEP / SPLIT / LOST / UNCERTAIN** 四值,不只记对错;
+- 92.31%→95% 卷级不专门追:失败是网络抖动/JSON 异常非 pipeline 结构问题,禁为指标设计复杂机制;
+- 节奏:**小批量 → 测量 → 针对性修复 → 接入 V3**。
+
+## 9. 用户裁定(2026-09-15,P2.1-c 收口后):答案域冻结,suspect 人工分类优先
+
+> 原文要点:P2.1 remaining ONLY ① suspect 71 人工分类 ② 根据分类结果决定是否修改 reslice ③ P2.2 图片绑定 baseline。禁止:新治理框架/新审计体系/新生命周期管理/新数据迁移/新身份系统。当前最大风险不是"不够可靠",而是把个人数据整理工具建成企业 ETL 平台。
+
+### 9.1 答案域冻结
+
+- 状态:**Answer extraction: DONE (P2.1), only bug fix**;
+- parse_success 97.44% / answer_rate 100% / admission_ready 100%,继续投入收益很低;
+- 禁止:更多 answer type / 更多 fallback / 更多 heuristic(V2 规则膨胀陷阱);
+- 原则固化:**可信答案 > 完整答案**——`value:null + evidence span` 优于无证据的"合理答案"。
+
+### 9.2 P2.1 剩余优先级(组合题 > 图片)
+
+1. **suspect 71 条人工分类(禁 LLM 自动判断)**:分类结果直接决定 V3 核心模型(Question / QuestionInstance / Material / SubQuestion)——"材料+多小问"到底是 Question+sub_questions 还是多个 Question 共享 Material,是 V3 数据结构正确性的验证点,不是 preprocessing 小问题;
+2. 根据分类结果决定是否修改 reslice;
+3. P2.2 图片绑定(暂缓合理:图片影响面 ⊂ 组合题对 identity/instance/知识映射/答案粒度的影响面)。
+
+### 9.3 Known Limitation 登记
+
+- **P2.1 known limitation: large prompt provider truncation**——平谷生物 49,485 字符 prompt 重跑 4 连败,其中 3 次固定 `IncompleteRead(59 bytes read)`(字节数一致),判定为 provider/request limit 而非网络抖动;
+- 不加重试设施(失败→重试→失败→加成本);P2.1 全部结束后统一决策:prompt 压缩 / 分段请求 / provider 切换,禁局部修。

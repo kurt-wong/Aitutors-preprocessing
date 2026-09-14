@@ -245,6 +245,48 @@ def build_suspect_sample(out_root: Path, entries) -> dict:
             "questions": len(items), "items": items}
 
 
+def build_suspect_worksheet(out_root: Path, entries, max_lines: int = 18) -> str:
+    """人工标注工作单(Markdown):每条 suspect 组合题附源文原文摘录,
+    供人工填 KEEP/SPLIT/LOST/UNCERTAIN(用户 §9.2:禁 LLM 自动判断)。"""
+    ss = build_suspect_sample(out_root, entries)
+    out = ["# 组合题 suspect 人工标注单",
+           "",
+           "标签词表:**KEEP**(一题,材料+多小问,不改模型)/ **SPLIT**(应拆多个"
+           "QuestionInstance)/ **LOST**(切分丢失信息,修 reslice)/ **UNCERTAIN**(无法判断)。",
+           "将每条目 `label:` 后的 `____` 替换为标签即可。",
+           ""]
+    src_cache = {}
+    for idx, it in enumerate(ss["items"], 1):
+        sp = Path(it["file"])
+        try:
+            rel = sp.relative_to(SRC)
+        except ValueError:
+            rel = Path(sp.name)
+        key = str(rel)
+        if key not in src_cache:
+            try:
+                src_cache[key] = (SRC / rel).read_text(
+                    encoding="utf-8", errors="replace").splitlines()
+            except OSError:
+                src_cache[key] = []
+        lines = src_cache[key]
+        span = it.get("stem_lines")
+        excerpt = []
+        if span and isinstance(span, list) and len(span) == 2:
+            excerpt = lines[max(0, span[0] - 1): min(span[1], span[0] - 1 + max_lines)]
+        has_ans = "有" if it.get("answer_lines") else "无(或经 evidence)"
+        out.append(f"## S{idx:03d} · {it['subject']} · 题号 {it['question_numbers']}"
+                   f" · {it['unit_id']} · label: ____")
+        out.append(f"- 文件:`{it['file']}`")
+        out.append(f"- 题干行区间:{span} (摘录前 {max_lines} 行) · 答案区间:{has_ans}")
+        out.append("")
+        out.append("```text")
+        out.extend(excerpt)
+        out.append("```")
+        out.append("")
+    return "\n".join(out) + "\n"
+
+
 def main():
     global SRC
     ap = argparse.ArgumentParser()
@@ -256,6 +298,8 @@ def main():
                     help="输出人工抽检清单 JSON 路径(每卷 10 题,确定性)")
     ap.add_argument("--suspect-sample", default=None,
                     help="输出组合题 suspect 抽检清单(KEEP/SPLIT/LOST/UNCERTAIN)")
+    ap.add_argument("--suspect-worksheet", default=None,
+                    help="输出带源文摘录的人工标注工作单(Markdown)")
     args = ap.parse_args()
 
     SRC = Path(args.src)
@@ -340,6 +384,13 @@ def main():
             f.write("\n")
         print("suspect_sample: papers={papers} questions={questions} -> {path}".format(
             path=args.suspect_sample, **{k: ss[k] for k in ("papers", "questions")}))
+
+    if args.suspect_worksheet:
+        ws = build_suspect_worksheet(out_root, entries)
+        Path(args.suspect_worksheet).parent.mkdir(parents=True, exist_ok=True)
+        with io.open(args.suspect_worksheet, "w", encoding="utf-8") as f:
+            f.write(ws)
+        print("suspect_worksheet -> " + args.suspect_worksheet)
 
 
 if __name__ == "__main__":
