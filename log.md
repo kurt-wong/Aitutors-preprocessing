@@ -1829,3 +1829,18 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 **本轮动作(零生产代码变更)**:charter §9 落盘;`p2_1_measure.py` 新增 `--suspect-worksheet`——71 条 suspect 组合题人工标注工作单(`data/p2_1_c_suspect_worksheet.md`,1599 行),每条附题号/unit_id/源文原文摘录(前 18 行)+ 四值标签空位(KEEP/SPLIT/LOST/UNCERTAIN);t11 钉。套件 305 passed + 1 xfailed。
 
 **边界**:答案域零触碰(冻结);未启动任何新治理/审计;图片绑定暂缓(用户裁定:组合题对 V3 Question/QuestionInstance/Material/SubQuestion 模型的影响面 > 图片)。**下一项 = 人工标注 71 条(需用户/人工执行),分类结果决定 P2.3 方向**。
+
+---
+
+## P2.1-d2:审核方式修正——HTML 交互式标注单(2026-09-15,用户反馈)
+
+**输入**:用户对 Markdown 摘录单的直接反馈:逐份开原文核对太低效,要求渲染成 HTML 直接审核反馈。
+
+**交付**:`scripts/p2_1_review_html.py` → `data/p2_1_c_suspect_review.html`(0.4MB 自包含,71 条):
+- 每条 = 题号/unit_id + 源文原文渲染(材料+小问全文,行区间回引;白名单标签 img/table/div 保留,<img> 相对路径改写为绝对 file:// URI,实测 10/10 配图可解析;非白名单标签转义,防注入 t3 钉);
+- 每条一组单选(KEEP/SPLIT/LOST/UNCERTAIN + 词表释义)+ 备注框;localStorage 自动存草稿(可关页续标);
+- 顶栏进度计数 + **"导出标注 JSON"** 一键下载 `p2_1_c_suspect_labels.json` + 导入恢复;
+- 分类判断 100% 人工,LLM 不参与(§9.2)。
+- 钉:`tests/test_p2_1_review_html.py` t1–t4;套件 309 passed + 1 xfailed。
+
+**边界**:零生产代码变更(reslice/measure 逻辑不动),纯审核界面;不触碰冻结域。
