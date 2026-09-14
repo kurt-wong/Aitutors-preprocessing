@@ -1752,3 +1752,7 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 **终态闭合**:迁移后 dry-run(再生成 plan `d5b_reclassify_plan_post.json`):**moves=0**、needs_ruling=6、collisions=72(两者继续冻结);审计 **768 = 698 bootstrap + 13 + 20 + 37** 算术闭合;未分类余 78 份 md = 72 collisions + 6 needs_ruling。daemon 全程无感:进程链 50412→38864 在线,manifest 844 条 append-only,配额 2745/20000。**D5-B.2 三批(13+20+37)合计 70/70 完成,D5-B moves 桶清零。**全量回归 **286 passed + 1 xfailed**(新增 2 钉,零回退)。
 
 **边界**:collisions/needs_ruling/canonical identity/semantic dedup/BUG-14-CHAIN 零触碰。下一阶段按用户指示 = **D5-E 前证据整理**(collision 家族分析材料,不做归并)。
+
+### R67.4 收口(CI 实测,2026-09-14)
+
+主体提交 8e33810 → **CI Run 34797495995 = success,日志原文 "262 passed, 24 skipped, 1 xfailed"**。算术闭合:262+24+1 = 287 = 本地 286 passed + 1 xfailed(286−24 skip = 262;skip 24 = 19 corpus + 4 win-only + t13 语料冒烟)。main = 8e33810。R67.4 全链:--limit 子批选择(14 钉+变异 9/9)→ 封闭性核查 → B2.2-a 20/20 → 再生指纹 → B2.2-b 37/37 → 终态 moves=0 → 台账 → CI 绿。**D5-B.2 完成(70/70);下一阶段 = D5-E 前证据整理,等用户指示。**
