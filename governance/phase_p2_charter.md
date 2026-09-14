@@ -299,12 +299,18 @@ provenance 保持轻量:`source_hash` + `manifest_version` + `producer_version` 
   **不得因为 preprocessing"知道两道题一样"就在此合并 Question。**
 - **Boundary 3(V3 不重猜已存在的 Source Fact)**:preprocessing 已给 `options_region=L45-L52` 时,
   V3 不得再问"options 大概在哪",只在 authoritative region 内做细粒度解析(0.3-B 实测 527/548 的价值所在)。
+  **【精确化,见 §13】** Resolver **可以读取并解析 Producer 已声明 Evidence Region 内的 Source**,
+  但**不得重新承担 document structure interpretation**(不得扫全 Source 找 option / 重找题目边界 / 重判 material 结构)。
+  即:**Resolver may inspect Source, but only inside declared Evidence scope。**
 - **Boundary 4(Evidence Contract 当前仍是 Candidate)**:**不改 V3 Frozen L0**;
   走 Candidate → 真实消费验证 → 发现缺口 → 必要时才 normative,避免"实验设计反过来绑架架构"。
 
 ### 12.5 阶段改名:P2.3 → P3 Evidence Contract Validation(P4 小批真实 Admission)
 
-- **P3.1 Producer Output Freeze Candidate**:明确 preprocessing 真正承诺输出的 Evidence 集合(见 12.3),只定义事实。
+- **P3.1 Producer Output Candidate Freeze(措辞按用户裁定:不是"大冻结"/永久 API Contract,而是"确认当前集合")**:
+  确认 preprocessing 当前真正承诺输出的 Evidence 集合(见 12.3),只定义事实。**不为"完整"再发明新 Evidence Type**
+  (禁加入 canonical option / semantic answer / knowledge node / question identity / similarity / family / difficulty /
+  subject knowledge classification——这些属 V3 后半段)。集合已足够启动 P3.2。
 - **P3.2 V3 Consumer Compatibility**:用真实产物 + 小批真实卷 + V3 实际 Gate/Admission 验证
   `Manifest → EvidenceAdapter → Resolved Evidence → IR → Gate → Admission`,**不立刻建正式 import API**。
 - **P3.3 Gap-driven Repair**:只修真实 gap,**问题在哪层就在哪层修**
@@ -334,3 +340,125 @@ provenance 保持轻量:`source_hash` + `manifest_version` + `producer_version` 
 - ❌ 复杂治理体系:Evidence Event Store / Contract Registry / Schema Governance Platform / Version Graph / Producer Registry Service;
 - ❌ 因 38 卷验证成功就数千卷全量重跑(等 V3 Consumer Path 基本稳定再定,避免 V2 式"上游大量跑、架构一改全返工");
 - ❌ preprocessing 生产最终 Question(manifest → LLM → Question JSON → 直接入库),这会破坏已验证的 Evidence Producer → Canonical V3 Consumer 边界。
+
+---
+
+## 13. Boundary Decision Record(2026-09-15,V3 Phase 0.3-B 复盘后)——Resolver 的 Source 访问边界
+
+> 背景:V3 Phase 0.3-B 实测 option resolution `527/548 = 96.2%`,但高风险歧义层抽样 `0/10` 正确。
+> 用户裁定纠正一个"下过头"的结论:**不是"Resolver 不能读 Source",而是"Resolver 不得重新解释文档结构"。**
+> 本轮**不改代码、不改 V3 Frozen L0、不增强 Resolver、不冻结 Phase 0.3-B 最终 Contract**,只钉死边界原则。
+
+### 13.1 一句话架构边界(两仓库共同遵守)
+
+> **Preprocessing determines where and what structural evidence exists;**
+> **V3 determines how that bounded evidence resolves into canonical domain evidence and whether it is admissible as knowledge.**
+>
+> 中文:**preprocessing 负责发现并声明文档中的结构证据及其位置;V3 负责在这些有界证据内进行确定性解析,将其转换为 canonical evidence,并最终决定它能否成为可信知识资产。**
+
+关键不在"Resolver 能不能读 Source",而在:**谁拥有对 Source 结构的解释权,以及 Resolver 的解释活动允许发生在什么范围内。**
+
+### 13.2 Evidence Region ≠ Evidence(本轮钉死的核心概念)
+
+- Producer 给 `options_region=[85,92]` 只声明"第 85–92 行是 options 相关 Evidence",**没有**说 `A=85 / B=87 / C=89 / D=91`;
+- 但 V3 IR 需要 per-option evidence,故中间必有 `Evidence Region → Evidence Resolution → Resolved Evidence` 一跳;
+- **这一跳放 V3 Resolver 是合理的**,否则等于把 `_region → per-option` 从 V3 偷搬到 preprocessing,违背 §12(Producer 不做第二个 V3)。
+
+### 13.3 Evidence Region / Evidence Resolver 定义
+
+- **Evidence Region**:preprocessing 在 Source 上声明的、有明确边界的事实区域,回答 **"Where is the evidence?"**;
+  **不必**回答 "What is the final canonical evidence structure?"。
+- **Evidence Resolver**:V3 中基于 Producer 已声明 Evidence Region,对该 Region 内 Source Evidence 做**确定性解析**、
+  形成 V3 所需 canonical evidence spans 的组件;回答 **"How does this bounded evidence become canonical evidence?"**,
+  **不回答** "Where is the evidence in the document?"。
+
+### 13.4 Resolver 绝对边界表
+
+| 行为 | 判定 |
+|---|---|
+| 读取声明的 `options_region` 对应 Source lines | ✅ |
+| 在 Region 内寻找真实 A/B/C/D marker | ✅ |
+| 根据 Region 内 marker 确定 option span | ✅ |
+| 根据 Region 内相邻结构确定边界 | ✅ |
+| 检查 marker 顺序/重复/缺失 | ✅ |
+| 检查 span 是否越过 Region | ✅ |
+| 在整个 Source 中搜索 options | ❌ |
+| 重新寻找题目边界 | ❌ |
+| 重新识别 material/question structure | ❌ |
+| 根据题型制造 A/B/C/D | ❌ |
+| 根据 expected count 补造 option | ❌ |
+| 按长度均分 Region | ❌ |
+| 依赖学科知识消歧(如"F 是氟元素故非选项") | ❌ |
+| 无证据猜测缺失 marker | ❌ |
+
+**核心约束一句话:Resolver may inspect Source, but only inside declared Evidence scope。**
+
+### 13.5 Resolver 的三种合法解析 + 一种出口(deterministic ≠ 只做 lexical)
+
+> **不要把"Resolver 必须 deterministic"误解为"Resolver 只能做纯 lexical parsing"。**
+> 只要判断能被限定在 **Region 内 Source Evidence + 已冻结规则** 上,仍属 deterministic resolution。
+
+- **lexical resolution**:字符模式(`A.`/`B)`/`(C)`);
+- **structural resolution**:Region 内 `A. … B. … C. … D. …` 的确定性切分;
+- **deterministic contextual resolution**:Region 内相邻结构/顺序推边界;
+- **ambiguity detection 出口**:需真正语义知识才能判断(如 L85 `F` L87 `B` 究竟是元素还是选项)→ **`pending_review`**,
+  **不"智能判断"**。
+
+**Rule(用户五条,固化)**:
+1. Producer declares regions, not interpretations(不得直接决定 `A=line85-86`,除非未来 Contract 明确增能力);
+2. Resolver may inspect Source, **only inside declared Evidence scope**;
+3. Resolver may resolve, but may not reinterpret(需语义→pending_review);
+4. **Uncertainty must decrease resolution, never decrease truth**——宁可 unresolved 不可错误 resolved
+   (核心是 `P(correct|resolved) → 1`,**不是** `P(resolved) → 1`;与高风险层 0/10 的发现一致);
+5. Producer 与 Resolver 不得重复 structural intelligence(需理解 DOM/表格/视觉布局/题目语义→优先 preprocessing;
+   仅在已定 Region 内做确定性边界解析→可属 Resolver)。
+
+### 13.6 越界判定 + "回到 preprocessing"的归因
+
+- **读取 Region 内 Source ✅ / 解析 Region 内 option span ✅**;
+- **扫全 Source 找 option ❌ / 重找题目边界 ❌ / 学科语义消歧 ❌ / 猜测缺失 marker ❌ / 制造不存在的 option ❌**;
+- **HTML DOM 解析归属:暂不裁决(不冻结实现,只冻结原则)**——真正问题不是"HTML 谁解析",而是
+  **解析结果有没有改变 Evidence ownership / boundary interpretation**:
+  - 仅在 Region 内利用已可见的 Source representation 定 A 的 span → 没问题(Resolver);
+  - 必须遍历整个 DOM / 判断 td 属于哪题 / 建视觉布局 / 推 option ownership → 已重新承担 document structure
+    interpretation → 回 preprocessing。
+- **应回到 preprocessing 的失败类型**:HTML DOM 未正确转化成可定位 Source Region、视觉结构丢失、
+  题目/材料边界错误、role region 错误、source mapping 错误。
+
+### 13.7 Phase 0.3-B 重新命名 + 指标口径(不冻结最终 Contract)
+
+- **Phase 0.3-B 更名为「Evidence Resolution Boundary Discovery」**(不是 Final Resolver Contract)。
+  它证明的是三个**架构事实**:① Producer 能提供足够 Evidence Region → ② V3 Resolver 可在 Region 内恢复
+  canonical sub-evidence → ③ 剩余失败暴露的是 resolution boundary / source representation 问题。
+- **三个数字必须严格分开表述**(不得混称 "option resolution quality"):
+  - `527/548 = 96.2%` = **当前 Canonical Resolver 在现有 Producer Evidence Region 上的 resolution coverage**;
+  - `103/113 = 91.2%` = **observed sampled correctness**;
+  - `517/527 ≈ 98.1%` = **sampling 口径下 resolved population 的 estimated correctness**。
+- **高风险层 0/10 = 一个 detector precision failure class**,比 96.2% 本身更重要。
+- 现在可冻结**架构方向**,**不冻结最终 Contract**(Region → canonical option evidence 的边界规则尚未闭合)。
+
+### 13.8 下一步(不写代码):Failure Classification → Boundary Decision Record 闭合
+
+对 0.3-B 现有失败(16 `no_labels` / 5 `incomplete` / 10 高风险歧义样本 / HTML table / `<div>A.</div>` /
+单行首个 marker 无标点 / chemical formula false positive)按五类**重新归因**:
+**A.** Producer Region 不完整 / **B.** Source representation 不足 / **C.** Resolver deterministic rule 不足 /
+**D.** 真正需要 semantic interpretation / **E.** Source 本身缺陷。
+**不为提高 96.2% 去修 resolver**,先问"这个失败证明哪一层缺失了什么能力"。
+
+### 13.9 P3.2 负面验收标准(新增,防止架构退化)
+
+> **Consumer Compatibility 必须通过,但不得以复制 preprocessing document-structure intelligence 为代价。**
+> 允许 `Region → canonical evidence`;**不允许** `Manifest → V3 再造一套 document parser / HTML question detector`。
+> 即使最终 Admission 成功,只要 V3 为了处理 Manifest 又长出第二套 preprocessing,即判定**架构退化**。
+
+P3.2 只看四类指标:**A. Evidence coverage**(required vs available)、**B. Resolution**(resolved/unresolved/ambiguous)、
+**C. Gate**(auto_approve/pending_review/rejected)、**D. Root cause**(失败发生在 Producer/Source representation/
+Adapter/Resolver/IR/Gate 哪一层)。**不以最终 Admission 率为核心 KPI。**
+
+### 13.10 收敛期停止条件
+
+> **除非 V3 的真实消费实验暴露新的 Source Evidence 缺口,否则 preprocessing 不再增加能力。**
+
+当前暂停项(等 P3.2 结果):优化 option detector / 增加 marker regex / 追 96.2% / 处理 21 pending /
+扩大 P2.2 / 设计 import API / 讨论仓库合并 / 增加 provenance·governance / 全库重跑。
+preprocessing 项目已从"不断增加能力"进入**收敛期**——停止条件是明确的,不是人为宣布"做到这里"。
