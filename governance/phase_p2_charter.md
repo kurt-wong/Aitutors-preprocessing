@@ -533,3 +533,16 @@ preprocessing 项目已从"不断增加能力"进入**收敛期**——停止条
 **集合关系(钉死,防混称)**:V3 侧 31 cases(b1 38 卷)∪ DSH 侧 3 cases(b2 8 卷)= 两套语料、零 case 重叠;**任何统计不得跨集合合并分母**。
 
 **状态**:两侧均停在 §37 停止点 Evidence Boundary Decision。P3.2 放行与否待用户裁定。
+
+### 14.6 Cross-Agent Coordination Protocol v0.1 落地(2026-09-15,用户批准)
+
+> 用户裁定:两个 Agent 不共享记忆,**只共享事实**。落地最小协调层 `Docs/COORDINATION/`(PROTOCOL.md / CURRENT.md / state.yaml / HANDOFFS/)。
+
+- **定位钉死:工作协调层,不是架构权威层**——永远不产生 L0/L1/L2 约束;要升 L2 走本仓库既有治理路径(即 §12/§13 式用户裁定);
+- **单主规则**:canonical ledger = 本仓库(EB/FACT/DEC id 只由此单调分配);V3 侧 handoff 先 commit 进 V3 仓库,DSH 同步时原样镜像入册——防双主分叉;
+- **状态机**:DISCOVERED → EVIDENCED → ATTRIBUTED → PROPOSED → DECIDED → IMPLEMENTED → VERIFIED → CLOSED,**禁跳级**(无证据不得决策、提案未裁决不得实施、实施未复测不得关闭);
+- **Claim 协议**:跨仓库结论必须 `statement/observed/evidence/confidence/decision` 五要素;confidence = OBSERVED(本侧亲自验证)/ INFERRED(推断)/ REPORTED(对侧报告未复核),**REPORTED 不得单独作为 DECIDED 依据**;
+- **启动 7 步**:fetch → state.yaml → CURRENT.md → 最新 HANDOFF → 核验证据引用 → 只做 OPEN 项 → 更新 + handoff + commit + CI 绿;
+- **明令禁止**:实时互调/orchestration 平台(只有 4 个纯文本文件)/ 把协调层内容当 L2 Decision / 修改对方仓库 / EB 跳级 / 合并两侧语料分母;
+- **机器钉住**:`tests/test_coordination_state.py` 9 用例锁 schema(单主声明/EB 状态合法/FACT 必带 evidence+confidence/DEC 必带 authority/prohibitions 在册/handoff 模板节齐全/协议自证非权威层)。
+- 首个 handoff:`HANDOFFS/2026-09-15-DSH-to-Claude-001.md`(含向 Claude 的 3 个问题:P3.2 消费条件 / 4 个待裁决问题按 Claim 协议回传 / 31 case unit 级清单)。

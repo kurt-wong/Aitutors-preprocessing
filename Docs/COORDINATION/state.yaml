@@ -1,0 +1,131 @@
+# Cross-Agent Coordination State — machine-readable
+# 协议: Docs/COORDINATION/PROTOCOL.md (v0.1)
+# 规则: 本文件由 canonical ledger (DSH/preprocessing) 维护;tests/test_coordination_state.py 钉住 schema。
+# 禁止: 本文件不是 L2 Decision,不产生架构约束;EB/FACT/DEC id 只由本 ledger 分配。
+
+coordination_version: 1
+
+workstream:
+  id: EB
+  name: Evidence Resolution Boundary Discovery
+  status: OPEN
+  charter_ref: governance/phase_p2_charter.md §13/§14
+
+agents:
+  preprocessing:
+    agent: DSH
+    repository: kurt-wong/Aitutors-preprocessing
+    branch: main
+    role: Source Evidence Producer
+    ledger_role: canonical
+  v3:
+    agent: Claude
+    repository: kurt-wong/AITutors-V3
+    branch: main
+    role: Evidence Resolution + Semantic IR + Gate + Admission
+    ledger_role: mirror_via_handoff
+
+# ---------- FACT: 可验证陈述,必须带 evidence(repo+commit+文件) ----------
+facts:
+  - id: FACT-001
+    statement: "V3 Phase 0.3-B: 527/548 = 96.2% option-region resolution coverage(coverage,不是 correctness)"
+    source: v3
+    evidence: "V3 侧实验报告;DSH 侧镜像记录 charter §13.7"
+    confidence: REPORTED
+    status: observed
+  - id: FACT-002
+    statement: "observed sampled correctness 103/113 = 91.2%; estimated 517/527 ≈ 98.1%(estimated,禁写成全量 correctness)"
+    source: v3
+    evidence: "V3 侧 correctness sampling;DSH 侧镜像 charter §13.7"
+    confidence: REPORTED
+    status: observed
+  - id: FACT-003
+    statement: "高风险层 0/10 正确 = detector precision failure class"
+    source: v3
+    evidence: "V3 侧抽样;charter §13.7"
+    confidence: REPORTED
+    status: observed
+  - id: FACT-004
+    statement: "DSH 源侧归因 b2 8 卷 227 choice units: A 真缺口 1(Q51 表格型选项)/ A' composite 10(冻结)/ B 图片型 2(Q13/Q37)/ C D E = 0;214/216 region 含 canonical 标记"
+    source: preprocessing
+    evidence: "commit 3f9d32b; charter §14.3; .pytest_work/bdr_attribution.py(只读探针)"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-005
+    statement: "DSH 修复数 = 0;未发现任何 Producer 必须现在补 per-option spans / observed option labels / expected_option_count 的证据;options_region 是充分的最小 Evidence handoff"
+    source: preprocessing
+    evidence: "commit 3f9d32b; charter §14.4"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-006
+    statement: "跨侧互证: Claude 31 case 归因 B=14/C=8/D=6/F=1 且 A=0,与 DSH 源侧独立发现同一 failure pattern(HTML table / HTML div 图片型选项)"
+    source: both
+    evidence: "commit 6b9b5b3; charter §14.5; Claude 侧 handoff(2026-09-15)"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-007
+    statement: "跨语料系统性: Q51 不在 Claude 31 case 内(b1 38 卷 vs b2 8 卷,case 零重叠)但 pattern 相同 → HTML table/div 选项呈现是系统性 B 类 Source representation 缺口,非个案"
+    source: both
+    evidence: "commit 6b9b5b3; charter §14.5"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-008
+    statement: "V3 侧 _locate_options() 在 region_upper=None 时存在 bounded access 越界风险(未修,属 V3 侧)"
+    source: v3
+    evidence: "Claude-2 审计报告(2026-09-15);DSH 侧镜像 charter §14.5"
+    confidence: REPORTED
+    status: observed
+
+# ---------- DEC: 已裁决项(权威来源必须是用户/L2 路径) ----------
+decisions:
+  - id: DEC-001
+    statement: "架构边界: preprocessing declares regions, not interpretations; Resolver may inspect Source only inside declared Evidence scope"
+    authority: "用户裁定 2026-09-15;charter §13(Boundary Decision Record)"
+    status: frozen
+  - id: DEC-002
+    statement: "Evidence Region ≠ Evidence;Region→per-option 解析属 V3 Resolver;options_region 为最小 handoff,Producer 暂不输出 per-option spans"
+    authority: "用户裁定;charter §13.2 + 跨仓库协调报告 §19"
+    status: frozen
+  - id: DEC-003
+    statement: "收敛期停止条件: 除非 V3 真实消费实验暴露新的 Source Evidence 缺口,preprocessing 不再增加能力"
+    authority: "用户裁定;charter §13.10"
+    status: frozen
+  - id: DEC-004
+    statement: "本协调层是工作层不是架构权威层;单主 ledger = preprocessing 仓库;EB id 只由此分配"
+    authority: "用户批准 v0.1 落地(2026-09-15);PROTOCOL.md"
+    status: active
+
+# ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
+open_questions:
+  - id: EB-001
+    question: "HTML table 型选项呈现(Q51 / Claude 5 pending table cases):Producer 是否应扩展圈定覆盖表格版式,还是属 Resolver Region 内确定性解析?"
+    owner: joint
+    status: ATTRIBUTED
+    facts: [FACT-004, FACT-006, FACT-007]
+    note: "归因 = B 类(两侧一致);处置待 P3.2 确认是否构成 V3 实际 Source Evidence 缺口后再提案"
+  - id: EB-002
+    question: "图片型选项呈现(Q13/Q37 / Claude 7 div cases):<div>A</div>+图 的标记↔图边界归属"
+    owner: joint
+    status: ATTRIBUTED
+    facts: [FACT-004, FACT-006, FACT-007]
+    note: "归因 = B 类;受 §11.3 图片语义理解禁令冻结,任何提案须先说明不越冻结线"
+  - id: EB-003
+    question: "Resolver bounded access: region_upper=None 越界风险的处置(修实现 vs 收紧契约)"
+    owner: v3
+    status: EVIDENCED
+    facts: [FACT-008]
+    note: "属 V3 侧(Boundary 3);DSH 只登记不预判"
+  - id: EB-004
+    question: "P3.2 V3 Consumer Compatibility: 真实 b2 产物走 Manifest→Adapter→Resolver→IR→Gate→Admission,采四类指标 + §13.9 负面验收"
+    owner: v3
+    status: DISCOVERED
+    facts: [FACT-004, FACT-005]
+    note: "待用户放行;DSH 侧产物已备(Ocr-markdown/reslice-p2-b2/ 8 卷 v2.7)"
+
+# ---------- 当前禁止事项(两侧共同,叠加各自仓库冻结) ----------
+prohibitions:
+  - "不改 V3 Frozen Spec / 不冻结 Producer Contract / 不修 Resolver heuristics(EB 项 DECIDED 前)"
+  - "不为提高 96.2% coverage 修补;Correct unresolved > Incorrect resolved"
+  - "不合并两侧不同语料的统计分母(b1 38 卷 case 与 b2 8 卷 case 零重叠)"
+  - "不用 REPORTED 冒充 OBSERVED;不对不存在于本仓库的 case 做 unit 级归因"
+  - "不建实时互调/orchestration 平台;Coordination 内容不得当作 L2 Decision"

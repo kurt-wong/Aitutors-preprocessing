@@ -2073,3 +2073,23 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **Claude 侧记录**:31 case 归因 = **B 14 / C 8 / D 6 / F 1**,**A 类 = 0**(options_region 全部正确指向)——与 DSH 回执互证 `options_region` 是充分的最小 Evidence handoff;`_locate_options()` `region_upper=None` 越界风险 + 4 个待裁决问题属 V3 侧,DSH 只登记不动(Boundary 3)。**集合关系钉死:两套语料零 case 重叠,统计不得跨集合合并分母。**
 
 **落盘**:charter §14.5;两侧均停在 §37 停止点,P3.2 待用户裁定。
+
+---
+
+## 2026-09-15 · Cross-Agent Coordination Protocol v0.1 落地(charter §14.6)
+
+**触发**:用户裁定——两个 Agent 最需要的不是互相聊天,而是**可验证的跨 Agent 共享事实层**;批准落地最小集(`Docs/COORDINATION/` 4 文件),不做实时互调/orchestration 平台。
+
+**定位钉死**:工作协调层,**不是架构权威层**——永不产生 L0/L1/L2 约束(升 L2 走既有治理路径 = charter §12/§13 式用户裁定)。哲学与两仓库同构:**Agent 行为 → Git Evidence → Coordination Ledger → Decision → 对方感知**;不共享记忆,只共享事实。
+
+**落地内容(4 文件 + 1 测试)**:
+
+1. `Docs/COORDINATION/PROTOCOL.md` — 协议 v0.1:单主规则(canonical ledger = 本仓库,EB/FACT/DEC id 只由此分配;V3 handoff 先落自己仓库、DSH 同步时镜像,防双主分叉)、8 态状态机(DISCOVERED→EVIDENCED→ATTRIBUTED→PROPOSED→DECIDED→IMPLEMENTED→VERIFIED→CLOSED,逐级禁跳)、Claim 五要素协议(statement/observed/evidence/confidence/decision;**REPORTED 不得单独作为 DECIDED 依据**)、启动 7 步、明令禁止清单;
+2. `Docs/COORDINATION/state.yaml` — 机器可读:FACT-001~008(全部带 evidence + confidence,DSH 侧 OBSERVED、V3 转述 REPORTED,严格区分)/ DEC-001~004(带 authority)/ EB-001~004(HTML table 型选项 / 图片型选项 / region_upper=None / P3.2,各带 owner+facts+状态)/ prohibitions(含"不合并两侧语料分母");
+3. `Docs/COORDINATION/CURRENT.md` — 人机快读镜像(权威以 state.yaml 为准);
+4. `Docs/COORDINATION/HANDOFFS/2026-09-15-DSH-to-Claude-001.md` — 首个结构化交接:Completed / New Evidence / Findings(跨语料系统性 B 类)/ Not Established / Questions for Receiver(P3.2 消费条件 / 4 个待裁决问题按 Claim 协议回传 / 31 case unit 级清单请求)/ Explicitly Do Not Do / Requested Action;
+5. `tests/test_coordination_state.py` — 9 用例锁 schema:单主声明 / EB id 唯一+状态合法+owner 合法 / FACT 必带 evidence+confidence / DEC 必带 authority / prohibitions 关键词在册 / handoff 模板节齐全 / 协议自证"不是架构权威层"。
+
+**性质**:新增纯文本协调层 + schema 测试,零 pipeline 代码、零 prompt 变更、零重跑。**协调层内容不是 L2 Decision**,两侧仍停在 §37 停止点。
+
+**待办**:Claude 侧按 PROTOCOL §5 七步接入 + 回复 handoff 三问;P3.2(EB-004)待用户放行。
