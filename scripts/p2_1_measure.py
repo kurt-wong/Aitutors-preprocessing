@@ -71,9 +71,15 @@ def img_span(unit):
 
 
 def _credibility(unit, src_lines):
-    """启发式答案可信度分桶(见模块 docstring)。"""
+    """启发式答案可信度分桶(见模块 docstring)。
+    P2.1-c:无独立答案区但 answer_evidence.value 抄录了源文明文答案值 → exact
+    (值来自源文逐字引用,非生成;仅定位无明文值 → 仍算 missing)。"""
     ok, ans = _span_text(src_lines, unit.get("answer_lines"))
     if not (ok and ans.strip()):
+        ae = unit.get("answer_evidence")
+        if isinstance(ae, dict) and ae.get("type") not in (None, "absent") \
+                and isinstance(ae.get("value"), str) and ae["value"].strip():
+            return "exact"
         return "missing"
     if unit.get("unit_type") != "composite_question":
         return "exact"
@@ -111,17 +117,31 @@ def measure_paper(out_root: Path, entry: dict) -> dict:
     except OSError:
         src_lines, source_readable = [], False
 
-    answered = [u for u in qs if u.get("answer_lines")]
+    answered = [u for u in qs
+                if u.get("answer_lines")
+                or (isinstance(u.get("answer_evidence"), dict)
+                    and u["answer_evidence"].get("type") not in (None, "absent")
+                    and u["answer_evidence"].get("lines"))]
     nums = sorted({n for u in qs for n in (u.get("question_numbers") or [])})
     meta = man.get("annotation_meta") or {}
 
     admission, cred, comp_total, comp_intact, img_dep = 0, {}, 0, 0, 0
+    ev_types = {}
     for u in qs:
         span = stem_span(u)
         stem_ok, stem = _span_text(src_lines, span)
         ans_ok, ans = _span_text(src_lines, u.get("answer_lines"))
+        # P2.1-c 答案证据(prompt v2.4;v2.3 遗留卷无此字段)
+        ae = u.get("answer_evidence") if isinstance(u.get("answer_evidence"), dict) else {}
+        ae_type, ae_lines = ae.get("type"), ae.get("lines")
+        ae_loc = bool(ae_type and ae_type != "absent"
+                      and isinstance(ae_lines, list) and len(ae_lines) == 2
+                      and all(isinstance(x, int) for x in ae_lines))
+        if ae_type:
+            ev_types[ae_type] = ev_types.get(ae_type, 0) + 1
         anchor_ok = (stem_ok and stem.strip()) if source_readable else bool(span)
-        answer_loc = (ans_ok and ans.strip()) if source_readable else bool(u.get("answer_lines"))
+        answer_loc = ((ans_ok and ans.strip()) if source_readable
+                      else bool(u.get("answer_lines"))) or ae_loc
         type_ok = bool(u.get("original_question_type"))
         if anchor_ok and answer_loc and type_ok:
             admission += 1
@@ -147,6 +167,7 @@ def measure_paper(out_root: Path, entry: dict) -> dict:
         "admission_ready": admission,
         "admission_ready_rate": round(admission / len(qs), 4) if qs else None,
         "answer_credibility": cred,
+        "answer_evidence_types": ev_types,
         "composite_total": comp_total,
         "composite_intact": comp_intact,
         "sub_question_integrity": round(comp_intact / comp_total, 4) if comp_total else None,
@@ -186,6 +207,44 @@ def build_human_sample(out_root: Path, entries, per_paper: int = 10) -> dict:
             "questions": len(sample), "items": sample}
 
 
+def build_suspect_sample(out_root: Path, entries) -> dict:
+    """组合题 suspect 抽检清单(用户 §8.2):stem 无 (1)(2) 小问标记的组合题,
+    人工四值标签 KEEP(一题多小问)/SPLIT(应拆)/LOST(信息丢失)/UNCERTAIN。"""
+    items = []
+    for e in entries:
+        mp = manifest_path_for(out_root, e["file"])
+        if not mp.exists():
+            continue
+        man = json.loads(mp.read_text(encoding="utf-8"))
+        try:
+            sp = Path(e["file"])
+            try:
+                rel = sp.relative_to(SRC)
+            except ValueError:
+                rel = Path(sp.name)
+            src_lines = (SRC / rel).read_text(encoding="utf-8", errors="replace").splitlines()
+        except OSError:
+            src_lines = []
+        for u in (man.get("units") or []):
+            if u.get("unit_type") != "composite_question":
+                continue
+            ok, stem = _span_text(src_lines, stem_span(u))
+            if ok and {int(m) for m in SUB_MARK_RE.findall(stem)}:
+                continue                      # 有小问标记 = 非 suspect
+            items.append({
+                "file": e["file"], "subject": e.get("subject"),
+                "unit_id": u.get("unit_id"),
+                "question_numbers": u.get("question_numbers"),
+                "unit_type": u.get("unit_type"),
+                "stem_lines": stem_span(u),
+                "answer_lines": u.get("answer_lines"),
+                "label": None,                # KEEP|SPLIT|LOST|UNCERTAIN 人工填写
+            })
+    return {"label_vocabulary": ["KEEP", "SPLIT", "LOST", "UNCERTAIN"],
+            "papers": len({i["file"] for i in items}),
+            "questions": len(items), "items": items}
+
+
 def main():
     global SRC
     ap = argparse.ArgumentParser()
@@ -195,6 +254,8 @@ def main():
     ap.add_argument("--src", default=str(SRC), help="源语料根(默认 Ocr-markdown)")
     ap.add_argument("--human-sample", default=None,
                     help="输出人工抽检清单 JSON 路径(每卷 10 题,确定性)")
+    ap.add_argument("--suspect-sample", default=None,
+                    help="输出组合题 suspect 抽检清单(KEEP/SPLIT/LOST/UNCERTAIN)")
     args = ap.parse_args()
 
     SRC = Path(args.src)
@@ -214,9 +275,12 @@ def main():
     tci = sum(p.get("composite_intact") or 0 for p in papers)
     timg = sum(p.get("image_dependent_questions") or 0 for p in papers)
     cred = {}
+    ev = {}
     for p in papers:
         for k, v in (p.get("answer_credibility") or {}).items():
             cred[k] = cred.get(k, 0) + v
+        for k, v in (p.get("answer_evidence_types") or {}).items():
+            ev[k] = ev.get(k, 0) + v
     by_subject = {}
     for p in papers:
         s = by_subject.setdefault(p["subject"], {"papers": 0, "ok": 0, "questions": 0,
@@ -239,6 +303,7 @@ def main():
             "admission_ready": tadm,
             "admission_ready_rate": round(tadm / tq, 4) if tq else None,
             "answer_credibility": cred,
+            "answer_evidence_types": ev,
             "composite_total": tcomp, "composite_intact": tci,
             "sub_question_integrity": round(tci / tcomp, 4) if tcomp else None,
             "image_dependent_questions": timg,
@@ -266,6 +331,15 @@ def main():
             f.write("\n")
         print("human_sample: papers={papers} questions={questions} -> {path}".format(
             path=args.human_sample, **hs))
+
+    if args.suspect_sample:
+        ss = build_suspect_sample(out_root, entries)
+        Path(args.suspect_sample).parent.mkdir(parents=True, exist_ok=True)
+        with io.open(args.suspect_sample, "w", encoding="utf-8") as f:
+            json.dump(ss, f, ensure_ascii=False, indent=1)
+            f.write("\n")
+        print("suspect_sample: papers={papers} questions={questions} -> {path}".format(
+            path=args.suspect_sample, **{k: ss[k] for k in ("papers", "questions")}))
 
 
 if __name__ == "__main__":

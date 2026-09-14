@@ -1794,3 +1794,26 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 **下一轮决策(严格按用户决策树,基于 measure 实测)**:主问题 ① 答案定位缺失 26 题/3 卷(最大 VI 来源)→ 优化 LLM schema/答案定位;② 组合题小问完整性 suspect 71 → 人工抽检(384 题清单)定性后决定 reslice 或题型策略;③ 孤儿图片 ~80 行 → P2.2 输入。边界:零新增治理/防线/审计;冻结面零触碰。
 
 **套件**:294 passed + 1 xfailed(+4 钉:t5 V3 口径/t6 抽检确定性/t7 汇总/t8 组合题 schema)。
+
+---
+
+## P2.1-c:答案证据契约(prompt v2.4)——真实失败驱动的答案定位修复(2026-09-14)
+
+**输入**:用户 P2.1-b1 收口裁定(charter §8):优先级 ① 答案 evidence/schema(26 题,最大确定性收益),范围只限 answer extraction schema + evidence mapping。
+
+**取证(`data/p2_1c_answer_forensics.json`,行级证据)**:26 题缺失全部同源——**答案内嵌【解答】/【详解】块,源卷无独立答案行**。朝阳数学全卷 0 个【答案】行、21 题答案在【解答】块;生物 Q15/16/24 结论在"故选 D。";政治 Q19/Q20 结论在"C符合题意"。LLM 如实置 null = 正确的不猜测行为,根因 = prompt v2.3 schema 无答案证据表达。
+
+**修复(全部在答案抽取/schema 域内)**:
+- **prompt v2.4**:新增 `answer_evidence` 契约 `{type, lines, value}`,type 词表 = answer_lines | inline_in_explanation | answer_table | range_string | absent;**value 只准抄源文明文,禁推断禁补全**;
+- **校验**:AE_TYPES 词表校验 / absent 空值约束 / 非 absent 必有合法 lines;非 absent 证据替代 answer_lines 定位(不再误报"无 answer_lines");新增**【答案】行未被任何单元覆盖检测**(答案映射缺口 fail-closed);
+- **provenance 修复**:META 版本戳与 annotation_meta 改取 manifest 自身生成版本,重编译旧卷不再被洗成当前版本(BUG-26 同族预防);
+- **measure**:answer_rate / admission_ready 认可 evidence 定位;credibility 认可 evidence.value(源文明文=exact,仅定位无明文值=missing 如实);answer_evidence_types 分布入账;v2.3 遗留卷行为不变;新增 `--suspect-sample`(组合题 KEEP/SPLIT/LOST/UNCERTAIN 抽检清单,71 条);
+- 钉:`tests/test_p2_1c_answer_evidence.py` t1–t10。
+
+**闭环验证(真实失败卷 v2.4 重跑)**:朝阳数学 units=21 校验问题 0、师大附中政治 units=35 校验问题 0;抽验 L185"故选：B."→value=B、政治 L935"C符合题意"→value=C,**逐字吻合零编造**。平谷生物 3 次尝试全部败于网络层(IncompleteRead ×1、Remote end closed ×2,内部 5 重试×3 轮),按诚实记账列为 NO_MANIFEST 待补跑,不再盲目重试。
+
+**复测(`data/p2_1_c_measure.json`,38/39 卷)**:parse_success **97.44%**(≥95% 收口线达成)、vi=0、answer_rate **100%**(修复前 97.14%)、admission_ready **100%**(修复前 97.14%);credibility = exact 780 / suspect 71 / partial 15 / **missing 5**(朝阳数学 Q17-21 解答题:证据已定位解答块,过程性答案无明文单值,value=null 如实);图片依赖 223 题。QC 30 PASS / 8 FAIL(C5 孤儿图 4 卷/C6 孤儿表 2 卷/C7 卷面指令 3 卷/C11 政治重跑新发现 1 例详解原题复述未剥离)。
+
+**下一步(用户决策树)**:② 组合题 suspect 71 条人工抽检(`data/p2_1_c_suspect_review.json`,四值标签模板已备);③ P2.2 图片绑定(223 题基线)。生物卷网络恢复后 --resume 补跑。
+
+**套件**:304 passed + 1 xfailed(+10 钉)。

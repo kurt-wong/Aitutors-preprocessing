@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "round": "P2.1-c",
+  "date": "2026-09-14",
+  "subject": "首批 39 卷 answer_rate 缺口 26 题的失败取证",
+  "method": "逐卷读取源 md 答案区实况 + manifest span 对照,行级证据",
+  "finding": "26 题全部同源:答案内嵌【解答】/【详解】块,源卷无独立答案行。LLM 如实置 answer_lines=null(不猜测=正确行为),根因是 prompt v2.3 schema 缺少答案证据表达。",
+  "buckets": [
+    {
+      "form": "B-inline-solution",
+      "count": 21,
+      "paper": "高一\\数学\\2021北京朝阳高一（下）期末数学（教师版）(1).md",
+      "evidence": "全卷 716 行,【答案】行=0,【解答】行=21,【分析】行=21;每题答案内嵌解答块(如 L181 【解答】解：…)。manifest Q1/Q2/Q21 answer_lines=null,explanation_lines 正确定位。",
+      "resolution": "prompt v2.4 answer_evidence type=inline_in_explanation"
+    },
+    {
+      "form": "B-inline-conclusion",
+      "count": 5,
+      "papers": [
+        {
+          "file": "高一\\生物\\2021北京平谷高一（上）期末生物（教师版）.md",
+          "questions": [15, 16, 24],
+          "evidence": "Q15 解析块 L809 起,答案结论在块内 L807 '故选 D。'/L823 '故选D。';全卷 35 个【答案】行均属其他题,此 3 题无独立答案行。"
+        },
+        {
+          "file": "高一\\政治\\2022北京师大附中高一（下）期中政治（教师版）(1).md",
+          "questions": [19, 20],
+          "evidence": "Q19 解析块 L933 起,答案结论在 L935 '【详解】C：阶级性是判断各国国家性质的根本标志,C符合题意';L920-960 区间内无任何【答案】行。"
+        }
+      ],
+      "resolution": "prompt v2.4 answer_evidence type=inline_in_explanation,lines 圈结论行,value 抄源文明文"
+    }
+  ],
+  "fix": {
+    "prompt": "reslice-pilot-v2.4:新增 answer_evidence 契约(type/lines/value;value 只抄源文明文,禁推断禁补全)",
+    "validation": "answer_evidence schema 校验(AE_TYPES 词表/absent 空值约束/非 absent 必有 lines);非 absent 证据替代 answer_lines 定位作用;新增【答案】行未覆盖检测",
+    "measure": "answer_rate/admission_ready 认可 evidence 定位;answer_evidence_types 分布入账;v2.3 遗留卷行为不变",
+    "pins": "tests/test_p2_1c_answer_evidence.py t1-t9"
+  },
+  "rerun": "3 卷 VI 产物删除后 --resume 以 v2.4 重跑,结果见 p2_1_b1_measure.json 复测与 log.md P2.1-c"
+}

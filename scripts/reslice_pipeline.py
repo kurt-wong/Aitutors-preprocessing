@@ -154,6 +154,11 @@ def number_lines(text):
 INTERVAL_ROLES = ("stem_lines", "options_lines", "answer_lines", "explanation_lines",
                   "extra_lines", "material_lines", "questions_lines")
 
+# P2.1-c 答案证据类型词表(prompt v2.4;absent=源卷确无答案,不猜测)
+AE_TYPES = ("answer_lines", "inline_in_explanation", "answer_table", "range_string", "absent")
+
+PROMPT_VERSION = "reslice-pilot-v2.4"
+
 
 def clamp_intervals(man, n_lines):
     """确定性行号兜底（R24-A3/R7）：越界截断到 [1, n_lines]，倒置交换。
@@ -186,6 +191,16 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    答案表格（数字行/字母行成对）、【答案】标记段——全部识别出来并归属到对应题目。
    独立的【答案】行（如 "2.【答案】D"、"5. 【答案】B"）本身必须落在 answer_lines
    区间内——answer_lines 至少要覆盖【答案】标记行，即使它与【解析】【详解】相邻。
+4b. 答案证据：每个题目单元必须输出 "answer_evidence" 对象：
+   {"type": "...", "lines": [起始行号, 结束行号] 或 null, "value": "..." 或 null}
+   - type=answer_lines:存在独立答案行/答案区且 answer_lines 已圈中它;evidence lines 填同一区间。
+   - type=inline_in_explanation:全卷无独立答案行,答案结论内嵌在【解答】【详解】块中
+     （如块内"故选 D。""C符合题意"）：此时 answer_lines 填 null,evidence lines 圈结论所在行。
+   - type=answer_table:答案由多题共享的答案表格给出;lines 圈该表所在行。
+   - type=range_string:答案由区间连写给出（如"1-5 ACDBA"）;lines 圈该串所在行。
+   - type=absent:源卷确无本题答案;lines 和 value 都填 null。
+   - value:只允许抄录源文明文写出的答案值（"故选 D"→"D","1-5 ACDBA"第3题→"B"）;
+     源文无明文答案值就填 null。绝不推断、绝不补全一个看似合理的答案。
 5. 题干中与解题无关的卷面指令（"本大题共3小题，共12分""请将答案填涂在答题卡上"
    "考试时间""注意事项"）不纳入任何单元的行区间。但解题必需的要求（"任选三小题作答"
    "结果保留两位小数""不少于100词"）属于题干。
@@ -218,6 +233,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    "options_lines": [起始行号, 结束行号] 或 null,
    "extra_lines": [起始行号, 结束行号] 或 null,
    "answer_lines": [起始行号, 结束行号] 或 null,
+   "answer_evidence": {"type": "answer_lines|inline_in_explanation|answer_table|range_string|absent", "lines": [起始行号, 结束行号] 或 null, "value": "答案值原文" 或 null},
    "explanation_lines": [起始行号, 结束行号] 或 null
   },
   {
@@ -230,6 +246,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    "material_lines": [起始行号, 结束行号],
    "questions_lines": [起始行号, 结束行号],
    "answer_lines": [起始行号, 结束行号] 或 null,
+   "answer_evidence": {"type": "answer_lines|inline_in_explanation|answer_table|range_string|absent", "lines": [起始行号, 结束行号] 或 null, "value": "答案值原文" 或 null},
    "explanation_lines": [起始行号, 结束行号] 或 null
   }
  ]
@@ -332,7 +349,32 @@ def validate_manifest(man, n_lines, lines=None):
         chk_range(u.get("answer_lines"), "answer", uid)
         chk_range(u.get("explanation_lines"), "explanation", uid)
         chk_range(u.get("extra_lines"), "extra", uid)
-        if u.get("answer_lines") is None:
+        # P2.1-c 答案证据契约:answer_evidence 可选(v2.3 遗留卷无此字段),
+        # 但出现即必须合法;非 absent 证据可替代 answer_lines 的定位作用。
+        ae = u.get("answer_evidence")
+        ae_locates = False
+        if ae is not None:
+            if not isinstance(ae, dict):
+                issues.append(f"{uid}: answer_evidence 非对象")
+            else:
+                t = ae.get("type")
+                if t not in AE_TYPES:
+                    issues.append(f"{uid}: answer_evidence.type 非法 {t!r}")
+                elif t == "absent":
+                    if ae.get("lines") is not None or ae.get("value") is not None:
+                        issues.append(f"{uid}: answer_evidence absent 时 lines/value 必须为 null")
+                else:
+                    rg = ae.get("lines")
+                    if not (isinstance(rg, list) and len(rg) == 2
+                            and all(isinstance(x, int) for x in rg)):
+                        issues.append(f"{uid}: answer_evidence({t}) 缺合法 lines")
+                    else:
+                        chk_range(rg, "answer_evidence", uid)
+                        ae_locates = True
+                    v = ae.get("value")
+                    if v is not None and not isinstance(v, str):
+                        issues.append(f"{uid}: answer_evidence.value 非字符串")
+        if u.get("answer_lines") is None and not ae_locates:
             issues.append(f"{uid}: 无 answer_lines（题号 {nums}）")
         # R11 入库的是 question 不是 paper：试卷级结构行不得进入任何单元区间
         if lines is not None:
@@ -345,6 +387,18 @@ def validate_manifest(man, n_lines, lines=None):
                 for i in range(max(1, rg[0]), min(rg[1], len(lines)) + 1):
                     if PAPER_LINE.match(lines[i - 1].strip()):
                         issues.append(f"{uid}: L{i} 试卷结构行混入单元区间: {lines[i-1].strip()[:40]}")
+    # P2.1-c 答案映射完整性:【答案】标记行必须被某个单元区间覆盖(规则4),
+    # 遗漏 = 答案映射缺口(实测抓获形态:答案行紧贴【解析】块之前而漏圈)。
+    if lines is not None and units:
+        covered_rows = set()
+        for u in units:
+            for role in INTERVAL_ROLES:
+                rg = u.get(role)
+                if isinstance(rg, list) and len(rg) == 2 and all(isinstance(x, int) for x in rg):
+                    covered_rows.update(range(max(1, rg[0]), min(rg[1], len(lines)) + 1))
+        for i, l in enumerate(lines, 1):
+            if "【答案】" in l and i not in covered_rows:
+                issues.append(f"L{i}: 【答案】行未被任何单元区间覆盖: {l.strip()[:40]}")
     return issues, {"units": len(units), "covered_questions": len({n for _, n in covered}),
                     "covered_sorted": sorted({n for _, n in covered}), "warnings": warns}
 
@@ -412,6 +466,13 @@ def compile_slices(lines, man, src_name, src_path, model=DEFAULT_MODEL):
                            f"（答案表/区间连写），已按题号取值，不整段回引 -->")
             else:
                 out.append(ans_span)
+        # P2.1-c:无独立答案区时,答案证据(type/lines/值原文)如实展示,不生成内容
+        ae = u.get("answer_evidence") or {}
+        if not ans_span and isinstance(ae, dict) and ae.get("type") not in (None, "absent"):
+            ln = ae.get("lines")
+            loc = f"L{ln[0]:04d}-L{ln[1]:04d}" if ln else "无行号"
+            val = f" 值={ae['value']}" if ae.get("value") else ""
+            out.append(f"<!-- 答案证据 type={ae.get('type')} {loc}{val}(源文行区间引用,非生成) -->")
         out.append("“答案区结束”")
         exp = span_text(lines, u.get("explanation_lines"))
         if exp:
@@ -476,8 +537,11 @@ def compile_anchor(lines, man, src_name, src_path, model=DEFAULT_MODEL):
         for t, n, rg in valid:
             reg(rg, f"<!-- META:{t}:start:{n} -->", f"<!-- META:{t}:end:{n} -->", t)
 
+    # META 版本戳取 manifest 自身的生成版本(重编译旧卷不得洗成当前版本);
+    # 新生成卷无 annotation_meta 时落当前 PROMPT_VERSION。
+    pv = (man.get("annotation_meta") or {}).get("prompt_version") or PROMPT_VERSION
     out = ["<!-- META:annotation:start -->",
-           f"<!-- META:doc:source={src_name}, model={model}, prompt=reslice-pilot-v2.3 -->",
+           f"<!-- META:doc:source={src_name}, model={model}, prompt={pv} -->",
            "<!-- META:annotation:end -->"]
     for i, ln in enumerate(lines, 1):
         # 开锚点：unit 先开（外层包络先行）；闭锚点：角色先闭、unit 后关，
@@ -504,7 +568,9 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
     manifest = {
         "source_file": str(src_path),
         "model": model,
-        "annotation_meta": {"prompt_version": "reslice-pilot-v2.3",
+        "annotation_meta": {"prompt_version":
+                            (man.get("annotation_meta") or {}).get("prompt_version")
+                            or PROMPT_VERSION,
                             "validation_issues": issues,
                             "warnings": summary.get("warnings", [])},
         "units": man["units"],
