@@ -1,0 +1,338 @@
+{
+ "schema_version": 1,
+ "round": "P2.2",
+ "exported_at": "2026-09-14T12:23:04.390Z",
+ "items": [
+  {
+   "id": "S001",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2016-2019北京高一化学下学期期末汇编：化学反应原理（教师版）(1).md",
+   "unit_id": "Q10",
+   "kind": "question",
+   "question_numbers": [
+    10
+   ],
+   "refs": [
+    "../../_imgs/2016-2019北京高一化学下学期期末汇编：化学反应原理（教师版）(1)/img_in_image_box_104_238_318_367.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S002",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2021北京昌平高一（下）期末化学（教师版）(1).md",
+   "unit_id": "Q21",
+   "kind": "question",
+   "question_numbers": [
+    21
+   ],
+   "refs": [
+    "../../_imgs/2021北京昌平高一（下）期末化学（教师版）(1)/img_in_image_box_103_896_552_1086.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S003",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2018北京101中学高一（上）期中地理含答案.md",
+   "unit_id": "Q21",
+   "kind": "question",
+   "question_numbers": [
+    21
+   ],
+   "refs": [
+    "../../_imgs/2018北京101中学高一（上）期中地理含答案/img_in_image_box_530_751_703_949.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S004",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\地理\\2018北京101中学高一（上）期中地理含答案.md",
+   "unit_id": "U27-28",
+   "kind": "question",
+   "question_numbers": [
+    27,
+    28
+   ],
+   "refs": [
+    "../../_imgs/2018北京101中学高一（上）期中地理含答案/img_in_image_box_416_964_826_1180.jpg",
+    "../../_imgs/2018北京101中学高一（上）期中地理含答案/img_in_image_box_416_964_826_1180.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S005",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\数学\\2017-2019北京高一数学上学期期中汇编：集合填空题（教师版）(1).md",
+   "unit_id": "Q6",
+   "kind": "question",
+   "question_numbers": [
+    6
+   ],
+   "refs": [
+    "../../_imgs/2017-2019北京高一数学上学期期中汇编：集合填空题（教师版）(1)/img_in_image_box_106_641_374_799.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S006",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2018北京一零一中学高一（下）期中物理（教师版）(1).md",
+   "unit_id": "Q23",
+   "kind": "question",
+   "question_numbers": [
+    23
+   ],
+   "refs": [
+    "../../_imgs/2018北京一零一中学高一（下）期中物理（教师版）(1)/img_in_image_box_120_825_271_935.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S007",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京十二中高一（下）期中物理（教师版）(1).md",
+   "unit_id": "Q4",
+   "kind": "question",
+   "question_numbers": [
+    4
+   ],
+   "refs": [
+    "../../_imgs/2021北京十二中高一（下）期中物理（教师版）(1)/img_in_image_box_74_217_355_399.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S008",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2017-2019北京高中生物高一上期末汇编：分子与细胞（教师版）(1).md",
+   "unit_id": "Q43",
+   "kind": "question",
+   "question_numbers": [
+    43
+   ],
+   "refs": [
+    "../../_imgs/2017-2019北京高中生物高一上期末汇编：分子与细胞（教师版）(1)/img_in_image_box_95_746_302_902.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S009",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\化学\\2018北京牛栏山一中高三（上）期中化学含答案(1).md",
+   "unit_id": "Q8",
+   "kind": "question",
+   "question_numbers": [
+    8
+   ],
+   "refs": [
+    "../../_imgs/2018北京牛栏山一中高三（上）期中化学含答案(1)/img_in_chart_box_70_626_377_840.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S010",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\历史\\2021北京高三一模二模历史汇编：近代中国的经济（教师版）(1).md",
+   "unit_id": "Q9",
+   "kind": "question",
+   "question_numbers": [
+    9
+   ],
+   "refs": [
+    "../../_imgs/2021北京高三一模二模历史汇编：近代中国的经济（教师版）(1)/img_in_image_box_94_79_887_719.jpg",
+    "../../_imgs/2021北京高三一模二模历史汇编：近代中国的经济（教师版）(1)/img_in_image_box_94_79_887_719.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S011",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\政治\\2021北京高三一模二模政治汇编：生活与哲学（选择题）（教师版）(1).md",
+   "unit_id": "Q24",
+   "kind": "question",
+   "question_numbers": [
+    24
+   ],
+   "refs": [
+    "../../_imgs/2021北京高三一模二模政治汇编：生活与哲学（选择题）（教师版）(1)/img_in_image_box_192_746_725_1078.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S012",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\物理\\2022北京一七一中高三（上）期中物理（教师版）(1).md",
+   "unit_id": "Q16",
+   "kind": "question",
+   "question_numbers": [
+    16
+   ],
+   "refs": [
+    "../../_imgs/2022北京一七一中高三（上）期中物理（教师版）(1)/img_in_image_box_185_714_655_965.jpg",
+    "../../_imgs/2022北京一七一中高三（上）期中物理（教师版）(1)/img_in_image_box_106_212_256_345.jpg",
+    "../../_imgs/2022北京一七一中高三（上）期中物理（教师版）(1)/img_in_image_box_108_741_282_918.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S013",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\生物\\2020北京八十中高三（下）开学考生物含答案(1).md",
+   "unit_id": "Q18",
+   "kind": "question",
+   "question_numbers": [
+    18
+   ],
+   "refs": [
+    "../../_imgs/2020北京八十中高三（下）开学考生物含答案(1)/img_in_chart_box_103_1310_486_1497.jpg",
+    "../../_imgs/2020北京八十中高三（下）开学考生物含答案(1)/img_in_chart_box_502_1296_937_1508.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S014",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高三\\语文\\2022北京东城高三二模语文（教师版）(1).md",
+   "unit_id": "U1-5",
+   "kind": "question",
+   "question_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "refs": [
+    "../../_imgs/2022北京东城高三二模语文（教师版）(1)/img_in_chart_box_414_457_791_662.jpg",
+    "../../_imgs/2022北京东城高三二模语文（教师版）(1)/img_in_chart_box_414_457_791_662.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S015",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2021北京农大附中高二（上）期中物理（合格考）（教师版）(1).md",
+   "unit_id": "Q13",
+   "kind": "question",
+   "question_numbers": [
+    13
+   ],
+   "refs": [
+    "../../_imgs/2021北京农大附中高二（上）期中物理（合格考）（教师版）(1)/img_in_image_box_79_929_352_1195.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S016",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\生物\\2019北京101中学高二（下）期中生物含答案(1).md",
+   "unit_id": "Q20",
+   "kind": "question",
+   "question_numbers": [
+    20
+   ],
+   "refs": [
+    "../../_imgs/2019北京101中学高二（下）期中生物含答案(1)/img_in_image_box_283_183_896_395.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S017",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2016-2019北京高一化学下学期期末汇编：化学反应原理（教师版）(1).md",
+   "unit_id": "nearest:Q1",
+   "kind": "orphan",
+   "question_numbers": null,
+   "refs": [
+    "../../_imgs/2016-2019北京高一化学下学期期末汇编：化学反应原理（教师版）(1)/img_in_chart_box_249_167_829_567.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S018",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\化学\\2016-2019北京高一化学下学期期末汇编：化学反应原理（教师版）(1).md",
+   "unit_id": "nearest:Q13",
+   "kind": "orphan",
+   "question_numbers": null,
+   "refs": [
+    "../../_imgs/2016-2019北京高一化学下学期期末汇编：化学反应原理（教师版）(1)/img_in_image_box_346_305_619_487.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S019",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\物理\\2021北京十二中高一（下）期中物理（教师版）(1).md",
+   "unit_id": "nearest:Q13",
+   "kind": "orphan",
+   "question_numbers": null,
+   "refs": [
+    "../../_imgs/2021北京十二中高一（下）期中物理（教师版）(1)/img_in_image_box_81_633_258_845.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S020",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2017-2019北京高中生物高一上期末汇编：分子与细胞（教师版）(1).md",
+   "unit_id": "nearest:Q34",
+   "kind": "orphan",
+   "question_numbers": null,
+   "refs": [
+    "../../_imgs/2017-2019北京高中生物高一上期末汇编：分子与细胞（教师版）(1)/img_in_image_box_221_646_269_770.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S021",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高一\\生物\\2017-2019北京高中生物高一上期末汇编：分子与细胞（教师版）(1).md",
+   "unit_id": "nearest:Q45",
+   "kind": "orphan",
+   "question_numbers": null,
+   "refs": [
+    "../../_imgs/2017-2019北京高中生物高一上期末汇编：分子与细胞（教师版）(1)/img_in_image_box_184_1394_330_1500.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S022",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2021北京农大附中高二（上）期中物理（合格考）（教师版）(1).md",
+   "unit_id": "nearest:Q5",
+   "kind": "orphan",
+   "question_numbers": null,
+   "refs": [
+    "../../_imgs/2021北京农大附中高二（上）期中物理（合格考）（教师版）(1)/img_in_image_box_197_1203_349_1329.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S023",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2021北京农大附中高二（上）期中物理（合格考）（教师版）(1).md",
+   "unit_id": "nearest:Q13",
+   "kind": "orphan",
+   "question_numbers": null,
+   "refs": [
+    "../../_imgs/2021北京农大附中高二（上）期中物理（合格考）（教师版）(1)/img_in_image_box_338_952_477_1018.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  },
+  {
+   "id": "S024",
+   "file": "D:\\Project\\Papers\\Ocr-markdown\\高二\\物理\\2021北京农大附中高二（上）期中物理（合格考）（教师版）(1).md",
+   "unit_id": "nearest:Q25",
+   "kind": "orphan",
+   "question_numbers": null,
+   "refs": [
+    "../../_imgs/2021北京农大附中高二（上）期中物理（合格考）（教师版）(1)/img_in_image_box_74_1307_212_1569.jpg"
+   ],
+   "label": "属于该题",
+   "note": ""
+  }
+ ]
+}
