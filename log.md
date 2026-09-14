@@ -1864,3 +1864,29 @@ Get-CimInstance 命令行 + Get-Process 实测:PID 38160 = `python ocr_watchdog.
 **复测(6 卷 before→after,data/p2_1_fix1_before_measure.json → data/p2_1_fix1_measure.json)**:contamination **76→3(−96%)**(题干混入 1→0 / 答案吞题干 5→2 / 共享未声明 70→1 / shared 缺值 0→0);answer_rate 100%→100%、admission_ready 100%→100%(**零回退**);credibility exact 86→85 / suspect 36→37 / partial 5→5(持平);sub_q_integrity 0.1458→0.2222;QC(data/p2_1_fix1_qc.json)6/6 PASS → 5/6:**综合英语新增 C7**(U44 作文题 questions_lines 含 L373"考生务必将答案答在答题卡上"指令行,v2.5 重跑漂移,两轮同形,已知 C7 家族,如实记账为新问题)。修复形态抽验:101地理 U2-3 evidence={type:answer_table, shared:true, value:"2.C 3.B"};交大英语 Q11(60-62) questions 收窄 [367,375] 排除题区内联答案、卷末答案 [792,796] 圈定、内联副本 L377 降重复答案块 warning——用户标注的"答案混入题干区"根因消除。
 
 **边界**:零身份重构/零 QuestionInstance 拆分/零新治理审计/零全库重跑/LOST 个案零通用框架;答案域冻结保持(仅 bug fix);V3 模型结论固化:Question + sub_questions + 共享 Material(73% KEEP 实证),不需要重构。**下一项 = P2.2 图片绑定 baseline(223 题)**。
+
+---
+
+## P2.2-baseline:图片绑定 baseline——识别率/归属事实/V3 消费三问 + 误提交文件恢复(2026-09-15)
+
+**输入**:用户 P2.1-e 验收裁定(charter §11):P2.1 正式结束,答案域冻结;contamination 残留 3 例 = accepted exception(禁继续 prompt 迭代);`shared` = 事实表达非复杂化(禁 answer_group/owner/relation/resolution graph);LOST 处置确认(禁 LLM 成为 OCR 修复器);f8a6d09 误扫历史文件按"不删除、恢复有意不入库"处理;批准 P2.2 第一轮,只答三问(识别率/归属准确率/V3 消费方式),禁图片治理平台/语义理解/分类/知识抽取/视觉 embedding/图谱。
+
+**误提交文件恢复(用户裁定 §11.1)**:`git rm --cached` + .gitignore 五文件(RS.MD = R54 时代陈旧恢复提示词;`data/r54_f1/f1_report.json` 4.8MB、`data/resolver_ref_r52/resolver_ir.json` 11MB——RS.MD §2 记载当年有意不入库,sha256 见已提交的 f1_summary/resolver_report;`logs/reslice_reslice-pac-annotated_log.txt`;空文件 `logs/ocr_child_err.log`),本地全保留;daemon 运行态三文件(ocr_page_usage/ocr_output_manifest/ocr_batch_log)自 P2.1-b1 起既有跟踪惯例,不动(不扩大)。CI 安全性已核实:tests 不读这两份大 JSON(仅历史手工脚本引用)。
+
+**工具**:`scripts/p2_2_image_baseline.py`(+`tests/test_p2_2_image_baseline.py` t1–t7,套件 **326 passed + 1 xfailed**)。口径:img 依赖题与 p2_1_measure 同口径(stem/材料区间命中 `<img`/`![`);引用相对源 md 目录解析,失败如实计 broken,不猜不修;题面之外引用细分 = 答案/解析区(记 unit 归属)/ 真孤儿(附最近单元行距,gap≤3 = adjacent"贴题未圈入"信号);审核单复用 P2.1-d2 HTML 骨架,确定性等距抽样(题面 2/3 + 孤儿 1/3),分类判断人工,LLM 不参与。
+
+**① 识别率(39 卷批,38 卷有 manifest,平谷生物 NO_MANIFEST 已知)**:
+- img 依赖题 **223**(与 p2_1_c measure 223 口径互证 ✓);
+- **223/223(100%)持有图片引用**;**215/223(96.41%)≥1 条引用可解析**;
+- 题面引用 386 条:**374 可解析 / 12 broken(96.89%)**;
+- broken 12 条 = **source defect**(全部 `imgs/` 前缀,盘上无该目录;顺义一中物理 11 条 + 师大附中政治 1 条),登记不修,禁 LLM 补图。
+
+**② 归属确定性事实(对错判定待人工审核单)**:
+- **shared=0:图片零跨题共享**(与答案表相反)——Figure 直挂 Question/Material,无共享建模需求;
+- 题面之外:答案/解析区引用 58 条(归属明确);真孤儿 84 条,其中 **adjacent(gap≤3)14 条**、far 70 条(集中 4 卷:农大附中物理 22 / 生物汇编 21 / 十二中物理 16 / 化学汇编 10);
+- 贴题孤儿行级取证:十二中物理 L324 题干"铅球运动轨迹如图"→ L326 图,gap=2,stem_lines 未圈入——"贴题图未进题面区间"的确定性信号(reslice 圈定缺口候选);
+- **人工审核单**:`data/p2_2_image_review.html`(24 条 = 16 题面绑定 + 8 孤儿;图以 file:// 渲染;单选"属于该题/不属于该题/存疑"+ 备注 + 导出 JSON),等待用户标注后给出归属准确率。
+
+**③ V3 消费方式(第一轮结论)**:`Question → Material → Figure` **成立**——(a) 图片不跨题共享,无共享建模问题;(b) 绑定关系可从行区间确定性导出(零 LLM),报告逐条给 resolved 绝对路径;(c) 源文引用是相对路径(`../../_imgs/...`,基准 = 源 md 所在目录),reslice 产物目录层级不同,**V3 必须消费解析后绝对路径**,不得直接搬 HTML 相对 src。
+
+**边界**:零 schema 变更 / 零 prompt 变更 / 零重跑 / 零图片语义理解;broken 与 far 孤儿不自动修,等人工审核与用户裁定。**待用户**:标注 24 条审核单 → 归属准确率收口;之后裁定"贴题未圈入"是否作为下一轮最小修复项。

@@ -26,3 +26,10 @@ pytest-cache-files-*/
 
 # --- 测试样本(显式保留,供代码审查对照数据结构)---
 !/tests/
+
+# --- 历史遗留大文件/陈旧提示词(R54 时代有意不入库,f8a6d09 误扫后恢复;sha256 见 f1_summary/resolver_report)---
+/RS.MD
+/data/r54_f1/f1_report.json
+/data/resolver_ref_r52/resolver_ir.json
+/logs/reslice_reslice-pac-annotated_log.txt
+/logs/ocr_child_err.log

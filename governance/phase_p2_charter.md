@@ -191,3 +191,28 @@ P2 的实质 = 把既有切片链路推到**真实批量**并输出 V3 可消费
 - ❌ 组合题身份重构 / QuestionInstance 拆分策略 / 新治理体系 / 新审计体系 / 新生命周期机制 / 全库重跑 / 为两个 LOST 个案建通用框架;
 - ❌ AnswerTable / AnswerGroup / AnswerReference / AnswerOwnership / AnswerMapping / AnswerResolver 等任何"共享答案子系统"——最小模型只有 `answer_evidence{type, lines, value, shared}`;
 - 当前 preprocessing 只解决一个问题:**进入 V3 的每个 Question/SubQuestion 能否找到准确且可追溯的答案证据**。
+
+## 11. 用户裁定(2026-09-15,P2.1-e 验收后):P2.1 正式结束,答案域冻结,进入 P2.2
+
+> 原文要点:P2.1-e 闭环质量很好——"没有把答案污染问题扩大成新的数据治理系统,而是用最小 schema 增强解决了实际问题",是 preprocessing 目前最正确的一次迭代方式。contamination 76→3(−96%)且 answer_rate / admission 不降,说明修复方向正确。P2.1 可以正式结束,批准进入 P2.2。
+
+### 11.1 P2.1-e 终局裁定
+
+- **contamination 76→3 = DONE**;剩余 3 例(通州地理 Q19/Q20 C-A2、上地英语 U16 C-A3,两轮同形、确定性不达标、已被校验显式拦截)= **accepted exception,登记 known limitation,禁止继续 prompt 迭代**(76→0 的收益抵不过 v2.6/v2.7 对已稳定卷的不可预测影响);
+- `shared` 字段 = **事实表达,不是复杂化**(高中试卷存在"一组题共享答案表"的出版排版事实);同时冻结:不得再扩展 answer_group / answer_owner / answer_relation / answer_resolution graph;
+- C-A4(重复答案块降 warning)方向确认:正确方向是"保留共享事实 → 明确消费关系",不是强行切碎源文本;
+- LOST 2 条处置确认:延庆语文 U10 非缺陷(answer/explanation 语义分层不得为塞满 answer.value 而破坏);交大英语 U-gram-A = source defect,**不得让 LLM 成为 OCR 修复器**,否则 preprocessing 失去事实边界;
+- 误提交历史文件(f8a6d09 经 `git add -A` 扫入):按"不删除、恢复有意不入库状态"处理——`git rm --cached` + .gitignore(RS.MD / r54_f1/f1_report.json / resolver_ref_r52/resolver_ir.json / pac-annotated log / ocr_child_err.log),本地保留;仓库定位是 AI 协作仓库,信噪比重要,陈旧恢复提示词不得再入库。
+
+### 11.2 P2.2 第一轮(图片绑定 baseline)目标——只回答三个问题
+
+1. **图片识别率**:需要图片的题(223 题口径)中,有多少真正持有可解析的图片(source_figure 类事实);
+2. **图片归属准确率**:重点不是"OCR 能不能识别图片",而是"这张图是不是属于这个题";
+3. **V3 消费方式**:`Question → Material → Figure` 是否成立。
+
+第一轮只做:`PDF → 图片抽取 → 题目绑定 → V3 可引用`。
+
+### 11.3 P2.2 明令禁止
+
+- ❌ 图片治理平台 / 图片语义理解 / 图片自动分类 / 图像知识抽取 / 视觉 embedding / 图谱预设计;
+- 保持纪律:小批量 → 测量 → 针对性修复 → 收口,不设计平台。
