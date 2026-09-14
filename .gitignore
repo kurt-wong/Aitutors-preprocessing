@@ -33,3 +33,16 @@ pytest-cache-files-*/
 /data/resolver_ref_r52/resolver_ir.json
 /logs/reslice_reslice-pac-annotated_log.txt
 /logs/ocr_child_err.log
+
+# --- P2.2 最小修复轮中间过程产物(混版/重跑实验,非收口证据;收口证据=data/p2_2_b2_measure.json)---
+/data/p2_2_fix_measure.json
+/data/p2_2_fix_batch2.json
+/data/reslice_reslice-p2-2-fix_result.json
+/data/reslice_reslice-p2-2-fix_summary.json
+/data/reslice_reslice-p2-2-fix2_result.json
+/data/reslice_reslice-p2-2-fix2_summary.json
+/data/reslice_reslice-p2-b2-rerun_result.json
+/data/reslice_reslice-p2-b2-rerun_summary.json
+/logs/reslice_reslice-p2-2-fix_log.txt
+/logs/reslice_reslice-p2-2-fix2_log.txt
+/logs/reslice_reslice-p2-b2-rerun_log.txt

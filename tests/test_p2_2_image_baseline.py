@@ -189,3 +189,48 @@ def test_t7_synth_repo_integration(synth_repo):
     assert rec["img_dep_questions"] == 1
     assert rec["refs_total"] == 1 and rec["refs_broken"] == 1
     assert rec["orphan_refs"] == []
+
+
+def test_t8_prompt_v26_semantic_reference_rule():
+    """prompt v2.6(P2.2 最小修复):语义引用→必须圈入;禁按距离纳入;禁新归属结构。"""
+    rp = _load("rp_p22", os.path.join(ROOT, "scripts", "reslice_pipeline.py"))
+    assert rp.PROMPT_VERSION == "reslice-pilot-v2.7"
+    assert "语义引用规则" in rp.PROMPT_HEAD
+    assert "必须包含在本题的行区间内" in rp.PROMPT_HEAD
+    # 反过绑定约束:距离本身不得成为圈入理由
+    assert "绝不因为图片离本题近就纳入" in rp.PROMPT_HEAD
+    # 不引入新归属结构(charter §11.3 禁图片治理平台)
+    assert "不要为此建立任何新的图片归属结构" in rp.PROMPT_HEAD
+    # v2.7:选项配图版式——options_lines 必须延伸覆盖末选项配图行
+    assert "选项配图版式" in rp.PROMPT_HEAD
+    assert "延伸覆盖到末选项的配图行" in rp.PROMPT_HEAD
+
+
+def _mk_paper(file, refs):
+    return {"file": file, "status": "OK",
+            "questions": [{"unit_id": "Q1", "refs": refs}]}
+
+
+def test_t9_binding_table_key_is_path_invariant():
+    """跨输出目录比较:键只含 basename + 卷内行号,不含绝对路径。"""
+    a = IB.build_binding_table([_mk_paper("D:/outA/物理/x.md", [
+        {"line": 5, "zone": "stem", "ref": "../../_imgs/x/i1.jpg", "exists": True}])])
+    b = IB.build_binding_table([_mk_paper("D:/outB/物理/x.md", [
+        {"line": 5, "zone": "stem", "ref": "../../_imgs/x/i1.jpg", "exists": True}])])
+    assert set(a) == set(b)
+    d = IB.diff_bindings(a, b)
+    assert d["added"] == [] and d["removed"] == [] and d["moved"] == []
+
+
+def test_t10_diff_bindings_zones():
+    """孤儿消失→新增绑定;换区(stem→extra)如实报 moved;不判定对错。"""
+    before = IB.build_binding_table([_mk_paper("D:/outA/x.md", [
+        {"line": 4, "zone": "stem", "ref": "i1.jpg", "exists": True}])])
+    after = IB.build_binding_table([_mk_paper("D:/outB/x.md", [
+        {"line": 4, "zone": "extra", "ref": "i1.jpg", "exists": True},
+        {"line": 9, "zone": "stem", "ref": "i2.jpg", "exists": True}])])
+    d = IB.diff_bindings(before, after)
+    assert len(d["added"]) == 1 and d["added"][0]["key"][2] == 9
+    assert d["removed"] == []
+    assert d["moved"] == [{"key": ["x.md", "Q1", 4, "i1.jpg"],
+                           "from_zone": "stem", "to_zone": "extra"}]

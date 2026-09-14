@@ -201,7 +201,8 @@ def test_t8_measure_answer_contamination(workdir):
 
 def test_t9_prompt_v25_boundary_semantics():
     """prompt v2.5:shared 字段 + 答案边界规则必须在 prompt 里。"""
-    assert RP.PROMPT_VERSION == "reslice-pilot-v2.5"
+    # 只锁 v2.5+ 语义,不锁具体小版本号(后续 P2.2 修复轮继续递增)
+    assert RP.PROMPT_VERSION >= "reslice-pilot-v2.5"
     assert '"shared": true 或 false' in RP.PROMPT_HEAD
     assert "绝不为了\"只圈自己的\"把共享答案表切碎" in RP.PROMPT_HEAD
     assert "由 answer_lines 圈定" in RP.PROMPT_HEAD

@@ -475,6 +475,39 @@ restore();
 """
 
 
+def build_binding_table(papers):
+    """逐条已圈定引用的归属身份(确定性、不含路径):用于 before/after 逐卷对账。
+
+    key=(basename(file), unit_id, line, ref) —— 跨输出目录比较时绝对路径不可比
+    (两个 out root 不同),故只取文件名与卷内行号。同一行多引用各自成条。
+    """
+    tbl = {}
+    for p in papers:
+        if p.get("status") != "OK":
+            continue
+        fb = os.path.basename(p["file"])
+        for q in p.get("questions") or []:
+            for r in q.get("refs") or []:
+                tbl.setdefault((fb, q.get("unit_id"), r.get("line"), r.get("ref")),
+                               {"zone": r.get("zone"), "exists": r.get("exists")})
+    return tbl
+
+
+def diff_bindings(before_tbl, after_tbl):
+    """逐条绑定 delta:新增 / 消失 / 换绑(unit 或 zone 变化)。不做对错判定。"""
+    added = [{"key": list(k), **after_tbl[k]}
+             for k in sorted(set(after_tbl) - set(before_tbl))]
+    removed = [{"key": list(k), **before_tbl[k]}
+               for k in sorted(set(before_tbl) - set(after_tbl))]
+    moved = []
+    for k in sorted(set(before_tbl) & set(after_tbl)):
+        b, a = before_tbl[k], after_tbl[k]
+        if b.get("zone") != a.get("zone"):
+            moved.append({"key": list(k), "from_zone": b.get("zone"),
+                          "to_zone": a.get("zone")})
+    return {"added": added, "removed": removed, "moved": moved}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--batch", default=str(ROOT / "data/p2_1_batch1.json"))
@@ -483,6 +516,8 @@ def main():
     ap.add_argument("--src", default=str(SRC), help="源语料根(默认 Ocr-markdown)")
     ap.add_argument("--review-html", default=None, help="②人工归属审核单 HTML 输出路径")
     ap.add_argument("--sample-size", type=int, default=24)
+    ap.add_argument("--label-from", default=None,
+                    help="修复轮对账:另一输出目录,对同一批卷算绑定 delta + 孤儿变化")
     args = ap.parse_args()
 
     src_root = Path(args.src)
@@ -495,6 +530,34 @@ def main():
               "out": os.path.abspath(args.out),
               "generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
               "totals": tot, "papers": papers}
+
+    if args.label_from:
+        base = [analyze_paper(Path(args.label_from), e, src_root) for e in entries]
+        btot = aggregate(base)
+        bt = build_binding_table(base)
+        at = build_binding_table(papers)
+        base_orph = {}
+        for p in base:
+            if p.get("status") == "OK":
+                base_orph[os.path.basename(p["file"])] = p.get("orphan_refs") or []
+        orphan_delta = []
+        for p in papers:
+            if p.get("status") != "OK":
+                continue
+            fb = os.path.basename(p["file"])
+            orphan_delta.append({
+                "file": p["file"],
+                "orphan_before": len(base_orph.get(fb, [])),
+                "orphan_after": len(p.get("orphan_refs") or []),
+                "orphan_after_detail": p.get("orphan_refs") or [],
+            })
+        report["label_from"] = {
+            "baseline_out": os.path.abspath(args.label_from),
+            "totals_before": btot, "totals_after": tot,
+            "binding_diff": diff_bindings(bt, at),
+            "orphan_delta": orphan_delta,
+        }
+
     Path(args.result).parent.mkdir(parents=True, exist_ok=True)
     with open(args.result, "w", encoding="utf-8", newline="") as f:
         json.dump(report, f, ensure_ascii=False, indent=1)
