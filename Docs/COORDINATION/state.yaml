@@ -125,9 +125,27 @@ facts:
     confidence: OBSERVED
     status: observed
   - id: FACT-017
-    statement: "P-19(Q14 四中顺义分校化学)G located = incomplete,line_ref=null——G 从未绑定任何行;region 全 7 行无字面 G;'G 为何被检出'属 V3 detector 代码追踪(EB-007 子项),非 Source 问题"
+    statement: "P-19(旧编号;新编号 P-20,Q14 四中顺义分校化学)G located = incomplete,line_ref=null——G 从未绑定任何行;region 全 7 行无字面 G;'G 为何被检出'属 V3 detector 代码追踪(EB-007 子项),非 Source 问题"
     source: both
     evidence: "consumer-report-b3.json located 字段亲读(DSH);已答复 handoff 003 问题 1"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-018
+    statement: "修正 A 核验 PASS + 新发现: claude4-attribution.json(84fd39f)paper 字段 21/21 与 b3 报告机器 join 全对(MISMATCH=0),high_risk 10/10 卷名与 b1 真名全对;但 pending_21 的 case ID 被整体重编号(旧 P-02~05 牛栏山→新 P-12~15、旧 P-11~13 丰台→新 P-03~05 等),旧编号引用全部失效,别名映射见 case_id_aliases;裁定: evidence artifact 的 case id 一经分配不得重编号(修内容不改 id)"
+    source: both
+    evidence: ".pytest_work/bdr_verify_fix_a.py(只读机器对账);V3 commit 84fd39f 亲读"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-019
+    statement: "P3.2 Scope Document(V3 commit 779814e+07269f2)DSH 核验 PASS: 五要素齐全且与 DEC-010/011 对齐(Scope 单一问题/Inputs 权威链分层+Adapter UNTRUSTED no authority+生产化须走独立 L2/Metrics 六项含 bypass path count=0+N1~N8 N7N8 核心/Non-goals 原样/OBSERVED-INFERENCE-DECISION 三级禁混写/八条 Constraints);DSH 步骤④完成,实验获授权进入步骤⑤"
+    source: both
+    evidence: "p32_scope.md 全文亲读(DSH);charter §14.11"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-020
+    statement: "修正 B 核验 PARTIAL: cross-corpus 表述已更新但仍有不准确处——'Cases may overlap in paper but are from different unit sets' 与 FACT-014 矛盾(Q13/Q37 = 同源卷同 unit,不同产物版本),correspondence_type 仍为 PATTERN_LEVEL(应为 UNIT_LEVEL(Q13/Q37)+ PATTERN_LEVEL(其余));待 V3 一行修正"
+    source: both
+    evidence: "claude4-attribution.json cross_corpus_correspondence 字段亲读"
     confidence: OBSERVED
     status: observed
 
@@ -186,8 +204,8 @@ open_questions:
     question: "P3.2 V3 Consumer Compatibility / Experimental Enforcement Verification: Admission Boundary 是否能够阻止没有满足 Evidence Authority 要求的 Evidence 进入 Admission"
     owner: v3
     status: DECIDED
-    facts: [FACT-004, FACT-005, FACT-009]
-    note: "用户正式放行(DEC-010,EXPERIMENT ONLY)。工作顺序(严格): ①修正 A(B3 报告 join 修正 attribution 卷名)→ ②修正 B(cross-corpus 表述 + EB canonical 编号)→ ③Claude 起草 Scope Document(Scope/Inputs/Metrics/Negative Acceptance/Non-goals 五要素;Metrics 必含 bypass path count;Negative Acceptance 必含 N1~N8,N7/N8 核心)→ ④DSH 核验 Scope → ⑤实验 → ⑥Findings: 无 bypass → EB-004 evidence closed;有 bypass → 架构问题进 Decision 流程。生产代码零修改;不得与 EB-005 合并"
+    facts: [FACT-004, FACT-005, FACT-009, FACT-018, FACT-019]
+    note: "用户正式放行(DEC-010,EXPERIMENT ONLY)。工作顺序进度: ①修正 A PASS(paper 21/21+10/10 机器对账全对,但 case ID 被重编号,FACT-018 + case_id_aliases)→ ②修正 B PARTIAL(cross-corpus 仍有一处与 FACT-014 矛盾,FACT-020,一行修正非阻塞)→ ③Scope Document 完成(p32_scope.md)→ ④DSH 核验 PASS(FACT-019)→ **⑤实验获授权启动** → ⑥Findings: 无 bypass → EB-004 evidence closed;有 bypass → 架构问题进 Decision 流程。八禁(DEC-010);不得与 EB-005 合并"
   - id: EB-005
     question: "生产 Resolver 是否应引入 options_region 概念(消费 Producer Evidence Region)以替代 Source 自推断边界?"
     owner: v3
@@ -199,7 +217,7 @@ open_questions:
     owner: v3
     status: EVIDENCED
     facts: [FACT-010, FACT-012, FACT-015]
-    note: "Claude Claim C-EB003-001: 9 case(P-11~15, H-03/05/09/10)根因缺标点;DSH 源侧 5/5 亲验成立(FACT-015)。Claude 提案: B/C/D 有标点且 A 为 B 前行首单字母 → 判 A。规则设计属 V3;找不到唯一性证明 → pending_review(Rule 4)"
+    note: "Claude Claim C-EB003-001: 9 case(旧编号 P-11~15=新编号 P-03/04/05/08/18, H-03/05/09/10)根因缺标点;DSH 源侧 5/5 亲验成立(FACT-015)。Claude 提案: B/C/D 有标点且 A 为 B 前行首单字母 → 判 A。规则设计属 V3;找不到唯一性证明 → pending_review(Rule 4)"
   - id: EB-007
     question: "formula/chemical FP:纯结构上下文(括号/数学模式/非 marker 语法)能否排除,不依赖学科语义?"
     owner: v3
@@ -238,12 +256,42 @@ claude_id_aliases:
     C-EB003-001: "EB-006(9 case 缺标点根因;DSH 源侧 5/5 验 → FACT-015)"
     C-EB005-001: "EB-007(6 case 结构上下文可排除假设,INFERRED;呈现 DSH 已验,结论待 V3 分析)"
 
+# ---------- case ID 重编号别名(claude4-attribution.json commit 84fd39f 重生成时整体重编号;FACT-018) ----------
+# 规则:evidence artifact 的 case id 一经分配不得重编号——修内容不改 id。
+case_id_aliases:
+  note: "旧编号(handoff 003/004 与 canonical 早期记录所用)→ 新编号(84fd39f 后的 claude4-attribution.json)"
+  pending_21:
+    old_P-01: P-01   # 化学反应原理 Q4(未变)
+    old_P-02: P-12   # 牛栏山 Q1
+    old_P-03: P-13   # 牛栏山 Q6
+    old_P-04: P-14   # 牛栏山 Q7
+    old_P-05: P-15   # 牛栏山 Q9
+    old_P-06: P-06   # 101地理 Q13(未变)
+    old_P-07: P-07   # 101地理 Q37(未变)
+    old_P-08: P-10   # 生物汇编 Q72
+    old_P-09: P-19   # 四中顺义化学 Q1
+    old_P-10: P-21   # 农大附中物理 Q7
+    old_P-11: P-03   # 丰台历史 Q8
+    old_P-12: P-04   # 丰台历史 Q13
+    old_P-13: P-05   # 丰台历史 Q16
+    old_P-14: P-08   # 师大附中政治 Q9
+    old_P-15: P-18   # 一六一数学 Q1
+    old_P-16: P-02   # 昌平化学 Q5
+    old_P-17: P-16   # 一零一化学 Q7
+    old_P-18: P-17   # 一零一化学 Q12
+    old_P-19: P-20   # 四中顺义化学 Q14(FACT-017 的 G case)
+    old_P-20: P-11   # 上地一零一英语 Q5
+    old_P-21: P-09   # 十二中物理 Q13
+  high_risk_10: "H-01~H-10 编号未变"
+
 # ---------- 当前禁止事项(两侧共同,叠加各自仓库冻结) ----------
 prohibitions:
   - "不改 V3 Frozen Spec / 不冻结 Producer Contract / 不修 Resolver heuristics(EB 项 DECIDED 前)"
   - "不为提高 96.2% coverage 修补;Correct unresolved > Incorrect resolved"
-  - "不合并两侧不同语料的统计分母(b1 38 卷 case 与 b2 8 卷 case 零重叠)"
+  - "不合并两侧不同语料的统计分母(Q13/Q37 同 unit 跨产物版本,其余 pattern 级对应)"
   - "不用 REPORTED 冒充 OBSERVED;不对不存在于本仓库的 case 做 unit 级归因"
   - "不建实时互调/orchestration 平台;Coordination 内容不得当作 L2 Decision"
   - "不把 21 pending + 10 high-risk 当作 31 个独立失败混计(重叠/口径未证)"
   - "V3 侧协调文件必须 commit 后才算入册(未 commit = REPORTED 级)"
+  - "evidence artifact 的 case id 一经分配不得重编号(修内容不改 id);转述/手写重构证据文件数据一律禁止(导出)"
+  - "P3.2 八禁(DEC-010): 实验不改生产 Resolver/Frozen Spec/Producer Contract/Gate policy/Admission semantics,不放宽规则,实验结果≠架构 Decision,失败不自动 workaround"

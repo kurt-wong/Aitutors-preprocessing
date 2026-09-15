@@ -2181,3 +2181,21 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **落盘**:state.yaml(DEC-010/011 入册,authority = 用户正式裁定;EB-004 → **DECIDED**,状态机走用户裁决无跳级)/ handoff 005(裁定转发 + Scope 五要素模板)/ CURRENT.md / charter §14.10 / status.md。
 
 **下一步(严格按用户顺序)**:等 Claude 执行修正 A/B(commit hash 回执)→ Claude 起草 Scope Document → **DSH 核验 Scope(用户指定第 ④ 步)** → 放行实验。DSH 侧在 Scope 核验前无实验相关动作。
+
+---
+
+## 2026-09-15 · 步骤④核验:修正 A PASS / 修正 B PARTIAL / Scope PASS → 实验获授权(charter §14.11)
+
+**触发**:Claude 回执前置修正已执行(V3 `84fd39f`)+ Scope Document 已更新(`779814e` + `07269f2`,均已在 GitHub)。DSH 执行用户指定步骤④核验。**性质:核验 + 裁决,零 pipeline 代码、零重跑。**
+
+**修正 A:PASS(机器对账,不采信转述)**——只读脚本 `.pytest_work/bdr_verify_fix_a.py` 按 unit+paper join `consumer-report-b3.json`:**pending_21 21/21 全对(MISMATCH=0),high_risk_10 10/10 与 b1 真名全对**;H 编号未变。权威链方向正确(source of truth → derived evidence)。
+
+**新发现 + 新裁定(FACT-018,本轮最重要)**:修正 A 重生成文件时 **case ID 被整体重编号**——旧 P-02~05(牛栏山)→ 新 P-12~15;旧 P-11~13(丰台)→ 新 P-03~05;旧 P-14(师大附中政治)→ 新 P-08;旧 P-16(昌平 Q5)→ 新 P-02;旧 P-19(FACT-017 的 G case)→ **新 P-20**;旧 P-09(四中顺义 Q1)→ 新 P-19;旧 P-08(生物 Q72)→ 新 P-10;旧 P-10(农大附中)→ 新 P-21;旧 P-15(一六一)→ 新 P-18;旧 P-17/18(一零一化学)→ 新 P-16/17;旧 P-20(上地一零一)→ 新 P-11;旧 P-21(十二中)→ 新 P-09。handoff 003/004 与 canonical 早期记录的 P-xx 引用全部错锚。**裁定(canonical prohibitions):evidence artifact 的 case id 一经分配不得重编号——修内容不改 id**(与 EB/FACT id 同源:跨轮跨仓库引用锚点)。完整映射入 `case_id_aliases`;EB-006/007 note 已标注新编号。
+
+**修正 B:PARTIAL(FACT-020,非阻塞)**——cross-corpus 已更新但仍写 "Cases may overlap in paper but are from different unit sets",与 FACT-014 矛盾(Q13/Q37 = 同源卷同 unit,不同产物版本);correspondence_type 应为 UNIT_LEVEL(Q13/Q37)+ PATTERN_LEVEL(其余)。一行修正,随实验期间执行。
+
+**Scope Document:PASS(FACT-019)**——`p32_scope.md` 全文亲读,五要素与 DEC-010/011 逐条对齐:Scope 单一问题 + Does-NOT-verify 清单;Inputs 七层权威链分层(**Adapter = UNTRUSTED, no authority**;生产化须走独立 L2 = 防"第二套 V3");Metrics 六项含 **bypass path count = 0**(定义冻结;Gate reject/Adapter failure/Validation failure 不计 bypass);N1–N8 全表 **N7/N8 核心**;Non-goals 六条原样 + OBSERVED→EVIDENCE→REPORT;OBSERVED/INFERENCE/DECISION 三级禁混写;Constraints 八条 = 八禁。附注:文档头 "APPROVED WITH MINOR CLARIFICATIONS" 写于步骤④前——**现在起才真正成立**;后续文档 DSH 核验前应标 "pending DSH verification"。
+
+**裁决:实验获授权启动(步骤⑤)**——EB-004 进度 ①✓②◐③✓④✓ → **⑤ AUTHORIZED TO PROCEED**。实验期间八禁;发现问题唯一出口 OBSERVED→EVIDENCE→REPORT;产出后 DSH 核验(不采信转述)再共同呈报用户。
+
+**落盘**:state.yaml(FACT-018/019/020 + case_id_aliases + prohibitions 两条新增 + EB-004/006/007 note)/ handoff 006(裁决 + 新裁定 + 实验授权)/ CURRENT.md(进度板)/ charter §14.11。**DSH 侧下一步**:等实验产出 → 核验 → 呈报用户。

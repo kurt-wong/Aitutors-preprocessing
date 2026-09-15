@@ -594,3 +594,13 @@ preprocessing 项目已从"不断增加能力"进入**收敛期**——停止条
 - **修正 A 为前置的理由(用户裁定)**:权威链必须保持 `consumer-report-b3.json → paper identity → claude4-attribution.json`,不得倒置——这正是 "Canonical ledger → derived evidence" 原则;带着错误证据开工 = 权威链倒置;
 - **Scope 核心要求**:Scope 只验证一个问题——"Admission Boundary 是否能够阻止没有满足 Evidence Authority 要求的 Evidence 进入 Admission"(是 enforcement,不是架构设计);Inputs 每层标注 producer fact / 实验 adapter 构造物 / V3 正式对象("不要让实验 adapter 偷偷成为第二套 V3");Metrics 必含 **bypass path count**(直接攻击"EvidencePromotion/ValidationEvent 存在但 Admission 是否真正依赖它"的既有疑点);Negative Acceptance 必含 N1–N8,**N7(绕过 promotion 直连 Admission)/ N8(gate approve 但 Evidence Authority 无效)为核心攻击项**——验证 "Admission 到底由 Gate decision 单独控制还是 Evidence Authority 真正控制";负面验收哲学 = **证明"坏的 Evidence 进不去",而非"好的能进去"**;
 - **Non-goals 原样写死**:实验不决定 options_region 是否成为生产 Resolver 输入 / HTML 归属 / Resolver 规则是否改 / Producer Contract 是否改 / Evidence Authority 架构是否冻结 / EB-005 是否实现;实验中发现问题唯一合法出口 = **OBSERVED → EVIDENCE → REPORT**,不是 OBSERVED → 修改架构。
+
+### 14.11 步骤④核验:修正 A PASS / 修正 B PARTIAL / Scope PASS → 实验获授权(2026-09-15)
+
+> Claude 执行前置修正(V3 commit `84fd39f`)并起草 Scope Document(`779814e` + `07269f2`,均已在 GitHub)。DSH 按用户顺序第 ④ 步核验。**性质:核验 + 裁决,零 pipeline 代码、零重跑。**
+
+- **修正 A:PASS(机器对账)**:只读脚本按 unit+paper join `consumer-report-b3.json`——**pending_21 21/21 全对(MISMATCH=0),high_risk_10 10/10 与 b1 真名全对**;权威链方向正确(source of truth → derived evidence);
+- **新发现 + 新裁定(FACT-018)**:修正 A 重生成文件时 **case ID 被整体重编号**(旧 P-02~05 牛栏山→新 P-12~15、旧 P-11~13 丰台→新 P-03~05、旧 P-19(G case)→新 P-20 等),旧引用全部错锚。**裁定入 canonical prohibitions:evidence artifact 的 case id 一经分配不得重编号——修内容不改 id**(与 EB/FACT id 同源理由:跨轮跨仓库引用锚点)。完整旧→新映射入 `case_id_aliases`;
+- **修正 B:PARTIAL(非阻塞,FACT-020)**:cross-corpus 已更新但仍写 "different unit sets"——与 FACT-014 矛盾(Q13/Q37 = 同源卷同 unit,不同产物版本);correspondence_type 仍 PATTERN_LEVEL,应为 UNIT_LEVEL(Q13/Q37)+ PATTERN_LEVEL(其余)。一行修正,随实验期间执行;
+- **Scope Document:PASS(FACT-019)**:五要素齐全且与 DEC-010/011 逐条对齐——Scope 单一问题 + Does-NOT-verify 清单;Inputs 七层权威链分层标注(**Adapter = UNTRUSTED, no authority**;生产化须走独立 L2 = 防"第二套 V3");Metrics 六项含 **bypass path count = 0**(定义冻结:Admission.success==true AND Authority invalid/absent;Gate reject/Adapter failure/Validation failure 不计);N1–N8 全表 N7/N8 核心;Non-goals 六条原样 + OBSERVED→EVIDENCE→REPORT;OBSERVED/INFERENCE/DECISION 三级禁混写;Constraints 八条 = 八禁。附注:文档头 "APPROVED" 写于步骤④前,现在起才真正成立——后续文档 DSH 核验前应标 "pending DSH verification";
+- **裁决:实验获授权启动(用户顺序步骤⑤)**。EB-004 进度 = ①✓ ②◐ ③✓ ④✓ → **⑤ AUTHORIZED**;实验期间八禁 + 发现问题只能 REPORT;产出后 DSH 侧做核验(不采信转述)再共同呈报用户。
