@@ -2476,3 +2476,22 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 
 **落盘**:state.yaml integration_contract.owner_pause_order + 
 ext 更新;CURRENT.md 顶部暂停横幅。Contract 保持 v0.1 DRAFT,语料零写入,两仓代码零修改。
+
+---
+
+## 2026-09-16 Owner B1-B3 裁决回应:Interface Facts v2 + B1-B3 Readiness + Closure Plan v2
+
+**触发**:Owner 指令——基于已裁决 B1-B3 Decision Record(DEC-019)完成 preprocessing 生产侧收口准备:回答 producer 能/不能提供什么与缺口;提供 Contract v0.2 生产侧输入;数据治理四项暂缓(接口冻结优先),整理执行计划并标注冻结依赖。
+
+**武器**:.pytest_work/pif2_final.py 单脚本确定性只读探针 → 工件 data/producer_interface_probe_v2.json(identity 面双口径 / manifest 身份字段穷举 / IR sha 自洽复验 / 拒收 17 条对账 / OCR 清单键面 / 非标 unit_type 双面)。语料零写入。
+
+**新固化事实(OBSERVED,FACT-033/034)**:
+1. **manifest 身份字段零命中**:0/166 携任何 sha/hash 键,0/166 携 source_version_id——B1 "Manifest = Source Identity Authority"今天无承载字段,缺口是 schema 增量不是能力问题;
+2. **identity 面双口径闭合**:字段口径 87/79 = IR 生成与 C-IN-1 实际判定口径;目录口径 88/78;差 1 实例钉死 = resliced-pilot 三十一中化学(v2 目录内 legacy 形态,IR 中 REJECTED_V1 'identity_version < 2 (C-IN-1)')。接口面应锚字段口径 87;
+3. **IR 88 记录 = v2 目录面全集**(manifest_file 88/88 可解析);71 ADMITTED 的 source_sha256 == provenance.source_version == 当前磁盘 md 字节 sha(71/71,裁决当日复验零漂移);17 拒收 = 16 QC_FAIL + 1 REJECTED_V1 与 v2 面无 ir 对象 manifest 完全闭合;
+4. **B2 producer 侧已合规**:raw bytes SHA-256 唯一身份(md resolver_reference.py:52-53/PDF r67_manifest_bootstrap.py:181),norm_sha256/corpus_sha256/清单指纹全内部,body_hash/line_hash/integrity_hash 零产出——B2 零实施动作;
+5. **B3 现状**:恰 1 例 andle_question 双面原样(零静默转换但零隔离),链上零守卫,B3 语义无执行面;
+6. **新识别互斥时序**:G1 回填(source_version_id 钉 md 字节)与 D2 recover_images 批跑(就地改写 md 引用 → 字节变 → id 失配)构成接口一致性互斥,Contract v0.2 与执行令必须给先后;
+7. **md 计数口径对账**:今日全树 6,114 = raw face 4,224 + reslice 派生 355 + auto-annotated 1,535;raw face 与 v1 时点一致(零增长)。
+
+**落盘**:IF-v2(§6 能/不能/缺口六缺口 G1~G6)/ Readiness(§3 v0.2 输入四件 + §5 治理五项依赖表)/ Closure Plan v2(主线改接口冻结序,A 类二选一被 B3 取代部分,v1 保留);DEC-019 入册;FACT-033/034 入册。Contract 正文零改动,两仓代码零修改,数据文件零修改。

@@ -1,0 +1,312 @@
+{
+ "corpus_snapshot": {
+  "manifests": 166,
+  "note_raw_face": "raw_face = 全部 md 排除 reslice*/resliced* 派生目录与 auto-annotated-* 即 v1 口径 4224",
+  "source_md_all": 6114,
+  "source_md_auto_annotated": 1535,
+  "source_md_raw_face": 4224,
+  "source_md_reslice_dirs": 355
+ },
+ "p1_identity_face": {
+  "by_dir": {
+   "v1_dirs": 78,
+   "v2_dirs": 88
+  },
+  "by_field": {
+   "identity_version=2": 87,
+   "identity_version=None": 79
+  },
+  "interpretation": "字段口径 87/79(Ir 与 C-IN-1 实际判定口径);目录口径 88/78;差 1 = hybrid 实例",
+  "v2_dir_legacy_hybrids": [
+   {
+    "file_keys": [
+     "annotation_meta",
+     "model",
+     "source_file",
+     "units"
+    ],
+    "identity_version": null,
+    "manifest": "resliced-pilot/高一/化学/2021北京三十一中高一（下）期中化学（教师版）(1).manifest.json"
+   }
+  ]
+ },
+ "p1b_manifest_identity_gap": {
+  "carrying_sha_or_hash_key": 0,
+  "carrying_source_version_id": 0,
+  "manifests": 166
+ },
+ "p2_ir_coverage": {
+  "face": {
+   "v2_dirs": 88
+  },
+  "manifest_file_resolves": 88,
+  "records": 88,
+  "v2_dir_covered_by_ir": 71,
+  "v2_dir_manifests": 88,
+  "v2_dir_missing_from_ir": [
+   "reslice-batch-C/会考/化学/2018北京春季高中会考化学（教师版）(1).manifest.json",
+   "reslice-batch-C/会考/语文/2018北京春季高中会考语文（教师版）(1).manifest.json",
+   "reslice-batch-C/合格考/英语/2020北京高中合格考英语（第二次）（教师版）(1).manifest.json",
+   "reslice-batch-C/学业水平考试/化学/12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.manifest.json",
+   "reslice-batch-C/高一/历史/2020北京平谷高一（上）期末历史含答案.manifest.json",
+   "reslice-batch-C/高一/政治/2021北京四十三中高一（上）期中政治（教师版）.manifest.json",
+   "reslice-batch-C/高一/生物/2021北京四中高一（上）期中生物（教师版）.manifest.json",
+   "reslice-batch-C/高一/英语/2019北京三十五中新高一分班考试英语含答案(1).manifest.json",
+   "reslice-batch-C/高三/化学/1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "reslice-batch-C/高三/化学/2017-2019北京高三化学上学期期末汇编：化学实验（教师版）(1).manifest.json",
+   "reslice-batch-C/高三/数学/2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "reslice-batch-C/高考真题/数学/2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).manifest.json",
+   "reslice-pac-annotated/reslice-pac/ocr/pac-c07-01.manifest.json",
+   "reslice-pac-annotated/reslice-pac/ocr/pac-c09-01.manifest.json",
+   "reslice-pac-annotated/reslice-pac/ocr/pac-c09-02.manifest.json",
+   "reslice-pac-annotated/reslice-pac/ocr/pac-c11-02.manifest.json",
+   "resliced-pilot/高一/化学/2021北京三十一中高一（下）期中化学（教师版）(1).manifest.json"
+  ]
+ },
+ "p3_ir_sha_self_consistency": {
+  "checked_with_ir": 71,
+  "mismatch": [],
+  "sha_eq_actual_md": 71,
+  "sha_eq_prov": 71
+ },
+ "p4_key_faces": {
+  "ir_inner_keys": [
+   "ir_version",
+   "manifest_file",
+   "materials",
+   "qc_verdict",
+   "source_file",
+   "source_sha256",
+   "units"
+  ],
+  "ir_record_keys": [
+   "disposition",
+   "file",
+   "ir",
+   "qc_verdict",
+   "reasons"
+  ],
+  "linkage": "ir.source_file == manifest.source_file (值相等,绝对路径)",
+  "manifest_file_keys_sample": [
+   "annotation_meta",
+   "identity_version",
+   "model",
+   "sections",
+   "source_file",
+   "units"
+  ],
+  "provenance_keys": [
+   "confidence_state",
+   "extraction_method",
+   "manifest_file",
+   "qc_verdict",
+   "source_file",
+   "source_lines",
+   "source_version"
+  ],
+  "unit_keys": [
+   "answer_text",
+   "answers",
+   "basis",
+   "basis_evidence",
+   "content",
+   "flags",
+   "material_ref",
+   "printed_number",
+   "printed_provenance",
+   "provenance",
+   "question_numbers",
+   "section_ref",
+   "section_title",
+   "unit_id",
+   "unit_type"
+  ]
+ },
+ "p5_ocr_manifest": {
+  "entries": 1801,
+  "entry_keys": {
+   "audit_line": 698,
+   "log_ok_lines": 698,
+   "output_rel": 1801,
+   "pages": 1801,
+   "processed_at": 698,
+   "provenance": 698,
+   "source_rel": 1801,
+   "source_sha256": 1801,
+   "source_size": 1801,
+   "written_at": 1801
+  },
+  "path": "data/ocr_output_manifest.jsonl"
+ },
+ "p6_nonstandard_unit_type": {
+  "count_ir": 1,
+  "count_manifest": 1,
+  "ir_face": [
+   {
+    "file": "2020北京高中合格考化学（第一次）（教师版）(1).md",
+    "unit_id": "Q1",
+    "unit_type": "andalone_question"
+   }
+  ],
+  "manifest_face": [
+   {
+    "manifest": "reslice-batch-C/合格考/化学/2020北京高中合格考化学（第一次）（教师版）(1).manifest.json",
+    "unit_id": "Q1",
+    "unit_type": "andalone_question"
+   }
+  ]
+ },
+ "p7_rejected_records": {
+  "count": 17,
+  "dispositions": {
+   "REJECTED_QC_FAIL": 16,
+   "REJECTED_V1": 1
+  },
+  "items": [
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "2018北京春季高中会考化学（教师版）(1).md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C3 第35单元答案区为空",
+     "C3 第36单元答案区为空"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "2018北京春季高中会考语文（教师版）(1).md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C7 含卷面指令: ['在答题卡上']"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "2020北京高中合格考英语（第二次）（教师版）(1).md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C3 第6单元答案区为空",
+     "C5 4 个图片行未被任何单元覆盖: ['L439:(1)/img_in_image_box_109_504_164_603.jpg', 'L444:(1)/img_in_image_box_220_503_276_600.jpg', 'L449:(1)/img_in_image_box_340_506_397_598.jpg']"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C6 1 个表格行未被任何单元覆盖: [203]"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "2020北京平谷高一（上）期末历史含答案.md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C3 第2单元答案区为空",
+     "C3 第12单元答案区为空"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "2021北京四十三中高一（上）期中政治（教师版）.md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C5 1 个图片行未被任何单元覆盖: ['L1356:师版）/img_in_image_box_71_847_386_1071.jpg']"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "2021北京四中高一（上）期中生物（教师版）.md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C5 5 个图片行未被任何单元覆盖: ['L1265:版）/img_in_image_box_77_1155_710_1552.jpg', 'L1308:版）/img_in_image_box_89_1185_647_1462.jpg', 'L1365:教师版）/img_in_image_box_97_413_413_644.jpg']"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "2019北京三十五中新高一分班考试英语含答案(1).md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C9 2 处试卷结构行混入单元区间: ['L358:## 六、 阅读理解填词（每空1分，共7分）', 'L422:注意事项：1. 不少于 60 词。2. 文中不得出现真实的校名和姓名。']"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "1_16_专题十六　化学实验综合　教师用书PDF.md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C3 第22单元答案区为空",
+     "C3 第57单元答案区为空"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "2017-2019北京高三化学上学期期末汇编：化学实验（教师版）(1).md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C5 1 个图片行未被任何单元覆盖: ['L2080:1)/img_in_image_box_192_873_430_1133.jpg']"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C5 80 个图片行未被任何单元覆盖: ['L1096:(1)/img_in_image_box_102_409_551_767.jpg', 'L1120:）(1)/img_in_image_box_104_79_241_220.jpg', 'L1126:）(1)/img_in_image_box_291_73_433_225.jpg']"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C5 7 个图片行未被任何单元覆盖: ['L690:)/img_in_chart_box_100_1159_848_1426.jpg', 'L853:(1)/img_in_image_box_100_359_459_512.jpg', 'L922:)/img_in_image_box_104_1307_315_1492.jpg']",
+     "C6 31 个表格行未被任何单元覆盖: [708, 737, 876, 1161, 1170, 1195, 1202, 1209, 1305, 1314]"
+    ]
+   },
+   {
+    "disposition": "REJECTED_V1",
+    "file": "2021北京三十一中高一（下）期中化学（教师版）(1).md",
+    "qc": null,
+    "reasons_head": [
+     "identity_version < 2 (C-IN-1)"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "pac-c07-01.md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C3 第2单元答案区为空",
+     "C3 第6单元答案区为空"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "pac-c09-01.md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C3 第1单元答案区为空",
+     "C3 第2单元答案区为空"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "pac-c09-02.md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C9 1 处试卷结构行混入单元区间: ['L422:注意事项：1. 不少于 60 词。2. 文中不得出现真实的校名和姓名。']"
+    ]
+   },
+   {
+    "disposition": "REJECTED_QC_FAIL",
+    "file": "pac-c11-02.md",
+    "qc": "FAIL",
+    "reasons_head": [
+     "C7 含卷面指令: ['本大题共']",
+     "C9 1 处试卷结构行混入单元区间: ['L137:### 一、选择题：本大题共 10 道小题，每小题 4 分，共 40 分。在每小']"
+    ]
+   }
+  ]
+ }
+}

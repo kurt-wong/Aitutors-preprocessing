@@ -220,8 +220,18 @@ facts:
     evidence: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-INTERFACE-FACTS.md;工件 data/producer_interface_census.json(确定性只读普查);探针 .pytest_work/pif_census.py 一次性"
     confidence: OBSERVED
     status: observed
-
-# ---------- DEC: 已裁决项(权威来源必须是用户/L2 路径) ----------
+  - id: FACT-033
+    statement: "Owner B1-B3 裁决后生产侧复测(Interface Facts v2): ①manifest 0/166 携任何 sha/hash 键、0/166 携 source_version_id(B1 Source Identity Authority 结构缺口实证);②identity 面双口径: 字段口径 87/79 = IR 生成与 C-IN-1 实际判定口径,目录口径 88/78,差 1 实例 = resliced-pilot 高一化学 2021三十一中(identity_version null + 4 键 legacy 形态,IR 中 disposition = REJECTED_V1 reasons 'identity_version < 2 (C-IN-1)');③IR 88 记录 = v2 目录面 88 份 manifest 全集一一对应(manifest_file 88/88 可解析),71 ADMITTED 的 ir.source_sha256 == provenance.source_version == 当前磁盘 md 原始字节 sha256(71/71,Owner 裁决当日复验零漂移);④17 拒收记录逐条对账 = 16 QC_FAIL + 1 REJECTED_V1,与 v2 面 17 份无 ir 对象 manifest 完全闭合;⑤raw bytes SHA-256 双语料生产点唯一(md resolver_reference.py:52-53 → :249/:167;PDF r67_manifest_bootstrap.py:181 → OCR 清单 1801/1801);⑥非标 unit_type 双面复验恰 1 例(andalone_question,manifest 面 + IR 面同文件 Q1),B3 UNKNOWN/PENDING 隔离语义今天零执行面"
+    source: preprocessing
+    evidence: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-INTERFACE-FACTS-v2.md;工件 data/producer_interface_probe_v2.json(确定性只读);探针 .pytest_work/pif2_final.py 单脚本可重建"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-034
+    statement: "B1-B3 Readiness 定性 + 新识别时序互斥: ①B2 producer 侧已合规零动作(raw bytes SHA-256 唯一输出身份,其余 hash 全内部或零产出);②B1 NOT READY = G1 manifest 缺 source_version_id(须 Contract v0.2 冻结 + Owner 回填令)+ G3 IR 覆盖 71/166(扩产须令)+ G4 无持续产出机制;双层现有关联 = source_file 绝对路径值相等(非 id);③B3 NOT READY = G5 链零守卫(生成点 resolver_reference.py:152 逐字复制无值域检查);④新识别接口一致性约束: G1 回填(source_version_id 钉 md 字节)与 D2 recover_images 批跑(就地改写 md 引用 → 字节变 → 已回填 id 全部失配)构成互斥时序,Contract v0.2 与执行令必须给出先后;⑤治理五项(D1 unit_type/D2 图片/D3 flags/D4 D5-C·D/D5 E)本轮全部暂缓,冻结依赖逐项标注"
+    source: preprocessing
+    evidence: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-B1B3-READINESS.md §1/§5/§6;PREPROCESSING-CLOSURE-PLAN-v2.md §3/§5"
+    confidence: OBSERVED
+    status: observed
 decisions:
   - id: DEC-001
     statement: "架构边界: preprocessing declares regions, not interpretations; Resolver may inspect Source only inside declared Evidence scope"
@@ -279,6 +289,10 @@ decisions:
   - id: DEC-018
     statement: "EB-008 Design Frozen(设计阶段终局,即 DEC-013 终裁落地;EB-008 → DECIDED → 实现阶段): ①Owner 确认 Review-2~5 全部完成,EB-008 设计阶段结束——不再开新的设计讨论,设计阶段无需继续扩展;EB-008 从'架构争论阶段'进入'工程落地阶段'。②实现顺序冻结(Owner 指定): 实现 validation_events → 实现 proof → 实现 Admission enforcement → 实现 invalidate → DSH 代码攻击测试 → 进入完整 V3 业务链。③DSH 职责调整为 Implementation Adversarial Review,四大攻击域固化为实现阶段验收标准: (A) validation_events——是否真正持久化/是否 append-only/replay 是否稳定/invalidate 是否可能洗白;(B) Review Proof——proof 生成字段是否完整/proof 验证是否严格/candidate 绑定是否正确/APP_SECRET 边界是否是否符合设计;(C) Admission Enforcement——approve() 是否强制检查 Authority/未验证 IR 是否可能绕过进入 Question;(D) Identity Model——le_hash 计算是否稳定/是否错误加入 run_id、time 等非身份因素/同 hash 是否真正复用。验收标准固化文件 = EVIDENCE/EB008-DSH-IMPL-ACCEPTANCE.md;实现期验收判据 = 本四域 + DEC-017 Owner 点名三项(validation_events 持久化/invalidate 状态机/replay 稳定性)"
     authority: "用户裁定 2026-09-15(EB-008 设计冻结 + 实现阶段路线 + DSH 实现期对抗审查指令,聊天原文)"
+    status: active
+  - id: DEC-019
+    statement: "Integration Contract B1-B3 架构裁决(冻结主线解封): B1 Transport = 正式生产接口 Manifest + IR 双层——Manifest = Source Identity Authority,IR = Semantic Consumption Authority,两者必须通过明确 source_version_id 关联;B2 Identity = source identity = SHA-256(raw bytes)(原始字节 SHA-256),body_hash/line_hash/integrity_hash/norm_sha256 只能作为内部校验,不能作为跨系统 source identity;B3 Semantic Boundary = unknown unit_type 不得自动修正、不得静默转换,必须进入 UNKNOWN/PENDING。同令: 数据治理四项(unit_type 修复/图片恢复/flags registry/D5-C·D)暂缓,接口冻结优先;DSH 职责 = 保证 producer 能稳定输出 Owner 冻结的接口"
+    authority: "用户裁定 2026-09-16(B1-B3 Decision Record,聊天原文;DSH 自记)"
     status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
@@ -440,7 +454,15 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "等 Owner B1/B2/B3 裁决(入口 = Interface Facts §3 生产侧输入 + closure plan §5 六项并案);Owner 2026-09-16 暂停令在案:数据清洗/schema 修改/daemon 修复/contract 修改全部暂停,DSH 仅保持新事实记录与裁决后执行准备"
+  next: "Owner B1-B3 裁决已入册(DEC-019);DSH 已交付三件: Interface Facts v2(FACT-033)+ B1-B3 Readiness(FACT-034)+ Closure Plan v2(接口冻结主线)。下一步 = Contract v0.2 起草输入已齐(生产侧 RD §3 + 消费侧 Consumer Review v0.2),等 Owner 起草令 / v0.2 内容裁决(source_version_id 语义载体回填范围 87 vs 166、IR 覆盖面、G1 vs D2 时序、v1 面 79 份处置)。数据治理四项仍暂缓"
+  owner_decision_b1b3:
+    date: "2026-09-16"
+    authority: Owner(直接指令,DSH 自记)
+    b1_transport: "正式生产接口 = Manifest + IR 双层。Manifest = Source Identity Authority;IR = Semantic Consumption Authority;两者必须通过明确 source_version_id 关联"
+    b2_identity: "source identity = SHA-256(raw bytes)(原始字节 SHA-256);body_hash/line_hash/integrity_hash/norm_sha256 只能作为内部校验,不能作为跨系统 source identity"
+    b3_semantic_boundary: "unknown unit_type 不得自动修正、不得静默转换,必须进入 UNKNOWN/PENDING"
+    consequences: "DSH 任务 = 保证 producer 能稳定输出 Owner 冻结的接口;unit_type 修复/图片恢复/flags registry/D5-C·D5-D 本轮暂缓(接口冻结优先),执行计划须标注 Contract 冻结依赖"
+    prohibition_restated: "不修改 V3 代码 / 不修改 Contract 正文 / 不修改数据文件;事实无证据标 UNKNOWN"
   owner_pause_order:
     date: "2026-09-16"
     text: "Producer Interface Facts v1 完成后暂停:数据清洗 / schema 修改 / daemon 修复 / contract 修改;等待 Owner B1/B2/B3 裁决"
@@ -465,6 +487,17 @@ integration_contract:
     artifact: "data/producer_interface_census.json(全语料只读普查: manifest 166 + IR 88 记录 + OCR 清单 1801 条)"
     key_facts: "无单一输出面同时具备全语料覆盖+md sha 锚+持续产出;identity 面 = v2 87 / v1 79(可消费面上限 87);schema 噪声第 2 例 explanation_lines_note;输出面 hash = 原始字节 SHA-256 单一家族,body_hash/line_hash 零产出;unit_type producer 链零守卫"
     facts_registered: [FACT-032]
+  producer_interface_facts_v2:
+    path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-INTERFACE-FACTS-v2.md
+    status: "v2(2026-09-16,Owner B1-B3 裁决后;回答能提供/不能提供/缺口 + Manifest 字段清点/IR 覆盖稳定性 provenance/Identity 确认)"
+    artifact: "data/producer_interface_probe_v2.json(定向探针: identity 面双口径/manifest 身份字段 0 命中/IR sha 自洽 71-71/拒收 17 条对账/OCR 清单键面)"
+    key_facts: "manifest 0/166 携 sha、0/166 携 source_version_id(B1 结构缺口);identity 面双口径: 字段 87/79(判定口径)vs 目录 88/78,差 1 = resliced-pilot 三十一中化学混入件(IR 已按 C-IN-1 拒收 REJECTED_V1);IR 88 记录 = v2 目录面全集,71 ADMITTED sha 与当前 md 字节 71/71 一致(裁决当日复验零漂移);raw bytes SHA-256 为唯一 source identity(md resolver_reference.py:52-53 / PDF r67_manifest_bootstrap.py:181);B3 现状 = 1 例非标值原样进 ADMITTED,链零守卫"
+    facts_registered: [FACT-033]
+  b1b3_readiness:
+    path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-B1B3-READINESS.md
+    status: "v1(2026-09-16;B2 producer 侧 READY 零动作;B1 NOT/PARTIAL;B3 NOT READY)"
+    key_facts: "Contract v0.2 生产侧输入四件: source_version_id 需求/Manifest 字段需求/IR 输出约束/unknown unit_type 处理约束;治理五项暂缓逐项标注冻结依赖;新识别时序互斥: G1 回填 vs D2 图片恢复(D2 就地改写 md 字节 → 已回填 id 失配)"
+    facts_registered: [FACT-034]
 
 data_hygiene:
   status: measured
@@ -474,10 +507,10 @@ data_hygiene:
   key_facts: "unit_type 非标准值恰 1 例(andalone_question,batch-C v2 可消费面)/ figure 悬空 27240 处 1396 份全为未恢复 imgs/ 形态(R58 时点 499 份起增长,daemon 机制),已改写形态悬空 0 / flags 天然闭合 2 值 + 596 unresolved 槽位,登记册零注册 / IR 71/71 源 sha 对账零漂移 + R50 基线 356/356 + OCR 清单 append-only,manifest 0/166 钉 sha(分层事实)"
   pending_owner: "①unit_type 单点修复 ②recover_images 批量恢复范围 ③flags 入登记册 ④BUG-14-DATA 6 needs_ruling + D5-C/D 排期 + D5-E 启动"
   closure_plan:
-    path: Docs/COORDINATION/PREPROCESSING-CLOSURE-PLAN.md
-    status: "DRAFT(2026-09-15 收口准备;四禁零触碰:数据/schema/V3/契约冻结)"
-    classification: "A 必须修复才能冻结 Contract = 0 项(披露路线 vs 清洁路线二选一待裁);B 数据清洗 = unit_type 单点 / recover_images 批跑(1394 份,PDF 在位 99.86%,R50 基线交集恰 2 份已隔离)/ flags 登记 / 6 needs_ruling / D5-C~E;C V3 消费限制 = unresolved 596 槽位 / 悬空 figure / 四态空值 / manifest 不钉 sha"
-    key_facts: "异常 manifest 为 R50 基线成员(sha 58058c4f...,修复必致 DRIFT,须配对再冻结);无 PDF 悬空件恰 2 份((1)(1) 重复 stem 家族,单列人工)"
+    path: Docs/COORDINATION/PREPROCESSING-CLOSURE-PLAN-v2.md
+    status: "v2(2026-09-16 调整版,Owner B1-B3 裁决后;v1 = Docs/COORDINATION/PREPROCESSING-CLOSURE-PLAN.md 保留原文)"
+    classification: "主线改为接口冻结序: Contract v0.2 起草 → 评审 → Owner 冻结令 → G1 source_version_id 回填令 → 治理解禁;A 类'披露 vs 清洁'二选一被 B3 裁决部分取代(披露+隔离均必选,清洁归 D1 待令非冻结前置);治理 D1~D6 全部暂缓并逐项标注冻结依赖;新识别互斥时序 = G1 回填 vs D2 图片恢复"
+    key_facts: "沿用 v1 全部测量数字(零推翻);新增 G1/G3/G4 缺口项与 §6 六项待 Owner 清单"
 
 # ---------- 当前禁止事项(两侧共同,叠加各自仓库冻结) ----------
 prohibitions:
