@@ -1,20 +1,20 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**Producer Fact Reconciliation v0.2 完成——回应 Claude Consumer Review v0.2 B1/B2/B3:B1 传输层三断点事实 / B2 hash 四列核对(producer 零 body_hash/line_hash 产出,V3 自算两路算法不同)/ B3 andle_question 六层追踪(annotation 层洗白 vs span 层分裂,candidate 层零落库,更正两侧各一处)/ DQE §1-A"已生效"正式撤回;四禁零触碰**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**Producer Interface Facts v1 落盘——Producer Owner 角色恢复;五输出面字段级固化 + hash 语义登记 + B1/B2/B3 生产侧输入;两项新固化:identity 面 v2 87/v1 79 分裂、schema 噪声第 2 例;工件 `data/producer_interface_census.json`;五纪律零触碰**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
 ## 主线:preprocessing 内部收口(数据卫生,Owner 令)
 
 - **收口计划(当前决策入口)**:`PREPROCESSING-CLOSURE-PLAN.md` v1——**A 必须修复才能冻结 Contract = 0 项**(披露路线 vs 清洁路线二选一待裁);B 清洗序 = unit_type 单点 / recover_images 批跑(1,394 份,PDF 在位 99.86%,**R50 基线交集恰 2 份已隔离**,无 PDF 恰 2 份单列)/ flags 登记 / 6 needs_ruling / D5-C~E;C 消费限制 = unresolved 596 槽位 / 悬空 figure / 四态空值 / manifest 不钉 sha。**关键硬事实:异常 manifest 是 R50 冻结基线成员(sha 58058c4f…),修复必致基线 DRIFT,须配对再冻结决策**;
 - **DQE 四重点测量完成(只读)**:`EVIDENCE/PREPROCESSING-DATA-QUALITY-REPORT.md` v1——①unit_type:全语料 166 manifest 穷举,**恰 1 例非标准值**(batch-C 合格考化学 Q1,v2 可消费面内)→ 单点修复待批;②figure:70,838 引用(行内 HTML 相对路径 99.99%),悬空 27,240 处/1,396 份**全部 = 未恢复 `imgs/` 原始形态**(recover_images 积压,daemon 产出使其自 R58 的 499 份增长),已改写形态悬空 = 0 → 批量恢复待批,最小 registry 不需要;③flags:值域天然闭合 2 值 + 596 unresolved 槽位,登记册零注册 → 登记待批;④稳定性:**IR 71/71 源 sha 零漂移 + R50 基线 356/356 + OCR 清单 append-only**,manifest 0/166 钉 sha(分层事实非缺陷);
-- **Integration Contract v0.1 = DRAFT 冻结暂停**(Owner 明令)。**Claude Consumer Review v0.2 已回(V3 `938535d`):不可冻结,BLOCK = B1 传输层未定 / B2 hash 对账不可达成 / B3 unit_type 隔离未实现+跨仓矛盾**;DSH 已以 `INTEGRATION/PREPROCESSING-PRODUCER-FACT-RECONCILIATION-v0.2.md` 回应(FACT-029~031):**事实面对齐,三处更正落地**(candidate 层零落库更正 Review 推断、splitlines 行号勘误、DQE §1-A 撤回);**裁决面归 Owner**(传输层选择 / hash 对账口径 / 隔离执行面);OQ-1~4 在册;
+- **Integration Contract v0.1 = DRAFT 冻结暂停**(Owner 明令)。**Claude Consumer Review v0.2 已回(V3 `938535d`):不可冻结,BLOCK = B1 传输层未定 / B2 hash 对账不可达成 / B3 unit_type 隔离未实现+跨仓矛盾**;DSH 双件回应:**Reconciliation v0.2(事实对齐 + 三处更正)+ Interface Facts v1(生产侧固化,B1/B2/B3 裁决输入,FACT-032)**;**裁决面归 Owner**(传输层选择 / hash 对账口径 / 隔离执行面);OQ-1~4 在册;
 - **BUG-14-DATA 收口进度**:D5-A ✅ / D5-B ✅ 70/70 / D5-C·D5-D 待跑(DQE 四账 = D5-D 输入口径)/ D5-E 🔒 / **6 份 needs_ruling 等 Owner 逐份裁定**。
 
 ## 当前工作项:EB / Evidence Resolution Boundary Discovery
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **Producer Fact Reconciliation v0.2 完成**(`INTEGRATION/PREPROCESSING-PRODUCER-FACT-RECONCILIATION-v0.2.md`,回应 Review v0.2 B1/B2/B3;FACT-029~031 入册);DQE + 收口计划在案;契约保持 DRAFT |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **Producer Interface Facts v1 落盘**(`INTEGRATION/PREPROCESSING-PRODUCER-INTERFACE-FACTS.md` + 普查工件 `data/producer_interface_census.json`,FACT-032;Producer Owner 角色恢复,供 Owner 裁决 B1/B2/B3);Reconciliation v0.2 + DQE + 收口计划在案;契约保持 DRAFT |
 | **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **Consumer Review v0.2 已交付**(V3 `938535d`,不可冻结 + 三 BLOCK);待收 DSH Reconciliation v0.2 后按 Owner 裁决更新消费面;遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步;V3 侧契约稿/ v0.1 review/handoff 007 仍 untracked(REPORTED 级,建议 commit 入册) |
 
 ## P3.2 / EB-004 终局(VERIFIED)

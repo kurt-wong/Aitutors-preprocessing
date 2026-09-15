@@ -214,6 +214,12 @@ facts:
     evidence: "PREPROCESSING-PRODUCER-FACT-RECONCILIATION-v0.2.md §B3;compile/ir.py:105-138,187-251/annotation_adapter.py:40-46,100-104/resolved_span_adapter.py:77-90/runner_b2.py:116-127,231-252/gate/service.py:156-158,181-184 逐行亲读;manifest Q1 + resolver_ir.json 亲验"
     confidence: OBSERVED
     status: observed
+  - id: FACT-032
+    statement: "Producer Interface Facts 普查固化(全语料只读,供 Owner 裁决 B1/B2/B3): ①identity 面分裂 = v2 87 份(batch-C 50/pac-annotated 22/resliced-pilot 15)vs v1 legacy 79 份(C-IN-1 下必拒),可消费面上限 87 份非 166;②无单一输出面同时具备全语料覆盖+md sha 锚+持续产出(manifest 166 零 sha / IR 88 条样本工件自 R52 冻结未再生成 / OCR 清单钉 PDF);③schema 噪声第 2 例 explanation_lines_note(batch-C 理综汇编 Q24,value null),噪声属类级非单点;④validation_issues 非空 17 份/warnings 非空 12 份;⑤IR 工件结构 = 88 记录仅 ADMITTED 71 携带 ir 对象,1,664 单元全在其内;⑥输出面 hash 全集 = 原始字节 SHA-256 家族(md/PDF 双语义 + corpus 指纹),norm_sha256 仅审计内部未发布,body_hash/line_hash 零产出"
+    source: preprocessing
+    evidence: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-INTERFACE-FACTS.md;工件 data/producer_interface_census.json(确定性只读普查);探针 .pytest_work/pif_census.py 一次性"
+    confidence: OBSERVED
+    status: observed
 
 # ---------- DEC: 已裁决项(权威来源必须是用户/L2 路径) ----------
 decisions:
@@ -445,6 +451,13 @@ integration_contract:
     status: "v0.2(2026-09-16,Owner 令回应 B1/B2/B3;四禁零触碰: 代码/数据/清洗/Contract)"
     key_facts: "B1: source_sha256 生产点唯一 + manifest 0/166 + IR=内部产物/接口候选 + 无双方 ack 传输链;B2: producer 零 body_hash/line_hash 产出,V3 自算两路与 producer 定义不同(附行号勘误);B3: annotation 层洗白 vs span 层 composite 分裂,candidate 层零落库(更正 Review),DQE §1-A '已生效' 正式撤回"
     facts_registered: [FACT-029, FACT-030, FACT-031]
+  producer_interface_facts:
+    path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-INTERFACE-FACTS.md
+    status: "v1(2026-09-16,Producer Owner 角色恢复;五纪律: 只固化真实输出事实/不假设 V3 消费/不提 V3 方案/不执行清洗/不冻结 Contract)"
+    purpose: "Owner 裁决 B1/B2/B3 的生产侧输入"
+    artifact: "data/producer_interface_census.json(全语料只读普查: manifest 166 + IR 88 记录 + OCR 清单 1801 条)"
+    key_facts: "无单一输出面同时具备全语料覆盖+md sha 锚+持续产出;identity 面 = v2 87 / v1 79(可消费面上限 87);schema 噪声第 2 例 explanation_lines_note;输出面 hash = 原始字节 SHA-256 单一家族,body_hash/line_hash 零产出;unit_type producer 链零守卫"
+    facts_registered: [FACT-032]
 
 data_hygiene:
   status: measured

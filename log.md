@@ -2443,3 +2443,22 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **B3 andle_question 六层追踪(逐行亲验,修正两侧各一处)**:manifest 原样(亲读 Q1)→ resolver 逐字复制(:152,IR 亲验恰 1 例)→ **annotation 层洗白**(annotation_adapter.py:42 把 payload unit_type 重写为 canonical standalone_question,零信号)→ **span 层按原始值走 composite 分支**(resolved_span_adapter.py:77-90 / runner_b2.py:116-127,两轨不产 sp-Q1.stem,与 annotation 层矛盾成立)→ runner:Track B2 = IRBuilder 组装洗白 payload + composite 式 spans → stem unresolved + options missing → **incomplete → skip**(ir.py:201-218;runner_b2.py:232);Track A = SourceResolver 搜索洗白 payload,静态不可判定(UNKNOWN)→ **candidate 层零落库**:runner_b2.py:252 对本单元不可达,即便可达输入为洗白值 → standalone_unit **而非 Review 所记 composite_unit**(FACT-032 推断更正);无任何 unknown/PENDING 信号。**DQE §1-A "消费侧隔离已生效" 不准确,DSH 正式撤回**(连带 closure plan §2 同句):契约 §3.3-6 是 DRAFT 要求非现状;实际终态 = 无信号 incomplete 掩盖(stem unresolved/options missing 记录,真实原因不出现),不是 PENDING 隔离。
 
 **落盘**:`Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-FACT-RECONCILIATION-v0.2.md`;state.yaml FACT-029/030/031 入册 + V3-local FACT-030~033 别名映射 + integration_contract 块(consumer_review_v02 + producer_fact_reconciliation);CURRENT.md 同步。四禁零触碰:两仓代码零修改、数据零写入、无清洗执行、Contract 保持 v0.1 DRAFT 一字未动。三 BLOCK 事实面对齐,裁决面(传输层/hash 口径/隔离执行面)归 Owner。
+
+---
+
+## Producer Interface Facts 轮(2026-09-16):生产侧接口事实固化(Producer Owner 角色恢复)
+
+**触发**:Owner 指令——基于 Reconciliation v0.2,固化 preprocessing 当前真实输出事实,作为 Owner 裁决 B1/B2/B3 的生产侧输入。**五纪律:不假设 V3 消费方式 / 不提 V3 实现方案 / 不执行清洗 / 不冻结 Contract / 只写实测事实**。
+
+**武器**:全语料只读普查(.pytest_work/pif_census.py,一次性确定性)→ 工件 `data/producer_interface_census.json`;manifest 166/166 + IR 工件 88 记录 + OCR 清单 1,801 条穷举;另两项定点探针(IR 结构补验 / md 计数)。语料零写入。
+
+**新固化事实(OBSERVED,FACT-032)**:
+1. **identity 面分裂(本轮首度固化)**:v2 = **87 份**(batch-C 50 / pac-annotated 22 / resliced-pilot 15)vs **v1 legacy = 79 份**(9 个 reslice-* 目录;p2-b1 38 为最大;resliced-pilot 跨两面)。C-IN-1 语义下 79 份必拒——**当前可消费面上限 = 87 份,不是 166**;
+2. **B1 合取硬事实**:无单一输出面同时具备"全语料覆盖 + md sha 锚 + 持续产出"——manifest 166 零 sha / IR 88 条样本工件自 R52 冻结未再生成(生成器在库已验证)/ OCR 清单钉 PDF 不钉 md;
+3. **schema 噪声第 2 例**:explanation_lines_note(value=null,batch-C 理综汇编 Q24)——与 andle_question 并列,**噪声属类级现象非单点**(B3 输入);
+4. **IR 工件结构亲验**:88 记录仅 ADMITTED 71 携带 ir 对象(QC_FAIL 16/V1 1 为 null),1,664 单元全在 71 记录内;单元键 15 / provenance 七字段 / content 六区与契约 §2 一致;
+5. **自声明缺陷面**:validation_issues 非空 **17 份** / warnings 非空 **12 份** / bug22_migration 标记 8 份;
+6. **hash 全集**:输出面 = 原始字节 SHA-256 单一家族(md/PDF 双语义 + corpus 指纹);norm_sha256(归一化算法定义在 r64)仅审计内部**未发布为接口**;body_hash/line_hash/图片 hash **零产出**;
+7. 源 md 今日 4,224 份(DQE 时点 4,223,+1 = daemon 产出,机制连续)。
+
+**落盘**:Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-INTERFACE-FACTS.md v1(§0 合取摘要 / §1 五输出面字段级清点 / §2 hash 语义登记 / §3 B1/B2/B3 生产侧输入(只给事实约束与权限边界,无任何"建议")/ §4 不承诺清单 / §5 边界声明);state.yaml FACT-032 + integration_contract.producer_interface_facts 块;CURRENT.md 同步。Contract 保持 v0.1 DRAFT 一字未动;两仓代码零修改;无清洗、无迁移、无数据生成。**生产侧事实生产至此结束,等 Owner 裁决**(B1/B2/B3 + closure plan §5 六项)。

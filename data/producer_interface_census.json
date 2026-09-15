@@ -1,0 +1,184 @@
+{
+ "identity_face": {
+  "stray_unit_keys": [
+   [
+    "Ocr-markdown\\reslice-batch-C\\其他汇编\\理综\\14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.manifest.json",
+    "Q24",
+    [
+     "explanation_lines_note"
+    ]
+   ]
+  ],
+  "v1_by_top_dir": {
+   "reslice-audit-a5": 2,
+   "reslice-p2-2-fix": 8,
+   "reslice-p2-b1": 38,
+   "reslice-p2-b2": 8,
+   "reslice-p2-b2-rerun": 4,
+   "reslice-p2-fix1": 6,
+   "reslice-stress10": 9,
+   "reslice-test-v21": 3,
+   "resliced-pilot": 1
+  },
+  "v2_by_top_dir": {
+   "reslice-batch-C": 50,
+   "reslice-pac-annotated": 22,
+   "resliced-pilot": 15
+  }
+ },
+ "ir": {
+  "content_keys": {
+   "answer_lines": 1664,
+   "explanation_lines": 474,
+   "material_lines": 278,
+   "options_lines": 945,
+   "questions_lines": 278,
+   "stem_lines": 1337
+  },
+  "dispositions": {
+   "ADMITTED": 71,
+   "REJECTED_QC_FAIL": 16,
+   "REJECTED_V1": 1
+  },
+  "inner_ir_keys": {
+   "ir_version": 71,
+   "manifest_file": 71,
+   "materials": 71,
+   "qc_verdict": 71,
+   "source_file": 71,
+   "source_sha256": 71,
+   "units": 71
+  },
+  "ir_version": "resolver-ir-0.1",
+  "path": "data\\resolver_ref_r52\\resolver_ir.json",
+  "provenance_keys": {
+   "confidence_state": 1664,
+   "extraction_method": 1664,
+   "manifest_file": 1664,
+   "qc_verdict": 1664,
+   "source_file": 1664,
+   "source_lines": 1664,
+   "source_version": 1664
+  },
+  "record_keys": [
+   "disposition",
+   "file",
+   "ir",
+   "qc_verdict",
+   "reasons"
+  ],
+  "records": 88,
+  "records_with_ir_object": 71,
+  "top_level_keys": [
+   "files",
+   "ir_version"
+  ],
+  "unit_level_keys": {
+   "answer_text": 1664,
+   "answers": 1664,
+   "basis": 1664,
+   "basis_evidence": 1664,
+   "content": 1664,
+   "flags": 1664,
+   "material_ref": 1664,
+   "printed_number": 1664,
+   "printed_provenance": 1664,
+   "provenance": 1664,
+   "question_numbers": 1664,
+   "section_ref": 1664,
+   "section_title": 1664,
+   "unit_id": 1664,
+   "unit_type": 1664
+  },
+  "unit_type_values": {
+   "andalone_question": 1,
+   "composite_question": 278,
+   "standalone_question": 1385
+  },
+  "units": 1664
+ },
+ "manifest": {
+  "annotation_meta_keys": {
+   "bug22_migration": 8,
+   "prompt_version": 166,
+   "validation_issues": 166,
+   "warnings": 166
+  },
+  "basis_values": {
+   "None": 2262,
+   "answer_key": 9,
+   "explicit": 1,
+   "keep": 93,
+   "printed_as_is": 1546,
+   "shift": 31,
+   "unverified": 667
+  },
+  "carrying_any_sha_key": 0,
+  "file_level_keys": {
+   "annotation_meta": 166,
+   "identity_version": 87,
+   "model": 166,
+   "sections": 87,
+   "source_file": 166,
+   "units": 166
+  },
+  "identity_version_values": {
+   "2": 87,
+   "None": 79
+  },
+  "manifests": 166,
+  "model_present": 166,
+  "printed_provenance_values": {
+   "None": 2262,
+   "migration_report": 134,
+   "source_line": 1546,
+   "unknown": 667
+  },
+  "prompt_version_present": 166,
+  "source_file_is_str": 166,
+  "unit_level_keys": {
+   "answer_evidence": 906,
+   "answer_lines": 4609,
+   "basis": 2347,
+   "basis_evidence": 2347,
+   "explanation_lines": 4609,
+   "explanation_lines_note": 1,
+   "extra_lines": 3621,
+   "material_lines": 673,
+   "options_lines": 3936,
+   "original_question_type": 4609,
+   "printed_number": 4068,
+   "printed_provenance": 2347,
+   "question_numbers": 4609,
+   "questions_lines": 673,
+   "section": 4068,
+   "section_ref": 2347,
+   "stem_lines": 3936,
+   "unit_id": 4609,
+   "unit_type": 4609
+  },
+  "unit_type_values": {
+   "andalone_question": 1,
+   "composite_question": 673,
+   "standalone_question": 3935
+  },
+  "units": 4609,
+  "validation_issues_nonempty": 17,
+  "warnings_nonempty": 12
+ },
+ "ocr_output_manifest": {
+  "entries": 1801,
+  "entry_keys": {
+   "audit_line": 698,
+   "log_ok_lines": 698,
+   "output_rel": 1801,
+   "pages": 1801,
+   "processed_at": 698,
+   "provenance": 698,
+   "source_rel": 1801,
+   "source_sha256": 1801,
+   "source_size": 1801,
+   "written_at": 1801
+  }
+ }
+}
