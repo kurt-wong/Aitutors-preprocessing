@@ -2348,3 +2348,11 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **落盘**:①state.yaml:DEC-017 入册(四项全文+三声明)、EB-008 status → DECIDED_CANDIDATE、review_5 → archived、note 更新;②`EVIDENCE/EB008-DSH-REVIEW5.md` 加 [ARCHIVED] 头(结论即终审结论,不再迭代);③`HANDOFFS/2026-09-15-DSH-to-Claude-012.md`(DEC-017 转达 + R5-03 DEC 编号冲突二选一处理要求 + 实现期义务备忘);④CURRENT.md 同步(EB-008 行 + 待裁决节 + 双 agent 快照);⑤本条目。
 
 **要点**:①Review-4 的 W1/W2 由 DEC-017 **升格为 Owner 正式声明**,缺口闭合(R5-02 消解);②R5-03(DEC-013 跨台账同 ID 异文)preprocessing 侧已 amendment 修正,V3 侧改编号待 Claude 执行(handoff 012);③实现期义务分两级:Owner 点名必须落实(validation_events 持久化/invalidate 状态机/replay 稳定性)+ DSH 审查链遗留(proof 机制/approve() enforcement/invalidate 级联触发/DB 触发器 Phase-2);④下一阶段 = **DEC-013 最终裁决**(唯一在途 Owner 项),通过后 EB-008 → DECIDED → 实现阶段开启。
+
+## 2026-09-15 · 修正:EB-008 状态表述回退(CI 守卫拦截自造状态值)
+
+**触发**:上一条目 commit(`3b2162d`)CI **failure**——`test_eb_ids_unique_and_status_valid` 拒绝 EB-008 status=`DECIDED_CANDIDATE`(协议 EB 状态机 DISCOVERED→EVIDENCED→ATTRIBUTED→PROPOSED→DECIDED→IMPLEMENTED→VERIFIED→CLOSED 无此值)。**守卫正确,错在 DSH 自造状态值**;协议状态机不因单个 EB 扩展。**性质:台账修正,零代码(仅 state.yaml/CURRENT.md/handoff/REVIEW5 散文表述)。**
+
+**修正**:EB-008 status 回退 `PROPOSED`(合法值),新增 `decided_candidate: true` + `blocked_by: "Owner DEC-013 最终裁决"` 字段承载"DECIDED 候选"语义;CURRENT.md/handoff 012/REVIEW5 归档头同步改为"DECIDED 候选(PROPOSED + decided_candidate=true)";log.md 按追加纪律不改旧条目,以本条目更正。**语义不变**:Owner 确认已收(DEC-017)、设计链收口、等 DEC-013 终裁后置入 DECIDED。
+
+**教训**:台账新增状态值前必须对照 `tests/test_coordination_state.py` 的 EB_STATES 守卫;"候选/等待终裁"类中间语义用附加字段表达,不扩状态机。

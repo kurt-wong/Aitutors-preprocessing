@@ -1,7 +1,7 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-15(**EB-008 Review-5 终审 VERIFIED(0 BLOCKER)+ Owner 确认四项设计方向(DEC-017)→ EB-008 = DECIDED_CANDIDATE,等 DEC-013 最终裁决**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-15(**EB-008 Review-5 终审 VERIFIED(0 BLOCKER)+ Owner 确认四项设计方向(DEC-017)→ EB-008 = DECIDED 候选(PROPOSED + decided_candidate=true),等 DEC-013 最终裁决**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
 ## 当前工作项:EB / Evidence Resolution Boundary Discovery
 
@@ -46,7 +46,7 @@
 | EB-005 | 生产 Resolver 是否引入 options_region(**OPEN 暂不实现,不与 EB-008 合并**) | v3 | EVIDENCED |
 | EB-006 | A 缺标点 contextual rule(设计属 V3) | v3 | EVIDENCED |
 | EB-007 | formula FP 结构排除(检出来源 = V3 代码追踪) | v3 | EVIDENCED |
-| EB-008 | **Admission Evidence Authority enforcement(L2 设计)** | v3 | **DECIDED_CANDIDATE**(Rev-1 未 commit → Rev-2 `9bf8878` 4 BLOCKER → Rev-3 `a80d555` VERIFIED → Rev-4 `2ad6f99` Review-5 VERIFIED 0 BLOCKER;Owner DEC-017 确认四项设计方向:Identity=Run过程/Candidate实体+hash复用是设计目标、Human=proof token 家庭弱信任(粒度candidate级/API控制不在威胁模型/APP_SECRET泄露属部署边界)、Persistence=ValidationEvent永久保存(实现期必须:持久化/invalidate状态机/replay稳定性)、IR=Option B(provisional允许,非知识资产非可信事实,禁绕Admission);**等 DEC-013 最终裁决 → 实现阶段**) |
+| EB-008 | **Admission Evidence Authority enforcement(L2 设计)** | v3 | **DECIDED 候选**(PROPOSED + decided_candidate=true;Rev-1 未 commit → Rev-2 `9bf8878` 4 BLOCKER → Rev-3 `a80d555` VERIFIED → Rev-4 `2ad6f99` Review-5 VERIFIED 0 BLOCKER;Owner DEC-017 确认四项设计方向:Identity=Run过程/Candidate实体+hash复用是设计目标、Human=proof token 家庭弱信任(粒度candidate级/API控制不在威胁模型/APP_SECRET泄露属部署边界)、Persistence=ValidationEvent永久保存(实现期必须:持久化/invalidate状态机/replay稳定性)、IR=Option B(provisional允许,非知识资产非可信事实,禁绕Admission);**等 DEC-013 最终裁决 → DECIDED → 实现阶段**) |
 
 ## 待 Owner 裁决
 
