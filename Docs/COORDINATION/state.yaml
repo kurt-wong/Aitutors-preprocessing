@@ -265,9 +265,13 @@ open_questions:
   - id: EB-008
     question: "Admission 层是否引入 Evidence Authority enforcement(让 Admission 真正依赖 ValidationEvent/is_evidence_validated)?若是,如何实现不破坏 20 §8.2 双入口与物化事务语义"
     owner: v3
-    status: EVIDENCED
+    status: PROPOSED
     facts: [FACT-021, FACT-023, FACT-025, FACT-026, FACT-027, FACT-028]
-    note: "Owner 方向性裁决已下(DEC-013): Evidence Authority 必须作为 Semantic IR 与 Knowledge Asset Admission 准入前置,不接受纯审计定位。Claude 进入 L2 Authority Model 设计(只设计不实现);DSH 对抗审查已提交(handoff 008: 2 CONTRADICTION / 5 ATTACK / 3 UNPROVEN / 8 REQUIRED DESIGN QUESTION,核心攻击 = claim_id 跨文档碰撞 / 无认证人工 authority / authority 无内容指纹 / INVALIDATED 内存蒸发 / 双边界同根 evaluate 非纵深)。待 Claude L2 设计稿逐条回答 Q-1~Q-8 → PROPOSED"
+    review_2:
+      status: EB-008_ADVERSARIAL_REVIEW_2
+      owner: DSH
+      blocked_by: Owner DEC-013
+    note: "Owner 方向性裁决已下(DEC-013: Authority = Semantic IR + Knowledge Asset Admission 准入前置)。Claude L2 Design Revision-1 = V3 Docs/DECISIONS/87_EB008_EVIDENCE_AUTHORITY_ENFORCEMENT_DESIGN.md(未 commit,REPORTED 级,sha256=CCAB2A86...97D6)。DSH Adversarial Review-2 已完成(handoff 009):致命项 = RDQ-1 冷启动死锁(validation 生产者依赖 IR,IR boundary 依赖 validation,流水线零进展)/ RDQ-2 run 语义未定义 + 持久化×状态机×重跑硬冲突(VALIDATED→VALIDATED ValueError 崩 run)/ RDQ-4 人工 authority 信任边界 0/4;另 claim_id 无命名空间跨卷碰撞、D4 声明绑定强度 > D5 判定强度、双层同 ledger 非纵深、设计稿本地 FACT-012~020 撞 canonical 号、§8.2 兼容性 ✅ 静默过强。结论: RDQ-1/2/4 解决前不具备终裁条件;Revision-2 + commit 后 DSH 做 Review-3"
   - id: EB-005
     question: "生产 Resolver 是否应引入 options_region 概念(消费 Producer Evidence Region)以替代 Source 自推断边界?"
     owner: v3

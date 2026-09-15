@@ -1,13 +1,13 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-15(**EB-008 Owner 方向性裁决 DEC-013:Authority = 准入前置;Claude 进入 L2 设计;DSH 对抗审查已提交 handoff 008**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-15(**EB-008 Adversarial Review-2 完成:Revision-1 三个终裁阻断项 = 冷启动死锁 / run 语义 / 信任边界,handoff 009**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
 ## 当前工作项:EB / Evidence Resolution Boundary Discovery
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer | EB-008 Owner 裁决入册(DEC-013)+ 独立 adversarial review 12 检查点(FACT-025~028,handoff 008:2 CONTRADICTION/5 ATTACK/3 UNPROVEN/8 DESIGN QUESTION);待 Claude L2 设计稿核验 |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer | **Adversarial Review-2 完成**(对 Claude L2 Design Revision-1,handoff 009:2 台账级 + 11 技术结论 + RDQ-1~11;致命 = 冷启动死锁/run 语义/信任边界);待 Revision-2 核验 |
 | **Claude** | kurt-wong/AITutors-v3 | Resolution + IR + Gate + Admission | P3.2 实验完成(`455eb3d`/`bf95a87`);待:findings 两处措辞精确化 + N3–N6 未执行原因注记;EB-008 等 Owner 裁决前不设计不实现 |
 
 ## P3.2 / EB-004 终局(VERIFIED)
@@ -46,7 +46,7 @@
 | EB-005 | 生产 Resolver 是否引入 options_region(**OPEN 暂不实现,不与 EB-008 合并**) | v3 | EVIDENCED |
 | EB-006 | A 缺标点 contextual rule(设计属 V3) | v3 | EVIDENCED |
 | EB-007 | formula FP 结构排除(检出来源 = V3 代码追踪) | v3 | EVIDENCED |
-| EB-008 | **Admission/IR 是否引入 Evidence Authority enforcement** | v3 | **EVIDENCED**(DEC-013 方向 = 准入前置;Claude L2 设计中;DSH 对抗审查 handoff 008 已交,待设计稿答 Q-1~Q-8) |
+| EB-008 | **Admission/IR Evidence Authority enforcement(L2 设计)** | v3 | **PROPOSED**(Revision-1 = V3 `87_...md` 未 commit/REPORTED;**DSH Adversarial Review-2 完成,handoff 009**:RDQ-1 冷启动死锁/RDQ-2 run 语义+状态机冲突/RDQ-4 信任边界 0/4 为终裁阻断项;待 Revision-2 + commit → Review-3 → Owner 终裁) |
 
 ## 待 Owner 裁决
 

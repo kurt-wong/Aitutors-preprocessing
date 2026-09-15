@@ -2253,3 +2253,19 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **EB-008 → EVIDENCED**(FACT-021/023/025~028);handoff 008 已落盘待推送。**下一步:等 Claude L2 设计稿逐条回答 Q-1~Q-8 → DSH 核验(不采信转述)→ PROPOSED → Owner 终裁。**
 
 **落盘**:state.yaml(DEC-013 + FACT-025~028 + EB-008 升 EVIDENCED)/ handoff 008 / CURRENT.md / 本轮台账。
+
+---
+
+## 2026-09-15 · EB-008 Adversarial Review-2:对 Claude L2 Design Revision-1 的攻击(联调第一裁决点推进)
+
+**触发**:Owner 下达 EB-008 Adversarial Review-2 任务——Claude 已提交 L2 Design Revision-1,DSH 职责 = 攻击设计(逻辑漏洞/identity bypass/lifecycle bypass/replay 风险/Frozen Spec 冲突/implementation premature assumption),10 个指定攻击面,输出限定五类标签;禁改代码/Producer Contract/EB-005、禁 workaround、禁自行冻结新规则。**性质:只读对抗审查,零代码。**
+
+**审查对象口径**:V3 工作树 `Docs/DECISIONS/87_EB008_EVIDENCE_AUTHORITY_ENFORCEMENT_DESIGN.md`(D1~D10 + 三选项 α/β/γ),**未 commit(`??`)→ REPORTED 级**,审查锚定 sha256=`CCAB2A86…97D6`;升 L2 Decision 前必须 commit。台账级发现 R2-P2:设计稿 §1 本地 FACT-012~020 与 canonical 全部撞号(012/013/014 实为 CLAUDE_FACT→FACT-021;015~020 未注册),违反 id 纪律禁则(FACT-018 案重演)。
+
+**技术结论(2 CONTRADICTION 致命 + 11 项)**:
+- **RDQ-1 冷启动死锁(致命)**:D7 要求 IR 构造前 span 已有 validated 事件,但唯一机器生产者 record_validation 依赖 gate evaluate,evaluate 依赖 IR+Compiler(FACT-028 顺序)——冷启动 ledger 为空 → IR 永远无法构建 → 流水线零进展;Review-1 C-2 循环依赖未解;
+- **RDQ-2 run 语义(致命)**:candidate 身份 run 无关(le_hash)vs authority run-scoped 自相矛盾;"Candidate 所属 run" 未定义(candidate 无 run_id);持久化 × 状态机("VALIDATED→只许 INVALIDATED",models.py L299-304)× 重跑 = ValueError 崩 run 的硬冲突;Owner Attack 2 原问(跨 run 复用条件/禁止机制)未被回答;
+- **RDQ-4 信任边界 0/4(致命)**:选项 α 把人工 authority 接到无认证生产链(FACT-027)上,issuer/reviewer/audit-chain/atomicity 四要素零着墨;
+- 其余:claim_id 无命名空间全局 latest-by-timestamp 碰撞(R2-A1-2)/ D4 声明四元组绑定但 D5 判定函数只查 unit_id(R2-A1-1)/ 空 reference_ids 使 source 绑定检查无从执行 + NULL run_id 匹配语义未定义(R2-A3-3/A5-2)/ INVALIDATED 有载体无触发机制 + authority 仍无内容指纹(R2-A3-1/2)/ ledger 事件无法归属 candidate(Attack 6 答案 = 不存在)/ D7 节内 raise vs pending_review 自相矛盾 + 失效 IR 无撤回 / authority check 事务可见性与 TOCTOU 未声明 / 双层同 ledger 同逻辑 = 非纵深(过强主张)且 evaluate 同根问题加重为三处同源 / 多评审者与人工-机器冲突被状态机误伤(Attack 10)/ **R2-F1:D10 "§8.2 不需要修改 ✅" 过强**——approve() 新增校验条件属冻结规范行为变更,须 L2 注记。
+
+**结论口径**:不否定方向 B;Revision-1 在 RDQ-1/2/4 解决前**不具备终裁条件**;其余方向(D9 fail-closed、D6 持久化方向、四元组意图)合理。**落盘**:handoff 009(含 RDQ-1~11 必答清单)/ state.yaml(EB-008 → PROPOSED + review_2 状态块 status=EB-008_ADVERSARIAL_REVIEW_2, owner=DSH, blocked_by=Owner DEC-013)/ CURRENT.md。**下一步:等 Revision-2 + commit → DSH Review-3 → Owner 终裁 D1~D10。**
