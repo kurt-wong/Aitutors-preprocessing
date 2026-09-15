@@ -1,14 +1,14 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-15(**EB-008 Review-5 终审 VERIFIED(0 BLOCKER)+ Owner 确认四项设计方向(DEC-017)→ EB-008 = DECIDED 候选(PROPOSED + decided_candidate=true),等 DEC-013 最终裁决**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-15(**Owner DEC-018: EB-008 Design Frozen → EB-008 = DECIDED,进入实现阶段;DSH 职责 = Implementation Adversarial Review,验收标准 = DEC-018 四大攻击域**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
 ## 当前工作项:EB / Evidence Resolution Boundary Discovery
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer | **Review-2~5 全部完成归档**(Rev-2 4 BLOCKER → Rev-3/Rev-4 均 VERIFIED 0 BLOCKER);审查职责收口,等 Owner DEC-013 终裁 |
-| **Claude** | kurt-wong/AITutors-v3 | Resolution + IR + Gate + Admission | Rev-4 提交(`2ad6f99`,91号,Option B 合入);待:DEC 编号冲突处理(handoff 012,R5-03)+ DEC-017 同步入 V3 台账 |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer | Review-2~5 归档收口;**职责转为 Implementation Adversarial Review**(验收标准 = `EVIDENCE/EB008-DSH-IMPL-ACCEPTANCE.md`),等 Claude 顺序① validation_events commit |
+| **Claude** | kurt-wong/AITutors-v3 | Resolution + IR + Gate + Admission | Rev-4(`2ad6f99`)获 Owner 确认 + 设计冻结;**待开工实现顺序① validation_events**(handoff 013);遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 |
 
 ## P3.2 / EB-004 终局(VERIFIED)
 
@@ -46,12 +46,15 @@
 | EB-005 | 生产 Resolver 是否引入 options_region(**OPEN 暂不实现,不与 EB-008 合并**) | v3 | EVIDENCED |
 | EB-006 | A 缺标点 contextual rule(设计属 V3) | v3 | EVIDENCED |
 | EB-007 | formula FP 结构排除(检出来源 = V3 代码追踪) | v3 | EVIDENCED |
-| EB-008 | **Admission Evidence Authority enforcement(L2 设计)** | v3 | **DECIDED 候选**(PROPOSED + decided_candidate=true;Rev-1 未 commit → Rev-2 `9bf8878` 4 BLOCKER → Rev-3 `a80d555` VERIFIED → Rev-4 `2ad6f99` Review-5 VERIFIED 0 BLOCKER;Owner DEC-017 确认四项设计方向:Identity=Run过程/Candidate实体+hash复用是设计目标、Human=proof token 家庭弱信任(粒度candidate级/API控制不在威胁模型/APP_SECRET泄露属部署边界)、Persistence=ValidationEvent永久保存(实现期必须:持久化/invalidate状态机/replay稳定性)、IR=Option B(provisional允许,非知识资产非可信事实,禁绕Admission);**等 DEC-013 最终裁决 → DECIDED → 实现阶段**) |
+| EB-008 | **Admission Evidence Authority enforcement** | v3 | **DECIDED**(2026-09-15 DEC-018 Design Frozen,即 DEC-013 终裁落地;设计链 = Rev-1 未 commit → Rev-2 `9bf8878` 4 BLOCKER → Rev-3 `a80d555` VERIFIED → Rev-4 `2ad6f99` Review-5 VERIFIED 0 BLOCKER → Owner DEC-017 确认 → DEC-018 冻结;**实现顺序: ①validation_events → ②proof → ③Admission enforcement → ④invalidate → ⑤DSH 代码攻击测试 → ⑥完整 V3 业务链**;验收标准 = `EVIDENCE/EB008-DSH-IMPL-ACCEPTANCE.md`(四攻击域 A~D)) |
 
-## 待 Owner 裁决
+## 实现阶段进行中(EB-008 DECIDED 后)
 
-1. **EB-008 DEC-013 最终裁决**(唯一在途项):设计链已收口(Rev-4 = `2ad6f99`,Review-5 VERIFIED,Owner 确认 = DEC-017);终裁通过 → EB-008 → DECIDED → 实现阶段(validation_events 持久化 / invalidate 状态机 / replay 稳定性为 Owner 点名必须落实项);DEC-013 IR 侧前置已被 DEC-016 Option B 收窄(state.yaml 已加 amendment,引用须同引 DEC-016);
-2. N3–N6 已裁不补跑,记 deferred(DEC-012,重开窗口仅 Owner)。
+1. **Claude 开工顺序① validation_events 持久化**;每步 = commit + 回执 hash,DSH 增量验收;顺序⑤ DSH 全量攻击测试(P3.2 N1/N2/N7/N8 复跑,验收要求 = 全部 BLOCKED,基线 FACT-021 = 全部 BYPASS);
+2. **实现期必落实**(Owner 点名,DEC-017):validation_events 持久化 + invalidate 状态机 + replay 稳定性;另加 proof 机制(APP_SECRET 启动校验非空)/ approve() enforcement / invalidate 级联触发 / DB append-only 触发器(Phase-2);
+3. **设计阶段已关闭**(DEC-018):不再开新设计讨论;实现与冻结设计冲突 → ATTACK 报告 → Owner 裁决;
+4. Claude 遗留治理项:R5-03 DEC 编号冲突(handoff 012/013)+ DEC-017/DEC-018 同步;
+5. N3–N6 已裁不补跑,记 deferred(DEC-012,重开窗口仅 Owner),但实现不得为其预留 bypass 后门。
 
 ## 当前禁止(两侧共同)
 

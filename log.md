@@ -2356,3 +2356,11 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **修正**:EB-008 status 回退 `PROPOSED`(合法值),新增 `decided_candidate: true` + `blocked_by: "Owner DEC-013 最终裁决"` 字段承载"DECIDED 候选"语义;CURRENT.md/handoff 012/REVIEW5 归档头同步改为"DECIDED 候选(PROPOSED + decided_candidate=true)";log.md 按追加纪律不改旧条目,以本条目更正。**语义不变**:Owner 确认已收(DEC-017)、设计链收口、等 DEC-013 终裁后置入 DECIDED。
 
 **教训**:台账新增状态值前必须对照 `tests/test_coordination_state.py` 的 EB_STATES 守卫;"候选/等待终裁"类中间语义用附加字段表达,不扩状态机。
+
+## 2026-09-15 · EB-008 Design Frozen(DEC-018):设计阶段终局,EB-008 → DECIDED,进入实现阶段
+
+**触发**:Owner 裁决(聊天原文):确认 Review-2~5 全部完成,**EB-008 设计阶段结束**;DSH 后续职责调整为 **Implementation Adversarial Review**;四大攻击域作为实现阶段验收标准(①validation_events:真持久化/append-only/replay 稳定/invalidate 不可洗白;②Review Proof:生成字段完整/验证严格/candidate 绑定正确/APP_SECRET 边界符合设计;③Admission Enforcement:approve() 强制检查 Authority/未验证 IR 不可绕过进入 Question;④Identity Model:le_hash 计算稳定/不加入 run_id、time 等非身份因素/同 hash 真正复用);实现顺序冻结 = EB-008 Design Frozen → 实现 validation_events → 实现 proof → 实现 Admission enforcement → 实现 invalidate → DSH 代码攻击测试 → 进入完整 V3 业务链;"现在不要继续开新的设计讨论""保持当前攻击清单作为实现阶段验收标准""设计阶段无需继续扩展"。**性质:Owner 终局裁决入册(即 DEC-013 终裁落地),零代码。**
+
+**落盘**:①state.yaml:DEC-018 入册(裁决全文 + 实现顺序 + 四攻击域)、**EB-008 status → DECIDED**(decided_at + resolution 字段,decided_candidate/blocked_by 退役,review_2/evidence_audit 状态块收口);②`EVIDENCE/EB008-DSH-IMPL-ACCEPTANCE.md` **新建**——实现阶段唯一验收判据文件(四验收域 A~D 逐条判据 + 攻击手法 + 判据纪律 + 实现期义务对照表);③`HANDOFFS/2026-09-15-DSH-to-Claude-013.md`(DEC-018 转达 + 实现顺序 + 验收标准引用 + 遗留治理项);④CURRENT.md 同步(EB-008 行 → DECIDED、"待 Owner 裁决"节 → "实现阶段进行中"节);⑤本条目。
+
+**要点**:①EB-008 从"架构争论阶段"正式进入"工程落地阶段",协议状态机走 Owner 裁决置入 DECIDED(合法值,EB_STATES 守卫核对过);②DSH 角色转换:设计审查(Review-2~5,已全部归档)→ **实现期代码对抗攻击**(验收标准 = DEC-018 四域 + DEC-017 Owner 点名三项);③P3.2 N1/N2/N7/N8 四向量将在顺序⑤ 复跑验收(基线 FACT-021 = 全部 BYPASS,要求 = 全部 BLOCKED);④判据纪律延续:"实现阶段再加字段/后续 migration" = UNPROVEN(DEC-015 红线);设计与实现冲突 → ATTACK 报告 → Owner 裁决,DSH 不重设计;⑤Claude 遗留治理项不因阶段切换消失:R5-03 DEC 编号冲突 + DEC-017/018 同步(handoff 013 再提)。
