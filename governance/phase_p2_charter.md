@@ -557,3 +557,17 @@ preprocessing 项目已从"不断增加能力"进入**收敛期**——停止条
 - **FACT-009 对 Producer 声明方式的影响 = 零变更**:消费方采纳缺口属 V3 架构演进(EB-005,终须 V3 侧 L2),不是 Producer 声明缺陷;**Contract Must Follow Evidence,不是 Contract Must Follow Implementation**。附 P3.2 设计约束入 EB-004:**实验必须走 experimental adapter 路径**(生产 Resolver 不消费 options_region,否则测的是"自推断"而非"消费 Producer Evidence",结论失真);
 - **两个互操作问题按协议解决**:① **ID 撞号**——Claude 写文件早于 PROTOCOL 推送(同步时差非违规),其本地编号全部**别名映射**入 `claude_id_aliases`(最危险混淆:两侧 FACT-005 语义完全不同),内容零覆盖,新增项分配 canonical id EB-005/006/007;② **协调文件未 commit**——`git status` = untracked,对对方不可验证,按 REPORTED 级入册,handoff 002 要求 Claude 补 commit + Claude-4 重分类归因落盘(现 FACT-010 = REPORTED);
 - 新增禁止事项入 state.yaml:不把 21 pending + 10 high-risk 当 31 个独立失败混计;V3 侧协调文件必须 commit 后才算入册。
+
+### 14.8 31 case 清单核验轮:转述漂移实证 + FACT-007 精确化(2026-09-15)
+
+> Claude 经聊天通道回传 31 case unit 级清单 + 4 Claim + P3.2 范围判断。DSH 按 PROTOCOL §5 第 4 步全量核验。**性质:核验 + 修正,零 pipeline 代码、零重跑。**
+
+- **b3 报告权威对账(FACT-012)**:548 units 全量核验,result distribution = 527 resolved / 16 no_labels / 5 incomplete,与 Claude 清单 **unit/result 21/21 全对**;
+- **转述漂移实证(FACT-013,本轮最重要流程发现)**:聊天转述的**卷名 13/21 与 Claude 自己的 b3 报告不符**(P-06/07 实为 101地理、P-11~13 实为丰台历史、P-14 实为师大附中政治、P-15 实为一六一数学、P-17/18 实为一零一中统练六化学、P-19 实为四中顺义分校化学、P-20 实为上地一零一英语、P-21 实为十二中物理)。**卷名是跨仓库 join key,按转述对账会得出错误结论(如"海淀历史卷缺标点"实为丰台卷)**——Claim 协议"引用必须回到证据文件"首次拿到存在级实证。处置:修正入册 + 禁止"手写重构证据文件已有数据,一律导出";
+- **FACT-007 精确化修正**:P-06/P-07 = DSH Q13/Q37 **同源卷同 unit**(b1 region [113,137] vs b2 [113,138],尾行差 1 属版本微差)。"case 零重叠"仅对 Q51 成立(bio 汇编在 b1 的 pending 是 Q72 非 Q51);正确表述 = **同 failure pattern、部分同 unit、跨产物版本复现**——同 unit 双版本均失败,pattern 对 prompt 演进稳定,系统性证据反而升级;
+- **源侧亲验(FACT-015)**:21 pending 呈现全部用 manifest `source_file` 精确路径亲读——A 缺标点 5/5 成立(`A 自然法则 B. 天人感应…`)、P-16 `B. H: O: H` 行内、P-17/18 数学模式公式、P-20 `---` 前缀、P-01~05 table/td marker、P-09/10 `<div>A.</div>`;
+- **新发现(FACT-017)**:P-19(Q14 四中顺义分校化学)region=[158,164] 全 7 行未见字面 G 但 detected 含 G——located 行待 V3 澄清;
+- **方法论教训(FACT-016,DSH 自曝)**:首轮核验用 glob 模糊匹配命中错误年份卷(2021 丰台 vs 2022 丰台)+ auto-annotated-v6 副本,结论作废重验——**跨卷核验禁用模糊匹配**,两侧同一课:转述与近似匹配都是漂移源;
+- **4 Claim 入册**(C-EB004-001→EB-003、C-EB002-001→EB-005、C-EB003-001→EB-006、C-EB005-001→EB-007,别名映射含 Claim 层):前两个 DSH 已亲验升级 OBSERVED;EB-006 源侧 5/5 验(规则设计属 V3);EB-007 呈现属实但结论 INFERRED + P-19 疑点;
+- **P3.2 范围共识**:Claude 判断可启动、范围限定 **Enforcement 验证**(Admission Boundary 能否阻止非法 Evidence),与 EB-001/003 独立;DSH 同意该划分,EB-004 升 EVIDENCED;**启动待用户放行**,实验须走 experimental adapter 路径;
+- **待办(Claude)**:commit 协调文件 / 31 case 清单按 b3 报告落盘 / P-19 G located 答复 / P3.2 范围文档起草(不启动)。

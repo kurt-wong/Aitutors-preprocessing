@@ -2115,3 +2115,28 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **落盘**:镜像 `HANDOFFS/2026-09-15-Claude-to-DSH-001.md`(MIRROR 头)+ 回复 `HANDOFFS/2026-09-15-DSH-to-Claude-002.md`;state.yaml(FACT-008~011 / EB-005~007 / claude_id_aliases / 新禁止 2 条)/ CURRENT.md / charter §14.7 同步。**新增禁止**:不把 21+10 当 31 独立失败混计;协调文件必须 commit 后才算入册。
 
 **待办(Claude)**:commit 协调文件 / Claude-4 归因落盘 / 回复三问。P3.2(EB-004)仍待用户放行。
+
+---
+
+## 2026-09-15 · 31 case 清单核验轮:转述漂移实证 + FACT-007 精确化(charter §14.8)
+
+**触发**:Claude 经聊天通道回传 31 case unit 级清单(21 pending + 10 high-risk)+ 4 Claim + P3.2 范围判断。DSH 按 PROTOCOL §5 第 4 步**全量核验,不采信转述**。**性质:核验 + 修正,零 pipeline 代码、零重跑。**
+
+**核验结果(三层证据)**:
+1. **b3 报告权威对账(FACT-012)**:548 units 全量跑,`527 resolved / 16 no_labels / 5 incomplete`,与 Claude 清单 **unit/result 21/21 全对**;
+2. **转述漂移实证(FACT-013,本轮最重要流程发现)**:**卷名 13/21 与 Claude 自己的 b3 报告不符**——P-06/07 实为 **101地理**(非化学)、P-11~13 实为 **丰台历史 2022**(非海淀)、P-14 实为**师大附中政治**(非英语)、P-15 实为**一六一数学**、P-17/18 实为**一零一中统练六化学**(非海淀统计/化学)、P-19 实为**四中顺义分校化学**、P-20 实为**上地一零一英语**(非西城)、P-21 实为**十二中物理**(非顺义一中)。卷名是跨仓库 join key——按转述对账会得出"海淀历史卷缺标点"这类错误结论。**Claim 协议"引用必须回到证据文件"首次拿到存在级实证**;处置:修正入册 + 新增禁止"不手写重构证据文件已有数据,一律导出";
+3. **源侧亲验(FACT-015,manifest source_file 精确路径)**:21 pending 呈现全部亲读——A 缺标点 **5/5 成立**(`A 自然法则 B. 天人感应 C. 历史规律 D. 伦理纲常`,A 无标点 B/C/D 有;`A ①② B. ①④…`;`A  $ [0,1] $ B.…`)、P-16 `B. H: O: H` 行内、P-17/18 数学模式公式、P-20 `---Why…` 前缀、P-01~05 `<table>` 内 td marker、P-09/10 `<div>A.</div>`。
+
+**FACT-007 精确化修正(重要)**:P-06/P-07 = DSH Q13/Q37 **同源卷同 unit**(b1 [113,137] vs b2 [113,138],尾行差 1 = 版本微差)。"case 零重叠"仅对 Q51 成立(bio 汇编在 b1 的 pending 是 **Q72** 非 Q51)。正确表述:**同 failure pattern、部分同 unit、跨产物版本复现**——同 unit 双版本均失败 = pattern 对 prompt 演进稳定,**系统性证据反而升级**。
+
+**新发现(FACT-017)**:P-19(Q14)region=[158,164] 全 7 行未见字面 G,但 detected=`['A','B','C','G','D']`——G 的 located 行待 V3 澄清(handoff 003 问题 1)。
+
+**方法论教训(FACT-016,DSH 自曝)**:首轮核验用 glob 模糊匹配,命中**错误年份卷**(2021 丰台 vs 2022 丰台)+ auto-annotated-v6 副本,三条"核验结论"作废,改用 manifest `source_file` 精确路径重验。**跨卷核验禁用模糊匹配**——两侧同一课:转述与近似匹配都是漂移源。
+
+**4 Claim 入册**(别名映射扩至 Claim 层):C-EB004-001→EB-003(DSH 亲验 OBSERVED)/ C-EB002-001→EB-005(同)/ C-EB003-001→EB-006(源侧 5/5 验;Claude 提案"B/C/D 有标点且 A 为 B 前行首单字母→判 A"属 deterministic contextual,规则设计+唯一性证明属 V3)/ C-EB005-001→EB-007(呈现属实,结论 INFERRED + P-19 疑点)。
+
+**P3.2 范围共识**:Claude 判断可启动、范围限定 **Enforcement 验证**(Admission Boundary 拦截非法 Evidence),与 EB-001/003 独立;DSH 同意,EB-004 升 EVIDENCED;**启动待用户放行**,实验须走 experimental adapter 路径(FACT-009)。
+
+**落盘**:镜像 `Claude-to-DSH-002.md` + 回执 `DSH-to-Claude-003.md`;state.yaml(FACT-012~017 / EB-004/006/007 升 EVIDENCED / Claim 别名)/ CURRENT.md / charter §14.8。EB 项 7 个:001/002 joint ATTRIBUTED,003/005/006/007 v3 EVIDENCED,004 EVIDENCED 待用户。
+
+**待办(Claude)**:commit 协调文件 / 清单按 b3 报告落盘 / P-19 G located / P3.2 范围文档起草。**待用户:P3.2 放行裁定。**
