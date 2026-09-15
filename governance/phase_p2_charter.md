@@ -571,3 +571,14 @@ preprocessing 项目已从"不断增加能力"进入**收敛期**——停止条
 - **4 Claim 入册**(C-EB004-001→EB-003、C-EB002-001→EB-005、C-EB003-001→EB-006、C-EB005-001→EB-007,别名映射含 Claim 层):前两个 DSH 已亲验升级 OBSERVED;EB-006 源侧 5/5 验(规则设计属 V3);EB-007 呈现属实但结论 INFERRED + P-19 疑点;
 - **P3.2 范围共识**:Claude 判断可启动、范围限定 **Enforcement 验证**(Admission Boundary 能否阻止非法 Evidence),与 EB-001/003 独立;DSH 同意该划分,EB-004 升 EVIDENCED;**启动待用户放行**,实验须走 experimental adapter 路径;
 - **待办(Claude)**:commit 协调文件 / 31 case 清单按 b3 报告落盘 / P-19 G located 答复 / P3.2 范围文档起草(不启动)。
+
+### 14.9 三次镜像闭环:事实层两侧一致达成(2026-09-15)
+
+> VPN 恢复后 DSH 补推 `13d4ed0`(CI Run 34913400872 success,314/24/1,闭合 338−24=314);V3 侧 Claude 已 commit+push(`28c4cd8` 协调层 + claude4-attribution.json + 全部 sampling 证据落盘;`f88b418` hash 更新,GitHub 远端可验证)。**性质:核验 + 闭环,零 pipeline 代码、零重跑。**
+
+- **V3 侧对齐确认**:其 state.yaml 明文声明 `canonical_ledger: DSH repo, V3 side is mirror`(单主规则两侧确认);吸收 DSH 的 FACT-008/009(`dsh_verified: true`)/ FACT-010/011;新增 DEC-008(P3.2 须 experimental adapter 路径)/ DEC-009(raw HTML = intended Source representation),与 DSH 答复一致;
+- **FACT-010 升级 OBSERVED**:`claude4-attribution.json` 已落盘推送,DSH 亲读核验数字全对(21 pending = 10/9/1/1,SEMANTIC=0,summary 13/15/1/0/2 自洽);
+- **FACT-017 澄清闭合**:P-19 的 G located = `incomplete`/line_ref=null,**从未绑定任何行**;region 无字面 G——"G 为何被检出"归 V3 detector 代码追踪(EB-007 子项),非 Source 问题。handoff 003 问题 1 已答;
+- **两侧一致清单(七项)**:架构边界五规则 / 三数字口径 / options_region = 充分最小 handoff / 生产 Resolver 无 options_region = V3 采纳缺口(Producer 零变更)/ HTML table/div 系统性 B 类(Q13/Q37 同 unit 跨版本)/ SEMANTIC=0 / P3.2 范围 = Enforcement 验证 + experimental adapter + 待用户放行——**事实层与架构判断全部一致,同步闭环成立**;
+- **遗留两件执行修正(handoff 004 已提,不影响一致性判定)**:① **修正 A(重要)**:`claude4-attribution.json` paper 字段固化了 FACT-013 的 13/21 错卷名(转述漂移进了证据文件),须从 b3 报告 join 导出修正,卷名权威 = `consumer-report-b3.json`;② 修正 B(轻量):其 cross_corpus "cases do not overlap" 表述过时(Q13/Q37 已证同 unit)+ 其 state.yaml 仍用本地 EB 编号(映射 `claude_id_aliases`);
+- **P3.2(EB-004)**:两侧共识 = 可启动、范围限定 Enforcement 验证、与 EB-001/003 独立、须走 experimental adapter 路径;**启动待用户放行**——两侧均不自行启动。

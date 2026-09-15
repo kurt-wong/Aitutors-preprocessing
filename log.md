@@ -2140,3 +2140,24 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **落盘**:镜像 `Claude-to-DSH-002.md` + 回执 `DSH-to-Claude-003.md`;state.yaml(FACT-012~017 / EB-004/006/007 升 EVIDENCED / Claim 别名)/ CURRENT.md / charter §14.8。EB 项 7 个:001/002 joint ATTRIBUTED,003/005/006/007 v3 EVIDENCED,004 EVIDENCED 待用户。
 
 **待办(Claude)**:commit 协调文件 / 清单按 b3 报告落盘 / P-19 G located / P3.2 范围文档起草。**待用户:P3.2 放行裁定。**
+
+---
+
+## 2026-09-15 · 三次镜像闭环:事实层两侧一致达成(charter §14.9)
+
+**触发**:用户重启 VPN("127.0.0.1:55219")并令"与 Claude 信息完成同步并取得一致后务必告知"。DSH 补推积压 commit + 核验 V3 侧新 commit,完成同步闭环。
+
+**推送恢复**:git HTTPS 连续 6 次 Connection reset(gh API 正常 = VPN 分流故障特征,用户确认 VPN 问题);VPN 重启后 `13d4ed0` 推送成功(`6f09e9d..13d4ed0`),CI Run 34913400872 = **success,314 passed / 24 skipped / 1 xfailed**(本地 338 − 24 = 314 闭合)。
+
+**V3 侧核验(远端可验证,不再是 REPORTED)**:
+- `28c4cd8`:协调层(CURRENT/state/HANDOFFS 001/002)+ **claude4-attribution.json** + correctness-sampling-report.json + sampling-review-set/results + 采样脚本,全部落盘推送;`f88b418` hash 更新;
+- 其 state.yaml 明文 `canonical_ledger: DSH repo; V3 side is mirror`——**单主规则两侧确认**;
+- 吸收 DSH 事实:FACT-005 加 `dsh_verified: true`、FACT-008/009/010/011 入册;新增 DEC-008(P3.2 须 experimental adapter)/ DEC-009(raw HTML = intended representation),与 DSH 答复一致;
+- **FACT-010 升 OBSERVED**:归因文件数字 DSH 亲读全对(21 pending = 10 STRUCTURAL + 9 CONTEXTUAL_DETERMINISTIC + 1 LEXICAL + 1 UNKNOWN;SEMANTIC=0;summary 13/15/1/0/2 自洽);
+- **FACT-017 澄清闭合**:b3 报告 located 字段亲读——P-19 的 **G status=incomplete, line_ref=null,从未绑定任何行**,region 无字面 G;"G 为何被检出"归 V3 detector 代码追踪(EB-007 子项),非 Source 问题。
+
+**两侧一致清单(七项,全部闭环)**:架构边界五规则 / 三数字口径 / options_region = 充分最小 handoff / 生产 Resolver 无 options_region = V3 采纳缺口(Producer 零变更)/ HTML table/div 系统性 B 类(Q13/Q37 同 unit 跨版本复现)/ SEMANTIC=0 / P3.2 范围 = Enforcement 验证 + experimental adapter + 待用户放行。**事实层与架构判断全部一致,同步闭环成立。**
+
+**遗留两件执行修正(handoff 004 已提,不影响一致性)**:① **修正 A(重要)**:claude4-attribution.json paper 字段**固化了 FACT-013 的 13/21 错卷名**(转述漂移进了证据文件)——须从 b3 报告 join 导出修正,卷名权威 = consumer-report-b3.json;② 修正 B:cross_corpus "cases do not overlap" 表述过时 + V3 侧 state.yaml 仍用本地 EB 编号(映射 claude_id_aliases)。
+
+**落盘**:handoff 004(闭环确认 + P-19 答案 + 修正 A/B 请求);state.yaml(mirror_status 三次闭环 / FACT-010 升级 / FACT-017 澄清)/ CURRENT.md(一致清单)/ charter §14.9。**DSH 侧本轮无新增行动项**——修正 A/B 属 V3 侧,P3.2 待用户放行。

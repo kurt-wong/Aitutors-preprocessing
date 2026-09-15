@@ -24,7 +24,7 @@ agents:
     branch: main
     role: Evidence Resolution + Semantic IR + Gate + Admission
     ledger_role: mirror_via_handoff
-    mirror_status: "2026-09-15 首次镜像 + 二次镜像(Claude-to-DSH-002,经聊天通道转达、V3 侧仍未落盘);DSH 已按证据文件核验并修正转述漂移(FACT-012~017)"
+    mirror_status: "2026-09-15 三次镜像闭环:V3 侧已 commit+push(28c4cd8 协调层+归因落盘,f88b418 更新 hash,远端可验证);DSH 核验升级 FACT-010/017;遗留:claude4-attribution.json 固化了 13/21 错卷名待 V3 修正(FACT-013)"
 
 # ---------- FACT: 可验证陈述,必须带 evidence(repo+commit+文件) ----------
 facts:
@@ -85,8 +85,8 @@ facts:
   - id: FACT-010
     statement: "Claude-4 四维重分类: 21 pending = 10 STRUCTURAL + 9 CONTEXTUAL_DETERMINISTIC + 1 LEXICAL + 1 UNKNOWN,SEMANTIC = 0;6 个 formula/chemical FP 全部重分类为 CONTEXTUAL_DETERMINISTIC"
     source: v3
-    evidence: "Claude-4 audit(2026-09-15 session;V3 侧未提供独立文件,待补落盘);V3 侧原编号 FACT-003"
-    confidence: REPORTED
+    evidence: "claude4-attribution.json(V3 commit 28c4cd8 已落盘+推送,DSH 亲读核验数字全对);注意该文件 paper 字段带 13/21 错卷名(FACT-013),引用卷名以 consumer-report-b3.json 为准"
+    confidence: OBSERVED
     status: observed
   - id: FACT-011
     statement: "Q51 选项内容物理位于 L540(HTML table 整行),落在 stem_lines=[537,540] 内;Producer 未单独声明 options_region(=null)——不是 region 圈错,是表格版式下 region 缺失、内容被 stem region 吸收"
@@ -125,9 +125,9 @@ facts:
     confidence: OBSERVED
     status: observed
   - id: FACT-017
-    statement: "P-19(Q14,四中顺义分校化学)region=[158,164] 全 7 行内未见字面 G,detected 却含 G——G 的 located 行待 V3 澄清"
+    statement: "P-19(Q14 四中顺义分校化学)G located = incomplete,line_ref=null——G 从未绑定任何行;region 全 7 行无字面 G;'G 为何被检出'属 V3 detector 代码追踪(EB-007 子项),非 Source 问题"
     source: both
-    evidence: "b3 报告 detected=['A','B','C','G','D'] vs 源 L158-164 亲读"
+    evidence: "consumer-report-b3.json located 字段亲读(DSH);已答复 handoff 003 问题 1"
     confidence: OBSERVED
     status: observed
 
@@ -197,7 +197,7 @@ open_questions:
     owner: v3
     status: EVIDENCED
     facts: [FACT-010, FACT-015, FACT-017]
-    note: "Claude Claim C-EB005-001(INFERRED): 6 case(P-16~19, H-02, H-04);DSH 源侧亲验呈现属实(H:O:H 行内 / 数学模式 / 氟（F）括号内)。新增 FACT-017: P-19 region 内未见字面 G,located 待 V3 澄清。分析属 V3;答案若为否 → pending_review 合理出口"
+    note: "Claude Claim C-EB005-001(INFERRED): 6 case(P-16~19, H-02, H-04);DSH 源侧亲验呈现属实。FACT-017 已澄清: P-19 的 G located=incomplete/null,从未绑定行,G 为何被检出 = V3 detector 代码追踪子项。分析属 V3;答案若为否 → pending_review 合理出口"
 
 # ---------- V3 侧本地编号 → canonical 别名映射(防撞号混淆;V3 写文件早于 PROTOCOL 推送,属同步时差非违规) ----------
 claude_id_aliases:
