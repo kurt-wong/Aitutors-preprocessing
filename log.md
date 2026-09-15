@@ -2328,3 +2328,15 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **核心结论**:①Owner 决策①——Run(Process)/Candidate(Entity)区分正确,R1-R5 replay 自洽,authority 不依赖 run_id,Review-3 B3-01 假前提被正确删除;②Owner 决策②——proof token 五维绑定(candidate_id/review_result/reviewer_id/reviewed_at/APP_SECRET)全部通过;DB 复制无 `.env` → proof 重算不匹配 → fail-closed 保守拒绝,**不错误关联**;DB+`.env` 整套克隆 = 超出威胁模型(Owner 已接受);③Owner 决策③——validation_events 表含 candidate_id+source_version_id,INVALIDATED 防洗白成立(R3 no-op/R5 终态),B3-04 消解;④Owner 决策④——Rev-3 IR 职责解释与代码一致(`ir.py:1-2` transient),Option A/B 对比不预设结论,Option B 与 pipeline 顺序一致无循环。**3 WARNING(声明完整性,并入 Rev-4)**:proof 粒度须显式声明 candidate 级 / API 层访问控制缺失列入不防御清单 / line_refs 剔除引用 70 号 OQ-1 Gate A。**1 NOTE**:DB append-only 触发器 Phase-1 trade-off,schema 已设计期定死,不触发 DEC-015 红线。
 
 **要点**:DEC-016 固化 Owner 四项冻结决策全文 + Decision-4 Option B + 判据纪律 + 流程(Claude Rev-4 commit 回执 → DSH Review-5 五检查点终审 → 无 BLOCKER 建议 DEC-013 终裁)。EB-008 链条:Rev-1(未 commit/REPORTED)→ Rev-2(`9bf8878`)/4 BLOCKER → Rev-3(`a80d555`)/VERIFIED → Rev-4(等 Claude)→ Review-5 → DEC-013。
+
+## 2026-09-15 · EB-008 Review-5 终审:对 Revision-4 的最终一致性审查 = VERIFIED(无 BLOCKER),建议进入 DEC-013 终裁
+
+**触发**:Claude 提交 Rev-4(V3 91号,commit `2ad6f99`,COMMITTED 级,Option B 合入),Owner 指令执行最终一致性审查,五检查点(OBSERVED/VERIFIED/ATTACK/FINAL VERDICT),无 BLOCKER 即建议终裁。**性质:终审任务,零代码。**
+
+**落盘**:`Docs/COORDINATION/EVIDENCE/EB008-DSH-REVIEW5.md`(锚 `2ad6f99`)+ state.yaml:review_5=done + DEC-013 加 amendment(收窄注记)+ EB-008 note 更新 + 本条目。
+
+**五检查点结论**:①IR 无任何"可信事实"表述——"IR 本身不代表事实可信"独立声明,非属性表四条("不是知识资产/不是 Authority 载体/不是最终产物/不是可信声明"),Option A 仅存 §7 历史注记 ✅;②双 Layer Boundary 完整:IR Layer 无 Authority 要求(provisional 允许),Question Knowledge Layer 以 `Authority==VALIDATED` 为唯一入口条件,`Admission.approve()` 唯一 enforcement 点,五步检查 + fail-closed→pending_review;未验证 IR 可存在/调试/重编译/评估/重试,禁入 Question 实体 ✅;③投影链完整:validation_events(append-only,含 candidate_id/source_version_id)→ latest 投影(on-demand、无缓存、同事务一致、可重建)→ Admission 唯一消费(Gate/Human 只生产不读,无循环)✅;④replay 同 hash→same Question+same Authority,R1-R5 继承自洽 ✅;⑤proof 机制继承 Rev-3 未削弱,符合家庭弱信任模型 ✅。
+
+**ATTACK 汇总**:0 BLOCKER / 3 WARNING / 3 NOTE。R5-01:IR 下游消费禁令执行点为"系统边界/使用约定"(文档级,风险表已列,单机形态可接受);R5-02:handoff 011 要求合入的 3 项声明性 WARNING(proof 粒度 candidate 级/API 层不防御清单/70 号引用)未合入——均为声明完整性,转实现期文档清单,不阻断;**R5-03(台账治理)**:V3 state.yaml 注册的 "DEC-013"(Owner business rules Decision-1~4)与 preprocessing canonical ledger 的 DEC-013(方向性裁决原文"Semantic IR 与 Admission 双前置")**同 ID 异文**,且 DEC-016 Option B 已收窄旧条 IR 侧前置——preprocessing 侧 DEC-013 已加 amendment 修正(引用须同时引 DEC-016),V3 侧建议改编号。
+
+**要点**:EB-008 全程收敛轨迹 = Rev-1(未 commit/REPORTED)→ Rev-2(`9bf8878`,4 BLOCKER)→ Rev-3(`a80d555`,0 BLOCKER/3 WARNING)→ Rev-4(`2ad6f99`,0 BLOCKER)。设计侧无已知未回应项。**下一步 = Owner DEC-013 终裁**;终裁通过 → EB-008 → DECIDED → 实现期清单:validation_events 表 + review proof 机制 + approve() Authority enforcement + invalidate 级联触发 + DB append-only 触发器(Phase-2)。
