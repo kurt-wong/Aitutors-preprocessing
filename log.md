@@ -2220,3 +2220,17 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **Docker 事故与重建(FACT-024)**:检索确认版本要求——PostgreSQL = **pgvector/pgvector:pg16**(唯一钉死,compose+文档三处佐证);Redis/MinIO 无版本要求且当前代码零使用。重建执行:卷 `backend_postgres_data` **幸存**(数据完好,public 25 张表);compose 重写为三服务统一 aitutor- 前缀:aitutor-postgres(pgvector:pg16,5432)/aitutor-redis(redis:alpine,6379)/aitutor-minio(**quay.io/minio/minio:latest**——Docker Hub minio/minio 已停止分发 pull denied,镜像源必须改 quay.io;9000/9001)。三容器 healthy(psql 25 表/redis PONG/minio health 200 亲验)。附带:`vector` 扩展未装(embedding 未接线所致,接线时 CREATE EXTENSION vector);minio bucket=aitutors 未初始化(非阻塞)。V3 compose 变更 commit `3d0cb21` 已推送。**preprocessing 影响 = 零**(无 Docker 依赖)。
 
 **落盘**:state.yaml(FACT-021~024 / EB-004→VERIFIED / EB-008 新立 / CLAUDE_FACT-012~014 别名)/ handoff 007(亲验回执 + 两处措辞精确化要求 + infra 同步)/ CURRENT.md / charter §14.12。**待 Owner**:①EB-008 架构裁决;②N3–N6 补跑与否。
+
+---
+
+## 2026-09-15 · 会话收口轮:DEC-012 入册 + RS.MD 整体重写固化(联调阶段开启)
+
+**触发**:用户裁定收口——①Claude 五点执行确认(经用户转达):修正实验报告事实口径 / state ledger 更新(EB-004 VERIFIED、EB-008 DISCOVERED)/ 不设计 EB-008 / 不修改 Admission / **N3–N6 不补跑,记 deferred**;②上下文超长,用户将新建对话,令固化根目录状态文档 + RS.MD,新会话正式进入 **preprocessing×V3 联调阶段**。**性质:收口 + 固化,零 pipeline 代码。**
+
+**DEC-012 入册**(authority = 用户裁定):N3–N6 deferred(补跑窗口仅 Owner 未来重开);EB-008 裁决前两侧不设计不实现、不改 Admission;Claude 五点执行承诺按 REPORTED 入册(待 V3 新会话落盘,handoff 007 已含全部要求);下一阶段 = 联调。
+
+**RS.MD 整体重写(重要)**:旧版停在 R54 时代(Resolver 审查闭环),与当前状态完全脱节。新版固化:pivot 后定位(Source Evidence Producer)/ 铁律九条(含协调层纪律与 case id 稳定性)/ main 链至 `71e9257` / P3.2 终局事实与两处口径 / 协调层结构与七项一致 / 三数字 / DSH 归因终局 / 待裁定事项(EB-008 = 联调第一裁决点)/ 恢复动作清单六步(含 Docker 验证)。冲突裁决序:log.md(append-only)> state.yaml(机器权威)> 本文件。
+
+**本会话总账(2026-09-15 全天,9 轮 commit)**:§14.7 首次互操作(`6f09e9d`)→ §14.8 清单核验(`13d4ed0`)→ §14.9 三次镜像闭环(`1c3ce04`)→ §14.10 放行 P3.2(`4651498`)→ §14.11 步骤④核验授权(`afeb025`)→ §14.12 实验亲验+EB-008+infra 重建(`71e9257`)→ 本轮收口。Coordination Protocol v0.1 完成一次完整的 Claim→Evidence→Decision 全链路实战(跨侧互操作→核验→放行→实验→亲验→VERIFIED→架构问题立项),协议本身经受住了转述漂移、ID 撞号、case 重编号三次真实冲击并全部以规则固化。
+
+**落盘**:state.yaml(DEC-012 + mirror_status 五次镜像 + EB-004 note)/ RS.MD(整体重写)/ status.md(收口 + 下一步 = 联调)。**新会话恢复入口 = RS.MD。**
