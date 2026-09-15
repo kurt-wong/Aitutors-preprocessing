@@ -1,7 +1,13 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**Producer Interface Facts v1 落盘——Producer Owner 角色恢复;五输出面字段级固化 + hash 语义登记 + B1/B2/B3 生产侧输入;两项新固化:identity 面 v2 87/v1 79 分裂、schema 噪声第 2 例;工件 `data/producer_interface_census.json`;五纪律零触碰**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**Owner 暂停令**:Interface Facts v1 后暂停数据清洗/schema 修改/daemon 修复/contract 修改;等待 Owner B1/B2/B3 裁决;DSH 仅保持新事实记录 + 裁决后执行准备)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+
+## ⏸ 当前状态:全线暂停等 Owner 裁决(2026-09-16 令)
+
+**暂停**:数据清洗 / schema 修改 / daemon 修复 / contract 修改。
+**保持**:新事实记录 / 裁决后的执行准备。
+**裁决入口**:B1 传输层(三选一)→ B2 hash 对账口径 → B3 隔离执行面,并案 closure plan §5 六项;生产侧输入 = `INTEGRATION/PREPROCESSING-PRODUCER-INTERFACE-FACTS.md` §3 + `PREPROCESSING-PRODUCER-FACT-RECONCILIATION-v0.2.md`。
 
 ## 主线:preprocessing 内部收口(数据卫生,Owner 令)
 

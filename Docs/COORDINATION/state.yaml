@@ -440,7 +440,14 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "Consumer Review v0.2(B1/B2/B3 三 BLOCK)已由 DSH Producer Fact Reconciliation v0.2 回应(INTEGRATION/PREPROCESSING-PRODUCER-FACT-RECONCILIATION-v0.2.md): 事实面对齐,裁决面归 Owner(传输层选择/hash 对账口径/隔离执行面);契约保持 DRAFT 不冻结"
+  next: "等 Owner B1/B2/B3 裁决(入口 = Interface Facts §3 生产侧输入 + closure plan §5 六项并案);Owner 2026-09-16 暂停令在案:数据清洗/schema 修改/daemon 修复/contract 修改全部暂停,DSH 仅保持新事实记录与裁决后执行准备"
+  owner_pause_order:
+    date: "2026-09-16"
+    text: "Producer Interface Facts v1 完成后暂停:数据清洗 / schema 修改 / daemon 修复 / contract 修改;等待 Owner B1/B2/B3 裁决"
+    paused: ["数据清洗(含 unit_type 单点修复/recover_images 批跑/flags 登记)", "schema 修改", "daemon 修复", "contract 修改(含冻结)"]
+    allowed: ["新事实记录(只读测量 + 台账入册)", "裁决后的执行准备(裁决令下达后启动)"]
+    authority: Owner(直接指令,DSH 自记)
+    affects: [closure_plan B 六步, data_hygiene.pending_owner ①~④, integration_contract 冻结]
   role_recalibration: "Owner 2026-09-15: DSH 恢复 preprocessing 收口本职;EB-008 保留为跨项目契约(验证 preprocessing 输出满足 V3 可信输入要求),DSH 不再承担 V3 攻击测试团队角色;Review-1 报告不再作为推进状态的依据"
   consumer_review_v02:
     doc: "V3 仓 Docs/COORDINATION/CONTRACTS/PREPROCESSING-V3-CONTRACT-CONSUMER-REVIEW-v0.2.md(V3 commit 938535d,COMMITTED 级)"

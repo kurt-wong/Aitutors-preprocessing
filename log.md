@@ -2462,3 +2462,17 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 7. 源 md 今日 4,224 份(DQE 时点 4,223,+1 = daemon 产出,机制连续)。
 
 **落盘**:Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-INTERFACE-FACTS.md v1(§0 合取摘要 / §1 五输出面字段级清点 / §2 hash 语义登记 / §3 B1/B2/B3 生产侧输入(只给事实约束与权限边界,无任何"建议")/ §4 不承诺清单 / §5 边界声明);state.yaml FACT-032 + integration_contract.producer_interface_facts 块;CURRENT.md 同步。Contract 保持 v0.1 DRAFT 一字未动;两仓代码零修改;无清洗、无迁移、无数据生成。**生产侧事实生产至此结束,等 Owner 裁决**(B1/B2/B3 + closure plan §5 六项)。
+
+---
+
+## 2026-09-16 Owner 暂停令(状态指令,零数据动作)
+
+**触发**:Owner 指令——Producer Interface Facts v1 完成后全线暂停。
+
+**暂停**:数据清洗 / schema 修改 / daemon 修复 / contract 修改。
+**保持**:新事实记录 / 裁决后的执行准备。
+
+**等待**:Owner B1/B2/B3 裁决(入口 = Interface Facts §3 生产侧输入 + Reconciliation v0.2;并案 closure plan §5 六项)。裁决令下达前 DSH 不启动任何数据动作。
+
+**落盘**:state.yaml integration_contract.owner_pause_order + 
+ext 更新;CURRENT.md 顶部暂停横幅。Contract 保持 v0.1 DRAFT,语料零写入,两仓代码零修改。
