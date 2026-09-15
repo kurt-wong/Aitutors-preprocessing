@@ -2269,3 +2269,24 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 - 其余:claim_id 无命名空间全局 latest-by-timestamp 碰撞(R2-A1-2)/ D4 声明四元组绑定但 D5 判定函数只查 unit_id(R2-A1-1)/ 空 reference_ids 使 source 绑定检查无从执行 + NULL run_id 匹配语义未定义(R2-A3-3/A5-2)/ INVALIDATED 有载体无触发机制 + authority 仍无内容指纹(R2-A3-1/2)/ ledger 事件无法归属 candidate(Attack 6 答案 = 不存在)/ D7 节内 raise vs pending_review 自相矛盾 + 失效 IR 无撤回 / authority check 事务可见性与 TOCTOU 未声明 / 双层同 ledger 同逻辑 = 非纵深(过强主张)且 evaluate 同根问题加重为三处同源 / 多评审者与人工-机器冲突被状态机误伤(Attack 10)/ **R2-F1:D10 "§8.2 不需要修改 ✅" 过强**——approve() 新增校验条件属冻结规范行为变更,须 L2 注记。
 
 **结论口径**:不否定方向 B;Revision-1 在 RDQ-1/2/4 解决前**不具备终裁条件**;其余方向(D9 fail-closed、D6 持久化方向、四元组意图)合理。**落盘**:handoff 009(含 RDQ-1~11 必答清单)/ state.yaml(EB-008 → PROPOSED + review_2 状态块 status=EB-008_ADVERSARIAL_REVIEW_2, owner=DSH, blocked_by=Owner DEC-013)/ CURRENT.md。**下一步:等 Revision-2 + commit → DSH Review-3 → Owner 终裁 D1~D10。**
+
+---
+
+## 2026-09-15 · EB-008 Evidence Verification Audit:Revision-1 = REQUIRES_REVISION
+
+**触发**:Owner 下达 EB-008 Evidence Verification Audit 任务——对 Claude Revision-1(V3 `88_EB008_..._REVISION1.md`)验证其声称是否被证据支持;只接受 OBSERVED Evidence,拒绝设计意图/未来计划/"应该如此"/"理论可以";输出格式 V1~V8 固定;落盘 `Docs/COORDINATION/EVIDENCE/EB008-DSH-VERIFICATION.md`。**性质:只读证据审计,零代码。**
+
+**审查对象口径**:doc 88(v1.0.0-revision1),**未 commit(`??`)→ REPORTED 级**,sha256=`2AEA1A81…9250`;台账级发现:Derives From 只列 Review-1 的 FACT-025~028,**Review-2 RDQ-1~11 未列为派生源**;id 纪律未修且加重(doc 88 内本地 FACT-012~024 与 canonical FACT-025~028 两套编号混用);D3 依据表对 Owner 裁决存在引申转述(非原话)。
+
+**审计结果(3 FAILED / 4 PARTIAL / REQUIRES_REVISION)**:
+- **V1 冷启动 = FAILED(致命)**:doc 88 全文 `冷启动|bootstrap|首次运行|first run|循环依赖` 机器检索 **0 命中**;D7 条件 5("run_id == 当前 run_id")使 Review-2 RDQ-1 死锁从冷启动扩展到**每个 run**(前 run 事件不计入,而事件生产者依赖 IR);
+- **V2 run semantics = FAILED**:same-candidate 重跑 record_validation(validated) 撞状态机("VALIDATED→只许 INVALIDATED",models.py L299-304)→ ValueError 崩 run,Revision-1 零回应;`current_run_id` 全文只在 D8 伪代码出现,人工 approve 路径(approve() 签名/API 端点)无 run 上下文 → Identity Match 第三行不可执行;
+- **V3 human authority = FAILED**:issuer contract 条件 2 自认 "identity 来源待定义",OQ-1 建议 "Phase 1 接受任意非空字符串" = **默认可信**(Owner 规则直接命中);投影输入 = 原样继承的无认证 review_trail 生产点(FACT-027 未修);四步链 1/2 步 FAILED;
+- **V4 identity = PARTIAL**:四元组设计层成立;但 D8 伪代码 `load_validation_events(candidate.id, …)` 按 candidate_id 过滤后再查 `latest.candidate_id != candidate.id` = **恒真同义反复**;"自动填充"写入器机制未定义;ledger append 仍无授权;
+- **V5 join = PARTIAL**:设计层碰撞闭合(candidate_id 过滤),写入端强制未证;
+- **V6 lifecycle = PARTIAL**:restart/确定性重算自洽;**INVALIDATED 为 terminal(models.py L232)→ REVOKED 后同 (candidate,claim) 无 re-grant 路径**,lifecycle 表无此行;invalidation 执行者("批量 append")未设计;
+- **V7 independence = PARTIAL**:两层确为不同时机/粒度/内容的不同 invariant;但同 ledger、同 evaluate 根(FACT-028 未引入第二计算)、ledger 级攻击两层同时失效——handoff 004 "Proven independent" 过强,须降级。
+
+**成立部分(如实)**:Authority = Projection 抽象修正(D1/D2)、candidate_id 直接绑定 join 设计(D5)、AuthoritySnapshot 冻结意图(D7)、双入口统一机制(D10)——方向与 DEC-013 一致。
+
+**DECISION: REQUIRES_REVISION**(阻断项 V1/V2/V3)。**落盘**:`Docs/COORDINATION/EVIDENCE/EB008-DSH-VERIFICATION.md`(新目录,V1~V8 固定格式)/ state.yaml(EB-008 增 evidence_audit 状态块 status=EB-008_EVIDENCE_AUDIT, owner=DSH, blocked_by=Owner DEC-013)/ CURRENT.md。**下一步:等 Revision-2(必须含冷启动解法 + run 输入定义 + 非默认可信的身份根)+ commit → DSH 重审 → Owner 终裁。**
