@@ -582,3 +582,15 @@ preprocessing 项目已从"不断增加能力"进入**收敛期**——停止条
 - **两侧一致清单(七项)**:架构边界五规则 / 三数字口径 / options_region = 充分最小 handoff / 生产 Resolver 无 options_region = V3 采纳缺口(Producer 零变更)/ HTML table/div 系统性 B 类(Q13/Q37 同 unit 跨版本)/ SEMANTIC=0 / P3.2 范围 = Enforcement 验证 + experimental adapter + 待用户放行——**事实层与架构判断全部一致,同步闭环成立**;
 - **遗留两件执行修正(handoff 004 已提,不影响一致性判定)**:① **修正 A(重要)**:`claude4-attribution.json` paper 字段固化了 FACT-013 的 13/21 错卷名(转述漂移进了证据文件),须从 b3 报告 join 导出修正,卷名权威 = `consumer-report-b3.json`;② 修正 B(轻量):其 cross_corpus "cases do not overlap" 表述过时(Q13/Q37 已证同 unit)+ 其 state.yaml 仍用本地 EB 编号(映射 `claude_id_aliases`);
 - **P3.2(EB-004)**:两侧共识 = 可启动、范围限定 Enforcement 验证、与 EB-001/003 独立、须走 experimental adapter 路径;**启动待用户放行**——两侧均不自行启动。
+
+### 14.10 用户正式放行 P3.2 / EB-004:EXPERIMENT ONLY(2026-09-15)
+
+> 用户正式裁定入册:canonical **DEC-010 / DEC-011**;EB-004 status → **DECIDED**(PROPOSED → DECIDED 走用户裁决,无跳级)。裁定全文要点见 handoff 005 与 CURRENT.md。
+
+- **放行性质**:**APPROVED TO PROCEED — EXPERIMENT ONLY**。放行的是**实验性 Enforcement Verification,不是生产架构变更授权**。允许链 = Producer Manifest → Experimental Adapter → 构造 Evidence/Resolved Evidence → Admission Boundary → 验证非法 Evidence 是否被阻止;
+- **八禁(DEC-010)**:❌ 修改生产 Resolver / Frozen Spec / Producer Contract / Gate policy / Admission semantics / 为提高通过率放宽规则 / 将实验结果直接视为架构 Decision / 因实验失败自动提 workaround;
+- **用户钉死的边界**:"不能借 P3.2 的实验顺便修生产 Resolver";"不要让 P3.2 和 EB-005 合并"——EB-005 = 输入链路缺口(Producer Evidence → Production Resolver 正式 adoption path),EB-004 = 最终准入约束缺口(Evidence Authority 是否真正 enforcement);混在一起会重演 V2 "为让 pipeline 跑通而不断加 fallback"的架构漂移。**EB-005 保持 OPEN,暂不实现**(DEC-011);
+- **严格工作顺序(不得重排)**:①修正 A(attribution 卷名,prerequisite)→ ②修正 B(cross-corpus 表述 + EB canonical 编号)→ ③Claude 起草 Scope Document(**五要素**:Scope / Inputs / Metrics / Negative Acceptance / **Non-goals**)→ ④**DSH 核验 Scope** → ⑤实验(生产代码零修改)→ ⑥Findings → ⑦无 bypass 则 EB-004 evidence closed,有 bypass 则架构问题进 Decision 流程(不自动 workaround);
+- **修正 A 为前置的理由(用户裁定)**:权威链必须保持 `consumer-report-b3.json → paper identity → claude4-attribution.json`,不得倒置——这正是 "Canonical ledger → derived evidence" 原则;带着错误证据开工 = 权威链倒置;
+- **Scope 核心要求**:Scope 只验证一个问题——"Admission Boundary 是否能够阻止没有满足 Evidence Authority 要求的 Evidence 进入 Admission"(是 enforcement,不是架构设计);Inputs 每层标注 producer fact / 实验 adapter 构造物 / V3 正式对象("不要让实验 adapter 偷偷成为第二套 V3");Metrics 必含 **bypass path count**(直接攻击"EvidencePromotion/ValidationEvent 存在但 Admission 是否真正依赖它"的既有疑点);Negative Acceptance 必含 N1–N8,**N7(绕过 promotion 直连 Admission)/ N8(gate approve 但 Evidence Authority 无效)为核心攻击项**——验证 "Admission 到底由 Gate decision 单独控制还是 Evidence Authority 真正控制";负面验收哲学 = **证明"坏的 Evidence 进不去",而非"好的能进去"**;
+- **Non-goals 原样写死**:实验不决定 options_region 是否成为生产 Resolver 输入 / HTML 归属 / Resolver 规则是否改 / Producer Contract 是否改 / Evidence Authority 架构是否冻结 / EB-005 是否实现;实验中发现问题唯一合法出口 = **OBSERVED → EVIDENCE → REPORT**,不是 OBSERVED → 修改架构。

@@ -153,6 +153,14 @@ decisions:
     statement: "三数字永久分开: resolution coverage / observed sampled correctness / estimated correctness,禁混称"
     authority: "用户裁定;charter §13.7"
     status: frozen
+  - id: DEC-010
+    statement: "P3.2/EB-004 正式放行: APPROVED TO PROCEED — EXPERIMENT ONLY(实验性 Enforcement Verification,非生产架构变更授权)。允许链: Producer Manifest → Experimental Adapter → 构造 Evidence/Resolved Evidence → Admission Boundary → 验证非法 Evidence 是否被阻止。禁止: 修改生产 Resolver / Frozen Spec / Producer Contract / Gate policy / Admission semantics / 为提高通过率放宽规则 / 把实验结果直接视为架构 Decision / 因实验失败自动提 workaround。前置: 修正 A(claude4-attribution.json 卷名)+ 修正 B(cross-corpus 表述/EB 编号)必须先完成。流程: Scope Document(五要素: Scope/Inputs/Metrics/Negative Acceptance/Non-goals)→ DSH 核验 Scope → 实验。核心指标 = bypass path count;核心攻击项 = N7(绕过 promotion 直连 Admission)/ N8(gate approve 但 Evidence Authority 无效)"
+    authority: "用户正式裁定 2026-09-15(聊天原文入 log.md 本轮)"
+    status: active
+  - id: DEC-011
+    statement: "EB-005 与 P3.2/EB-004 严格分离,不得合并:EB-005 = 输入链路缺口(Producer Evidence → Production Resolver 正式 adoption path),EB-004 = 最终准入约束缺口(Evidence Authority 是否真正 enforcement)。EB-005 保持 OPEN,暂不实现;实验中发现的问题只能 OBSERVED → EVIDENCE → REPORT,不得自行修改架构"
+    authority: "用户正式裁定 2026-09-15"
+    status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
 open_questions:
@@ -175,11 +183,11 @@ open_questions:
     facts: [FACT-008]
     note: "属 V3 侧(Boundary 3);DSH 已亲验代码路径(L368-379/L395)升级 OBSERVED;处置方案未提案"
   - id: EB-004
-    question: "P3.2 V3 Consumer Compatibility: 真实 b2 产物走 Manifest→Adapter→Resolver→IR→Gate→Admission,采四类指标 + §13.9 负面验收"
+    question: "P3.2 V3 Consumer Compatibility / Experimental Enforcement Verification: Admission Boundary 是否能够阻止没有满足 Evidence Authority 要求的 Evidence 进入 Admission"
     owner: v3
-    status: EVIDENCED
+    status: DECIDED
     facts: [FACT-004, FACT-005, FACT-009]
-    note: "Claude 判断: 可启动,范围限定 = 验证 Admission Boundary 能否阻止非法 Evidence(Enforcement 验证),不解决 EB-001/003(独立问题)。DSH 侧产物已备(b2 8 卷 v2.7)。设计约束(FACT-009): 生产 Resolver 不消费 options_region,实验必须走 experimental adapter 路径。最终启动待用户放行"
+    note: "用户正式放行(DEC-010,EXPERIMENT ONLY)。工作顺序(严格): ①修正 A(B3 报告 join 修正 attribution 卷名)→ ②修正 B(cross-corpus 表述 + EB canonical 编号)→ ③Claude 起草 Scope Document(Scope/Inputs/Metrics/Negative Acceptance/Non-goals 五要素;Metrics 必含 bypass path count;Negative Acceptance 必含 N1~N8,N7/N8 核心)→ ④DSH 核验 Scope → ⑤实验 → ⑥Findings: 无 bypass → EB-004 evidence closed;有 bypass → 架构问题进 Decision 流程。生产代码零修改;不得与 EB-005 合并"
   - id: EB-005
     question: "生产 Resolver 是否应引入 options_region 概念(消费 Producer Evidence Region)以替代 Source 自推断边界?"
     owner: v3

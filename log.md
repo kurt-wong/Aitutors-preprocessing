@@ -2161,3 +2161,23 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **遗留两件执行修正(handoff 004 已提,不影响一致性)**:① **修正 A(重要)**:claude4-attribution.json paper 字段**固化了 FACT-013 的 13/21 错卷名**(转述漂移进了证据文件)——须从 b3 报告 join 导出修正,卷名权威 = consumer-report-b3.json;② 修正 B:cross_corpus "cases do not overlap" 表述过时 + V3 侧 state.yaml 仍用本地 EB 编号(映射 claude_id_aliases)。
 
 **落盘**:handoff 004(闭环确认 + P-19 答案 + 修正 A/B 请求);state.yaml(mirror_status 三次闭环 / FACT-010 升级 / FACT-017 澄清)/ CURRENT.md(一致清单)/ charter §14.9。**DSH 侧本轮无新增行动项**——修正 A/B 属 V3 侧,P3.2 待用户放行。
+
+---
+
+## 2026-09-15 · 用户正式放行 P3.2 / EB-004:EXPERIMENT ONLY(charter §14.10)
+
+**触发**:用户正式裁定(聊天原文)。**性质:裁定入册 + 转发,零 pipeline 代码、零重跑。**
+
+**裁定核心(全文要点入 DEC-010)**:
+- **P3.2 / EB-004:APPROVED TO PROCEED — EXPERIMENT ONLY**。放行的是**实验性 Enforcement Verification,不是生产架构变更授权**;
+- 允许链:Producer Manifest → Experimental Adapter → 构造 Evidence/Resolved Evidence → Admission Boundary → 验证非法 Evidence 是否被阻止;
+- **八禁**:改生产 Resolver / Frozen Spec / Producer Contract / Gate policy / Admission semantics / 放宽规则提通过率 / 实验结果当架构 Decision / 失败自动 workaround;
+- **用户钉死**:"不能借 P3.2 的实验顺便修生产 Resolver";"不要让 P3.2 和 EB-005 合并"(输入链路缺口 ≠ 准入约束缺口;混起来会重演 V2 fallback 架构漂移);**EB-005 保持 OPEN 暂不实现**(DEC-011);
+- **严格顺序**:修正 A(attribution 卷名,prerequisite)→ 修正 B(cross-corpus 表述/EB 编号)→ Scope Document(**五要素**:Scope/Inputs/Metrics/**Negative Acceptance**/**Non-goals**)→ **DSH 核验 Scope** → 实验 → Findings(无 bypass → EB-004 closed;有 bypass → 进 Decision 流程);
+- **修正 A 为前置的理由**:权威链 = `consumer-report-b3.json → paper identity → claude4-attribution.json`,不得倒置(Canonical ledger → derived evidence 原则);
+- **Scope 核心**:只验证一个问题 = "Admission Boundary 是否能阻止没有满足 Evidence Authority 要求的 Evidence 进入 Admission"(enforcement,非架构设计);Inputs 每层标注 producer fact / adapter 构造物 / V3 正式对象("不要让实验 adapter 偷偷成为第二套 V3");Metrics 必含 **bypass path count**(直接攻击"EvidencePromotion/ValidationEvent 存在但 Admission 是否真正依赖"既有疑点);Negative Acceptance 必含 N1–N8,**N7(绕过 promotion 直连 Admission)/ N8(gate approve 但 Authority 无效)为核心攻击项**;负面验收哲学 = **证明"坏的 Evidence 进不去",而非"好的能进去"**;
+- **Non-goals 原样写死**:实验不决定 options_region 生产化 / HTML 归属 / Resolver 规则 / Producer Contract / Authority 架构冻结 / EB-005 实现;实验发现问题唯一合法出口 = **OBSERVED → EVIDENCE → REPORT**。
+
+**落盘**:state.yaml(DEC-010/011 入册,authority = 用户正式裁定;EB-004 → **DECIDED**,状态机走用户裁决无跳级)/ handoff 005(裁定转发 + Scope 五要素模板)/ CURRENT.md / charter §14.10 / status.md。
+
+**下一步(严格按用户顺序)**:等 Claude 执行修正 A/B(commit hash 回执)→ Claude 起草 Scope Document → **DSH 核验 Scope(用户指定第 ④ 步)** → 放行实验。DSH 侧在 Scope 核验前无实验相关动作。
