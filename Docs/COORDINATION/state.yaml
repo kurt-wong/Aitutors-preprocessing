@@ -284,9 +284,9 @@ open_questions:
       owner: DSH
       blocked_by: Owner DEC-013
     review_3:
-      status: EB-008_VERIFICATION_REVIEW_3
+      status: done
       owner: DSH
-      blocked_by: "Claude Revision-2 commit(收到 commit hash 后启动;任务 = DEC-015 五验证点,非重新设计)"
+      result: "REQUIRES_REVISION(4 BLOCKER: A-3-2 Run Identity 假前提 ON CONFLICT 复用同 candidate/replay 证明失效/状态机矛盾回归 · A-3-4/5 人工信任根默认可信+绑定缺失 · A-3-6 双 Boundary 消解抵触 DEC-013 · A-3-7/8 invalidation 可 replay 洗白+三元组无法从事件重建)。报告 = EVIDENCE/EB008-DSH-REVIEW3.md + HANDOFFS/2026-09-15-DSH-to-Claude-010.md(RDQ-007~011)(锚 9bf8878/sha256 213CC3EB...980B,COMMITTED 级)。成立:自动路径 bootstrap 循环已破。REQUIRED_DECISION: RD-A(provisional IR 是否偏离 DEC-013)+ RD-B(持久化升格为 Rev-3 设计义务)"
     note: "Owner 方向性裁决已下(DEC-013: Authority = Semantic IR + Knowledge Asset Admission 准入前置)。Revision-1 = V3 88_EB008_..._REVISION1.md(未 commit,REPORTED 级,sha256=2AEA1A81...9250)。DSH Evidence Audit 完成(EVIDENCE/EB008-DSH-VERIFICATION.md): V1 冷启动 FAILED(全文 0 命中冷启动,条件5使死锁扩至每个 run)/ V2 run semantics FAILED(same-candidate 重跑撞状态机 ValueError 零回应 + current_run_id 人工路径无来源)/ V3 human authority FAILED(issuer contract 依赖'任意非空字符串'+无认证投影输入,默认可信)/ V4 identity PARTIAL(candidate_id 检查恒真同义反复,写入器未定义)/ V5 join PARTIAL(设计层闭合,写入端未证)/ V6 lifecycle PARTIAL(INVALIDATED terminal 无 re-grant 路径)/ V7 independence PARTIAL('Proven independent' 过强,同 ledger 同 evaluate 根)。**DECISION: REQUIRES_REVISION**(阻断项 V1/V2/V3);成立部分 = Projection 抽象/candidate_id 绑定/AuthoritySnapshot 意图。Owner 反馈(DEC-015): 三项 BLOCKER 获认可,不接受直接终裁;等 Claude Revision-2 commit 后 DSH 以五验证点启动 Review-3;'实现阶段再加字段/后续 migration' 一律 UNPROVEN;当前阶段 = L2_DESIGN_PROPOSAL"
   - id: EB-005
     question: "生产 Resolver 是否应引入 options_region 概念(消费 Producer Evidence Region)以替代 Source 自推断边界?"

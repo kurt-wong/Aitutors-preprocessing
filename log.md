@@ -2308,3 +2308,13 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **落盘**:state.yaml DEC-015 入册(六点全文)+ EB-008 新增 review_3 状态块(blocked_by = Claude Revision-2 commit)+ note 追加 Owner 反馈摘要。
 
 **要点**:①Review-3 任务限定为**验证而非重新设计**,五验证点:Bootstrap Authority 是否真正解除循环依赖 / Run Identity 是否自洽 / Human Issuer Contract 是否满足最低 provenance / Authority Projection 生命周期闭环 / IR Boundary 与 Admission Boundary 是否真正独立;②证据纪律红线:**"实现阶段再增加字段"与"后续 migration 解决"一律标记 UNPROVEN**(与既往 REPORTED 级纪律同源);③EB-008 阶段定位明确 = **L2_DESIGN_PROPOSAL(非 DECISION)**,EB 状态机位置仍为 PROPOSED;④Revision-2 必须 commit(承接 D-001 门槛建议,REPORTED 级文本不再受理为审查对象)。
+
+## 2026-09-15 · EB-008 Review-3:对 Revision-2 的对抗验证 = REQUIRES_REVISION(4 BLOCKER)
+
+**触发**:Claude 提交 Rev-2(V3 89号,commit `9bf8878`,首次 COMMITTED 级),Owner 指令执行六方向(T1~T6)adversarial validation,不重新设计,输出限定 OBSERVED/VERIFIED/ATTACK/UNPROVEN/REQUIRED_DECISION。**性质:审查任务,零代码。**
+
+**落盘**:`Docs/COORDINATION/EVIDENCE/EB008-DSH-REVIEW3.md`(锚 sha256 `213CC3EB...980B`)+ state.yaml review_3 块置 done + 本条目。
+
+**核心发现**:①**T2 假前提**——Rev-2 声明"每次 Run 新 Candidate(UUID)",代码实为 `UniqueConstraint(stage, le_hash)` + `ON CONFLICT DO NOTHING` 复用既有行(`snapshot_repository.py` L118-156;`service.py` L214-231),Run A/B replay 证明第 1 步即假,cross-run Authority transfer 按构造发生,状态机 ValueError 矛盾回归(持久化后必现);②**T3 仍是默认可信**——C2-C4 前缀约束即 Owner 禁止的"非空字符串+prefix=trusted",C7"真实性后续 Phase 验证"按 DEC-015 红线 = UNPROVEN,review_trail↔ValidationEvent 零绑定;③**T4 双层消解**——B4 移除 IR 层检查,与 DEC-013"Semantic IR 与 Admission 双前置"抵触,同源同 run 消费 = duplicate check 非 independent enforcement;④**T5/T6 持久化缺席**——ledger per-run 内存,invalidation 可被 replay 洗白,AuthorityIdentity 三元组含 candidate_id 但 ValidationEvent 不携带该字段,claim_id 文档本地撞号,修复 = 加字段 = UNPROVEN 红线。**成立部分**:自动路径 bootstrap 循环确已打破(Producer/Consumer 分层正确);候选身份应表述为 (stage, le_hash) 逻辑执行身份而非新 UUID——方向对,前提错。
+
+**要点**:REQUIRED_DECISION 两项提请 Owner——RD-A:B4 是否偏离 DEC-013(若 provisional IR 可被下游无 Authority 消费,则 IR 前置名存实亡);RD-B:Authority ledger 持久化升格为 Rev-3 设计义务(schema/身份字段/invalidation 语义)而非实现期事项。BLOCKER B3-01~04 清单见报告 §汇总。
