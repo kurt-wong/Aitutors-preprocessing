@@ -1,13 +1,13 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-15(**P3.2 实验完成并 DSH 亲验:bypass 成立,EB-004 → VERIFIED,EB-008 立项**;V3 infra 重建完成)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-15(**EB-008 Owner 方向性裁决 DEC-013:Authority = 准入前置;Claude 进入 L2 设计;DSH 对抗审查已提交 handoff 008**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
 ## 当前工作项:EB / Evidence Resolution Boundary Discovery
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer | 亲验 P3.2 实验(脚本+结果+admission.py 全文):bypass 成立;抓出范围缺口(4 of 8)与路径口径问题;EB-004 → VERIFIED;EB-008 立项;按 Owner 指令重建 V3 三容器(数据完好);handoff 007 |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer | EB-008 Owner 裁决入册(DEC-013)+ 独立 adversarial review 12 检查点(FACT-025~028,handoff 008:2 CONTRADICTION/5 ATTACK/3 UNPROVEN/8 DESIGN QUESTION);待 Claude L2 设计稿核验 |
 | **Claude** | kurt-wong/AITutors-v3 | Resolution + IR + Gate + Admission | P3.2 实验完成(`455eb3d`/`bf95a87`);待:findings 两处措辞精确化 + N3–N6 未执行原因注记;EB-008 等 Owner 裁决前不设计不实现 |
 
 ## P3.2 / EB-004 终局(VERIFIED)
@@ -46,12 +46,12 @@
 | EB-005 | 生产 Resolver 是否引入 options_region(**OPEN 暂不实现,不与 EB-008 合并**) | v3 | EVIDENCED |
 | EB-006 | A 缺标点 contextual rule(设计属 V3) | v3 | EVIDENCED |
 | EB-007 | formula FP 结构排除(检出来源 = V3 代码追踪) | v3 | EVIDENCED |
-| EB-008 | **Admission 是否引入 Evidence Authority enforcement(BUG-V3-048 实锤后的架构问题)** | v3 | DISCOVERED(**等 Owner + V3 L2 裁决**) |
+| EB-008 | **Admission/IR 是否引入 Evidence Authority enforcement** | v3 | **EVIDENCED**(DEC-013 方向 = 准入前置;Claude L2 设计中;DSH 对抗审查 handoff 008 已交,待设计稿答 Q-1~Q-8) |
 
 ## 待 Owner 裁决
 
-1. **EB-008**:Admission enforcement 是否引入、如何实现(不破坏 20 §8.2 双入口与物化事务);
-2. P3.2 的 N3–N6 是否补跑(postgres 已恢复)。
+1. ~~EB-008 方向~~ **已裁(DEC-013)**:Evidence Authority = Semantic IR + Knowledge Asset Admission 准入前置,不接受纯审计定位;当前流程 = Claude L2 Authority Model 设计(不实现)→ DSH 核验设计稿(handoff 008 已交 12 检查点对抗审查,Q-1~Q-8 待答);
+2. N3–N6 已裁不补跑,记 deferred(DEC-012,重开窗口仅 Owner)。
 
 ## 当前禁止(两侧共同)
 

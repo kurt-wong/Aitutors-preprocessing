@@ -172,6 +172,30 @@ facts:
     evidence: "docker compose up + docker ps/psql/redis-cli/curl 健康验证亲跑;V3 commit 3d0cb21"
     confidence: OBSERVED
     status: observed
+  - id: FACT-025
+    statement: "ValidationEvent 身份域 = document-local unit_id(claim_id,如 'Q1'),无 candidate_id / annotation_id / source_version_id / run_id / attempt_id 任何绑定字段;record_validation 由 GateService.run() 以 root.unit_id 调用。claim_id→candidate_id 不存在正式 identity join"
+    source: preprocessing
+    evidence: "V3 app/domains/evidence/models.py L184-191(ValidationEvent 字段)亲读;app/domains/gate/service.py L195-197(record_validation(root.unit_id, ...))亲读;EB-008 对抗审查 O-1/U-1(handoff 008)"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-026
+    statement: "Authority 持久化不对称: EvidencePromotionService 为 per-run 内存对象(in-memory append-only log,Phase 2 才 DB 持久化),review_trail 为 candidate 行 JSONB 持久列;75 契约 §11 'ValidationEvent 持久化方案'前置条件至今未勾。INVALIDATED 历史在当前基质上重启即蒸发"
+    source: preprocessing
+    evidence: "V3 app/domains/evidence/promotion.py L206-209 + gate/service.py L160(M-9 fresh per run)亲读;app/models/snapshot.py L64 亲读;75_EVIDENCE_PROMOTION_CONTRACT.md §11 亲读;EB-008 对抗审查 O-4/A-4"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-027
+    statement: "人工 authority 产生点 = 无认证 API 字符串: candidates approve 端点自行构造 review_trail entry,verified_by 硬编码 'human',reviewer_id 为请求体字符串(无认证授权),_has_human_approve 只查 decision+verified_by,confirmed_fields 从不对照 payload 校验(空亦放行);'golden' 由调用方断言,无结构性防冒名"
+    source: preprocessing
+    evidence: "V3 app/api/routers/candidates.py L58-64 + app/domains/gate/admission.py L450-456/L47 亲读;EB-008 对抗审查 O-5/A-2/A-5"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-028
+    statement: "流水线顺序: IRBuilder.build → Compiler → Gate evaluate → record_validation——Semantic IR 在任何 ValidationEvent 存在之前已构造,与 R5 字面('Semantic IR 只能引用 ValidatedEvidence')矛盾;且 ValidationEvent 与 gate_decision 同根于同一次 evaluate() 输出(非独立防线)"
+    source: preprocessing
+    evidence: "V3 app/domains/gate/service.py L171-197 亲读;EB-008 对抗审查 O-9/C-2/U-2"
+    confidence: OBSERVED
+    status: observed
 
 # ---------- DEC: 已裁决项(权威来源必须是用户/L2 路径) ----------
 decisions:
@@ -207,6 +231,10 @@ decisions:
     statement: "P3.2 收口裁定: N3~N6 不补跑,记 deferred(补跑窗口仅由 Owner 未来重开);EB-008 在 Owner+V3 L2 裁决前两侧不设计不实现、不修改 Admission;Claude 五点执行确认(修正 findings 口径/ledger 更新 EB-004 VERIFIED + EB-008 DISCOVERED/不设计 EB-008/不改 Admission/N3~N6 deferred)经用户转达入册;会话收口,固化 RS.MD + status.md,新会话进入 preprocessing×V3 正式联调阶段(完整 V3 项目与 preprocessing 无缝衔接)"
     authority: "用户裁定 2026-09-15(会话收口指令)"
     status: active
+  - id: DEC-013
+    statement: "EB-008 方向性裁决: Evidence Authority 必须作为 Semantic IR 与最终 Knowledge Asset Admission 的准入前置条件,不接受仅作审计记录;Claude 进入 L2 Authority Model 设计(不实现代码,不修改 preprocessing);DSH 执行独立 adversarial review(12 检查点,输出限定 OBSERVED/CONTRADICTION/ATTACK/UNPROVEN/REQUIRED DESIGN QUESTION 五类,'human review 可进 Admission' 推不出 'review_trail 即 Evidence Authority',主张须给 Frozen Spec/L2 依据);禁改代码/Producer Contract/EB-005。注: DEC-012 的 'EB-008 裁决前不设计不实现' 中,本裁决已给出方向,设计(L2 文档)获授权,实现仍冻结"
+    authority: "用户裁定 2026-09-15(EB-008 Owner 裁决,聊天原文)"
+    status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
 open_questions:
@@ -237,9 +265,9 @@ open_questions:
   - id: EB-008
     question: "Admission 层是否引入 Evidence Authority enforcement(让 Admission 真正依赖 ValidationEvent/is_evidence_validated)?若是,如何实现不破坏 20 §8.2 双入口与物化事务语义"
     owner: v3
-    status: DISCOVERED
-    facts: [FACT-021, FACT-023]
-    note: "P3.2 bypass 发现按用户裁定流程进入 Decision 流程的产物(BUG-V3-048 疑点已实锤为 enforcement 不存在)。属 V3 架构决策,须 Owner + V3 L2 裁决;两侧不自行实现(DEC-010 八禁之'实验结果≠架构 Decision')"
+    status: EVIDENCED
+    facts: [FACT-021, FACT-023, FACT-025, FACT-026, FACT-027, FACT-028]
+    note: "Owner 方向性裁决已下(DEC-013): Evidence Authority 必须作为 Semantic IR 与 Knowledge Asset Admission 准入前置,不接受纯审计定位。Claude 进入 L2 Authority Model 设计(只设计不实现);DSH 对抗审查已提交(handoff 008: 2 CONTRADICTION / 5 ATTACK / 3 UNPROVEN / 8 REQUIRED DESIGN QUESTION,核心攻击 = claim_id 跨文档碰撞 / 无认证人工 authority / authority 无内容指纹 / INVALIDATED 内存蒸发 / 双边界同根 evaluate 非纵深)。待 Claude L2 设计稿逐条回答 Q-1~Q-8 → PROPOSED"
   - id: EB-005
     question: "生产 Resolver 是否应引入 options_region 概念(消费 Producer Evidence Region)以替代 Source 自推断边界?"
     owner: v3

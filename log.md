@@ -2234,3 +2234,22 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **本会话总账(2026-09-15 全天,9 轮 commit)**:§14.7 首次互操作(`6f09e9d`)→ §14.8 清单核验(`13d4ed0`)→ §14.9 三次镜像闭环(`1c3ce04`)→ §14.10 放行 P3.2(`4651498`)→ §14.11 步骤④核验授权(`afeb025`)→ §14.12 实验亲验+EB-008+infra 重建(`71e9257`)→ 本轮收口。Coordination Protocol v0.1 完成一次完整的 Claim→Evidence→Decision 全链路实战(跨侧互操作→核验→放行→实验→亲验→VERIFIED→架构问题立项),协议本身经受住了转述漂移、ID 撞号、case 重编号三次真实冲击并全部以规则固化。
 
 **落盘**:state.yaml(DEC-012 + mirror_status 五次镜像 + EB-004 note)/ RS.MD(整体重写)/ status.md(收口 + 下一步 = 联调)。**新会话恢复入口 = RS.MD。**
+
+---
+
+## 2026-09-15 · EB-008 Owner 方向性裁决入册 + Authority Model 独立对抗审查(联调第一裁决点启动)
+
+**触发**:用户(Owner)下达 EB-008 方向性裁决——**Evidence Authority 必须作为 Semantic IR 与最终 Knowledge Asset Admission 的准入前置条件,不接受仅作审计记录**;Claude 进入 L2 Authority Model 设计(不实现代码);DSH 任务 = 独立 adversarial review(12 检查点),输出限定五类标签(OBSERVED/CONTRADICTION/ATTACK/UNPROVEN/REQUIRED DESIGN QUESTION);禁改代码/Producer Contract/EB-005;特别指令:"human review 可进 Admission" 推不出 "review_trail 即 Evidence Authority",主张须给 Frozen Spec/L2 依据。**性质:裁定入册 + 只读对抗审查,零 pipeline 代码、零 V3 代码。**
+
+**DEC-013 入册**(authority = 用户裁定):方向 = 准入前置;设计获授权、实现仍冻结(DEC-012 的"不设计"部分由本裁决解除,"不实现"延续)。
+
+**对抗审查(全部 V3 工作树 @3d0cb21 代码亲读,精确行号)**:
+- **OBSERVED 9 项**:核心四条入册 FACT-025(ValidationEvent 身份域 = document-local unit_id,无 candidate/source_version/run 绑定,claim→candidate 无正式 join)/ FACT-026(持久化不对称:ValidationEvent per-run 内存 vs review_trail 落库;75 §11 持久化前置未勾;INVALIDATED 重启即蒸发)/ FACT-027(人工 authority 产生点 = 无认证 API 字符串,verified_by 硬编码、reviewer_id 伪填、confirmed_fields 不校验)/ FACT-028(IR 先于 validation 构造,与 R5 字面矛盾;两个记法同根于一次 evaluate());
+- **CONTRADICTION 2**:C-1 review_trail 即 authority 与冻结规则 R4 冲突(出路 = 修订 R4 或建 ValidationEvent(human_review) 生产者——槽位存在、生产者不存在);C-2 R5 字面与流水线顺序矛盾,禁"纸面 IR boundary check 顺序不变"的第三种做法;
+- **ATTACK 5**:A-1 claim_id 跨文档碰撞("Q1" 每卷都有,持久化即裸奔)/ A-2 authority-by-presence(空 entry 放行,最弱 authority = 一次无认证 POST)/ A-3 authority 无内容指纹(带外 payload 改写 → 陈旧 authority 洗白)/ A-4 INVALIDATED 历史蒸发(event-sourcing 承诺在当前基质不成立)/ A-5 golden 冒名面(调用方自断言);
+- **UNPROVEN 3**:identity join 不存在 / 双边界同根 evaluate 非纵深(真纵深需独立第二计算)/ human review 与 ValidationEvent 四项性质全异,非同一 abstraction;
+- **REQUIRED DESIGN QUESTION 8 条**(Q-1~Q-8):Frozen 依据 / human_review 生产者与事务时点 / authority 键最小绑定集 / machine-rejected 否决语义声明 / 内容指纹 / 持久化基质与 replay 语义(是否设为 enforcement 前置 gate)/ 双 enforcement 点独立性 + fail-closed 保持 pending_review / reviewer 身份 root of trust。
+
+**EB-008 → EVIDENCED**(FACT-021/023/025~028);handoff 008 已落盘待推送。**下一步:等 Claude L2 设计稿逐条回答 Q-1~Q-8 → DSH 核验(不采信转述)→ PROPOSED → Owner 终裁。**
+
+**落盘**:state.yaml(DEC-013 + FACT-025~028 + EB-008 升 EVIDENCED)/ handoff 008 / CURRENT.md / 本轮台账。
