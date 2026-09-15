@@ -2300,3 +2300,11 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **落盘**:①`Docs/COORDINATION/COMPLETION_PROTOCOL.md`(协议全文固化,冲突时以 Owner 聊天原文为准);②state.yaml DEC-014 入册 + prohibitions 新增 Completion Protocol 条目;③按新协议**补交上一任务(Evidence Verification Audit)的结构化 Completion Report**(见当轮聊天输出,FINAL STATUS = BLOCKED_DESIGN_REVISION_REQUIRED)。
 
 **要点**:DSH 侧今后每任务收尾即按该格式输出;向 Claude 的 HANDOFF TO CLAUDE(RDQ 清单)与向 Owner 的 Decision Points 为强制章节,禁止"任务完成/文件已生成/commit 已提交"式收尾。
+
+## 2026-09-15 · EB-008 Owner Feedback 入册(DEC-015):三项 BLOCKER 获认可,进入 Revision-2 待审
+
+**触发**:Owner 对 Evidence Verification Audit 下达反馈(聊天原文):认可 RDQ-1 冷启动循环依赖 / RDQ-2 Run 语义 / RDQ-4 人工 Authority 信任边界三项 BLOCKER;**当前不接受直接进入 DEC-013 终裁**;下一阶段 = Claude 提交 Revision-2,DSH 收到 commit 后启动 Review-3。**性质:治理裁决入册,零代码。**
+
+**落盘**:state.yaml DEC-015 入册(六点全文)+ EB-008 新增 review_3 状态块(blocked_by = Claude Revision-2 commit)+ note 追加 Owner 反馈摘要。
+
+**要点**:①Review-3 任务限定为**验证而非重新设计**,五验证点:Bootstrap Authority 是否真正解除循环依赖 / Run Identity 是否自洽 / Human Issuer Contract 是否满足最低 provenance / Authority Projection 生命周期闭环 / IR Boundary 与 Admission Boundary 是否真正独立;②证据纪律红线:**"实现阶段再增加字段"与"后续 migration 解决"一律标记 UNPROVEN**(与既往 REPORTED 级纪律同源);③EB-008 阶段定位明确 = **L2_DESIGN_PROPOSAL(非 DECISION)**,EB 状态机位置仍为 PROPOSED;④Revision-2 必须 commit(承接 D-001 门槛建议,REPORTED 级文本不再受理为审查对象)。
