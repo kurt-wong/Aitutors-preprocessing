@@ -604,3 +604,15 @@ preprocessing 项目已从"不断增加能力"进入**收敛期**——停止条
 - **修正 B:PARTIAL(非阻塞,FACT-020)**:cross-corpus 已更新但仍写 "different unit sets"——与 FACT-014 矛盾(Q13/Q37 = 同源卷同 unit,不同产物版本);correspondence_type 仍 PATTERN_LEVEL,应为 UNIT_LEVEL(Q13/Q37)+ PATTERN_LEVEL(其余)。一行修正,随实验期间执行;
 - **Scope Document:PASS(FACT-019)**:五要素齐全且与 DEC-010/011 逐条对齐——Scope 单一问题 + Does-NOT-verify 清单;Inputs 七层权威链分层标注(**Adapter = UNTRUSTED, no authority**;生产化须走独立 L2 = 防"第二套 V3");Metrics 六项含 **bypass path count = 0**(定义冻结:Admission.success==true AND Authority invalid/absent;Gate reject/Adapter failure/Validation failure 不计);N1–N8 全表 N7/N8 核心;Non-goals 六条原样 + OBSERVED→EVIDENCE→REPORT;OBSERVED/INFERENCE/DECISION 三级禁混写;Constraints 八条 = 八禁。附注:文档头 "APPROVED" 写于步骤④前,现在起才真正成立——后续文档 DSH 核验前应标 "pending DSH verification";
 - **裁决:实验获授权启动(用户顺序步骤⑤)**。EB-004 进度 = ①✓ ②◐ ③✓ ④✓ → **⑤ AUTHORIZED**;实验期间八禁 + 发现问题只能 REPORT;产出后 DSH 侧做核验(不采信转述)再共同呈报用户。
+
+### 14.12 P3.2 实验完成与 DSH 亲验:bypass 实锤 + EB-004 VERIFIED + EB-008 立项 + infra 重建(2026-09-15)
+
+> Claude 完成实验(V3 `455eb3d` 脚本+结果,`bf95a87` findings,均已推送)。DSH 按承诺亲验(不采信转述)。同轮发生 **Docker 事故**(项目外 agent 误删全部容器+镜像),DSH 按 Owner 指令重建 V3 三容器。**性质:亲验 + 裁定 + infra 重建,零 preprocessing pipeline 代码。**
+
+- **实验结果成立(FACT-021,both/OBSERVED)**:执行的 4 个攻击向量(N1/N2/N7/N8)全部 BYPASS,enforcement_effective=false。**DSH 独立亲读 `admission.py` 全文(456 行)**:approve() 全部校验只有 decision_status 流转 + gate_decision 语义,**全文件无任何 Evidence Authority 引用(连 import 都没有)**——Claude FACT-013 独立确认。发现性质 = **enforcement 机制不存在**(非"存在但可绕过"),BUG-V3-048 疑点实锤;
+- **精确化 A — 范围缺口(FACT-022)**:批准 Scope 是 N1–N8 八向量,实际只执行 4 个;N3(跨 run)/N4(错 SourceVersion)/N5(expired)/N6(mutated)未执行。Claude "4/4 attack vectors BYPASS" 措辞误导,正确表述 = "8 向量执行 4 个,已执行全 BYPASS,4 个未执行"。**补跑与否待 Owner**(postgres 已恢复);
+- **精确化 B — 路径口径(FACT-023)**:四次攻击的 approve 调用完全相同,**4 个攻击实例经由同 1 条 bypass 路径**(实例计数 4 合法于冻结定义;独立路径计数 ≥1);JSON `bypass_paths` 字段把向量与路径混名,findings 须区分;
+- **实验纪律合规核验**:生产代码零修改 ✓ / 结果未当架构 Decision(Not Established 节)✓ / OBSERVED–INFERENCE 分离 ✓;
+- **EB-004 → VERIFIED**(问题有答案 = "不能阻止");**EB-008 立项**(DISCOVERED):Admission 是否引入 Evidence Authority enforcement、如何不破坏 20 §8.2 双入口与物化事务——**属 V3 架构决策,须 Owner + V3 L2,两侧不自行实现**;
+- **Docker 事故与重建(FACT-024)**:项目外 agent 误删全部容器+镜像。重建按 Owner 指令(V3 compose 三容器、统一 aitutor- 前缀、不恢复 V2 aitutor-* 体系):aitutor-postgres(pgvector:pg16,5432)/ aitutor-redis(redis:alpine,6379)/ aitutor-minio(**quay.io/minio/minio:latest** — Docker Hub minio/minio 已停止分发,9000/9001),三容器 healthy;**卷 `backend_postgres_data` 幸存,数据完好(25 张表)**。附带:`vector` 扩展未装(embedding 未接线所致,接线时 CREATE EXTENSION);minio bucket 未初始化(非阻塞)。V3 compose 变更 commit `3d0cb21`;
+- **preprocessing 侧影响 = 零**(daemon/管线无 Docker 依赖);preprocessing 测试基线不受影响。

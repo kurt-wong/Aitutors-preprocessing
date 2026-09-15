@@ -24,7 +24,7 @@ agents:
     branch: main
     role: Evidence Resolution + Semantic IR + Gate + Admission
     ledger_role: mirror_via_handoff
-    mirror_status: "2026-09-15 三次镜像闭环:V3 侧已 commit+push(28c4cd8 协调层+归因落盘,f88b418 更新 hash,远端可验证);DSH 核验升级 FACT-010/017;遗留:claude4-attribution.json 固化了 13/21 错卷名待 V3 修正(FACT-013)"
+    mirror_status: "2026-09-15 四次镜像:P3.2 实验完成并 DSH 亲验(455eb3d/bf95a87);V3 infra compose 重建已 commit(3d0cb21,DSH 按 Owner 指令执行);CLAUDE_FACT-012/013/014 → FACT-021;遗留 FACT-020 一行修正 + findings 措辞精确化(4/4 → 4 of 8)"
 
 # ---------- FACT: 可验证陈述,必须带 evidence(repo+commit+文件) ----------
 facts:
@@ -148,6 +148,30 @@ facts:
     evidence: "claude4-attribution.json cross_corpus_correspondence 字段亲读"
     confidence: OBSERVED
     status: observed
+  - id: FACT-021
+    statement: "P3.2 实验结果(DSH 亲验): 执行的 4 个攻击向量(N1/N2/N7/N8)全部 BYPASS,bypass 实例数=4,按冻结定义成立(Admission.success==true AND Evidence Authority invalid/absent),enforcement_effective=false。DSH 独立亲读 admission.py 全文(456 行): approve() 全部校验只有 decision_status 流转 + gate_decision 语义,全文件无任何 EvidencePromotionService/ValidationEvent/is_evidence_validated 引用(连 import 都没有)——Claude FACT-013 升级 both/OBSERVED"
+    source: both
+    evidence: "V3 commit 455eb3d(p32_enforcement_experiment.py + p32-enforcement-results.json)亲读;app/domains/gate/admission.py 全文亲读;charter §14.12"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-022
+    statement: "P3.2 范围执行缺口: 批准的 Scope §4 是 N1~N8 八向量,实际只执行 4 个(N1/N2/N7/N8);N3(跨 run)/N4(错 SourceVersion)/N5(expired)/N6(mutated)未执行。Claude handoff '4/4 attack vectors BYPASS' 措辞误导,精确表述 = '8 个向量执行了 4 个,已执行的 4 个全部 BYPASS,4 个未执行'。是否补跑待 Owner 裁决(DB 已恢复可用)"
+    source: both
+    evidence: "p32-enforcement-results.json total_attacks=4 vs p32_scope.md §4 表;handoff 003 亲读"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-023
+    statement: "bypass 路径口径精确化: 4 次攻击的 admission 调用完全相同(approve + auto_gate),全部经由同一条路径——'Admission 无 Evidence Authority 依赖'。实例计数=4(冻结定义口径合法);独立 bypass 路径计数=≥1(即该唯一路径)。发现性质 = enforcement 机制不存在(而非存在但可绕过),确认 BUG-V3-048 疑点;架构问题按用户裁定流程进入 Decision 流程(EB-008)"
+    source: both
+    evidence: "p32_enforcement_experiment.py 逐行亲读(N1/N2/N7/N8 的 approve 调用同构);admission.py 亲读"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-024
+    statement: "V3 基础设施重建完成(用户指令): 三容器统一 aitutor- 前缀且 healthy——aitutor-postgres(pgvector/pgvector:pg16,5432)/aitutor-redis(redis:alpine,6379)/aitutor-minio(quay.io/minio/minio:latest,9000/9001)。卷 backend_postgres_data 幸存,数据完好(public 25 张表)。附带事实: ①minio/minio 在 Docker Hub 已停止分发(pull denied),官方镜像在 quay.io;②redis/minio 无历史版本要求(docs 无 pin);③pg 扩展 vector 未安装(embedding 未接线所致,非数据丢失,接线时需 CREATE EXTENSION vector);④minio bucket=aitutors 待初始化(V3 代码未接线,非阻塞)"
+    source: preprocessing
+    evidence: "docker compose up + docker ps/psql/redis-cli/curl 健康验证亲跑;V3 commit 3d0cb21"
+    confidence: OBSERVED
+    status: observed
 
 # ---------- DEC: 已裁决项(权威来源必须是用户/L2 路径) ----------
 decisions:
@@ -203,9 +227,15 @@ open_questions:
   - id: EB-004
     question: "P3.2 V3 Consumer Compatibility / Experimental Enforcement Verification: Admission Boundary 是否能够阻止没有满足 Evidence Authority 要求的 Evidence 进入 Admission"
     owner: v3
-    status: DECIDED
-    facts: [FACT-004, FACT-005, FACT-009, FACT-018, FACT-019]
-    note: "用户正式放行(DEC-010,EXPERIMENT ONLY)。工作顺序进度: ①修正 A PASS(paper 21/21+10/10 机器对账全对,但 case ID 被重编号,FACT-018 + case_id_aliases)→ ②修正 B PARTIAL(cross-corpus 仍有一处与 FACT-014 矛盾,FACT-020,一行修正非阻塞)→ ③Scope Document 完成(p32_scope.md)→ ④DSH 核验 PASS(FACT-019)→ **⑤实验获授权启动** → ⑥Findings: 无 bypass → EB-004 evidence closed;有 bypass → 架构问题进 Decision 流程。八禁(DEC-010);不得与 EB-005 合并"
+    status: VERIFIED
+    facts: [FACT-004, FACT-005, FACT-009, FACT-018, FACT-019, FACT-021, FACT-022, FACT-023]
+    note: "验证已完成,问题有答案 = 不能(4/8 向量执行,已执行全部 BYPASS;admission.py 亲验无 Evidence Authority 依赖)。实验纪律合规(生产代码零修改/结果未当 Decision/OBSERVED-INFERENCE 分离)。遗留: N3~N6 未执行(FACT-022,补跑与否待 Owner);bypass 后续架构问题 → EB-008"
+  - id: EB-008
+    question: "Admission 层是否引入 Evidence Authority enforcement(让 Admission 真正依赖 ValidationEvent/is_evidence_validated)?若是,如何实现不破坏 20 §8.2 双入口与物化事务语义"
+    owner: v3
+    status: DISCOVERED
+    facts: [FACT-021, FACT-023]
+    note: "P3.2 bypass 发现按用户裁定流程进入 Decision 流程的产物(BUG-V3-048 疑点已实锤为 enforcement 不存在)。属 V3 架构决策,须 Owner + V3 L2 裁决;两侧不自行实现(DEC-010 八禁之'实验结果≠架构 Decision')"
   - id: EB-005
     question: "生产 Resolver 是否应引入 options_region 概念(消费 Producer Evidence Region)以替代 Source 自推断边界?"
     owner: v3
@@ -255,6 +285,9 @@ claude_id_aliases:
     C-EB002-001: "EB-005(生产 Resolver 无 options_region;DSH 亲验 → FACT-009)"
     C-EB003-001: "EB-006(9 case 缺标点根因;DSH 源侧 5/5 验 → FACT-015)"
     C-EB005-001: "EB-007(6 case 结构上下文可排除假设,INFERRED;呈现 DSH 已验,结论待 V3 分析)"
+    CLAUDE_FACT-012: "FACT-021(P3.2 4/4 bypass;DSH 亲验成立,附范围缺口 FACT-022 与口径 FACT-023)"
+    CLAUDE_FACT-013: "FACT-021(approve() 只查 gate_decision;DSH 独立亲读 admission.py 确认)"
+    CLAUDE_FACT-014: "FACT-021(is_evidence_validated=False 不阻 Admission;同一次亲验覆盖)"
 
 # ---------- case ID 重编号别名(claude4-attribution.json commit 84fd39f 重生成时整体重编号;FACT-018) ----------
 # 规则:evidence artifact 的 case id 一经分配不得重编号——修内容不改 id。

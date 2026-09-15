@@ -2199,3 +2199,24 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **裁决:实验获授权启动(步骤⑤)**——EB-004 进度 ①✓②◐③✓④✓ → **⑤ AUTHORIZED TO PROCEED**。实验期间八禁;发现问题唯一出口 OBSERVED→EVIDENCE→REPORT;产出后 DSH 核验(不采信转述)再共同呈报用户。
 
 **落盘**:state.yaml(FACT-018/019/020 + case_id_aliases + prohibitions 两条新增 + EB-004/006/007 note)/ handoff 006(裁决 + 新裁定 + 实验授权)/ CURRENT.md(进度板)/ charter §14.11。**DSH 侧下一步**:等实验产出 → 核验 → 呈报用户。
+
+---
+
+## 2026-09-15 · P3.2 实验完成 + DSH 亲验:bypass 实锤,EB-004 VERIFIED,EB-008 立项;Docker 事故重建(charter §14.12)
+
+**触发**:①用户告知 P3.2 实验完成(V3 `455eb3d`/`bf95a87` 已推送);②项目外 agent 误删全部 Docker 容器+镜像(postgres/minio/redis 报废),用户指令重建 V3 compose 三容器(统一 aitutor- 前缀,不恢复 V2)。**性质:亲验 + 裁定 + infra 重建,零 preprocessing pipeline 代码。**
+
+**实验亲验(不采信转述,三层证据)**:
+1. 实验脚本 `p32_enforcement_experiment.py` + 结果 JSON 逐行亲读:执行向量 N1/N2/N7/N8 全部 BYPASS,bypass 实例数=4,enforcement_effective=false;
+2. **`app/domains/gate/admission.py` 全文(456 行)亲读**:approve() 全部校验 = decision_status 流转 + gate_decision 语义(rejected 拒/auto 须 auto_approve/human 须 review_trail),**全文件无任何 EvidencePromotionService/ValidationEvent/is_evidence_validated 引用,连 import 都没有**——Claude FACT-013 独立确认,升级 both/OBSERVED(FACT-021);
+3. 实验纪律核验:生产代码零修改 ✓ / 结果未当架构 Decision ✓ / OBSERVED–INFERENCE 分离 ✓。
+
+**两个必须精确化的点(已抓出入册)**:
+- **FACT-022 范围缺口**:批准 Scope = N1–N8 八向量,实际只执行 4 个——N3(跨 run)/N4(错 SourceVersion)/N5(expired)/N6(mutated)未执行。Claude "4/4 attack vectors BYPASS" 措辞误导;正确 = "8 向量执行 4 个,已执行全 BYPASS"。补跑与否待 Owner(postgres 已恢复);
+- **FACT-023 路径口径**:四次攻击的 approve 调用完全相同(N1/N2 只多建了 candidate 不引用的内存 evidence 对象)——**4 个攻击实例经由同 1 条 bypass 路径**;实例计数 4 合法于冻结定义,独立路径计数 ≥1;JSON bypass_paths 字段混名向量与路径,findings 须区分。**发现性质 = enforcement 机制不存在**(非"存在但可绕过"),BUG-V3-048 实锤。
+
+**裁定落位**:EB-004 → **VERIFIED**(问题有答案 = 不能阻止);**EB-008 立项**(DISCOVERED):Admission 是否引入 Evidence Authority enforcement、如何不破坏 20 §8.2 双入口与物化事务——须 Owner + V3 L2 裁决,两侧不自行实现(八禁)。
+
+**Docker 事故与重建(FACT-024)**:检索确认版本要求——PostgreSQL = **pgvector/pgvector:pg16**(唯一钉死,compose+文档三处佐证);Redis/MinIO 无版本要求且当前代码零使用。重建执行:卷 `backend_postgres_data` **幸存**(数据完好,public 25 张表);compose 重写为三服务统一 aitutor- 前缀:aitutor-postgres(pgvector:pg16,5432)/aitutor-redis(redis:alpine,6379)/aitutor-minio(**quay.io/minio/minio:latest**——Docker Hub minio/minio 已停止分发 pull denied,镜像源必须改 quay.io;9000/9001)。三容器 healthy(psql 25 表/redis PONG/minio health 200 亲验)。附带:`vector` 扩展未装(embedding 未接线所致,接线时 CREATE EXTENSION vector);minio bucket=aitutors 未初始化(非阻塞)。V3 compose 变更 commit `3d0cb21` 已推送。**preprocessing 影响 = 零**(无 Docker 依赖)。
+
+**落盘**:state.yaml(FACT-021~024 / EB-004→VERIFIED / EB-008 新立 / CLAUDE_FACT-012~014 别名)/ handoff 007(亲验回执 + 两处措辞精确化要求 + infra 同步)/ CURRENT.md / charter §14.12。**待 Owner**:①EB-008 架构裁决;②N3–N6 补跑与否。
