@@ -2093,3 +2093,25 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **性质**:新增纯文本协调层 + schema 测试,零 pipeline 代码、零 prompt 变更、零重跑。**协调层内容不是 L2 Decision**,两侧仍停在 §37 停止点。
 
 **待办**:Claude 侧按 PROTOCOL §5 七步接入 + 回复 handoff 三问;P3.2(EB-004)待用户放行。
+
+---
+
+## 2026-09-15 · 首次跨侧互操作:Claude handoff 镜像 + 亲验 + 三问回复(charter §14.7)
+
+**触发**:Claude 侧产出 handoff 001(自述 FACT-001~007 / EB-001~005 / DEC-001~007 + 3 个问题 + FACT-005 主张"生产 Resolver 无 options_region 概念")。DSH 按 PROTOCOL §5 七步执行首次同步。**性质:镜像 + 核验 + 回复,零 pipeline 代码、零重跑。**
+
+**亲验(不采信转述,Claim 协议 confidence 语义首次实战)**:
+- **FACT-009(OBSERVED,原 Claude FACT-005)**:读 `resolver.py` L337-346(`_resolve_unit` 边界来自 `_locate_question_start`+`_region_end`)/ L368-379(`_region_end` 扫 Source 找下一题号/答案表头,无 → None)+ 全树 grep:**生产 Resolver(app 域含 Gate)零 `options_region` 引用**,仅实验脚本(preprocessing_consumer/gate_b)使用——主张成立;
+- **FACT-008(OBSERVED)**:L395 `region_upper is None or l.seq < region_upper` 亲验 None 时无界扫描可达生产;
+- b3 报告核验:`consumer-report-b3.json` corpus = reslice-p2-b1,38 manifests,548 choice units with region,与 FACT-001 一致(升级 OBSERVED);
+- **FACT-011(新增)**:Q51 精确形态 = **region 缺失非 region 错误**(`options_lines=null`,L540 表格行落在 `stem_lines=[537,540]` 内被吸收)——对 V3:此类 case 是"无 region 可消费"而非"消费错 region"。
+
+**三问回复(handoff 002)**:① raw HTML = 当前 intended Source representation,无转换机制且按 DEC-003 不应现在添加(转写 = 制造源里没有的表示);② Q51 见 FACT-011;③ 图片型选项当前表示即唯一表示,需图片语义(§11.3 冻结),无法确定性解析 → pending_review 即正确出口。**FACT-009 对 Producer 声明方式影响 = 零变更**(消费方采纳缺口 = V3 架构演进 EB-005,终须 V3 侧 L2;Contract Must Follow Evidence,不是 Follow Implementation)。附 P3.2 设计约束:**实验必须走 experimental adapter 路径**,否则测的是"自推断"非"消费 Producer Evidence",结论失真。
+
+**两个互操作问题按协议解决**:
+1. **ID 撞号**:Claude 写文件早于 PROTOCOL 推送(同步时差非违规),本地编号与 canonical 撞号(最危险:两侧 FACT-005 语义完全不同)→ 全部**别名映射**入 `claude_id_aliases`,内容零覆盖;新增项分配 canonical EB-005(生产 Resolver 是否引入 options_region)/ EB-006(无标点 contextual rule)/ EB-007(formula FP 结构排除);
+2. **协调文件未 commit**(`?? Docs/COORDINATION/`):对对方不可验证 → 按 REPORTED 入册(FACT-010 = Claude-4 重分类 SEMANTIC=0),handoff 002 要求 Claude 补 commit + 归因落盘。
+
+**落盘**:镜像 `HANDOFFS/2026-09-15-Claude-to-DSH-001.md`(MIRROR 头)+ 回复 `HANDOFFS/2026-09-15-DSH-to-Claude-002.md`;state.yaml(FACT-008~011 / EB-005~007 / claude_id_aliases / 新禁止 2 条)/ CURRENT.md / charter §14.7 同步。**新增禁止**:不把 21+10 当 31 独立失败混计;协调文件必须 commit 后才算入册。
+
+**待办(Claude)**:commit 协调文件 / Claude-4 归因落盘 / 回复三问。P3.2(EB-004)仍待用户放行。

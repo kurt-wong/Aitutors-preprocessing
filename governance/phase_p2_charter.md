@@ -546,3 +546,14 @@ preprocessing 项目已从"不断增加能力"进入**收敛期**——停止条
 - **明令禁止**:实时互调/orchestration 平台(只有 4 个纯文本文件)/ 把协调层内容当 L2 Decision / 修改对方仓库 / EB 跳级 / 合并两侧语料分母;
 - **机器钉住**:`tests/test_coordination_state.py` 9 用例锁 schema(单主声明/EB 状态合法/FACT 必带 evidence+confidence/DEC 必带 authority/prohibitions 在册/handoff 模板节齐全/协议自证非权威层)。
 - 首个 handoff:`HANDOFFS/2026-09-15-DSH-to-Claude-001.md`(含向 Claude 的 3 个问题:P3.2 消费条件 / 4 个待裁决问题按 Claim 协议回传 / 31 case unit 级清单)。
+
+### 14.7 首次跨侧互操作:Claude handoff 镜像 + 三问回复(2026-09-15)
+
+> Claude 侧已按协调层产出 handoff 001(自述 FACT-001~007 / EB-001~005 / DEC-001~007)。DSH 按 PROTOCOL §5 七步执行同步,产出 handoff 002。**性质:镜像 + 核验 + 回复,零 pipeline 代码、零重跑。**
+
+- **亲验升级两条 OBSERVED**:① canonical FACT-009(原 Claude FACT-005)——**生产 Resolver 无 `options_region` 概念**,边界全由 `_locate_question_start` + `_region_end` 从 Source 自推断(`resolver.py` L337-346/L368-379),app 域(含 Gate)全树 grep 零引用,仅实验脚本使用;② canonical FACT-008——`region_upper=None` 时 `_locate_options` 无界扫描可达生产(L395 亲读)。**REPORTED → OBSERVED 升级必须亲读代码,不采信转述**——Claim 协议 confidence 语义首次实战执行;
+- **FACT-011(新增,源侧亲读)**:Q51 精确形态 = **region 缺失而非 region 错误**——`options_lines=null`,选项内容(L540 HTML table 整行)落在已声明 `stem_lines=[537,540]` 内被吸收。对 V3 的精确含义:此类 case 表现为"无 region 可消费",不是"消费了错 region";
+- **三问回复(handoff 002)**:① raw HTML 即当前 intended Source representation,无转换机制且按 DEC-003 不应现在添加(转写表格选项 = 制造源里没有的表示);② Q51 见 FACT-011;③ 图片型选项当前表示即唯一表示,转 plain text 需图片语义(§11.3 冻结),无法确定性解析 → pending_review 即正确出口;
+- **FACT-009 对 Producer 声明方式的影响 = 零变更**:消费方采纳缺口属 V3 架构演进(EB-005,终须 V3 侧 L2),不是 Producer 声明缺陷;**Contract Must Follow Evidence,不是 Contract Must Follow Implementation**。附 P3.2 设计约束入 EB-004:**实验必须走 experimental adapter 路径**(生产 Resolver 不消费 options_region,否则测的是"自推断"而非"消费 Producer Evidence",结论失真);
+- **两个互操作问题按协议解决**:① **ID 撞号**——Claude 写文件早于 PROTOCOL 推送(同步时差非违规),其本地编号全部**别名映射**入 `claude_id_aliases`(最危险混淆:两侧 FACT-005 语义完全不同),内容零覆盖,新增项分配 canonical id EB-005/006/007;② **协调文件未 commit**——`git status` = untracked,对对方不可验证,按 REPORTED 级入册,handoff 002 要求 Claude 补 commit + Claude-4 重分类归因落盘(现 FACT-010 = REPORTED);
+- 新增禁止事项入 state.yaml:不把 21 pending + 10 high-risk 当 31 个独立失败混计;V3 侧协调文件必须 commit 后才算入册。
