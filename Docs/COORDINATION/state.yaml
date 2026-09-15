@@ -422,6 +422,11 @@ data_hygiene:
   artifact: "data/preprocessing_data_quality_scan.json(武器 scripts/dq_data_quality_scan.py,只读确定性)"
   key_facts: "unit_type 非标准值恰 1 例(andalone_question,batch-C v2 可消费面)/ figure 悬空 27240 处 1396 份全为未恢复 imgs/ 形态(R58 时点 499 份起增长,daemon 机制),已改写形态悬空 0 / flags 天然闭合 2 值 + 596 unresolved 槽位,登记册零注册 / IR 71/71 源 sha 对账零漂移 + R50 基线 356/356 + OCR 清单 append-only,manifest 0/166 钉 sha(分层事实)"
   pending_owner: "①unit_type 单点修复 ②recover_images 批量恢复范围 ③flags 入登记册 ④BUG-14-DATA 6 needs_ruling + D5-C/D 排期 + D5-E 启动"
+  closure_plan:
+    path: Docs/COORDINATION/PREPROCESSING-CLOSURE-PLAN.md
+    status: "DRAFT(2026-09-15 收口准备;四禁零触碰:数据/schema/V3/契约冻结)"
+    classification: "A 必须修复才能冻结 Contract = 0 项(披露路线 vs 清洁路线二选一待裁);B 数据清洗 = unit_type 单点 / recover_images 批跑(1394 份,PDF 在位 99.86%,R50 基线交集恰 2 份已隔离)/ flags 登记 / 6 needs_ruling / D5-C~E;C V3 消费限制 = unresolved 596 槽位 / 悬空 figure / 四态空值 / manifest 不钉 sha"
+    key_facts: "异常 manifest 为 R50 基线成员(sha 58058c4f...,修复必致 DRIFT,须配对再冻结);无 PDF 悬空件恰 2 份((1)(1) 重复 stem 家族,单列人工)"
 
 # ---------- 当前禁止事项(两侧共同,叠加各自仓库冻结) ----------
 prohibitions:

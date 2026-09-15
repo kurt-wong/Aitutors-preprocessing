@@ -2412,3 +2412,20 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **BUG-14-DATA 收口对账**:D5-A ✅ / D5-B ✅ 70/70 / D5-C·D5-D 待跑(本轮四账 = D5-D 输入口径)/ D5-E 🔒(72 collisions)/ **6 needs_ruling 等 Owner 逐份裁定**。daemon 使图片积压持续增长,D5-D 重审计时点应同账统计。
 
 **落盘**:报告 `Docs/COORDINATION/EVIDENCE/PREPROCESSING-DATA-QUALITY-REPORT.md` v1(§7 待裁决五项:unit_type 单点修复 / recover_images 批量恢复范围 / flags 入登记册 / BUG-14-DATA 剩余闸门 / 知会 Claude Consumer Review);bugs.md BUG-14-DATA 补 DQE 证据块;state.yaml 新增 `data_hygiene` 块 + integration_contract.next 更新;CURRENT.md 主线节改写。Integration Contract **按令保持 DRAFT 未动**;V3 零触碰。
+
+---
+
+## 收口准备轮(2026-09-15):PREPROCESSING-CLOSURE-PLAN v1(BUG-14-DATA 裁决清单 A/B/C + 三项事实档)
+
+**触发**:Owner 指令——进入 preprocessing 收口准备;基于 `4d78513` + DQE 报告;保持 Integration Contract DRAFT;产出裁决清单(A 必须修复才能冻结 Contract / B 数据清洗阶段 / C V3 消费限制)、unit_type 事实档(事实/影响/修复范围/是否破坏历史 snapshot)、figure 恢复计划草案(范围/输入/输出/幂等,不执行)、flags 规则登记需求;**四禁:不修改数据/schema/V3、不冻结契约**。**性质:纯文档 + 三项补充只读测量,四禁零触碰。**
+
+**补充测量(只读)**:①异常件基线核验:`2020北京高中合格考化学（第一次）` 全卷 **4 成员全部钉在 R50_input_baseline**(manifest pin sha=`58058c4f…e3cc`)→ unit_type 修复必致 `audit_integrity verify` DRIFT,snapshot 影响判定 = **YES(硬事实)**;②figure 悬空件源 PDF 在位率:**1,394/1,396(99.86%)**(stem 精确匹配 original/ 12,707 PDF 索引),无 PDF 恰 2 份(均 `(1)(1)` 重复 stem 家族,单列人工);③悬空件 ∩ R50 基线 = **恰 2 份**(首师大附中高一化学/高三物理源 md)→ 恢复批跑默认隔离这 2 份,其余 1,394 份零基线冲突。工件 `data/dq_figure_pdf_availability.json`;交集探针 `.pytest_work/` 一次性(数字固化于计划文档)。
+
+**计划要点(`Docs/COORDINATION/PREPROCESSING-CLOSURE-PLAN.md` v1)**:
+- **§1 A/B/C 分类**:**A = 0 项**——契约冻结对象是"实测值域 + fail-closed 消费条款"而非"清洁数据",全部已知异常已在契约文本披露并配隔离;唯一近 A 项 = unit_type,呈**披露路线(推荐,零代价)/ 清洁路线(须配 R50 基线再冻结)**二选一;B = 六步清洗序(unit_type→recover_images→flags 登记→6 needs_ruling→D5-C/D→D5-E);C = 四项消费限制(unresolved 596 槽位禁静默默认 / 悬空 figure / 四态空值 / manifest 不钉 sha,对账必须用 IR provenance);
+- **§2 unit_type 事实档**:恰 1 例穷举定位;影响 = 消费侧隔离已生效,损失 1 单元;修复范围 = 1 文件 1 字段,IR 冻结工件永不回改;**破坏 snapshot = 是**,清洁路线必须配对再冻结决策,禁止只改数据不改基线;
+- **§3 恢复计划草案**:范围 1,394 份(−2 基线成员 −2 无 PDF 单列);输入 = 执行时点冻结清单(daemon 并发防护,D5-B 指纹先例)+ recover_images.py(R58/R59 验证,零 OCR 配额);输出 = `_imgs/` 资产 + 引用改写 + 审计账 + 批后独立复扫 dangling 归零;幂等 = already_done 既有 + 四闸批次纪律(B2-1~4 先例);
+- **§4 flags 登记需求**:2 词条(answer_table_unresolved→建议 STRUCTURE / answer_number_mismatch→建议 IDENTITY,归类待批)+ 双向钉扩展 + "新增 flag 值先登记后实现";明确不改 schema 不加自动裁决;
+- **§5 六项待批汇总**(路线选择 / 单点修复令 / 批跑范围令 / 登记令 / 逐份裁定 / 排期令)。
+
+**落盘**:计划文档(上)+ state.yaml `data_hygiene.closure_plan` 块 + CURRENT.md 主线节 + 本条目。Integration Contract 保持 DRAFT 未动;V3 零触碰;语料零写入。

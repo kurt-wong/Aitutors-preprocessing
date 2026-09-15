@@ -1,0 +1,18 @@
+{
+ "dangling_files": 1396,
+ "dangling_refs": 27240,
+ "pdf_in_original_by_stem": 1394,
+ "no_pdf_by_stem": 2,
+ "no_pdf_samples": [
+  "Ocr-markdown\\高三\\化学\\2022北京五中高三三模化学（教师版）(1)(1).md",
+  "Ocr-markdown\\高二\\生物\\2023北京顺义高二（上）期末生物（教师版）(1)(1).md"
+ ],
+ "by_top_dir": {
+  "合格考": 12,
+  "未分类": 109,
+  "高一": 378,
+  "高三": 414,
+  "高二": 435,
+  "高考真题": 48
+ }
+}

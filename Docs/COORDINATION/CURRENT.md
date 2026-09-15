@@ -1,14 +1,14 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-15(**Owner 令:契约扩展暂停(保持 DRAFT 不冻结,等 Claude Consumer Review);DSH 转入 preprocessing 内部数据卫生收口——DQE 四重点测量完成,报告 = `EVIDENCE/PREPROCESSING-DATA-QUALITY-REPORT.md`**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-15(**收口准备完成:`PREPROCESSING-CLOSURE-PLAN.md` v1 DRAFT——BUG-14-DATA 裁决清单 A/B/C 分类 + unit_type 事实档 + figure 恢复计划草案 + flags 登记需求;四禁零触碰,全部执行等 Owner 批准**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
 ## 主线:preprocessing 内部收口(数据卫生,Owner 令)
 
+- **收口计划(当前决策入口)**:`PREPROCESSING-CLOSURE-PLAN.md` v1——**A 必须修复才能冻结 Contract = 0 项**(披露路线 vs 清洁路线二选一待裁);B 清洗序 = unit_type 单点 / recover_images 批跑(1,394 份,PDF 在位 99.86%,**R50 基线交集恰 2 份已隔离**,无 PDF 恰 2 份单列)/ flags 登记 / 6 needs_ruling / D5-C~E;C 消费限制 = unresolved 596 槽位 / 悬空 figure / 四态空值 / manifest 不钉 sha。**关键硬事实:异常 manifest 是 R50 冻结基线成员(sha 58058c4f…),修复必致基线 DRIFT,须配对再冻结决策**;
 - **DQE 四重点测量完成(只读)**:`EVIDENCE/PREPROCESSING-DATA-QUALITY-REPORT.md` v1——①unit_type:全语料 166 manifest 穷举,**恰 1 例非标准值**(batch-C 合格考化学 Q1,v2 可消费面内)→ 单点修复待批;②figure:70,838 引用(行内 HTML 相对路径 99.99%),悬空 27,240 处/1,396 份**全部 = 未恢复 `imgs/` 原始形态**(recover_images 积压,daemon 产出使其自 R58 的 499 份增长),已改写形态悬空 = 0 → 批量恢复待批,最小 registry 不需要;③flags:值域天然闭合 2 值 + 596 unresolved 槽位,登记册零注册 → 登记待批;④稳定性:**IR 71/71 源 sha 零漂移 + R50 基线 356/356 + OCR 清单 append-only**,manifest 0/166 钉 sha(分层事实非缺陷);
 - **Integration Contract v0.1 = DRAFT 冻结暂停**(Owner 明令),等 Claude Consumer Review;OQ-1~4 在册;
-- **BUG-14-DATA 收口进度**:D5-A ✅ / D5-B ✅ 70/70 / D5-C·D5-D 待跑(DQE 四账 = D5-D 输入口径)/ D5-E 🔒 / **6 份 needs_ruling 等 Owner 逐份裁定**;
-- 待 Owner 裁决五项见报告 §7(全部本轮零执行)。
+- **BUG-14-DATA 收口进度**:D5-A ✅ / D5-B ✅ 70/70 / D5-C·D5-D 待跑(DQE 四账 = D5-D 输入口径)/ D5-E 🔒 / **6 份 needs_ruling 等 Owner 逐份裁定**。
 
 ## 当前工作项:EB / Evidence Resolution Boundary Discovery
 
