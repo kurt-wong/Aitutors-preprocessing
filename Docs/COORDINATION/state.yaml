@@ -248,6 +248,10 @@ decisions:
     statement: "EB-008 Owner 冻结决策合集(四项)+ Decision-4 终裁 + Rev-4/Review-5 任务规格: ①Identity Model 冻结:HASH 一致 = 同一 Question Entity,Run=Process/Candidate=Entity,replay 同 hash → same candidate(非 cross-run transfer);重点攻击面 = hash 不完整/绑定错误字段/authority 错误依赖 run_id。②Human Authority 冻结:家庭内部弱信任模型,不要求 IAM;人工审核可信来源 = 审核完成后系统生成 review proof token(绑定 candidate identity/审核内容/时间/action,可 replay 可验证);攻击面 = DB 复制后 token 是否错误关联。③Evidence Persistence 冻结:所有 evidence 必须持久化(ValidationEvent 须 DB 存储/可 replay/可 audit);攻击面 = INVALIDATED 后 replay 洗白。④Decision-4 终裁 = Option B:IR 可以先生成,但 IR 不是可信知识资产,Authority 是进入 Question Knowledge Layer 的必要条件;Rev-4 须删除一切暗示 IR 须先有 Authority 的描述,明确 IR=Intermediate Representation(结构化原始材料/Gate 输入/后续编译输入,本身不代表事实可信),增加 Boundary 定义(IR Layer 允许 provisional;Question/Admission Layer 必须 Authority validated),明确未验证 IR 可存在/调试/重编译但禁止进入最终 Question 实体,补充 Authority Projection 生命周期。判据纪律:不因 Rev-3/4 不采用 IAM 判失败,不因 run_id 不存在判失败,判断标准 = 是否符合 Owner 业务模型。流程:Claude Rev-4(必须 commit+回执 hash)→ DSH Review-5 最终一致性审查(OBSERVED/VERIFIED/ATTACK/FINAL VERDICT 五检查点:IR 未被描述为可信事实/Admission Boundary 拦截 unvalidated IR/Authority Projection 链完整/replay 同 hash→same Question+same Authority/Human Proof 满足家庭弱信任模型)→ 无 BLOCKER 则建议进入 DEC-013 终裁"
     authority: "用户裁定 2026-09-15(EB-008 Owner Frozen Decisions + Decision-4 Option B + Rev-4/Review-5 任务指令,聊天原文)"
     status: active
+  - id: DEC-017
+    statement: "EB-008 Owner 对 Review-5 终审结果的确认(DEC-013 终裁前置确认,四项核心设计方向全接受): ①Identity Model:接受 'Run 是过程,Candidate 是实体';HASH 一致 = 同一 Semantic Identity;同输入跨 Run 复用 Candidate 属设计目标,不视为跨 Run 污染。②Human Authority:接受家庭内部弱信任模型,Review Proof Token 证明 human_review 有效,无需 IAM/PKI;三条固化声明:(a) proof 绑定粒度 = candidate 级;(b) API 访问控制不属于当前威胁模型;(c) APP_SECRET 泄露属 Deployment Environment Boundary。③Evidence Persistence:确认 ValidationEvent 永久保存,Authority 由 ValidationEvent 确定性投影;实现阶段必须落实:validation_events 持久化 + invalidate 状态机 + replay 稳定性。④IR Boundary:接受 Option B,IR 允许先于 Authority 存在,但 IR 不是知识资产/不是可信事实/不能绕过 Admission 进入 Question 实体。本条固化 Review-5 WARNING-R5-02 三项声明(正式升格为 Owner 声明,不再属'未合入'缺口);EB-008 → DECIDED 候选;下一阶段 = DEC-013 最终裁决 + 实现阶段"
+    authority: "用户裁定 2026-09-15(Review-5 结果确认,聊天原文)"
+    status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
 open_questions:
@@ -278,7 +282,7 @@ open_questions:
   - id: EB-008
     question: "Admission 层是否引入 Evidence Authority enforcement(让 Admission 真正依赖 ValidationEvent/is_evidence_validated)?若是,如何实现不破坏 20 §8.2 双入口与物化事务语义"
     owner: v3
-    status: PROPOSED
+    status: DECIDED_CANDIDATE
     facts: [FACT-021, FACT-023, FACT-025, FACT-026, FACT-027, FACT-028]
     review_2:
       status: EB-008_ADVERSARIAL_REVIEW_2
@@ -297,12 +301,13 @@ open_questions:
       owner: DSH
       result: "VERIFIED — 无 BLOCKER(Owner 四项冻结决策逐项核验全过:①Run/Candidate 区分正确,R1-R5 replay 自洽,authority 不依赖 run_id,B3-01 假前提被正确删除;②proof token 五维绑定(candidate_id/review_result/reviewer_id/reviewed_at/APP_SECRET)通过,DB 复制无 .env → fail-closed 保守拒绝,不错误关联;③validation_events 表含 candidate_id+source_version_id FK,INVALIDATED 防洗白成立,B3-04 消解;④IR 职责解释与代码一致,Option A/B 对比不预设结论)。3 WARNING(声明完整性,并入 Rev-4):proof 粒度=candidate 级须显式声明/API 层访问控制缺失列入不防御清单/line_refs 剔除引用 70 号。1 NOTE:DB append-only 触发器 Phase-1 trade-off,不触发 DEC-015 红线。报告 = EVIDENCE/EB008-DSH-REVIEW4.md(锚 a80d555/sha256 2ED71A2B...E566,COMMITTED 级)"
     review_5:
-      status: done
+      status: archived
       owner: DSH
-      result: "VERIFIED — 无 BLOCKER,建议进入 DEC-013 终裁(五检查点全过:①IR 无任何可信事实表述,'IR 本身不代表事实可信'独立声明+Option A 仅存历史注记;②双 Layer Boundary+approve() 唯一 enforcement 点,fail-closed→pending_review;③投影链完整(事件 append-only→latest 投影→Admission 唯一消费,on-demand 无缓存同事务一致);④replay 同 hash→same Question+same Authority 自洽保持;⑤proof 机制继承 Rev-3 未削弱)。3 WARNING(R5-01 IR 下游消费文档级约束已列风险表/R5-02 handoff 011 三项声明性 WARNING 未合入转实现期清单/R5-03 DEC-013 跨台账同 ID 异文,preprocessing 侧已加 amendment 收窄注记,V3 侧建议改编号)。3 NOTE(§13 标题笔误/RepositoryError 措辞/invalidate 触发者归实现期)。报告 = EVIDENCE/EB008-DSH-REVIEW5.md(锚 2ad6f99,COMMITTED 级)"
+      archived_at: "2026-09-15(Owner 确认收讫,DEC-017)"
+      result: "VERIFIED — 无 BLOCKER,建议进入 DEC-013 终裁(五检查点全过:①IR 无任何可信事实表述,'IR 本身不代表事实可信'独立声明+Option A 仅存历史注记;②双 Layer Boundary+approve() 唯一 enforcement 点,fail-closed→pending_review;③投影链完整(事件 append-only→latest 投影→Admission 唯一消费,on-demand 无缓存同事务一致);④replay 同 hash→same Question+same Authority 自洽保持;⑤proof 机制继承 Rev-3 未削弱)。3 WARNING(R5-01 IR 下游消费文档级约束已列风险表/R5-02 三项声明性 WARNING → 已由 DEC-017 升格为 Owner 正式声明,缺口闭合/R5-03 DEC-013 跨台账同 ID 异文,preprocessing 侧已加 amendment 收窄注记,V3 侧待 Claude 改编号)。3 NOTE(§13 标题笔误/RepositoryError 措辞/invalidate 触发者归实现期)。报告 = EVIDENCE/EB008-DSH-REVIEW5.md(锚 2ad6f99,COMMITTED 级)"
       blocked_by: null
-      next: "Owner DEC-013 终裁"
-    note: "Owner 方向性裁决已下(DEC-013: Authority = Semantic IR + Knowledge Asset Admission 准入前置)。Revision-1 = V3 88_EB008_..._REVISION1.md(未 commit,REPORTED 级,sha256=2AEA1A81...9250)。DSH Evidence Audit 完成(EVIDENCE/EB008-DSH-VERIFICATION.md): V1 冷启动 FAILED(全文 0 命中冷启动,条件5使死锁扩至每个 run)/ V2 run semantics FAILED(same-candidate 重跑撞状态机 ValueError 零回应 + current_run_id 人工路径无来源)/ V3 human authority FAILED(issuer contract 依赖'任意非空字符串'+无认证投影输入,默认可信)/ V4 identity PARTIAL(candidate_id 检查恒真同义反复,写入器未定义)/ V5 join PARTIAL(设计层闭合,写入端未证)/ V6 lifecycle PARTIAL(INVALIDATED terminal 无 re-grant 路径)/ V7 independence PARTIAL('Proven independent' 过强,同 ledger 同 evaluate 根)。**DECISION: REQUIRES_REVISION**(阻断项 V1/V2/V3);成立部分 = Projection 抽象/candidate_id 绑定/AuthoritySnapshot 意图。Owner 反馈(DEC-015): 三项 BLOCKER 获认可,不接受直接终裁;等 Claude Revision-2 commit 后 DSH 以五验证点启动 Review-3;'实现阶段再加字段/后续 migration' 一律 UNPROVEN;当前阶段 = L2_DESIGN_PROPOSAL。Rev-2(9bf8878)= REQUIRES_REVISION;Rev-3(a80d555,90号)= VERIFIED 无 BLOCKER;Owner 四项冻结决策 + Decision-4 终裁 Option B 入册 DEC-016;Rev-4(2ad6f99,91号,Option B 合入)= Review-5 终审 VERIFIED 无 BLOCKER。**当前 = 等 Owner DEC-013 终裁;终裁通过后 EB-008 → DECIDED,进入实现期清单(validation_events 表 + proof 机制 + approve() enforcement + invalidate 触发器)**"
+      next: "Owner DEC-013 最终裁决"
+    note: "Owner 方向性裁决已下(DEC-013: Authority = Semantic IR + Knowledge Asset Admission 准入前置)。Revision-1 = V3 88_EB008_..._REVISION1.md(未 commit,REPORTED 级,sha256=2AEA1A81...9250)。DSH Evidence Audit 完成(EVIDENCE/EB008-DSH-VERIFICATION.md): V1 冷启动 FAILED(全文 0 命中冷启动,条件5使死锁扩至每个 run)/ V2 run semantics FAILED(same-candidate 重跑撞状态机 ValueError 零回应 + current_run_id 人工路径无来源)/ V3 human authority FAILED(issuer contract 依赖'任意非空字符串'+无认证投影输入,默认可信)/ V4 identity PARTIAL(candidate_id 检查恒真同义反复,写入器未定义)/ V5 join PARTIAL(设计层闭合,写入端未证)/ V6 lifecycle PARTIAL(INVALIDATED terminal 无 re-grant 路径)/ V7 independence PARTIAL('Proven independent' 过强,同 ledger 同 evaluate 根)。**DECISION: REQUIRES_REVISION**(阻断项 V1/V2/V3);成立部分 = Projection 抽象/candidate_id 绑定/AuthoritySnapshot 意图。Owner 反馈(DEC-015): 三项 BLOCKER 获认可,不接受直接终裁;等 Claude Revision-2 commit 后 DSH 以五验证点启动 Review-3;'实现阶段再加字段/后续 migration' 一律 UNPROVEN;当前阶段 = L2_DESIGN_PROPOSAL。Rev-2(9bf8878)= REQUIRES_REVISION;Rev-3(a80d555,90号)= VERIFIED 无 BLOCKER;Owner 四项冻结决策 + Decision-4 终裁 Option B 入册 DEC-016;Rev-4(2ad6f99,91号,Option B 合入)= Review-5 终审 VERIFIED 无 BLOCKER;Owner 确认(DEC-017)四项核心设计方向全接受 + 三条信任模型固化声明(proof 粒度 candidate 级/API 访问控制不在威胁模型/APP_SECRET 泄露属 Deployment Environment Boundary)。**当前 = DECIDED_CANDIDATE,等 Owner DEC-013 最终裁决;通过后 → DECIDED → 实现期义务(validation_events 持久化/invalidate 状态机/replay 稳定性为 Owner 点名必须落实项,另加 proof 机制 + approve() enforcement + invalidate 级联触发 + DB append-only 触发器 Phase-2)**"
   - id: EB-005
     question: "生产 Resolver 是否应引入 options_region 概念(消费 Producer Evidence Region)以替代 Source 自推断边界?"
     owner: v3

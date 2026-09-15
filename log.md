@@ -2340,3 +2340,11 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **ATTACK 汇总**:0 BLOCKER / 3 WARNING / 3 NOTE。R5-01:IR 下游消费禁令执行点为"系统边界/使用约定"(文档级,风险表已列,单机形态可接受);R5-02:handoff 011 要求合入的 3 项声明性 WARNING(proof 粒度 candidate 级/API 层不防御清单/70 号引用)未合入——均为声明完整性,转实现期文档清单,不阻断;**R5-03(台账治理)**:V3 state.yaml 注册的 "DEC-013"(Owner business rules Decision-1~4)与 preprocessing canonical ledger 的 DEC-013(方向性裁决原文"Semantic IR 与 Admission 双前置")**同 ID 异文**,且 DEC-016 Option B 已收窄旧条 IR 侧前置——preprocessing 侧 DEC-013 已加 amendment 修正(引用须同时引 DEC-016),V3 侧建议改编号。
 
 **要点**:EB-008 全程收敛轨迹 = Rev-1(未 commit/REPORTED)→ Rev-2(`9bf8878`,4 BLOCKER)→ Rev-3(`a80d555`,0 BLOCKER/3 WARNING)→ Rev-4(`2ad6f99`,0 BLOCKER)。设计侧无已知未回应项。**下一步 = Owner DEC-013 终裁**;终裁通过 → EB-008 → DECIDED → 实现期清单:validation_events 表 + review proof 机制 + approve() Authority enforcement + invalidate 级联触发 + DB append-only 触发器(Phase-2)。
+
+## 2026-09-15 · EB-008 Owner 确认入册(DEC-017):四项设计方向全接受,EB-008 → DECIDED_CANDIDATE
+
+**触发**:Owner 确认 Review-5 终审结果(聊天原文):①Identity Model 接受(Run=过程/Candidate=实体,hash 一致=同一 Semantic Identity,跨 Run 复用=设计目标非污染);②Human Authority 接受家庭弱信任模型 + proof token,无需 IAM/PKI,**三条固化声明:proof 绑定粒度=candidate 级 / API 访问控制不属于当前威胁模型 / APP_SECRET 泄露属 Deployment Environment Boundary**;③Evidence Persistence 确认 ValidationEvent 永久保存 + 确定性投影,**实现阶段必须落实:validation_events 持久化 + invalidate 状态机 + replay 稳定性**;④IR Boundary 接受 Option B(IR 可先于 Authority 存在,但非知识资产/非可信事实/不能绕过 Admission 进 Question 实体)。指令:Review-5 归档、state.yaml 更新、EB-008 标记 DECIDED 候选、提醒 Claude 处理 DEC 编号冲突。**性质:治理确认入册,零代码。**
+
+**落盘**:①state.yaml:DEC-017 入册(四项全文+三声明)、EB-008 status → DECIDED_CANDIDATE、review_5 → archived、note 更新;②`EVIDENCE/EB008-DSH-REVIEW5.md` 加 [ARCHIVED] 头(结论即终审结论,不再迭代);③`HANDOFFS/2026-09-15-DSH-to-Claude-012.md`(DEC-017 转达 + R5-03 DEC 编号冲突二选一处理要求 + 实现期义务备忘);④CURRENT.md 同步(EB-008 行 + 待裁决节 + 双 agent 快照);⑤本条目。
+
+**要点**:①Review-4 的 W1/W2 由 DEC-017 **升格为 Owner 正式声明**,缺口闭合(R5-02 消解);②R5-03(DEC-013 跨台账同 ID 异文)preprocessing 侧已 amendment 修正,V3 侧改编号待 Claude 执行(handoff 012);③实现期义务分两级:Owner 点名必须落实(validation_events 持久化/invalidate 状态机/replay 稳定性)+ DSH 审查链遗留(proof 机制/approve() enforcement/invalidate 级联触发/DB 触发器 Phase-2);④下一阶段 = **DEC-013 最终裁决**(唯一在途 Owner 项),通过后 EB-008 → DECIDED → 实现阶段开启。

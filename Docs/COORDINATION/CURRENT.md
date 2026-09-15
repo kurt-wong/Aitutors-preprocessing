@@ -1,14 +1,14 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-15(**DEC-014:Agent Completion & Synchronization Protocol 强制生效(`COMPLETION_PROTOCOL.md`);EB-008 Evidence Audit = REQUIRES_REVISION**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-15(**EB-008 Review-5 终审 VERIFIED(0 BLOCKER)+ Owner 确认四项设计方向(DEC-017)→ EB-008 = DECIDED_CANDIDATE,等 DEC-013 最终裁决**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
 ## 当前工作项:EB / Evidence Resolution Boundary Discovery
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer | **Evidence Verification Audit 完成**(`EVIDENCE/EB008-DSH-VERIFICATION.md`,V1~V8:3 FAILED / 4 PARTIAL / **REQUIRES_REVISION**);待 Revision-2 重审 |
-| **Claude** | kurt-wong/AITutors-v3 | Resolution + IR + Gate + Admission | P3.2 实验完成(`455eb3d`/`bf95a87`);待:findings 两处措辞精确化 + N3–N6 未执行原因注记;EB-008 等 Owner 裁决前不设计不实现 |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer | **Review-2~5 全部完成归档**(Rev-2 4 BLOCKER → Rev-3/Rev-4 均 VERIFIED 0 BLOCKER);审查职责收口,等 Owner DEC-013 终裁 |
+| **Claude** | kurt-wong/AITutors-v3 | Resolution + IR + Gate + Admission | Rev-4 提交(`2ad6f99`,91号,Option B 合入);待:DEC 编号冲突处理(handoff 012,R5-03)+ DEC-017 同步入 V3 台账 |
 
 ## P3.2 / EB-004 终局(VERIFIED)
 
@@ -46,11 +46,11 @@
 | EB-005 | 生产 Resolver 是否引入 options_region(**OPEN 暂不实现,不与 EB-008 合并**) | v3 | EVIDENCED |
 | EB-006 | A 缺标点 contextual rule(设计属 V3) | v3 | EVIDENCED |
 | EB-007 | formula FP 结构排除(检出来源 = V3 代码追踪) | v3 | EVIDENCED |
-| EB-008 | **Admission/IR Evidence Authority enforcement(L2 设计)** | v3 | **PROPOSED / REQUIRES_REVISION**(Revision-1 = V3 `88_...md` 未 commit/REPORTED,sha=2AEA1A81;**Evidence Audit 完成,V1 冷启动/V2 run/V3 人工 authority 三项 FAILED**;待 Revision-2 → 重审 → Owner 终裁) |
+| EB-008 | **Admission Evidence Authority enforcement(L2 设计)** | v3 | **DECIDED_CANDIDATE**(Rev-1 未 commit → Rev-2 `9bf8878` 4 BLOCKER → Rev-3 `a80d555` VERIFIED → Rev-4 `2ad6f99` Review-5 VERIFIED 0 BLOCKER;Owner DEC-017 确认四项设计方向:Identity=Run过程/Candidate实体+hash复用是设计目标、Human=proof token 家庭弱信任(粒度candidate级/API控制不在威胁模型/APP_SECRET泄露属部署边界)、Persistence=ValidationEvent永久保存(实现期必须:持久化/invalidate状态机/replay稳定性)、IR=Option B(provisional允许,非知识资产非可信事实,禁绕Admission);**等 DEC-013 最终裁决 → 实现阶段**) |
 
 ## 待 Owner 裁决
 
-1. ~~EB-008 方向~~ **已裁(DEC-013)**:Evidence Authority = Semantic IR + Knowledge Asset Admission 准入前置,不接受纯审计定位;当前流程 = Claude L2 Authority Model 设计(不实现)→ DSH 核验设计稿(handoff 008 已交 12 检查点对抗审查,Q-1~Q-8 待答);
+1. **EB-008 DEC-013 最终裁决**(唯一在途项):设计链已收口(Rev-4 = `2ad6f99`,Review-5 VERIFIED,Owner 确认 = DEC-017);终裁通过 → EB-008 → DECIDED → 实现阶段(validation_events 持久化 / invalidate 状态机 / replay 稳定性为 Owner 点名必须落实项);DEC-013 IR 侧前置已被 DEC-016 Option B 收窄(state.yaml 已加 amendment,引用须同引 DEC-016);
 2. N3–N6 已裁不补跑,记 deferred(DEC-012,重开窗口仅 Owner)。
 
 ## 当前禁止(两侧共同)

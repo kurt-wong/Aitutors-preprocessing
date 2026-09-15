@@ -1,5 +1,7 @@
 # EB-008 Review-5 — Rev-4 最终一致性审查(Decision-4 Option B 合入核验)
 
+> **[ARCHIVED 2026-09-15]** Owner 已确认本审查结果(DEC-017):四项核心设计方向全接受,三条信任模型声明固化(proof 粒度 candidate 级 / API 访问控制不在当前威胁模型 / APP_SECRET 泄露属 Deployment Environment Boundary)。EB-008 → DECIDED_CANDIDATE,等 DEC-013 最终裁决。本报告结论即终审结论,不再迭代。
+
 - **Reviewer**: DSH(Preprocessing)
 - **Date**: 2026-09-15
 - **审查对象**: V3 commit `2ad6f99342ce6a75a843980d619a164b05579b5c`(COMMITTED 级)
