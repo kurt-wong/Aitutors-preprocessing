@@ -2318,3 +2318,13 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **核心发现**:①**T2 假前提**——Rev-2 声明"每次 Run 新 Candidate(UUID)",代码实为 `UniqueConstraint(stage, le_hash)` + `ON CONFLICT DO NOTHING` 复用既有行(`snapshot_repository.py` L118-156;`service.py` L214-231),Run A/B replay 证明第 1 步即假,cross-run Authority transfer 按构造发生,状态机 ValueError 矛盾回归(持久化后必现);②**T3 仍是默认可信**——C2-C4 前缀约束即 Owner 禁止的"非空字符串+prefix=trusted",C7"真实性后续 Phase 验证"按 DEC-015 红线 = UNPROVEN,review_trail↔ValidationEvent 零绑定;③**T4 双层消解**——B4 移除 IR 层检查,与 DEC-013"Semantic IR 与 Admission 双前置"抵触,同源同 run 消费 = duplicate check 非 independent enforcement;④**T5/T6 持久化缺席**——ledger per-run 内存,invalidation 可被 replay 洗白,AuthorityIdentity 三元组含 candidate_id 但 ValidationEvent 不携带该字段,claim_id 文档本地撞号,修复 = 加字段 = UNPROVEN 红线。**成立部分**:自动路径 bootstrap 循环确已打破(Producer/Consumer 分层正确);候选身份应表述为 (stage, le_hash) 逻辑执行身份而非新 UUID——方向对,前提错。
 
 **要点**:REQUIRED_DECISION 两项提请 Owner——RD-A:B4 是否偏离 DEC-013(若 provisional IR 可被下游无 Authority 消费,则 IR 前置名存实亡);RD-B:Authority ledger 持久化升格为 Rev-3 设计义务(schema/身份字段/invalidation 语义)而非实现期事项。BLOCKER B3-01~04 清单见报告 §汇总。
+
+## 2026-09-15 · EB-008 Review-4:对 Revision-3 的对抗验证 = VERIFIED(无 BLOCKER)+ Owner Decision-4 终裁入册(DEC-016)
+
+**触发**:Claude 提交 Rev-3(V3 90号,commit `a80d555`,COMMITTED 级),Owner 下达四项冻结决策(Identity Model/Human Authority/Evidence Persistence/IR Boundary)+ Decision-4 终裁 = **Option B**(IR 可先生成,但非可信知识资产;Authority = 进入 Question Knowledge Layer 的必要条件),并指令断轮验证判据 = 是否符合 Owner 业务模型(不因不用 IAM / 无 run_id 判失败)。**性质:审查 + 治理裁决入册,零代码。**
+
+**落盘**:`Docs/COORDINATION/EVIDENCE/EB008-DSH-REVIEW4.md`(锚 `a80d555`/sha256 `2ED71A2B...E566`)+ `HANDOFFS/2026-09-15-DSH-to-Claude-011.md`(Rev-4 任务规格)+ state.yaml:DEC-016 入册 + review_4=done + review_5=pending + 本条目。
+
+**核心结论**:①Owner 决策①——Run(Process)/Candidate(Entity)区分正确,R1-R5 replay 自洽,authority 不依赖 run_id,Review-3 B3-01 假前提被正确删除;②Owner 决策②——proof token 五维绑定(candidate_id/review_result/reviewer_id/reviewed_at/APP_SECRET)全部通过;DB 复制无 `.env` → proof 重算不匹配 → fail-closed 保守拒绝,**不错误关联**;DB+`.env` 整套克隆 = 超出威胁模型(Owner 已接受);③Owner 决策③——validation_events 表含 candidate_id+source_version_id,INVALIDATED 防洗白成立(R3 no-op/R5 终态),B3-04 消解;④Owner 决策④——Rev-3 IR 职责解释与代码一致(`ir.py:1-2` transient),Option A/B 对比不预设结论,Option B 与 pipeline 顺序一致无循环。**3 WARNING(声明完整性,并入 Rev-4)**:proof 粒度须显式声明 candidate 级 / API 层访问控制缺失列入不防御清单 / line_refs 剔除引用 70 号 OQ-1 Gate A。**1 NOTE**:DB append-only 触发器 Phase-1 trade-off,schema 已设计期定死,不触发 DEC-015 红线。
+
+**要点**:DEC-016 固化 Owner 四项冻结决策全文 + Decision-4 Option B + 判据纪律 + 流程(Claude Rev-4 commit 回执 → DSH Review-5 五检查点终审 → 无 BLOCKER 建议 DEC-013 终裁)。EB-008 链条:Rev-1(未 commit/REPORTED)→ Rev-2(`9bf8878`)/4 BLOCKER → Rev-3(`a80d555`)/VERIFIED → Rev-4(等 Claude)→ Review-5 → DEC-013。
