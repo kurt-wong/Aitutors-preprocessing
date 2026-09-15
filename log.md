@@ -2429,3 +2429,17 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 - **§5 六项待批汇总**(路线选择 / 单点修复令 / 批跑范围令 / 登记令 / 逐份裁定 / 排期令)。
 
 **落盘**:计划文档(上)+ state.yaml `data_hygiene.closure_plan` 块 + CURRENT.md 主线节 + 本条目。Integration Contract 保持 DRAFT 未动;V3 零触碰;语料零写入。
+
+---
+
+## Producer Fact Reconciliation 轮(2026-09-16):回应 Claude Consumer Review v0.2 B1/B2/B3
+
+**触发**:Owner 指令——完成 PREPROCESSING-V3-CONTRACT Producer Fact Reconciliation,回应 Review v0.2 三 BLOCK;**四禁:不修改代码、不修改数据、不执行清洗、不修改 Contract**。基线:preprocessing `4d78513`(工作树 `4fdbb70` 仅文档增量,diff 亲验数据零变化;今日复扫 166 manifest 携带 sha 键仍 = 0);V3 代码面 `b5ddbe3`~`938535d` 等价(diff 仅 +1 review 文档),全部引用逐行亲读。
+
+**B1 Source Identity(OBSERVED/VERIFIED/UNKNOWN)**:①source_sha256 生产点唯一 = `resolver_reference.py:249`(IR 文件级)/`:167`(单元 provenance.source_version),= 源 md 原始字节 SHA-256;OCR 清单同名字段钉 **PDF**(r67_manifest_bootstrap.py:181)语义不同不可混用;②manifest 携带 sha = **0/166**(当前树复扫,DQE 口径复证);③IR 当前 = **producer 内部产物 + 消费接口候选**(仓内冻结契约 C-OUT 定义的是工件纪律;G-BOUND-1"Backend 消费面=IR"是方向性陈述未经 ack;V3 backend 零消费,DSH 独立复核 grep 0 命中;唯一真实工件 resolver_ref_r52 冻结,亲验 andle 恰 1 例);④传输链文档清点:**不存在双方 ack 的定义**——preprocessing 契约 DRAFT = IR→V3,V3 需求稿(untracked,REPORTED 级)= manifest→V3,互斥;"IR→manifest→V3" 任何文档零命中。→ B1 裁决权归 Owner。
+
+**B2 Hash 四列**:producer 唯一 hash 产出 = 原始字节 sha256 家族;**body_hash/line_hash 全仓 0 命中(preprocessing 不产出)**。一致性确认:V3 `file_sha=sha256_hex(body_text)` 经 canonical_json 引号包裹与原始字节 sha **永不相等**(hashing.py:60-62 亲验);V3 body_hash 丢行终止符/尾随换行(v0.1 实测 6/12 DIFFER 采信,机制亲验)——**行号勘误:splitlines() 在 source_loader.py:27(load_source_lines 内),非 compute_body_hash(:43-46)本身,结论不变**;附带 OBSERVED:V3 `document_source_lines.line_hash` 同表两算法并存(consumer raw 单行 sha vs 生产 canonical 复合 sha;line_index.py:75-90),consumer 路径 integrity_hash 退化为 =body_hash(runner.py:93)——V3 内部治理,登记不提案。
+
+**B3 andle_question 六层追踪(逐行亲验,修正两侧各一处)**:manifest 原样(亲读 Q1)→ resolver 逐字复制(:152,IR 亲验恰 1 例)→ **annotation 层洗白**(annotation_adapter.py:42 把 payload unit_type 重写为 canonical standalone_question,零信号)→ **span 层按原始值走 composite 分支**(resolved_span_adapter.py:77-90 / runner_b2.py:116-127,两轨不产 sp-Q1.stem,与 annotation 层矛盾成立)→ runner:Track B2 = IRBuilder 组装洗白 payload + composite 式 spans → stem unresolved + options missing → **incomplete → skip**(ir.py:201-218;runner_b2.py:232);Track A = SourceResolver 搜索洗白 payload,静态不可判定(UNKNOWN)→ **candidate 层零落库**:runner_b2.py:252 对本单元不可达,即便可达输入为洗白值 → standalone_unit **而非 Review 所记 composite_unit**(FACT-032 推断更正);无任何 unknown/PENDING 信号。**DQE §1-A "消费侧隔离已生效" 不准确,DSH 正式撤回**(连带 closure plan §2 同句):契约 §3.3-6 是 DRAFT 要求非现状;实际终态 = 无信号 incomplete 掩盖(stem unresolved/options missing 记录,真实原因不出现),不是 PENDING 隔离。
+
+**落盘**:`Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-FACT-RECONCILIATION-v0.2.md`;state.yaml FACT-029/030/031 入册 + V3-local FACT-030~033 别名映射 + integration_contract 块(consumer_review_v02 + producer_fact_reconciliation);CURRENT.md 同步。四禁零触碰:两仓代码零修改、数据零写入、无清洗执行、Contract 保持 v0.1 DRAFT 一字未动。三 BLOCK 事实面对齐,裁决面(传输层/hash 口径/隔离执行面)归 Owner。

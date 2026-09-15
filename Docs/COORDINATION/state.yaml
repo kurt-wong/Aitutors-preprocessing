@@ -196,6 +196,24 @@ facts:
     evidence: "V3 app/domains/gate/service.py L171-197 亲读;EB-008 对抗审查 O-9/C-2/U-2"
     confidence: OBSERVED
     status: observed
+  - id: FACT-029
+    statement: "B1 Producer Fact Reconciliation(回应 Review v0.2): source_sha256 生产点唯一 = resolver_reference.py:249(文件级)/:167(单元 provenance.source_version),语义 = 源 md 原始字节 SHA-256;OCR 清单同名字段钉 PDF 语义不同不可混用;manifest 携带 sha 键 = 0/166(当前树复扫,manifest 总数与 DQE 时点一致);IR 当前 = producer 内部产物 + 消费接口候选(V3 backend 零消费,DSH 独立复核 grep 0 命中;唯一真实工件 resolver_ref_r52 冻结);不存在任何双方 ack 的传输链定义(preprocessing 契约 DRAFT = IR→V3,V3 需求稿 untracked = manifest→V3,互斥)"
+    source: both
+    evidence: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-FACT-RECONCILIATION-v0.2.md §B1;resolver_reference.py:52-53,167,249 亲读;V3 backend grep 0 命中;166 manifest 当前树复扫"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-030
+    statement: "B2 hash 四列核对: producer 侧唯一 hash 产出 = 原始字节 sha256 家族;body_hash/line_hash 全仓 0 命中(preprocessing 不产出);V3 file_sha=sha256_hex(body_text) 经 canonical_json 引号包裹与原始字节 sha 永不相等(hashing.py:60-62);V3 body_hash 丢行终止符/尾随换行(splitlines 在 source_loader.py:27 非 compute_body_hash 内,行号勘误 Claude v0.2 §A.3,结论不变);V3 内部附带事实: document_source_lines.line_hash 同表两算法并存(consumer raw 单行 sha vs 生产 canonical 复合 sha),consumer 路径 integrity_hash 退化为 =body_hash"
+    source: both
+    evidence: "PREPROCESSING-PRODUCER-FACT-RECONCILIATION-v0.2.md §B2;hashing.py:39-62/source_loader.py:24-46/line_index.py:70-108/runner.py:71-73 逐行亲读"
+    confidence: OBSERVED
+    status: observed
+  - id: FACT-031
+    statement: "B3 andle_question 六层追踪(修正两侧各一处): manifest 原样 / resolver 逐字复制(:152) / annotation 层洗白(payload unit_type 重写为 standalone_question,annotation_adapter.py:42,无信号) / span 层按原始值走 composite 分支(两轨不产 sp-Q1.stem,与 annotation 层矛盾成立) / runner: Track B2 判 incomplete(stem unresolved + options missing)skip,Track A SourceResolver 搜索结果 UNKNOWN / candidate 层零落库(runner_b2.py:252 不可达;即便可达输入为洗白值→standalone_unit 而非 Claude 所记 composite_unit)。DQE §1-A '消费侧隔离已生效' 不准确,正式撤回:契约 §3.3-6 是 DRAFT 要求非现状,实际终态 = 无信号 incomplete 掩盖而非 PENDING 隔离"
+    source: both
+    evidence: "PREPROCESSING-PRODUCER-FACT-RECONCILIATION-v0.2.md §B3;compile/ir.py:105-138,187-251/annotation_adapter.py:40-46,100-104/resolved_span_adapter.py:77-90/runner_b2.py:116-127,231-252/gate/service.py:156-158,181-184 逐行亲读;manifest Q1 + resolver_ir.json 亲验"
+    confidence: OBSERVED
+    status: observed
 
 # ---------- DEC: 已裁决项(权威来源必须是用户/L2 路径) ----------
 decisions:
@@ -375,6 +393,10 @@ claude_id_aliases:
     CLAUDE_FACT-012: "FACT-021(P3.2 4/4 bypass;DSH 亲验成立,附范围缺口 FACT-022 与口径 FACT-023)"
     CLAUDE_FACT-013: "FACT-021(approve() 只查 gate_decision;DSH 独立亲读 admission.py 确认)"
     CLAUDE_FACT-014: "FACT-021(is_evidence_validated=False 不阻 Admission;同一次亲验覆盖)"
+    "V3-local FACT-030 (B1 transport mismatch)": "FACT-029(producer 侧对账版)"
+    "V3-local FACT-031 (B2 hash mismatch)": "FACT-030(含 splitlines 行号勘误)"
+    "V3-local FACT-032 (B3 unit_type split)": "FACT-031(candidate 层表述已更正: runner_b2.py:252 不可达,零落库,非 composite_unit)"
+    "V3-local FACT-033 (DQE contradiction)": "FACT-031(DQE §1-A 陈述已由 DSH 正式撤回更正)"
 
 # ---------- case ID 重编号别名(claude4-attribution.json commit 84fd39f 重生成时整体重编号;FACT-018) ----------
 # 规则:evidence artifact 的 case id 一经分配不得重编号——修内容不改 id。
@@ -412,8 +434,17 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "Owner 令(2026-09-15): 契约扩展暂停、保持 DRAFT 不冻结,等 Claude Consumer Review;DSH 转入内部收口"
+  next: "Consumer Review v0.2(B1/B2/B3 三 BLOCK)已由 DSH Producer Fact Reconciliation v0.2 回应(INTEGRATION/PREPROCESSING-PRODUCER-FACT-RECONCILIATION-v0.2.md): 事实面对齐,裁决面归 Owner(传输层选择/hash 对账口径/隔离执行面);契约保持 DRAFT 不冻结"
   role_recalibration: "Owner 2026-09-15: DSH 恢复 preprocessing 收口本职;EB-008 保留为跨项目契约(验证 preprocessing 输出满足 V3 可信输入要求),DSH 不再承担 V3 攻击测试团队角色;Review-1 报告不再作为推进状态的依据"
+  consumer_review_v02:
+    doc: "V3 仓 Docs/COORDINATION/CONTRACTS/PREPROCESSING-V3-CONTRACT-CONSUMER-REVIEW-v0.2.md(V3 commit 938535d,COMMITTED 级)"
+    verdict: "不可冻结;PASS P1~P7 / BLOCK B1 传输层未定 · B2 hash 对账不可达成 · B3 unit_type 隔离未实现+跨仓陈述矛盾 / 非阻塞 N1 figure 资产在位性 · N2 字段偏宽"
+    note: "V3 侧 CONTRACTS/PREPROCESSING-V3-CONTRACT.md(需求稿)与 v0.1 review、handoff 007 仍 untracked(REPORTED 级)"
+  producer_fact_reconciliation:
+    path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-FACT-RECONCILIATION-v0.2.md
+    status: "v0.2(2026-09-16,Owner 令回应 B1/B2/B3;四禁零触碰: 代码/数据/清洗/Contract)"
+    key_facts: "B1: source_sha256 生产点唯一 + manifest 0/166 + IR=内部产物/接口候选 + 无双方 ack 传输链;B2: producer 零 body_hash/line_hash 产出,V3 自算两路与 producer 定义不同(附行号勘误);B3: annotation 层洗白 vs span 层 composite 分裂,candidate 层零落库(更正 Review),DQE §1-A '已生效' 正式撤回"
+    facts_registered: [FACT-029, FACT-030, FACT-031]
 
 data_hygiene:
   status: measured
