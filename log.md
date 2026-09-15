@@ -2392,3 +2392,23 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **落盘**:①契约新建(上);②`HANDOFFS/2026-09-15-DSH-to-Claude-014.md`(事实核验 + 契约移交 + 四问:§3 消费面与 V3 schema 映射缺口/lineage 需求/图片交付形态/source_version_id 对账方式);③state.yaml 新增 `integration_contract` 顶层块(status DRAFT + 证据锚 + role_recalibration 声明;EB-008 状态**不动**);④CURRENT.md:头部/双 agent 表/主线节更新,EB-008 行补"Review-1 不再作为推进状态依据"注记;⑤本条目。
 
 **要点**:①主线从"EB-008 实现审查"切回"preprocessing 收口 + 稳定输出契约",EB-008 收敛为契约 §4 的跨边界约束面;②契约纪律:每条款 OBSERVED/INFERRED/UNPROVEN 标注,只如实描述当前产物形态,不新增 preprocessing 规则,不重裁决仓内冻结契约;③Claude 遗留治理项(R5-03 DEC 编号冲突 + DEC-017/018 同步)仍开放,handoff 014 未再催办(避免 EB-008 面扩大),但台账不失忆;④待 Owner 裁决冻结契约 + Claude 回四问。
+
+---
+
+## DQE(2026-09-15):preprocessing 内部数据卫生四重点测量(Owner 令:契约扩展暂停,BUG-14-DATA 收口优先)
+
+**触发**:Owner 指令——暂停 Integration Contract 扩展(保持 DRAFT 不冻结,等 Claude Consumer Review),进入 preprocessing 内部收口;重点四方向 = unit_type 值域 / figure / unresolved flags / manifest·source 输出稳定性;输出 `PREPROCESSING-DATA-QUALITY-REPORT.md`;禁改 V3。**性质:只读测量,零语料写入、零生产代码变更。**
+
+**武器**:`scripts/dq_data_quality_scan.py`(dq-data-quality-scan-1,确定性)→ `data/preprocessing_data_quality_scan.json`。口径:166 manifest 全语料 + 源树 4,223 份 md(排除政策单一来源 = recover_images 常量)+ 真实 IR(88 文件/1,664 单元)+ OCR 输出清单(1,801 条)+ R50 冻结基线(356 文件)。
+
+**四重点结果(全部 OBSERVED)**:
+1. **unit_type**:manifest 全语料 4,609 单元 + IR 1,664 单元穷举——`standalone_question` 3,935 / `composite_question` 673 / **非标准恰 1 例 `andalone_question`**(batch-C 合格考化学 2020 Q1,**v2 可消费面内**,IR 忠实携带=零重塑纪律反面实证)。建议:canonical enum 恰 2 值;处置 = 消费侧隔离(已生效)+ 单点确定性修复(待批)+ 守卫并入 basis schema-only 排期③(审计惯性)。
+2. **figure**:70,838 引用(行内 HTML 相对路径 70,829 + 外链 codecogs 9;markdown 形态 0);**悬空 27,240 处/1,396 份,归因全部单一 = `bare_imgs_no_asset_anywhere`**(原始 OCR `imgs/` 形态,资产从未从 PDF 恢复);**已改写 `../../_imgs/` 形态悬空 = 0**。与 R58 积压(499 份/10,439 处)连续,增长主因 = daemon 新产出(机制性,非新缺陷)。最小 registry **不需要**(缺的是恢复执行,不是注册结构;不提前满足 V3 未来需求)。
+3. **flags**:IR 穷举值域天然闭合恰 2 值——`answer_table_unresolved` 502 单元 / `answer_number_mismatch` 91 单元;`answers.unresolved[]` **596 槽位**/528 表单元(与 R-ACC-14 互洽)。消费方责任已冻结(G-BOUND-1 禁静默默认);**规则登记册对 flags 零注册**(grep 0 命中)= 唯一缺口,建议登记词条、不改 schema。
+4. **稳定性**:分层钉链完好——manifest **0/166** 钉任何 sha(精确键遍历;源身份由相邻层承载,分层事实非缺陷);**IR 71/71(全部含 ir 文件)与当前源 sha 全对账,0 缺失 0 不符**;OCR 输出清单 1,801 条 append-only、钉源 PDF sha、抽样 3/3 吻合、输出 4/4 在位;`audit_integrity verify R50_input_baseline` = **356/356 零漂移**。
+
+**⚠ 武器自身缺陷(当轮发现当轮修,审计工具校准家族第 7 次)**:F-DQ-1 首版 IR 对账误用顶层 `file`(annotated 路径)计算 sha → 10/10 假 mismatch(正确对象 = `ir.source_file` 源树路径,修正后 71/71 零漂移)——**若不修会把完好的稳定性误报为系统性漂移**;F-DQ-2 sha 键正则把 `"shared"` 误命中 850 处假阳性(改精确键遍历后真实值 0)。
+
+**BUG-14-DATA 收口对账**:D5-A ✅ / D5-B ✅ 70/70 / D5-C·D5-D 待跑(本轮四账 = D5-D 输入口径)/ D5-E 🔒(72 collisions)/ **6 needs_ruling 等 Owner 逐份裁定**。daemon 使图片积压持续增长,D5-D 重审计时点应同账统计。
+
+**落盘**:报告 `Docs/COORDINATION/EVIDENCE/PREPROCESSING-DATA-QUALITY-REPORT.md` v1(§7 待裁决五项:unit_type 单点修复 / recover_images 批量恢复范围 / flags 入登记册 / BUG-14-DATA 剩余闸门 / 知会 Claude Consumer Review);bugs.md BUG-14-DATA 补 DQE 证据块;state.yaml 新增 `data_hygiene` 块 + integration_contract.next 更新;CURRENT.md 主线节改写。Integration Contract **按令保持 DRAFT 未动**;V3 零触碰。

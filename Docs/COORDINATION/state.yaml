@@ -412,8 +412,16 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "待 Owner 裁决冻结 + Claude 确认 §3 消费面映射缺口(handoff 014 四问)"
+  next: "Owner 令(2026-09-15): 契约扩展暂停、保持 DRAFT 不冻结,等 Claude Consumer Review;DSH 转入内部收口"
   role_recalibration: "Owner 2026-09-15: DSH 恢复 preprocessing 收口本职;EB-008 保留为跨项目契约(验证 preprocessing 输出满足 V3 可信输入要求),DSH 不再承担 V3 攻击测试团队角色;Review-1 报告不再作为推进状态的依据"
+
+data_hygiene:
+  status: measured
+  round: "DQE(2026-09-15 Owner 令四重点: unit_type 值域 / figure / unresolved flags / manifest·source 输出稳定性)"
+  report: Docs/COORDINATION/EVIDENCE/PREPROCESSING-DATA-QUALITY-REPORT.md
+  artifact: "data/preprocessing_data_quality_scan.json(武器 scripts/dq_data_quality_scan.py,只读确定性)"
+  key_facts: "unit_type 非标准值恰 1 例(andalone_question,batch-C v2 可消费面)/ figure 悬空 27240 处 1396 份全为未恢复 imgs/ 形态(R58 时点 499 份起增长,daemon 机制),已改写形态悬空 0 / flags 天然闭合 2 值 + 596 unresolved 槽位,登记册零注册 / IR 71/71 源 sha 对账零漂移 + R50 基线 356/356 + OCR 清单 append-only,manifest 0/166 钉 sha(分层事实)"
+  pending_owner: "①unit_type 单点修复 ②recover_images 批量恢复范围 ③flags 入登记册 ④BUG-14-DATA 6 needs_ruling + D5-C/D 排期 + D5-E 启动"
 
 # ---------- 当前禁止事项(两侧共同,叠加各自仓库冻结) ----------
 prohibitions:

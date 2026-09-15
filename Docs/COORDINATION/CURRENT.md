@@ -1,20 +1,21 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-15(**Owner 职责再校准:DSH 恢复 preprocessing 收口本职,产出 Preprocessing Integration Contract v0.1 DRAFT;EB-008 保留为跨项目契约,DSH 不再承担 V3 攻击测试团队角色;Review-1 报告不再作为推进状态依据**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-15(**Owner 令:契约扩展暂停(保持 DRAFT 不冻结,等 Claude Consumer Review);DSH 转入 preprocessing 内部数据卫生收口——DQE 四重点测量完成,报告 = `EVIDENCE/PREPROCESSING-DATA-QUALITY-REPORT.md`**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
-## 主线:Preprocessing Integration Contract(当前最重要交付)
+## 主线:preprocessing 内部收口(数据卫生,Owner 令)
 
-- **v0.1 DRAFT** = `INTEGRATION/PREPROCESSING-INTEGRATION-CONTRACT.md`:Source Version(sha256 身份/字节冻结/无版本关系指针如实声明)+ Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 跨系统身份 = (sha, section_ref, question_numbers),unit_id 禁作键)+ V3 消费要求(必须提供/允许为空/8 类必须阻断,含 unresolved 596 槽位静默默认禁令)+ EB-008 跨边界四约束;每条款 OBSERVED 实测锚(R50 冻结基线 88 份 + resolver_ir.json 实测值域);
-- **待办**:Owner 裁决冻结 + Claude 确认 §3 消费面与 V3 schema 映射缺口(handoff 014 四问:映射/lineage 需求/图片交付形态/ source_version_id 对账方式);
-- 开放项 OQ-1~4 已登记(state.yaml `integration_contract` 块)。
+- **DQE 四重点测量完成(只读)**:`EVIDENCE/PREPROCESSING-DATA-QUALITY-REPORT.md` v1——①unit_type:全语料 166 manifest 穷举,**恰 1 例非标准值**(batch-C 合格考化学 Q1,v2 可消费面内)→ 单点修复待批;②figure:70,838 引用(行内 HTML 相对路径 99.99%),悬空 27,240 处/1,396 份**全部 = 未恢复 `imgs/` 原始形态**(recover_images 积压,daemon 产出使其自 R58 的 499 份增长),已改写形态悬空 = 0 → 批量恢复待批,最小 registry 不需要;③flags:值域天然闭合 2 值 + 596 unresolved 槽位,登记册零注册 → 登记待批;④稳定性:**IR 71/71 源 sha 零漂移 + R50 基线 356/356 + OCR 清单 append-only**,manifest 0/166 钉 sha(分层事实非缺陷);
+- **Integration Contract v0.1 = DRAFT 冻结暂停**(Owner 明令),等 Claude Consumer Review;OQ-1~4 在册;
+- **BUG-14-DATA 收口进度**:D5-A ✅ / D5-B ✅ 70/70 / D5-C·D5-D 待跑(DQE 四账 = D5-D 输入口径)/ D5-E 🔒 / **6 份 needs_ruling 等 Owner 逐份裁定**;
+- 待 Owner 裁决五项见报告 §7(全部本轮零执行)。
 
 ## 当前工作项:EB / Evidence Resolution Boundary Discovery
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **Integration Contract v0.1 DRAFT 交付**(`INTEGRATION/PREPROCESSING-INTEGRATION-CONTRACT.md`)+ handoff 014(含 Review-1 产物位置事实核验:全部在 preprocessing 仓,V3 仓零改动);EB-008 侧角色 = 验证 preprocessing 输出满足 V3 可信输入要求 |
-| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | 待收 handoff 014:①确认 Integration Contract §3 消费面映射缺口;②回答四问(schema 映射/lineage 需求/图片交付形态/source_version_id 对账);遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DQE 四重点测量完成**(报告 `EVIDENCE/PREPROCESSING-DATA-QUALITY-REPORT.md`,工件 `data/preprocessing_data_quality_scan.json`);契约保持 DRAFT 暂停;EB-008 侧角色 = 验证 preprocessing 输出满足 V3 可信输入要求 |
+| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **待发起 Consumer Review**(Owner:契约冻结等待 Claude Consumer Review;输入 = 契约 v0.1 DRAFT + handoff 014 四问 + DQE 报告 §1~§4 消费面事实);遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 |
 
 ## P3.2 / EB-004 终局(VERIFIED)
 
