@@ -2378,3 +2378,17 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **实现期义务对照(7 项)**:持久化 / invalidate 状态机 / replay 稳定性 / proof+APP_SECRET 启动校验 / approve() enforcement 五项 **DONE**;source_version supersede 接线 PARTIAL(设计内);DB 触发器 Phase-2。
 
 **要点**:①EB-008 实现顺序①~⑤ 全部完成(Claude 单 commit 交付 + DSH 攻击验收),**VERIFIED**,顺序⑥(完整 V3 业务链)待 Owner 放行;②两项 WARNING 均在冻结边界内(R-3 / 排序规则本身是冻结设计),非实现偏离,处置权在 Owner;③过程卫生:首轮攻击因自身基座缺陷(A2 清理 SQL 列名错致 COMMIT 残留污染、ORM identity map 陈旧值、断言口径错)出现 12 假失败,逐条归因修正 + DB 全链清理(终态计数 0 亲验)后 23/23 收敛——**假失败全部源于攻击基座,无一为实现缺陷**;④state.yaml impl_review_1 入册 + CURRENT.md 同步。
+
+---
+
+## 2026-09-15 · Owner 职责再校准落盘 + Preprocessing Integration Contract v0.1 DRAFT(主线回归)
+
+**触发**:Owner 裁决(聊天原文要点):Claude 核验 V3 仓未发现 Review-1 报告/攻击套件/eea4a4e/DEC-017/018 → Review-1 报告**不再作为推进状态的依据**;DSH 恢复核心职责 = AITutors-preprocessing 收口(Document→OCR→Structure Extraction→Annotation→Source Version,形成稳定输出契约供 V3 消费);EB-008 保留为**跨项目契约**(annotation 如何成为 evidence / source binding 如何保持 / authority 如何追溯),DSH 角色 = 验证 preprocessing 输出满足 V3 可信输入要求,**不是 V3 攻击测试团队**;后续协作结构 = Integration Contract 两侧平行(Input 事实生产 / 教学系统构建),不是 Claude 开发 ↑ DSH 审查;验证 V3 实现必须提交 commit hash/文件路径/测试代码/测试输出,全部可复现。
+
+**事实核验(对 Claude 检索结果的回应,可复现)**:四件产物全部在 **preprocessing 仓**(非 V3 仓)——`eea4a4e` = preprocessing main HEAD(`git log --oneline -1` 亲验)、报告 `Docs/COORDINATION/EVIDENCE/EB008-IMPLEMENTATION-REVIEW-1.md`、套件 `attacks/test_eb008_impl_attack.py`、DEC-017/018 在 `state.yaml` decisions 列表;V3 仓全程零改动(当时刻意纪律)。Claude 在 V3 仓检索不到 = 预期结果,非记录丢失;已在 handoff 014 附复现命令。**不再展开争论,按 Owner 裁决转向。**
+
+**主交付:`Docs/COORDINATION/INTEGRATION/PREPROCESSING-INTEGRATION-CONTRACT.md` v0.1 DRAFT**(新建)。取证方法(全部真实读取,非纸面推演):resolver_ir.json 实测解析(顶层/文件级/单元级 schema、ADMITTED 单元含 material/answers 表对象、flag 分布 answer_table_unresolved 502 + answer_number_mismatch 91、unit_type 分布含 1 例 `"andalone_question"` 拼写噪声新发现)、manifest v2 实测(sections locator / 单元 15 字段)、BUG-18 图片形态(`<img src>` 行内相对路径,无独立注册表)、R50 冻结基线锚。四章:§1 Source Version(sha256 身份/字节冻结/无版本关系指针如实声明=R-4)/ §2 Semantic Annotation(逐字段实测表;claim 跨系统身份 = (sha, section_ref, question_numbers),unit_id 禁作键;material 共享不复制;figure 行内引用)/ §3 V3 消费要求(必须提供 / 允许为空(printed null 27.1%、unresolved 596 槽位) / 8 类必须阻断,含 `answers.get(q,"")` 静默默认禁令)/ §4 EB-008 跨边界四约束。开放项 OQ-1~4 登记(lineage 未建/unit_type 值域/图片交付形态/basis 值域 producer 侧未实施)。
+
+**落盘**:①契约新建(上);②`HANDOFFS/2026-09-15-DSH-to-Claude-014.md`(事实核验 + 契约移交 + 四问:§3 消费面与 V3 schema 映射缺口/lineage 需求/图片交付形态/source_version_id 对账方式);③state.yaml 新增 `integration_contract` 顶层块(status DRAFT + 证据锚 + role_recalibration 声明;EB-008 状态**不动**);④CURRENT.md:头部/双 agent 表/主线节更新,EB-008 行补"Review-1 不再作为推进状态依据"注记;⑤本条目。
+
+**要点**:①主线从"EB-008 实现审查"切回"preprocessing 收口 + 稳定输出契约",EB-008 收敛为契约 §4 的跨边界约束面;②契约纪律:每条款 OBSERVED/INFERRED/UNPROVEN 标注,只如实描述当前产物形态,不新增 preprocessing 规则,不重裁决仓内冻结契约;③Claude 遗留治理项(R5-03 DEC 编号冲突 + DEC-017/018 同步)仍开放,handoff 014 未再催办(避免 EB-008 面扩大),但台账不失忆;④待 Owner 裁决冻结契约 + Claude 回四问。

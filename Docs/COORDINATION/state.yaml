@@ -404,6 +404,17 @@ case_id_aliases:
     old_P-21: P-09   # 十二中物理 Q13
   high_risk_10: "H-01~H-10 编号未变"
 
+# ---------- Integration Contract(Owner 2026-09-15 职责再校准:恢复 preprocessing→V3 输出契约主线) ----------
+integration_contract:
+  status: DRAFT
+  version: v0.1
+  path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-INTEGRATION-CONTRACT.md
+  scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
+  evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
+  open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
+  next: "待 Owner 裁决冻结 + Claude 确认 §3 消费面映射缺口(handoff 014 四问)"
+  role_recalibration: "Owner 2026-09-15: DSH 恢复 preprocessing 收口本职;EB-008 保留为跨项目契约(验证 preprocessing 输出满足 V3 可信输入要求),DSH 不再承担 V3 攻击测试团队角色;Review-1 报告不再作为推进状态的依据"
+
 # ---------- 当前禁止事项(两侧共同,叠加各自仓库冻结) ----------
 prohibitions:
   - "不改 V3 Frozen Spec / 不冻结 Producer Contract / 不修 Resolver heuristics(EB 项 DECIDED 前)"
