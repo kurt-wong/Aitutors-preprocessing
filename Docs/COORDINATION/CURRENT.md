@@ -1,14 +1,14 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-15(**Owner DEC-018: EB-008 Design Frozen → EB-008 = DECIDED,进入实现阶段;DSH 职责 = Implementation Adversarial Review,验收标准 = DEC-018 四大攻击域**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-15(**DSH Implementation Adversarial Review-1 完成:四域攻击 23 用例全收敛,VERIFIED 0 BLOCKER / 2 WARNING / 4 NOTE;P3.2 N1/N2/N7/N8 复跑全部 BLOCKED;待 Owner 定性 F-1/F-2/F-3**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
 ## 当前工作项:EB / Evidence Resolution Boundary Discovery
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer | Review-2~5 归档收口;**职责转为 Implementation Adversarial Review**(验收标准 = `EVIDENCE/EB008-DSH-IMPL-ACCEPTANCE.md`),等 Claude 顺序① validation_events commit |
-| **Claude** | kurt-wong/AITutors-v3 | Resolution + IR + Gate + Admission | Rev-4(`2ad6f99`)获 Owner 确认 + 设计冻结;**待开工实现顺序① validation_events**(handoff 013);遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer | **Implementation Review-1 完成**(`EVIDENCE/EB008-IMPLEMENTATION-REVIEW-1.md`,攻击套件 `attacks/test_eb008_impl_attack.py` 23 用例):VERIFIED 0 BLOCKER / 2 WARNING / 4 NOTE;待 Owner 定性 F-1(DB 直连洗白)/F-2(时间戳复活潜在面)/F-3(invalidate 不回溯物化) |
+| **Claude** | kurt-wong/AITutors-v3 | Resolution + IR + Gate + Admission | P1 实现交付(`88aeae8` + 说明 `b5ddbe3`)获 DSH 验收 VERIFIED;遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步;下一棒 = 顺序⑥ 完整 V3 业务链(待 Owner 放行) |
 
 ## P3.2 / EB-004 终局(VERIFIED)
 
@@ -46,15 +46,15 @@
 | EB-005 | 生产 Resolver 是否引入 options_region(**OPEN 暂不实现,不与 EB-008 合并**) | v3 | EVIDENCED |
 | EB-006 | A 缺标点 contextual rule(设计属 V3) | v3 | EVIDENCED |
 | EB-007 | formula FP 结构排除(检出来源 = V3 代码追踪) | v3 | EVIDENCED |
-| EB-008 | **Admission Evidence Authority enforcement** | v3 | **DECIDED**(2026-09-15 DEC-018 Design Frozen,即 DEC-013 终裁落地;设计链 = Rev-1 未 commit → Rev-2 `9bf8878` 4 BLOCKER → Rev-3 `a80d555` VERIFIED → Rev-4 `2ad6f99` Review-5 VERIFIED 0 BLOCKER → Owner DEC-017 确认 → DEC-018 冻结;**实现顺序: ①validation_events → ②proof → ③Admission enforcement → ④invalidate → ⑤DSH 代码攻击测试 → ⑥完整 V3 业务链**;验收标准 = `EVIDENCE/EB008-DSH-IMPL-ACCEPTANCE.md`(四攻击域 A~D)) |
+| EB-008 | **Admission Evidence Authority enforcement** | v3 | **DECIDED**(2026-09-15 DEC-018 Design Frozen,即 DEC-013 终裁落地;设计链 = Rev-1 未 commit → Rev-2 `9bf8878` 4 BLOCKER → Rev-3 `a80d555` VERIFIED → Rev-4 `2ad6f99` Review-5 VERIFIED 0 BLOCKER → Owner DEC-017 确认 → DEC-018 冻结;**实现顺序: ①validation_events → ②proof → ③Admission enforcement → ④invalidate → ⑤DSH 代码攻击测试 → ⑥完整 V3 业务链**;验收标准 = `EVIDENCE/EB008-DSH-IMPL-ACCEPTANCE.md`(四攻击域 A~D);**①~⑤ 已完成**:P1 = `88aeae8`/`b5ddbe3`,Review-1 = VERIFIED 0 BLOCKER(`EVIDENCE/EB008-IMPLEMENTATION-REVIEW-1.md`),⑥ 待 Owner 放行) |
 
 ## 实现阶段进行中(EB-008 DECIDED 后)
 
-1. **Claude 开工顺序① validation_events 持久化**;每步 = commit + 回执 hash,DSH 增量验收;顺序⑤ DSH 全量攻击测试(P3.2 N1/N2/N7/N8 复跑,验收要求 = 全部 BLOCKED,基线 FACT-021 = 全部 BYPASS);
-2. **实现期必落实**(Owner 点名,DEC-017):validation_events 持久化 + invalidate 状态机 + replay 稳定性;另加 proof 机制(APP_SECRET 启动校验非空)/ approve() enforcement / invalidate 级联触发 / DB append-only 触发器(Phase-2);
-3. **设计阶段已关闭**(DEC-018):不再开新设计讨论;实现与冻结设计冲突 → ATTACK 报告 → Owner 裁决;
-4. Claude 遗留治理项:R5-03 DEC 编号冲突(handoff 012/013)+ DEC-017/DEC-018 同步;
-5. N3–N6 已裁不补跑,记 deferred(DEC-012,重开窗口仅 Owner),但实现不得为其预留 bypass 后门。
+1. **P1 实现 + 顺序⑤ 攻击验收已完成**:Claude 单 commit 交付顺序①~④(V3 `88aeae8`)+ 实现说明(`b5ddbe3`);DSH 四域攻击测试(23 用例)全收敛 = **VERIFIED 0 BLOCKER**;P3.2 N1/N2/N7/N8 复跑**全部 BLOCKED**(基线 FACT-021 = 全 BYPASS,BUG-V3-048 闭合);报告 = `EVIDENCE/EB008-IMPLEMENTATION-REVIEW-1.md`;
+2. **待 Owner 定性(Review-1 WARNING/NOTE)**:F-1 DB 直连把 human_review 行洗成 machine 外观绕过 proof 校验(R-3 冻结边界内)/ F-2 latest-by-validated_at 潜在时间戳复活面(当前生产路径零暴露)/ F-3 invalidate 不回溯撤销已物化 Question;
+3. **实现期义务状态**:持久化/invalidate 状态机/replay/proof/enforcement 五项 DONE;source_version supersede 接线未接(R-4 已接受);DB 触发器 Phase-2;
+4. **设计阶段已关闭**(DEC-018):不重开设计讨论;残余风险处置属 Owner 裁决;
+5. Claude 遗留治理项:R5-03 DEC 编号冲突(handoff 012/013)+ DEC-017/DEC-018 同步;N3–N6 仍 deferred(DEC-012),实现未预留 bypass 后门(亲验)。
 
 ## 当前禁止(两侧共同)
 

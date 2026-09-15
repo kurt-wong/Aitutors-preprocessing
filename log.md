@@ -2364,3 +2364,17 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **落盘**:①state.yaml:DEC-018 入册(裁决全文 + 实现顺序 + 四攻击域)、**EB-008 status → DECIDED**(decided_at + resolution 字段,decided_candidate/blocked_by 退役,review_2/evidence_audit 状态块收口);②`EVIDENCE/EB008-DSH-IMPL-ACCEPTANCE.md` **新建**——实现阶段唯一验收判据文件(四验收域 A~D 逐条判据 + 攻击手法 + 判据纪律 + 实现期义务对照表);③`HANDOFFS/2026-09-15-DSH-to-Claude-013.md`(DEC-018 转达 + 实现顺序 + 验收标准引用 + 遗留治理项);④CURRENT.md 同步(EB-008 行 → DECIDED、"待 Owner 裁决"节 → "实现阶段进行中"节);⑤本条目。
 
 **要点**:①EB-008 从"架构争论阶段"正式进入"工程落地阶段",协议状态机走 Owner 裁决置入 DECIDED(合法值,EB_STATES 守卫核对过);②DSH 角色转换:设计审查(Review-2~5,已全部归档)→ **实现期代码对抗攻击**(验收标准 = DEC-018 四域 + DEC-017 Owner 点名三项);③P3.2 N1/N2/N7/N8 四向量将在顺序⑤ 复跑验收(基线 FACT-021 = 全部 BYPASS,要求 = 全部 BLOCKED);④判据纪律延续:"实现阶段再加字段/后续 migration" = UNPROVEN(DEC-015 红线);设计与实现冲突 → ATTACK 报告 → Owner 裁决,DSH 不重设计;⑤Claude 遗留治理项不因阶段切换消失:R5-03 DEC 编号冲突 + DEC-017/018 同步(handoff 013 再提)。
+
+## 2026-09-15 · EB-008 Implementation Adversarial Review-1:四域攻击测试 = VERIFIED(0 BLOCKER / 2 WARNING / 4 NOTE)
+
+**触发**:Claude 交付 EB-008 P1 实现(V3 `88aeae8`:validation_events 表 + proof + Admission enforcement + invalidate 级联 + 26 条验收测试)+ 实现说明(`b5ddbe3` EB008-P1-IMPLEMENTATION-NOTES.md),交 DSH Implementation Adversarial Review;Owner 指令四攻击域(A Identity / B Human Proof / C Admission Boundary / D Lifecycle),输出 `EB008-IMPLEMENTATION-REVIEW-1.md`,只验证 Frozen Design 是否实现、不提新设计。**性质:代码攻击验证(唯一一次触碰 V3 运行时的轮次,V3 仓零改动)。**
+
+**方法**:①攻击套件 `attacks/test_eb008_impl_attack.py`(23 用例,四域)+ `attacks/conftest.py`(sys.path 只读指向 V3 backend,测试库 rollback 隔离,跨 session 用例自带 FK 全链清理);②静态审计(全树 grep UPDATE/DELETE/secret、hash 输入域逐键核对、调用链追踪);③V3 既有验收套件 26/26 DSH 独立复跑通过。锚:V3 HEAD `b5ddbe3`,关键文件 sha256 入报告 §1。
+
+**结果(OBSERVED)**:①Identity:同输入/跨 Run(新 session 已 COMMIT)/不同 attempt_id replay 全部复用同一 candidate、validation_events 恰 1 行、Authority 投影一致;le_hash 输入域 = {annotation_id, annotation_payload_hash, unit_id} + 4 版本号,**无 run/attempt/time 任何非身份因素**;②Human Proof:SQL 篡改 validated_at / review_result(双层拦截:verify False + 状态机 terminal)/ candidate_id 重绑 / 删 proof / 伪造 proof(错 secret)/ APP_SECRET 置空——**全部 fail-closed**,被拒后 pending_review 且 0 Question;③Admission:**P3.2 N1/N2/N7/N8 复跑全部 BLOCKED**(FACT-021 基线 = 全部 BYPASS,BUG-V3-048 闭合),`_materialize`/`create_question` 全树唯一入口确认;④Lifecycle:supersede 级联 INVALIDATED、Gate replay 不复活、重复 invalidate 幂等、terminal 拒新事件、同结果重放 no-op。
+
+**ATTACK 汇总**:0 BLOCKER / 2 WARNING / 4 NOTE。**F-1(WARNING)**:DB 直连把 human_review 行洗成 machine 夎观(validation_method→byte_proven)即跳过 proof 校验,approve 放行(演证复现)——攻击者需 DB 直写能力,R-3 冻结声明该能力属 Deployment Boundary,实现未偏离设计;声明 2 的防护完备性残余面,Phase-2 DB 触发器闭合,处置待 Owner。**F-2(WARNING)**:latest-by-validated_at 排序的潜在"时间戳复活"面(未来时间戳 VALIDATED 使 INVALIDATED 不是 latest,演证复现)——但生产暴露面为零(机器事件=服务端 utcnow、人工事件=append_review_trail 强制覆盖 time、级联=now,无任何路径接受调用方时间),latent。**F-3(NOTE)**:invalidate 不回溯撤销已 approve 物化(冻结设计无此条款,业务定性待 Owner)。**F-4(NOTE,INFERRED)**:machine-VALIDATED claim 人工改判 reject 撞状态机(validated→rejected 非迁移),candidate 卡 pending,方向 fail-closed。另 source_version supersede 未接线(R-4 已接受)/ DB 触发器 Phase-2(已接受)。
+
+**实现期义务对照(7 项)**:持久化 / invalidate 状态机 / replay 稳定性 / proof+APP_SECRET 启动校验 / approve() enforcement 五项 **DONE**;source_version supersede 接线 PARTIAL(设计内);DB 触发器 Phase-2。
+
+**要点**:①EB-008 实现顺序①~⑤ 全部完成(Claude 单 commit 交付 + DSH 攻击验收),**VERIFIED**,顺序⑥(完整 V3 业务链)待 Owner 放行;②两项 WARNING 均在冻结边界内(R-3 / 排序规则本身是冻结设计),非实现偏离,处置权在 Owner;③过程卫生:首轮攻击因自身基座缺陷(A2 清理 SQL 列名错致 COMMIT 残留污染、ORM identity map 陈旧值、断言口径错)出现 12 假失败,逐条归因修正 + DB 全链清理(终态计数 0 亲验)后 23/23 收敛——**假失败全部源于攻击基座,无一为实现缺陷**;④state.yaml impl_review_1 入册 + CURRENT.md 同步。
