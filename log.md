@@ -2290,3 +2290,13 @@ V3 0.3-B 的 21 pending + 10 高风险**逐例清单属 V3 侧证据,本仓库�
 **成立部分(如实)**:Authority = Projection 抽象修正(D1/D2)、candidate_id 直接绑定 join 设计(D5)、AuthoritySnapshot 冻结意图(D7)、双入口统一机制(D10)——方向与 DEC-013 一致。
 
 **DECISION: REQUIRES_REVISION**(阻断项 V1/V2/V3)。**落盘**:`Docs/COORDINATION/EVIDENCE/EB008-DSH-VERIFICATION.md`(新目录,V1~V8 固定格式)/ state.yaml(EB-008 增 evidence_audit 状态块 status=EB-008_EVIDENCE_AUDIT, owner=DSH, blocked_by=Owner DEC-013)/ CURRENT.md。**下一步:等 Revision-2(必须含冷启动解法 + run 输入定义 + 非默认可信的身份根)+ commit → DSH 重审 → Owner 终裁。**
+
+---
+
+## 2026-09-15 · Agent Completion & Synchronization Protocol 固化(DEC-014)+ 补交 Evidence Audit 结构化完成报告
+
+**触发**:Owner 颁布 Agent Completion & Synchronization Protocol(聊天原文):所有任务完成后必须提交七章节结构化 Completion Report(Executive Summary/Deliverables/Evidence Summary 四级/Owner Decision Points 必存在/Risks & Unknowns/Cross-Agent Feedback 强制项/Recommended Next Action)+ 跨 Agent 同步规则 + BLOCKER/WARNING/NOTE 严重度 + 最终状态五选一;Agent 职责含维护 "Owner 可裁决性"(隐藏假设/架构冲突/证据遗漏必须主动建反馈项,不等下一轮)。**性质:治理协议固化,零代码。**
+
+**落盘**:①`Docs/COORDINATION/COMPLETION_PROTOCOL.md`(协议全文固化,冲突时以 Owner 聊天原文为准);②state.yaml DEC-014 入册 + prohibitions 新增 Completion Protocol 条目;③按新协议**补交上一任务(Evidence Verification Audit)的结构化 Completion Report**(见当轮聊天输出,FINAL STATUS = BLOCKED_DESIGN_REVISION_REQUIRED)。
+
+**要点**:DSH 侧今后每任务收尾即按该格式输出;向 Claude 的 HANDOFF TO CLAUDE(RDQ 清单)与向 Owner 的 Decision Points 为强制章节,禁止"任务完成/文件已生成/commit 已提交"式收尾。

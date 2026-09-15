@@ -235,6 +235,10 @@ decisions:
     statement: "EB-008 方向性裁决: Evidence Authority 必须作为 Semantic IR 与最终 Knowledge Asset Admission 的准入前置条件,不接受仅作审计记录;Claude 进入 L2 Authority Model 设计(不实现代码,不修改 preprocessing);DSH 执行独立 adversarial review(12 检查点,输出限定 OBSERVED/CONTRADICTION/ATTACK/UNPROVEN/REQUIRED DESIGN QUESTION 五类,'human review 可进 Admission' 推不出 'review_trail 即 Evidence Authority',主张须给 Frozen Spec/L2 依据);禁改代码/Producer Contract/EB-005。注: DEC-012 的 'EB-008 裁决前不设计不实现' 中,本裁决已给出方向,设计(L2 文档)获授权,实现仍冻结"
     authority: "用户裁定 2026-09-15(EB-008 Owner 裁决,聊天原文)"
     status: active
+  - id: DEC-014
+    statement: "Agent Completion & Synchronization Protocol 强制生效(两侧所有任务): 任务完成后必须提交结构化 Completion Report 七章节(Executive Summary 含 STATUS/OWNER_ATTENTION_REQUIRED、Deliverables 表、Evidence Summary 四级 OBSERVED/VERIFIED/INFERRED/PROPOSED、Owner Decision Points 必存在、Risks & Unknowns 带严重度、Cross-Agent Feedback 强制项含明确回答要求、Recommended Next Action);跨 Agent 同步规则(Claude 设计→HANDOFF TO DSH,DSH review→HANDOFF TO CLAUDE RDQ 清单);严重程度标记 BLOCKER/WARNING/NOTE;最终状态五选一;禁只报 commit/测试/已完成、禁 INFERRED 冒充 FACT、禁 PROPOSED 冒充 DECISION、禁等 Owner 主动发现风险。Agent 职责含维护 'Owner 可裁决性':隐藏假设/架构冲突/证据遗漏必须主动建反馈项。固化文件 = Docs/COORDINATION/COMPLETION_PROTOCOL.md"
+    authority: "用户裁定 2026-09-15(Agent Completion & Synchronization Protocol,聊天原文)"
+    status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
 open_questions:
@@ -368,3 +372,4 @@ prohibitions:
   - "V3 侧协调文件必须 commit 后才算入册(未 commit = REPORTED 级)"
   - "evidence artifact 的 case id 一经分配不得重编号(修内容不改 id);转述/手写重构证据文件数据一律禁止(导出)"
   - "P3.2 八禁(DEC-010): 实验不改生产 Resolver/Frozen Spec/Producer Contract/Gate policy/Admission semantics,不放宽规则,实验结果≠架构 Decision,失败不自动 workaround"
+  - "Completion Protocol(DEC-014): 任务完成必须提交七章节结构化 Completion Report(含 Owner Decision Points 与 Cross-Agent Feedback 强制项);禁只报 commit/测试/已完成;禁 INFERRED 冒充 FACT、PROPOSED 冒充 DECISION;禁默认 Owner 理解隐藏风险"

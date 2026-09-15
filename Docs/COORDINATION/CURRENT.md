@@ -1,7 +1,7 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-15(**EB-008 Evidence Audit 完成:Revision-1 = REQUIRES_REVISION,阻断项 = 冷启动未回应 / run 语义 / 人工 authority 默认可信;`EVIDENCE/EB008-DSH-VERIFICATION.md`**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-15(**DEC-014:Agent Completion & Synchronization Protocol 强制生效(`COMPLETION_PROTOCOL.md`);EB-008 Evidence Audit = REQUIRES_REVISION**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
 ## 当前工作项:EB / Evidence Resolution Boundary Discovery
 
