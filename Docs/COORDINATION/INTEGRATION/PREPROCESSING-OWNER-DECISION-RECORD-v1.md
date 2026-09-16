@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.2(2026-09-16,追加 §1ter CONTRACT-DECISION-FINALIZATION 四项裁决)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(本文件 §1ter 四项)+ `state.yaml.integration_contract.owner_decision_b1b3`
+> Status: **v1.3(2026-09-16,追加 §1quater Interface Decision Finalization v1 四方固化裁决)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(本文件 §1ter 四项)+ `[DEC-022]`(本文件 §1quater)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -127,6 +127,73 @@
 
 ---
 
+## 1quater. 分项裁决 — PREPROCESSING / V3 Interface Decision Finalization v1(Owner 2026-09-16 第五轮,原文照录要点;canonical 引用面)
+
+> Owner 令:本轮目标 = ①固化 Owner Decision ②更新双方事实基线 ③明确 Manifest、IR 责任边界 ④为 Contract v0.2 Frozen Candidate 做准备。本轮**不修改代码 / 不执行数据清洗 / 不执行数据迁移 / 不冻结数据库实现 / 不提前实现未裁事项**。下一阶段从"讨论架构"进入"冻结接口契约前验证"。
+
+### Part 1 — Manifest 与 IR 双层职责模型(正式采用)
+
+> **Manifest = Source Identity Authority;IR = Semantic Consumption Authority。**
+> Manifest 负责回答"这个东西是谁?"(source identity / source version / raw bytes hash / 文件版本关系);
+> IR 负责回答"这个文件里面有什么?"(question structure / semantic annotation / knowledge information / unit information)。
+> 禁止:用 Manifest 替代 IR 描述题目;用 IR 替代 Manifest 证明文件身份。
+
+### Part 2 — 生产与消费责任边界
+
+> Manifest:Producer = Preprocessing(DSH)——生成 Manifest / 计算 source_version_id / 保证字段正确;Consumer = V3——验证 Manifest / **重新计算 hash** / 判断是否接受。
+> IR:Producer = Preprocessing(DSH)——OCR 后结构化 / LLM 语义解析 / 生成 IR;Consumer = V3——验证 IR 是否符合契约 / Gate 判断是否进入正式题库 / 拒绝不符合的数据。
+> 固化原则:**Preprocessing 负责解释,V3 负责接受或拒绝解释。**
+
+### Part 3 — Scope 裁决
+
+> **Interface Scope = 87**(87 份文件具备接口身份);**IR Consumption Scope = 71 ADMITTED**(当前 71 份文件具备可消费语义结构)。二者允许不同。
+> 禁止(为让数字一致):强制生成 IR / 删除 identity 文件 / 修改历史数据。
+
+### Part 4 — 16 份 Identity-only 文件处理
+
+> "Manifest 有、IR 无"的文件属于正常状态,定义:**Identity Available / Semantic Unavailable**。
+> 不得:自动补 IR / LLM 猜测生成 / 静默进入题库。
+> 后续是否重新生成 IR:**另行批准**。
+
+### Part 5 — Semantic Unknown 处理原则
+
+> 对 unit_type unknown / semantic unclear / annotation uncertain:禁止 ①自动转换 ②静默 fallback ③静默 skip。必须保留事实状态,进入 **UNKNOWN** 语义状态。
+> 注意:**不要合并现有 semantic_status 与 decision_status 两个状态体系**。本轮只确认:UNKNOWN 属于语义层。
+
+### Part 6 — Contract v0.2 编写范围
+
+> 冻结内容(仅三件):
+> ① **Identity:`source_version_id = SHA256(original source bytes)`**;
+> ② **Scope:Manifest 87 / IR 71 snapshot**;
+> ③ **Semantic Boundary:`Unknown ≠ Ready`;Unknown 不得自动进入正式题库。**
+>
+> 暂缓冻结(不属于 v0.2 interface contract):数据库字段最终设计 / UI 展示 / 自动补全机制 / IR 扩产计划 / 图片恢复流程 / daemon 持续生产策略。
+
+### Part 7–9 — 双侧任务与共同输出
+
+> Claude 任务 = **V3 Consumer Alignment v2**(更新消费侧事实基线 / 检查 V3 实现只报告不改码 / **更新 Contract v0.2 Draft 形成 Frozen Candidate,状态 DRAFT NOT FROZEN** / Implementation Gap 表)。
+> DSH 任务 = **Producer Alignment v4**(更新 Producer Interface Facts 固化职责与 87/71 scope / Producer Implementation Gap / 明确哪些动作需 Owner 批准;禁自行数据修改 / schema 修改 / 清洗 / IR 重新生成)。
+> 共同输出四件:ODR v1.3(唯一裁决来源)/ Consumer Alignment v2 / Producer Alignment v4 / Contract v0.2 Frozen Candidate(双方引用同一版本)。
+
+### 最终原则(Owner 原文)
+
+> 文件身份由生产侧证明,系统侧验证。
+> 文件内容由生产侧解释,系统侧裁决。
+> 宁可缺少结构化数据,也不能制造未经确认的结构化数据。
+
+### §1quater 生产侧保守义(DSH 解释,非裁决;详件 = `PREPROCESSING-PRODUCER-ALIGNMENT-v4.md` §B)
+
+| 条款 | 生产侧落实语义 |
+|---|---|
+| Part 2 责任边界 | "V3 重算 hash" 前提 = source bytes 可达;同算法对账已在生产侧 71/71 实证;`source_file` 绝对路径形态使可达性存疑 → 归 v0.2 落字(GAP G-4) |
+| Part 3 三禁 | 叠加硬约束:任何"补齐 87−71=16 份"的动作违反裁决 |
+| Part 4 | **关闭 D-2**(16 份无 IR 成员消费语义);IR 重生成 = 另行批准(GAP G-5 机制未裁) |
+| Part 5 与 §1ter D3 关系 | 四状态机(READY/INCOMPLETE/PENDING_REVIEW/REJECTED)= 决策层词表;UNKNOWN = 语义层事实呈现;两层并存不合并;unknown semantic 仍按 D3 路由 PENDING_REVIEW/REJECTED;**两层载体均未裁** |
+| Part 6 | **字段名 `source_version_id` + 算法 SHA256(raw bytes)已裁**(§3 未裁清单相应更新);格式细节(裸 hex)DSH 建议沿用现有实践 = PROPOSED |
+| Part 7 Contract v0.2 正文 | **本轮起草责任在 Claude 侧**;DSH 侧 Contract 正文继续零改动,以 Producer Alignment v4 + Interface Facts v2.1 为生产侧输入 |
+
+---
+
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 
 B3 生产侧责任按裁决文字取最大保守义:
@@ -140,11 +207,13 @@ B3 生产侧责任按裁决文字取最大保守义:
 
 ## 3. 未裁事项登记(引用本文件时必须一并引用)
 
-- `source_version_id` 的载体字段名、格式(裸 hex vs 带前缀):**未裁**(唯一关联键地位已由 DEC-B1 裁定;回填范围已由 §1ter Decision 1 裁定 = 87);
-- ~~回填范围(接口面 87 vs 全语料 166)~~ **已裁(§1ter D1)= 87**;
-- IR 权威覆盖面:**当前面已裁(§1ter D1)= 71 ADMITTED 冻结面**;扩展机制与持续产出:**仍未裁**(DEC-B1 已裁定其与 source 身份解耦);
-- v1 legacy 面 79 份处置:**已裁(§1ter D2)= historical asset 隔离,不入 v0.2 接口**;未来走独立 Legacy Migration Plan;
-- 语义状态机:**状态词表已裁(§1ter D3)= READY/INCOMPLETE/PENDING_REVIEW/REJECTED + unknown 路由强制规则**;载体(字段名/落点/生产侧标记形态):**未裁**;
-- 执行顺序:**已裁(§1ter D4)五步**;Step 1 接口快照与 R50 基线的配对关系、存量 1 例原子性(D-3)、2 份三重成员(D-4):**未裁**。
+- **字段名与算法已裁(§1quater Part 6)**:`source_version_id = SHA256(original source bytes)`;格式细节(裸 64 hex vs 带前缀;大小写):**未裁**(DSH 建议沿用 `ir.source_sha256` 现有裸小写 hex 实践 = PROPOSED);
+- ~~回填范围(接口面 87 vs 全语料 166)~~ **已裁(§1ter D1,§1quater Part 3 再确认)= 87**;
+- IR 权威覆盖面:**当前面已裁 = 71 ADMITTED snapshot**;扩展机制与持续产出:**仍未裁**(Part 4:重生成 = 另行批准;Part 6:IR 扩产计划暂缓冻结);
+- v1 legacy 面 79 份处置:**已裁 = historical asset 隔离**;未来走独立 Legacy Migration Plan;披露形态(文字层):**未裁**;
+- 语义状态机:**决策层词表已裁(§1ter D3 四状态)+ 语义层 UNKNOWN 已裁(§1quater Part 5,两体系不合并)**;载体(字段名/落点/生产侧标记形态)与 PENDING_REVIEW→REJECTED 路由规则文本:**未裁**;
+- 16 份 Identity-only 文件:**已裁(§1quater Part 4)= Identity Available / Semantic Unavailable 正常态**(D-2 关闭);接口面是否设呈现字段:**未裁**;
+- 执行顺序:**已裁五步**;Step 1 接口快照与 R50 基线的配对关系(D-6)、存量 1 例原子性(D-3)、2 份三重成员(D-4):**未裁**;
+- Contract v0.2 正文起草:**已裁(§1quater Part 7)由 Claude 执行**(DRAFT NOT FROZEN);冻结:**未裁**(Owner 冻结令)。
 
 *v1 · 2026-09-16 · DSH 自记(Owner 聊天原文照录)。如有文字冲突,以 Owner 原文为准。*

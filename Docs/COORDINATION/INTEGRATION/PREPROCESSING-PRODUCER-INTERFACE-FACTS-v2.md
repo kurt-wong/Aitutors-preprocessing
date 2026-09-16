@@ -1,6 +1,6 @@
 # PREPROCESSING PRODUCER INTERFACE FACTS v2
 
-> Status: **v2(2026-09-16)** · Authority: Owner B1-B3 Decision Record(2026-09-16,DSH 自记于 `state.yaml.integration_contract.owner_decision_b1b3`)
+> Status: **v2.1(2026-09-16,Interface Decision Finalization v1 固化增量:§0bis 职责与 Scope 固化表;实测事实面零改动)** · Authority: Owner B1-B3 Decision Record + Interface Decision Finalization v1(2026-09-16,DSH 自记于 `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization`)
 > Role: preprocessing Producer Owner —— 回答"producer 能提供什么 / 不能提供什么 / 缺口在哪里",并作为 Contract v0.2 的生产侧输入。
 > Discipline: 只写实测事实(路径 + commit 可复现);不假设 V3 消费方式;不提出 V3 实现方案;不修改 Contract 正文 / 数据文件 / 两仓代码。无证据一律标 UNKNOWN。
 > Evidence artifacts: `data/producer_interface_census.json`(v1 全语料普查,commit `17c55d8`)+ `data/producer_interface_probe_v2.json`(v2 定向探针,本轮 commit)。
@@ -15,6 +15,34 @@
 | **B1 Transport** | 正式生产接口 = **Manifest + IR 双层**。Manifest = **Source Identity Authority**;IR = **Semantic Consumption Authority**;两者必须通过明确 **source_version_id** 关联 |
 | **B2 Identity** | source identity = **SHA-256(raw bytes)**(原始字节 SHA-256);body_hash / line_hash / integrity_hash / norm_sha256 **只能作为内部校验**,不能作为跨系统 source identity |
 | **B3 Semantic Boundary** | unknown unit_type **不得自动修正、不得静默转换**,必须进入 **UNKNOWN/PENDING** |
+
+---
+
+## 0bis. Owner 裁决固化表(Interface Decision Finalization v1,DEC-022;职责 + Scope;不扩展原文,原文 = ODR §1quater)
+
+### 0bis.1 职责固化(双层,正式采用)
+
+| 面 | 回答的问题 | Producer(DSH) | Consumer(V3) |
+|---|---|---|---|
+| **Manifest = Source Identity Authority** | "这个东西是谁?"(source identity / version / raw bytes hash / 版本关系) | 生成 Manifest / 计算 `source_version_id` / 保证字段正确 | 验证 Manifest / **重新计算 hash** / 判断是否接受 |
+| **IR = Semantic Consumption Authority** | "文件里面有什么?"(structure / semantic annotation / knowledge / unit) | OCR 后结构化 / LLM 语义解析 / 生成 IR | 验证 IR 符合契约 / Gate 判断 / 拒绝不符合数据 |
+
+总原则:**Preprocessing 负责解释,V3 负责接受或拒绝解释。** 双禁:Manifest 不替代 IR 描述题目;IR 不替代 Manifest 证明身份。
+
+### 0bis.2 Scope 固化(三数字永久分开,引用不得互换)
+
+| 面 | 冻结值 | 含义 | 关键比例(本文件实测口径) |
+|---|---|---|---|
+| 全语料历史资产 | 166 | manifest 全部历史资产规模,**≠ 正式接口** | 分母 |
+| **Interface Scope** | **87** | 具备接口身份的文件(字段口径 `identity_version=="2"`;§2.4) | 87/166 = 52.4% |
+| **IR Consumption Scope** | **71 ADMITTED** | 当前具备可消费语义结构(冻结 snapshot,§3) | 71/87 = 81.6%(接口面内);16 份 Identity Available / Semantic Unavailable = **正常态**(Part 4) |
+| v1 legacy | 79 | historical asset,不入 v0.2 接口(DEC-021 D2) | —— |
+
+**数字对齐三禁(Part 3,叠加既有)**:禁强制生成 IR / 禁删除 identity 文件 / 禁改历史数据凑一致。
+
+### 0bis.3 Identity 定义固化(v0.2 冻结内容之一)
+
+`source_version_id = SHA256(original source bytes)` —— 字段名与算法已裁;生产点与实证见 §4.1(md/PDF 双语料;PDF 面角色仍未裁,§4.3);格式细节(裸 hex)属 v0.2 落字面。
 
 ---
 

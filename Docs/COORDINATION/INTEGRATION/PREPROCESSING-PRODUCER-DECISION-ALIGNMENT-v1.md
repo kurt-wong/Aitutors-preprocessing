@@ -1,6 +1,7 @@
 # PRODUCER DECISION ALIGNMENT v1 — Producer 侧对 CONTRACT-DECISION-FINALIZATION 四项裁决的对齐报告
 
 > Status: **v1(2026-09-16)** · 本轮 = 裁决入册 + Contract v0.2 起草准备阶段;**零数据动作,Contract 保持 v0.2 DRAFT / NOT FROZEN**
+> **承接注记(2026-09-16)**:下一指令轮(Interface Decision Finalization v1,DEC-022)的生产侧对齐件 = **`PREPROCESSING-PRODUCER-ALIGNMENT-v4.md`**(Owner 指定编号);本文件保留原文作为历史基准,§E 七项差距清单在 v4 中继续有效并按 DEC-022 收窄。
 > 唯一事实基线:`PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(v1.2,§1 + §1bis + §1ter)+ `PREPROCESSING-PRODUCER-INTERFACE-FACTS-v2.md` + `PREPROCESSING-PRODUCER-READINESS-v3.md` / `PREPROCESSING-IMPLEMENTATION-GAP-LIST.md`
 > 工件基线:`data/producer_interface_probe_v2.json` / `data/producer_readiness_probe_v3.json` / `data/audit_snapshot_R50_input_baseline.json`
 > Ledger:`state.yaml.decisions[DEC-019/DEC-020/DEC-021]`

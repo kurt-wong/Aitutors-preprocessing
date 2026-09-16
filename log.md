@@ -2541,3 +2541,17 @@ ext 更新;CURRENT.md 顶部暂停横幅。Contract 保持 v0.1 DRAFT,语料零�
 **仍开放**:A1 字段名/格式;A6 载体 + PENDING_REVIEW→REJECTED 路由规则;A3/A7 执行令;D-3 存量 1 例原子性;D-4 2 份三重成员;**D-6(新)Step 1 接口快照载体形态与 R50 血统关系**;IR 扩产机制。
 
 **关键生产侧对账**:①87 面今天只有口径没有承载物(接口面表达本身是 GAP);②16 份接口面内无 IR 成员仍在接口面(DEC-B1 身份自足);③存量 1 例 andle_question 按 D3 口径非 READY,呈现态待 v0.2;④五步序与交集定量零冲突(D2 = Step 5,排除 2 份三重成员后 1,394 份零交集)。零数据/schema/图片恢复/daemon/Contract 修改;台账三件同步。
+
+---
+
+## 2026-09-16 Interface Decision Finalization v1 固化入册(DEC-022):Producer Alignment v4
+
+**触发**:Owner 统一版指令(PREPROCESSING / V3 Interface Decision Finalization v1,Claude/DSH 同令分责)——本轮 = **决策固化 + 双侧对齐**,不是写代码;目标 = ①固化 Owner Decision ②更新双方事实基线 ③明确 Manifest/IR 责任边界 ④为 Contract v0.2 Frozen Candidate 做准备。禁令:不修改代码 / 不执行数据清洗 / 不执行数据迁移 / 不冻结数据库实现 / 不提前实现未裁事项。
+
+**裁决要点(DEC-022,ODR v1.3 §1quater 原文照录)**:Part1 双层职责正式采用(Manifest="是谁"/IR="里面有什么",双禁互替);Part2 生产消费责任边界(Producer 生成/计算/保证字段;Consumer 验证/**重算 hash**/接受或拒绝;"Preprocessing 负责解释,V3 负责接受或拒绝解释");Part3 Scope 冻结 87 + 71 ADMITTED 且允许不同 + **数字对齐三禁**(禁强生成 IR/禁删 identity/禁改历史);Part4 16 份 Identity-only = **Identity Available / Semantic Unavailable 正常态**(三禁:自动补 IR/LLM 猜测生成/静默进题库;IR 重生成另行批准)→ **D-2 关闭**;Part5 **UNKNOWN 属语义层**,保留事实状态,禁三(自动转换/静默 fallback/静默 skip),**不合并 semantic_status 与 decision_status 两体系**;Part6 v0.2 只冻结三件 = `source_version_id = SHA256(original source bytes)`(**字段名+算法已裁**)/ Scope 87+71 / Unknown≠Ready,暂缓 = 数据库字段设计/UI/自动补全/IR 扩产/图片恢复/daemon;Part7-9 Contract v0.2 正文**本轮由 Claude 起草**(DRAFT NOT FROZEN),共同输出 ODR v1.3 / Consumer Alignment v2 / Producer Alignment v4 / Contract v0.2 同版引用;最终原则三条(身份生产侧证明系统侧验证 / 内容生产侧解释系统侧裁决 / 宁缺结构化数据不造未确认结构化数据)。
+
+**落盘**:①ODR 升 **v1.3**(§1quater 照录 + 生产侧保守义表 + §3 未裁清单更新:字段名/算法已裁、格式细节/两层载体/路由规则/D-3/D-4/D-6 未裁);②DEC-022 入册;③**主交付 `PREPROCESSING-PRODUCER-ALIGNMENT-v4.md`**(Owner 指定编号;OBSERVED 复用既有工件零新测量 / DECISION 保守义 B.1-B.8 / **GAP G-1~G-7 全部 not started** + |Decision|Current|Gap| 表 / UNKNOWN 六项 / **需 Owner 批准动作九项清单**);④Interface Facts 升 **v2.1**(§0bis 职责双层表 + Scope 三数字固化表 + Identity 定义固化,实测事实面零改动);⑤Decision Alignment v1 加承接注记(原文保留);⑥台账三件同步(state.yaml DEC-022 + owner_interface_finalization 块 / CURRENT 快照 / 本条)。
+
+**关键生产侧新增 GAP**:G-4 = "V3 重算 hash" 前提是 source bytes 可达,而 manifest `source_file` 为本机绝对路径(跨机不可解析)→ 交付形态须 v0.2 落字;G-1 格式细节 = DSH 建议沿用现有 64 位裸小写 hex(`ir.source_sha256` 71 份实证形态)= **PROPOSED**;G-6 = identity-only 状态是否需要接口面呈现字段未裁。
+
+**关闭/仍开**:关闭 D-2(16 份无 IR 成员)、字段名与算法(A1 收窄为格式细节)、v0.2 冻结范围、数字对齐三禁;仍开 = 格式细节 / 接口面 87 表达载体(C.1·D-6) / 两层状态载体 + PENDING_REVIEW→REJECTED 路由规则 / 交付形态(G-4) / D-3 / D-4 / IR 重生成机制。零数据/schema/清洗/图片恢复/daemon/Contract 正文修改;写入面 = 4 文档改 + 1 新文档 + 台账三件;全部实现项 = not started。
