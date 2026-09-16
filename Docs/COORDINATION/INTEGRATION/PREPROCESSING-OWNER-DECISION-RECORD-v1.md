@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.6(2026-09-16,追加 §1septies Contract v0.2 Freeze Candidate Finalization:契约键改名 `source_content_sha256` + bytes 能力冻结 + 文字收口五项)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization`
+> Status: **v1.7(2026-09-16,追加 §1octies Owner Final Decision Instruction v1:四项最终确认 + Step 1/Step 2 执行授权,两项已执行完毕)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -349,6 +349,51 @@
 
 ---
 
+## 1octies. 分项裁决 — Owner Final Decision Instruction v1(Owner 2026-09-16 第九轮,原文照录;canonical 引用面)
+
+> Owner 令:四项最终确认 + Step 1/Step 2 执行授权 + 继续六禁 + Claude/DSH 任务 + Freeze 条件 + 延期五项。
+
+### 一、最终确认事项(原文照录)
+
+1. **Identity Authority**:跨系统文件身份唯一字段 = `source_content_sha256`;定义 = `SHA256(original source bytes)`;格式 = 64 字符 lowercase hex;规则 = 内容 hash 决定身份,path/source_file 仅为 locator,path 变化不得影响 identity,**禁止任何系统使用 path 作为唯一身份判断**。
+2. **双层职责模型**:Manifest = Source Identity Authority(「这是哪个文件?」)/ IR = Semantic Consumption Authority(「这个文件表达了什么?」);V3 消费方向 = Manifest 验证身份 + IR 提供语义,两者不得混淆。
+3. **命名确认**:跨系统 = `source_content_sha256`;V3 内部 = `source_version_id` 保持现状;禁止两个概念继续使用同名字段。
+4. **16 份 Identity-only**:状态 = Identity Available / Semantic Pending;允许重新执行 preprocessing 生成 IR;约束 = `source_content_sha256` 必须保持一致 / 不创建新的 identity / 不修改历史 manifest / 不删除已有记录。
+
+### 二、执行授权(原文照录)
+
+> Step 1:Producer 生成接口快照——冻结 87 接口范围;记录:文件列表 / `source_content_sha256` / R50 关联关系。
+> Step 2:Producer 执行 87 份 manifest 补齐 `source_content_sha256`;完成后逐份验证:Manifest hash = IR hash。
+
+### 三、禁止事项(原文照录)
+
+> 禁止:修改原始文件 / 修改 IR 语义内容 / 修改 Question 数据 / 图片恢复 / daemon 自动运行 / schema 变更。
+
+### 四、Claude 任务(原文照录)
+
+> 合并最终契约:`source_content_sha256` / path non identity / Identity Pending / bytes verification requirement;删除旧描述:全部替换 Semantic Unavailable → Semantic Pending;保持 V3 代码不修改。
+
+### 五、DSH 任务(原文照录)
+
+> 执行 Step 1 接口快照;执行 Step 2 Manifest 字段补齐;输出验证报告:必须包含 87 份文件列表 / hash 一致性检查 / IR 覆盖情况 / 16 份 pending 状态。
+
+### 六、Freeze 条件 + 延期建议(原文照录)
+
+> Step 2 完成并验证后:进入 Contract v0.2 Freeze。
+> 建议继续延期(非架构阻塞点):legacy 79 份披露 / 17 拒收记录 / OCR/PDF 扩展面 / DEC 编号统一 / bytes 传输方式。
+> 「目前 V3 最大的架构风险已经不是 preprocessing,而是未来 V3 消费端必须真正实现:拿到 bytes → 自己计算 SHA256 → 验证 Manifest → 验证 IR → 失败关闭。」
+
+### §1octies 生产侧保守义(DSH 解释,非裁决;执行详件 = `PREPROCESSING-STEP1-STEP2-VERIFICATION-REPORT-v1.md`)
+
+| 条款 | 生产侧落实语义 |
+|---|---|
+| 一、四项确认 | 与 DEC-025 FC-1~FC-4 逐条一致,无新裁决面;§1quater Part 4「不修改历史 manifest」保守义 = **不改既有键/语义**,不排斥 Owner 明令的追加身份键(否则 Step 2 授权自相矛盾) |
+| 二、执行授权 | **已执行完毕**:Step 1 = `data/interface_scope_snapshot_step1.json` + audit `interface_scope_prebackfill`(corpus `4ad3458b…`);Step 2 = 87/87 回填(仅追加一键,内容寻址证明 = 剥键重序列化 sha 逐份 == R50 基线);R50 DRIFT = 恰 87 manifest(missing 0,预期);接口面新配对基线 = audit `interface_scope_postbackfill`(corpus `24af8f56…`,verify ok) |
+| 三、六禁 | 全部保持:原始文件/IR 语义/Question 数据零改动;回填面 = Owner 明令授权字段,与「禁 schema 变更」不冲突 |
+| 四、Claude 任务 | = C-0a(V3 侧,REPORTED 直至 V3 commit);DSH 零代做 |
+| 六、延期五项 | 按建议不处理,登记于 §3;下一阶段核心 = V3 消费端 bytes→自算→验证→fail-closed 链条实现(Gap Matrix D-7~D-9) |
+| 程序边界 | Freeze 令仍属 Owner:DSH 侧 Step 1/Step 2 前置**已全部满足**;剩余前置 = Claude 正文合并 |
+
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 
 B3 生产侧责任按裁决文字取最大保守义:
@@ -369,8 +414,9 @@ B3 生产侧责任按裁决文字取最大保守义:
 - v1 legacy 面 79 份:**已裁 = historical asset 隔离**;披露形态(文字层):**未裁**(弱);
 - 语义/决策状态机:**词表终局已裁(§1quinquies Part 5)**——semantic = `ready/incomplete/unknown`,decision = `pending_review/approved/rejected`(取代 §1ter D3 四状态合并记法);unknown 路由**已裁(§1quinquies Part 6)**= 产 reviewable record → pending_review workflow;**两层载体(字段名/落点)与 reviewable record 形态:未裁**;
 - 16 份 Identity-only:**已裁(§1quinquies Part 3)= Identity Available / Semantic Pending(可恢复)**;接口面呈现字段:**未裁**(随载体);
-- 执行顺序:**已裁五步**;Step 1 接口快照载体与 R50 血统(D-6)、存量 1 例原子性(D-3)、2 份三重成员(D-4)、全部数据动作执行令:**未裁**;
+- 执行顺序:**已裁五步**;**Step 1/Step 2 执行令已下达并执行完毕(§1octies 二)**——接口快照载体 = `data/interface_scope_snapshot_step1.json` + pre/post 双 audit 快照(R50 血统 = 成员超集保留为历史基线,接口面基线角色由双快照承接);**存量 1 例(D-3)、2 份三重成员(D-4)、16 份 IR 再生成批次与 R52 工件版本策略:未裁**;
 - **命名已终裁(§1septies Decision 1)**:跨系统身份字段 = **`source_content_sha256`**(SHA256(raw bytes),64 小写 hex 不变);原契约键 `source_version_id` 此后仅指 V3 内部 UUID FK;OQ-8′ 关闭;Review v1 N-1~N-4 作废;IR 侧字段名对齐(`source_sha256` 是否改名)= producer 实现动作待令;
-- Contract v0.2 正文起草:**已裁由 Claude 执行**(四章节要求 = §1quinquies Part 7);Freeze Candidate Review v1 已交付(DEC-024);**Freeze Candidate Final v1 已交付(DEC-025 回应 = `PREPROCESSING-CONTRACT-v0.2-FREEZE-CANDIDATE-FINAL-v1.md`,FC-1~FC-5 终稿条款文本 + B/C/D)**;冻结:**未裁**(Owner Freeze 令 = 五步序 Step 3,前置 Step 1/Step 2 执行令未下达);等 Claude:C-0a 文字收口五项落字。
+- Contract v0.2 正文起草:**已裁由 Claude 执行**(四章节要求 = §1quinquies Part 7;合并清单更新 = §1octies 四);Freeze Candidate Review v1 已交付(DEC-024);**Freeze Candidate Final v1 已交付(DEC-025 回应 = `PREPROCESSING-CONTRACT-v0.2-FREEZE-CANDIDATE-FINAL-v1.md`,FC-1~FC-5 终稿条款文本 + B/C/D)**;**Step 1/Step 2 已执行 + 验证 PASS(DEC-026 回应 = `PREPROCESSING-STEP1-STEP2-VERIFICATION-REPORT-v1.md`)**;冻结:**未裁**(Freeze 条件已具备,等 Claude 正文合并 + Owner Freeze 令 = 五步序 Step 3)。
+- **延期五项(§1octies 六,Owner 建议)**:legacy 79 份披露 / 17 拒收记录治理 / OCR-PDF 扩展面 / DEC 编号统一 / bytes 传输方式——不处理,非架构阻塞点。
 
 *v1 · 2026-09-16 · DSH 自记(Owner 聊天原文照录)。如有文字冲突,以 Owner 原文为准。*

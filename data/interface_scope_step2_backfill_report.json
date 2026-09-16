@@ -1,0 +1,910 @@
+{
+ "report_id": "interface_scope_step2_backfill",
+ "field": "source_content_sha256",
+ "definition": "SHA256(original source bytes), 64 lowercase hex",
+ "scope": "manifest identity_version == 2 under Ocr-markdown/reslice-batch-C / Ocr-markdown/reslice-pac-annotated / Ocr-markdown/resliced-pilot (field criterion, n=87)",
+ "summary": {
+  "n_scope": 87,
+  "n_backfilled": 87,
+  "n_already_backfilled": 0,
+  "n_ir_admitted": 71,
+  "n_ir_admitted_sha_match": 71,
+  "n_semantic_pending_qc_fail": 16,
+  "n_ir_absent": 0,
+  "source_bytes_unchanged": true,
+  "r50_drift_expected_87": true,
+  "pre_audit_corpus_sha256": "4ad3458ba11752d53b5885eb727e9da6ee5726b8eac2a5f0b0d81ca22fd19160",
+  "post_audit_corpus_sha256": "24af8f566e8e2356c29aa99e6b185c5f6f8eaf2df983bd4b6b0669684c240a10"
+ },
+ "semantic_pending": [
+  "Ocr-markdown/reslice-batch-C/会考/化学/2018北京春季高中会考化学（教师版）(1).manifest.json",
+  "Ocr-markdown/reslice-batch-C/会考/语文/2018北京春季高中会考语文（教师版）(1).manifest.json",
+  "Ocr-markdown/reslice-batch-C/合格考/英语/2020北京高中合格考英语（第二次）（教师版）(1).manifest.json",
+  "Ocr-markdown/reslice-batch-C/学业水平考试/化学/12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.manifest.json",
+  "Ocr-markdown/reslice-batch-C/高一/历史/2020北京平谷高一（上）期末历史含答案.manifest.json",
+  "Ocr-markdown/reslice-batch-C/高一/政治/2021北京四十三中高一（上）期中政治（教师版）.manifest.json",
+  "Ocr-markdown/reslice-batch-C/高一/生物/2021北京四中高一（上）期中生物（教师版）.manifest.json",
+  "Ocr-markdown/reslice-batch-C/高一/英语/2019北京三十五中新高一分班考试英语含答案(1).manifest.json",
+  "Ocr-markdown/reslice-batch-C/高三/化学/1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+  "Ocr-markdown/reslice-batch-C/高三/化学/2017-2019北京高三化学上学期期末汇编：化学实验（教师版）(1).manifest.json",
+  "Ocr-markdown/reslice-batch-C/高三/数学/2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+  "Ocr-markdown/reslice-batch-C/高考真题/数学/2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).manifest.json",
+  "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c07-01.manifest.json",
+  "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c09-01.manifest.json",
+  "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c09-02.manifest.json",
+  "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c11-02.manifest.json"
+ ],
+ "ir_absent": [],
+ "files": [
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/会考/化学/2018北京春季高中会考化学（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "0443945f4672b05da3d2d950b0a3eb20a495c1635c353c024c8c050b7fad1ffb",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/会考/历史/2018北京夏季高中会考历史（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "d4917437065bfcb8eda24dd45b4e92ca4e2bb6eb8bb4342170903e4c5a62e714",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/会考/地理/2018北京春季高中会考地理（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "3f4a7a826b0176ceb86de53b5721de08e1d7d5ba8a364e627c33297d2a3359f0",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/会考/政治/2018北京夏季高中会考政治（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "86d45cfc16e32f6477fefdea27646c23df179d6a5d673ab0a520aeb6bec42d0c",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/会考/数学/2018北京春季高中会考数学（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "934dec78dde333d21342f3f9419f524bb68e92645914c3d3db9cf482a282f176",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/会考/物理/2018北京春季高中会考物理（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "81ea9b74dd71a577aede6f62fe43c0c53c5e1ff053fd1b1295195fa54c6a4797",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/会考/生物/2018北京春季高中会考生物（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "35e928c273fb2d2dc9187607a51c5506af3fcdf3c086737ec273d668a42363d6",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/会考/英语/2018北京春季高中会考英语（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "8dc9afbcb9b06195b075e638ac00b64968db9b349d39c9ad7c4bde0fa0cf9554",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/会考/语文/2018北京春季高中会考语文（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "a25abe4d8c55eeb5f498cbdd0684a26258c9c64f9590a99aa4fcf3bd85edac43",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/其他汇编/化学/19_2023重庆市巴蜀中学高考适应性月考卷（九）化学答案.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "dd7cc94c6c128f4362266d320fac8e90fe010df0d6987825011e9a568b96460f",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/其他汇编/理综/14_2023届黑龙江省校哈尔滨市第三中学校高三第二次高考模拟考试 理科综合答案.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "8aff73e58f633ca1b2381d533161cdcd72b3afca6a3f5adb5850d9fd04ac5b21",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/其他汇编/英语/2015-2021北京高中英语期中汇编：代词（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "39a7966ad0c88c49d2fc6528af8f87c5f64dd163a7c13e2c3b04ed0e15dcd6f2",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/合格考/化学/2020北京高中合格考化学（第一次）（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "f6b13d6ab3491d7cc43b694951a66488d014653c3cdf194338b4ce6ecac4fe61",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/合格考/历史/2021北京高中合格考历史（第一次）（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "711656a4eff15ee5ae2f5a735963405bebab91e54a0a929a3e25520733602e06",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/合格考/地理/2017-2019北京高中地理合格考试汇编：人口（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "bec2412a3ea739497d83901c97d1e973c004a73124e9d6b785287d2fad7afd38",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/合格考/政治/2021北京高中合格考政治（第一次）（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "440592b55964cf8177dafcd17fbfe69d406f9d8eb8ef979926a0fb79449f367c",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/合格考/数学/2021北京高中合格考数学（第二次）（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "c345e653c9fc1954053f00c18c0f053dc3c0fc1d76772c81e822ad5184f25d72",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/合格考/物理/2021北京高中合格考物理（第二次）（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "c2a720306b1cb253651be98e1aef9efc60d800920ff5bbe84432854ea58ec6c6",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/合格考/生物/2020北京高中合格考生物（第二次）（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "1c32203140bd6724eed1365ea5e361dddca18a6879a22509ea469beb890be15f",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/合格考/英语/2020北京高中合格考英语（第二次）（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "c489f291fb8237e9582c8d354d5a037b77f8f66f527d6bae00c6525626ec3195",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/合格考/语文/2021北京高中合格考语文（第二次）（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "1552f55cd307646c006ce2992a0cc716e910c7ac44e8d109bf535af1528c54cd",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/学业水平考试/化学/12_T8联盟2023年普通高中学业水平选择性考试压轴卷（华师一附中命题）化学答案.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "b855131b1694700d97823719f90d30c6e6c0f927b5569bb2ef59d8885c070930",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/竞赛自招/历史/2021北京高考压轴卷历史（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "2c165778d9b86fe6ca54bcda167eb202b019f2efdbee732c8142f0cc5e15debe",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/竞赛自招/政治/2019北京大学博雅计划模拟政治（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "e0a3841c791d07fdc2066fbb2d7e91c27e82d1dbb89b90d8c4e7659f72b845cd",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/竞赛自招/数学/2020北京大学强基计划数学（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "9484c1d99ed9a40366066994a5541d539521b3181ba7fa522d1d56472b71b412",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/竞赛自招/物理/2019北京清华大学领军计划物理（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "220493ed24ab7ea88928d66328957d77f119eb347db3d6784a7f9914704a66e8",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/竞赛自招/语文/2019北京大学博雅计划模拟语文（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "5e5b608ff84eb797f7209a36d9bd67f5a98d85d74e8c2e69926d93b074de34d6",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高一/化学/2022北京首都师大附中高一12月月考化学（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "ec5b6d9c7344d28dc1ac4d0f64b10dbef435b1e4c516c7b773e5c803e0bdbcdd",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高一/历史/2020北京平谷高一（上）期末历史含答案.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "370c149651852d2f9ce4e0f250217861f27bbd3daf40e02a685bd349a1a6b25d",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高一/地理/2022北京东城高一（上）期末地理（教师版）.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "1288f0032a90d3a63dfd66748a5c9c1c74e05e95a1c104535988517f9ba43669",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高一/政治/2021北京四十三中高一（上）期中政治（教师版）.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "f01fb833a5fc3fb0d63393fc67eee489b6060368054d3f0bea243ba50350aae5",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高一/数学/2021北京师大二附中高一（上）期中数学（教师版）.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "b2b68702f5d8eaa2201af23af5e9708c9739469f6ecd6353ca8fdbc1338ba809",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高一/物理/2018北京十四中高一（下）期中物理（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "c77a7a0be0426e5bf0f62f96a7a9b4e38566345de5b7c7c476fa11d9b3db0ba9",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高一/生物/2021北京四中高一（上）期中生物（教师版）.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "167cd45bc2426d760474bd78fc63e14af94fc89dad295d5ed95214d3aeb875fe",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高一/英语/2019北京三十五中新高一分班考试英语含答案(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "3e7b4a3f4af7f0014e8f3d3c78fd393b1ba4d5443372383c7987bda9fa4b3e9c",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高一/语文/2022北京首都师大附中高一12月月考语文（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "b4c21f1a17ecc92e6d7842a233b6f604e88e21bb51b76ea3ea836a898f8d85d8",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高三/化学/1_16_专题十六　化学实验综合　教师用书PDF.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "eb8ef93fa233e93466bea6f72b64255960a23098b25b1dbf2f4b38d1b4ab4b16",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高三/化学/2017-2019北京高三化学上学期期末汇编：化学实验（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "65f9260e0134b1b4b36966e1118d076dc644c40f8303aebb084e377a71785aec",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高三/化学/2021北京四中高三（上）期中化学（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "e83dbf20a3c96a59f27684e66ae11d293d6f9a3a47643754587a6dfe02059e44",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高三/历史/2022北京丰台高三一模历史（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "52dd6276691614618ef01d3b7d2be1c4abe49ddcd5a919fcf133f6ebc776c94c",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高三/地理/2021北京东城高三二模地理（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "66da763268e55f4dd89452a67a5e0e2cd1869c0d0bd588a0c3c5d78b33db1088",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高三/政治/2021北京房山高三二模政治（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "f2d695e317748f061472c2f775f14545d09bf5f08fcfd667dbbcc2d9b67e318d",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高三/数学/2017-2019北京高三数学上学期期中汇编：立体几何（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "70706830c564cf58a65c86c1d314396cccc573488acb5dbb69ab4c31ac36a926",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高三/数学/2017-2019北京高三数学上学期期末汇编：立体几何（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "3838d105519b88bb8b6fea610dd3d41b945d49041082d050cb9e931cc7e82784",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高三/物理/2022北京首都师大附中高三9月月考物理（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "15af99a1d0ba1c3bbd1748081ab86099dce4917ed47762b0c366e18885cd9329",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高三/生物/2021北京顺义高三（上）期末（一模）生物（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "b15f00005072f834df52f0957e3ca7010a0ecec93eff62dec3157ab2ddf22589",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高三/英语/2020北京大兴高三（上）期末英语（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "566d121e9a366707fce6a1f67bb8781ec76280ae9f61679f9dda183bac2d7d33",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高考真题/数学/2012-2021高考真题数学汇编：空间向量与立体几何（2）（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "b7b31db04db44d9138ff6bb114156bcf470ff92fc530e2645bcd64de32d80696",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高考真题/数学/2012-2021高考真题数学汇编：统计与概率（分布列）（1）（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "235df39d67f35ae808b69eb96f971a486edd19dd18dde71cae2408fcadd38d2e",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-batch-C/高考真题/生物/2012-2021高考真题生物汇编：基因工程（1）（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "b1fd784ddcc6468649f6b5e5955272e4405d74a546b6827e9470fd6a477fc11d",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c01-01.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "57272625a184433b7f7cac933f3a2f5710f49920d576252975927ee12a79f4ee",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c01-02.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "23eab8a774f8f88e5d43f42cc6b36800188b9288194f61e7eb40d5fea0689309",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c02-01.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "31086f124389c375f8892505712b839f8a6e02a16bf9bd044998246bb1cd51a7",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c02-02.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "17bd21d3cea5c1d1e68e547d2e191e15c2f664804e3f1577b84f04ab14a92406",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c05-01.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "c49d27086f2ee08d386d989efeff1123e4abbd7a7ea874bdc1a56269a570e100",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c05-02.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "335d573f30aabc754f397e74e5bbf32645f91774ac36a115d766a8a3c02b3984",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c06-01.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "5533b4b68503a96a149392e68861ea30feddd8dfb4918022c6109c32f1d7e1c5",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c06-02.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "f43ced350e5aac8a7e28e7716ddd05d42bf4c766beb8d620e71939036c32808a",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c07-01.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "4ac3b0ed332aa0afa26c50caaca646ad00a63cc3bc0cf9097da141488e2aa526",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c07-02.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "2c0214f018fcb5ccee5bc55ac484515d1c8e939c3fd6b15958cd5dfd8e170ed9",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c08-01.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "3dd4a874757ec698b7bb288dbad4a0f298f916db618af510b8f60e21426d49df",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c08-02.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "b59712b57731bada186b90423bf5b7b44b08ece9c74b9113aa443790555d70af",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c09-01.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "2fa0edf21e5984a240bd1a2bc1ed2d11290b3c3d13fc9749981cfb9df8a4c4c6",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c09-02.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "b13078a18bc5c5487ce60aa68bb213981791d92e5f86a91fb235f0637c788ca0",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c10-01.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "7c1373d1252f09645a2b36bba5c82c3d35e2479d5f323bac134942033e77eef1",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c10-02.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "e8eb0b8be29578467751d997d71d7d971c2645aad46b37c7fb46e0e58a7db9eb",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c11-01.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "4dbc320a366388dd17fbddc792197dcd8db4047b24aa395930d60013940856a4",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c11-02.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "b14b69109995891b0dc43b81998ac7eef15474936ad58d0e3c79d532c244fb0f",
+   "ir_disposition": "REJECTED_QC_FAIL",
+   "ir_sha256_match": null,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c12-01.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "d98fde17ccf81f65566d922fb70e8c4437c4de1de76ca7ad354413c3583fcb56",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c12-02.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "1ec2e8a728f52c44505ac96bdec7a18c687b8d39eeb690f307f1ab1a3174ea2a",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c13-01.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "0bf34c1c78f49562c3247dfb687a62c016d1b2a7e9da1a44101ed3240d6a753b",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/reslice-pac-annotated/reslice-pac/ocr/pac-c13-02.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "bd39d337f689e10d3dc20d7c964fb30e608c8a2e3b386cb03e0be41b4f103f81",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高一/历史/2021北京四十三中高一（上）12月月考历史（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "e5a14be6c7e40d18bb89f90b8ebc6a5defa49866fd7566a663fa0b00e79e8afb",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高一/地理/2019北京人大附中高一（上）期中地理含答案.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "8f7e272314f6c0474fea9dfe16c8bf1aa0063ec4e65bf0999b2fab447db59283",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高一/政治/2018北京师大附中高一（下）期中政治含答案(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "6dcf9d1d82680364e412582c979b521f6c0dba5627ba4cd777541e8b7f88f3cc",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高一/数学/2021北京顺义一中高一（下）期中数学（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "fcc52dd0ae92d15fbafee8d41b1d22f865a992c0bfe7ff65f1970cc9054b182e",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高一/生物/2018北京市西城区高一（下）期末生物含答案(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "6018f840339bcb5a6afaddc45b11006c34678b97dcf044e9cd726eeaea914289",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高一/英语/2020北京东城高一（上）期末英语（教师版）.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "b2c765cdc6a678e08722c1f96819f6c415ee2f0301f50501d3dc18365789d908",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高一/语文/2020北京平谷五中高一（下）4月月考语文含答案(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "76837f7afddcdea49727cac1b48b08f24ad929c519121dd30d0f999595943856",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高一/语文/2020北京石景山高一（上）期末语文含答案.manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "7e17b99890d1be61932aed24f124865e900d171e3717fe5e250ac1c462f882e8",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高三/化学/2019北京交大附中高三（上）12月月考化学含答案(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "c794851b529f90033a8306e672b3dd7d9a11459b907ad764b5759eb043baf048",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高三/数学/2021北京八十中高三考前练习数学（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "43c62cc73142c78419f874b6a02f738b312f667436f66e1e3aaa725d849ca69a",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高三/物理/2021北京石景山高三一模物理（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "d635d730b86419c4f4f01a03774657113a2bfc2645f35880dca8184b985b4c97",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高三/生物/2020北京西城高三（上）期末生物含答案(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "d220beff8d3da38abff45bc02ead811e95f4876508b02736ab6c14cc57358c9c",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高三/英语/2021北京丰台高三二模英语（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "28dbcebcd8f7d4e8680b79340405e74cfff860f85500768f75a27e73c3851275",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高二/数学/2018北京五十六中高二（下）期中数学（理）（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "e386a570debae50e85e19d255faabb1ad0f051c220b4abfb7c7b54d9646516c3",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  },
+  {
+   "manifest": "Ocr-markdown/resliced-pilot/高二/物理/2019北京四中高二（下）期末物理（教师版）(1).manifest.json",
+   "status": "backfilled",
+   "source_content_sha256": "dd6b03398042baceae01cfe6cabe59fa49b3985c7bffbf238a7def72fd66ff4e",
+   "ir_disposition": "ADMITTED",
+   "ir_sha256_match": true,
+   "n_keys_before": 6,
+   "n_keys_after": 7,
+   "key_appended": "source_content_sha256"
+  }
+ ]
+}

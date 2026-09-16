@@ -324,6 +324,10 @@ decisions:
     statement: "Contract v0.2 Freeze Candidate Finalization 四项终裁: ①Identity Field Naming: 跨系统 Source Identity 字段 = source_content_sha256(= SHA256(raw bytes),64 小写 hex 不变;取代原契约键 source_version_id,该名此后仅指 V3 内部 UUID FK 保持内部含义不作跨系统身份键;OQ-8′ 关闭;Review v1 N-1~N-4 V3 侧改名方案作废,消歧 = 契约侧让名);②Source Bytes Capability: 冻结能力要求(V3 必须获取 raw bytes + 独立计算 SHA256 + 与 source_content_sha256 比较 + 不一致 fail-closed),不冻结具体传输方式;③State Boundary 再确认: semantic {ready,incomplete,unknown} + decision {pending_review,approved,rejected} 禁合并,unknown → reviewable record → pending_review,禁 silent skip/conversion/fallback;④Freeze Preparation 五项: v0.2 文字收口 / 删除 Semantic Unavailable 等旧表述 / source_version_id 歧义全部消除 / 补充 bytes capability requirement / 确认 87·71·16 范围表达。约束: 继续禁改业务代码/schema/数据,禁 IR 重生成/图片恢复/daemon。输出 A Freeze Candidate Final 版 / B 最终 Remaining UNKNOWN / C Freeze 前执行步骤清单 / D Implementation Gap Matrix;完成后等待 Owner Freeze 令(冻结 = 五步序 Step 3,前置 Step 1/Step 2 执行令)"
     authority: "用户裁定 2026-09-16(Contract v0.2 Freeze Candidate Finalization,聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1septies)"
     status: active
+  - id: DEC-026
+    statement: "Owner Final Decision Instruction v1(四项最终确认 + 执行授权): ①Identity Authority: 跨系统唯一身份字段 = source_content_sha256 = SHA256(original source bytes),64 小写 hex;内容 hash 决定身份,path/source_file 仅为 locator,path 变化不得影响 identity,禁任何系统以 path 作唯一身份判断;②双层职责: Manifest = Source Identity Authority('这是哪个文件?'),IR = Semantic Consumption Authority('这个文件表达了什么?'),V3 消费方向 = Manifest 验证身份 + IR 提供语义,两者不得混淆;③命名: 跨系统 source_content_sha256 / V3 内部 source_version_id 保持现状,禁两概念同名;④16 份 = Identity Available / Semantic Pending,允许重新执行 preprocessing 生成 IR,四约束(source_content_sha256 一致 / 不创建新 identity / 不修改历史 manifest 语义 / 不删除已有记录)。执行授权: Step 1 接口快照(文件列表 + source_content_sha256 + R50 关联关系)+ Step 2 87 份 manifest 补齐 source_content_sha256 + 逐份验证 Manifest hash == IR hash;DSH 输出验证报告(87 文件列表 / hash 一致性 / IR 覆盖 / 16 pending 状态)。继续禁止: 修改原始文件 / IR 语义内容 / Question 数据 / 图片恢复 / daemon 自动运行 / schema 变更(Owner 明令授权的回填字段除外)。延期五项(非架构阻塞): legacy 79 披露 / 17 拒收记录 / OCR-PDF 扩展面 / DEC 编号统一 / bytes 传输方式。Freeze 条件: Step 2 完成并验证后进入 Contract v0.2 Freeze(Claude 合并最终契约 + Owner Freeze 令);下一阶段核心风险 = V3 消费端 bytes→自算 SHA256→验证 Manifest→验证 IR→失败关闭 链条的真正实现"
+    authority: "用户裁定 2026-09-16(Owner Final Decision Instruction v1,聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1octies)"
+    status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
 open_questions:
@@ -484,7 +488,7 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "DEC-025(Freeze Candidate Finalization)已入册,DSH 输出 A/B/C/D 已交付 = INTEGRATION/PREPROCESSING-CONTRACT-v0.2-FREEZE-CANDIDATE-FINAL-v1.md(FC-1~FC-5 终稿条款:FC-1 命名 source_content_sha256 / FC-2 bytes 能力四义务 / FC-3 状态边界 / FC-4 87·71·16 / FC-5 文字收口与删除项)。命名终裁: 消歧 = 契约侧让名(OQ-8′ 关闭,N-1~N-4 作废,V3 UUID 零改名,Step 2 回填直接写新名零二次迁移)。同步完成: Gap List v1.4 / Facts v2.3 / DepMap v2.4 / Review v1 承接注记 / ODR v1.6。等 Claude: C-0a 文字收口五项(删 Semantic Unavailable 旧表述 / 歧义替换 / bytes 条款合入 / 87·71·16 核对 / 锚点更新)。等 Owner: Step 1/Step 2 执行令 → Owner Freeze 令(= Step 3)。数据治理仍暂缓,全部 implementation = not started"
+  next: "DEC-026(Owner Final Decision Instruction v1)已入册并执行完毕: Step 1 接口快照冻结 DONE(interface_scope_prebackfill corpus 4ad3458b…; 87/87 R50 manifest+source 双成员, 冻结时点 sha 全一致, IR 71/71 一致)+ Step 2 回填 DONE(source_content_sha256 × 87, 剥键重序列化 sha == R50 基线 87/87 内容寻址证明, post 快照 interface_scope_postbackfill corpus 24af8f56… ok, R50 DRIFT = 恰 87 manifest / missing 0)。验证报告 = INTEGRATION/PREPROCESSING-STEP1-STEP2-VERIFICATION-REPORT-v1.md。等 Claude: C-0a 正文合并(source_content_sha256 / 删 Semantic Unavailable / bytes 条款 / 87·71·16)。等 Owner: Freeze 令(= Step 3, DSH 侧前置已全部满足)。仍开: 16 份 IR 再生成批次(须另令) / D-3 / D-4 / IR 字段名对齐 / 两层状态载体 / C.1 载体形态追认; 延期五项(legacy 79 披露 / 17 拒收 / OCR-PDF 扩展 / DEC 编号统一 / bytes 传输方式)按 Owner 建议不处理"
   owner_interface_revision:
     date: "2026-09-16"
     directive: "Interface Finalization Revision v1(统一任务指令;DSH = 五文档同步 / Claude = Consumer Alignment + Contract Draft + Gap Matrix)"
@@ -516,6 +520,14 @@ integration_contract:
     contract_status: "v0.2 Freeze Candidate Final 条款文本已定稿(DSH 侧);正文组装与 C-0a 文字收口 = Claude;NOT FROZEN,等待 Owner Freeze 令(= 五步序 Step 3,前置 Step 1/Step 2 执行令)"
     resolved: "命名终裁(OQ-8′ 关闭)/ bytes 能力要求冻结 / 状态边界再确认 / DSH 五文档同步完成"
     still_open: "C-0a Claude 文字收口五项落字 / Step 1·Step 2 执行令(D-6 载体与 R50 血统、D-3、D-4、IR 字段名对齐)/ Owner Freeze 令 / 两层状态载体 + reviewable record 形态 / 接口面 87 表达(C.1)"
+  owner_step1_step2_execution:
+    date: "2026-09-16"
+    directive: "Owner Final Decision Instruction v1(DEC-026): 四项最终确认 + 执行授权 Step 1 接口快照 + Step 2 source_content_sha256 回填 × 87 + 验证报告; 继续六禁; 五项延期"
+    executed: "Step 1 DONE(data/interface_scope_snapshot_step1.json + audit interface_scope_prebackfill corpus 4ad3458b…: 87 份清单 + hash + R50 双成员 87/87 sha 一致 + IR 71/71 一致 + 16 QC_FAIL)/ Step 2 DONE(n_backfilled=87, 仅追加一键(剥键重序列化 sha == R50 基线 87/87), source 字节零漂移, post 快照 interface_scope_postbackfill corpus 24af8f56… verify ok)"
+    verification: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-STEP1-STEP2-VERIFICATION-REPORT-v1.md(87 清单 / Manifest hash == IR hash 71·71 / 全量 87·87 == source bytes / IR 覆盖 71+16 / 16 pending 逐份清单 / R50 DRIFT = 恰 87 manifest, missing 0)"
+    scripts: "scripts/interface_scope_step1_snapshot.py / scripts/interface_scope_step2_backfill.py(确定性无时间戳, fail-closed, 可重入; 测试 338 passed 前后一致)"
+    r50_lineage: "E2 落地: R50 基线保留为历史基线(DRIFT = 87 已预期并记录); 接口面完整性基线角色由 pre/post 双快照承接"
+    still_open: "Claude C-0a 正文合并 → Owner Freeze 令(Step 3, DSH 前置已齐)/ 16 份 IR 再生成批次(须另令)/ D-3 存量 1 例 / D-4 2 份三重成员 / IR 字段名对齐(source_sha256 改名)/ 两层状态载体 + reviewable record / C.1 载体形态追认(Step 1 快照为事实载体)"
   owner_interface_finalization:
     date: "2026-09-16"
     directive: "PREPROCESSING / V3 Interface Decision Finalization v1(统一版指令;DSH=Producer Alignment v4 / Claude=Consumer Alignment v2 + Contract v0.2 Frozen Candidate 起草)"

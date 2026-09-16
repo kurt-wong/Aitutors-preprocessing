@@ -1,6 +1,6 @@
 # PREPROCESSING PRODUCER INTERFACE FACTS v2
 
-> Status: **v2.3(2026-09-16,DEC-025 Freeze Candidate Finalization 增量:跨系统身份字段名 = `source_content_sha256`,取代原契约键 `source_version_id`;算法/格式/实测事实面零改动)** · Authority: Owner B1-B3 + Interface Decision Finalization + Interface Finalization Revision + **Freeze Candidate Finalization(2026-09-16,DSH 自记于 `state.yaml.decisions[DEC-025]`)**
+> Status: **v2.4(2026-09-16,DEC-026 执行增量:接口面 87/87 manifest 已携 `source_content_sha256`,§2.2 事实面由 0/166 变更)** · Authority: Owner B1-B3 + Interface Decision Finalization + Interface Finalization Revision + Freeze Candidate Finalization + **Owner Final Decision Instruction v1(2026-09-16,DSH 自记于 `state.yaml.decisions[DEC-026]`)**
 > Role: preprocessing Producer Owner —— 回答"producer 能提供什么 / 不能提供什么 / 缺口在哪里",并作为 Contract v0.2 的生产侧输入。
 > Discipline: 只写实测事实(路径 + commit 可复现);不假设 V3 消费方式;不提出 V3 实现方案;不修改 Contract 正文 / 数据文件 / 两仓代码。无证据一律标 UNKNOWN。
 > Evidence artifacts: `data/producer_interface_census.json`(v1 全语料普查,commit `17c55d8`)+ `data/producer_interface_probe_v2.json`(v2 定向探针,本轮 commit)。
@@ -82,19 +82,25 @@
 
 **单元级键**(4,609 单元穷举,15 键):`unit_id` / `unit_type` / `question_numbers` / `printed_number` / `section` / `section_ref` / `basis` / `basis_evidence` / `printed_provenance` / `stem_lines` / `options_lines` / `answer_lines` / `explanation_lines` / `material_lines` / `questions_lines` / `extra_lines` / `answer_evidence` / `original_question_type`(键面计数见 census `manifest.unit_level_keys`;游离键恰 1 例 = `explanation_lines_note`)。
 
-### 2.2 是否满足 Source Identity Authority —— **不满足(GAP)**
+### 2.2 是否满足 Source Identity Authority —— **已满足接口面 87(DEC-026 执行后);此前为 GAP(0/166)**
 
-硬事实(`p1b_manifest_identity_gap`):
+历史硬事实(`p1b_manifest_identity_gap`,DEC-026 回填前时点):
 
 - 携带任何 `*sha*` / `*hash*` 键的 manifest:**0 / 166**;
-- 携带 `source_version_id` 的 manifest:**0 / 166**;
-- 结论:**Manifest 层今天零 source identity 字段**。裁决要求的"Source Identity Authority"角色,当前 schema 无承载点。
+- 携带身份字段的 manifest:**0 / 166**;
+- 结论(当时):Manifest 层零 source identity 字段。
+
+**当前事实(DEC-026 Step 2 执行后,2026-09-16)**:
+
+- 接口面 **87 / 87** manifest 携 **`source_content_sha256`**(= SHA256(source md 原始字节),64 小写 hex;回填值 == 当前磁盘字节 sha 87/87 == `ir.source_sha256` 71/71);
+- 79 份 v1 legacy 面仍零身份字段(historical asset 隔离,不入接口);
+- 执行工件:`data/interface_scope_snapshot_step1.json` / `data/interface_scope_step2_backfill_report.json` / audit `interface_scope_prebackfill`·`interface_scope_postbackfill`;R50 基线 DRIFT = 恰 87 manifest(预期,配对基线 = post 快照);详件 = `PREPROCESSING-STEP1-STEP2-VERIFICATION-REPORT-v1.md`。
 
 ### 2.3 需要增加的字段(生产侧需求,提交 Contract v0.2,不自行实施)
 
 | 需增字段 | 生产侧依据 | producer 能力 |
 |---|---|---|
-| `source_version_id` | Owner B1 裁决明文;当前 0/166 | **可提供**:定义 = `sha256(md 原始字节)`(`resolver_reference.py:52-53` 算法在库,IR 面 71/71 已实证与实际字节一致);为 166 份 manifest 逐份计算属数据写入动作,**须 Contract 冻结后按令执行** |
+| `source_content_sha256`(DEC-025 改名前文档旧名 = `source_version_id`) | Owner B1 裁决明文;**DEC-026 已执行:接口面 87/87 已携该字段**(79 份 v1 legacy 面未回填,属隔离面) | **已提供**:定义 = `sha256(md 原始字节)`(`resolver_reference.py:52-53` 算法在库;回填值与 IR 面 71/71 实证一致);legacy 面若未来迁移属独立 Legacy Migration Plan |
 | 建议同批处理 `source_file` 形态 | 绝对路径本机绑定(实测值见 §2.1),跨机不可解析 | 形态改 relative 属 schema/数据变更,归 v0.2 裁决,producer 侧零动作 |
 
 ### 2.4 identity 面双口径(本轮新固化,影响"哪些 manifest 入接口面")

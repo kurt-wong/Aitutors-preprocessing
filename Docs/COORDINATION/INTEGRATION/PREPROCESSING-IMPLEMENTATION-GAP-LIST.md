@@ -1,6 +1,7 @@
 # IMPLEMENTATION GAP LIST — preprocessing → Contract v0.2
 
-> Status: **v1.4(2026-09-16,DEC-025 Freeze Candidate Finalization 后更新:契约键改名 `source_content_sha256`)** · Basis: Owner Decision Record v1.5(§1 总纲 + §1bis + §1ter + §1quater + §1quinquies DEC-023 + **§1septies DEC-025**)+ Freeze Candidate Final v1
+> Status: **v1.5(2026-09-16,DEC-026 执行令轮:G1/G2 回填已执行 + 验证 PASS)** · Basis: Owner Decision Record v1.7(§1 总纲 + §1bis + §1ter + §1quater + §1quinquies DEC-023 + §1septies DEC-025 + **§1octies DEC-026**)+ Freeze Candidate Final v1 + **Step1-Step2 Verification Report v1**
+> **DEC-026 执行结果(最高优先,2026-09-16)**:Step 1 接口快照冻结(`data/interface_scope_snapshot_step1.json` + audit `interface_scope_prebackfill` corpus `4ad3458b…`;87/87 R50 manifest+source 双成员 sha 全一致,IR 71/71 一致)+ Step 2 回填 **`source_content_sha256` × 87/87 DONE,验证 PASS**(Manifest hash == IR hash 71/71;全量 87/87 == source bytes;剥键重序列化 sha == R50 基线 87/87 = 仅追加一键的内容寻址证明;source 字节零漂移;R50 DRIFT = 恰 87 manifest / missing 0;新配对基线 = audit `interface_scope_postbackfill` corpus `24af8f56…` verify ok)。详件 = `PREPROCESSING-STEP1-STEP2-VERIFICATION-REPORT-v1.md`。
 > **DEC-025 命名变更(最高优先,覆盖本文件一切旧引用)**:跨系统 Source Identity 字段 = **`source_content_sha256`**(= SHA256(raw bytes),64 小写 hex 不变);原契约键 `source_version_id` 一名**此后仅指 V3 内部 UUID FK**(保持内部含义,不作跨系统身份键;OQ-8′ 关闭);path 禁参与 identity 判断不变;Review v1 的 N-1~N-4(V3 侧改名)方案**作废**。另:bytes 能力要求已冻结(Decision 2:V3 须获取 raw bytes + 独立重算 SHA256 + 与 `source_content_sha256` 比较 + 不一致 fail-closed;传输方式不冻结)。
 > DEC-023 生效更新(沿用):①**G1 格式已裁 = 64 字符小写 hex**(算法/格式不变,字段名按 DEC-025 切换);②**path 非身份原则**:`source_file` = locator,任何文档不得暗示 path 参与身份判断(交付形态问题收窄为"bytes 传输方式");③**G3/G4 再生成已裁 = 允许但四约束**(bytes 不变/id 一致/新 IR 绑定 id/重过 identity verification + semantic validation)+ 四禁,执行待令;④**G5 词表终局**:semantic = ready/incomplete/unknown,decision = pending_review/approved/rejected;unknown 路由已裁 = reviewable record → pending_review workflow(载体仍未裁);⑤16 份状态 = **Identity Available / Semantic Pending(可恢复)**。
 > Purpose: 逐缺口列出"是什么 / 差多少 / 谁批 / 什么顺序"。每条含:现状证据、目标态(裁决锚定)、实施动作性质、批准依赖、验收判据。
@@ -8,17 +9,17 @@
 
 ---
 
-## G1 — manifest 缺 source identity 字段(DEC-025 后字段名 = `source_content_sha256`)
+## G1 — manifest 缺 source identity 字段(**DEC-026 已执行:87/87 回填 DONE + 验证 PASS**)
 
 | 属性 | 内容 |
 |---|---|
-| 现状 | 0/166 manifest 携 source identity 字段;0/166 携任何 sha 键(probe_v2 `p1b`) |
-| 目标态 | 每份入接口面的 manifest 携 **`source_content_sha256`** = SHA-256(源 md raw bytes),**格式 = 64 字符小写 hex(DEC-023 已裁,与现有 `ir.source_sha256` 实证形态一致;字段名 = DEC-025 Decision 1)**;与 IR `source_sha256` / `provenance.source_version` 同值;**身份自足性(DEC-B1)**:该字段独立可验证,不需要 IR 在场 |
-| 生产侧就绪度 | 算法+代码就绪(`resolver_reference.py:52-53`);71 份值已存在(IR 面),manifest 侧字段为空;**DEC-B1 后 G1 不再等待 G3(扩产)** |
-| 实施动作 | ①schema 字段定义(Contract v0.2 正文)→ ②回填(数据写入) |
-| 批准依赖 | **字段名/算法/格式三者已裁(DEC-023 Part 1 + DEC-025 Decision 1 改名 `source_content_sha256`)**;剩 = Step 2 回填执行令(A3) |
-| **硬约束** | **v2 接口面 87/87 manifest 全部是 R50 基线成员**(probe_v3)——回填 87 份 = R50 必然 DRIFT;DEC-021 D4 五步序中 **Step 1 Freeze interface snapshot 先于 Step 2 回填**,该快照的基线形态与 R50 血统关系需执行令明确(Alignment D.1) |
-| 验收判据 | 回填后逐 manifest:`source_content_sha256` == sha256(当前 md 字节)== IR 同文件 `source_sha256`(有 IR 者);Step 1 快照/新基线 verify PASS;旧基线血统注记留痕 |
+| 现状 | **已执行(DEC-026 Step 2)**:接口面 87/87 manifest 携 `source_content_sha256`(回填前 0/166;79 份 v1 legacy 面未回填,属隔离面不入接口) |
+| 目标态 | 每份入接口面的 manifest 携 **`source_content_sha256`** = SHA-256(源 md raw bytes),**格式 = 64 字符小写 hex(DEC-023 已裁,与现有 `ir.source_sha256` 实证形态一致;字段名 = DEC-025 Decision 1)**;与 IR `source_sha256` / `provenance.source_version` 同值;**身份自足性(DEC-B1)**:该字段独立可验证,不需要 IR 在场 —— **已达成(16 份无 IR 者身份自足)** |
+| 生产侧就绪度 | 算法+代码就绪(`resolver_reference.py:52-53`);执行脚本 = `scripts/interface_scope_step2_backfill.py`(确定性 / fail-closed / 可重入) |
+| 实施动作 | ①schema 字段定义(Contract v0.2 正文,= FC-1 照录)→ ②回填(数据写入)—— **②已执行 87/87** |
+| 批准依赖 | **已全部下达**:字段名/算法/格式(DEC-023 + DEC-025)+ Step 2 回填执行令(DEC-026 二) |
+| **硬约束(E2,已落地)** | 87/87 manifest 为 R50 基线成员 → 回填致 R50 DRIFT **已发生且已对账**:drift 集合 = 恰 87 manifest,missing 0;Step 1 快照(pre)+ post 快照承接接口面基线角色,R50 保留为历史基线(血统注记 = Verification Report §1/§3.5) |
+| 验收判据 | **已验证 PASS**:`source_content_sha256` == sha256(当前 md 字节)87/87;== IR `source_sha256` 71/71(有 IR 者);剥键重序列化 sha == R50 基线 87/87(仅追加一键的内容寻址证明);Step 1/post 双快照 verify PASS |
 
 ## G2 — 双层关联键升级(B1;**DEC-B1 已裁唯一键**)
 
@@ -28,7 +29,7 @@
 | 目标态(**已裁,DEC-B1 + DEC-025**) | 关联 = **`source_content_sha256`** **唯一**关联键;路径值相等不是合规关联 |
 | 实施动作 | IR 侧字段已具备(`source_sha256` 即该值);manifest 侧随 G1;**无独立数据动作** |
 | 批准依赖 | 随 G1;**DEC-023 已裁**:`source_file` 保留 = locator(相对路径化不再是身份议题,若做属 locator 改善另议);bytes 能力要求**已冻结(DEC-025 Decision 2)**,传输方式不冻结(delivery logistics) |
-| 验收判据 | 87 份接口面:`manifest.source_content_sha256 == ir.source_sha256` 全量成立(有 IR 者);无 IR 者身份自足(DEC-B1) |
+| 验收判据 | **已验证 PASS(DEC-026)**:87 份接口面 `manifest.source_content_sha256 == ir.source_sha256` 全量成立(有 IR 者 71/71);无 IR 者(16)身份自足(DEC-B1) |
 
 ## G3 — IR 覆盖面 71/166(B1;**当前面已裁 = 71 冻结面**)
 
@@ -84,13 +85,13 @@
 
 | Gap | 裁决 | 类型 | 批准项 | 阻塞 v0.2 冻结? |
 |---|---|---|---|---|
-| G1 | B1 + DEC-023(算法/格式)+ **DEC-025(字段名 = `source_content_sha256`)**,范围 87 | schema + 数据 | 仅剩 Step 2 回填执行令 | **否(定义已齐,v0.2 直接写死 = FC-1)** |
-| G2 | B1(**唯一键已裁**)+ DEC-023(path 非身份) | 派生(随 G1) | — | 否(随 G1) |
+| G1 | B1 + DEC-023(算法/格式)+ **DEC-025(字段名 = `source_content_sha256`)**,范围 87 | schema + 数据 | **全部已下达并执行(DEC-026)** | **否 —— DONE(87/87 回填 + 验证 PASS)** |
+| G2 | B1(**唯一键已裁**)+ DEC-023(path 非身份) | 派生(随 G1) | — | 否 —— **验证 PASS(71/71)** |
 | G3 | B1 + **DEC-023(再生成允许+四约束)** | 数据生成 | 执行令(批次/R52 版本策略) | 否 |
 | G4 | B1(持续机制仍未裁;单次再生成 ≠ 持续机制) | 机制 | Owner 令 | 否 |
 | G5 | B3 + **DEC-023(词表终局 + unknown 路由已裁)** | 机制 + 数据 | **仅剩载体(字段名/落点/reviewable record 形态)**+ 执行令 | **载体定义是**(守卫实施可后置) |
 | G6 | **DEC-021 已裁 = 隔离** | 文字层披露 | — | 否(披露形态随 v0.2) |
 | G7 | B1 弱 | 文字层 | 随 v0.2 | 否 |
-| C.1 | DEC-021 D4 | 接口面表达 + Step 1 快照载体/血统 | Step 1 执行令 | **是**(scope 表达属 v0.2 正文) |
+| C.1 | DEC-021 D4 | 接口面表达 + Step 1 快照载体/血统 | **执行令已下达并执行(DEC-026)**:载体 = `data/interface_scope_snapshot_step1.json` + pre/post 双 audit 快照;v0.2 正文对该载体的引用形态待 Owner/Claude 追认 | **否**(表达已物化) |
 
-**最小冻结集(DEC-025 后终版)**:**G5 两层状态载体(含 reviewable record 形态)+ 接口面 87 的表达(C.1)**——仅此两项属 v0.2 正文必须写死且尚未落字;**G1 字段定义三要素已终稿(名 = `source_content_sha256` / 算法 SHA256(raw bytes) / 格式 64 小写 hex),v0.2 直接照录 Freeze Candidate Final FC-1**;bytes 能力要求已定稿(FC-2)。数据动作全部可后置于冻结 + 执行令。面口径以"87 接口面 / IR 71 当前消费面 / 16 Semantic Pending / 79 historical"写入 v0.2。
+**最小冻结集(DEC-026 后终版)**:接口面 87 的表达(C.1)**已物化**(Step 1 快照工件;正文引用形态待追认);**唯一剩余必须落字项 = G5 两层状态载体(含 reviewable record 形态)**;G1/G2 数据动作已执行完毕。G1 字段定义三要素(名 = `source_content_sha256` / 算法 SHA256(raw bytes) / 格式 64 小写 hex)v0.2 直接照录 Freeze Candidate Final FC-1;bytes 能力要求已定稿(FC-2)。面口径以"87 接口面 / IR 71 当前消费面 / 16 Semantic Pending / 79 historical"写入 v0.2。

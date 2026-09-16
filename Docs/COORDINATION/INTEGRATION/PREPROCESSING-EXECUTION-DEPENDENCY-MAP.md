@@ -1,7 +1,8 @@
 # EXECUTION DEPENDENCY MAP — G1 identity 固化 × D2 figure recovery(重整理)
 
-> Status: **v2.4(2026-09-16,DEC-025 Freeze Candidate Finalization 增量:回填字段名 = `source_content_sha256`)** · 取代 IF-v2 §6.3 与 Readiness v1 中"互斥时序"的初步表述
-> **DEC-025 增量**:跨系统身份字段名 = **`source_content_sha256`**(= SHA256(raw bytes),64 小写 hex 不变;OQ-8′ 关闭,V3 内部 UUID `source_version_id` 无需改名);本图中"backfill source_version_id / G1 回填"一律指回填 `source_content_sha256`;bytes 能力要求已冻结(传输方式不冻结)。主链(G1×D2×R50)与交集定量不变。
+> Status: **v2.5(2026-09-16,DEC-026 执行令轮:Step 1/Step 2 已执行 + 验证 PASS,E2/E2' 落地)** · 取代 IF-v2 §6.3 与 Readiness v1 中"互斥时序"的初步表述
+> **DEC-026 增量(执行结果)**:Step 1 接口快照已冻结(`data/interface_scope_snapshot_step1.json` + audit `interface_scope_prebackfill` corpus `4ad3458b…`;载体与血统 = 执行令已细化,E2' 关闭);Step 2 回填 `source_content_sha256` × 87/87 DONE;**E2 配对再冻结已落地**——R50 DRIFT = 恰 87 manifest(missing 0,预期),接口面新配对基线 = audit `interface_scope_postbackfill`(corpus `24af8f56…`,verify ok),R50 保留为历史基线;详件 = `PREPROCESSING-STEP1-STEP2-VERIFICATION-REPORT-v1.md`。主链(G1×D2×R50)与交集定量不变(Step 5 两份三重成员仍单独裁决)。
+> **DEC-025 增量(沿用)**:跨系统身份字段名 = **`source_content_sha256`**(= SHA256(raw bytes),64 小写 hex 不变;OQ-8′ 关闭,V3 内部 UUID `source_version_id` 无需改名);本图中"backfill source_version_id / G1 回填"一律指回填 `source_content_sha256`;bytes 能力要求已冻结(传输方式不冻结)。主链(G1×D2×R50)与交集定量不变。
 > **DEC-023 增量**:①**Path 非身份原则**——id 钉的是 bytes 不是 path;D2 改写 md 使 id 失配的机理 = **bytes 变**,与路径/目录无关(表述同步修正);②**16 份接口面内无 IR 成员 = Identity Available / Semantic Pending(可恢复)**;IR 再生成**允许但四约束**(bytes 不变/id 一致/新 IR 绑定 id/重过双验证)+ 四禁(禁改原 source/禁重 OCR 覆盖/禁新 identity/禁新 hash 替代)→ **E8 由"若扩产"变"已允许,执行待令"**;③G1 字段名/算法/格式三裁,仅剩回填执行令。本图主链(G1×D2×R50)与交集定量不变。
 > DEC-B1 增量:source 身份不依赖 IR 存在 → E8(G3 扩产治理)与 G1 路径彻底解耦;本图主链(G1×D2×R50)不受影响,交集定量不变。
 > **DEC-021 增量**:Owner 裁定五步序 = ①Freeze interface snapshot → ②backfill source_version_id(范围已裁 87)→ ③Freeze Contract v0.2 → ④data hygiene → ⑤image recovery——**D-1/D-2/D-5 关闭**(见 §5);快照先行变体下 E2 的配对对象从"R50 再冻结"转为"Step 1 接口快照与 R50 的血统关系"(执行令细化,UNKNOWN)。
@@ -59,8 +60,8 @@
 | # | 从 → 到 | 约束 | 强度 |
 |---|---|---|---|
 | E1 | v0.2 冻结 → G1b | 字段未定义不得回填 | 硬(治理) |
-| E2 | G1b → 基线再冻结 | 87/87 manifest 是 R50 成员,回填必致 DRIFT,必须配对再冻结(新 audit_id + 血统注记) | 硬(事实) |
-| E2' | Step 1 快照 → E2 配对对象 | DEC-021 五步序下,配对角色由 Step 1 接口快照承担;快照与 R50 的血统关系(新基线 vs 再确认)= 执行令细化(D-6) | 硬(治理,待令) |
+| E2 | G1b → 基线再冻结 | **已落地(DEC-026)**:DRIFT = 恰 87 manifest(missing 0),配对再冻结 = pre/post 双快照(新 audit_id + 血统注记齐备) | 硬(事实) |
+| E2' | Step 1 快照 → E2 配对对象 | **关闭(DEC-026)**:载体 = `interface_scope_snapshot_step1.json`;血统 = R50 成员超集保留为历史基线,接口面基线角色由 `interface_scope_prebackfill`/`interface_scope_postbackfill` 双快照承接 | 硬(已落地) |
 | E3 | v0.2 冻结 → G5a | B3 载体未定义,守卫无落点 | 硬(治理) |
 | E4 | G5a → G5b | 存量处置须在守卫就位后(否则无验收标准) | 硬(方法) |
 | E5 | D2(排除模式)→ G1 | **无约束**(排除 2 三重成员后,1,394 份与接口面零交集) | 无 |
@@ -71,9 +72,9 @@
 ## 4. 执行序(DEC-021 D4 已裁五步;原序 A/B 保留为历史参考)
 
 **Owner 裁定五步序(现行,取代序 A/B)**:
-1. **Step 1 Freeze interface snapshot**(接口面 87 冻结快照;载体/血统 = 执行令细化,见 E2');
-2. **Step 2 Generate / backfill source_version_id**(范围已裁 = 87);
-3. **Step 3 Freeze Contract v0.2**;
+1. **Step 1 Freeze interface snapshot** —— **DONE(DEC-026)**:`data/interface_scope_snapshot_step1.json` + audit `interface_scope_prebackfill`(载体/血统 = 执行令已细化,E2' 关闭);
+2. **Step 2 Generate / backfill source_version_id** —— **DONE(DEC-026,验证 PASS)**:`source_content_sha256` 回填 87/87,Manifest hash == IR hash 71/71;
+3. **Step 3 Freeze Contract v0.2** —— 待 Claude 正文合并 + Owner Freeze 令;
 4. **Step 4 Execute data hygiene**;
 5. **Step 5 Execute image recovery / historical cleanup**(D2 在此步:批跑默认排除 2 份三重成员 + 2 无 PDF 件,E5 零冲突)。
 
@@ -92,8 +93,8 @@
 | D-3 | 存量 1 例(unit_type)与回填是否同一原子再冻结 | 未裁(存量呈现态随 G5 载体) |
 | D-4 | 2 份三重成员恢复:做 / 不做 / 排除到底 | 未裁(Step 5 前须裁) |
 | D-5 | D2 是否可先于 v0.2 冻结解禁 | **关闭:否——D2 = Step 5 最后(DEC-021 D4)** |
-| D-6(新增) | Step 1 接口快照的载体形态与 R50 血统关系(新基线工件?audit_id 规则?) | 未裁,需 Step 1 执行令 |
+| D-6(新增) | Step 1 接口快照的载体形态与 R50 血统关系(新基线工件?audit_id 规则?) | **关闭(DEC-026)**:载体 = `data/interface_scope_snapshot_step1.json`;血统 = R50 保留历史基线 + pre/post 双快照承接接口面基线角色 |
 
 ## 6. 纪律
 
-本文档零执行、零数据修改;全部数字来自 `data/producer_readiness_probe_v3.json`(本轮 commit)与 R50 快照亲验;替代此前 IF-v2/Readiness v1 的定性"互斥"表述(修正记录见 §2)。
+本文档零执行、零数据修改(注:Step 1/Step 2 的执行发生在 DEC-026 Owner 执行令之下,执行记录 = `PREPROCESSING-STEP1-STEP2-VERIFICATION-REPORT-v1.md`,不在本文档内进行);全部数字来自 `data/producer_readiness_probe_v3.json` 与 R50 快照亲验;替代此前 IF-v2/Readiness v1 的定性"互斥"表述(修正记录见 §2)。

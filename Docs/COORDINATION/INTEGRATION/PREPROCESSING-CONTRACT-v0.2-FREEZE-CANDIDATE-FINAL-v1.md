@@ -4,6 +4,7 @@
 > 承接:`PREPROCESSING-CONTRACT-v0.2-FREEZE-CANDIDATE-REVIEW-v1.md`(v1;其 PROPOSED-NAMING N-1~N-4 **已被 Decision 1 取代**——Owner 采纳改契约侧命名而非 V3 侧改名,见 §FC-1 注)
 > Role:DSH = Source Evidence Producer 侧终稿条款文本(FC-1~FC-5,供 Claude 合入 Contract v0.2 正文);**Contract 正文组装与 V3 侧落字仍归 Claude**(DEC-022 Part 7),DSH 对两仓 Contract 正文零改动。
 > 本轮纪律(Owner 约束):禁改业务代码 / schema / 数据;禁 IR 重新生成 / 图片恢复 / daemon 执行;全部 implementation = **not started**;完成后**等待 Owner Freeze 令**(本文件不构成冻结)。
+> **执行记录注记(2026-09-16,DEC-026)**:Owner 已下达 Step 1/Step 2 执行令并已执行完毕——接口快照冻结 + `source_content_sha256` 回填 87/87 验证 PASS;详件 = `PREPROCESSING-STEP1-STEP2-VERIFICATION-REPORT-v1.md`。本文件 §B/§C/§D 的状态标注以该注记为准(D-1/D-2/D-6 = DONE;C.1 载体已物化,正文引用形态待追认);**§A 条款文本(FC-1~FC-5)不受影响,仍是 Claude 合入基准**。本文件仍**不是冻结令**。
 > Discipline:DECISION 段 = Owner 原文保守义;PROPOSED 段显式标注;OBSERVED = 复用既有工件,零新测量。
 
 ---
@@ -73,10 +74,10 @@
 | C-0a | FC-1~FC-5 合入 Contract v0.2 正文(删旧表述 / 歧义替换 / bytes 条款 / 87·71·16 核对 / 锚点更新至 `b9c4404`+本轮) | Claude | **待执行** |
 | C-0b | DSH 五文档同步(本文件 + Gap List v1.4 + Facts v2.3 + DepMap v2.4 + Review v1 注记) | DSH | **本轮完成** |
 | C-0c | Owner 确认 C-0a 落字质量(可令 DSH 复核,同 Freeze Candidate Review 模式) | Owner | 待令 |
-| **Step 1**(五步序) | Freeze interface snapshot(载体形态 + R50 血统,D-6) | DSH 按令 | **待 Owner 执行令** |
-| **Step 2**(五步序) | 回填 `source_content_sha256` × 87(+ R50 配对再冻结:新 audit_id + 血统注记);可同令裁 IR 字段名对齐(UNKNOWN-4) | DSH 按令 | **待 Owner 执行令** |
-| C-verify | 回填后逐份对账:`manifest.source_content_sha256 == sha256(当前 md 字节) == ir.source_sha256`(有 IR 者);快照/新基线 verify PASS | DSH | 随 Step 2 |
-| **Step 3**(五步序) | **Owner Freeze 令 → Contract v0.2 冻结** | Owner | 前置 = Step 1 + Step 2 完成 + C-0a 收口 |
+| **Step 1**(五步序) | Freeze interface snapshot(载体形态 + R50 血统,D-6) | DSH 按令 | **DONE(DEC-026)**:`interface_scope_snapshot_step1.json` + audit `interface_scope_prebackfill` |
+| **Step 2**(五步序) | 回填 `source_content_sha256` × 87(+ R50 配对再冻结:新 audit_id + 血统注记);可同令裁 IR 字段名对齐(UNKNOWN-4) | DSH 按令 | **DONE + 验证 PASS(DEC-026)**:87/87;IR 字段名对齐未同令(仍开) |
+| C-verify | 回填后逐份对账:`manifest.source_content_sha256 == sha256(当前 md 字节) == ir.source_sha256`(有 IR 者);快照/新基线 verify PASS | DSH | **DONE(DEC-026)**:71/71 + 87/87 + post 快照 verify ok |
+| **Step 3**(五步序) | **Owner Freeze 令 → Contract v0.2 冻结** | Owner | 前置 = Step 1 + Step 2 **已完成** + C-0a 收口(待 Claude) |
 | (Step 4/5) | 数据治理 / 图片恢复 | 另令 | 不属本轮 |
 
 **本文件完成后状态 = 等待 Owner Freeze 令(及 Step 1/Step 2 执行令)。**
@@ -85,12 +86,12 @@
 
 | # | 项 | 侧 | 性质 | 状态 | 依赖 |
 |---|---|---|---|---|---|
-| D-1 | manifest 回填 `source_content_sha256`(87 份,64 小写 hex) | producer | schema + 数据 | **not started** | Step 2 执行令;前置 Step 1;配对 R50 再冻结(E2) |
-| D-2 | 双层关联由 path 值相等升级为 `source_content_sha256` 关联 | producer | 派生(随 D-1) | **not started** | 随 D-1 |
-| D-3 | 接口面 87 清单工件发布(C.1) | producer | 数据 | **not started** | 载体未裁(§B-2) |
+| D-1 | manifest 回填 `source_content_sha256`(87 份,64 小写 hex) | producer | schema + 数据 | **DONE + 验证 PASS(DEC-026)** | 已执行 |
+| D-2 | 双层关联由 path 值相等升级为 `source_content_sha256` 关联 | producer | 派生(随 D-1) | **验证 PASS(DEC-026)**:71/71 | 已执行 |
+| D-3 | 接口面 87 清单工件发布(C.1) | producer | 数据 | **已物化(DEC-026 Step 1 快照)**;v0.2 正文引用形态待追认 | 追认随 C-0a/Freeze |
 | D-4 | IR 字段名对齐(`source_sha256` → `source_content_sha256`,如令) | producer | 数据(改写 IR 工件) | **not started** | Owner 令;R52 工件版本策略(§B-3) |
 | D-5 | G5 unit_type 值域守卫 + unknown → reviewable record 生产链语义 | producer | 代码 | **not started** | 两层载体未裁(§B-1) |
-| D-6 | Step 1 接口快照冻结(D-6 载体与 R50 血统) | producer | 数据 | **not started** | Owner 执行令 |
+| D-6 | Step 1 接口快照冻结(D-6 载体与 R50 血统) | producer | 数据 | **DONE(DEC-026)**:载体 = 快照工件 + pre/post 双 audit;R50 = 历史基线 | 已执行 |
 | D-7 | V3 获取 raw bytes + 独立重算 SHA256 + 比较 `source_content_sha256` + fail-closed(FC-2 四项) | V3 | 代码 | **not started**(自算现为 canonical_json 包裹) | 不阻塞契约冻结;排期归 Claude |
 | D-8 | V3 六项消费义务(验证 Manifest / 重算 hash / 判断接受 / 验证 IR / Gate / 拒收) | V3 | 代码 | **not started** | 同上 |
 | D-9 | SEMANTIC_STATUS 解冻加 `unknown` + reviewable record → pending_review 机制 | V3 | 代码 | **not started**(词表/路由已裁) | 同上 |
@@ -99,6 +100,6 @@
 
 ## 纪律自查
 
-零业务代码 / 零 schema / 零数据 / 零 IR 重生成 / 零图片恢复 / 零 daemon;两仓 Contract 正文零改动(Claude 合入义务另记);写入面 = 本文件 + Gap List v1.4 + Facts v2.3 + DepMap v2.4 + Review v1 注记 + ODR v1.6 + 台账三件;全部 implementation = not started;本文件**不是冻结令**,冻结 = Owner(五步序 Step 3)。
+零业务代码 / 零 schema / 零 IR 重生成 / 零图片恢复 / 零 daemon;两仓 Contract 正文零改动(Claude 合入义务另记);写入面(DEC-025 轮)= 本文件 + Gap List v1.4 + Facts v2.3 + DepMap v2.4 + Review v1 注记 + ODR v1.6 + 台账三件;全部 implementation = not started(DEC-025 轮时点);本文件**不是冻结令**,冻结 = Owner(五步序 Step 3)。**DEC-026 执行轮注**:Owner 明令授权的 Step 1/Step 2 数据动作已执行(仅追加 `source_content_sha256` 一键 × 87 + 快照工件),六禁其余项零触碰;执行记录 = `PREPROCESSING-STEP1-STEP2-VERIFICATION-REPORT-v1.md`。
 
 *v1 · 2026-09-16 · DSH(Source Evidence Producer)。终稿条款文本基准 = Owner §1septies 原文;如有文字冲突,以 Owner 原文为准。*
