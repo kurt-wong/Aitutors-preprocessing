@@ -2567,3 +2567,12 @@ ext 更新;CURRENT.md 顶部暂停横幅。Contract 保持 v0.1 DRAFT,语料零�
 **落盘(DSH Part 8 五文档 + 台账)**:①ODR v1.4(§1quinquies 照录 + 保守义表 + §3 未裁清单重写);②DEC-023 入册;③**主交付 `PREPROCESSING-PRODUCER-ALIGNMENT-v5.md`**(Owner Part 10 三段格式:Changed Documents 七行 / |Decision|Current|Final Rule| 八行对齐表 / Remaining UNKNOWN 四组;Final Boundary 五项核对全达成);④Interface Facts v2.2(§0bis.3 DEC-SOURCE-IDENTITY 终局 + §0bis.4 path 非身份原则 + 16 份 Semantic Pending 行);⑤Gap List v1.3(G1 定义三要素全裁/G2 path 收窄/G3 再生成允许+四约束/G4 单次再生成与持续机制分裁/G5 词表终局+路由;**最小冻结集再收敛 = 两层状态载体 + 接口面 87 表达**);⑥Dependency Map v2.3(E8 由"若扩产"变"已允许待令";机理修正 = id 钉 bytes 非 path;主链与交集定量不变);⑦Alignment v4 承接注记;⑧台账三件。
 
 **修正与关闭(相对上一轮表述)**:v4 G-1 格式 PROPOSED → **已裁 64 小写 hex**(与 ir.source_sha256 71 份实证形态零迁移);v4 G-4 交付形态 → 收窄为"bytes 传输方式"(path 已裁非身份);"Semantic Unavailable 正常态" → **Semantic Pending 可恢复**;D3 路由"pending_review 或 rejected 由规则决定" → **已给规则 = reviewable record → pending_review**。Remaining UNKNOWN 收敛四组:①两层状态载体 + reviewable record 形态 ②执行令族(Step1/Step2/D-3/D-4/16 份再生成批次与 R52 工件版本策略)③source bytes 交付方式(弱)④文字层(legacy 披露/_imgs 接口地位)。零执行;写入面 = 5 文档改 + 1 新文档 + 台账三件;全部 implementation = not started。
+
+---
+
+## 2026-09-16 Contract v0.2 Freeze Candidate Review 启动(DEC-024):Freeze Candidate Review v1 交付
+
+**触发**:Owner 统一任务指令(进入 PREPROCESSING Contract v0.2 Freeze Candidate Review)——六项已确认原则 + 两项新裁决面;输出 A Freeze Candidate / B 剩余未决 / C Implementation Gap / **D 禁止修改任何代码和数据**。
+**裁决要点(DEC-024,ODR v1.5 §1sexies 原文照录)**:Part1-4 再确认(source identity = SHA256(raw bytes),path 仅 locator / Manifest·IR 双层,身份验证独立于 IR / 16 份 Semantic Pending 四保证 / 两状态词表禁合并);**Part5【新】命名** = 提出最终命名方案,避免 Producer hash identity 与 V3 UUID FK 同名;**Part6【新】bytes 交付** = 只冻结能力要求(V3 必须获得 raw bytes 并验证 hash),不冻结具体传输方案。
+**落盘(DSH)**:①**主交付 = `INTEGRATION/PREPROCESSING-CONTRACT-v0.2-FREEZE-CANDIDATE-REVIEW-v1.md`**(Claude v0.2 DRAFT 558 行全文亲读;判定 **CONDITIONAL READY**——六原则 1-4 PASS,5/6 = 文字层落字项);②**PROPOSED-NAMING N-1~N-4**:契约键 `source_version_id` 冻结不改名(零迁移,71 份实证形态)/ V3 内部 UUID FK 改名 `source_version_row_id` / 绑定列 CHAR(64) UNIQUE / 过渡期引用双向限定语;采纳后 OQ-8′ 关闭;③**PROPOSED-BYTES 能力条款草案**(V3 必须获得 raw bytes + 独立重算 SHA256 对账 fail-closed;传输机制不冻结,OQ-12′ 降级 delivery logistics);④F-4(Claude 两处 "Semantic Unavailable" 旧表述 = §5.3 DA-20 + §7,WARNING)/ F-6(OQ-18 PROPOSED 关闭:E1 前提被 DEC-021 D4 五步序 + DEC-023 三要素裁决消解)/ F-8 正面确认零矛盾;⑤ODR v1.5 + DEC-024 入册 + 台账三件。
+**冻结边界**:CONDITIONAL READY ≠ 冻结;v0.2 冻结 = 五步序 Step 3,前置 Step 1 接口快照 + Step 2 回填 87(执行令均未下达),冻结令权在 Owner。零代码/schema/数据/IR 重生成/图片恢复/daemon/Contract 正文改动;写入面 = 1 新文档 + ODR + 台账三件;全部 implementation = not started。

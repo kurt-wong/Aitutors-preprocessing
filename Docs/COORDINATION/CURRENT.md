@@ -1,23 +1,23 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**Interface Finalization Revision v1 固化入册 DEC-023**:DEC-SOURCE-IDENTITY(source_version_id = SHA256(raw bytes),64 字符小写 hex)/ Path 非身份(source_file = locator)/ 16 份 = Identity Available · Semantic Pending(IR 再生成允许 + 四约束 + 四禁)/ Scope 87 保持 / 两状态体系词表终局(semantic: ready·incomplete·unknown;decision: pending_review·approved·rejected)/ unknown → reviewable record → pending_review;**Producer Alignment v5 交付;Final Boundary 五项达成 → 进入 v0.2 Freeze Candidate Review**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**Contract v0.2 Freeze Candidate Review 启动(DEC-024)**:六项原则核验 = 1-4 PASS / 5·6 新裁决面回应;DSH 交付 Freeze Candidate Review v1(CONDITIONAL READY;PROPOSED-NAMING N-1~N-4 + PROPOSED-BYTES 能力条款);冻结 = 五步序 Step 3,前置 Step 1/Step 2 执行令未下达,冻结令权在 Owner)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
-## ⏭ 当前状态:DEC-023 已裁,接口原则讨论关闭 → Contract v0.2 Freeze Candidate Review(2026-09-16)
+## ⏭ 当前状态:Contract v0.2 Freeze Candidate Review 进行中(2026-09-16,DEC-024)
 
-**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.4**:§1 + §1bis + §1ter + §1quater + **§1quinquies DEC-023**)。
+**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.5**:§1 + §1bis + §1ter + §1quater + §1quinquies + **§1sexies DEC-024**)。
 
-**DEC-023 生效(生产侧)**:
-- **Source identity belongs to content hash, not storage location**:`source_version_id` 唯一决定 Identity;path/absolute path/directory **不得**参与任何唯一/身份/version/hash 判断;
-- **`source_file` 保留 = locator information**(辅助定位),跨系统唯一识别 = `source_version_id`;路径变化不得导致 id 变化;
-- **16 份 = Semantic Pending(可恢复)**:IR 再生成允许但四约束(bytes 不变 / id 一致 / 新 IR 绑定 id / 重过 identity verification + semantic validation)+ 四禁(禁改原 source / 禁重 OCR 覆盖 / 禁新 identity / 禁新 hash 替代);
-- **Scope**:87 不得改 71;87 = 正式身份接口 / 71 = 当前 IR 语义消费 / 16 = 等待 semantic processing;禁 "IR available = Interface available";
-- **词表终局**:semantic = ready/incomplete/unknown;decision = pending_review/approved/rejected;两体系禁合并;unknown 禁 silent skip/auto conversion/silent fallback → **reviewable record + pending_review workflow**。
+**DEC-024(Owner 六项已确认原则 + 两项新裁决面)**:
+- 再确认:source identity = `SHA256(raw bytes)`(path 仅 locator)/ Manifest·IR 双层(身份验证独立于 IR)/ 16 份 Semantic Pending(四保证:bytes hash 不变·identity 不变·IR 版本可追踪·禁覆盖历史)/ 两状态词表禁合并;
+- **【新】命名**:提出最终命名方案,避免 Producer hash identity 与 V3 UUID FK 同名;
+- **【新】bytes 交付**:只冻结能力要求(V3 必须获得 raw bytes 并验证 hash),不冻结传输方案;
+- 输出 A Freeze Candidate / B 剩余未决 / C Implementation Gap / **D 禁止修改任何代码和数据**。
 
-**DSH 本轮交付**:`INTEGRATION/PREPROCESSING-PRODUCER-ALIGNMENT-v5.md`(Owner Part 10 三段:Changed Documents / Decision Alignment Summary / Remaining UNKNOWN 四组);ODR v1.4 / Interface Facts v2.2(§0bis.3-4)/ Gap List v1.3(最小冻结集再收敛 = 两层状态载体 + 接口面 87 表达)/ Dependency Map v2.3。**Claude 侧任务**:Consumer Alignment 更新 + Contract v0.2 DRAFT 四章节(Identity/Scope/Semantic/Boundary)+ V3 Gap Matrix + 登记 "V3 identity verification capability not implemented" = not started;V3 消费必须依赖 source_version_id 不得依赖 path。
+**DSH 本轮交付**:`INTEGRATION/PREPROCESSING-CONTRACT-v0.2-FREEZE-CANDIDATE-REVIEW-v1.md`(Claude v0.2 DRAFT 558 行全文亲读)——判定 **CONDITIONAL READY**;PROPOSED-NAMING **N-1~N-4**(契约键 `source_version_id` 不改名零迁移 / V3 UUID FK 改名 `source_version_row_id` / 绑定列 CHAR(64) UNIQUE / 过渡期引用限定语;采纳后 OQ-8′ 关闭);PROPOSED-BYTES 能力条款草案(传输不冻结,OQ-12′ 降级 logistics);F-4(Claude 两处 "Semantic Unavailable" 旧表述修正)+ F-6(OQ-18 PROPOSED 关闭:E1 由五步序取代)。
 
-**等 Owner**:v0.2 Freeze Candidate Review;Step 1/Step 2 执行令;D-3 存量 1 例 / D-4 2 份三重成员;16 份再生成执行令(如需)。
-**仍暂缓**:数据治理四项;IR 重生成 / 数据回填 / schema 修改(本轮禁执行);Contract 冻结(本轮禁)。
+**等 Owner**:①N-1~N-4 命名方案采纳 ②A.3 bytes 能力条款文本采纳 ③OQ-18 关闭确认 ④冻结令(= Step 3,前置 = Step 1 接口快照 + Step 2 回填 87 执行令)。
+**等 Claude**:F-4 修正 + F-5 锚点更新 + 两项 PROPOSED 落字 v0.2 正文。
+**仍暂缓**:数据治理四项;IR 重生成 / 数据回填 / schema 修改(执行令前零动作);Contract 冻结(令权在 Owner)。
 
 ## 主线:preprocessing 内部收口(数据卫生,Owner 令)
 
@@ -30,8 +30,8 @@
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-023 入册 + Producer Alignment v5**(五文档同步:ODR v1.4 / Facts v2.2 / Gap List v1.3 / Dependency Map v2.3;实现状态全部 not started);禁执行 IR 重生成/回填/schema;Contract 正文零改动 |
-| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **本轮任务(Part 9)**:Consumer Alignment 更新 + Contract v0.2 DRAFT 四章节(Identity/Scope/Semantic/Boundary)+ V3 Gap Matrix + 登记 "V3 identity verification capability not implemented" = not started;V3 消费必须依赖 source_version_id 不得依赖 path;遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 + 契约稿 untracked(REPORTED 级) |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-024 入册 + Contract v0.2 Freeze Candidate Review v1 交付**(Claude v0.2 DRAFT 全文亲读,CONDITIONAL READY;PROPOSED-NAMING N-1~N-4 + PROPOSED-BYTES);零代码零数据,Contract 正文零改动 |
+| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **v0.2 DRAFT(Frozen Candidate)已交付**(`PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md`,DSH 已全文评审);待办:F-4 两处 "Semantic Unavailable" 旧表述修正 + 锚点更新(eed83ee)+ 两项 PROPOSED 落字;遗留:R5-03 DEC 编号冲突(撞号已累积 3 处)+ DEC-017/018 同步 + 契约稿 untracked(REPORTED 级) |
 
 ## P3.2 / EB-004 终局(VERIFIED)
 
