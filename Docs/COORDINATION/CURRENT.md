@@ -1,7 +1,20 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**Contract v0.2 Frozen 状态最终登记确认(DEC-032)**:Freeze Artifact 复验 PASS(`origin/main` = `4daecf0b`,is-ancestor `f4941ff` = TRUE,字节级重导 sha256 == `9c6b9063…7528` 必须值,remote reachable = TRUE)→ Producer 侧账本登记 **Contract v0.2: FROZEN** → **STATUS: CONTRACT FROZEN**;Freeze 不含三项实现;五类目标零修改)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**Contract v0.2 Frozen 状态最终登记确认(DEC-032)**:Freeze Artifact 复验 PASS(`origin/main` = `4daecf0b`,is-ancestor `f4941ff` = TRUE,字节级重导 sha256 == `9c6b9063…7528` 必须值,remote reachable = TRUE)→ Producer 侧账本登记 **Contract v0.2: FROZEN** → **STATUS: CONTRACT FROZEN**;Freeze 不含三项实现;五类目标零修改)· 同轮增补「新会话快速恢复」节(纯文档,零决策)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+
+## 🧭 新会话快速恢复(新会话先读本节,30 秒回到工作状态)
+
+**一句话状态**:Contract v0.2 = **FROZEN**(DEC-032,2026-09-16);DSH 指令链全部闭环,**令前保持零新数据动作**,等 Owner 下一步指令。
+
+- **指令链末端**:… → DEC-029(`8242d9b`)→ DEC-030(`a899adf`)→ DEC-031(`5b0552d`)→ **DEC-032(`9cf35e3` = main HEAD,远端亲验一致,CI run 35101795142 success)**;ODR = **v1.13**(§1quaterdecies 原文照录);工作树干净;
+- **冻结对象(唯一有效四元组)**:`kurt-wong/AITutors-v3` @ `f4941ff87c0130ee0b79ff6b807c4ec2826b8ff1` / `Docs/COORDINATION/CONTRACTS/PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` / sha256 **`9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528`**(92,197 bytes)。`c6e771c` / `c8d89586…1032` = 历史登记,**勿引用**。V3 远端 main 观测值 = `4daecf0b`(DEC-032 时点;Claude 可能继续推进,一切以 fetch/ls-remote 实测为准);
+- **关键数字**:manifest 166 / 接口面 87(87/87 携 `source_content_sha256`,unique 87 · dups 0)/ IR 71 ADMITTED(1,664 单元,71/71 对账零漂移)/ 16 Semantic Pending / v1 legacy 79(隔离,C-IN-1 下必拒)/ R50 基线 356(**DRIFT = 恰 87 为预期**,承接者 = pre/post audit 双快照 `b11874c4…` / `2cb980c7…`);
+- **边界纪律(新会话必守)**:①Freeze 不含三项实现——bytes verification / identity gate / IR verification;五项 V3 消费能力全部 **NOT IMPLEMENTED**,契约 REQUIREMENT ≠ 现状(Decision ≠ Implementation);②已裁六项(identity key / path / `source_version_id` / Semantic Pending / 87·71·16 / bytes requirement)**不重开**;③DSH 令前零新数据动作——Step 4 数据治理 / Step 5 图片恢复 / IR 重生成 / schema 变更 / daemon 仍禁;④case id 不重编号;REPORTED ≠ OBSERVED;转述层会漂移,引用必须回到证据文件;
+- **下一阶段**:V3 Consumer Identity Verification Implementation(bytes → SHA256 → Manifest 验证 → IR 验证 → fail-closed → Gate → Admission)——实现排期属 V3 侧;若 Owner 令 DSH 复核实现,核验基准 = 契约 §2.3/§5.6.2 验证链 + 五项 NOT IMPLEMENTED 边界不得因 FROZEN 松动;
+- **长开项(不阻塞 FROZEN,须令才动)**:16 份 IR 再生成批次 / D-3 存量 1 例 `andalone_question` / D-4 两份三重成员 / IR 字段名对齐(`source_sha256` → `source_content_sha256`)/ 两层状态载体 + reviewable record / C.1 载体正文引用形态追认;延期五项(legacy 79 披露 / 17 拒收 / OCR-PDF 扩展 / DEC 编号统一(R5-03)/ bytes 传输方式)不处理;
+- **环境纪律**:`PYTHONIOENCODING=utf-8`;PowerShell `>` 重定向写 UTF-16(字节级导出用 `cmd /c "git show … > file"` + `Get-FileHash`);push / gh 需 `sandbox_permissions: danger-full-access` + justification;push 后必须 `git ls-remote origin main` 亲验 + `gh run list` 对账;测试基线 = **338 passed / 1 xfailed**;
+- **阅读顺序**(PROTOCOL §5):state.yaml(权威)→ 本文件 → ODR v1.13 → log.md 尾部 → 最新 HANDOFF;裁决原文全集 = `INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`。
 
 ## ⏭ 当前状态:CONTRACT FROZEN(2026-09-16,DEC-032)→ 下一阶段 = V3 Consumer Identity Verification Implementation
 
