@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.9(2026-09-16,追加 §1decies Producer 侧 Contract Freeze 最终确认令:七项要素核验 PASS + 证据链确认 + 五项 NOT IMPLEMENTED 记录,结论 = Producer READY FOR OWNER FREEZE;v1.8 = §1novies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies;与 V3 侧 DEC-028 撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation`
+> Status: **v1.10(2026-09-16,追加 §1undecies Contract v0.2 Freeze Producer Final Audit:证据链重推导 VERIFIED + 六项一致 + 冻结对象四元组钉死 + Freeze Recommendation = READY FOR FREEZE;v1.9 = §1decies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies;与 V3 侧 DEC-028 撞号,已知 R5-03 面)+ `[DEC-029]`(§1undecies;与 V3 侧 DEC-029 撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -450,6 +450,29 @@
 | 任务3 | 五项 **NOT IMPLEMENTED** 显式记录(确认报告 §3;与契约 §5.6.1 五项表逐项一致,双侧同判);契约冻结不交付任何能力 |
 | 禁止事项 | 全部遵守:零数据动作、V3 仓只读、Freeze 范围未扩展、零新架构裁决 |
 | 结论 | **Producer READY FOR OWNER FREEZE**(零 BLOCKER;F-1/F-2 供 Owner 在 Freeze 令中一并处置) |
+
+## 1undecies. 分项裁决 — Contract v0.2 Freeze Producer Final Audit(Owner 2026-09-16 第十二轮,原文照录;canonical 引用面)
+
+### 任务(原文照录要点)
+
+> **Task 1 — Freeze Evidence Final Review**:重新确认 Step1 snapshot / Step2 backfill / Verification report / Final check 四者关联;输出 artifact / commit / sha256 / timestamp,形成最终证据链。
+> **Task 2 — Contract 一致性检查**:确认 `source_content_sha256` / path non identity / 87·71·16 / Semantic Pending / bytes verification / fail closed 全部一致。
+> **Task 3 — 协助冻结对象确定**:Producer 侧认可 Contract v0.2 Freeze Version 对应 repo / commit / document / hash,避免未来版本歧义。
+> **Task 4 — 输出 Freeze Recommendation**(Producer Freeze Confirmation 格式:Status / Evidence / Remaining non-blocking items / Implementation boundary)。
+> **禁止**:修改 source bytes / IR / Question / schema / pipeline。
+> **建议流程**:Claude 修正 F-1/F-2 → DSH 最终确认 → Owner Freeze 令 → Contract v0.2 Frozen → 进入 V3 Consumer Identity Verification 实现阶段。
+> **不再重开**:path 是否 identity / `source_version_id` 命名 / 16 份是否重跑 / hash 是否唯一;下一阶段转向 V3 消费链(bytes → SHA256 → Manifest 验证 → IR 验证 → fail-closed)。
+
+### §1undecies 生产侧保守义(DSH 解释,非裁决;执行详件 = `PREPROCESSING-CONTRACT-v0.2-FREEZE-RECOMMENDATION-v1.md`)
+
+| 条款 | 生产侧落实语义 |
+|---|---|
+| Task 1 | final check 本轮重跑 **C1-C9 全 PASS = VERIFIED**,产出字节与 DEC-027 登记 sha256 **1:1 复现**;五工件 sha256 复算 5/5 相符;证据链表(artifact/commit/sha256/timestamp)见推荐件 §1 |
+| Task 2 | 六项在 **commit 化文本**(`c6e771c`,与工作树零差异)上全部一致,零不一致项(推荐件 §2) |
+| Task 3 | 冻结对象四元组 = `kurt-wong/AITutors-v3` @ `c6e771cea6757043ee34307ec0ce1a7a0a62266d` / `PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` / sha256 `c8d89586…1032`;V3 工作树未跟踪文件均非冻结对象;**F-2 本地 commit 已闭合,但 `c6e771c` 未 push(origin/main = `69a6c0b`,领先 18 commits)→ 记 F-2′** |
+| Task 4 | 输出 = **READY FOR FREEZE**;Remaining non-blocking = F-1(状态注记仍为执行前时点 + 零工件引用)/ F-2′(push)/ 长开项清单;Implementation boundary = 五项 NOT IMPLEMENTED |
+| 禁止 | 零数据动作、零代码改动、V3 仓只读(fetch/ls-remote 仅读)、Freeze 范围未扩展、零新架构裁决;已裁四题未重开 |
+| 结论 | **Producer READY FOR FREEZE**;建议 Freeze 令一并要求 Claude 处置 F-1(增补注记,不改条款正文)与 F-2′(push 后以远端 commit+hash 复核) |
 
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 

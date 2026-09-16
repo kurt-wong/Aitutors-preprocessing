@@ -2613,3 +2613,13 @@ ext 更新;CURRENT.md 顶部暂停横幅。Contract 保持 v0.1 DRAFT,语料零�
 **Task 3(实现边界)**:五项显式记录 **NOT IMPLEMENTED**——raw bytes acquisition / SHA256 独立验证 / Manifest identity verification / IR identity verification / identity gate(与契约 §5.6.1 五项表逐项一致,双侧同判;契约 REQUIREMENT 不得读作现状)。
 **同步**:确认报告 = `INTEGRATION/PREPROCESSING-CONTRACT-FREEZE-PRODUCER-CONFIRMATION-v1.md`;Freeze Evidence v1 §8 后续确认注;ODR v1.9(§1decies)/ state.yaml(DEC-028 + `owner_freeze_confirmation` 块)/ CURRENT。注:DSH DEC-028 与 V3 DEC-028 撞号(R5-03 面,Owner 已延期统一)。
 **结论**:**Producer READY FOR OWNER FREEZE**(零 BLOCKER)。等 Owner 正式 Freeze 令;等 Claude F-1/F-2 文本同步。零数据动作、零代码改动、Freeze 范围未扩展、零新架构裁决。
+
+## DEC-029 — Contract v0.2 Freeze Producer Final Audit(2026-09-16)
+
+**指令**:Producer 侧 Freeze 前最终确认;禁改 source bytes / IR / Question / schema / pipeline;输出 Freeze Recommendation。
+**Task 1(证据链最终确认)**:`freeze_evidence_final_check.py` 重跑 = **C1-C9 全 PASS,overall VERIFIED**,产出字节与 DEC-027 登记 sha256 **1:1 复现**(`a707738e…5c33`,确定性);五工件 sha256 复算 **5/5 与登记相符**(Step1 `b4f14524…ad99` / pre audit `b11874c4…dd9c` / Step2 `d430cc2f…eec1` / post audit `2cb980c7…4096` / verification report `da97a2f3…bb7c`);证据链表(artifact/commit/sha256/timestamp)成文于推荐件 §1。
+**Task 2(六项一致)**:核验对象升级为 **commit 化文本**(Claude 已 commit `c6e771c` = DEC-032 注册,工作树与 commit 零差异);`source_content_sha256` / path non identity / 87·71·16 / Semantic Pending / bytes verification / fail-closed **六项零不一致**;§5.6.1 五项 NOT IMPLEMENTED 在位。
+**Task 3(冻结对象四元组)**:`kurt-wong/AITutors-v3` @ **`c6e771cea6757043ee34307ec0ce1a7a0a62266d`** / `Docs/COORDINATION/CONTRACTS/PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` / sha256 **`c8d895863a4a07d1d262febe959f6cb2508a2058deeb001aae2c1c1175fe1032`**;V3 工作树未跟踪文件(CONTRACT.md/SKELETON/REVIEW)均非冻结对象;Producer 配套证据仓 = 本仓 @ `67f564c`。**发现:F-2 本地 commit 已闭合,但 `c6e771c` 未 push(V3 origin/main = `69a6c0b`,本地领先 18 commits)→ 记 F-2′**。
+**Task 4(输出)**:推荐件 = `INTEGRATION/PREPROCESSING-CONTRACT-v0.2-FREEZE-RECOMMENDATION-v1.md`,Status = **READY FOR FREEZE**;Remaining non-blocking = F-1(状态注记仍为执行前时点 + 零工件引用)/ F-2′(push)/ 长开项清单;Implementation boundary = 五项 NOT IMPLEMENTED。
+**同步**:ODR v1.10(§1undecies)/ state.yaml(DEC-029 + `owner_freeze_final_audit` 块 + next)/ CURRENT。
+**结论**:**Producer READY FOR FREEZE**。建议 Owner Freeze 令一并要求 Claude 处置 F-1(增补注记,不改条款正文)与 F-2′(push 后以远端 commit+hash 复核)。零数据动作、零代码改动、V3 仓只读、Freeze 范围未扩展、零新架构裁决、已裁四题未重开。
