@@ -2708,3 +2708,21 @@ NOT IMPLEMENTED
 ## RS.MD 会话重启提示词刷新(2026-09-16,非决策性文档更新,Owner 令"更新 RS.MD,准备新建会话")
 
 **动作**:`RS.MD`(会话重启提示词)自 2026-09-15 P3.2 终局轮版本(main = `71e9257`,落后 7 轮)重写为 DEC-036 轮状态:固化 main = **`b4367e7`** / V3 `72af28d` / 冻结四元组 / 状态四行(CONTRACT FROZEN · BASELINE FINALIZED+ARCHIVED · CONSUMER IDENTITY NOT IMPLEMENTED · GUARDIAN MODE ACTIVE + PHASE1 SNAPSHOT ANCHORED)/ Guardian 任务面(含 Trigger ② armed 与判读纪律)/ 关键数字(166·87·71·16·79·356)/ 已裁六项与延期五项 / 待裁定优先序 / 恢复动作清单(含 Guardian 触发点自检步骤)。**零决策 / 零数据 / 零 schema**;冲突时以 log.md 与 state.yaml 为准(文件内已声明)。
+
+## DEC-037 — Consumer Phase 2 开工前 Baseline Check(2026-09-16)
+
+**指令**:继续 Producer Frozen Baseline Guardian。任务 = Consumer Phase 2 开工前 Baseline Check。要求:①只读检查 source bytes / manifest / producer IR / evidence artifacts / freeze artifact;②不修改任何内容;③输出 `PREPROCESSING-PRODUCER-GUARDIAN-PHASE2-CHECK-v1.md`;④报告必须区分 Observed(本轮实际执行)与 Historical(历史登记);⑤禁止使用历史结果冒充当前观察 / 自动修复 mismatch / 修改 producer 数据;⑥若发现 mismatch 立即 STOP 仅报告,否则登记 Guardian checkpoint;⑦不参与 Consumer 代码实现。
+
+**① M1~M6 全量核验 = 全 PASS 零 mismatch(OBSERVED 本轮)**:post-backfill audit(`2cb980c7…4096`)files map **177 锚定文件全量逐文件 sha256 比对:checked=177 / missing=0 / mismatch=0**(md=87 / manifest=87;快照自身 sha 实测相符);M3 IR `data/resolver_ref_r52/resolver_ir.json` = **`fbcf41ab…b04a5`** 独立散列相符;M4 证据六工件 + R50 辅助锚 **7/7 match=True**(step1 `b4f14524…ad99` / step2 report `d430cc2f…eec1` / pre audit `b11874c4…dd9c` / post audit `2cb980c7…4096` / final check `a707738e…5c33` / verification report `da97a2f3…bb7c` / R50 `963cd6b1…ee77`,逐项全值见报告 §1.2);M5 corpus 双值 pre `4ad3458b…19160` / post `24af8f56…0a10` 快照字段相符;M6 冻结对象跨仓字节重导(`cmd /c "git show f4941ff:<contract> > %TEMP%"` + `Get-FileHash` + 即时删除)**bytes=92,197 sha256 = `9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528` MATCH=True** + `merge-base --is-ancestor f4941ff origin/main` = TRUE(exit 0)+ `f4941ff..origin/main` 契约 diff = empty。**零 mismatch → 零 STOP 触发**。
+
+**② 本轮 Observed(双仓亲验)**:本仓 `HEAD` = `bebd9e1`(== `origin/main`,开工时工作树干净;`b4367e7` + 1 = DEC-036 轮后 RS.MD 刷新记账提交);V3 仓 `git fetch origin` 首试 **FAIL**(沙箱 `.git/FETCH_HEAD` Permission denied,如实入账),宽模式重试 **OK**;`origin/main` = **`72af28d5854b56fc605e1897fb757703826a6233`**(reachable = TRUE;与 DEC-033/034/036 同值**未前进**);远端提交链实测 `72af28d`(restart-prompt v1.67 治理轮)→ `2a723a6`(会话 bootstrap)→ `3b3b397`(V3 侧 DEC-036 FROZEN 登记)→ `4daecf0` → `305bd81` → `f4941ff`,**全部为 docs 提交,尚无 Consumer Phase 1 / Phase 2 实现提交**。**REPORTED vs OBSERVED 分账**:Owner 宣告 Phase 2 开工(REPORTED),V3 远端无实现提交(OBSERVED),不混写;DEC-036 开工前锚点后远端零新增提交 → 本轮快照同时构成 **Phase 2 开工前锚点**。
+
+**③ Historical(仅存档引用,未混入本轮判定)**:DEC-036 轮 = M1~M6 全 PASS,本仓 `27727c4` / V3 `72af28d`(Recv failure 重试);DEC-035 轮 = BOUNDARY HOLDING,bad=0,本仓 `e1584bd` / V3 `72af28d`;DEC-034 轮 = 四 immutable 终检全 PASS,V3 `72af28d`(Historical = DEC-031 `305bd81` / DEC-032 `4daecf0b` / DEC-033 首试失败+重试);DEC-033 轮 = 六工件 6/6 + C1-C9 全 PASS;DEC-032 轮 = `4daecf0b` + 契约重导同值。
+
+**④ Trigger ② 状态**:post-Phase1 recheck = **ARMED 未执行**(远端无 Phase 1 实现提交可复核);若实现后续 push 至 V3 远端,按 DEC-036 既定预案只读复检(检查面 = M1 / M2 / M3 / M6 + M4 辅助);判读纪律 = Consumer 新增代码提交本身非违例(合法写面 = V3 仓代码),违例仅指五类只读对象字节变化。
+
+**⑤ 测试基线**:本轮复跑全量测试 **338 passed / 1 xfailed**(与登记基线一致)。
+
+**⑥ 输出与登记**:`INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-PHASE2-CHECK-v1.md`(docs-only);Guardian checkpoint 登记 = state.yaml(DEC-037 + `producer_guardian_phase2` 块 + next 追加)/ CURRENT.md(更新头 + 快速恢复节 + 状态头 + DEC-037 块 + agent 表)/ log.md(本条)/ ODR **v1.18**(§1undevicies 原文照录 + 生产侧保守义)。
+
+**结论**:`BOUNDARY: HOLDING` / `PHASE 2 SNAPSHOT: ANCHORED(零 mismatch)` / `POST-PHASE1 RECHECK: ARMED` / `GUARDIAN MODE: ACTIVE` / `CONSUMER IDENTITY: NOT IMPLEMENTED(不变)`。纪律:只读检查;零代码 / 零数据 / 零 schema;基线工件零覆盖(零写入比对法 + M6 临时重导即时清理);Observed/Historical 分账;零新架构裁决;已裁六项未重开;Guardian only,不参与 Consumer 实现代码。等待 Owner 下一步指令。

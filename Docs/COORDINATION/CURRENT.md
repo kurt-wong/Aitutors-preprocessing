@@ -1,27 +1,35 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**DEC-036 Guardian During Consumer Phase 1**:Phase 1 开工前 baseline snapshot = **M1~M6 全 PASS 零 mismatch**(177/177 + 证据 7/7 + 冻结四元组字节级相符);V3 `origin/main` = `72af28d` 尚无 Phase 1 实现提交 → 快照即开工前锚点;**Phase 1 完成后 Trigger ② 只读复检 ARMED**;输出 `PREPROCESSING-PRODUCER-GUARDIAN-PHASE1-CHECK-v1.md`;零代码/零数据/零 schema)· 前轮 = DEC-035 Guardian Mode 启动 / DEC-034 归档终检 · canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**DEC-037 Guardian Phase 2 开工前 Baseline Check**:M1~M6 **全 PASS 零 mismatch**(177/177 + 证据 7/7 + 冻结四元组字节级相符);V3 `origin/main` = `72af28d` 未前进,远端仍全 docs 提交;**Trigger ②(post-Phase1 复检)继续 ARMED**;输出 `PREPROCESSING-PRODUCER-GUARDIAN-PHASE2-CHECK-v1.md`;Observed/Historical 分账;零代码/零数据/零 schema)· 前轮 = DEC-036 Phase 1 开工前快照 / DEC-035 Guardian Mode 启动 · canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
 ## 🧭 新会话快速恢复(新会话先读本节,30 秒回到工作状态)
 
-**一句话状态**:Contract v0.2 = **FROZEN**(DEC-032);Frozen Baseline = **PRODUCER BASELINE FINALIZED + ARCHIVED**(DEC-033/034);**GUARDIAN MODE ACTIVE — BOUNDARY HOLDING**;**PHASE 1 开工前快照已锚定、Phase 1 完成后复检 ARMED**(DEC-036,2026-09-16);DSH 令前保持零新数据动作,**不参与 Consumer Identity Verification 代码实现**,等 Owner 下一步指令(Phase 1 完成复检令 / 新任务)。
+**一句话状态**:Contract v0.2 = **FROZEN**(DEC-032);Frozen Baseline = **PRODUCER BASELINE FINALIZED + ARCHIVED**(DEC-033/034);**GUARDIAN MODE ACTIVE — BOUNDARY HOLDING**;**PHASE 2 开工前快照已锚定(DEC-037,2026-09-16,M1~M6 全 PASS 零 mismatch)**,Trigger ②(post-Phase1 复检)继续 ARMED;DSH 令前保持零新数据动作,**不参与 Consumer 代码实现**,等 Owner 下一步指令(Phase 2 期间里程碑复检令 / 新任务)。
 
-- **指令链末端**:… → DEC-033(`8fc4d60`+`ee751fd`)→ DEC-034(`56f95f2`)→ DEC-035(`27727c4`)→ **DEC-036(Guardian Phase 1,本轮)**;ODR = **v1.17**(§1octodecies 原文照录);工作树干净(提交后);
+- **指令链末端**:… → DEC-034(`56f95f2`)→ DEC-035(`27727c4`)→ DEC-036(`b4367e7`)→ **DEC-037(Guardian Phase 2 开工前检查,本轮)**;ODR = **v1.18**(§1undevicies 原文照录);工作树干净(提交后);
 - **冻结对象(唯一有效四元组)**:`kurt-wong/AITutors-v3` @ `f4941ff87c0130ee0b79ff6b807c4ec2826b8ff1` / `Docs/COORDINATION/CONTRACTS/PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` / sha256 **`9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528`**(92,197 bytes)。`c6e771c` / `c8d89586…1032` = 历史登记,**勿引用**。V3 远端 main 观测值 = `4daecf0b`(DEC-032 时点;Claude 可能继续推进,一切以 fetch/ls-remote 实测为准);
 - **关键数字**:manifest 166 / 接口面 87(87/87 携 `source_content_sha256`,unique 87 · dups 0)/ IR 71 ADMITTED(1,664 单元,71/71 对账零漂移)/ 16 Semantic Pending / v1 legacy 79(隔离,C-IN-1 下必拒)/ R50 基线 356(**DRIFT = 恰 87 为预期**,承接者 = pre/post audit 双快照 `b11874c4…` / `2cb980c7…`);
 - **Frozen Baseline 归档终态(DEC-034)**:四项 immutable 终检全过——source bytes 零漂移(87/87 vs Step1+R50)/ manifest 差异恰 = 追加一键 / IR 71·71 零漂移 / 证据六工件登记 sha 6/6 相符 + 复跑字节级复现(`a707738e…5c33`);归档报告 = `INTEGRATION/PREPROCESSING-PRODUCER-BASELINE-ARCHIVE-FINAL-REPORT-v1.md`;**基线以工件表字节为准,后续变化须 Owner 令 + 新配对快照,不得就地改写**;**CONSUMER IDENTITY: NOT IMPLEMENTED 不变**;
 - **Guardian Mode(DEC-035)**:Consumer Implementation Boundary Audit = **BOUNDARY HOLDING 零违例**(Consumer 实现合法写面 = 仅 V3 仓代码,对基线五类禁改对象全部只读;177 锚定文件全量比对 bad=0);immutable monitoring checklist **M1~M6** 在位(source bytes / manifest / IR `fbcf41ab…b04a5` / evidence 六工件 / corpus 双值 / 冻结对象四元组),偏差协议 = 任一 mismatch → STOP 只报告不自修;详件 = `INTEGRATION/PREPROCESSING-PRODUCER-FROZEN-BASELINE-CONSUMER-BOUNDARY-CHECK-v1.md`;DSH 不参与 Consumer 实现代码(复核 ≠ 实现);
-- **Guardian Phase 1(DEC-036,最新)**:Phase 1 开工前 baseline snapshot = **M1~M6 全 PASS 零 mismatch**(177/177 checked·missing 0·mismatch 0;证据 6 工件 + R50 锚 7/7;M6 冻结四元组字节重导 `9c6b9063…7528` MATCH + is-ancestor TRUE + 契约 diff empty);本轮 Observed:本仓 `origin/main` = `27727c4`,V3 `origin/main` = `72af28d`(未前进,均为 docs 轮,**尚无 Phase 1 实现提交**);**Phase 1 完成后只读复检 Trigger ② = ARMED**(检查面 = producer data / manifest / IR / freeze artifact;Consumer 新增代码提交本身非违例);详件 = `INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-PHASE1-CHECK-v1.md`;
+- **Guardian Phase 1(DEC-036)**:Phase 1 开工前 baseline snapshot = **M1~M6 全 PASS 零 mismatch**(177/177 checked·missing 0·mismatch 0;证据 6 工件 + R50 锚 7/7;M6 冻结四元组字节重导 `9c6b9063…7528` MATCH + is-ancestor TRUE + 契约 diff empty);当轮 Observed:本仓 `origin/main` = `27727c4`,V3 `origin/main` = `72af28d`(未前进,均为 docs 轮,**尚无 Phase 1 实现提交**);详件 = `INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-PHASE1-CHECK-v1.md`;
+- **Guardian Phase 2(DEC-037,最新)**:Consumer Phase 2 开工前 baseline check = **M1~M6 全 PASS 零 mismatch**(177/177 + 证据 7/7 + M6 冻结四元组 bytes=92,197 sha `9c6b9063…7528` MATCH + 亲缘 TRUE + 契约 diff empty;测试 338 passed / 1 xfailed);本轮 Observed:本仓 `HEAD` = `bebd9e1`(== origin/main),V3 `origin/main` = `72af28d`(fetch 首试沙箱拒绝,宽模式重试 OK 后亲验;**未前进,远端提交链全 docs,尚无 Phase 1/Phase 2 实现提交**);REPORTED(Owner 宣告 Phase 2 开工)与 OBSERVED 分账不混写;**Trigger ② 继续 ARMED**(远端无实现提交可复核);详件 = `INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-PHASE2-CHECK-v1.md`;
 - **边界纪律(新会话必守)**:①Freeze 不含三项实现——bytes verification / identity gate / IR verification;五项 V3 消费能力全部 **NOT IMPLEMENTED**,契约 REQUIREMENT ≠ 现状(Decision ≠ Implementation);②已裁六项(identity key / path / `source_version_id` / Semantic Pending / 87·71·16 / bytes requirement)**不重开**;③DSH 令前零新数据动作——Step 4 数据治理 / Step 5 图片恢复 / IR 重生成 / schema 变更 / daemon 仍禁;④case id 不重编号;REPORTED ≠ OBSERVED;转述层会漂移,引用必须回到证据文件;
 - **下一阶段**:V3 Consumer Identity Verification Implementation(bytes → SHA256 → Manifest 验证 → IR 验证 → fail-closed → Gate → Admission)——实现排期属 V3 侧;若 Owner 令 DSH 复核实现,核验基准 = 契约 §2.3/§5.6.2 验证链 + 五项 NOT IMPLEMENTED 边界不得因 FROZEN 松动;
 - **长开项(不阻塞 FROZEN,须令才动)**:16 份 IR 再生成批次 / D-3 存量 1 例 `andalone_question` / D-4 两份三重成员 / IR 字段名对齐(`source_sha256` → `source_content_sha256`)/ 两层状态载体 + reviewable record / C.1 载体正文引用形态追认;延期五项(legacy 79 披露 / 17 拒收 / OCR-PDF 扩展 / DEC 编号统一(R5-03)/ bytes 传输方式)不处理;
 - **环境纪律**:`PYTHONIOENCODING=utf-8`;PowerShell `>` 重定向写 UTF-16(字节级导出用 `cmd /c "git show … > file"` + `Get-FileHash`);push / gh 需 `sandbox_permissions: danger-full-access` + justification;push 后必须 `git ls-remote origin main` 亲验 + `gh run list` 对账;测试基线 = **338 passed / 1 xfailed**;
-- **阅读顺序**(PROTOCOL §5):state.yaml(权威)→ 本文件 → ODR v1.17 → log.md 尾部 → 最新 HANDOFF;裁决原文全集 = `INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`。
+- **阅读顺序**(PROTOCOL §5):state.yaml(权威)→ 本文件 → ODR v1.18 → log.md 尾部 → 最新 HANDOFF;裁决原文全集 = `INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`。
 
-## ⏭ 当前状态:GUARDIAN MODE ACTIVE — PHASE 1 SNAPSHOT ANCHORED / POST-PHASE1 RECHECK ARMED(2026-09-16,DEC-036;前状态 = DEC-035 BOUNDARY HOLDING / DEC-034 FINALIZED+ARCHIVED / DEC-032 CONTRACT FROZEN)→ 下一阶段 = V3 Consumer Identity Verification Implementation(Phase 1)
+## ⏭ 当前状态:GUARDIAN MODE ACTIVE — PHASE 2 SNAPSHOT ANCHORED / POST-PHASE1 RECHECK ARMED(2026-09-16,DEC-037;前状态 = DEC-036 PHASE1 SNAPSHOT ANCHORED / DEC-035 BOUNDARY HOLDING / DEC-032 CONTRACT FROZEN)→ 下一阶段 = V3 Consumer Identity Verification Implementation(Phase 2)
 
-**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.17**:… + §1septendecies DEC-035 + **§1octodecies DEC-036**)。
+**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.18**:… + §1octodecies DEC-036 + **§1undevicies DEC-037**)。
+
+**DEC-037 = Consumer Phase 2 开工前 Baseline Check**(Guardian 只读,Observed/Historical 分账):
+- **① M1~M6 全 PASS 零 mismatch(OBSERVED 本轮)**:177 锚定文件全量比对 checked=177 / missing=0 / mismatch=0(锚 = post-backfill audit files map,快照自身 sha `2cb980c7…4096` 相符;md=87 / manifest=87);M3 IR `fbcf41ab…b04a5` 独立散列相符;M4 证据六工件 + R50 辅助锚 **7/7 match=True**;M5 corpus 双值 pre `4ad3458b…19160` / post `24af8f56…0a10` 相符;M6 冻结对象跨仓字节重导 bytes=92,197 sha256 = **`9c6b9063…7528`** MATCH + `merge-base --is-ancestor f4941ff origin/main` TRUE + `f4941ff..origin/main` 契约 diff empty(临时重导即时删除,不落仓);测试 **338 passed / 1 xfailed**;
+- **② 本轮 Observed(双仓)**:本仓 `HEAD` = `bebd9e1`(== origin/main,开工时工作树干净);V3 `origin/main` = **`72af28d`**(fetch 首试沙箱 `.git/FETCH_HEAD` Permission denied,宽模式重试 OK 后亲验;与 DEC-033/034/036 同值**未前进**;远端提交链 `72af28d→2a723a6→3b3b397→4daecf0→305bd81→f4941ff` 全部 docs,**尚无 Phase 1/Phase 2 实现提交**);REPORTED(Owner 宣告 Phase 2 开工)与 OBSERVED 分账不混写;
+- **③ Trigger ②(post-Phase1 recheck)= ARMED 未执行**:远端无 Phase 1 实现提交可复核;若实现后续 push,按 DEC-036 预案只读复检(M1/M2/M3/M6 + M4 辅助);**判读纪律 = Consumer 新增代码提交本身非违例,违例仅指五类只读对象字节变化**;
+- **④ 偏差协议**:任何 mismatch → **STOP 仅报告(对象/期望值/实测值),禁止自动修复**;处置权 = Owner(变化须 Owner 令 + 新配对快照);本轮零触发;
+- **⑤ 输出**:`INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-PHASE2-CHECK-v1.md`;Historical 分账(DEC-032~036 各轮历史观测仅存档引用,未混入本轮判定);纪律 = 零代码 / 零数据 / 零 schema / 基线工件零覆盖 / Guardian only,不参与 Consumer 实现代码。
 
 **DEC-036 = Producer Frozen Baseline Guardian During Consumer Phase 1**(开工前基线快照 + Phase 1 后复检预案,只读):
 - **① Phase 1 开工前 baseline snapshot = PASS 零 mismatch**:M1~M6 全量只读核验——177 锚定文件全量比对 checked=177 / missing=0 / mismatch=0(锚 = post-backfill audit files map,快照自身 sha `2cb980c7…4096` 相符;md=87 / manifest=87);证据六工件 + R50 辅助锚 7/7 match;M6 冻结对象跨仓字节重导 bytes=92,197 sha256 = **`9c6b9063…7528`** MATCH + `merge-base --is-ancestor f4941ff origin/main` TRUE + `f4941ff..origin/main` 契约 diff empty(临时重导即时清理,不落仓);
@@ -66,8 +74,8 @@
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version)+ **Frozen Baseline Guardian** | **DEC-036 Guardian During Consumer Phase 1:开工前快照 M1~M6 全 PASS 零 mismatch,Phase 1 后复检 ARMED**(177/177 + 证据 7/7 + 冻结四元组字节级相符;只读,零代码/零数据/零 schema;Guardian only,不参与 Consumer 实现代码);令前保持零新数据动作 |
-| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | V3 `origin/main` = **`72af28d`**(本轮亲验,未前进,均为 docs 轮);**Consumer Implementation 即将开始(Phase 1)**;遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version)+ **Frozen Baseline Guardian** | **DEC-037 Guardian Phase 2 开工前 Baseline Check:M1~M6 全 PASS 零 mismatch,Guardian checkpoint 已登记**(177/177 + 证据 7/7 + 冻结四元组字节级相符;Observed/Historical 分账;只读,零代码/零数据/零 schema;Guardian only,不参与 Consumer 实现代码);令前保持零新数据动作 |
+| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | V3 `origin/main` = **`72af28d`**(本轮亲验,未前进,远端提交全 docs,**尚无 Phase 1/Phase 2 实现提交**);Owner 宣告 **Consumer Phase 2 开工**(REPORTED);遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 |
 
 ## P3.2 / EB-004 终局(VERIFIED)
 
