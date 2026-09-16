@@ -1,5 +1,7 @@
 # PREPROCESSING PRODUCER ALIGNMENT v4(Owner 指定编号)
 
+> **承接注记(2026-09-16)**:下一指令轮(Interface Finalization Revision v1,DEC-023)的生产侧对齐件 = **`PREPROCESSING-PRODUCER-ALIGNMENT-v5.md`**;本文件保留原文作历史基准。其中 **G-1 格式细节(裸 hex PROPOSED)**已被 DEC-023 裁决关闭(= 64 字符小写 hex);**G-4 交付形态**按 Path 非身份原则收窄为"bytes 传输方式";**16 份状态**由 "Semantic Unavailable 正常态" 修订为 "**Semantic Pending(可恢复)**"。引用以 v5 + ODR v1.4 为准。
+
 > Status: **v4(2026-09-16,PREPROCESSING / V3 Interface Decision Finalization v1 回应轮)** · Authority: Owner 统一版指令(2026-09-16,聊天原文照录于 `PREPROCESSING-OWNER-DECISION-RECORD-v1.md` §1quater;ledger = `state.yaml.decisions[DEC-022]`)
 > Role: DSH = Source Evidence Producer 侧对齐件。本轮目标 = **决策固化 + 双侧对齐基线**,不是实现。
 > 本轮纪律(Owner 令原文):不修改代码 / 不执行数据清洗 / 不执行数据迁移 / 不冻结数据库实现 / 不提前实现未裁事项;DSH 另守:不修改数据文件、不修改 schema、不改 Contract 正文(v0.2 正文本轮起草责任在 Claude 侧,见 §B.7)。

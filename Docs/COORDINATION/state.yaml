@@ -312,6 +312,10 @@ decisions:
     statement: "PREPROCESSING / V3 Interface Decision Finalization v1(决策固化 + 双侧对齐轮): ①Part1 双层职责模型正式采用(Manifest=Source Identity Authority 回答'是谁';IR=Semantic Consumption Authority 回答'里面有什么';双禁互替);②Part2 生产/消费责任边界固化(Producer 生成/计算/保证字段,Consumer 验证/重算 hash/接受或拒绝;'Preprocessing 负责解释,V3 负责接受或拒绝解释');③Part3 Scope 冻结 = Interface 87 / IR 71 ADMITTED,允许不同 + 数字对齐三禁(禁强生成 IR/禁删 identity/禁改历史);④Part4 16 份 Identity-only = Identity Available / Semantic Unavailable 正常态,三禁(自动补 IR/LLM 猜测生成/静默进题库),IR 重生成另行批准(关闭 D-2);⑤Part5 UNKNOWN 属语义层,保留事实状态,禁自动转换/静默 fallback/静默 skip,不合并 semantic_status 与 decision_status 两体系;⑥Part6 Contract v0.2 只冻结三件(source_version_id=SHA256(original source bytes)/Scope 87+71/Unknown≠Ready),暂缓数据库字段设计/UI/自动补全/IR 扩产/图片恢复/daemon;⑦Part7-9: Contract v0.2 Draft 本轮由 Claude 更新为 Frozen Candidate(DRAFT NOT FROZEN),DSH = Producer Alignment v4,共同输出 ODR v1.3/Consumer Alignment v2/Producer Alignment v4/Contract v0.2 同版引用;最终原则三条(身份生产侧证明系统侧验证/内容生产侧解释系统侧裁决/宁缺结构化数据不造未确认结构化数据)"
     authority: "用户裁定 2026-09-16(Interface Decision Finalization v1,聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1quater)"
     status: active
+  - id: DEC-023
+    statement: "Interface Finalization Revision v1(接口原则终局固化): ①DEC-SOURCE-IDENTITY: source_version_id = SHA256(original source bytes),格式 = 64 字符小写 hex;Identity 由 source_version_id 唯一决定;'Source identity belongs to content hash, not storage location';任何文档不得暗示 source_file/path/absolute path/directory 参与文件唯一/身份/version/hash 判断;②source_file 保留 = locator information 非 identity information('source_file 用于辅助定位,source_version_id 用于跨系统唯一识别'),路径变化(Windows/NAS/Linux/Object/Cloud)不得导致 id 变化;③16 份 Identity-only = Identity Available / Semantic Pending(可恢复,非永久缺失);IR 再生成允许但四约束(source bytes 不变/id 一致/新 IR 绑定 id/重过 identity verification + semantic validation)+ 四禁(禁改原 source/禁重 OCR 覆盖/禁生成新 identity/禁新 hash 替代旧 hash);④Interface Scope = 87 不得改 71;87=正式身份接口范围/71=当前 IR 语义消费/16=等待 semantic processing;禁 'IR available = Interface available';⑤状态机词表终局: semantic = ready/incomplete/unknown,decision = pending_review/approved/rejected,两体系禁止合并(取代 DEC-021 D3 四状态合并记法);⑥unknown semantic unit 禁 silent skip/automatic conversion/silent fallback,必须产生 reviewable record 进入 pending_review workflow;⑦Contract v0.2 Draft(Claude)须含 Identity/Scope/Semantic/Boundary 四章节;⑧V3 未来消费不得依赖 source_file path 必须依赖 source_version_id,'V3 identity verification capability not implemented' = not started;Final Boundary = Source Identity + Scope + Semantic Boundary + Path Non-Identity + Identity-only Recovery Rule 五项 Frozen → 进入 Contract v0.2 Freeze Candidate Review,不再扩展接口讨论"
+    authority: "用户裁定 2026-09-16(Interface Finalization Revision v1,聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1quinquies)"
+    status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
 open_questions:
@@ -472,7 +476,16 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "DEC-022(Interface Decision Finalization v1)已入册,ODR v1.3 §1quater 照录 + Producer Alignment v4 交付(GAP G-1~G-7 全部 not started;Owner 批准动作九项清单)。生产侧冻结面收窄: 字段名 source_version_id + 算法 SHA256(raw bytes)已裁(Part6);剩 = 格式细节(裸 hex PROPOSED)/ 接口面 87 表达载体(C.1·D-6)/ 状态机两层载体 + 路由规则 / source bytes 交付形态(G-4)。v0.2 正文本轮由 Claude 起草(DRAFT NOT FROZEN),DSH Contract 正文零改动。等 Owner: ①Step 1 快照执行令(D-6);②格式/载体落字(经 v0.2);③D-3/D-4;④IR 重生成批准(如需)。数据治理仍暂缓(五步序 Step 4/5 前零动作)"
+  next: "DEC-023(Interface Finalization Revision v1)已入册,ODR v1.4 §1quinquies 照录 + Producer Alignment v5 交付(Changed Documents / |Decision|Current|Final Rule| 对齐表 / Remaining UNKNOWN 四项)。Final Boundary 五项达成(Source Identity + Scope + Semantic Boundary + Path Non-Identity + Identity-only Recovery Rule Frozen)→ 接口原则讨论关闭,进入 Contract v0.2 Freeze Candidate Review。生产侧最小冻结集再收敛 = 两层状态载体(含 reviewable record 形态)+ 接口面 87 表达(C.1);G1 定义三要素全裁可直接照录 DEC-SOURCE-IDENTITY。v0.2 正文由 Claude 更新(Draft NOT FROZEN,本轮禁冻结)。等 Owner: v0.2 Freeze Candidate Review + Step 1/Step 2 执行令 + D-3/D-4 + 16 份再生成执行令(如需)。数据治理仍暂缓"
+  owner_interface_revision:
+    date: "2026-09-16"
+    directive: "Interface Finalization Revision v1(统一任务指令;DSH = 五文档同步 / Claude = Consumer Alignment + Contract Draft + Gap Matrix)"
+    doc: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1quinquies(Part1-10 原文照录 + 生产侧保守义)"
+    producer_alignment: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-ALIGNMENT-v5.md"
+    consumer_side: "V3 侧 Consumer Alignment v2 更新 + PREPROCESSING-V3-CONTRACT-v0.2-DRAFT 四章节 + V3 Gap Matrix(REPORTED 直至 V3 commit)"
+    contract_status: "v0.2 DRAFT NOT FROZEN(本轮明确禁冻结;下阶段 = Freeze Candidate Review)"
+    resolved: "DEC-SOURCE-IDENTITY(名/算法/64 小写 hex)/ path 非身份(source_file = locator)/ 16 份 = Semantic Pending 可恢复(再生成允许+四约束)/ Scope 87 保持 / 两状态体系词表终局 / unknown 路由 = reviewable record → pending_review"
+    still_open: "两层状态载体 + reviewable record 形态 / 接口面 87 表达(C.1) / Step1·Step2 执行令 + D-3 / D-4 / 16 份再生成批次与 R52 工件版本策略 / source bytes 交付方式(弱)"
   owner_interface_finalization:
     date: "2026-09-16"
     directive: "PREPROCESSING / V3 Interface Decision Finalization v1(统一版指令;DSH=Producer Alignment v4 / Claude=Consumer Alignment v2 + Contract v0.2 Frozen Candidate 起草)"
@@ -527,7 +540,7 @@ integration_contract:
     facts_registered: [FACT-032]
   producer_interface_facts_v2:
     path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-INTERFACE-FACTS-v2.md
-    status: "v2.1(2026-09-16,DEC-022 固化增量: §0bis 职责双层 + Scope 三数字固化表 + Identity 定义固化;实测事实面零改动)"
+    status: "v2.2(2026-09-16,DEC-023 固化增量: §0bis.3 DEC-SOURCE-IDENTITY 格式已裁 / §0bis.4 path 非身份原则 / 16 份 Semantic Pending;实测事实面零改动)"
     artifact: "data/producer_interface_probe_v2.json(定向探针: identity 面双口径/manifest 身份字段 0 命中/IR sha 自洽 71-71/拒收 17 条对账/OCR 清单键面)"
     key_facts: "manifest 0/166 携 sha、0/166 携 source_version_id(B1 结构缺口);identity 面双口径: 字段 87/79(判定口径)vs 目录 88/78,差 1 = resliced-pilot 三十一中化学混入件(IR 已按 C-IN-1 拒收 REJECTED_V1);IR 88 记录 = v2 目录面全集,71 ADMITTED sha 与当前 md 字节 71/71 一致(裁决当日复验零漂移);raw bytes SHA-256 为唯一 source identity(md resolver_reference.py:52-53 / PDF r67_manifest_bootstrap.py:181);B3 现状 = 1 例非标值原样进 ADMITTED,链零守卫"
     facts_registered: [FACT-033]
@@ -544,18 +557,21 @@ integration_contract:
     facts_registered: [FACT-035]
   implementation_gap_list:
     path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-IMPLEMENTATION-GAP-LIST.md
-    status: "v1.2(2026-09-16,DEC-021 后: G6 已裁隔离、G3 当前面已裁 71、G5 词表已裁、G1 范围已裁 87;新增 C.1 接口面表达)"
-    key_facts: "最小冻结集(DEC-021 后)= G1 字段名/格式 + G5 载体 + 接口面 87 表达(C.1);G1 硬约束不变 = v2 面 87/87 manifest 是 R50 成员,回填必致 DRIFT 须配对再冻结"
+    status: "v1.3(2026-09-16,DEC-023 后: G1 定义三要素全裁/G2 path 非身份/G3 再生成允许+四约束/G4 持续机制仍未裁与单次再生成分裁/G5 词表终局+路由已裁;最小冻结集 = 两层状态载体 + 接口面 87 表达)"
   execution_dependency_map:
     path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-EXECUTION-DEPENDENCY-MAP.md
-    status: "v2.2(2026-09-16,DEC-021 五步序入册: D-1/D-2/D-5 关闭,新增 D-6 Step1 快照载体与 R50 血统;原序 A/B 转历史参考)"
+    status: "v2.3(2026-09-16,DEC-023 增量: E8 再生成已允许待令/path 非身份机理修正 = id 钉 bytes 非 path/主链与交集定量不变)"
     key_facts: "互斥精确化不变: D2 1396 份中仅 2 份落在接口面(三重成员),排除后 D2 与 G1 零冲突;五步序下 D2 = Step 5 最后"
+  producer_alignment_v5:
+    path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-ALIGNMENT-v5.md
+    status: "v5(2026-09-16,DEC-023 Interface Finalization Revision v1 回应;Owner Part 10 三段输出: Changed Documents / Decision Alignment Summary / Remaining UNKNOWN;实现状态全部 not started)"
+    key_facts: "Final Boundary 五项核对全达成(Source Identity/Scope/Semantic Boundary/Path Non-Identity/Identity-only Recovery Rule Frozen);格式裁决与现有生产实践零迁移(64 小写 hex = ir.source_sha256 71 份实证形态);Remaining UNKNOWN 收敛为四组(载体/执行令/bytes 交付/文字层)"
   producer_decision_alignment_v1:
     path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-DECISION-ALIGNMENT-v1.md
     status: "v1(2026-09-16,DEC-021 回应;已由 Producer Alignment v4 承接,原文保留为历史基准,§E 七项差距清单继续有效并按 DEC-022 收窄)"
   producer_alignment_v4:
     path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-ALIGNMENT-v4.md
-    status: "v4(2026-09-16,DEC-022 Interface Decision Finalization v1 回应;Owner 指定编号;实现状态全部 not started)"
+    status: "v4(2026-09-16,DEC-022 Interface Decision Finalization v1 回应;Owner 指定编号;已由 v5 承接——其中 G-1 格式 PROPOSED、G-4 交付形态等表述按 DEC-023 收窄,以 v5 为准)"
     key_facts: "GAP G-1 字段缺失回填 87(格式 PROPOSED 裸 hex)/ G-2 两层状态载体+路由规则 / G-3 接口面 87 表达载体 / G-4 source bytes 交付形态(V3 重算 hash 可达性前提)/ G-5 IR 重生成机制(另行批准)/ G-6 identity-only 呈现字段 / G-7 D-6 Step1 快照;需 Owner 批准动作九项清单(禁自行数据/schema/清洗/IR 重生成)"
 
 data_hygiene:

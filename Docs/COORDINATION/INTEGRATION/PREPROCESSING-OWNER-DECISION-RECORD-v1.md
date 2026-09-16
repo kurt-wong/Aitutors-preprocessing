@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.3(2026-09-16,追加 §1quater Interface Decision Finalization v1 四方固化裁决)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(本文件 §1ter 四项)+ `[DEC-022]`(本文件 §1quater)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization`
+> Status: **v1.4(2026-09-16,追加 §1quinquies Interface Finalization Revision v1:Source Identity/Path 非身份/16 份 Semantic Pending/两状态体系终局)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -194,6 +194,78 @@
 
 ---
 
+## 1quinquies. 分项裁决 — Interface Finalization Revision v1(Owner 2026-09-16 第六轮,原文照录要点;canonical 引用面)
+
+> Owner 令:本轮目标 = ①修正之前过度保守或不准确的表述 ②固化最终接口原则 ③关闭 source identity / 16 份 Identity-only / path 定位问题 ④两侧文档同步 ⑤保持代码、数据、Contract 冻结状态不变。仅更新决策记录、契约草案、Gap 文档和台账;禁改代码 / schema / preprocessing 数据 / 重新生成 IR / 图片恢复 / daemon / 冻结 Contract v0.2;全部 implementation 状态保持 not started。本轮结束标准(Owner Final Boundary):**Source Identity Frozen + Scope Frozen + Semantic Boundary Frozen + Path Non-Identity Frozen + Identity-only Recovery Rule Frozen** → 之后进入 Contract v0.2 Freeze Candidate Review,不再扩展接口讨论。
+
+### Part 1 — Source Identity 原则修正(新增正式裁决 DEC-SOURCE-IDENTITY)
+
+> 文件身份定义:`source_version_id = SHA256(original source bytes)`;**格式:64 字符小写 hex 字符串**。
+> Identity 由 `source_version_id` **唯一决定**;Location 由 `source_file` / path / locator 表达。
+> **强制禁止**:任何文档不得暗示 `source_file` / path / absolute path / directory 参与:文件唯一判断 / source identity 判断 / version 判断 / hash identity 判断。
+> 固化原则:**Source identity belongs to content hash, not storage location.**(文件身份属于内容哈希,不属于存储位置。)
+
+### Part 2 — source_file / path 处理规则
+
+> `source_file` **保留**,但重新定义:`source_file = locator information`,**不是** identity information。
+> 文档要求:错误表述"source_file 用于识别 source"→ 改为"**source_file 用于辅助定位 source,source_version_id 用于跨系统唯一识别 source**"。
+> 未来 Windows / NAS / Linux / Object Storage / Cloud Storage 路径变化:**不得导致 source_version_id 变化**。
+
+### Part 3 — Identity-only 16 份文件重新定义
+
+> 16 份**不是永久缺失**。状态定义:**Identity Available / Semantic Pending**(取代上一轮 "Semantic Unavailable" 表述)。
+> 允许后续动作:允许重新执行 preprocessing 生成 IR,但必须满足四约束:
+> - Constraint 1:source bytes 不允许改变;
+> - Constraint 2:source_version_id 必须保持一致;
+> - Constraint 3:新 IR 必须绑定 `source_version_id`;
+> - Constraint 4:生成后的 IR 必须重新经过 identity verification + semantic validation。
+>
+> 禁止:修改原 source / 重新 OCR 覆盖原 source / 生成新的 identity / 用新 hash 替代旧 hash。
+
+### Part 4 — Interface Scope 保持
+
+> `Interface Scope = 87` **不修改为 71**。定义表:87 = 正式身份接口范围;71 = 当前已有 IR 语义消费范围;16 = 等待 semantic processing。
+> 禁止:将 "IR available" 等同于 "Interface available"。
+
+### Part 5 — Semantic Unknown 状态补充(两状态体系终局词表)
+
+> 保持两状态体系分离,**禁止合并**。
+> **Semantic Status 最终词表:`ready` / `incomplete` / `unknown`**;
+> **Decision Status 词表:`pending_review` / `approved` / `rejected`**。
+
+### Part 6 — Unknown 处理(明确规则)
+
+> 任何 unknown semantic unit:禁止 silent skip / automatic conversion / silent fallback;**必须产生 `reviewable record`,进入 `pending_review` workflow**。
+
+### Part 7 — Contract v0.2 Draft 更新要求(Claude 负责 `PREPROCESSING-V3-CONTRACT-v0.2-DRAFT`)
+
+> 必须加入四章节:**Identity**(source_version_id 定义 / hash 唯一性 / path 非身份)、**Scope**(87 interface / 71 semantic available / 16 semantic pending)、**Semantic**(unknown / pending_review / no silent skip)、**Boundary**(Manifest = Source Identity Authority,IR = Semantic Consumption Authority;Manifest 证明是谁,IR 说明是什么)。
+
+### Part 8 — DSH 任务
+
+> 更新 Producer Alignment / Producer Interface Facts / Owner Decision Record / Gap List / Dependency Map;同步四规则(Identity 规则 / 16 份状态调整 / Path 非身份原则 / IR 重新生成允许但必须保持 identity)。禁止执行:IR 重生成 / 数据回填 / schema 修改——等待后续 Owner 执行令。
+
+### Part 9 — Claude 任务
+
+> 更新 Consumer Alignment / Contract Draft / V3 Gap Matrix / V3 Decision Alignment;重点检查:V3 未来消费逻辑**不得依赖 source_file path,必须依赖 source_version_id**;同时登记当前代码事实:**"V3 identity verification capability not implemented" = not started**。
+
+### Part 10 — 输出要求(双方)
+
+> ①Changed Documents(文件/修改内容/commit);②Decision Alignment Summary(| Decision | Current | Final Rule |);③Remaining UNKNOWN(**只保留真正未裁事项,不重复已关闭问题**)。
+
+### §1quinquies 生产侧保守义(DSH 解释,非裁决;详件 = `PREPROCESSING-PRODUCER-ALIGNMENT-v5.md`)
+
+| 条款 | 生产侧落实语义 |
+|---|---|
+| Part 1 格式 | **修正上一轮表述**:Alignment v4 的 G-1"格式细节 PROPOSED 未裁"已关闭——已裁 = 64 字符小写 hex(与现有 `ir.source_sha256` 71 份实证形态完全一致,零格式迁移) |
+| Part 1-2 path 非身份 | 现有文档中"`source_file` 绝对路径"相关缺口表述(G-4/交付形态)**收窄**:path 是 locator 问题不是 identity 问题;相对路径化不再是身份议题。残余未裁 = **bytes 本身如何交付给 V3 重算 hash**(locator 之外的传输/获取方式) |
+| Part 3 16 份 | "Semantic Unavailable(正常态)" → **"Semantic Pending(可恢复)"**;G3 扩产由"机制未裁"推进为"**允许 + 四约束已裁**";四禁使"身份冻结优先"在 IR 再生成场景下成立(bytes 不变 → id 不变);执行仍待 Owner 令 |
+| Part 4 | 87/71/16 三数字定义表写入 v0.2 Scope 章;"IR available ≠ Interface available" 禁令与 DEC-021 D1 一致 |
+| Part 5 词表终局 | **取代 DEC-021 D3 四状态机的合并记法**:READY/INCOMPLETE 归 semantic 层(ready/incomplete),PENDING_REVIEW 归 decision 层(pending_review),REJECTED → decision 层 rejected,新增 decision 层 approved;引用以本 Part 为准 |
+| Part 6 | unknown semantic → reviewable record → pending_review workflow(DEC-021 D3 遗留的路由规则已给:进 pending_review,不再"或 REJECTED 由规则决定");reviewable record 的载体形态 = 仍未裁 |
+
+---
+
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 
 B3 生产侧责任按裁决文字取最大保守义:
@@ -207,13 +279,14 @@ B3 生产侧责任按裁决文字取最大保守义:
 
 ## 3. 未裁事项登记(引用本文件时必须一并引用)
 
-- **字段名与算法已裁(§1quater Part 6)**:`source_version_id = SHA256(original source bytes)`;格式细节(裸 64 hex vs 带前缀;大小写):**未裁**(DSH 建议沿用 `ir.source_sha256` 现有裸小写 hex 实践 = PROPOSED);
-- ~~回填范围(接口面 87 vs 全语料 166)~~ **已裁(§1ter D1,§1quater Part 3 再确认)= 87**;
-- IR 权威覆盖面:**当前面已裁 = 71 ADMITTED snapshot**;扩展机制与持续产出:**仍未裁**(Part 4:重生成 = 另行批准;Part 6:IR 扩产计划暂缓冻结);
-- v1 legacy 面 79 份处置:**已裁 = historical asset 隔离**;未来走独立 Legacy Migration Plan;披露形态(文字层):**未裁**;
-- 语义状态机:**决策层词表已裁(§1ter D3 四状态)+ 语义层 UNKNOWN 已裁(§1quater Part 5,两体系不合并)**;载体(字段名/落点/生产侧标记形态)与 PENDING_REVIEW→REJECTED 路由规则文本:**未裁**;
-- 16 份 Identity-only 文件:**已裁(§1quater Part 4)= Identity Available / Semantic Unavailable 正常态**(D-2 关闭);接口面是否设呈现字段:**未裁**;
-- 执行顺序:**已裁五步**;Step 1 接口快照与 R50 基线的配对关系(D-6)、存量 1 例原子性(D-3)、2 份三重成员(D-4):**未裁**;
-- Contract v0.2 正文起草:**已裁(§1quater Part 7)由 Claude 执行**(DRAFT NOT FROZEN);冻结:**未裁**(Owner 冻结令)。
+- **字段名/算法/格式全部已裁(§1quinquies Part 1 DEC-SOURCE-IDENTITY)**:`source_version_id = SHA256(original source bytes)`,**64 字符小写 hex 字符串**;
+- **path 身份地位已裁(§1quinquies Part 1-2)**:`source_file` = locator information(保留),**非 identity**;任何文档不得暗示 path/absolute path/directory 参与唯一/身份/version/hash 判断;残余未裁 = **source bytes 本身交付给 V3 的方式**(locator 之外的传输/获取,弱);
+- ~~回填范围~~ **已裁 = 87**;
+- IR 权威覆盖面:**当前面已裁 = 71 ADMITTED**;**再生成已裁(§1quinquies Part 3)= 允许但四约束**(bytes 不变 / id 一致 / 新 IR 绑定 id / 重过 identity verification + semantic validation)+ 四禁(禁改原 source / 禁重 OCR 覆盖 / 禁新 identity / 禁新 hash 替代);**执行令与 R52 工件版本策略仍未裁**;
+- v1 legacy 面 79 份:**已裁 = historical asset 隔离**;披露形态(文字层):**未裁**(弱);
+- 语义/决策状态机:**词表终局已裁(§1quinquies Part 5)**——semantic = `ready/incomplete/unknown`,decision = `pending_review/approved/rejected`(取代 §1ter D3 四状态合并记法);unknown 路由**已裁(§1quinquies Part 6)**= 产 reviewable record → pending_review workflow;**两层载体(字段名/落点)与 reviewable record 形态:未裁**;
+- 16 份 Identity-only:**已裁(§1quinquies Part 3)= Identity Available / Semantic Pending(可恢复)**;接口面呈现字段:**未裁**(随载体);
+- 执行顺序:**已裁五步**;Step 1 接口快照载体与 R50 血统(D-6)、存量 1 例原子性(D-3)、2 份三重成员(D-4)、全部数据动作执行令:**未裁**;
+- Contract v0.2 正文起草:**已裁由 Claude 执行**(四章节要求 = §1quinquies Part 7);冻结:**未裁**(Owner 冻结令;本轮明确禁冻结,下一阶段 = v0.2 Freeze Candidate Review)。
 
 *v1 · 2026-09-16 · DSH 自记(Owner 聊天原文照录)。如有文字冲突,以 Owner 原文为准。*

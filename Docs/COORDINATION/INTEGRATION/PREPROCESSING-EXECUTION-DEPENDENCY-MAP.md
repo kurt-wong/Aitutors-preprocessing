@@ -1,6 +1,7 @@
 # EXECUTION DEPENDENCY MAP — G1 identity 固化 × D2 figure recovery(重整理)
 
-> Status: **v2.2(2026-09-16,DEC-021 五步序入册后更新)** · 取代 IF-v2 §6.3 与 Readiness v1 中"互斥时序"的初步表述
+> Status: **v2.3(2026-09-16,DEC-023 Interface Finalization Revision v1 增量)** · 取代 IF-v2 §6.3 与 Readiness v1 中"互斥时序"的初步表述
+> **DEC-023 增量**:①**Path 非身份原则**——id 钉的是 bytes 不是 path;D2 改写 md 使 id 失配的机理 = **bytes 变**,与路径/目录无关(表述同步修正);②**16 份接口面内无 IR 成员 = Identity Available / Semantic Pending(可恢复)**;IR 再生成**允许但四约束**(bytes 不变/id 一致/新 IR 绑定 id/重过双验证)+ 四禁(禁改原 source/禁重 OCR 覆盖/禁新 identity/禁新 hash 替代)→ **E8 由"若扩产"变"已允许,执行待令"**;③G1 字段名/算法/格式三裁,仅剩回填执行令。本图主链(G1×D2×R50)与交集定量不变。
 > DEC-B1 增量:source 身份不依赖 IR 存在 → E8(G3 扩产治理)与 G1 路径彻底解耦;本图主链(G1×D2×R50)不受影响,交集定量不变。
 > **DEC-021 增量**:Owner 裁定五步序 = ①Freeze interface snapshot → ②backfill source_version_id(范围已裁 87)→ ③Freeze Contract v0.2 → ④data hygiene → ⑤image recovery——**D-1/D-2/D-5 关闭**(见 §5);快照先行变体下 E2 的配对对象从"R50 再冻结"转为"Step 1 接口快照与 R50 的血统关系"(执行令细化,UNKNOWN)。
 > Basis: Owner Decision Record v1(§1bis DEC-B1 + **§1ter DEC-021**)+ `data/producer_readiness_probe_v3.json`(三点交集定量)+ R50 成员资格亲验

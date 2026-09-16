@@ -1,23 +1,23 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**Interface Decision Finalization v1 固化入册 DEC-022**:双层职责/生产消费边界(Preprocessing 解释、V3 接受或拒绝)/Scope 87+71 冻结与数字对齐三禁/16 份 Identity-only = 正常态(D-2 关闭)/UNKNOWN 属语义层、两状态体系不合并/v0.2 只冻结三件(source_version_id=SHA256(raw bytes)/Scope/Unknown≠Ready);**Producer Alignment v4 交付**;Contract 保持 v0.2 DRAFT NOT FROZEN,正文起草责任本轮 = Claude)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**Interface Finalization Revision v1 固化入册 DEC-023**:DEC-SOURCE-IDENTITY(source_version_id = SHA256(raw bytes),64 字符小写 hex)/ Path 非身份(source_file = locator)/ 16 份 = Identity Available · Semantic Pending(IR 再生成允许 + 四约束 + 四禁)/ Scope 87 保持 / 两状态体系词表终局(semantic: ready·incomplete·unknown;decision: pending_review·approved·rejected)/ unknown → reviewable record → pending_review;**Producer Alignment v5 交付;Final Boundary 五项达成 → 进入 v0.2 Freeze Candidate Review**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
-## ⏭ 当前状态:DEC-022 已裁,进入"冻结接口契约前验证"阶段(2026-09-16)
+## ⏭ 当前状态:DEC-023 已裁,接口原则讨论关闭 → Contract v0.2 Freeze Candidate Review(2026-09-16)
 
-**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.3**:§1 总纲 + §1bis DEC-B1 + §1ter DEC-021 + **§1quater DEC-022**;未裁事项登记面)。
+**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.4**:§1 + §1bis + §1ter + §1quater + **§1quinquies DEC-023**)。
 
-**DEC-022 生效(生产侧)**:
-- **职责固化**:Manifest = Source Identity Authority("是谁")/ IR = Semantic Consumption Authority("里面有什么");Preprocessing 负责解释,V3 负责接受或拒绝解释;
-- **Scope**:Interface 87 / IR 71 ADMITTED,允许不同;数字对齐三禁(禁强生成 IR / 禁删 identity / 禁改历史);
-- **16 份 Identity-only = Identity Available / Semantic Unavailable 正常态**(D-2 关闭;IR 重生成另行批准);
-- **UNKNOWN 属语义层**,与四状态机(decision 层)不合并;禁自动转换 / 静默 fallback / 静默 skip;
-- **v0.2 冻结范围三件**:`source_version_id = SHA256(original source bytes)`(**字段名+算法已裁**)/ Scope 87+71 / Unknown ≠ Ready;暂缓 = 数据库字段设计 / UI / 自动补全 / IR 扩产 / 图片恢复 / daemon。
+**DEC-023 生效(生产侧)**:
+- **Source identity belongs to content hash, not storage location**:`source_version_id` 唯一决定 Identity;path/absolute path/directory **不得**参与任何唯一/身份/version/hash 判断;
+- **`source_file` 保留 = locator information**(辅助定位),跨系统唯一识别 = `source_version_id`;路径变化不得导致 id 变化;
+- **16 份 = Semantic Pending(可恢复)**:IR 再生成允许但四约束(bytes 不变 / id 一致 / 新 IR 绑定 id / 重过 identity verification + semantic validation)+ 四禁(禁改原 source / 禁重 OCR 覆盖 / 禁新 identity / 禁新 hash 替代);
+- **Scope**:87 不得改 71;87 = 正式身份接口 / 71 = 当前 IR 语义消费 / 16 = 等待 semantic processing;禁 "IR available = Interface available";
+- **词表终局**:semantic = ready/incomplete/unknown;decision = pending_review/approved/rejected;两体系禁合并;unknown 禁 silent skip/auto conversion/silent fallback → **reviewable record + pending_review workflow**。
 
-**DSH 本轮交付**:`INTEGRATION/PREPROCESSING-PRODUCER-ALIGNMENT-v4.md`(OBSERVED/DECISION/GAP/UNKNOWN;GAP G-1~G-7 全部 not started;需 Owner 批准动作九项清单);Interface Facts v2.1(§0bis 职责与 Scope 固化表);ODR v1.3。**Claude 侧任务**:Consumer Alignment v2 + **Contract v0.2 Draft 更新为 Frozen Candidate(DRAFT NOT FROZEN)**。
+**DSH 本轮交付**:`INTEGRATION/PREPROCESSING-PRODUCER-ALIGNMENT-v5.md`(Owner Part 10 三段:Changed Documents / Decision Alignment Summary / Remaining UNKNOWN 四组);ODR v1.4 / Interface Facts v2.2(§0bis.3-4)/ Gap List v1.3(最小冻结集再收敛 = 两层状态载体 + 接口面 87 表达)/ Dependency Map v2.3。**Claude 侧任务**:Consumer Alignment 更新 + Contract v0.2 DRAFT 四章节(Identity/Scope/Semantic/Boundary)+ V3 Gap Matrix + 登记 "V3 identity verification capability not implemented" = not started;V3 消费必须依赖 source_version_id 不得依赖 path。
 
-**等 Owner**:Step 1 快照执行令(D-6 载体与 R50 血统);格式细节/两层状态载体/接口面 87 表达/交付形态(经 v0.2 落字);D-3 存量 1 例原子性 / D-4 2 份三重成员;IR 重生成批准(如需)。
-**仍暂缓**:数据治理四项(五步序 Step 4/5 前零动作);DSH 侧 Contract 正文零改动。
+**等 Owner**:v0.2 Freeze Candidate Review;Step 1/Step 2 执行令;D-3 存量 1 例 / D-4 2 份三重成员;16 份再生成执行令(如需)。
+**仍暂缓**:数据治理四项;IR 重生成 / 数据回填 / schema 修改(本轮禁执行);Contract 冻结(本轮禁)。
 
 ## 主线:preprocessing 内部收口(数据卫生,Owner 令)
 
@@ -30,8 +30,8 @@
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-022 入册 + Producer Alignment v4**(GAP G-1~G-7 全部 not started + Owner 批准动作九项;ODR v1.3 / Interface Facts v2.1 §0bis);治理四项暂缓;Contract 正文零改动(起草责任本轮 = Claude) |
-| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **Consumer Review v0.2 已交付**(V3 `938535d`,不可冻结 + 三 BLOCK);**本轮任务 = Consumer Alignment v2 + Contract v0.2 Frozen Candidate 起草(DRAFT NOT FROZEN,Part7);遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步;V3 侧契约稿/ v0.1 review/handoff 007 仍 untracked(REPORTED 级,建议 commit 入册) |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-023 入册 + Producer Alignment v5**(五文档同步:ODR v1.4 / Facts v2.2 / Gap List v1.3 / Dependency Map v2.3;实现状态全部 not started);禁执行 IR 重生成/回填/schema;Contract 正文零改动 |
+| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **本轮任务(Part 9)**:Consumer Alignment 更新 + Contract v0.2 DRAFT 四章节(Identity/Scope/Semantic/Boundary)+ V3 Gap Matrix + 登记 "V3 identity verification capability not implemented" = not started;V3 消费必须依赖 source_version_id 不得依赖 path;遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 + 契约稿 untracked(REPORTED 级) |
 
 ## P3.2 / EB-004 终局(VERIFIED)
 

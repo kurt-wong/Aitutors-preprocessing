@@ -1,6 +1,6 @@
 # PREPROCESSING PRODUCER INTERFACE FACTS v2
 
-> Status: **v2.1(2026-09-16,Interface Decision Finalization v1 固化增量:§0bis 职责与 Scope 固化表;实测事实面零改动)** · Authority: Owner B1-B3 Decision Record + Interface Decision Finalization v1(2026-09-16,DSH 自记于 `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization`)
+> Status: **v2.2(2026-09-16,Interface Finalization Revision v1 固化增量:DEC-SOURCE-IDENTITY 格式已裁 / path 非身份注记 / 16 份 Semantic Pending;实测事实面零改动)** · Authority: Owner B1-B3 + Interface Decision Finalization + Interface Finalization Revision(2026-09-16,DSH 自记于 `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision`)
 > Role: preprocessing Producer Owner —— 回答"producer 能提供什么 / 不能提供什么 / 缺口在哪里",并作为 Contract v0.2 的生产侧输入。
 > Discipline: 只写实测事实(路径 + commit 可复现);不假设 V3 消费方式;不提出 V3 实现方案;不修改 Contract 正文 / 数据文件 / 两仓代码。无证据一律标 UNKNOWN。
 > Evidence artifacts: `data/producer_interface_census.json`(v1 全语料普查,commit `17c55d8`)+ `data/producer_interface_probe_v2.json`(v2 定向探针,本轮 commit)。
@@ -35,14 +35,19 @@
 |---|---|---|---|
 | 全语料历史资产 | 166 | manifest 全部历史资产规模,**≠ 正式接口** | 分母 |
 | **Interface Scope** | **87** | 具备接口身份的文件(字段口径 `identity_version=="2"`;§2.4) | 87/166 = 52.4% |
-| **IR Consumption Scope** | **71 ADMITTED** | 当前具备可消费语义结构(冻结 snapshot,§3) | 71/87 = 81.6%(接口面内);16 份 Identity Available / Semantic Unavailable = **正常态**(Part 4) |
+| **IR Consumption Scope** | **71 ADMITTED** | 当前具备可消费语义结构(冻结 snapshot,§3) | 71/87 = 81.6%(接口面内) |
+| Semantic Pending | **16**(87−71) | **Identity Available / Semantic Pending**——等待 semantic processing,**不是永久缺失**(DEC-023 Part 3);IR 再生成允许但四约束(bytes 不变/id 一致/新 IR 绑定 id/重过双验证)+ 四禁 | —— |
 | v1 legacy | 79 | historical asset,不入 v0.2 接口(DEC-021 D2) | —— |
 
-**数字对齐三禁(Part 3,叠加既有)**:禁强制生成 IR / 禁删除 identity 文件 / 禁改历史数据凑一致。
+**数字对齐三禁(Part 3,叠加既有)**:禁强制生成 IR / 禁删除 identity 文件 / 禁改历史数据凑一致。**新增禁令(DEC-023 Part 4)**:"IR available" 不得等同于 "Interface available";Interface Scope = 87 不得修改为 71。
 
-### 0bis.3 Identity 定义固化(v0.2 冻结内容之一)
+### 0bis.3 Identity 定义固化(DEC-023 Part 1 DEC-SOURCE-IDENTITY 终局)
 
-`source_version_id = SHA256(original source bytes)` —— 字段名与算法已裁;生产点与实证见 §4.1(md/PDF 双语料;PDF 面角色仍未裁,§4.3);格式细节(裸 hex)属 v0.2 落字面。
+`source_version_id = SHA256(original source bytes)`,**格式 = 64 字符小写 hex 字符串**——与现有 `ir.source_sha256` 71 份实证形态完全一致(§4.1),零格式迁移。**Identity 由 `source_version_id` 唯一决定。Source identity belongs to content hash, not storage location(文件身份属于内容哈希,不属于存储位置)。**
+
+### 0bis.4 path 非身份原则(DEC-023 Part 1-2)
+
+`source_file` **保留** = **locator information(辅助定位),不是 identity information**。正确表述:"source_file 用于辅助定位 source,source_version_id 用于跨系统唯一识别 source"。**本文件 §2.1/§3.4 中 `source_file` 绝对路径相关事实全部按此定性引用**——路径形态是 locator 缺口(跨机解析),**不是身份缺口**;路径变化(Windows/NAS/Linux/Object/Cloud)不得导致 `source_version_id` 变化;任何文档不得暗示 path/absolute path/directory 参与文件唯一判断 / source identity 判断 / version 判断 / hash identity 判断。
 
 ---
 
