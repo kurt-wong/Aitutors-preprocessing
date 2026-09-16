@@ -2746,3 +2746,23 @@ NOT IMPLEMENTED
 **⑦ 输出与登记**:`INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-PHASE2-CHECK-v1.md`(轮次 2 = DEC-038 主体;轮次 1 = DEC-037 原文存档附录 A;docs-only);Guardian checkpoint 登记 = state.yaml(DEC-038 + `producer_guardian_phase2_round2` 块 + next 追加)/ CURRENT.md(更新头 + 快速恢复节 + 状态头 + DEC-038 块 + agent 表)/ log.md(本条)/ ODR **v1.19**(§1vicies 原文照录 + 生产侧保守义)。
 
 **结论**:`BOUNDARY: HOLDING(零违例)` / `GUARDIAN CHECK ROUND 2: PASSED(G1~G6)` / `PHASE 2 SNAPSHOT: ANCHORED(不变)` / `POST-PHASE1 RECHECK: ARMED` / `GUARDIAN MODE: ACTIVE` / `CONSUMER IDENTITY: NOT IMPLEMENTED(远端口径,不变)`。纪律:只读检查;零代码 / 零数据 / 零 schema;基线工件零覆盖(零写入比对法 + G6 临时重导即时清理);术语纪律(G = Guardian Check / M = Consumer Module;Producer IR artifact hash unchanged);Observed/Historical 分账;零新架构裁决;已裁六项未重开;Guardian only,不参与 Consumer 实现代码。等待 Owner 下一步指令。
+
+## DEC-039 — Producer Frozen Baseline Guardian During Phase 2-M3(2026-09-16)
+
+**指令**:继续保持 Guardian Mode。目标 = 监督 Consumer Identity Verification Phase 2-M3 实现期间 Producer Frozen Baseline 不发生任何变化。① 检查范围仅 G1 source bytes / G2 manifest / G3 producer IR artifact / G4 freeze evidence artifacts / G5 corpus snapshots / G6 freeze artifact;② 判定规则 = 允许 Consumer 新增代码/测试/设计文档,禁改 source bytes / manifest 内容 / producer IR / freeze artifact / schema;③ **特别关注 = IR 文件是否被 Consumer 读取后产生污染;读取 IR ≠ 修改 IR;仅 bytes mismatch 才触发 STOP**;④ 输出 = G1-G6 状态 / Observed 与 Historical 分离 / 是否触发 STOP / Consumer 代码提交是否影响冻结对象;⑤ 禁止 = 修改 Consumer 实现 / 提供代码补丁 / 自行修复 mismatch;mismatch → STOP 仅报告 Owner。
+
+**① G1~G6 全量核验 = 全 PASS 零 mismatch(OBSERVED 本轮)**:G1+G2 = 177 锚定文件全量逐文件 sha256 比对 **checked=177 / missing=0 / mismatch=0**(锚 = post-backfill audit files map,快照自身 sha = `2cb980c7…4096` 实测相符;md=87 / manifest=87);G3 = **Producer IR artifact hash unchanged**(`data/resolver_ref_r52/resolver_ir.json` = **`fbcf41ab…b04a5`**);G4 = 证据六工件 + R50 辅助锚 **7/7 match=True**(全值同 DEC-038 轮 §1.2 表,本轮全部重散列);G5 = corpus 双快照 pre `4ad3458b…19160` / post `24af8f56…0a10` 相符;G6 = 冻结对象跨仓字节重导 **bytes=92,197 sha256 = `9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528` MATCH=True** + `merge-base --is-ancestor f4941ff origin/main` = TRUE + `f4941ff..origin/main` 契约 diff = empty(临时重导即时删除,不落仓)。
+
+**② 特别关注项(IR 污染)= 无污染**:G3 实测字节零变化 —— 读取 ≠ 修改,未触发 STOP;旁证(只读):V3 本地 untracked `backend/app/core/ir_identity.py`(M3 IR Identity Reader v1.0.0)L1-40 亲读,唯一读取路径 = `ir_path.read_text(encoding="utf-8")`,自declare "仅 extraction,不做验证,不做 identity state 判定",防回归禁项明列 hashlib/read_bytes/hashing 模块,全文无任何写路径。
+
+**③ 本轮 Observed(双仓亲验)**:本仓 `HEAD` = `40c06c9`(== `origin/main`,开工时工作树干净;= DEC-038 轮记账提交);V3 `git fetch origin` = **OK**(本轮直接成功,无沙箱拒绝);`git ls-remote origin main` = **`72af28d5854b56fc605e1897fb757703826a6233`**(reachable = TRUE;与 DEC-033~038 同值**未前进**,远端仍无 Consumer 实现提交);V3 本地工作树较 DEC-038 轮**新增 2 件**:`backend/app/core/ir_identity.py`(M3 模块)+ `backend/tests/test_adversarial_manifest.py`,其余 untracked 件与 DEC-038 轮一致,V3 本地 main 与 origin/main tracked 面同步。REPORTED(Owner 宣告进入 Phase 2-M3;M3 完成度自述)与 OBSERVED(文件清单 / 远端状态)分账不混写。
+
+**④ Consumer 代码提交影响判定**:未影响冻结对象 —— 本轮新增 Consumer 代码/测试全部落在 V3 仓(合法写面);G1~G6 实测五类冻结对象零变化;**零违例**;违例判断标准 = 冻结对象是否变化而非代码是否新增。
+
+**⑤ Historical(仅存档引用,未混入本轮判定)**:轮次 2 / DEC-038(G1~G6 全 PASS,本仓 `056b6d6`→`40c06c9` / V3 `72af28d`);轮次 1 / DEC-037(M1~M6 全 PASS,`bebd9e1`);DEC-036(`27727c4`);DEC-035(`e1584bd`);DEC-034 / DEC-033 / DEC-032(`4daecf0b`)。
+
+**⑥ 测试基线**:本轮复跑全量测试 **338 passed / 1 xfailed**(与登记基线一致)。
+
+**⑦ 输出与登记**:`INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-PHASE2-CHECK-v1.md` 轮次 3 节(docs-only);Guardian checkpoint 登记 = state.yaml(DEC-039 + `producer_guardian_phase2_m3` 块 + next 追加)/ CURRENT.md(更新头 + 快速恢复节 + 状态头 + DEC-039 块 + agent 表)/ log.md(本条)/ ODR **v1.20**(§1semelvicies 原文照录 + 生产侧保守义)。
+
+**结论**:`BOUNDARY: HOLDING(零违例)` / `PHASE 2-M3 GUARDIAN CHECK: PASSED(G1~G6,IR 无污染)` / `STOP: NOT TRIGGERED` / `POST-PHASE1 RECHECK: ARMED` / `GUARDIAN MODE: ACTIVE` / `CONSUMER IDENTITY: NOT IMPLEMENTED(远端口径,不变)`。输出四项答复:G1-G6 状态 = 全 PASS;Observed/Historical 已分离;**STOP 未触发**;**Consumer 代码提交未影响冻结对象**。纪律:只读检查;零代码 / 零数据 / 零 schema;基线工件零覆盖;未修改 Consumer 实现 / 未提供代码补丁 / 未自行修复 mismatch;零新架构裁决;已裁六项未重开;Guardian only。等待 Owner 下一步指令。

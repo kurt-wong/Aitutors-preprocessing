@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.19(2026-09-16,追加 §1vicies Consumer Phase 2 开发期间 Guardian checkpoint(G1~G6):全 PASS 零 mismatch 零违例,编号体系改 G = Guardian Check / M = Consumer Module;v1.18 = §1undevicies Phase 2 开工前检查)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-034]`(§1sexdecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-035]`(§1septendecies;与 V3 侧 DEC-035 撞号,已知 R5-03 面)+ `[DEC-036]`(§1octodecies;与 V3 侧 DEC-036 撞号,已知 R5-03 面)+ `[DEC-037]`(§1undevicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-038]`(§1vicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized` / `.producer_baseline_archive_final` / `.producer_baseline_guardian` / `.producer_guardian_phase1`
+> Status: **v1.20(2026-09-16,追加 §1semelvicies Guardian During Phase 2-M3:G1~G6 全 PASS 零 mismatch 零违例,IR 无污染,STOP 未触发;v1.19 = §1vicies Phase 2 轮次 2)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-034]`(§1sexdecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-035]`(§1septendecies;与 V3 侧 DEC-035 撞号,已知 R5-03 面)+ `[DEC-036]`(§1octodecies;与 V3 侧 DEC-036 撞号,已知 R5-03 面)+ `[DEC-037]`(§1undevicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-038]`(§1vicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-039]`(§1semelvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized` / `.producer_baseline_archive_final` / `.producer_baseline_guardian` / `.producer_guardian_phase1`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -771,6 +771,39 @@
 | ⑦ 异常协议 | 零触发;任一 mismatch → STOP 仅报告(对象/期望值/实测值),禁自动恢复 / 禁重新生成 / 禁覆盖旧工件,处置权 = Owner |
 | ⑧ Guardian checkpoint | 已登记(state.yaml `producer_guardian_phase2_round2` 块 + DEC-038 + CURRENT.md + log.md + 本 ODR v1.19);Trigger ② 继续 ARMED(实现仅存 V3 本地 untracked);测试 338 passed / 1 xfailed |
 | 纪律 | 只读检查;零代码 / 零数据 / 零 schema;基线工件零覆盖;术语纪律(G/M 编号隔离);零新架构裁决;已裁六项未重开;DSH 不参与 Consumer 实现代码(Guardian only) |
+
+### §1semelvicies Producer Frozen Baseline Guardian During Phase 2-M3(DEC-039,Owner 原文照录 2026-09-16)
+
+> Task: Producer Frozen Baseline Guardian During Phase 2-M3
+>
+> 继续保持 Guardian Mode。
+>
+> 目标:监督 Consumer Identity Verification Phase 2-M3 实现期间,Producer Frozen Baseline 不发生任何变化。
+>
+> 检查范围,仅检查:G1 source bytes / G2 manifest / G3 producer IR artifact / G4 freeze evidence artifacts / G5 corpus snapshots / G6 freeze artifact。
+>
+> 判定规则
+> 允许:Consumer 新增代码 / Consumer 新增测试 / Consumer 新增设计文档。
+> 禁止:source bytes 修改 / manifest 内容修改 / producer IR 修改 / freeze artifact 修改 / schema 修改。
+>
+> 特别关注
+> 本阶段重点关注:IR 文件是否被 Consumer 读取后产生污染。注意:读取 IR ≠ 修改 IR。仅 bytes mismatch 才触发 STOP。
+>
+> 输出要求
+> 完成后报告:G1-G6 状态 / Observed 与 Historical 分离 / 是否触发 STOP / Consumer 代码提交是否影响冻结对象。
+> 禁止:修改 Consumer 实现 / 提供代码补丁 / 自行修复 mismatch。若发现 mismatch:STOP,仅报告 Owner。
+
+### §1semelvicies 生产侧保守义(DSH 解释,非裁决;执行详件 = `PREPROCESSING-PRODUCER-GUARDIAN-PHASE2-CHECK-v1.md` 轮次 3)
+
+| 检查 | 结果 |
+|---|---|
+| ① G1~G6 状态 | **全 PASS 零 mismatch(OBSERVED 本轮)**:G1+G2 177 锚定文件全量比对 checked=177 / missing=0 / mismatch=0(快照自身 sha `2cb980c7…4096` 相符;md=87 / manifest=87);G3 Producer IR artifact hash unchanged(`fbcf41ab…b04a5`);G4 证据 7/7 match=True;G5 pre `4ad3458b…19160` / post `24af8f56…0a10`;G6 字节重导 bytes=92,197 sha `9c6b9063…7528` MATCH + is-ancestor TRUE + 契约 diff empty |
+| ② 特别关注 = IR 污染 | **无污染**:G3 字节零变化(读取 ≠ 修改);旁证 = V3 本地 `ir_identity.py` 亲读(仅 `read_text` 提取,无写路径) |
+| ③ Observed / Historical 分离 | **Observed(本轮)**:本仓 `HEAD` = `40c06c9`(== origin/main);V3 `origin/main` = `72af28d`(fetch 本轮直接成功;未前进,远端无实现提交);V3 本地较 DEC-038 新增 `ir_identity.py` + `test_adversarial_manifest.py`(untracked = REPORTED)。**Historical**:轮次 2/1、DEC-036~032 仅存档引用 |
+| ④ STOP 状态 | **NOT TRIGGERED**(零 mismatch) |
+| ⑤ Consumer 提交影响判定 | **未影响冻结对象**:新增代码/测试全部落在 V3 合法写面;五类冻结对象实测零变化;零违例 |
+| ⑥ Guardian checkpoint | 已登记(state.yaml `producer_guardian_phase2_m3` 块 + DEC-039 + CURRENT.md + log.md + 本 ODR v1.20);测试 338 passed / 1 xfailed |
+| 纪律 | 只读检查;零代码 / 零数据 / 零 schema;基线工件零覆盖;未修改 Consumer 实现 / 未提供代码补丁 / 未自行修复 mismatch;零新架构裁决;已裁六项未重开;Guardian only |
 
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 

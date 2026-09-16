@@ -1,6 +1,6 @@
 # PREPROCESSING-PRODUCER-GUARDIAN-PHASE2-CHECK-v1
 
-> **轮次登记**:本文件承载多轮 Guardian checkpoint —— **轮次 2 = DEC-038(本轮,2026-09-16,G1~G6 新编号体系)**;轮次 1 = DEC-037(2026-09-16,Phase 2 开工前锚点,M1~M6 旧编号,原文存档见**附录 A**)。每轮 Observed 各自独立成立,历史轮次仅存档引用。
+> **轮次登记**:本文件承载多轮 Guardian checkpoint —— **轮次 3 = DEC-039(最新,2026-09-16,Phase 2-M3 实现期间监护,G1~G6)**;轮次 2 = DEC-038(2026-09-16,G1~G6 编号体系建立);轮次 1 = DEC-037(2026-09-16,Phase 2 开工前锚点,M1~M6 旧编号,原文存档见**附录 A**)。每轮 Observed 各自独立成立,历史轮次仅存档引用。
 > Owner 指令(DEC-038):Consumer Phase 2 开发期间保持 Producer Frozen Baseline 完整性,执行 Guardian checkpoint G1~G6;检查体系改名 —— **G = Guardian Check,M = Consumer Module**(避免与 Consumer M1~M6 模块编号混淆);全程只读(hash 计算 / diff / 读取 / git 验证);报告严格区分 Observed / Historical;Consumer 新增代码不是违例,违例 = Frozen Producer baseline 字节变化;术语纪律(禁 "IR hash OK" 式模糊表述,须区分 Producer IR artifact / Consumer IR reader output / Derived verification result);异常协议 = 任一 mismatch 立即 STOP 仅报告,禁自动恢复 / 禁重新生成 / 禁覆盖旧工件;输出本文档并登记 state.yaml / CURRENT.md / log.md;Guardian only,不参与 Consumer 实现。
 > 限制:零代码修改 / 零数据修改 / 零 schema 修改。角色:Guardian only。
 
@@ -90,6 +90,49 @@
 - 零新架构裁决;已裁六项未重开;DSH 不参与 Consumer 代码实现(Guardian only)。
 
 **结论:`BOUNDARY: HOLDING` —— Consumer Phase 2 开发期间 Frozen Baseline 完整性检查通过,Guardian checkpoint(轮次 2)已登记。等待 Owner 下一步指令。**
+
+---
+
+## 轮次 3(DEC-039):Phase 2-M3 实现期间 Guardian 监护(2026-09-16)
+
+> Owner 指令:继续保持 Guardian Mode,监督 Consumer Identity Verification **Phase 2-M3** 实现期间 Producer Frozen Baseline 不发生任何变化。检查范围仅 G1~G6。判定规则:允许 Consumer 新增代码 / 测试 / 设计文档;禁止 source bytes 修改 / manifest 内容修改 / producer IR 修改 / freeze artifact 修改 / schema 修改。**特别关注:IR 文件是否被 Consumer 读取后产生污染 —— 读取 ≠ 修改,仅 bytes mismatch 才触发 STOP**。输出:G1-G6 状态 / Observed 与 Historical 分离 / 是否触发 STOP / Consumer 代码提交是否影响冻结对象。禁止:修改 Consumer 实现 / 提供代码补丁 / 自行修复 mismatch;mismatch → STOP 仅报告 Owner。
+
+### 轮次 3 Observed(本轮实际执行,2026-09-16)
+
+#### G1~G6 状态(全部本轮重新执行,零写入散列比对法)
+
+| 类 | Guardian 检查对象 | 本轮实测 | 判定 |
+|---|---|---|---|
+| **G1 source bytes** | 接口面 87 份 source md | 177 锚定文件全量比对内逐文件 sha256 == 锚定值(md 计数 = 87) | **PASS** |
+| **G2 manifest** | 接口面 87 份 manifest + audit 快照自身 | 全量比对 checked=177 / missing=0 / **mismatch=0**(manifest 计数 = 87);快照自身 sha256 实测 = `2cb980c7ca421f5a2c3615053cd3308d5ad1aa078083928724af88d4663a4096` 相符 | **PASS** |
+| **G3 producer IR artifact** | `data/resolver_ref_r52/resolver_ir.json` | **Producer IR artifact hash unchanged**(实测 = `fbcf41ab025fd786614b52d63270160868a2f49ab63121f012905c79f65b04a5`) | **PASS** |
+| **G4 freeze evidence artifacts** | 六证据工件 + R50 辅助锚 | **7/7 match=True**(全部本轮重散列,全值同轮次 2 §1.2 表) | **PASS** |
+| **G5 corpus snapshots** | pre/post 双快照 `corpus_sha256` 字段 | pre = `4ad3458b…19160` 相符;post = `24af8f56…0a10` 相符 | **PASS** |
+| **G6 freeze artifact(跨仓)** | Contract v0.2 冻结对象四元组 | 字节重导 **bytes=92,197 sha256 = `9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528` MATCH=True** + is-ancestor `f4941ff` → origin/main TRUE + `f4941ff..origin/main` 契约 diff empty(临时重导即时删除,不落仓) | **PASS** |
+
+**特别关注项判定(IR 污染)**:G3 实测 **Producer IR artifact hash unchanged,字节零变化 —— 无污染**。旁证(只读观察,V3 本地 untracked `backend/app/core/ir_identity.py` L1-40 亲读):该模块自declare "仅从 IR 文件中提取 producer 声明的 source_content_sha256,仅 extraction,不做验证",唯一读取路径 = `ir_path.read_text(encoding="utf-8")`,**全文无任何写路径 / 无 hash 计算 / 无 read_bytes**;读取 ≠ 修改,未触发 STOP。
+
+#### 双仓时点与 Consumer 提交影响判定
+
+- **本仓**:开工时 `HEAD` = `40c06c9`(== `origin/main`,工作树干净;= DEC-038 轮记账提交);
+- **V3 远端**:`git fetch origin` = OK(本轮直接成功);`git ls-remote origin main` = **`72af28d5854b56fc605e1897fb757703826a6233`**(reachable = TRUE;与 DEC-033~038 同值**未前进**;远端仍无任何 Consumer 实现提交);
+- **V3 本地工作树(本轮 OBSERVED 文件清单)**:在 DEC-038 轮清单基础上**新增 2 件** —— `backend/app/core/ir_identity.py`(M3 IR Identity Reader v1.0.0)与 `backend/tests/test_adversarial_manifest.py`;其余 untracked 件与 DEC-038 轮一致(raw_bytes_identity.py / manifest_identity.py + 测试 + 10 份文档);V3 本地 main 与 origin/main tracked 面同步;
+- **REPORTED vs OBSERVED 分账**:Owner 宣告进入 Phase 2-M3(REPORTED);V3 本地出现 M3 模块文件(OBSERVED 文件清单);M3 完成度自述 = REPORTED 级(untracked 未 commit 未 push);
+- **Consumer 代码提交是否影响冻结对象**:**否**。本轮新增的 Consumer 代码/测试全部落在 V3 仓(合法写面);G1~G6 实测五类冻结对象零变化;违例 = 冻结对象字节变化,本轮**零违例**;
+- **本轮测试基线**:全量测试 **338 passed, 1 xfailed**(与登记基线一致)。
+
+### 轮次 3 Historical(仅存档引用,未混入本轮判定)
+
+轮次 2 / DEC-038(G1~G6 全 PASS,本仓 `056b6c9`→`40c06c9` / V3 `72af28d`)· 轮次 1 / DEC-037(M1~M6 全 PASS,`bebd9e1` / `72af28d`)· DEC-036(`27727c4`)· DEC-035(`e1584bd`)· DEC-034 / DEC-033 / DEC-032(`4daecf0b`)。
+
+### 轮次 3 结论
+
+- **G1~G6 全 PASS,零 mismatch,零 STOP 触发,零违例;IR 无污染(读取 ≠ 修改,G3 字节零变化)**;
+- **Consumer 代码提交未影响任何冻结对象**;
+- Trigger ②(post-Phase1 recheck)继续 **ARMED**(实现仅存 V3 本地 untracked,远端无实现提交);
+- 检查性质:只读;零代码 / 零数据 / 零 schema;基线工件零覆盖;未修改 Consumer 实现,未提供代码补丁,未自行修复任何 mismatch(本轮无需修复);Guardian only。
+
+**结论:`BOUNDARY: HOLDING` —— Phase 2-M3 实现期间 Frozen Baseline 完整性保持,Guardian checkpoint(轮次 3)已登记。等待 Owner 下一步指令。**
 
 ---
 
