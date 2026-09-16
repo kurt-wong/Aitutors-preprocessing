@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.13(2026-09-16,追加 §1quaterdecies Contract v0.2 Frozen 状态最终登记确认:Freeze Artifact 复验 PASS + Producer 侧账本登记 FROZEN = STATUS: CONTRACT FROZEN;v1.12 = §1tredecies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen`
+> Status: **v1.14(2026-09-16,追加 §1quindecies Producer Frozen Baseline Final Integrity Record 收口:Integrity Report 提交 + 三账登记 + 远端本轮真实重验 + 四项 immutable 最终确认 = STATUS: PRODUCER BASELINE FINALIZED;v1.13 = §1quaterdecies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -532,6 +532,27 @@
 | Freeze 不含(明确登记) | bytes verification implementation / identity gate implementation / IR verification implementation(契约 REQUIREMENT ≠ 现状;五项 V3 消费能力仍全部 NOT IMPLEMENTED) |
 | 下一阶段 | **V3 Consumer Identity Verification Implementation**(bytes → SHA256 → Manifest 验证 → IR 验证 → fail-closed → Gate → Admission;实现排期属 V3 侧) |
 | 纪律 | 五类目标(producer 数据 / manifest / IR / schema / Contract Artifact)全部零修改;V3 仓只读(fetch / ls-remote / show / diff);已裁六项未重开;零新架构裁决 |
+
+## 1quindecies. 分项裁决 — Producer Frozen Baseline Final Integrity Record 收口(Owner 2026-09-16 第十六轮,原文照录;canonical 引用面)
+
+### 任务(原文照录要点)
+
+> 任务:Producer Frozen Baseline Final Integrity Record 收口。目标:完成 Frozen Producer Baseline 的最终登记。
+> 允许:只读验证、文档登记。
+> 禁止:代码修改、数据修改、Manifest 修改、IR 修改。
+> 执行:① 提交当前 `PREPROCESSING-PRODUCER-FROZEN-BASELINE-INTEGRITY-REPORT-v1.md`;② 登记 state.yaml / CURRENT.md / log.md——记录 DEC / FACT / evidence location / git status;③ 对 git remote 状态重新执行:`git fetch origin` / `git ls-remote origin main` / `git merge-base --is-ancestor f4941ff origin/main`——如失败必须记录真实错误,**不得引用历史结果作为本轮观察**;④ 最终确认 Producer Baseline:source bytes immutable / manifest immutable / IR immutable / evidence immutable。
+> 输出:`STATUS: PRODUCER BASELINE FINALIZED`,并明确:Consumer Identity Verification **NOT IMPLEMENTED**。
+
+### §1quindecies 生产侧保守义(DSH 解释,非裁决;执行详件 = `PREPROCESSING-PRODUCER-FROZEN-BASELINE-INTEGRITY-REPORT-v1.md`)
+
+| 检查 | 结果 |
+|---|---|
+| ① 报告提交 | `PREPROCESSING-PRODUCER-FROZEN-BASELINE-INTEGRITY-REPORT-v1.md` = commit **`8fc4d60`**(Task 1-3 完成:证据可访问性 PASS / C1-C9 复跑 VERIFIED / 不可变性证明) |
+| ② 三账登记 | state.yaml(DEC-033 + FACT-036 + `producer_baseline_finalized` 块)/ CURRENT.md(状态头 + 快速恢复节 + agent 表)/ log.md(DEC-033 条目)同步;evidence location = 报告 + 六工件登记表;git status = 提交前工作树仅报告一项 untracked→已提交,数据面零改动 |
+| ③ 远端状态(本轮真实观察) | 首试:`git fetch origin` **FAIL**(沙箱 `.git/FETCH_HEAD` Permission denied,exit 255)+ `git ls-remote origin main` **FAIL**(schannel `SEC_E_NO_CREDENTIALS`,exit 128)+ is-ancestor 对**本地 ref**(`72af28d`)TRUE——真实错误如实入账,未引用 DEC-031/032 历史结果;宽模式重试:**fetch OK** / `ls-remote origin main` = **`72af28d5854b56fc605e1897fb757703826a6233`**(remote reachable = TRUE,较 DEC-032 时点 `4daecf0b` 前进,Claude 侧持续推进属预期)/ `merge-base --is-ancestor f4941ff origin/main` = **TRUE**(冻结对象仍包含于远端 main) |
+| ④ 四项 immutable | **source bytes immutable**(C4:87/87 零漂移 vs Step 1 快照 + R50)/ **manifest immutable**(C8:差异恰 = 追加一键;证据工件 sha 登记值 6/6 相符)/ **IR immutable**(C5:71/71 对账零漂移,未再生成未改写)/ **evidence immutable**(六工件 Get-FileHash 实测与登记 sha256 全数相符;复跑输出与已登记 final check 字节级一致 `a707738e…5c33`) |
+| 最终状态 | **STATUS: PRODUCER BASELINE FINALIZED**;**Consumer Identity Verification NOT IMPLEMENTED**(raw bytes acquisition / SHA256 独立验证 / Manifest identity verification / IR identity verification / identity gate 五项全部不变;Freeze 不含三项实现) |
+| 纪律 | 零代码 / 零数据 / 零 Manifest / 零 IR 修改;写入面 = 台账 + 文档登记;Freeze 范围未扩展;零新架构裁决;已裁六项未重开 |
 
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 

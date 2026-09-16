@@ -238,6 +238,12 @@ facts:
     evidence: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-READINESS-v3.md + PREPROCESSING-IMPLEMENTATION-GAP-LIST.md + PREPROCESSING-EXECUTION-DEPENDENCY-MAP.md;工件 data/producer_readiness_probe_v3.json(确定性只读);R50 = data/audit_snapshot_R50_input_baseline.json files 键亲验"
     confidence: OBSERVED
     status: observed
+  - id: FACT-036
+    statement: "Frozen Producer Baseline 冻结后保全复验(DEC-033 轮,只读): ①证据六工件(Step1 b4f14524…ad99 / Step2 d430cc2f…eec1 / verification report da97a2f3…bb7c / final check a707738e…5c33 / pre audit b11874c4…dd9c / post audit 2cb980c7…4096)Get-FileHash 实测与 FREEZE-EVIDENCE v1 登记值 6/6 相符,全部在 HEAD 跟踪(工件 commit e70807b + aad2237); ②C1-C9 复跑全 PASS = VERIFIED: 87/87 source_content_sha256 == SHA256(当前 source bytes),Manifest identity 链闭合(C2 面内唯一 sha 键 / C3 bytes+64hex / C5 IR 71·71 对齐 / C9 locator 不变 + unique 87 dups 0),复跑输出与已登记 final check 字节级一致(同为 a707738e…5c33); ③不可变性 = source bytes 零漂移(C4 vs Step1+R50)/ manifest 差异恰 = 追加一键(C8)/ IR 71·71 零漂移; ④远端复验(V3 仓)本轮真实执行: 首试 fetch FAIL(沙箱 .git/FETCH_HEAD Permission denied, exit 255)+ ls-remote FAIL(SEC_E_NO_CREDENTIALS, exit 128)+ is-ancestor 对本地 ref TRUE——真实错误如实入账,不引用 DEC-031/032 历史结果充当本轮观察;宽模式重试 fetch OK / ls-remote origin/main = 72af28d(reachable = TRUE,较 DEC-032 时点 4daecf0b 前进)/ merge-base --is-ancestor f4941ff origin/main = TRUE"
+    source: preprocessing
+    evidence: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-FROZEN-BASELINE-INTEGRITY-REPORT-v1.md(commit 8fc4d60);复跑 = scripts/freeze_evidence_final_check.py 判定逻辑经 scratch 重定向(已登记工件零覆盖,复跑后 hash 再验不变);V3 仓 fetch/ls-remote/merge-base 亲跑"
+    confidence: OBSERVED
+    status: observed
 decisions:
   - id: DEC-001
     statement: "架构边界: preprocessing declares regions, not interpretations; Resolver may inspect Source only inside declared Evidence scope"
@@ -351,6 +357,10 @@ decisions:
   - id: DEC-032
     statement: "Contract v0.2 Frozen 状态最终登记确认(Freeze Event 后 Producer 侧账本一致): ① 验证 Freeze Artifact(commit f4941ff / sha256 9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528 / remote reachable = TRUE); ② 更新 Producer 侧登记(state.yaml / CURRENT.md / log), 记录 Contract v0.2: FROZEN; ③ 输出 STATUS: CONTRACT FROZEN。明确 Freeze does not include: bytes verification implementation / identity gate implementation / IR verification implementation。下一阶段 = V3 Consumer Identity Verification Implementation。严格限制: 不修改 producer 数据 / manifest / IR / schema / Contract Artifact。注: 本条为 DSH 侧编号, 与 V3 侧 DEC-032(Consumer 收口)撞号, 已知 R5-03 面"
     authority: "用户裁定 2026-09-16(Contract v0.2 Frozen 状态最终登记确认, 聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1quaterdecies)"
+    status: active
+  - id: DEC-033
+    statement: "Producer Frozen Baseline Final Integrity Record 收口(Frozen 后 Producer 数据基线最终登记): ① 提交 PREPROCESSING-PRODUCER-FROZEN-BASELINE-INTEGRITY-REPORT-v1.md; ② 登记 state.yaml / CURRENT.md / log.md(DEC + FACT + evidence location + git status); ③ 重新执行远端核验 git fetch origin / git ls-remote origin main / git merge-base --is-ancestor f4941ff origin/main——如失败必须记录真实错误, 不得引用历史结果作为本轮观察; ④ 最终确认 Producer Baseline 四项 immutable(source bytes / manifest / IR / evidence)→ 输出 STATUS: PRODUCER BASELINE FINALIZED, 并明确 Consumer Identity Verification NOT IMPLEMENTED。允许 = 只读验证 + 文档登记; 禁止 = 代码修改 / 数据修改 / Manifest 修改 / IR 修改。注: 本条为 DSH 侧编号, 与 V3 侧编号潜在撞号(R5-03 面, Owner 已延期统一)"
+    authority: "用户裁定 2026-09-16(Producer Frozen Baseline Final Integrity Record 收口, 聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1quindecies)"
     status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
@@ -512,7 +522,7 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "DEC-032(Frozen 状态最终登记确认)已执行完毕: Freeze Artifact 复验 PASS(remote reachable = TRUE, origin/main = 4daecf0b 含 f4941ff, 重导 sha256 = 9c6b9063…7528 == 必须值, 契约文件 f4941ff..origin/main 零差异)→ Producer 侧账本登记 Contract v0.2: FROZEN(见 owner_contract_frozen 块)。STATUS: CONTRACT FROZEN。Freeze does not include: bytes verification implementation / identity gate implementation / IR verification implementation(五项 V3 能力 NOT IMPLEMENTED 不变)。下一阶段 = V3 Consumer Identity Verification Implementation; 长开项与延期五项不变; 已裁六项不重开"
+  next: "DEC-032(Frozen 状态最终登记确认)已执行完毕: Freeze Artifact 复验 PASS(remote reachable = TRUE, origin/main = 4daecf0b 含 f4941ff, 重导 sha256 = 9c6b9063…7528 == 必须值, 契约文件 f4941ff..origin/main 零差异)→ Producer 侧账本登记 Contract v0.2: FROZEN(见 owner_contract_frozen 块)。STATUS: CONTRACT FROZEN。Freeze does not include: bytes verification implementation / identity gate implementation / IR verification implementation(五项 V3 能力 NOT IMPLEMENTED 不变)。下一阶段 = V3 Consumer Identity Verification Implementation; 长开项与延期五项不变; 已裁六项不重开。DEC-033 追加: Frozen Baseline 保全复验 + 最终登记完成 = STATUS: PRODUCER BASELINE FINALIZED(见 producer_baseline_finalized 块; 四项 immutable 复验零漂移; 本轮远端实测 origin/main = 72af28d, f4941ff 亲缘 TRUE)"
   owner_interface_revision:
     date: "2026-09-16"
     directive: "Interface Finalization Revision v1(统一任务指令;DSH = 五文档同步 / Claude = Consumer Alignment + Contract Draft + Gap Matrix)"
@@ -608,6 +618,16 @@ integration_contract:
     freeze_excludes: "bytes verification implementation / identity gate implementation / IR verification implementation(契约 REQUIREMENT 不得读作现状; 五项 V3 消费能力全部 NOT IMPLEMENTED 不变)"
     next_phase: "V3 Consumer Identity Verification Implementation(bytes → SHA256 → Manifest 验证 → IR 验证 → fail-closed → Gate → Admission; 实现排期属 V3 侧)"
     discipline: "五类目标(producer 数据/manifest/IR/schema/Contract Artifact)零修改 / V3 仓只读(fetch+ls-remote+show+diff) / 已裁六项未重开 / 零新架构裁决"
+  producer_baseline_finalized:
+    date: "2026-09-16"
+    directive: "Producer Frozen Baseline Final Integrity Record 收口(DEC-033): 提交 Integrity Report + 三账登记(state.yaml/CURRENT/log,含 DEC/FACT/evidence location/git status)+ 远端状态重新核验(失败记录真实错误,禁引用历史结果)+ 四项 immutable 最终确认;允许 = 只读验证 + 文档登记;禁止 = 代码/数据/Manifest/IR 修改"
+    report: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-FROZEN-BASELINE-INTEGRITY-REPORT-v1.md(commit 8fc4d60)"
+    git_status: "报告已提交(8fc4d60);本轮三账更新 = 第二 commit;工作树提交前干净(仅报告 untracked→已提交);数据面/manifest/IR/已登记工件零改动"
+    remote_verification: "本轮真实执行(V3 仓): 首试 fetch FAIL(沙箱 .git/FETCH_HEAD Permission denied, exit 255)+ ls-remote FAIL(schannel SEC_E_NO_CREDENTIALS, exit 128)+ is-ancestor 对本地 ref(72af28d)TRUE——真实错误如实入账,未以 DEC-031/032 历史结果冒充本轮观察;宽模式重试: fetch OK / git ls-remote origin main = 72af28d5854b56fc605e1897fb757703826a6233(reachable = TRUE)/ merge-base --is-ancestor f4941ff origin/main = TRUE(冻结对象仍包含于远端 main)"
+    immutability: "source bytes immutable(C4: 87/87 零漂移 vs Step1+R50)/ manifest immutable(C8: 差异恰 = 追加一键;六工件 sha 登记值 6/6 相符)/ IR immutable(C5: 71/71 对账零漂移)/ evidence immutable(登记 sha 全数相符 + 复跑输出字节级复现 a707738e…5c33)"
+    status: "PRODUCER BASELINE FINALIZED"
+    implementation_boundary: "Consumer Identity Verification NOT IMPLEMENTED(五项 V3 消费能力: raw bytes acquisition / SHA256 独立验证 / Manifest identity verification / IR identity verification / identity gate 全部不变)"
+    discipline: "零代码 / 零数据 / 零 manifest / 零 IR 修改;写入面 = 台账 + 文档登记;Freeze 范围未扩展;零新架构裁决"
   owner_interface_finalization:
     date: "2026-09-16"
     directive: "PREPROCESSING / V3 Interface Decision Finalization v1(统一版指令;DSH=Producer Alignment v4 / Claude=Consumer Alignment v2 + Contract v0.2 Frozen Candidate 起草)"
