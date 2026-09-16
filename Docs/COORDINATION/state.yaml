@@ -232,6 +232,12 @@ facts:
     evidence: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-B1B3-READINESS.md §1/§5/§6;PREPROCESSING-CLOSURE-PLAN-v2.md §3/§5"
     confidence: OBSERVED
     status: observed
+  - id: FACT-035
+    statement: "Readiness v3 交集定量(Owner Decision Record v1 后,G1×D2 依赖精确化;修正 FACT-034④ 的全量互斥表述): ①dangling figure 文件 1,396(自算口径同 DQE)∩ v2 接口面 87 source md = 恰 2 份,∩ IR ADMITTED 71 = 同 2 份,∩ R50 基线 = 同 2 份(首师大附中高一化学/高三物理月考卷源 md,三点交集闭合,closure plan v1 'R50 交集恰 2 份'获独立复验);②v2 接口面 87/87 manifest 与 87/87 source md 全部为 R50_input_baseline 成员(R50 组成亲验 = 88 manifest.json + 88 annotated.md + 176 source md + 4 其他 = 356)→ G1 回填 87 份 manifest 必致 R50 DRIFT,必须配对再冻结(新 audit_id + 血统注记);③排除该 2 份三重成员(接口面+IR+R50)后,D2 批跑 1,394 份与接口面零交集,G1 与 D2 顺序自由——互斥精确为 2 文件而非全量;④v2 面 87 source md 全部在位零缺失;⑤B3 行为面已达成: 非标 unit_type 1 例双面显式保留零转换零丢弃,但正确性无机制保证(链零守卫)"
+    source: preprocessing
+    evidence: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-READINESS-v3.md + PREPROCESSING-IMPLEMENTATION-GAP-LIST.md + PREPROCESSING-EXECUTION-DEPENDENCY-MAP.md;工件 data/producer_readiness_probe_v3.json(确定性只读);R50 = data/audit_snapshot_R50_input_baseline.json files 键亲验"
+    confidence: OBSERVED
+    status: observed
 decisions:
   - id: DEC-001
     statement: "架构边界: preprocessing declares regions, not interpretations; Resolver may inspect Source only inside declared Evidence scope"
@@ -454,10 +460,11 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "Owner B1-B3 裁决已入册(DEC-019);DSH 已交付三件: Interface Facts v2(FACT-033)+ B1-B3 Readiness(FACT-034)+ Closure Plan v2(接口冻结主线)。下一步 = Contract v0.2 起草输入已齐(生产侧 RD §3 + 消费侧 Consumer Review v0.2),等 Owner 起草令 / v0.2 内容裁决(source_version_id 语义载体回填范围 87 vs 166、IR 覆盖面、G1 vs D2 时序、v1 面 79 份处置)。数据治理四项仍暂缓"
+  next: "Owner Decision Record v1 已文档化(INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md,含 B3 生产侧责任扩展: 显式保留/禁自动转换/禁静默丢弃);DSH Readiness v3 三件交付(FACT-035): Producer Readiness v3 + Implementation Gap List(G1~G7,最小冻结集 = G1 字段定义 + G5 载体 + G6 面口径)+ Execution Dependency Map(互斥精确为 2 文件,两序 A/B + 决策点 D-1~D-5)。等 Owner: v0.2 起草令 + A1~A7 批准项。数据治理仍暂缓"
   owner_decision_b1b3:
     date: "2026-09-16"
     authority: Owner(直接指令,DSH 自记)
+    doc: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md(裁决原文照录 + B3 生产侧责任扩展 + 未裁事项登记;canonical 引用面)"
     b1_transport: "正式生产接口 = Manifest + IR 双层。Manifest = Source Identity Authority;IR = Semantic Consumption Authority;两者必须通过明确 source_version_id 关联"
     b2_identity: "source identity = SHA-256(raw bytes)(原始字节 SHA-256);body_hash/line_hash/integrity_hash/norm_sha256 只能作为内部校验,不能作为跨系统 source identity"
     b3_semantic_boundary: "unknown unit_type 不得自动修正、不得静默转换,必须进入 UNKNOWN/PENDING"
@@ -498,6 +505,20 @@ integration_contract:
     status: "v1(2026-09-16;B2 producer 侧 READY 零动作;B1 NOT/PARTIAL;B3 NOT READY)"
     key_facts: "Contract v0.2 生产侧输入四件: source_version_id 需求/Manifest 字段需求/IR 输出约束/unknown unit_type 处理约束;治理五项暂缓逐项标注冻结依赖;新识别时序互斥: G1 回填 vs D2 图片恢复(D2 就地改写 md 字节 → 已回填 id 失配)"
     facts_registered: [FACT-034]
+  producer_readiness_v3:
+    path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-READINESS-v3.md
+    status: "v3(2026-09-16,Owner Decision Record v1 后;已满足 7 项/未满足 7 项/需 Owner 批准 7 项)"
+    artifact: "data/producer_readiness_probe_v3.json(三点交集定量: dangling∩v2面 = dangling∩IR71 = dangling∩R50 = 同 2 份;v2 面 87/87 manifest 全部 R50 成员;R50 组成 88 manifest+88 annotated+176 source md+4)"
+    key_facts: "B2 已满足零动作;B1-M manifest 0/166 携 source_version_id 且 0/166 携 sha 字段 = authority 无承载;B3 行为面已达成(1 例显式保留零转换零丢弃)但机制面零守卫;source_version_id 值 producer 今天可算(算法/代码就绪 71 份已实证)"
+    facts_registered: [FACT-035]
+  implementation_gap_list:
+    path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-IMPLEMENTATION-GAP-LIST.md
+    status: "v1(2026-09-16;G1~G7 逐缺口: 现状/目标/实施/批准依赖/验收判据)"
+    key_facts: "最小冻结集 = G1 字段定义 + G5 载体 + G6 面口径(数据动作全部可后置);G1 硬约束 = v2 面 87/87 manifest 是 R50 成员,回填必致 DRIFT 须配对再冻结"
+  execution_dependency_map:
+    path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-EXECUTION-DEPENDENCY-MAP.md
+    status: "v2(2026-09-16 重整理,取代 IF-v2/Readiness v1 定性互斥表述)"
+    key_facts: "互斥精确化: D2 1396 份中仅 2 份落在接口面(同 2 份三重成员: 接口面+IR+R50),排除这 2 份后 D2 与 G1 零冲突顺序自由;两可行序 A/B 与五个决策点 D-1~D-5"
 
 data_hygiene:
   status: measured

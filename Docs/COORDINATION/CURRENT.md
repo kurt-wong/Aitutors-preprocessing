@@ -1,19 +1,19 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**Owner B1-B3 裁决入册 DEC-019**;DSH 三件交付:Interface Facts v2 + B1-B3 Readiness + Closure Plan v2;B2 producer 侧已合规零动作;B1/B3 结构缺口 = manifest 0/166 携 source_version_id、IR 覆盖 71/166、unit_type 链零守卫;数据治理四项仍暂缓,接口冻结优先)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**Owner Decision Record v1 文档化**(B3 生产侧责任扩展:显式保留/禁自动转换/禁静默丢弃);**DSH Readiness v3 三件交付**:Producer Readiness v3(已满足 7/未满足 7/待批 7)+ Implementation Gap List(G1~G7,最小冻结集 = G1 字段定义 + G5 载体 + G6 面口径)+ Execution Dependency Map(互斥精确化为 2 文件,排除后 G1×D2 零冲突);新定量:v2 面 87/87 manifest 全部 R50 成员 → 回填必致 DRIFT 须配对再冻结)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
-## ⏭ 当前状态:Owner B1-B3 已裁,主线 = Contract v0.2 起草输入已齐(2026-09-16)
+## ⏭ 当前状态:Readiness v3 已交,等 Owner v0.2 起草令 + A1~A7 批准(2026-09-16)
 
-**已裁(DEC-019)**:B1 = Manifest+IR 双层(Manifest = Source Identity Authority / IR = Semantic Consumption Authority / source_version_id 关联);B2 = source identity = SHA-256(raw bytes),body_hash/line_hash/integrity_hash/norm_sha256 仅内部;B3 = unknown unit_type 不修正不静默转换,进 UNKNOWN/PENDING。
+**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(DEC-019 + B3 责任扩展;未裁事项登记面)。
 
-**DSH 三件交付**:
-- `INTEGRATION/PREPROCESSING-PRODUCER-INTERFACE-FACTS-v2.md`(能提供/不能提供/缺口;工件 `data/producer_interface_probe_v2.json`);
-- `INTEGRATION/PREPROCESSING-B1B3-READINESS.md`(v0.2 生产侧输入四件 + 治理五项冻结依赖;新识别 G1 回填 vs 图片恢复互斥时序);
-- `PREPROCESSING-CLOSURE-PLAN-v2.md`(主线改为接口冻结序;v1 保留)。
+**DSH 本轮三件**:
+- `INTEGRATION/PREPROCESSING-PRODUCER-READINESS-v3.md`(B2 已满足零动作;B1-M manifest 0/166 携 id/sha 字段;B3 行为面已达成机制面零守卫);
+- `INTEGRATION/PREPROCESSING-IMPLEMENTATION-GAP-LIST.md`(G1~G7 逐缺口 + 验收判据);
+- `INTEGRATION/PREPROCESSING-EXECUTION-DEPENDENCY-MAP.md`(dangling∩接口面 = dangling∩IR = dangling∩R50 = 同 2 份;排除后 D2 与 G1 零冲突;序 A/B + D-1~D-5 决策点)。
 
-**等 Owner**:v0.2 起草令 + 内容裁决(source_version_id 回填范围 87 vs 166 / IR 覆盖面 71 vs 扩产 / G1 vs D2 时序 / v1 面 79 份处置)。
-**仍暂缓**:数据治理四项(unit_type 修复 / 图片恢复 / flags registry / D5-C·D)。
+**等 Owner**:v0.2 起草令;A1 字段定义 / A2 回填范围(87 vs 166)/ A3 回填令 / A4 IR 覆盖面+持续产出 / A5 v1 面 79 份处置 / A6 B3 载体 / A7 守卫令。
+**仍暂缓**:数据治理四项。工件:`data/producer_readiness_probe_v3.json`(FACT-035)。
 
 ## 主线:preprocessing 内部收口(数据卫生,Owner 令)
 
@@ -26,7 +26,7 @@
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **Owner B1-B3 裁决后三件交付**(Interface Facts v2 FACT-033 + B1-B3 Readiness FACT-034 + Closure Plan v2;工件 `data/producer_interface_probe_v2.json`);DEC-019 入册;治理四项暂缓;契约保持 DRAFT 待 v0.2 |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **Readiness v3 三件交付**(Producer Readiness v3 + Gap List G1~G7 + Dependency Map;工件 `data/producer_readiness_probe_v3.json`,FACT-035);Owner Decision Record v1 文档化;治理四项暂缓;契约保持 DRAFT 待 v0.2 |
 | **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **Consumer Review v0.2 已交付**(V3 `938535d`,不可冻结 + 三 BLOCK);待收 DSH Reconciliation v0.2 后按 Owner 裁决更新消费面;遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步;V3 侧契约稿/ v0.1 review/handoff 007 仍 untracked(REPORTED 级,建议 commit 入册) |
 
 ## P3.2 / EB-004 终局(VERIFIED)

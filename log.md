@@ -2495,3 +2495,20 @@ ext 更新;CURRENT.md 顶部暂停横幅。Contract 保持 v0.1 DRAFT,语料零�
 7. **md 计数口径对账**:今日全树 6,114 = raw face 4,224 + reslice 派生 355 + auto-annotated 1,535;raw face 与 v1 时点一致(零增长)。
 
 **落盘**:IF-v2(§6 能/不能/缺口六缺口 G1~G6)/ Readiness(§3 v0.2 输入四件 + §5 治理五项依赖表)/ Closure Plan v2(主线改接口冻结序,A 类二选一被 B3 取代部分,v1 保留);DEC-019 入册;FACT-033/034 入册。Contract 正文零改动,两仓代码零修改,数据文件零修改。
+
+---
+
+## 2026-09-16 Owner Decision Record v1 回应:Producer Readiness v3 + Gap List + Dependency Map
+
+**触发**:Owner 指令——基于 Owner Decision Record v1 更新 Producer Interface Readiness:确认 source_version_id 来源 = raw bytes SHA-256;明确 manifest 当前不是 identity authority(缺 source_version_id + sha 字段);输出已满足/未满足/需批准三清单;B3 只定义生产侧责任(显式保留/禁自动转换/禁静默丢弃);重整理 G1×D2 依赖;禁止改数据/schema/图片恢复/daemon/Contract。
+
+**武器**:.pytest_work/pif3_probe.py 确定性只读交集探针 → 工件 data/producer_readiness_probe_v3.json。dangling 全量自算 1,396(复用 DQE 武器排除政策与正则,口径一致);R50 成员资格 = audit_snapshot files 键亲验。
+
+**新固化事实(OBSERVED,FACT-035;修正 FACT-034④ 全量互斥表述)**:
+1. **三点交集闭合**:dangling 1,396 ∩ v2 接口面 87 source md = 恰 2 份 = ∩ IR ADMITTED 71 = ∩ R50 基线(首师大附中高一化学/高三物理月考卷源 md)——closure plan v1 "R50 交集恰 2 份"获独立复验;
+2. **v2 接口面 87/87 manifest + 87/87 source md 全部是 R50_input_baseline 成员**(R50 组成亲验 = 88 manifest.json + 88 annotated.md + 176 source md + 4 其他 = 356)→ **G1 回填 87 份 manifest 必致 R50 DRIFT,必须配对再冻结**(新 audit_id + 血统注记);
+3. **互斥精确化**:排除 2 份三重成员后,D2 批跑 1,394 份与接口面零交集,G1 与 D2 顺序自由——IF-v2/Readiness v1 的"全量互斥"表述修正为"精确 2 文件互斥";
+4. **v2 面 87 source md 全部在位零缺失**;
+5. **B3 行为面已达成**:非标 unit_type 1 例双面显式保留、零转换、零丢弃(行为符合裁决,但无机制保证——链零守卫)。
+
+**落盘**:①PREPROCESSING-OWNER-DECISION-RECORD-v1.md(裁决原文照录 + B3 生产侧责任严格解释 + 未裁事项登记);②PREPROCESSING-PRODUCER-READINESS-v3.md(S1~S7 已满足 / U1~U7 未满足 / A1~A7 待批);③PREPROCESSING-IMPLEMENTATION-GAP-LIST.md(G1~G7 含验收判据;最小冻结集 = G1 字段定义 + G5 载体 + G6 面口径);④PREPROCESSING-EXECUTION-DEPENDENCY-MAP.md(边表 E1~E8 + 执行序 A/B + 决策点 D-1~D-5)。FACT-035 入册;台账同步。零数据修改、零 schema 修改、零图片恢复、零 daemon 修改、零 Contract 修改。
