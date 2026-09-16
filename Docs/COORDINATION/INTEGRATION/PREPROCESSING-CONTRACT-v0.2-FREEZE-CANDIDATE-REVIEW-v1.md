@@ -1,5 +1,7 @@
 # PREPROCESSING-V3 CONTRACT v0.2 — FREEZE CANDIDATE REVIEW v1(DSH 生产侧评审)
 
+> **承接注记(2026-09-16,DEC-025)**:Owner Final Decision 已下——本文件 §A.2 的 **PROPOSED-NAMING N-1~N-4(V3 侧改名方案)作废**,Owner 采纳**契约侧让名**:跨系统身份字段 = **`source_content_sha256`**;§A.3 的 **PROPOSED-BYTES 能力条款已被 Decision 2 采纳冻结**;F-4 旧表述删除与文字收口 = Decision 4(Claude 执行面)。后续以 `PREPROCESSING-CONTRACT-v0.2-FREEZE-CANDIDATE-FINAL-v1.md`(FC-1~FC-5 终稿条款)为准;本文件保留为评审历史记录。
+
 > Status: **v1(2026-09-16)** · Authority: Owner 统一任务指令「进入 PREPROCESSING Contract v0.2 Freeze Candidate Review」(原文照录于 `PREPROCESSING-OWNER-DECISION-RECORD-v1.md` §1sexies;ledger = `state.yaml.decisions[DEC-024]`)
 > 评审对象:V3 仓 `Docs/COORDINATION/CONTRACTS/PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md`(Claude 起草,558 行,**全文逐行亲读**,DSH 评审时 V3 侧状态 = DRAFT / Frozen Candidate / NOT FROZEN)
 > Role:DSH = Source Evidence Producer 侧评审(核验 + 落字建议);**Contract 正文起草责任仍在 Claude**(DEC-022 Part 7 / DEC-023 Part 7),DSH 正文零改动。

@@ -1,6 +1,7 @@
 # EXECUTION DEPENDENCY MAP — G1 identity 固化 × D2 figure recovery(重整理)
 
-> Status: **v2.3(2026-09-16,DEC-023 Interface Finalization Revision v1 增量)** · 取代 IF-v2 §6.3 与 Readiness v1 中"互斥时序"的初步表述
+> Status: **v2.4(2026-09-16,DEC-025 Freeze Candidate Finalization 增量:回填字段名 = `source_content_sha256`)** · 取代 IF-v2 §6.3 与 Readiness v1 中"互斥时序"的初步表述
+> **DEC-025 增量**:跨系统身份字段名 = **`source_content_sha256`**(= SHA256(raw bytes),64 小写 hex 不变;OQ-8′ 关闭,V3 内部 UUID `source_version_id` 无需改名);本图中"backfill source_version_id / G1 回填"一律指回填 `source_content_sha256`;bytes 能力要求已冻结(传输方式不冻结)。主链(G1×D2×R50)与交集定量不变。
 > **DEC-023 增量**:①**Path 非身份原则**——id 钉的是 bytes 不是 path;D2 改写 md 使 id 失配的机理 = **bytes 变**,与路径/目录无关(表述同步修正);②**16 份接口面内无 IR 成员 = Identity Available / Semantic Pending(可恢复)**;IR 再生成**允许但四约束**(bytes 不变/id 一致/新 IR 绑定 id/重过双验证)+ 四禁(禁改原 source/禁重 OCR 覆盖/禁新 identity/禁新 hash 替代)→ **E8 由"若扩产"变"已允许,执行待令"**;③G1 字段名/算法/格式三裁,仅剩回填执行令。本图主链(G1×D2×R50)与交集定量不变。
 > DEC-B1 增量:source 身份不依赖 IR 存在 → E8(G3 扩产治理)与 G1 路径彻底解耦;本图主链(G1×D2×R50)不受影响,交集定量不变。
 > **DEC-021 增量**:Owner 裁定五步序 = ①Freeze interface snapshot → ②backfill source_version_id(范围已裁 87)→ ③Freeze Contract v0.2 → ④data hygiene → ⑤image recovery——**D-1/D-2/D-5 关闭**(见 §5);快照先行变体下 E2 的配对对象从"R50 再冻结"转为"Step 1 接口快照与 R50 的血统关系"(执行令细化,UNKNOWN)。

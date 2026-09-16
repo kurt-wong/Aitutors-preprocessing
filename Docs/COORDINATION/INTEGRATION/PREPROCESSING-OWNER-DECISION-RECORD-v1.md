@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.5(2026-09-16,追加 §1sexies Contract v0.2 Freeze Candidate Review 启动令:命名方案 + bytes 能力要求两项新裁决面)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review`
+> Status: **v1.6(2026-09-16,追加 §1septies Contract v0.2 Freeze Candidate Finalization:契约键改名 `source_content_sha256` + bytes 能力冻结 + 文字收口五项)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -309,6 +309,46 @@
 
 ---
 
+## 1septies. 分项裁决 — Contract v0.2 Freeze Candidate Finalization(Owner 2026-09-16 第八轮,原文照录;canonical 引用面)
+
+> Owner 令:本轮进入 Contract v0.2 Freeze Candidate Finalization。已确认裁决四项(原文照录):
+
+### Decision 1 — Identity Field Naming
+
+> 采用:**`source_content_sha256`**。定义:**`SHA256(raw bytes)`**。作为跨系统 Source Identity 字段。
+> 禁止:`source_file`/path 参与 identity 判断。
+> V3 内部 `source_version_id` 保持内部含义,**不作为跨系统身份键**。
+
+### Decision 2 — Source Bytes Capability
+
+> Contract 冻结能力要求:V3 必须能够:①获取 raw bytes ②独立计算 SHA256 ③与 `source_content_sha256` 比较 ④不一致 fail-closed。**不冻结具体传输方式。**
+
+### Decision 3 — State Boundary
+
+> 采用双状态体系:Semantic = `ready`/`incomplete`/`unknown`;Decision = `pending_review`/`approved`/`rejected`;**禁止合并**。
+> unknown 语义单元必须:生成 reviewable record,进入 pending_review 流程。禁止:silent skip / silent conversion / silent fallback。
+
+### Decision 4 — Contract Freeze Preparation
+
+> 进入 Freeze Candidate Finalization。完成:①Contract v0.2 文字收口 ②删除旧的:Semantic Unavailable 等错误表述 ③`source_version_id` 歧义全部消除 ④补充 bytes capability requirement ⑤确认 87/71/16 范围表达。
+
+### 约束与输出
+
+> 继续禁止:修改业务代码 / 修改 schema / 修改数据 / IR 重新生成 / 图片恢复 / daemon 执行。
+> 输出:A. Contract v0.2 Freeze Candidate Final 版;B. 最终 Remaining UNKNOWN 列表;C. Freeze 前执行步骤清单;D. Implementation Gap Matrix。**完成后等待 Owner Freeze 令。**
+
+### §1septies 生产侧保守义(DSH 解释,非裁决;详件 = `PREPROCESSING-CONTRACT-v0.2-FREEZE-CANDIDATE-FINAL-v1.md`)
+
+| 条款 | 生产侧落实语义 |
+|---|---|
+| Decision 1 | **命名变更面 = 仅契约侧字段名**:`source_version_id`(契约键)→ `source_content_sha256`;算法 SHA256(raw bytes)、格式 64 小写 hex、"值即 sha"语义全部不变;OQ-8′ 关闭,消歧方式 = **契约侧让名**(取代 §1sexies 回应中 N-1~N-4「V3 侧改名」PROPOSED,该方案作废;V3 UUID 列无需改名);存量零迁移(71 份 `ir.source_sha256` 即该值);Step 2 回填直接写新名,**无二次迁移**;文档引用纪律:契约键旧名一律读作 `source_content_sha256`,`source_version_id` 此后仅指 V3 内部 UUID FK |
+| Decision 2 | 能力要求 = 义务面冻结(四项),传输方式 = 实现面不冻结(OQ-12′ 降级 delivery logistics);Review v1 §A.3 PROPOSED-BYTES **已被采纳**;V3 侧四项能力 not started(如实登记,不阻塞冻结) |
+| Decision 3 | 与 DEC-023 Part 5/6 逐字一致,无新裁决;reviewable record 载体形态与两层状态字段落点仍未裁 |
+| Decision 4 | 文字收口五项 = Claude 执行面(C-0a);DSH 侧同步本轮完成(Freeze Candidate Final v1 + Gap List v1.4 + Facts v2.3 + DepMap v2.4 + Review v1 承接注记) |
+| 程序边界 | 本文件不是冻结令;冻结 = 五步序 Step 3,前置 = Step 1 快照 + Step 2 回填(执行令未下达);DSH 输出 A/B/C/D 已交付,**等待 Owner Freeze 令** |
+
+---
+
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 
 B3 生产侧责任按裁决文字取最大保守义:
@@ -323,14 +363,14 @@ B3 生产侧责任按裁决文字取最大保守义:
 ## 3. 未裁事项登记(引用本文件时必须一并引用)
 
 - **字段名/算法/格式全部已裁(§1quinquies Part 1 DEC-SOURCE-IDENTITY)**:`source_version_id = SHA256(original source bytes)`,**64 字符小写 hex 字符串**;
-- **path 身份地位已裁(§1quinquies Part 1-2)**:`source_file` = locator information(保留),**非 identity**;任何文档不得暗示 path/absolute path/directory 参与唯一/身份/version/hash 判断;**bytes 交付已裁原则(§1sexies Part 6)= 只冻结能力要求**(V3 必须获得 raw bytes 并验证 hash),具体传输方案明确不冻结(OQ-12′ 降级为 delivery logistics);条款文本 = PROPOSED-BYTES 待 Claude 合入;
+- **path 身份地位已裁(§1quinquies Part 1-2)**:`source_file` = locator information(保留),**非 identity**;任何文档不得暗示 path/absolute path/directory 参与唯一/身份/version/hash 判断;**bytes 交付已裁(§1septies Decision 2)= 能力要求冻结**(获取 raw bytes + 独立重算 SHA256 + 与 `source_content_sha256` 比较 + fail-closed),传输方式不冻结;条款文本已定稿(FC-2),待 Claude 合入;
 - ~~回填范围~~ **已裁 = 87**;
 - IR 权威覆盖面:**当前面已裁 = 71 ADMITTED**;**再生成已裁(§1quinquies Part 3)= 允许但四约束**(bytes 不变 / id 一致 / 新 IR 绑定 id / 重过 identity verification + semantic validation)+ 四禁(禁改原 source / 禁重 OCR 覆盖 / 禁新 identity / 禁新 hash 替代);**执行令与 R52 工件版本策略仍未裁**;
 - v1 legacy 面 79 份:**已裁 = historical asset 隔离**;披露形态(文字层):**未裁**(弱);
 - 语义/决策状态机:**词表终局已裁(§1quinquies Part 5)**——semantic = `ready/incomplete/unknown`,decision = `pending_review/approved/rejected`(取代 §1ter D3 四状态合并记法);unknown 路由**已裁(§1quinquies Part 6)**= 产 reviewable record → pending_review workflow;**两层载体(字段名/落点)与 reviewable record 形态:未裁**;
 - 16 份 Identity-only:**已裁(§1quinquies Part 3)= Identity Available / Semantic Pending(可恢复)**;接口面呈现字段:**未裁**(随载体);
 - 执行顺序:**已裁五步**;Step 1 接口快照载体与 R50 血统(D-6)、存量 1 例原子性(D-3)、2 份三重成员(D-4)、全部数据动作执行令:**未裁**;
-- **命名消歧已回应(§1sexies Part 5)**:DSH 提出 PROPOSED-NAMING N-1~N-4(契约键 `source_version_id` 不改名 / V3 UUID FK 改名 `source_version_row_id` / 绑定列 CHAR(64) UNIQUE / 过渡期引用限定语);**Owner 采纳 = 未裁**(采纳后 OQ-8′ 关闭;V3 改名属实现动作 not started,不阻塞冻结);
-- Contract v0.2 正文起草:**已裁由 Claude 执行**(四章节要求 = §1quinquies Part 7);**Freeze Candidate Review 已交付(DSH,§1sexies 回应 = `PREPROCESSING-CONTRACT-v0.2-FREEZE-CANDIDATE-REVIEW-v1.md`,判定 CONDITIONAL READY)**;冻结:**未裁**(Owner 冻结令 = 五步序 Step 3,前置 Step 1/Step 2 执行令未下达);F-4 旧表述修正 + OQ-18 关闭(PROPOSED):待 Claude / Owner。
+- **命名已终裁(§1septies Decision 1)**:跨系统身份字段 = **`source_content_sha256`**(SHA256(raw bytes),64 小写 hex 不变);原契约键 `source_version_id` 此后仅指 V3 内部 UUID FK;OQ-8′ 关闭;Review v1 N-1~N-4 作废;IR 侧字段名对齐(`source_sha256` 是否改名)= producer 实现动作待令;
+- Contract v0.2 正文起草:**已裁由 Claude 执行**(四章节要求 = §1quinquies Part 7);Freeze Candidate Review v1 已交付(DEC-024);**Freeze Candidate Final v1 已交付(DEC-025 回应 = `PREPROCESSING-CONTRACT-v0.2-FREEZE-CANDIDATE-FINAL-v1.md`,FC-1~FC-5 终稿条款文本 + B/C/D)**;冻结:**未裁**(Owner Freeze 令 = 五步序 Step 3,前置 Step 1/Step 2 执行令未下达);等 Claude:C-0a 文字收口五项落字。
 
 *v1 · 2026-09-16 · DSH 自记(Owner 聊天原文照录)。如有文字冲突,以 Owner 原文为准。*

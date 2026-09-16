@@ -1,6 +1,6 @@
 # PREPROCESSING PRODUCER INTERFACE FACTS v2
 
-> Status: **v2.2(2026-09-16,Interface Finalization Revision v1 固化增量:DEC-SOURCE-IDENTITY 格式已裁 / path 非身份注记 / 16 份 Semantic Pending;实测事实面零改动)** · Authority: Owner B1-B3 + Interface Decision Finalization + Interface Finalization Revision(2026-09-16,DSH 自记于 `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision`)
+> Status: **v2.3(2026-09-16,DEC-025 Freeze Candidate Finalization 增量:跨系统身份字段名 = `source_content_sha256`,取代原契约键 `source_version_id`;算法/格式/实测事实面零改动)** · Authority: Owner B1-B3 + Interface Decision Finalization + Interface Finalization Revision + **Freeze Candidate Finalization(2026-09-16,DSH 自记于 `state.yaml.decisions[DEC-025]`)**
 > Role: preprocessing Producer Owner —— 回答"producer 能提供什么 / 不能提供什么 / 缺口在哪里",并作为 Contract v0.2 的生产侧输入。
 > Discipline: 只写实测事实(路径 + commit 可复现);不假设 V3 消费方式;不提出 V3 实现方案;不修改 Contract 正文 / 数据文件 / 两仓代码。无证据一律标 UNKNOWN。
 > Evidence artifacts: `data/producer_interface_census.json`(v1 全语料普查,commit `17c55d8`)+ `data/producer_interface_probe_v2.json`(v2 定向探针,本轮 commit)。
@@ -41,9 +41,11 @@
 
 **数字对齐三禁(Part 3,叠加既有)**:禁强制生成 IR / 禁删除 identity 文件 / 禁改历史数据凑一致。**新增禁令(DEC-023 Part 4)**:"IR available" 不得等同于 "Interface available";Interface Scope = 87 不得修改为 71。
 
-### 0bis.3 Identity 定义固化(DEC-023 Part 1 DEC-SOURCE-IDENTITY 终局)
+### 0bis.3 Identity 定义固化(DEC-023 Part 1 终局 + DEC-025 Decision 1 改名)
 
-`source_version_id = SHA256(original source bytes)`,**格式 = 64 字符小写 hex 字符串**——与现有 `ir.source_sha256` 71 份实证形态完全一致(§4.1),零格式迁移。**Identity 由 `source_version_id` 唯一决定。Source identity belongs to content hash, not storage location(文件身份属于内容哈希,不属于存储位置)。**
+`source_content_sha256 = SHA256(original source bytes)`,**格式 = 64 字符小写 hex 字符串**——与现有 `ir.source_sha256` 71 份实证形态完全一致(§4.1),零格式迁移。**Identity 由该字段唯一决定。Source identity belongs to content hash, not storage location(文件身份属于内容哈希,不属于存储位置)。**
+
+> **字段名变更注(DEC-025,覆盖全文旧引用)**:DEC-023 原契约键名 `source_version_id` 已由 Owner Decision 1 **改名为 `source_content_sha256`**(算法/格式/语义不变);`source_version_id` 一名**此后仅指 V3 内部 UUID FK**(保持内部含义,不作跨系统身份键)。本文件其余章节中作为契约键出现的 `source_version_id` 一律按 `source_content_sha256` 读;实测事实(0/166 等)不受字段名影响。
 
 ### 0bis.4 path 非身份原则(DEC-023 Part 1-2)
 

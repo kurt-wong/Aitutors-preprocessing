@@ -1,23 +1,23 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**Contract v0.2 Freeze Candidate Review 启动(DEC-024)**:六项原则核验 = 1-4 PASS / 5·6 新裁决面回应;DSH 交付 Freeze Candidate Review v1(CONDITIONAL READY;PROPOSED-NAMING N-1~N-4 + PROPOSED-BYTES 能力条款);冻结 = 五步序 Step 3,前置 Step 1/Step 2 执行令未下达,冻结令权在 Owner)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**Contract v0.2 Freeze Candidate Finalization(DEC-025)**:①跨系统身份字段终名 = **`source_content_sha256`**(= SHA256(raw bytes),64 小写 hex 不变;OQ-8′ 关闭,消歧 = 契约侧让名,V3 UUID 零改名)②bytes 能力要求冻结(V3 须获取 raw bytes + 独立重算 SHA256 + 比对 + fail-closed;传输方式不冻结)③状态边界再确认 ④文字收口五项;DSH 交付 Freeze Candidate **Final** v1(FC-1~FC-5 终稿条款);**等待 Owner Freeze 令**)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
-## ⏭ 当前状态:Contract v0.2 Freeze Candidate Review 进行中(2026-09-16,DEC-024)
+## ⏭ 当前状态:Freeze Candidate Final 条款已定稿 → 等 Claude 文字收口 + Owner Freeze 令(2026-09-16,DEC-025)
 
-**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.5**:§1 + §1bis + §1ter + §1quater + §1quinquies + **§1sexies DEC-024**)。
+**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.6**:… + §1sexies DEC-024 + **§1septies DEC-025**)。
 
-**DEC-024(Owner 六项已确认原则 + 两项新裁决面)**:
-- 再确认:source identity = `SHA256(raw bytes)`(path 仅 locator)/ Manifest·IR 双层(身份验证独立于 IR)/ 16 份 Semantic Pending(四保证:bytes hash 不变·identity 不变·IR 版本可追踪·禁覆盖历史)/ 两状态词表禁合并;
-- **【新】命名**:提出最终命名方案,避免 Producer hash identity 与 V3 UUID FK 同名;
-- **【新】bytes 交付**:只冻结能力要求(V3 必须获得 raw bytes 并验证 hash),不冻结传输方案;
-- 输出 A Freeze Candidate / B 剩余未决 / C Implementation Gap / **D 禁止修改任何代码和数据**。
+**DEC-025 四项终裁(生产侧生效)**:
+- **FC-1 命名**:跨系统 Source Identity 字段 = **`source_content_sha256`**;`source_version_id` 此后仅指 V3 内部 UUID FK;path 禁参与 identity 判断不变;存量零迁移(71 份 `ir.source_sha256` 即该值),Step 2 回填直接写新名,**Review v1 N-1~N-4(V3 侧改名)作废**;
+- **FC-2 bytes 能力**:四项义务冻结,传输方式不冻结;
+- **FC-3 状态边界**:semantic {ready,incomplete,unknown} + decision {pending_review,approved,rejected} 禁合并;unknown → reviewable record → pending_review;三禁;
+- **FC-4/5**:87/71/16 表达确认 + 文字收口五项(删 "Semantic Unavailable" 旧表述 / 歧义全部消除 / bytes 条款补充)。
 
-**DSH 本轮交付**:`INTEGRATION/PREPROCESSING-CONTRACT-v0.2-FREEZE-CANDIDATE-REVIEW-v1.md`(Claude v0.2 DRAFT 558 行全文亲读)——判定 **CONDITIONAL READY**;PROPOSED-NAMING **N-1~N-4**(契约键 `source_version_id` 不改名零迁移 / V3 UUID FK 改名 `source_version_row_id` / 绑定列 CHAR(64) UNIQUE / 过渡期引用限定语;采纳后 OQ-8′ 关闭);PROPOSED-BYTES 能力条款草案(传输不冻结,OQ-12′ 降级 logistics);F-4(Claude 两处 "Semantic Unavailable" 旧表述修正)+ F-6(OQ-18 PROPOSED 关闭:E1 由五步序取代)。
+**DSH 本轮交付**:`INTEGRATION/PREPROCESSING-CONTRACT-v0.2-FREEZE-CANDIDATE-FINAL-v1.md`(A 终稿条款 FC-1~FC-5 / B 最终 UNKNOWN / C Freeze 前执行步骤清单 / D Gap Matrix D-1~D-11);同步 = Gap List v1.4 / Facts v2.3 / DepMap v2.4 / Review v1 承接注记 / ODR v1.6。
 
-**等 Owner**:①N-1~N-4 命名方案采纳 ②A.3 bytes 能力条款文本采纳 ③OQ-18 关闭确认 ④冻结令(= Step 3,前置 = Step 1 接口快照 + Step 2 回填 87 执行令)。
-**等 Claude**:F-4 修正 + F-5 锚点更新 + 两项 PROPOSED 落字 v0.2 正文。
-**仍暂缓**:数据治理四项;IR 重生成 / 数据回填 / schema 修改(执行令前零动作);Contract 冻结(令权在 Owner)。
+**等 Claude(C-0a)**:FC-1~FC-5 合入 v0.2 正文(删旧表述 / `source_version_id` 歧义替换 / bytes 条款 / 87·71·16 核对 / 锚点更新)。
+**等 Owner**:Step 1(接口快照 + R50 血统)/ Step 2(回填 `source_content_sha256` × 87 + R50 配对再冻结)执行令 → **Freeze 令(= 五步序 Step 3)**。
+**仍暂缓**:数据治理四项;IR 重生成 / schema / 数据修改(执行令前零动作)。
 
 ## 主线:preprocessing 内部收口(数据卫生,Owner 令)
 
@@ -30,8 +30,8 @@
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-024 入册 + Contract v0.2 Freeze Candidate Review v1 交付**(Claude v0.2 DRAFT 全文亲读,CONDITIONAL READY;PROPOSED-NAMING N-1~N-4 + PROPOSED-BYTES);零代码零数据,Contract 正文零改动 |
-| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **v0.2 DRAFT(Frozen Candidate)已交付**(`PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md`,DSH 已全文评审);待办:F-4 两处 "Semantic Unavailable" 旧表述修正 + 锚点更新(eed83ee)+ 两项 PROPOSED 落字;遗留:R5-03 DEC 编号冲突(撞号已累积 3 处)+ DEC-017/018 同步 + 契约稿 untracked(REPORTED 级) |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-025 入册 + Freeze Candidate Final v1 交付**(FC-1~FC-5 终稿条款 + B/C/D;五文档同步 Gap List v1.4 / Facts v2.3 / DepMap v2.4 / Review v1 注记 / ODR v1.6);零代码零数据,Contract 正文零改动 |
+| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **待办 C-0a**:FC-1~FC-5 合入 v0.2 正文(删 "Semantic Unavailable" 旧表述 / `source_version_id` 歧义全部替换为 `source_content_sha256` 契约键语义 / bytes 能力条款 / 87·71·16 核对 / 锚点更新);遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 + 契约稿 untracked(REPORTED 级) |
 
 ## P3.2 / EB-004 终局(VERIFIED)
 
