@@ -332,6 +332,10 @@ decisions:
     statement: "Contract v0.2 最终冻结收口(DSH/Producer 侧): 一、四项原则 Owner 最终确认且实现阶段不得自行改变(跨系统身份 source_content_sha256 = SHA256(original source bytes) 64 小写 hex, path 仅 locator 禁参与 identity/唯一性/version/hash 判断; Manifest = Source Identity Authority / IR = Semantic Consumption Authority 不得混用; 16 份 = Identity Available / Semantic Pending, IR 再生成允许但复用原 identity + 不新建/不改历史/不删记录/保留血统; 原则冻结后实现阶段不得改)。二、DSH 四任务: Task1 Freeze Evidence(Contract v0.2 → Step 1 → Step 2 → verification report 可追溯链 + 实际 commit/工件); Task2 Producer 最终一致性检查(87 scope / 87 hash / 87 bytes / 71 IR 对账 / 16 pending / R50 血统 / path 非身份; 全过标 VERIFIED, 不一致列 BLOCKER 不自行修复); Task3 文档交叉核验(source_version_id / source_content_sha256 / source_file / path / Semantic Unavailable / Semantic Pending; 历史审计注记可留但须标识废止/历史); Task4 继续不做实现(IR 重生成/图片恢复/Question/schema/daemon/V3 代码/未授权清洗全禁)。三、输出 = Freeze Evidence + 一致性报告 + 交叉核验 + READY/BLOCKED 结论。四、纪律: Decision ≠ Implementation, 契约冻结不得声称 V3 已具身份验证/bytes 校验/IR 验证能力, 未实现能力一律标 not implemented / not started"
     authority: "用户裁定 2026-09-16(Contract v0.2 最终冻结收口 DSH/Producer 侧,聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1novies)"
     status: active
+  - id: DEC-028
+    statement: "Producer 侧 Contract Freeze 最终确认(本轮零新数据动作,不提新架构裁决): Task1 确认 Claude Contract 合并结果七项要素(source_content_sha256 / path non identity / Manifest·IR 职责 / 87·71·16 范围 / Semantic Pending / bytes verification requirement / fail-closed); Task2 确认 Contract → Step1 snapshot → Step2 backfill → Verification report 证据链完整; Task3 显式记录五项 V3 能力仍 NOT IMPLEMENTED(raw bytes acquisition / SHA256 独立验证 / Manifest identity verification / IR identity verification / identity gate)。禁: 重跑 IR / 改 manifest / 改 schema / 改 V3 代码 / 扩展 Freeze 范围。输出 = Producer READY FOR OWNER FREEZE 或具体 BLOCKER。注: 本条为 DSH 侧编号,与 V3 侧 DEC-028(Interface Finalization Revision)撞号,撞号问题 Owner 已延期(DEC 编号统一);本轮对应 V3 侧 Consumer 收口 = V3 DEC-032"
+    authority: "用户裁定 2026-09-16(Producer 侧 Contract Freeze 最终确认,聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1decies)"
+    status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
 open_questions:
@@ -492,7 +496,7 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "DEC-027(Contract v0.2 最终冻结收口,DSH/Producer 侧)已执行完毕: Freeze Evidence v1 + 最终一致性检查 C1-C9 全 PASS(overall VERIFIED, data/freeze_evidence_final_check.json, 全部从当前磁盘字节独立重推导)+ 文档交叉核验完成(Facts v2.5 / DepMap / Alignment v4 废止标识; 现行态零歧义)。结论 = READY FOR CONTRACT FREEZE(Producer 侧)。等 Claude: C-0a 正文合并(source_content_sha256 / 删 Semantic Unavailable / bytes 条款 / 87·71·16)。等 Owner: 正式 Freeze 令(= Step 3)。Decision ≠ Implementation: V3 D-7/D-8/D-9/D-11 全部 not started(V3 现自算 hash 为 canonical_json 包裹非 raw bytes)。仍开: 16 份 IR 再生成批次(须另令) / D-3 / D-4 / IR 字段名对齐 / 两层状态载体 / C.1 载体形态追认; 延期五项按 Owner 建议不处理"
+  next: "DEC-028(Producer 侧 Contract Freeze 最终确认)已执行完毕: 七项契约文本要素核验全部在位(Claude 合并结果 = V3 工作树 DEC-032 收口稿,亲读 §0.1/§1.2/§1.3/§1.6/§2.3/§5.6)+ 证据链 Contract→Step1→Step2→Verification 确认完整 + 五项 V3 能力 NOT IMPLEMENTED 显式记录。结论 = Producer READY FOR OWNER FREEZE(报告 = INTEGRATION/PREPROCESSING-CONTRACT-FREEZE-PRODUCER-CONFIRMATION-v1.md)。两项 Claude 侧 WARNING: F-1 契约文本未引用 Step1/Step2/验证报告工件且状态注记仍为执行前时点(not started/尚未满足,5+ 处); F-2 契约收口稿 V3 工作树未提交(最新 commit 0c60e62 = DEC-031)。等 Owner: 正式 Freeze 令(建议一并处置 F-1/F-2 文本同步)。Decision ≠ Implementation: V3 五项能力全部 NOT IMPLEMENTED; 16 份 IR 再生成 / D-3 / D-4 / IR 字段名对齐 / 两层状态载体 / C.1 追认仍开; 延期五项不处理"
   owner_interface_revision:
     date: "2026-09-16"
     directive: "Interface Finalization Revision v1(统一任务指令;DSH = 五文档同步 / Claude = Consumer Alignment + Contract Draft + Gap Matrix)"
@@ -541,6 +545,15 @@ integration_contract:
     discipline: "零实现动作: 未重生成 IR/未恢复图片/未改 Question/schema/daemon/V3 代码/未授权清洗; 数据写入面 = 零(唯一新数据文件 = 只读复核报告)"
     verdict: "READY FOR CONTRACT FREEZE(Producer/DSH 侧证据结论; 冻结令权在 Owner, 正文合并义务在 Claude)"
     still_open: "Claude C-0a 正文合并 → Owner 正式 Freeze 令(Step 3)/ 16 份 IR 再生成批次 / D-3 / D-4 / IR 字段名对齐 / 两层状态载体 + reviewable record / C.1 载体形态追认"
+  owner_freeze_confirmation:
+    date: "2026-09-16"
+    directive: "Producer 侧 Contract Freeze 最终确认(DEC-028): Task1 七项要素核验 / Task2 证据链确认 / Task3 五项 NOT IMPLEMENTED 记录; 零数据动作, 禁扩展 Freeze 范围, 不提新架构裁决"
+    confirmation: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-CONTRACT-FREEZE-PRODUCER-CONFIRMATION-v1.md(七项逐项 PASS + 锚点行号; 证据链完整; 五项 NOT IMPLEMENTED 双侧一致)"
+    contract_reviewed: "V3 仓 PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md 工作树版本(Claude V3 DEC-032 Consumer 收口, +102 行未 commit; DSH 只读零改动)"
+    findings: "F-1 WARNING: 契约文本未引用 Step1/Step2/验证报告/Freeze Evidence 工件(grep 0 命中)+ 状态注记仍为执行前时点(头注/DA-35/§5.4/§8/尾注 5+ 处 not started·尚未满足); F-2 WARNING: 收口稿 V3 工作树未提交(最新 commit 0c60e62=DEC-031)。均为 Claude 侧文本同步项, 非 Producer 阻塞"
+    verdict: "Producer READY FOR OWNER FREEZE(零 BLOCKER; F-1/F-2 供 Owner 在 Freeze 令中一并处置)"
+    discipline: "未重跑 IR / 未改 manifest / 未改 schema / 未改 V3 代码(只读) / 未扩展 Freeze 范围 / 未提新架构裁决; DSH 写入面 = 文档 + 台账"
+    still_open: "Owner 正式 Freeze 令 / F-1 契约文本状态同步(Claude)/ F-2 契约收口稿提交(Claude)/ 16 份 IR 再生成批次 / D-3 / D-4 / IR 字段名对齐 / 两层状态载体 / C.1 追认"
   owner_interface_finalization:
     date: "2026-09-16"
     directive: "PREPROCESSING / V3 Interface Decision Finalization v1(统一版指令;DSH=Producer Alignment v4 / Claude=Consumer Alignment v2 + Contract v0.2 Frozen Candidate 起草)"

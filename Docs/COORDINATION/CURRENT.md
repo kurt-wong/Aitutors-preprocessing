@@ -1,23 +1,21 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**Contract v0.2 最终冻结收口(DEC-027,DSH/Producer 侧)**:Freeze Evidence v1 建立(Contract v0.2 → Step 1 → Step 2 → 验证报告 → 最终复核,全链可追溯 + 工件 sha256 登记);最终一致性检查 **C1-C9 全 PASS = VERIFIED,零 BLOCKER**(只读脚本从当前磁盘字节独立重推导);文档交叉核验完成(Facts v2.5 消歧 / DepMap / Alignment v4 废止标识);结论 = **READY FOR CONTRACT FREEZE(Producer 侧)**;Decision ≠ Implementation:V3 能力全部 not started)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**Producer 侧 Contract Freeze 最终确认(DEC-028)**:七项契约文本要素核验全部在位(Claude V3 DEC-032 收口稿,亲读锚点)+ 证据链 Contract→Step1→Step2→Verification 确认完整 + 五项 V3 能力 NOT IMPLEMENTED 显式记录;结论 = **Producer READY FOR OWNER FREEZE**(零 BLOCKER);两项 Claude 侧 WARNING:F-1 契约文本未引用证据工件且状态注记仍为执行前时点 / F-2 收口稿 V3 工作树未提交;本轮零数据动作、零新架构裁决)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
-## ⏭ 当前状态:Freeze Evidence 收口完毕 READY FOR CONTRACT FREEZE(Producer 侧)→ 等 Claude 正文合并 + Owner 正式 Freeze 令(2026-09-16,DEC-027)
+## ⏭ 当前状态:Producer READY FOR OWNER FREEZE → 等 Owner 正式 Freeze 令(2026-09-16,DEC-028)
 
-**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.8**:… + §1octies DEC-026 + **§1novies DEC-027**)。
+**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.9**:… + §1octies DEC-026 + §1novies DEC-027 + **§1decies DEC-028**)。
 
-**DEC-027 = Contract v0.2 最终冻结收口(DSH/Producer 侧)**:四项原则最终确认(source_content_sha256 Identity Authority / 双层职责 / 16 份 Semantic Pending 四约束 / 冻结后实现阶段不得改)+ Task 1 Freeze Evidence + Task 2 最终一致性检查(全过 VERIFIED / 不一致 BLOCKED 不自修)+ Task 3 文档交叉核验 + Task 4 继续不做实现 + **Decision ≠ Implementation** 纪律。
+**DEC-028 = Producer 侧 Contract Freeze 最终确认**(零数据动作 / 禁扩展 Freeze 范围 / 不提新架构裁决):
+- **Task 1 七项要素核验 = 全部 PASS**:`source_content_sha256`(§1.2,64 小写 hex,id 即 sha)/ path non identity(§0.1①+§1.3)/ Manifest·IR 双层职责(§0.5/§1.1)/ 87·71·16(§1.6)/ Semantic Pending(§1.6 七约束;"Semantic Unavailable" 仅存废止语境)/ bytes verification requirement(§0.1⑥+§2.3 四条)/ fail-closed(§2.3);
+- **Task 2 证据链 = 完整**:Contract v0.2(FC-1~FC-5,ff04f47+e70807b)→ Step 1 snapshot(pre audit `4ad3458b…`)→ Step 2 backfill(post audit `24af8f56…`)→ Verification report → Final check(`aad2237`);详件 = `INTEGRATION/PREPROCESSING-CONTRACT-v0.2-FREEZE-EVIDENCE-v1.md`;
+- **Task 3 五项 NOT IMPLEMENTED 显式记录**:raw bytes acquisition / SHA256 独立验证 / Manifest identity verification / IR identity verification / identity gate(与契约 §5.6.1 双侧一致;契约冻结不交付任何能力);
+- 报告 = `INTEGRATION/PREPROCESSING-CONTRACT-FREEZE-PRODUCER-CONFIRMATION-v1.md`。
 
-**DSH 本轮交付**:
-- **Freeze Evidence**:`INTEGRATION/PREPROCESSING-CONTRACT-v0.2-FREEZE-EVIDENCE-v1.md`(追溯链 Contract v0.2(ff04f47+e70807b)→ Step 1 snapshot → Step 2 backfill → verification report → final check;工件 sha256 全值 + R50 血统解释 + 16 pending 逐份);
-- **最终一致性检查**:`scripts/freeze_evidence_final_check.py`(只读,不信先前报告结论,全部从当前磁盘字节重推导)→ `data/freeze_evidence_final_check.json`:**C1-C9 全 PASS,overall VERIFIED**(87 scope / 87 唯一身份键 / 87 bytes+64hex / 87 零漂移==R50 / IR 71·71 / pending 16·16 / R50 血统+audit 对账 / 剥键 87·87 / locator 87·87;unique identities 87, dups 0);测试 338 passed / 1 xfailed;
-- **文档交叉核验**:Facts v2 → **v2.5**(现行态按 DEC-025 命名消歧,历史时点明确标识)、DepMap 现行描述更新、Alignment v4 行内**已废止**标识;`rg` 复核剩余命中全部属允许保留语境(原文照录 / 取代注记 / Claude 修正指令 / V3 UUID FK)。
-
-**等 Claude**:合并最终契约(`source_content_sha256` / path non identity / Identity Pending / bytes verification requirement;全部替换 Semantic Unavailable → Semantic Pending;V3 代码零修改)。
-**等 Owner**:**正式 Freeze 令(= 五步序 Step 3)**——DSH 侧证据与前置已全部闭合(READY FOR CONTRACT FREEZE)。
-**Decision ≠ Implementation**:V3 D-7(bytes 四能力)/ D-8 六消费义务 / D-9 unknown+reviewable record / D-11 identity verification **全部 not started**;V3 现自算 hash = canonical_json 包裹(`runner.py:71-73`),非 raw bytes。
-**仍开**:16 份 IR 再生成批次(须另令)/ D-3 存量 1 例 / D-4 2 份三重成员 / IR 字段名对齐 / 两层状态载体 + reviewable record / C.1 载体形态追认;**延期五项**(legacy 79 披露 / 17 拒收 / OCR-PDF 扩展 / DEC 编号统一 / bytes 传输方式)按 Owner 建议不处理。
+**等 Claude(文本同步项,非 Producer 阻塞)**:F-1 契约文本引用 Step 1/Step 2/验证报告工件并刷新状态注记(现仍为执行前时点:not started / 尚未满足,5+ 处);F-2 将 Consumer 收口稿 commit(V3 工作树 +102 行未提交,最新 commit `0c60e62` = DEC-031)。
+**等 Owner**:**正式 Freeze 令(= 五步序 Step 3)**——Producer 侧全部前置闭合,建议一并处置 F-1/F-2。
+**Decision ≠ Implementation**:五项 V3 消费能力全部 **NOT IMPLEMENTED**(V3 现自算 hash = canonical_json 包裹,`runner.py:71-73`);16 份 IR 再生成 / D-3 / D-4 / IR 字段名对齐 / 两层状态载体 + reviewable record / C.1 追认仍开;延期五项不处理。
 **下一阶段核心风险(Owner 原文)**:V3 消费端必须真正实现「拿到 bytes → 自己计算 SHA256 → 验证 Manifest → 验证 IR → 失败关闭」。
 
 ## 主线:preprocessing 内部收口(数据卫生,Owner 令)
@@ -31,8 +29,8 @@
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-027 收口完毕:Freeze Evidence v1 + 最终一致性检查 C1-C9 全 PASS(VERIFIED)+ 文档交叉核验完成 = READY FOR CONTRACT FREEZE(Producer 侧)**;零实现动作、数据写入面 = 零 |
-| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **待办:合并最终契约**(`source_content_sha256` / path non identity / Identity Pending / bytes verification requirement;Semantic Unavailable → Semantic Pending 全部替换;V3 代码零修改);遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 + 契约稿 untracked(REPORTED 级) |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-028 确认完毕:七项契约要素核验 PASS + 证据链完整 + 五项 NOT IMPLEMENTED 记录 = Producer READY FOR OWNER FREEZE**;零数据动作,V3 仓只读 |
+| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **Consumer 收口稿已在 V3 工作树(DEC-032,+102 行未 commit)**;待办:F-1 契约文本引用 Step1/Step2/验证报告工件 + 刷新状态注记(现为执行前时点)、F-2 commit 收口稿;遗留:R5-03 DEC 编号冲突(含 DSH DEC-028 撞号)+ DEC-017/018 同步 |
 
 ## P3.2 / EB-004 终局(VERIFIED)
 

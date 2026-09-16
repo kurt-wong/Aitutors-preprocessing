@@ -128,3 +128,7 @@ READY FOR CONTRACT FREEZE
 ```
 
 (权责边界:此为 **Producer/DSH 侧证据结论**;冻结令本身属 Owner,契约正文合并义务属 Claude。DSH 侧前置与证据链已全部闭合,无 BLOCKER、无遗留验证缺口。)
+
+## 8. 后续确认(DEC-028 轮,2026-09-16)
+
+Owner「Producer 侧 Contract Freeze 最终确认」指令已执行:七项文本要素核验全部在位、本证据链(Task 2)确认完整、五项 V3 能力 NOT IMPLEMENTED 显式记录——结论 **Producer READY FOR OWNER FREEZE**;另记录两项 Claude 侧文本同步 WARNING(契约未引用证据工件 + 状态注记仍为 Step 1/2 执行前时点;契约收口稿 V3 工作树未提交)。详件 = `PREPROCESSING-CONTRACT-FREEZE-PRODUCER-CONFIRMATION-v1.md`。本文件 §1-§7 内容不变。
