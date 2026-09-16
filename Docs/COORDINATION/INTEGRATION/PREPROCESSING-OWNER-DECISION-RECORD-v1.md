@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.11(2026-09-16,追加 §1duodecies Producer Final Freeze Object Verification:冻结对象四元组更新为 f4941ff(与 Claude 三方一致)+ Artifact≠Registration 分别记录 + Remote verification FAIL(B-1 未 push)+ 证据链 Final Seal;v1.10 = §1undecies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies;与 V3 侧 DEC-028 撞号,已知 R5-03 面)+ `[DEC-029]`(§1undecies;与 V3 侧 DEC-029 撞号,已知 R5-03 面)+ `[DEC-030]`(§1duodecies;与 V3 侧 DEC-030 撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification`
+> Status: **v1.12(2026-09-16,追加 §1tredecies Freeze Artifact 最终远端复核:f4941ff 已入 origin/main + 文档 hash 相等 + 四元组确认 = CONTRACT FREEZE READY,B-1 CLOSED;v1.11 = §1duodecies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -494,6 +494,24 @@
 | Task 4 | 输出 = 内容面 READY + remote 面 FAIL;**Remaining blockers = B-1(唯一,未 push)**;Implementation boundary = 五项 NOT IMPLEMENTED |
 | 纪律 | 零数据动作 / 零代码改动 / V3 仓只读 / 冻结范围未扩展 / 零新架构裁决 / 已裁四题未重开;diff 判定亲读非 Claude 自述 |
 | 结论 | 冻结对象内容面唯一且双侧一致;**B-1(Claude push)闭合前远端不可复现**——建议 Freeze 令与「push + DSH 远端复核(ls-remote HEAD == f4941ff + blob hash == 9c6b9063…)」并行或作为机械前置 |
+
+## 1tredecies. 分项裁决 — Contract v0.2 Freeze Artifact 最终远端复核(Owner 2026-09-16 第十四轮,原文照录;canonical 引用面)
+
+### 任务(原文照录要点)
+
+> 验证 Claude push 后 Freeze Artifact 达到 remote reproducibility。严格限制:不修改 producer 数据 / manifest / IR / schema / Contract。
+> 执行:① 获取 V3 origin/main 最新状态,`git merge-base --is-ancestor f4941ff origin/main` 必须包含;② `git show f4941ff:<Contract path>` 计算 sha256,必须等于 `9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528`;③ 验证冻结对象四元组;④ 全部 PASS → 输出 `STATUS: CONTRACT FREEZE READY` + `B-1: CLOSED` 并提交 Producer Freeze Final Verification Report;失败 → 只报告具体失败项。
+> 禁止重新讨论:identity key / path / `source_version_id` / Semantic Pending / 87·71·16 / bytes requirement。
+
+### §1tredecies 生产侧保守义(DSH 解释,非裁决;执行详件 = `PREPROCESSING-CONTRACT-v0.2-PRODUCER-FREEZE-FINAL-VERIFICATION-REPORT-v1.md`)
+
+| 检查 | 结果 |
+|---|---|
+| ① 远端包含性 | **PASS**——`origin/main` = `305bd81`(DEC-034);`merge-base --is-ancestor f4941ff origin/main` = TRUE;远端历史亲验 `305bd81 → f4941ff → c6e771c → …` |
+| ② 文档 hash | **PASS**——commit 内容重导 = `9c6b9063…7528` == 必须值;补充:`f4941ff..origin/main` 对契约文件 diff 零差异(DEC-034 仅改四份协调文档,未触碰契约) |
+| ③ 四元组 | **PASS**——repo / commit / document / sha256 四点互相钉死,远端可复现 |
+| ④ 结论 | **STATUS: CONTRACT FREEZE READY;B-1: CLOSED**——Producer 侧 blocker 清零;冻结令权在 Owner(READY ≠ FROZEN);Implementation boundary = NOT IMPLEMENTED 不变 |
+| 纪律 | 五类目标全部未修改;V3 仓只读;已裁六项未重开;零新架构裁决 |
 
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 

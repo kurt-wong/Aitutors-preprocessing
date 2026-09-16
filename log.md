@@ -2633,3 +2633,13 @@ ext 更新;CURRENT.md 顶部暂停横幅。Contract 保持 v0.1 DRAFT,语料零�
 **Task 4(输出)**:`INTEGRATION/PREPROCESSING-CONTRACT-v0.2-PRODUCER-FINAL-FREEZE-CONFIRMATION-v1.md`——内容面 READY(唯一且双侧一致)+ remote 面 FAIL;Remaining blockers = B-1;Implementation boundary = 五项 NOT IMPLEMENTED;下一阶段 = V3 Identity Verification Implementation。
 **同步**:ODR v1.11(§1duodecies)/ state.yaml(DEC-030 + `owner_freeze_object_verification` 块 + next)/ CURRENT。
 **结论**:冻结对象内容面唯一且双侧一致;**B-1(Claude push `f4941ff`)闭合前远端不可复现**——建议 Freeze 令与「push + DSH 远端复核(ls-remote HEAD == `f4941ff` + blob hash == `9c6b9063…`)」并行下达或作为机械前置。零数据动作、零代码改动、V3 仓只读、冻结范围未扩展、零新架构裁决、已裁四题未重开。
+
+## DEC-031 — Contract v0.2 Freeze Artifact 最终远端复核(2026-09-16)
+
+**指令**:验证 Claude push 后 Freeze Artifact 达到 remote reproducibility;五类目标(producer 数据 / manifest / IR / schema / Contract)全部不修改;禁止重开已裁六项。
+**① 远端包含性 = PASS**:V3 `origin/main` = **`305bd81`**(Claude 已 push,含 V3 DEC-034 Freeze Object Final Alignment);`git merge-base --is-ancestor f4941ff origin/main` = **TRUE**;远端历史亲验 `305bd81 → f4941ff → c6e771c`。
+**② 文档 hash = PASS**:`git show f4941ff:Docs/COORDINATION/CONTRACTS/PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` 重导 sha256 = **`9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528`** == 必须值;补充核验:`f4941ff..origin/main` 对契约文件 diff **零差异**(DEC-034 仅改 GAP-MAP/CURRENT/log/state.yaml 协调文档,未触碰契约)。
+**③ 四元组 = PASS**:`kurt-wong/AITutors-v3` / `f4941ff87c0130ee0b79ff6b807c4ec2826b8ff1` / `PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` / `9c6b9063…7528`——三点互相钉死,任何第三方可从远端独立复现冻结对象。
+**④ 结论**:`STATUS: CONTRACT FREEZE READY` / `B-1: CLOSED`——**Producer 侧 blocker 清零**;报告 = `INTEGRATION/PREPROCESSING-CONTRACT-v0.2-PRODUCER-FREEZE-FINAL-VERIFICATION-REPORT-v1.md`。
+**同步**:ODR v1.12(§1tredecies)/ state.yaml(DEC-031 + `owner_freeze_remote_verification` 块 + next)/ CURRENT。
+**终态**:冻结全部机械前置满足,**只等 Owner 正式 Freeze 令(= 五步序 Step 3)**;READY ≠ FROZEN;五项 V3 能力 NOT IMPLEMENTED 不变,下一阶段 = V3 Identity Verification Implementation。五类目标零修改、V3 仓只读、已裁六项未重开、零新架构裁决。
