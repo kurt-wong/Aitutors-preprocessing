@@ -1,8 +1,9 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1(2026-09-16)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]` + `state.yaml.integration_contract.owner_decision_b1b3`
-> Purpose: 裁决原文固化,作为 Producer Readiness v3 / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
+> Status: **v1.1(2026-09-16,追加 DEC-B1 分项裁决)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `state.yaml.decisions[DEC-020]`(DEC-B1 分项)+ `state.yaml.integration_contract.owner_decision_b1b3`
+> Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
+> 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
 ---
 
@@ -50,6 +51,27 @@
 
 ---
 
+## 1bis. 分项裁决 DEC-B1(Owner 2026-09-16 第三轮,原文照录)
+
+> **DEC-B1:**
+> Transport 采用双层模型。
+> **Manifest:负责 Source Identity Authority。**
+> **IR:负责 Semantic Consumption Authority。**
+> **source_version_id:作为两者唯一关联键。**
+> **V3 消费语义来自 IR,**
+> **但 source 身份不依赖 IR 存在。**
+
+### DEC-B1 生产侧语义(DSH 解释,保守义)
+
+| 条款 | 生产侧落实语义 |
+|---|---|
+| 唯一关联键 | 双层间关联只有 `source_version_id` 一种;路径值相等(`source_file`)是现状,**不是**合规关联 |
+| **source 身份不依赖 IR 存在** | ①manifest 的身份字段必须**自足**:任何一份入接口面的 manifest,其 `source_version_id` 可独立验证(sha256(md 字节)当场可算),**不需要 IR 在场**;②IR 缺席(未扩产/拒收/未生成)不使 manifest 身份失效;③反向不成立:IR 的语义承载依赖 manifest 身份锚定 |
+| 与覆盖面的关系 | 该条使 **G1(身份回填)与 G3(IR 扩产)解耦**:身份面可以先行完备,语义面维持现状 71 不阻塞身份权威性 |
+| V3 消费语义来自 IR | 消费侧陈述,DSH 侧无动作;producer 只须保证 IR 面语义稳定(现状 71 sha 零漂移) |
+
+---
+
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 
 B3 生产侧责任按裁决文字取最大保守义:
@@ -63,8 +85,8 @@ B3 生产侧责任按裁决文字取最大保守义:
 
 ## 3. 未裁事项登记(引用本文件时必须一并引用)
 
-- `source_version_id` 的载体字段名、格式(裸 hex vs 带前缀)、回填范围(接口面 87 vs 全语料 166):**未裁**;
-- IR 权威覆盖面(现状 71 vs 扩产)与持续产出机制:**未裁**;
+- `source_version_id` 的载体字段名、格式(裸 hex vs 带前缀)、回填范围(接口面 87 vs 全语料 166):**未裁**(唯一关联键地位已由 DEC-B1 裁定,字段细节未裁);
+- IR 权威覆盖面(现状 71 vs 扩产)与持续产出机制:**未裁**(DEC-B1 已裁定其与 source 身份解耦,不再阻塞身份面);
 - v1 legacy 面 79 份处置(排除/迁移/披露):**未裁**;
 - UNKNOWN/PENDING 状态机落点:**未裁**。
 

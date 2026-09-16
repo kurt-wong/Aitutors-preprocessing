@@ -1,6 +1,7 @@
 # PRODUCER READINESS v3 — preprocessing 侧对 Contract v0.2 的实现缺口
 
-> Status: **v3(2026-09-16)** · Basis: **Owner Decision Record v1**(`PREPROCESSING-OWNER-DECISION-RECORD-v1.md` = DEC-019 + B3 生产侧责任扩展)+ IF-v2 + Readiness v1(本轮升版取代)+ Closure Plan v2
+> Status: **v3.1(2026-09-16,DEC-B1 后增量更新)** · Basis: **Owner Decision Record v1**(§1 总纲 + **§1bis DEC-B1**)+ IF-v2 + Readiness v1(本轮升版取代)+ Closure Plan v2
+> DEC-B1 生效更新:①唯一关联键已裁(`source_version_id`)→ U3 目标态确定;②**source 身份不依赖 IR 存在** → U4(IR 覆盖)从身份路径解耦,IR 现状 71 不阻塞 B1-M/B1-L 达成;③G1 目标态新增身份自足性验收。
 > Purpose: 明确 preprocessing 生产侧距离 Contract v0.2 冻结接口的实现缺口:已满足 / 未满足 / 需 Owner 批准。
 > Evidence: `data/producer_interface_probe_v2.json`(上轮)+ `data/producer_readiness_probe_v3.json`(本轮新增,交集定量)+ `data/audit_snapshot_R50_input_baseline.json`(R50 成员资格亲验)。
 > Discipline: 零数据修改 / 零 schema 修改 / 零图片恢复 / 零 daemon 修改 / 零 Contract 修改。无证据标 UNKNOWN。
@@ -71,8 +72,8 @@
 |---|---|---|---|---|---|
 | U1 | manifest 缺 `source_version_id` | B1-M / B1-L | 0/166 | 字段新增 + 回填(范围 87 或 166 待裁) | **v0.2 定义 + Owner 回填令** |
 | U2 | manifest 缺 sha 类字段 | B1-M | 0/166 | 同 U1(字段形态待 v0.2 定) | 同上 |
-| U3 | 双层关联 = 路径值相等 | B1-L | `ir.source_file == manifest.source_file` | 关联键升级为 `source_version_id`(IR 侧字段已有,manifest 侧随 U1) | 同上 |
-| U4 | IR 覆盖 71/166 | B1-I | 95 份无语义承载 | 扩产(若 v0.2 要求) | **UNKNOWN(覆盖面未裁)** |
+| U3 | 双层关联 = 路径值相等 | B1-L(**DEC-B1 已裁唯一键**) | `ir.source_file == manifest.source_file` | 关联键升级为 `source_version_id` 唯一关联(IR 侧字段已有,manifest 侧随 U1) | 随 U1 |
+| U4 | IR 覆盖 71/166 | B1-I(**DEC-B1 解耦**) | 95 份无语义承载 | 扩产(若 v0.2 要求);**已不阻塞身份面** | **UNKNOWN(覆盖面未裁)** |
 | U5 | IR 无持续产出机制 | B1-I | R52 一次性冻结 | 机制建设(若要求) | **UNKNOWN(未裁)** |
 | U6 | B3 零守卫 | B3 | 生成链无 unit_type 值域检查;正确性靠"恰好没转换"而非机制 | 生成链引入值域检查 + 显式 UNKNOWN/PENDING 落点 | **v0.2 落字 B3 载体** |
 | U7 | v1 legacy 面 79 份无接口地位 | B1 面口径 | C-IN-1 拒收语义之外无处置定义 | 排除/迁移/披露三选一 | **UNKNOWN(未裁)** |

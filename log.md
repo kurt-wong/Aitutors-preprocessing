@@ -2512,3 +2512,18 @@ ext 更新;CURRENT.md 顶部暂停横幅。Contract 保持 v0.1 DRAFT,语料零�
 5. **B3 行为面已达成**:非标 unit_type 1 例双面显式保留、零转换、零丢弃(行为符合裁决,但无机制保证——链零守卫)。
 
 **落盘**:①PREPROCESSING-OWNER-DECISION-RECORD-v1.md(裁决原文照录 + B3 生产侧责任严格解释 + 未裁事项登记);②PREPROCESSING-PRODUCER-READINESS-v3.md(S1~S7 已满足 / U1~U7 未满足 / A1~A7 待批);③PREPROCESSING-IMPLEMENTATION-GAP-LIST.md(G1~G7 含验收判据;最小冻结集 = G1 字段定义 + G5 载体 + G6 面口径);④PREPROCESSING-EXECUTION-DEPENDENCY-MAP.md(边表 E1~E8 + 执行序 A/B + 决策点 D-1~D-5)。FACT-035 入册;台账同步。零数据修改、零 schema 修改、零图片恢复、零 daemon 修改、零 Contract 修改。
+
+---
+
+## 2026-09-16 DEC-B1 分项裁决入册(DEC-020):唯一关联键 + 身份-语义解耦
+
+**触发**:Owner 下达 DEC-B1 分项裁决(原文照录):Transport 双层模型;Manifest = Source Identity Authority;IR = Semantic Consumption Authority;source_version_id 为两者唯一关联键;V3 消费语义来自 IR,但 source 身份不依赖 IR 存在。
+
+**落盘**:①ODR 升 v1.1(§1bis DEC-B1 照录 + 生产侧保守义四条:唯一键/身份自足/解耦/消费侧陈述无动作);②DEC-020 入册;③三文档增量:Gap List v1.1(G2 唯一键已裁、G3 与身份面解耦、G1 新增身份自足性验收、汇总矩阵更新)、Readiness v3.1(U3/U4 更新)、Dependency Map v2.1(E8 解耦注记,主链与交集定量不变)。
+
+**生产侧后果(关键)**:
+1. **G1 与 G3 正式解耦**——身份回填不再等待 IR 扩产;IR 现状 71 不阻塞身份权威性;
+2. **身份自足性**成为 G1 验收项:入接口面 manifest 的 source_version_id 独立可验(sha256(md 字节)当场可算),IR 缺席不使身份失效;
+3. 唯一关联键 = source_version_id;现状路径值相等关联(ir.source_file == manifest.source_file)不合规,随 G1 升级。
+
+**不变事实**:三点交集(同 2 份)/ v2 面 87/87 R50 成员 / 回填必配对再冻结 / 最小冻结集三项。零数据/schema/图片恢复/daemon/Contract 修改。

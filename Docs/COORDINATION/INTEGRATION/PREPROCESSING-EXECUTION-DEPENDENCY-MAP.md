@@ -1,7 +1,8 @@
 # EXECUTION DEPENDENCY MAP — G1 identity 固化 × D2 figure recovery(重整理)
 
-> Status: **v2(2026-09-16,重整理)** · 取代 IF-v2 §6.3 与 Readiness v1 中"互斥时序"的初步表述
-> Basis: Owner Decision Record v1 + `data/producer_readiness_probe_v3.json`(三点交集定量)+ R50 成员资格亲验
+> Status: **v2.1(2026-09-16,DEC-B1 后注记)** · 取代 IF-v2 §6.3 与 Readiness v1 中"互斥时序"的初步表述
+> DEC-B1 增量:source 身份不依赖 IR 存在 → E8(G3 扩产治理)与 G1 路径彻底解耦;本图主链(G1×D2×R50)不受影响,交集定量不变。
+> Basis: Owner Decision Record v1(§1bis DEC-B1)+ `data/producer_readiness_probe_v3.json`(三点交集定量)+ R50 成员资格亲验
 > Purpose: 用实测交集数据取代定性判断,给出 G1 与 D2 的**精确**依赖关系与可行执行序。
 
 ---

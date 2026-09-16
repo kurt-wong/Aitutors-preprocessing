@@ -1,18 +1,19 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**Owner Decision Record v1 文档化**(B3 生产侧责任扩展:显式保留/禁自动转换/禁静默丢弃);**DSH Readiness v3 三件交付**:Producer Readiness v3(已满足 7/未满足 7/待批 7)+ Implementation Gap List(G1~G7,最小冻结集 = G1 字段定义 + G5 载体 + G6 面口径)+ Execution Dependency Map(互斥精确化为 2 文件,排除后 G1×D2 零冲突);新定量:v2 面 87/87 manifest 全部 R50 成员 → 回填必致 DRIFT 须配对再冻结)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**DEC-B1 分项裁决入册 DEC-020**:Manifest = Source Identity Authority / IR = Semantic Consumption Authority / source_version_id 唯一关联键 / **source 身份不依赖 IR 存在**;生产侧后果 = G1 与 G3 正式解耦,身份面可先行完备;三文档增量更新 v3.1/v1.1/v2.1)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
-## ⏭ 当前状态:Readiness v3 已交,等 Owner v0.2 起草令 + A1~A7 批准(2026-09-16)
+## ⏭ 当前状态:DEC-B1 已裁,等 DEC-B2/B3 分项 + v0.2 起草令(2026-09-16)
 
-**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(DEC-019 + B3 责任扩展;未裁事项登记面)。
+**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(v1.1:§1 总纲 + §1bis DEC-B1;未裁事项登记面)。
 
-**DSH 本轮三件**:
-- `INTEGRATION/PREPROCESSING-PRODUCER-READINESS-v3.md`(B2 已满足零动作;B1-M manifest 0/166 携 id/sha 字段;B3 行为面已达成机制面零守卫);
-- `INTEGRATION/PREPROCESSING-IMPLEMENTATION-GAP-LIST.md`(G1~G7 逐缺口 + 验收判据);
-- `INTEGRATION/PREPROCESSING-EXECUTION-DEPENDENCY-MAP.md`(dangling∩接口面 = dangling∩IR = dangling∩R50 = 同 2 份;排除后 D2 与 G1 零冲突;序 A/B + D-1~D-5 决策点)。
+**DEC-B1 生产侧后果(已落三文档)**:
+- **身份-语义解耦**:source 身份不依赖 IR 存在 → IR 现状 71 不阻塞身份权威性;G3 扩产成为独立议题;
+- **唯一关联键已裁**:`source_version_id`;路径值相等不是合规关联;
+- **身份自足性验收(G1 新增)**:入接口面 manifest 的身份字段独立可验证,IR 缺席不使身份失效;
+- 主链不变:dangling∩接口面 = ∩IR = ∩R50 = 同 2 份;v2 面 87/87 manifest 全 R50 成员,回填必配对再冻结。
 
-**等 Owner**:v0.2 起草令;A1 字段定义 / A2 回填范围(87 vs 166)/ A3 回填令 / A4 IR 覆盖面+持续产出 / A5 v1 面 79 份处置 / A6 B3 载体 / A7 守卫令。
+**等 Owner**:DEC-B2/DEC-B3 分项(如有);v0.2 起草令;A2 回填范围(87 vs 166)/ A4 IR 覆盖面 / A5 v1 面 79 份 / A6 B3 载体。
 **仍暂缓**:数据治理四项。工件:`data/producer_readiness_probe_v3.json`(FACT-035)。
 
 ## 主线:preprocessing 内部收口(数据卫生,Owner 令)

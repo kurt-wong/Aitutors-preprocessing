@@ -300,6 +300,10 @@ decisions:
     statement: "Integration Contract B1-B3 架构裁决(冻结主线解封): B1 Transport = 正式生产接口 Manifest + IR 双层——Manifest = Source Identity Authority,IR = Semantic Consumption Authority,两者必须通过明确 source_version_id 关联;B2 Identity = source identity = SHA-256(raw bytes)(原始字节 SHA-256),body_hash/line_hash/integrity_hash/norm_sha256 只能作为内部校验,不能作为跨系统 source identity;B3 Semantic Boundary = unknown unit_type 不得自动修正、不得静默转换,必须进入 UNKNOWN/PENDING。同令: 数据治理四项(unit_type 修复/图片恢复/flags registry/D5-C·D)暂缓,接口冻结优先;DSH 职责 = 保证 producer 能稳定输出 Owner 冻结的接口"
     authority: "用户裁定 2026-09-16(B1-B3 Decision Record,聊天原文;DSH 自记)"
     status: active
+  - id: DEC-020
+    statement: "DEC-B1 分项裁决(双层 Transport 细化): Manifest 负责 Source Identity Authority;IR 负责 Semantic Consumption Authority;source_version_id 为两者唯一关联键;V3 消费语义来自 IR,但 source 身份不依赖 IR 存在。生产侧后果: ①双层关联只有 source_version_id 一种(路径值相等不是合规关联);②manifest 身份字段必须自足(独立可验证,IR 缺席不使身份失效);③G1 身份回填与 G3 IR 扩产解耦,IR 面维持现状 71 不阻塞身份权威性"
+    authority: "用户裁定 2026-09-16(DEC-B1,聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1bis)"
+    status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
 open_questions:
@@ -460,7 +464,7 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "Owner Decision Record v1 已文档化(INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md,含 B3 生产侧责任扩展: 显式保留/禁自动转换/禁静默丢弃);DSH Readiness v3 三件交付(FACT-035): Producer Readiness v3 + Implementation Gap List(G1~G7,最小冻结集 = G1 字段定义 + G5 载体 + G6 面口径)+ Execution Dependency Map(互斥精确为 2 文件,两序 A/B + 决策点 D-1~D-5)。等 Owner: v0.2 起草令 + A1~A7 批准项。数据治理仍暂缓"
+  next: "DEC-B1 分项裁决已入册(DEC-020,ODR §1bis): Manifest=Source Identity Authority / IR=Semantic Consumption Authority / source_version_id 唯一关联键 / source 身份不依赖 IR 存在。生产侧后果已落三文档(v3.1/v1.1/v2.1): G1 与 G3 正式解耦(身份面可先行完备,IR 现状 71 不阻塞),G1 目标态新增身份自足性验收,G2 唯一键已裁。等 Owner: DEC-B2/DEC-B3 分项(如有)+ v0.2 起草令 + A2~A7 批准项。数据治理仍暂缓"
   owner_decision_b1b3:
     date: "2026-09-16"
     authority: Owner(直接指令,DSH 自记)
