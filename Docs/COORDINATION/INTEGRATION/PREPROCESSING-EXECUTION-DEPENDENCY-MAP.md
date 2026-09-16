@@ -1,6 +1,7 @@
 # EXECUTION DEPENDENCY MAP — G1 identity 固化 × D2 figure recovery(重整理)
 
-> Status: **v2.5(2026-09-16,DEC-026 执行令轮:Step 1/Step 2 已执行 + 验证 PASS,E2/E2' 落地)** · 取代 IF-v2 §6.3 与 Readiness v1 中"互斥时序"的初步表述
+> Status: **v2.6(2026-09-16,DEC-027 冻结收口轮:Freeze Evidence v1 建立,最终一致性检查 C1-C9 全 PASS = VERIFIED,READY FOR CONTRACT FREEZE(Producer 侧))** · 取代 IF-v2 §6.3 与 Readiness v1 中"互斥时序"的初步表述
+> **DEC-027 增量(冻结收口结果)**:Task 1 Freeze Evidence = `INTEGRATION/PREPROCESSING-CONTRACT-v0.2-FREEZE-EVIDENCE-v1.md`(Contract v0.2(ff04f47+e70807b)→ Step 1 → Step 2 → 验证报告 → final check 全链可追溯 + 工件 sha256 全值登记);Task 2 = `scripts/freeze_evidence_final_check.py` 只读复核(从当前磁盘字节独立重推导)C1-C9 全 PASS(87 scope / 87 唯一身份键 / 87 bytes==R50 / IR 71·71 / pending 16·16 / R50 血统 / 剥键 87·87 / locator 87·87;unique identities 87 dups 0);Task 3 = 文档交叉核验完成(Facts v2.5 消歧 / Alignment v4 废止标识);Task 4 = 零实现动作。**五步序 Step 3 前置 = Claude 正文合并 + Owner 正式 Freeze 令,DSH 侧已 READY**。
 > **DEC-026 增量(执行结果)**:Step 1 接口快照已冻结(`data/interface_scope_snapshot_step1.json` + audit `interface_scope_prebackfill` corpus `4ad3458b…`;载体与血统 = 执行令已细化,E2' 关闭);Step 2 回填 `source_content_sha256` × 87/87 DONE;**E2 配对再冻结已落地**——R50 DRIFT = 恰 87 manifest(missing 0,预期),接口面新配对基线 = audit `interface_scope_postbackfill`(corpus `24af8f56…`,verify ok),R50 保留为历史基线;详件 = `PREPROCESSING-STEP1-STEP2-VERIFICATION-REPORT-v1.md`。主链(G1×D2×R50)与交集定量不变(Step 5 两份三重成员仍单独裁决)。
 > **DEC-025 增量(沿用)**:跨系统身份字段名 = **`source_content_sha256`**(= SHA256(raw bytes),64 小写 hex 不变;OQ-8′ 关闭,V3 内部 UUID `source_version_id` 无需改名);本图中"backfill source_version_id / G1 回填"一律指回填 `source_content_sha256`;bytes 能力要求已冻结(传输方式不冻结)。主链(G1×D2×R50)与交集定量不变。
 > **DEC-023 增量**:①**Path 非身份原则**——id 钉的是 bytes 不是 path;D2 改写 md 使 id 失配的机理 = **bytes 变**,与路径/目录无关(表述同步修正);②**16 份接口面内无 IR 成员 = Identity Available / Semantic Pending(可恢复)**;IR 再生成**允许但四约束**(bytes 不变/id 一致/新 IR 绑定 id/重过双验证)+ 四禁(禁改原 source/禁重 OCR 覆盖/禁新 identity/禁新 hash 替代)→ **E8 由"若扩产"变"已允许,执行待令"**;③G1 字段名/算法/格式三裁,仅剩回填执行令。本图主链(G1×D2×R50)与交集定量不变。
@@ -37,7 +38,7 @@
 
 **修正(基于交集定量)**:互斥**不是全量的,是精确 2 文件的**:
 
-- D2 的 1,396 份中,**只有 2 份**落在 v2 接口面(= 同 2 份也在 IR 71 与 R50 内);其余 1,394 份与接口面零交集,D2 改写它们**不影响任何已回填的 `source_version_id`**;
+- D2 的 1,396 份中,**只有 2 份**落在 v2 接口面(= 同 2 份也在 IR 71 与 R50 内);其余 1,394 份与接口面零交集,D2 改写它们**不影响任何已回填的 `source_content_sha256`**;
 - 但这 2 份是**三重成员**(接口面 + IR 冻结工件 + R50 基线)——D2 触碰它们的代价不是"id 失配"一个,而是**三重 DRIFT**:md sha 变 → IR `source_sha256`/`provenance.source_version` 悬空 + R50 基线 DRIFT + 回填 id 失配;
 - closure plan v1 已决定批跑默认**排除这 2 份**(当时理由 = R50 交集;现在理由升级为三重成员)。**排除生效时,D2 与 G1 零冲突,顺序自由。**
 
@@ -78,7 +79,7 @@
 4. **Step 4 Execute data hygiene**;
 5. **Step 5 Execute image recovery / historical cleanup**(D2 在此步:批跑默认排除 2 份三重成员 + 2 无 PDF 件,E5 零冲突)。
 
-**裁决理由(Owner 原文)**:source identity 必须早于内容修改——图片恢复/OCR 修复/markdown 修改都可能导致 content change → hash change → source_version_id invalid。**身份冻结优先。**
+**裁决理由(Owner 原文)**:source identity 必须早于内容修改——图片恢复/OCR 修复/markdown 修改都可能导致 content change → hash change → `source_content_sha256` invalid。**身份冻结优先。**
 
 **与本图定量的兼容性**:五步序与交集定量零冲突——Step 2 回填的 87 份全部 R50 成员(E2 硬约束由 Step 1 快照承担配对角色);Step 5 D2 排除模式下 1,394 份与接口面零交集(E5);2 份三重成员仍单独裁决。
 

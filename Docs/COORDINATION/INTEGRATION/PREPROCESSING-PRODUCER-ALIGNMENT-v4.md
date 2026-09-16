@@ -51,7 +51,7 @@
 
 ### B.4 Part 4 — 16 份 Identity-only 文件 = 正常态(关闭 D-2)
 
-- 定义固化:**Identity Available / Semantic Unavailable** 属正常状态,不是缺陷;
+- 定义固化:**Identity Available / Semantic Unavailable** 属正常状态,不是缺陷;**(已废止:DEC-023 Part 3 修订为 "Identity Available / Semantic Pending(可恢复)";本行保留为 v4 历史基准原文)**;
 - 三禁:不得自动补 IR / 不得 LLM 猜测生成 / 不得静默进入题库;
 - 是否重新生成 IR:**另行批准**(与 DEC-020 "G1×G3 解耦"一致:身份面完备不依赖这 16 份有 IR)。
 - 生效后果:Dependency Map 决策点 **D-2(16 份无 IR 成员消费语义)关闭**。
@@ -96,7 +96,7 @@
 | Manifest 验证责任:V3 重算 hash 判断接受(Part 2) | 同算法对账 71/71 实证可行(A-3);但 `source_file` = 本机绝对路径(A-5) | **G-4**:source bytes 的交付形态(相对路径化 / 打包方式)未裁——V3 重算 hash 的可达性前提,v0.2 需落字 |
 | Interface Scope = 87 如何表达(Part 3;DEC-021 D1 遗留 C.1) | 今天**只有口径没有承载物**(字段口径 87 无目录/清单工件物化) | **G-3**:接口面 87 的表达载体(快照文件 / 目录约定 / 清单)未裁;且与五步序 Step 1 接口快照同题(D-6) |
 | IR Consumption Scope = 71 snapshot(Part 3/4) | 71 冻结工件 sha 零漂移(A-3);**无持续产出机制** | **G-5**:IR 重生成/扩产机制未裁(Part 4 明确"另行批准");本轮无动作 |
-| Identity Available / Semantic Unavailable = 正常态(Part 4) | 16 份无 IR 成员已在接口面,靠身份自足成立 | **G-6**:该状态是否需要**接口面呈现字段**(如 semantic availability 标记)供 V3 Gate 消费,未裁;现状 V3 只能靠"IR 面有无该 source_version_id"自行判断 |
+| Identity Available / Semantic Unavailable = 正常态(Part 4;**已废止 → Semantic Pending,见承接注记**) | 16 份无 IR 成员已在接口面,靠身份自足成立 | **G-6**:该状态是否需要**接口面呈现字段**(如 semantic availability 标记)供 V3 Gate 消费,未裁;现状 V3 只能靠"IR 面有无该身份键(现名 `source_content_sha256`,v4 旧名 `source_version_id`)"自行判断 |
 | Unknown ≠ Ready;UNKNOWN 属语义层(Part 5/6) | 存量 1 例非 READY(A-6);链零守卫 | **G-2**:语义层载体 + 决策层载体(四状态机字段名/落点)+ PENDING_REVIEW→REJECTED 路由规则文本,三者均未裁;守卫引入时机 = v0.2 冻结后 |
 | 五步执行序(DEC-021 D4,本轮 Part 6 暂缓清单与之相容) | Step 1 快照载体形态未裁 | **G-7(D-6)**:Step 1 接口快照与 R50 冻结基线(87/87 manifest 为成员,回填必致 DRIFT)的配对/血统形态待执行令 |
 

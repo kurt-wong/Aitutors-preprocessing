@@ -5,6 +5,7 @@
 > Role:DSH = Source Evidence Producer 侧终稿条款文本(FC-1~FC-5,供 Claude 合入 Contract v0.2 正文);**Contract 正文组装与 V3 侧落字仍归 Claude**(DEC-022 Part 7),DSH 对两仓 Contract 正文零改动。
 > 本轮纪律(Owner 约束):禁改业务代码 / schema / 数据;禁 IR 重新生成 / 图片恢复 / daemon 执行;全部 implementation = **not started**;完成后**等待 Owner Freeze 令**(本文件不构成冻结)。
 > **执行记录注记(2026-09-16,DEC-026)**:Owner 已下达 Step 1/Step 2 执行令并已执行完毕——接口快照冻结 + `source_content_sha256` 回填 87/87 验证 PASS;详件 = `PREPROCESSING-STEP1-STEP2-VERIFICATION-REPORT-v1.md`。本文件 §B/§C/§D 的状态标注以该注记为准(D-1/D-2/D-6 = DONE;C.1 载体已物化,正文引用形态待追认);**§A 条款文本(FC-1~FC-5)不受影响,仍是 Claude 合入基准**。本文件仍**不是冻结令**。
+> **执行记录注记(2026-09-16,DEC-027 冻结收口)**:Freeze Evidence 已建立(`PREPROCESSING-CONTRACT-v0.2-FREEZE-EVIDENCE-v1.md`,本文件 FC-1~FC-5 为追溯链起点);Producer 最终一致性检查 C1-C9 全 PASS = **VERIFIED,零 BLOCKER**;文档交叉核验完成。结论 = **READY FOR CONTRACT FREEZE(Producer 侧)**;正式冻结仍待 Claude 正文合并 + Owner Freeze 令。**Decision ≠ Implementation:§D 的 V3 能力(D-7/D-8/D-9/D-11)仍全部 not started,不因本注记改变。**
 > Discipline:DECISION 段 = Owner 原文保守义;PROPOSED 段显式标注;OBSERVED = 复用既有工件,零新测量。
 
 ---

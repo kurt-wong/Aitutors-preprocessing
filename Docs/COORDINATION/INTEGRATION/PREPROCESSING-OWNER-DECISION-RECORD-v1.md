@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.7(2026-09-16,追加 §1octies Owner Final Decision Instruction v1:四项最终确认 + Step 1/Step 2 执行授权,两项已执行完毕)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution`
+> Status: **v1.8(2026-09-16,追加 §1novies Contract v0.2 最终冻结收口令(DSH/Producer 侧):Task 1-4 已执行,结论 = READY FOR CONTRACT FREEZE;v1.7 = §1octies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -393,6 +393,42 @@
 | 四、Claude 任务 | = C-0a(V3 侧,REPORTED 直至 V3 commit);DSH 零代做 |
 | 六、延期五项 | 按建议不处理,登记于 §3;下一阶段核心 = V3 消费端 bytes→自算→验证→fail-closed 链条实现(Gap Matrix D-7~D-9) |
 | 程序边界 | Freeze 令仍属 Owner:DSH 侧 Step 1/Step 2 前置**已全部满足**;剩余前置 = Claude 正文合并 |
+
+## 1novies. 分项裁决 — Contract v0.2 最终冻结收口(DSH/Producer 侧)(Owner 2026-09-16 第十轮,原文照录;canonical 引用面)
+
+### 一、Owner 已最终确认的原则(原文照录要点)
+
+1. **跨系统唯一身份字段**:`source_content_sha256 = SHA256(original source bytes)`,64 位小写 hex;身份由源内容决定,**与文件存储路径完全无关**;`source_file` / path 只能作为 locator,禁止参与 identity 判断 / 唯一性判断 / 版本判断 / hash 判断。
+2. **双层权威职责**:`Manifest = Source Identity Authority`;`IR = Semantic Consumption Authority`——Manifest 回答"这是哪个源文件",IR 回答"这个源文件表达了什么",两者不得混用。
+3. **16 份文件** = Identity Available / Semantic Pending;允许未来重新运行 preprocessing 生成 IR;重新生成必须:复用原 `source_content_sha256` / 不创建新的 source identity / 不修改历史 Manifest 身份 / 不删除已有历史记录 / 不覆盖或篡改已有历史 IR 语义 / 保留完整血统关系。
+4. **Contract v0.2 冻结后,上述原则不得在实现阶段自行改变。**
+
+### 二、DSH 任务(原文照录要点)
+
+- **Task 1 — Freeze Evidence 最终收口**:基于 Step 1 snapshot + Step 2 backfill + Step 2 verification report,建立明确的 Contract v0.2 Freeze Evidence;必须能够追溯 Contract v0.2 → Step 1 snapshot → Step 2 backfill → verification report,并记录实际 commit / 工件。
+- **Task 2 — Producer 侧最终一致性检查**:逐项检查 87/87 interface scope、87/87 `source_content_sha256`、87/87 source bytes、71/71 IR hash 对账、16/16 Semantic Pending、R50 血统关系、path 不参与 identity;全部通过明确标记 **VERIFIED**;发现任何不一致**不要自行修复**,直接列为 **BLOCKER**。
+- **Task 3 — Contract 文档交叉核验**:检查 Producer 侧所有相关文档,确保不再出现会导致歧义的旧定义;尤其检查 `source_version_id` / `source_content_sha256` / `source_file` / `path` / `Semantic Unavailable` / `Semantic Pending`;要求 `source_content_sha256` = 跨系统内容身份、`source_version_id` = V3 内部 UUID FK、path = locator、`Semantic Unavailable` 不得作为现行状态使用;历史审计注记可以保留,但必须明确标识为废止/历史。
+- **Task 4 — 不做实现**:继续禁止 IR 重生成 / 图片恢复 / Question 修改 / schema 修改 / daemon / V3 业务代码修改 / 任何未经 Owner 授权的数据清洗。
+
+### 三、输出要求(原文照录要点)
+
+提交:①Freeze Evidence ②Producer 最终一致性检查报告 ③文档交叉核验结果 ④明确结论 = `READY FOR CONTRACT FREEZE` 或 `BLOCKED`(若 BLOCKED 必须给出具体证据)。**不要把"理论上应该如此"当成 VERIFIED。**
+
+### 四、重要纪律(原文照录)
+
+> 从本轮开始:**Decision ≠ Implementation。** 已经裁决的原则可以冻结,但尚未实现的 V3 能力仍必须标记 `not implemented / not started`。不要因为 Contract 已冻结,就声称 V3 已经具备身份验证、bytes 校验或 IR 验证能力。
+
+### §1novies 生产侧保守义(DSH 解释,非裁决;执行详件 = `PREPROCESSING-CONTRACT-v0.2-FREEZE-EVIDENCE-v1.md`)
+
+| 条款 | 生产侧落实语义 |
+|---|---|
+| 一、四项原则 | 与 DEC-025 FC-1~FC-4 / DEC-026 ①~④ 逐条一致,本轮性质 = **最终确认 + 实现阶段锁定**,无新裁决面 |
+| Task 1 | Freeze Evidence v1 已建:追溯链 + 工件 sha256 全值 + commit(ff04f47 → e70807b → 本轮) |
+| Task 2 | `scripts/freeze_evidence_final_check.py` 只读复核(全部从当前磁盘字节独立重推导,不信先前报告结论):**C1-C9 全 PASS,overall = VERIFIED,零 BLOCKER**;unique identities 87 / duplicate 0 |
+| Task 3 | 交叉核验完成:Facts v2 → v2.5 现行态消歧(历史时点标识)、DepMap 两处更新、Alignment v4 行内**已废止**标识;剩余 `rg` 命中全部属允许保留的四类语境(原文照录 / 取代注记 / Claude 修正指令 / V3 UUID FK) |
+| Task 4 | 零实现动作;数据写入面 = 零(唯一新数据文件 = 只读复核报告 JSON,属证据登记) |
+| Decision ≠ Implementation | Freeze Evidence §5 钉死:V3 D-7/D-8/D-9/D-11 = **not started**;V3 现自算 hash 为 canonical_json 包裹(`runner.py:71-73`/`hashing.py:60-62`),非 raw bytes,不满足 FC-2 |
+| 结论 | **READY FOR CONTRACT FREEZE**(Producer/DSH 侧证据结论;冻结令权在 Owner,正文合并义务在 Claude) |
 
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 

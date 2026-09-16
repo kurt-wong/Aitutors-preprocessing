@@ -328,6 +328,10 @@ decisions:
     statement: "Owner Final Decision Instruction v1(四项最终确认 + 执行授权): ①Identity Authority: 跨系统唯一身份字段 = source_content_sha256 = SHA256(original source bytes),64 小写 hex;内容 hash 决定身份,path/source_file 仅为 locator,path 变化不得影响 identity,禁任何系统以 path 作唯一身份判断;②双层职责: Manifest = Source Identity Authority('这是哪个文件?'),IR = Semantic Consumption Authority('这个文件表达了什么?'),V3 消费方向 = Manifest 验证身份 + IR 提供语义,两者不得混淆;③命名: 跨系统 source_content_sha256 / V3 内部 source_version_id 保持现状,禁两概念同名;④16 份 = Identity Available / Semantic Pending,允许重新执行 preprocessing 生成 IR,四约束(source_content_sha256 一致 / 不创建新 identity / 不修改历史 manifest 语义 / 不删除已有记录)。执行授权: Step 1 接口快照(文件列表 + source_content_sha256 + R50 关联关系)+ Step 2 87 份 manifest 补齐 source_content_sha256 + 逐份验证 Manifest hash == IR hash;DSH 输出验证报告(87 文件列表 / hash 一致性 / IR 覆盖 / 16 pending 状态)。继续禁止: 修改原始文件 / IR 语义内容 / Question 数据 / 图片恢复 / daemon 自动运行 / schema 变更(Owner 明令授权的回填字段除外)。延期五项(非架构阻塞): legacy 79 披露 / 17 拒收记录 / OCR-PDF 扩展面 / DEC 编号统一 / bytes 传输方式。Freeze 条件: Step 2 完成并验证后进入 Contract v0.2 Freeze(Claude 合并最终契约 + Owner Freeze 令);下一阶段核心风险 = V3 消费端 bytes→自算 SHA256→验证 Manifest→验证 IR→失败关闭 链条的真正实现"
     authority: "用户裁定 2026-09-16(Owner Final Decision Instruction v1,聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1octies)"
     status: active
+  - id: DEC-027
+    statement: "Contract v0.2 最终冻结收口(DSH/Producer 侧): 一、四项原则 Owner 最终确认且实现阶段不得自行改变(跨系统身份 source_content_sha256 = SHA256(original source bytes) 64 小写 hex, path 仅 locator 禁参与 identity/唯一性/version/hash 判断; Manifest = Source Identity Authority / IR = Semantic Consumption Authority 不得混用; 16 份 = Identity Available / Semantic Pending, IR 再生成允许但复用原 identity + 不新建/不改历史/不删记录/保留血统; 原则冻结后实现阶段不得改)。二、DSH 四任务: Task1 Freeze Evidence(Contract v0.2 → Step 1 → Step 2 → verification report 可追溯链 + 实际 commit/工件); Task2 Producer 最终一致性检查(87 scope / 87 hash / 87 bytes / 71 IR 对账 / 16 pending / R50 血统 / path 非身份; 全过标 VERIFIED, 不一致列 BLOCKER 不自行修复); Task3 文档交叉核验(source_version_id / source_content_sha256 / source_file / path / Semantic Unavailable / Semantic Pending; 历史审计注记可留但须标识废止/历史); Task4 继续不做实现(IR 重生成/图片恢复/Question/schema/daemon/V3 代码/未授权清洗全禁)。三、输出 = Freeze Evidence + 一致性报告 + 交叉核验 + READY/BLOCKED 结论。四、纪律: Decision ≠ Implementation, 契约冻结不得声称 V3 已具身份验证/bytes 校验/IR 验证能力, 未实现能力一律标 not implemented / not started"
+    authority: "用户裁定 2026-09-16(Contract v0.2 最终冻结收口 DSH/Producer 侧,聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1novies)"
+    status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
 open_questions:
@@ -488,7 +492,7 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "DEC-026(Owner Final Decision Instruction v1)已入册并执行完毕: Step 1 接口快照冻结 DONE(interface_scope_prebackfill corpus 4ad3458b…; 87/87 R50 manifest+source 双成员, 冻结时点 sha 全一致, IR 71/71 一致)+ Step 2 回填 DONE(source_content_sha256 × 87, 剥键重序列化 sha == R50 基线 87/87 内容寻址证明, post 快照 interface_scope_postbackfill corpus 24af8f56… ok, R50 DRIFT = 恰 87 manifest / missing 0)。验证报告 = INTEGRATION/PREPROCESSING-STEP1-STEP2-VERIFICATION-REPORT-v1.md。等 Claude: C-0a 正文合并(source_content_sha256 / 删 Semantic Unavailable / bytes 条款 / 87·71·16)。等 Owner: Freeze 令(= Step 3, DSH 侧前置已全部满足)。仍开: 16 份 IR 再生成批次(须另令) / D-3 / D-4 / IR 字段名对齐 / 两层状态载体 / C.1 载体形态追认; 延期五项(legacy 79 披露 / 17 拒收 / OCR-PDF 扩展 / DEC 编号统一 / bytes 传输方式)按 Owner 建议不处理"
+  next: "DEC-027(Contract v0.2 最终冻结收口,DSH/Producer 侧)已执行完毕: Freeze Evidence v1 + 最终一致性检查 C1-C9 全 PASS(overall VERIFIED, data/freeze_evidence_final_check.json, 全部从当前磁盘字节独立重推导)+ 文档交叉核验完成(Facts v2.5 / DepMap / Alignment v4 废止标识; 现行态零歧义)。结论 = READY FOR CONTRACT FREEZE(Producer 侧)。等 Claude: C-0a 正文合并(source_content_sha256 / 删 Semantic Unavailable / bytes 条款 / 87·71·16)。等 Owner: 正式 Freeze 令(= Step 3)。Decision ≠ Implementation: V3 D-7/D-8/D-9/D-11 全部 not started(V3 现自算 hash 为 canonical_json 包裹非 raw bytes)。仍开: 16 份 IR 再生成批次(须另令) / D-3 / D-4 / IR 字段名对齐 / 两层状态载体 / C.1 载体形态追认; 延期五项按 Owner 建议不处理"
   owner_interface_revision:
     date: "2026-09-16"
     directive: "Interface Finalization Revision v1(统一任务指令;DSH = 五文档同步 / Claude = Consumer Alignment + Contract Draft + Gap Matrix)"
@@ -528,6 +532,15 @@ integration_contract:
     scripts: "scripts/interface_scope_step1_snapshot.py / scripts/interface_scope_step2_backfill.py(确定性无时间戳, fail-closed, 可重入; 测试 338 passed 前后一致)"
     r50_lineage: "E2 落地: R50 基线保留为历史基线(DRIFT = 87 已预期并记录); 接口面完整性基线角色由 pre/post 双快照承接"
     still_open: "Claude C-0a 正文合并 → Owner Freeze 令(Step 3, DSH 前置已齐)/ 16 份 IR 再生成批次(须另令)/ D-3 存量 1 例 / D-4 2 份三重成员 / IR 字段名对齐(source_sha256 改名)/ 两层状态载体 + reviewable record / C.1 载体形态追认(Step 1 快照为事实载体)"
+  owner_contract_freeze_closeout:
+    date: "2026-09-16"
+    directive: "Contract v0.2 最终冻结收口(DSH/Producer 侧; DEC-027): Task1 Freeze Evidence / Task2 最终一致性检查(全过 VERIFIED, 不一致 BLOCKED 不自行修复)/ Task3 文档交叉核验 / Task4 继续不做实现; Decision ≠ Implementation 纪律"
+    freeze_evidence: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-CONTRACT-v0.2-FREEZE-EVIDENCE-v1.md(追溯链 Contract v0.2(ff04f47+e70807b) → Step 1 snapshot → Step 2 backfill → verification report → final check; 工件 sha256 全值登记)"
+    final_check: "scripts/freeze_evidence_final_check.py(只读, 从当前磁盘字节独立重推导)→ data/freeze_evidence_final_check.json: C1-C9 全 PASS, overall VERIFIED(87 scope / 87 sole sha key / 87 bytes match+64hex / 87 零漂移==R50 / IR 71·71 / pending 16·16 / R50 血统+audit 对账 / 剥键 87·87 / locator 87·87, unique identities 87 dups 0); 全量测试 338 passed / 1 xfailed"
+    cross_check: "Facts v2 → v2.5(现行态按 DEC-025 命名消歧, 历史时点标识)/ DepMap 两处现行描述更新 / Alignment v4 行内已废止标识; 复核命令 rg 剩余命中全部属四类允许保留语境(原文照录/取代注记/Claude 指令/V3 UUID FK)"
+    discipline: "零实现动作: 未重生成 IR/未恢复图片/未改 Question/schema/daemon/V3 代码/未授权清洗; 数据写入面 = 零(唯一新数据文件 = 只读复核报告)"
+    verdict: "READY FOR CONTRACT FREEZE(Producer/DSH 侧证据结论; 冻结令权在 Owner, 正文合并义务在 Claude)"
+    still_open: "Claude C-0a 正文合并 → Owner 正式 Freeze 令(Step 3)/ 16 份 IR 再生成批次 / D-3 / D-4 / IR 字段名对齐 / 两层状态载体 + reviewable record / C.1 载体形态追认"
   owner_interface_finalization:
     date: "2026-09-16"
     directive: "PREPROCESSING / V3 Interface Decision Finalization v1(统一版指令;DSH=Producer Alignment v4 / Claude=Consumer Alignment v2 + Contract v0.2 Frozen Candidate 起草)"
