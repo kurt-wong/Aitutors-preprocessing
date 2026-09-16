@@ -2527,3 +2527,17 @@ ext 更新;CURRENT.md 顶部暂停横幅。Contract 保持 v0.1 DRAFT,语料零�
 3. 唯一关联键 = source_version_id;现状路径值相等关联(ir.source_file == manifest.source_file)不合规,随 G1 升级。
 
 **不变事实**:三点交集(同 2 份)/ v2 面 87/87 R50 成员 / 回填必配对再冻结 / 最小冻结集三项。零数据/schema/图片恢复/daemon/Contract 修改。
+
+---
+
+## 2026-09-16 08:39 CONTRACT-DECISION-FINALIZATION 四项裁决入册(DEC-021):Producer Decision Alignment v1
+
+**触发**:Owner 统一版指令(PREPROCESSING-V3-CONTRACT-DECISION-FINALIZATION v1,Claude/DSH 同令分责)——本轮 = 裁决入册 + Contract v0.2 起草准备;四项裁决:D1 Interface Scope = 87(IR 71 = 当前语义消费冻结面)/ D2 v1 legacy 79 = historical asset 隔离(四禁 + 独立 Legacy Migration Plan 通道)/ D3 四状态机 READY·INCOMPLETE·PENDING_REVIEW·REJECTED + unknown 路由强制规则 / D4 五步执行序(快照冻结 → 回填 → 冻结 v0.2 → 数据卫生 → 图片恢复,身份冻结优先)。Contract 保持 v0.2 DRAFT NOT FROZEN;禁改代码/数据/清洗/图片恢复/schema/冻结 Contract。
+
+**落盘**:①ODR 升 v1.2(§1ter 四 Decision 原文照录 + 生产侧保守义 + §3 未裁事项登记更新);②DEC-021 入册;③**新交付 PREPROCESSING-PRODUCER-DECISION-ALIGNMENT-v1.md**(OBSERVED/DECISION/IMPLEMENTATION GAP/UNKNOWN 四段;五检查项逐项 + Contract v0.1 与裁决差距七项清单;实现状态全部 not started);④增量:Gap List v1.2(G6 已裁隔离/G3 当前面已裁 71/G5 词表已裁/G1 范围已裁 87/新增 C.1 接口面表达/最小冻结集收敛)、Readiness v3.2(A2·A5 关闭,A4 当前面已裁,A6 词表已裁,U7 关闭)、Dependency Map v2.2(D-1·D-2·D-5 关闭,新增 D-6 Step1 快照载体与 R50 血统,E2' 边,原序 A/B 转历史参考)。
+
+**关闭项**:A2 回填范围 = 87;A5 v1 面处置 = 隔离;A4 当前面 = 71 ADMITTED 冻结面;A6 词表 = 四状态机;决策点 D-1/D-2/D-5。
+
+**仍开放**:A1 字段名/格式;A6 载体 + PENDING_REVIEW→REJECTED 路由规则;A3/A7 执行令;D-3 存量 1 例原子性;D-4 2 份三重成员;**D-6(新)Step 1 接口快照载体形态与 R50 血统关系**;IR 扩产机制。
+
+**关键生产侧对账**:①87 面今天只有口径没有承载物(接口面表达本身是 GAP);②16 份接口面内无 IR 成员仍在接口面(DEC-B1 身份自足);③存量 1 例 andle_question 按 D3 口径非 READY,呈现态待 v0.2;④五步序与交集定量零冲突(D2 = Step 5,排除 2 份三重成员后 1,394 份零交集)。零数据/schema/图片恢复/daemon/Contract 修改;台账三件同步。

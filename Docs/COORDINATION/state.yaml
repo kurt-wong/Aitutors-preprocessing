@@ -304,6 +304,10 @@ decisions:
     statement: "DEC-B1 分项裁决(双层 Transport 细化): Manifest 负责 Source Identity Authority;IR 负责 Semantic Consumption Authority;source_version_id 为两者唯一关联键;V3 消费语义来自 IR,但 source 身份不依赖 IR 存在。生产侧后果: ①双层关联只有 source_version_id 一种(路径值相等不是合规关联);②manifest 身份字段必须自足(独立可验证,IR 缺席不使身份失效);③G1 身份回填与 G3 IR 扩产解耦,IR 面维持现状 71 不阻塞身份权威性"
     authority: "用户裁定 2026-09-16(DEC-B1,聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1bis)"
     status: active
+  - id: DEC-021
+    statement: "PREPROCESSING-V3-CONTRACT-DECISION-FINALIZATION 四项裁决(统一版 Owner 指令,两侧分别回应): ①Interface Scope = v2 standard interface set = 87 records(166=历史资产规模≠正式接口;71=IR semantic consumption current frozen scope,不代表完整 interface);②Legacy v1 = historical asset,not part of v0.2 interface(79 份;四禁: 禁自动迁移/补齐/重生成 IR/加入 87 接口;未来走独立 Legacy Migration Plan);③Semantic Boundary 四状态机 = READY/INCOMPLETE/PENDING_REVIEW/REJECTED,任何 unknown semantic 禁 automatic conversion/silent fallback/silent skip,必须进入 PENDING_REVIEW 或 REJECTED(由明确规则决定);④执行五步序 = Freeze interface snapshot → Generate/backfill source_version_id → Freeze Contract v0.2 → Data hygiene → Image recovery(身份冻结优先: content change→hash change→id invalid)。本轮 = 裁决入册 + v0.2 起草准备;Contract 保持 v0.2 DRAFT NOT FROZEN;禁改代码/数据/清洗/图片恢复/schema/冻结 Contract。生产侧生效: A2=87 已裁/A5=隔离已裁/A4 当前面=71 已裁(扩产未裁)/A6 词表已裁(载体未裁)/D-1 D-2 D-5 关闭/新增 D-6 Step1 快照载体与 R50 血统"
+    authority: "用户裁定 2026-09-16(CONTRACT-DECISION-FINALIZATION v1,聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1ter)"
+    status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
 open_questions:
@@ -464,7 +468,16 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "DEC-B1 分项裁决已入册(DEC-020,ODR §1bis): Manifest=Source Identity Authority / IR=Semantic Consumption Authority / source_version_id 唯一关联键 / source 身份不依赖 IR 存在。生产侧后果已落三文档(v3.1/v1.1/v2.1): G1 与 G3 正式解耦(身份面可先行完备,IR 现状 71 不阻塞),G1 目标态新增身份自足性验收,G2 唯一键已裁。等 Owner: DEC-B2/DEC-B3 分项(如有)+ v0.2 起草令 + A2~A7 批准项。数据治理仍暂缓"
+  next: "DEC-021(CONTRACT-DECISION-FINALIZATION 四项)已入册,ODR v1.2 §1ter 照录 + Producer Decision Alignment v1 交付(OBSERVED/DECISION/GAP/UNKNOWN 四段;Contract v0.1 与裁决差距七项清单;实现状态全部 not started)。生产侧冻结集收敛 = G1 字段名/格式 + G5 载体 + 接口面 87 表达(C.1)。等 Owner: ①v0.2 起草令(备料已齐);②Step 1 快照执行令细化(D-6 载体与 R50 血统);③存量 1 例原子性 D-3 / 2 份三重成员 D-4;④PENDING_REVIEW→REJECTED 路由规则;⑤IR 扩产机制(如需)。数据治理仍暂缓(五步序 Step 4/5 前零动作)"
+  owner_contract_finalization:
+    date: "2026-09-16"
+    directive: "PREPROCESSING-V3-CONTRACT-DECISION-FINALIZATION v1(统一版指令,DSH=Producer 侧/Claude=Consumer 侧)"
+    doc: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1ter(四 Decision 原文照录 + 生产侧保守义)"
+    producer_alignment: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-DECISION-ALIGNMENT-v1.md"
+    consumer_alignment: "V3 侧 PREPROCESSING-V3-CONSUMER-DECISION-ALIGNMENT-v1(Claude 任务,REPORTED 直至 V3 commit)"
+    contract_status: "v0.2 DRAFT NOT FROZEN(DSH 侧现稿 = v0.1;v0.2 起草令未下,本轮只备料)"
+    resolved: "A2 回填范围=87 / A5 v1 面=historical asset 隔离 / A4 当前面=71 冻结面 / A6 词表=四状态机 / D-1 D-2 D-5 关闭"
+    still_open: "A1 字段名/格式 / A6 载体与路由规则 / A3+A7 执行令 / D-3 存量原子性 / D-4 2 份三重成员 / D-6 Step1 快照载体"
   owner_decision_b1b3:
     date: "2026-09-16"
     authority: Owner(直接指令,DSH 自记)
@@ -511,18 +524,18 @@ integration_contract:
     facts_registered: [FACT-034]
   producer_readiness_v3:
     path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-READINESS-v3.md
-    status: "v3(2026-09-16,Owner Decision Record v1 后;已满足 7 项/未满足 7 项/需 Owner 批准 7 项)"
+    status: "v3.2(2026-09-16,DEC-021 后增量: A2/A5 关闭、A4 当前面已裁、A6 词表已裁、U7 关闭;实现项全部 not started)"
     artifact: "data/producer_readiness_probe_v3.json(三点交集定量: dangling∩v2面 = dangling∩IR71 = dangling∩R50 = 同 2 份;v2 面 87/87 manifest 全部 R50 成员;R50 组成 88 manifest+88 annotated+176 source md+4)"
     key_facts: "B2 已满足零动作;B1-M manifest 0/166 携 source_version_id 且 0/166 携 sha 字段 = authority 无承载;B3 行为面已达成(1 例显式保留零转换零丢弃)但机制面零守卫;source_version_id 值 producer 今天可算(算法/代码就绪 71 份已实证)"
     facts_registered: [FACT-035]
   implementation_gap_list:
     path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-IMPLEMENTATION-GAP-LIST.md
-    status: "v1(2026-09-16;G1~G7 逐缺口: 现状/目标/实施/批准依赖/验收判据)"
-    key_facts: "最小冻结集 = G1 字段定义 + G5 载体 + G6 面口径(数据动作全部可后置);G1 硬约束 = v2 面 87/87 manifest 是 R50 成员,回填必致 DRIFT 须配对再冻结"
+    status: "v1.2(2026-09-16,DEC-021 后: G6 已裁隔离、G3 当前面已裁 71、G5 词表已裁、G1 范围已裁 87;新增 C.1 接口面表达)"
+    key_facts: "最小冻结集(DEC-021 后)= G1 字段名/格式 + G5 载体 + 接口面 87 表达(C.1);G1 硬约束不变 = v2 面 87/87 manifest 是 R50 成员,回填必致 DRIFT 须配对再冻结"
   execution_dependency_map:
     path: Docs/COORDINATION/INTEGRATION/PREPROCESSING-EXECUTION-DEPENDENCY-MAP.md
-    status: "v2(2026-09-16 重整理,取代 IF-v2/Readiness v1 定性互斥表述)"
-    key_facts: "互斥精确化: D2 1396 份中仅 2 份落在接口面(同 2 份三重成员: 接口面+IR+R50),排除这 2 份后 D2 与 G1 零冲突顺序自由;两可行序 A/B 与五个决策点 D-1~D-5"
+    status: "v2.2(2026-09-16,DEC-021 五步序入册: D-1/D-2/D-5 关闭,新增 D-6 Step1 快照载体与 R50 血统;原序 A/B 转历史参考)"
+    key_facts: "互斥精确化不变: D2 1396 份中仅 2 份落在接口面(三重成员),排除后 D2 与 G1 零冲突;五步序下 D2 = Step 5 最后"
 
 data_hygiene:
   status: measured

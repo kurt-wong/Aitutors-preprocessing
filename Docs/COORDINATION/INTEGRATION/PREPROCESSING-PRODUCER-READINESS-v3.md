@@ -1,10 +1,10 @@
 # PRODUCER READINESS v3 — preprocessing 侧对 Contract v0.2 的实现缺口
 
-> Status: **v3.1(2026-09-16,DEC-B1 后增量更新)** · Basis: **Owner Decision Record v1**(§1 总纲 + **§1bis DEC-B1**)+ IF-v2 + Readiness v1(本轮升版取代)+ Closure Plan v2
-> DEC-B1 生效更新:①唯一关联键已裁(`source_version_id`)→ U3 目标态确定;②**source 身份不依赖 IR 存在** → U4(IR 覆盖)从身份路径解耦,IR 现状 71 不阻塞 B1-M/B1-L 达成;③G1 目标态新增身份自足性验收。
+> Status: **v3.2(2026-09-16,DEC-021 四项裁决后增量更新)** · Basis: **Owner Decision Record v1**(§1 + §1bis DEC-B1 + **§1ter DEC-021**)+ IF-v2 + Closure Plan v2 + **Producer Decision Alignment v1**
+> DEC-021 生效更新:①A2(回填范围)已裁 = 87;②A5(v1 面处置)已裁 = historical asset 隔离;③A4 之"当前面"已裁 = 71 ADMITTED 冻结面(扩产仍未裁);④A6 之"状态词表"已裁 = READY/INCOMPLETE/PENDING_REVIEW/REJECTED(载体仍未裁);⑤五步执行序已裁,图片恢复最后(D-5 关闭)。
 > Purpose: 明确 preprocessing 生产侧距离 Contract v0.2 冻结接口的实现缺口:已满足 / 未满足 / 需 Owner 批准。
-> Evidence: `data/producer_interface_probe_v2.json`(上轮)+ `data/producer_readiness_probe_v3.json`(本轮新增,交集定量)+ `data/audit_snapshot_R50_input_baseline.json`(R50 成员资格亲验)。
-> Discipline: 零数据修改 / 零 schema 修改 / 零图片恢复 / 零 daemon 修改 / 零 Contract 修改。无证据标 UNKNOWN。
+> Evidence: `data/producer_interface_probe_v2.json` + `data/producer_readiness_probe_v3.json` + `data/audit_snapshot_R50_input_baseline.json`。
+> Discipline: 零数据修改 / 零 schema 修改 / 零图片恢复 / 零 daemon 修改 / 零 Contract 修改。无证据标 UNKNOWN。全部实现项 = not started。
 
 ---
 
@@ -73,22 +73,22 @@
 | U1 | manifest 缺 `source_version_id` | B1-M / B1-L | 0/166 | 字段新增 + 回填(范围 87 或 166 待裁) | **v0.2 定义 + Owner 回填令** |
 | U2 | manifest 缺 sha 类字段 | B1-M | 0/166 | 同 U1(字段形态待 v0.2 定) | 同上 |
 | U3 | 双层关联 = 路径值相等 | B1-L(**DEC-B1 已裁唯一键**) | `ir.source_file == manifest.source_file` | 关联键升级为 `source_version_id` 唯一关联(IR 侧字段已有,manifest 侧随 U1) | 随 U1 |
-| U4 | IR 覆盖 71/166 | B1-I(**DEC-B1 解耦**) | 95 份无语义承载 | 扩产(若 v0.2 要求);**已不阻塞身份面** | **UNKNOWN(覆盖面未裁)** |
+| U4 | IR 覆盖 71/166 | B1-I(DEC-B1 解耦 + **DEC-021 当前面已裁**) | 95 份无语义承载 | 扩产(若要求);当前面 = 71 ADMITTED 冻结面已裁,**已不阻塞身份面** | **扩产机制 UNKNOWN** |
 | U5 | IR 无持续产出机制 | B1-I | R52 一次性冻结 | 机制建设(若要求) | **UNKNOWN(未裁)** |
-| U6 | B3 零守卫 | B3 | 生成链无 unit_type 值域检查;正确性靠"恰好没转换"而非机制 | 生成链引入值域检查 + 显式 UNKNOWN/PENDING 落点 | **v0.2 落字 B3 载体** |
-| U7 | v1 legacy 面 79 份无接口地位 | B1 面口径 | C-IN-1 拒收语义之外无处置定义 | 排除/迁移/披露三选一 | **UNKNOWN(未裁)** |
+| U6 | B3 零守卫 | B3(**DEC-021 词表已裁**) | 生成链无 unit_type 值域检查 | 值域检查 + 显式 PENDING_REVIEW/REJECTED 态(词表已定,载体未定) | **v0.2 落字载体 + 路由规则** |
+| U7 | v1 legacy 面 79 份无接口地位 | B1 面口径(**DEC-021 已裁**) | — | **已裁 = historical asset 隔离,四禁**;剩披露形态(文字层) | **已关闭(执行面零动作)** |
 
 ## 4. 需要 Owner 批准项(Approval Required)
 
-| # | 项 | 批准粒度 | 依赖 |
+| # | 项 | 批准粒度 | 状态(DEC-021 后) |
 |---|---|---|---|
-| A1 | `source_version_id` 字段定义(名/格式/md 面 vs PDF 面分层声明) | v0.2 内容裁决 | — |
-| A2 | 回填范围:**87**(接口面)vs **166**(全语料) | 范围令 | A1 |
-| A3 | 回填执行令(数据写入;与 R50 基线 DRIFT 治理配对,见 Gap List G1-3) | 执行令 | A1+A2+v0.2 冻结 |
-| A4 | IR 权威覆盖面(71 现状 vs 扩产)+ 持续产出要否 | 二选一 ×2 | — |
-| A5 | v1 面 79 份处置 | 三选一 | — |
-| A6 | B3 UNKNOWN/PENDING 载体(字段/状态机落点) | v0.2 内容裁决 | — |
-| A7 | B3 守卫实施令(生成链值域检查) | 执行令 | A6+v0.2 冻结 |
+| A1 | `source_version_id` 字段定义(名/格式/md 面 vs PDF 面分层声明) | v0.2 内容裁决 | **仍未批** |
+| A2 | 回填范围 | 范围令 | **已裁(DEC-021 D1)= 87** |
+| A3 | 回填执行令(数据写入;与 Step 1 快照/R50 配对,Gap List G1) | 执行令(五步序 Step 1+2) | 待令 |
+| A4 | IR 权威覆盖面 + 持续产出要否 | 二选一 ×2 | **当前面已裁 = 71 冻结面;扩产与持续产出仍未批** |
+| A5 | v1 面 79 份处置 | — | **已裁(DEC-021 D2)= historical asset 隔离(四禁)+ 独立 Legacy Migration Plan 通道** |
+| A6 | B3 语义状态机载体(字段/落点)+ unknown 路由规则 | v0.2 内容裁决 | **词表已裁(READY/INCOMPLETE/PENDING_REVIEW/REJECTED);载体与路由规则仍未批** |
+| A7 | B3 守卫实施令(生成链值域检查) | 执行令 | 待令(A6 载体后) |
 
 ---
 

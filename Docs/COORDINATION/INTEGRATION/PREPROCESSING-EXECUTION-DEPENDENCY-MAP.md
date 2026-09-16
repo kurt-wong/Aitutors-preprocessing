@@ -1,8 +1,9 @@
 # EXECUTION DEPENDENCY MAP — G1 identity 固化 × D2 figure recovery(重整理)
 
-> Status: **v2.1(2026-09-16,DEC-B1 后注记)** · 取代 IF-v2 §6.3 与 Readiness v1 中"互斥时序"的初步表述
+> Status: **v2.2(2026-09-16,DEC-021 五步序入册后更新)** · 取代 IF-v2 §6.3 与 Readiness v1 中"互斥时序"的初步表述
 > DEC-B1 增量:source 身份不依赖 IR 存在 → E8(G3 扩产治理)与 G1 路径彻底解耦;本图主链(G1×D2×R50)不受影响,交集定量不变。
-> Basis: Owner Decision Record v1(§1bis DEC-B1)+ `data/producer_readiness_probe_v3.json`(三点交集定量)+ R50 成员资格亲验
+> **DEC-021 增量**:Owner 裁定五步序 = ①Freeze interface snapshot → ②backfill source_version_id(范围已裁 87)→ ③Freeze Contract v0.2 → ④data hygiene → ⑤image recovery——**D-1/D-2/D-5 关闭**(见 §5);快照先行变体下 E2 的配对对象从"R50 再冻结"转为"Step 1 接口快照与 R50 的血统关系"(执行令细化,UNKNOWN)。
+> Basis: Owner Decision Record v1(§1bis DEC-B1 + **§1ter DEC-021**)+ `data/producer_readiness_probe_v3.json`(三点交集定量)+ R50 成员资格亲验
 > Purpose: 用实测交集数据取代定性判断,给出 G1 与 D2 的**精确**依赖关系与可行执行序。
 
 ---
@@ -56,7 +57,8 @@
 | # | 从 → 到 | 约束 | 强度 |
 |---|---|---|---|
 | E1 | v0.2 冻结 → G1b | 字段未定义不得回填 | 硬(治理) |
-| E2 | G1b → R50 再冻结 | 87/87 manifest 是 R50 成员,回填必致 DRIFT,必须配对再冻结(新 audit_id + 血统注记) | 硬(事实) |
+| E2 | G1b → 基线再冻结 | 87/87 manifest 是 R50 成员,回填必致 DRIFT,必须配对再冻结(新 audit_id + 血统注记) | 硬(事实) |
+| E2' | Step 1 快照 → E2 配对对象 | DEC-021 五步序下,配对角色由 Step 1 接口快照承担;快照与 R50 的血统关系(新基线 vs 再确认)= 执行令细化(D-6) | 硬(治理,待令) |
 | E3 | v0.2 冻结 → G5a | B3 载体未定义,守卫无落点 | 硬(治理) |
 | E4 | G5a → G5b | 存量处置须在守卫就位后(否则无验收标准) | 硬(方法) |
 | E5 | D2(排除模式)→ G1 | **无约束**(排除 2 三重成员后,1,394 份与接口面零交集) | 无 |
@@ -64,28 +66,31 @@
 | E7 | D2 → OQ-3 | 恢复产物 `_imgs/` 是否入接口面未定义 | 弱(文字层) |
 | E8 | G3 扩产 → R52 工件治理 | 重产 IR = 冻结工件版本问题 | 硬(治理,若 G3 启动) |
 
-## 4. 可行执行序(供 Owner 排令参考,非方案)
+## 4. 执行序(DEC-021 D4 已裁五步;原序 A/B 保留为历史参考)
 
-**序 A(最小冲突,推荐参考)**:
-1. v0.2 冻结(字段 + B3 载体 + 面口径 87 写死);
-2. G1b 回填 87 + R50 再冻结(配对原子执行,E2);
-3. D2 批跑 1,394(排除 2 三重成员 + 2 无 PDF,E5 零冲突);
-4. G5a 守卫 + G5b 存量处置(存量 1 例所在 manifest 已在步骤 2 再冻结面内,处置作为再冻结后的新变更走新基线,或并入步骤 2 一次完成——**由 Owner 定原子性**);
-5. (可选)2 份三重成员的恢复 = 单独裁决(E6 三重联动)。
+**Owner 裁定五步序(现行,取代序 A/B)**:
+1. **Step 1 Freeze interface snapshot**(接口面 87 冻结快照;载体/血统 = 执行令细化,见 E2');
+2. **Step 2 Generate / backfill source_version_id**(范围已裁 = 87);
+3. **Step 3 Freeze Contract v0.2**;
+4. **Step 4 Execute data hygiene**;
+5. **Step 5 Execute image recovery / historical cleanup**(D2 在此步:批跑默认排除 2 份三重成员 + 2 无 PDF 件,E5 零冲突)。
 
-**序 B(先清洗后冻结)**:D2 先行(排除 2 份)→ 语料稳定 → v0.2 冻结 → G1b 一次回填 → R50 再冻结一次。**优点**:R50 只再冻结一次;**代价**:与"接口冻结优先"的 Owner 令顺序相反,须 Owner 显式改令。
+**裁决理由(Owner 原文)**:source identity 必须早于内容修改——图片恢复/OCR 修复/markdown 修改都可能导致 content change → hash change → source_version_id invalid。**身份冻结优先。**
 
-**两序共同不变量**:2 份三重成员在任何序中都排除在批量动作外,单独裁决;4 份无 PDF 件单列人工。
+**与本图定量的兼容性**:五步序与交集定量零冲突——Step 2 回填的 87 份全部 R50 成员(E2 硬约束由 Step 1 快照承担配对角色);Step 5 D2 排除模式下 1,394 份与接口面零交集(E5);2 份三重成员仍单独裁决。
+
+(历史参考:原序 A = 冻结→回填+再冻结→D2→守卫;原序 B = 先清洗后冻结——序 B 与 Owner 令顺序相反,**已被 D4 否决**;序 A 与五步序同构,差异 = 快照时点前移。)
 
 ## 5. 决策点(Owner)
 
-| # | 决策 | 影响 |
+| # | 决策 | 状态(DEC-021 后) |
 |---|---|---|
-| D-1 | 执行序 A vs B | R50 再冻结次数(2 次 vs 1 次) |
-| D-2 | G1b 回填范围 87 vs 166 | 166 面含 79 份 v1 legacy(G6 未裁前回填它们语义未定) |
-| D-3 | 存量 1 例(unit_type)与 G1b 是否同一原子再冻结 | 基线版本数 |
-| D-4 | 2 份三重成员恢复:做 / 不做 / 排除到底 | E6 是否激活 |
-| D-5 | D2 是否可先于 v0.2 冻结解禁(序 B 改令) | 与"接口冻结优先"令的关系 |
+| D-1 | 执行序 A vs B | **关闭:均不采纳,Owner 自裁五步序(快照先行)** |
+| D-2 | G1b 回填范围 87 vs 166 | **关闭:已裁 87(DEC-021 D1);79 legacy = historical asset(D2)** |
+| D-3 | 存量 1 例(unit_type)与回填是否同一原子再冻结 | 未裁(存量呈现态随 G5 载体) |
+| D-4 | 2 份三重成员恢复:做 / 不做 / 排除到底 | 未裁(Step 5 前须裁) |
+| D-5 | D2 是否可先于 v0.2 冻结解禁 | **关闭:否——D2 = Step 5 最后(DEC-021 D4)** |
+| D-6(新增) | Step 1 接口快照的载体形态与 R50 血统关系(新基线工件?audit_id 规则?) | 未裁,需 Step 1 执行令 |
 
 ## 6. 纪律
 

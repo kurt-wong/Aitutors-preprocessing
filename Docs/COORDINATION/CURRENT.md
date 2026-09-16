@@ -1,20 +1,23 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**DEC-B1 分项裁决入册 DEC-020**:Manifest = Source Identity Authority / IR = Semantic Consumption Authority / source_version_id 唯一关联键 / **source 身份不依赖 IR 存在**;生产侧后果 = G1 与 G3 正式解耦,身份面可先行完备;三文档增量更新 v3.1/v1.1/v2.1)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**CONTRACT-DECISION-FINALIZATION 四项裁决入册 DEC-021**:Interface Scope = 87 / v1 legacy 79 = historical asset 隔离 / 四状态机 READY·INCOMPLETE·PENDING_REVIEW·REJECTED / 五步执行序(快照→回填→冻结 v0.2→卫生→图片恢复);Producer Decision Alignment v1 交付;Contract 保持 v0.2 DRAFT NOT FROZEN)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
-## ⏭ 当前状态:DEC-B1 已裁,等 DEC-B2/B3 分项 + v0.2 起草令(2026-09-16)
+## ⏭ 当前状态:DEC-021 已裁,等 v0.2 起草令 + Step 1 执行令细化(2026-09-16)
 
-**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(v1.1:§1 总纲 + §1bis DEC-B1;未裁事项登记面)。
+**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(v1.2:§1 总纲 + §1bis DEC-B1 + §1ter DEC-021;未裁事项登记面)。
 
-**DEC-B1 生产侧后果(已落三文档)**:
-- **身份-语义解耦**:source 身份不依赖 IR 存在 → IR 现状 71 不阻塞身份权威性;G3 扩产成为独立议题;
-- **唯一关联键已裁**:`source_version_id`;路径值相等不是合规关联;
-- **身份自足性验收(G1 新增)**:入接口面 manifest 的身份字段独立可验证,IR 缺席不使身份失效;
-- 主链不变:dangling∩接口面 = ∩IR = ∩R50 = 同 2 份;v2 面 87/87 manifest 全 R50 成员,回填必配对再冻结。
+**DEC-021 生效(生产侧)**:
+- **面口径三元写死**:87 接口面 / IR 71 ADMITTED 当前冻结面 / 79 legacy = historical asset(四禁 + 独立 Legacy Migration Plan 通道);
+- **四状态机**:READY/INCOMPLETE/PENDING_REVIEW/REJECTED;unknown semantic 禁 auto-conversion/silent fallback/silent skip → PENDING_REVIEW 或 REJECTED(路由规则未给);
+- **五步执行序**:①Freeze interface snapshot → ②backfill source_version_id(87)→ ③Freeze Contract v0.2 → ④data hygiene → ⑤image recovery(身份冻结优先;D-5 关闭 = D2 最后);
+- **关闭项**:A2=87 / A5=隔离 / A4 当前面=71 / A6 词表 / D-1·D-2·D-5。
+- 主链不变:dangling∩接口面 = ∩IR = ∩R50 = 同 2 份;v2 面 87/87 manifest 全 R50 成员(E2'/D-6:Step 1 快照与 R50 血统待执行令)。
 
-**等 Owner**:DEC-B2/DEC-B3 分项(如有);v0.2 起草令;A2 回填范围(87 vs 166)/ A4 IR 覆盖面 / A5 v1 面 79 份 / A6 B3 载体。
-**仍暂缓**:数据治理四项。工件:`data/producer_readiness_probe_v3.json`(FACT-035)。
+**DSH 本轮交付**:`INTEGRATION/PREPROCESSING-PRODUCER-DECISION-ALIGNMENT-v1.md`(OBSERVED/DECISION/GAP/UNKNOWN;Contract v0.1 差距七项;全部实现项 not started);Gap List v1.2 / Readiness v3.2 / Dependency Map v2.2 增量。**Claude 侧任务**:PREPROCESSING-V3-CONSUMER-DECISION-ALIGNMENT-v1(消费路径/状态机表达/silent skip·fallback 登记;REPORTED 直至 V3 commit)。
+
+**等 Owner**:v0.2 起草令(生产侧备料已齐,最小冻结集 = G1 字段名/格式 + G5 载体 + 接口面 87 表达);Step 1 快照执行令(D-6);D-3 存量 1 例原子性 / D-4 2 份三重成员;PENDING_REVIEW→REJECTED 路由规则;IR 扩产机制(如需)。
+**仍暂缓**:数据治理四项(五步序 Step 4/5 前零动作)。
 
 ## 主线:preprocessing 内部收口(数据卫生,Owner 令)
 
@@ -27,7 +30,7 @@
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **Readiness v3 三件交付**(Producer Readiness v3 + Gap List G1~G7 + Dependency Map;工件 `data/producer_readiness_probe_v3.json`,FACT-035);Owner Decision Record v1 文档化;治理四项暂缓;契约保持 DRAFT 待 v0.2 |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-021 入册 + Producer Decision Alignment v1**(四段结构 + Contract v0.1 差距清单;ODR v1.2 / Gap List v1.2 / Readiness v3.2 / Dependency Map v2.2;实现项全部 not started);治理四项暂缓;契约保持 v0.2 DRAFT NOT FROZEN |
 | **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **Consumer Review v0.2 已交付**(V3 `938535d`,不可冻结 + 三 BLOCK);待收 DSH Reconciliation v0.2 后按 Owner 裁决更新消费面;遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步;V3 侧契约稿/ v0.1 review/handoff 007 仍 untracked(REPORTED 级,建议 commit 入册) |
 
 ## P3.2 / EB-004 终局(VERIFIED)
