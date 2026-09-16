@@ -2663,3 +2663,24 @@ ext 更新;CURRENT.md 顶部暂停横幅。Contract 保持 v0.1 DRAFT,语料零�
 **④ 四项 immutable 最终确认**:**source bytes immutable**(C4:87/87 零漂移 vs Step 1 快照 + R50 基线)/ **manifest immutable**(C8:剥键重序列化 == R50 回填前 sha 87/87,差异恰 = 追加一键;证据工件 sha 全数不变)/ **IR immutable**(C5:71/71 `ir.source_sha256` 对账零漂移,未再生成未改写)/ **evidence immutable**(六工件登记 sha 6/6 相符 + 复跑字节级复现)。
 **最终状态**:`STATUS: PRODUCER BASELINE FINALIZED`;**Consumer Identity Verification NOT IMPLEMENTED**(五项 V3 消费能力——raw bytes acquisition / SHA256 独立验证 / Manifest identity verification / IR identity verification / identity gate——全部不变;Freeze 不含 bytes verification / identity gate / IR verification 三项实现)。
 **纪律**:零代码 / 零数据 / 零 Manifest / 零 IR 修改;写入面 = 台账 + 文档登记;Freeze 范围未扩展;零新架构裁决;已裁六项未重开。下一阶段不变 = V3 Consumer Identity Verification Implementation;DSH 侧令前保持零新数据动作。
+
+## DEC-034 — Producer Frozen Baseline Archive Final Check(2026-09-16)
+
+**指令**:完成 Producer Frozen Baseline 的**最终归档**。允许 = 只读验证 + 文档登记;禁止 = 代码 / 数据 / Manifest / IR 修改。执行:①确认四项 immutable(source bytes / manifest / IR / evidence);②登记 state.yaml / CURRENT.md / log.md,记录 **PRODUCER BASELINE FINALIZED**;③记录远端验证结果,**必须区分 Observed(本轮实际执行结果)与 Historical(之前验证结果)**;④输出最终状态两行并提交 Producer Baseline Archive Final Report。
+**① 四项 immutable 终检(本轮只读复跑,从当前磁盘字节独立重推导,scratch 重定向零覆盖已登记工件)**:**source bytes immutable = PASS**(C4:87/87 零漂移 vs Step 1 快照 + R50 基线;C3:87/87 值 == SHA256(当前字节)64 位小写 hex)/ **manifest immutable = PASS**(C8:剥键重序列化 == R50 回填前 sha 87/87,差异恰 = 追加一键;C2:面内唯一 sha 键 87/87)/ **IR immutable = PASS**(C5:ADMITTED 71/71 对账零漂移,未再生成未改写)/ **evidence immutable = PASS**(六工件 `Get-FileHash` 实测与登记 sha256 **6/6 相符**:Step1 `b4f14524…ad99` / Step2 `d430cc2f…eec1` / pre audit `b11874c4…dd9c` / post audit `2cb980c7…4096` / final check `a707738e…5c33` / verification report `da97a2f3…bb7c`;复跑输出与已登记 final check **字节级一致**)。C1-C9 全 PASS = **VERIFIED**;全量测试 **338 passed / 1 xfailed**(与基线一致)。
+**② 登记**:报告 = `INTEGRATION/PREPROCESSING-PRODUCER-BASELINE-ARCHIVE-FINAL-REPORT-v1.md`,commit **`56f95f2`**;state.yaml(DEC-034 + FACT-037 + `producer_baseline_archive_final` 块 + next 追加)/ CURRENT.md(更新头 + 快速恢复节归档条 + 状态头 = FINALIZED + ARCHIVED + agent 表)/ log.md(本条)/ ODR **v1.15**(§1sexdecies 原文照录)。
+**③ 远端验证分账**:
+- **Observed(本轮实际执行,2026-09-16 DEC-034 轮)**:V3 仓 `git fetch origin` = **OK**(exit 0;沙箱升级后执行——本会话早前同命令曾被 `.git/FETCH_HEAD` 写权限拒绝,属沙箱文件策略非仓库问题);`git ls-remote origin main` = **`72af28d5854b56fc605e1897fb757703826a6233`**(exit 0;remote reachable = TRUE;与 DEC-033 轮一致,远端未再前进);`git merge-base --is-ancestor f4941ff origin/main` = **TRUE**(exit 0;冻结对象仍包含于远端 main)。
+- **Historical(之前验证结果,仅存档引用,不冒充本轮观察)**:DEC-031 轮 = V3 `origin/main` `305bd81` + 契约 blob 重导 `9c6b9063…7528`;DEC-032 轮 = `4daecf0b` + 字节级重导同值(92,197 bytes);DEC-033 轮 = 首试 fetch FAIL(沙箱)/ ls-remote FAIL(`SEC_E_NO_CREDENTIALS`)真实错误入账 + 升级重试 `72af28d` TRUE。
+**④ 最终状态**:
+
+```text
+PRODUCER BASELINE:
+FINALIZED
+
+CONSUMER IDENTITY:
+NOT IMPLEMENTED
+```
+
+**归档声明**:基线以 Archive Final Report §1.1 工件表字节为准;任何后续变化必须先有 Owner 令并产生新快照配对(pre/post 双快照机制),不得就地改写;R50 血统解释不变(DRIFT == 恰 87 为预期,偏离才是异常);长开项(16 份 IR 再生成 / D-3 / D-4 / IR 字段名对齐 / 两层状态载体 / C.1 追认)与延期五项不因归档而关闭。
+**纪律**:零代码 / 零数据 / 零 Manifest / 零 IR 修改;已登记工件零覆盖(复跑后再验 `data/freeze_evidence_final_check.json` 哈希不变);Freeze 范围未扩展;零新架构裁决;已裁六项未重开。下一阶段不变 = V3 Consumer Identity Verification Implementation;DSH 侧令前保持零新数据动作。

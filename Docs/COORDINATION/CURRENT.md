@@ -1,25 +1,31 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**DEC-033 Producer Frozen Baseline Final Integrity Record 收口**:Integrity Report v1 提交(`8fc4d60`)+ 三账登记 + 远端状态本轮真实重验(fetch OK / `origin/main` = `72af28d` reachable = TRUE / `f4941ff` 亲缘 TRUE;首试失败已如实入账)+ 四项 immutable 复验零漂移 → **STATUS: PRODUCER BASELINE FINALIZED**;Consumer Identity Verification NOT IMPLEMENTED 不变)· 前轮 = Contract v0.2 Frozen 最终登记确认(DEC-032)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**DEC-034 Producer Frozen Baseline Archive Final Check**:四项 immutable 只读终检全 PASS + Archive Final Report v1 提交(`56f95f2`)+ 三账登记 + 远端验证 **Observed/Historical 分账**(Observed 本轮 = fetch OK / `origin/main` = `72af28d` reachable = TRUE / `f4941ff` 亲缘 TRUE)→ **PRODUCER BASELINE: FINALIZED / CONSUMER IDENTITY: NOT IMPLEMENTED**;基线进入归档终态,后续变化须 Owner 令 + 新配对快照)· 前轮 = DEC-033 Final Integrity Record 收口 · canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
 ## 🧭 新会话快速恢复(新会话先读本节,30 秒回到工作状态)
 
-**一句话状态**:Contract v0.2 = **FROZEN**(DEC-032);Frozen Baseline 保全复验完成 = **PRODUCER BASELINE FINALIZED**(DEC-033,2026-09-16);DSH 指令链全部闭环,**令前保持零新数据动作**,等 Owner 下一步指令。
+**一句话状态**:Contract v0.2 = **FROZEN**(DEC-032);Frozen Baseline = **PRODUCER BASELINE FINALIZED**(DEC-033 收口 + DEC-034 归档终检,2026-09-16);DSH 指令链全部闭环,**令前保持零新数据动作**,等 Owner 下一步指令。
 
-- **指令链末端**:… → DEC-030(`a899adf`)→ DEC-031(`5b0552d`)→ DEC-032(`9cf35e3`)→ **DEC-033(`8fc4d60` + 三账收口 commit = main HEAD)**;ODR = **v1.14**(§1quindecies 原文照录);工作树干净(提交后);
+- **指令链末端**:… → DEC-031(`5b0552d`)→ DEC-032(`9cf35e3`)→ DEC-033(`8fc4d60`+`ee751fd`)→ **DEC-034(`56f95f2` + 三账收口 commit = main HEAD)**;ODR = **v1.15**(§1sexdecies 原文照录);工作树干净(提交后);
 - **冻结对象(唯一有效四元组)**:`kurt-wong/AITutors-v3` @ `f4941ff87c0130ee0b79ff6b807c4ec2826b8ff1` / `Docs/COORDINATION/CONTRACTS/PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` / sha256 **`9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528`**(92,197 bytes)。`c6e771c` / `c8d89586…1032` = 历史登记,**勿引用**。V3 远端 main 观测值 = `4daecf0b`(DEC-032 时点;Claude 可能继续推进,一切以 fetch/ls-remote 实测为准);
 - **关键数字**:manifest 166 / 接口面 87(87/87 携 `source_content_sha256`,unique 87 · dups 0)/ IR 71 ADMITTED(1,664 单元,71/71 对账零漂移)/ 16 Semantic Pending / v1 legacy 79(隔离,C-IN-1 下必拒)/ R50 基线 356(**DRIFT = 恰 87 为预期**,承接者 = pre/post audit 双快照 `b11874c4…` / `2cb980c7…`);
-- **Frozen Baseline 保全(DEC-033,最新)**:四项 immutable 复验全过——source bytes 零漂移(87/87 vs Step1+R50)/ manifest 差异恰 = 追加一键 / IR 71·71 零漂移 / 证据六工件登记 sha 6/6 相符 + 复跑字节级复现(`a707738e…5c33`);报告 = `INTEGRATION/PREPROCESSING-PRODUCER-FROZEN-BASELINE-INTEGRITY-REPORT-v1.md`;本轮远端实测(V3)`origin/main` = `72af28d`,`f4941ff` 亲缘 TRUE;**Consumer Identity Verification NOT IMPLEMENTED 不变**;
+- **Frozen Baseline 归档终态(DEC-034,最新)**:四项 immutable 终检全过——source bytes 零漂移(87/87 vs Step1+R50)/ manifest 差异恰 = 追加一键 / IR 71·71 零漂移 / 证据六工件登记 sha 6/6 相符 + 复跑字节级复现(`a707738e…5c33`);归档报告 = `INTEGRATION/PREPROCESSING-PRODUCER-BASELINE-ARCHIVE-FINAL-REPORT-v1.md`;**基线以工件表字节为准,后续变化须 Owner 令 + 新配对快照,不得就地改写**;本轮远端 Observed(V3)`origin/main` = `72af28d`,`f4941ff` 亲缘 TRUE(Historical = DEC-031 `305bd81` / DEC-032 `4daecf0b` / DEC-033 失败+重试,仅存档引用);**CONSUMER IDENTITY: NOT IMPLEMENTED 不变**;
 - **边界纪律(新会话必守)**:①Freeze 不含三项实现——bytes verification / identity gate / IR verification;五项 V3 消费能力全部 **NOT IMPLEMENTED**,契约 REQUIREMENT ≠ 现状(Decision ≠ Implementation);②已裁六项(identity key / path / `source_version_id` / Semantic Pending / 87·71·16 / bytes requirement)**不重开**;③DSH 令前零新数据动作——Step 4 数据治理 / Step 5 图片恢复 / IR 重生成 / schema 变更 / daemon 仍禁;④case id 不重编号;REPORTED ≠ OBSERVED;转述层会漂移,引用必须回到证据文件;
 - **下一阶段**:V3 Consumer Identity Verification Implementation(bytes → SHA256 → Manifest 验证 → IR 验证 → fail-closed → Gate → Admission)——实现排期属 V3 侧;若 Owner 令 DSH 复核实现,核验基准 = 契约 §2.3/§5.6.2 验证链 + 五项 NOT IMPLEMENTED 边界不得因 FROZEN 松动;
 - **长开项(不阻塞 FROZEN,须令才动)**:16 份 IR 再生成批次 / D-3 存量 1 例 `andalone_question` / D-4 两份三重成员 / IR 字段名对齐(`source_sha256` → `source_content_sha256`)/ 两层状态载体 + reviewable record / C.1 载体正文引用形态追认;延期五项(legacy 79 披露 / 17 拒收 / OCR-PDF 扩展 / DEC 编号统一(R5-03)/ bytes 传输方式)不处理;
 - **环境纪律**:`PYTHONIOENCODING=utf-8`;PowerShell `>` 重定向写 UTF-16(字节级导出用 `cmd /c "git show … > file"` + `Get-FileHash`);push / gh 需 `sandbox_permissions: danger-full-access` + justification;push 后必须 `git ls-remote origin main` 亲验 + `gh run list` 对账;测试基线 = **338 passed / 1 xfailed**;
-- **阅读顺序**(PROTOCOL §5):state.yaml(权威)→ 本文件 → ODR v1.14 → log.md 尾部 → 最新 HANDOFF;裁决原文全集 = `INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`。
+- **阅读顺序**(PROTOCOL §5):state.yaml(权威)→ 本文件 → ODR v1.15 → log.md 尾部 → 最新 HANDOFF;裁决原文全集 = `INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`。
 
-## ⏭ 当前状态:PRODUCER BASELINE FINALIZED(2026-09-16,DEC-033;上一状态 = CONTRACT FROZEN,DEC-032)→ 下一阶段 = V3 Consumer Identity Verification Implementation
+## ⏭ 当前状态:PRODUCER BASELINE FINALIZED + ARCHIVED(2026-09-16,DEC-034 归档终检;前状态 = DEC-033 收口 / DEC-032 CONTRACT FROZEN)→ 下一阶段 = V3 Consumer Identity Verification Implementation
 
-**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.14**:… + §1quaterdecies DEC-032 + **§1quindecies DEC-033**)。
+**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.15**:… + §1quindecies DEC-033 + **§1sexdecies DEC-034**)。
+
+**DEC-034 = Producer Frozen Baseline Archive Final Check**(最终归档,只读验证 + 文档登记):
+- **① 四项 immutable 终检全 PASS**:source bytes(C4 87/87 零漂移)/ manifest(C8 剥键 87/87 + 工件 sha 不变)/ IR(C5 71·71)/ evidence(6/6 登记 sha 相符 + 复跑字节级一致);C1-C9 全 PASS = VERIFIED;测试 338 passed / 1 xfailed;
+- **② 三账登记**:state.yaml(DEC-034 + FACT-037 + `producer_baseline_archive_final` 块)/ CURRENT.md / log.md;报告 = `INTEGRATION/PREPROCESSING-PRODUCER-BASELINE-ARCHIVE-FINAL-REPORT-v1.md`(commit `56f95f2`);
+- **③ 远端验证分账**:**Observed(本轮)**= V3 fetch OK / `git ls-remote origin main` = **`72af28d`**(reachable = TRUE)/ `merge-base --is-ancestor f4941ff origin/main` = **TRUE**;**Historical(仅存档引用)**= DEC-031 `305bd81` / DEC-032 `4daecf0b` / DEC-033 首试失败 + 升级重试 `72af28d`;
+- **④ 最终状态**:`PRODUCER BASELINE: FINALIZED` / `CONSUMER IDENTITY: NOT IMPLEMENTED`;归档声明 = 基线以工件表字节为准,后续变化须 Owner 令 + 新配对快照,不得就地改写。
 
 **DEC-033 = Producer Frozen Baseline Final Integrity Record 收口**(Frozen 后 Producer 数据基线最终登记):
 - **① Integrity Report 提交**:`INTEGRATION/PREPROCESSING-PRODUCER-FROZEN-BASELINE-INTEGRITY-REPORT-v1.md`(commit `8fc4d60`);
@@ -46,7 +52,7 @@
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-033 收口完毕:PRODUCER BASELINE FINALIZED**(Integrity Report v1 + 三账登记 + 远端本轮真实重验 `72af28d`/`f4941ff` 亲缘 TRUE + 四项 immutable 零漂移;零代码零数据零 manifest 零 IR 修改);令前保持零新数据动作 |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-034 归档终检完毕:PRODUCER BASELINE FINALIZED + ARCHIVED**(四项 immutable 终检全 PASS + Archive Final Report `56f95f2` + 三账登记 + 远端 Observed/Historical 分账;零代码零数据零 manifest 零 IR 修改);令前保持零新数据动作 |
 | **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | Freeze Artifact 已 push 且远端可复现(`4daecf0b` 含 `f4941ff`,DEC-035 文档轮契约零触碰);**下一阶段 = V3 Consumer Identity Verification Implementation**;遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 |
 
 ## P3.2 / EB-004 终局(VERIFIED)
