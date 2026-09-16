@@ -2623,3 +2623,13 @@ ext 更新;CURRENT.md 顶部暂停横幅。Contract 保持 v0.1 DRAFT,语料零�
 **Task 4(输出)**:推荐件 = `INTEGRATION/PREPROCESSING-CONTRACT-v0.2-FREEZE-RECOMMENDATION-v1.md`,Status = **READY FOR FREEZE**;Remaining non-blocking = F-1(状态注记仍为执行前时点 + 零工件引用)/ F-2′(push)/ 长开项清单;Implementation boundary = 五项 NOT IMPLEMENTED。
 **同步**:ODR v1.10(§1undecies)/ state.yaml(DEC-029 + `owner_freeze_final_audit` 块 + next)/ CURRENT。
 **结论**:**Producer READY FOR FREEZE**。建议 Owner Freeze 令一并要求 Claude 处置 F-1(增补注记,不改条款正文)与 F-2′(push 后以远端 commit+hash 复核)。零数据动作、零代码改动、V3 仓只读、Freeze 范围未扩展、零新架构裁决、已裁四题未重开。
+
+## DEC-030 — Producer Final Freeze Object Verification(2026-09-16)
+
+**指令**:确认冻结对象四元组(必须与 Claude 侧一致;Artifact ≠ Registration 分别记录)+ Remote Availability 验证 + Evidence Chain Final Seal + Final Freeze Confirmation;禁改数据/IR/source/扩大冻结范围。Owner 阶段定位:唯一待解 = 冻结对象唯一化 + remote 可复现性。
+**Task 1(冻结对象)**:核验对象更新为 Claude V3 **DEC-033** commit 化结果 **`f4941ff87c0130ee0b79ff6b807c4ec2826b8ff1`**,document sha256 = **`9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528`**;**三方一致**(DSH 工作树字节 == commit tree blob 重导 == Claude 登记 EB-009/契约 §9.2)。**Artifact(`f4941ff`)≠ Registration(`c6e771c`,DEC-029 登记,sha `c8d89586…1032`)→ 分别记录**:`c6e771c` 四元组降级为历史,唯一有效 = `f4941ff`;`c6e771c→f4941ff` diff 全量亲读 = 仅事实状态修正 + §9 证据/对象登记新增 + DA-37,六项冻结内容零改动,范围未扩展。F-1(状态注记 + 工件引用)已由 DEC-033 闭合。
+**Task 2(Remote)**:**FAIL**——reachable PASS / **commit exists FAIL**(V3 origin/main = `69a6c0b`,`f4941ff` 未 push,本地领先 19 commits)/ content hash 远端比对 N/A。远端可复现性当前不成立 = **B-1(唯一 blocker)**。
+**Task 3(Evidence Chain Final Seal)**:**PASS**——契约 §9.1 内嵌登记值与 DSH 工件逐项相符;五工件 sha256 复算 5/5 零漂移(Step1 `b4f14524…` / pre audit `b11874c4…` / Step2 `d430cc2f…` / post audit `2cb980c7…` / final check `a707738e…`);Contract → Step1 → Step2 → Verification → Final Check → Freeze Artifact 完整闭合。
+**Task 4(输出)**:`INTEGRATION/PREPROCESSING-CONTRACT-v0.2-PRODUCER-FINAL-FREEZE-CONFIRMATION-v1.md`——内容面 READY(唯一且双侧一致)+ remote 面 FAIL;Remaining blockers = B-1;Implementation boundary = 五项 NOT IMPLEMENTED;下一阶段 = V3 Identity Verification Implementation。
+**同步**:ODR v1.11(§1duodecies)/ state.yaml(DEC-030 + `owner_freeze_object_verification` 块 + next)/ CURRENT。
+**结论**:冻结对象内容面唯一且双侧一致;**B-1(Claude push `f4941ff`)闭合前远端不可复现**——建议 Freeze 令与「push + DSH 远端复核(ls-remote HEAD == `f4941ff` + blob hash == `9c6b9063…`)」并行下达或作为机械前置。零数据动作、零代码改动、V3 仓只读、冻结范围未扩展、零新架构裁决、已裁四题未重开。

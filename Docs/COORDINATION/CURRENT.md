@@ -1,22 +1,21 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**Contract v0.2 Freeze Producer Final Audit(DEC-029)**:证据链重推导(five 工件 sha256 复算 5/5 相符 + final check 重跑 C1-C9 全 PASS,字节 1:1 复现登记 sha)+ 六项契约要素在 commit 化文本 `c6e771c` 上零不一致 + 冻结对象四元组钉死 + Freeze Recommendation = **READY FOR FREEZE**;F-2 已闭合(Claude 已 commit),残余 F-1(状态注记)+ F-2′(未 push);本轮零数据动作、零新架构裁决)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**Producer Final Freeze Object Verification(DEC-030)**:冻结对象四元组更新为 **`f4941ff`**(V3 DEC-033,document sha256 `9c6b9063…7528`,三方一致);Artifact(`f4941ff`)≠ Registration(`c6e771c`)分别记录,唯一有效 = `f4941ff`;**Remote verification = FAIL(B-1:`f4941ff` 未 push)**;证据链 Final Seal = PASS;本轮零数据动作、零新架构裁决)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
-## ⏭ 当前状态:Producer READY FOR FREEZE → 等 Owner 正式 Freeze 令(2026-09-16,DEC-029)
+## ⏭ 当前状态:冻结对象内容面 READY / remote 面 FAIL → 等 Claude push(B-1)+ Owner Freeze 令(2026-09-16,DEC-030)
 
-**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.10**:… + §1decies DEC-028 + **§1undecies DEC-029**)。
+**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.11**:… + §1undecies DEC-029 + **§1duodecies DEC-030**)。
 
-**DEC-029 = Contract v0.2 Freeze Producer Final Audit**(禁改 source bytes/IR/Question/schema/pipeline):
-- **Task 1 证据链 = 最终确认**:Step 1 / Step 2 / Verification report / Final check 四者关联完整;五工件 sha256 复算 5/5 相符;final check 重跑 **C1-C9 全 PASS = VERIFIED**,产出字节与登记 sha **1:1 复现**;证据链表(artifact/commit/sha256/timestamp)= `INTEGRATION/PREPROCESSING-CONTRACT-v0.2-FREEZE-RECOMMENDATION-v1.md` §1;
-- **Task 2 六项一致 = 零不一致**:`source_content_sha256` / path non identity / 87·71·16 / Semantic Pending / bytes verification / fail-closed(在 commit 化文本上,工作树与 commit 零差异);
-- **Task 3 冻结对象四元组**:`kurt-wong/AITutors-v3` @ **`c6e771c`** / `PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` / sha256 **`c8d89586…1032`**;V3 工作树未跟踪文件(`PREPROCESSING-V3-CONTRACT.md`/SKELETON/REVIEW)均非冻结对象;
-- **Task 4 结论 = Producer READY FOR FREEZE**(格式化推荐件 = 上引文档 §4)。
+**DEC-030 = Producer Final Freeze Object Verification**(禁改数据/IR/source/扩大冻结范围):
+- **Task 1 冻结对象(唯一有效)**:`kurt-wong/AITutors-v3` @ **`f4941ff87c0130ee0b79ff6b807c4ec2826b8ff1`**(V3 DEC-033)/ `PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` / sha256 **`9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528`**——**三方一致**(DSH 工作树字节 == commit tree blob 重导 == Claude 登记 EB-009/§9.2);**Artifact ≠ Registration**:`c6e771c`(DSH DEC-029 登记)降级为历史,两者 diff 亲读 = 仅事实状态修正 + §9 登记新增,六项冻结内容零改动;
+- **Task 2 Remote verification = FAIL**:reachable PASS / **commit exists FAIL**(V3 origin/main = `69a6c0b`,本地领先 19 commits,`f4941ff` 未 push)/ content hash 远端比对 N/A——**远端可复现性当前不成立(B-1,唯一 blocker)**;
+- **Task 3 Evidence Chain Final Seal = PASS**:契约 §9.1 内嵌登记值与 DSH 工件逐项相符;五工件 sha256 复算 5/5 零漂移;Contract → Step1 → Step2 → Verification → Final Check → Freeze Artifact 完整;
+- **Task 4 输出** = `INTEGRATION/PREPROCESSING-CONTRACT-v0.2-PRODUCER-FINAL-FREEZE-CONFIRMATION-v1.md`(内容面 READY + remote 面 FAIL;Implementation boundary = 五项 NOT IMPLEMENTED)。
 
-**等 Claude(文本同步项,非 Producer 阻塞)**:F-1 契约状态注记仍为 Step 1/2 执行前时点(not started / 尚未满足,5+ 处)且零工件引用;**F-2′ `c6e771c` 未 push**(V3 origin/main = `69a6c0b`,领先 18 commits)。
-**等 Owner**:**正式 Freeze 令(= 五步序 Step 3)**——Producer 侧全部前置闭合;建议令中一并要求 Claude 处置 F-1(增补注记,不改条款正文)与 F-2′(push 后以远端 commit+hash 复核)。
-**Decision ≠ Implementation**:五项 V3 消费能力全部 **NOT IMPLEMENTED**(V3 现自算 hash = canonical_json 包裹,`runner.py:71-73`);16 份 IR 再生成 / D-3 / D-4 / IR 字段名对齐 / 两层状态载体 + reviewable record / C.1 追认仍开;延期五项不处理;**已裁四题(path identity / 命名 / 16 份重跑 / hash 唯一)不重开**。
-**下一阶段核心风险(Owner 原文)**:V3 消费端必须真正实现「拿到 bytes → 自己计算 SHA256 → 验证 Manifest → 验证 IR → 失败关闭」(Freeze 后进入 V3 Consumer Identity Verification 实现阶段)。
+**等 Claude**:**push `f4941ff`(B-1 闭合)**;push 后 DSH 一次性远端复核(ls-remote HEAD == `f4941ff` + blob hash == `9c6b9063…`)= 即转 NONE。F-1 已由 V3 DEC-033 闭合(状态修正 + §9 证据登记)。
+**等 Owner**:**正式 Freeze 令(= 五步序 Step 3)**——建议与「push + DSH 远端复核」并行下达或作为机械前置(Owner 原文:唯一待解 = 冻结对象唯一化 + remote 可复现性)。
+**Decision ≠ Implementation**:五项 V3 消费能力全部 **NOT IMPLEMENTED**;下一阶段 = **V3 Identity Verification Implementation**(bytes → SHA256 → Manifest 验证 → IR 验证 → fail-closed → Gate → Admission);冻结前不扩展设计范围;已裁四题(path identity / 命名 / 16 份重跑 / hash 唯一)不重开;长开项与延期五项不变。
 
 ## 主线:preprocessing 内部收口(数据卫生,Owner 令)
 
@@ -29,8 +28,8 @@
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-029 最终审计完毕:证据链重推导 VERIFIED + 六项零不一致 + 冻结对象四元组钉死 = Producer READY FOR FREEZE**;零数据动作,V3 仓只读 |
-| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **收口稿已 commit(`c6e771c` = DEC-032 注册,F-2 闭合)**;待办:F-1 刷新契约状态注记 + 引用工件(现为执行前时点)、F-2′ push(`c6e771c` 未上远端,origin/main = `69a6c0b`);遗留:R5-03 DEC 编号冲突(含 DSH DEC-028/029 撞号)+ DEC-017/018 同步 |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-030 冻结对象最终确认:四元组更新为 `f4941ff`(三方一致)+ 证据链 Final Seal PASS + Remote verification FAIL(B-1 未 push)**;零数据动作,V3 仓只读 |
+| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **DEC-033 完成:F-1 闭合(状态修正 + §9 证据登记 + §9.2 Freeze Object),契约 @ `f4941ff`(sha `9c6b9063…`)**;**待办:B-1 push `f4941ff`(origin/main 仍 `69a6c0b`,领先 19 commits)**;遗留:R5-03 DEC 编号冲突(DSH DEC-028/029/030 与 V3 撞号)+ DEC-017/018 同步 |
 
 ## P3.2 / EB-004 终局(VERIFIED)
 

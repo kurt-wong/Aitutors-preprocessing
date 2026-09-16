@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.10(2026-09-16,追加 §1undecies Contract v0.2 Freeze Producer Final Audit:证据链重推导 VERIFIED + 六项一致 + 冻结对象四元组钉死 + Freeze Recommendation = READY FOR FREEZE;v1.9 = §1decies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies;与 V3 侧 DEC-028 撞号,已知 R5-03 面)+ `[DEC-029]`(§1undecies;与 V3 侧 DEC-029 撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit`
+> Status: **v1.11(2026-09-16,追加 §1duodecies Producer Final Freeze Object Verification:冻结对象四元组更新为 f4941ff(与 Claude 三方一致)+ Artifact≠Registration 分别记录 + Remote verification FAIL(B-1 未 push)+ 证据链 Final Seal;v1.10 = §1undecies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies;与 V3 侧 DEC-028 撞号,已知 R5-03 面)+ `[DEC-029]`(§1undecies;与 V3 侧 DEC-029 撞号,已知 R5-03 面)+ `[DEC-030]`(§1duodecies;与 V3 侧 DEC-030 撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -473,6 +473,27 @@
 | Task 4 | 输出 = **READY FOR FREEZE**;Remaining non-blocking = F-1(状态注记仍为执行前时点 + 零工件引用)/ F-2′(push)/ 长开项清单;Implementation boundary = 五项 NOT IMPLEMENTED |
 | 禁止 | 零数据动作、零代码改动、V3 仓只读(fetch/ls-remote 仅读)、Freeze 范围未扩展、零新架构裁决;已裁四题未重开 |
 | 结论 | **Producer READY FOR FREEZE**;建议 Freeze 令一并要求 Claude 处置 F-1(增补注记,不改条款正文)与 F-2′(push 后以远端 commit+hash 复核) |
+
+## 1duodecies. 分项裁决 — Producer Final Freeze Object Verification(Owner 2026-09-16 第十三轮,原文照录;canonical 引用面)
+
+### 任务(原文照录要点)
+
+> **Task 1 — Confirm Freeze Artifact**:确认 Contract 实际冻结对象 repository / commit / document / sha256,必须与 Claude 侧一致;如发现 Artifact commit ≠ Registration commit,分别记录。禁改数据 / IR / source / 扩大冻结范围。
+> **Task 2 — Verify Remote Availability**:remote reachable / commit exists / content hash matches;输出 Remote verification PASS/FAIL。
+> **Task 3 — Evidence Chain Final Seal**:Contract → Step1 snapshot → Step2 backfill → Verification → Freeze Artifact 链路完整。
+> **Task 4 — Producer Freeze Recommendation**(Producer Final Freeze Confirmation 格式)。
+> **阶段定位**:冻结前不扩展设计范围;唯一待解 = 冻结对象唯一化 + remote 可复现性;下一阶段 = V3 Identity Verification Implementation。
+
+### §1duodecies 生产侧保守义(DSH 解释,非裁决;执行详件 = `PREPROCESSING-CONTRACT-v0.2-PRODUCER-FINAL-FREEZE-CONFIRMATION-v1.md`)
+
+| 条款 | 生产侧落实语义 |
+|---|---|
+| Task 1 | 冻结对象四元组**更新为 `f4941ff`**(V3 DEC-033;document sha256 = `9c6b9063…7528`);三方一致 = DSH 工作树字节 == commit tree blob 重导 == Claude 登记(EB-009/§9.2)。**Artifact commit(`f4941ff`)≠ Registration commit(`c6e771c`,DSH DEC-029 登记)→ 分别记录**:`c6e771c` 四元组降级为历史,唯一有效 = `f4941ff`;两者 diff 经 DSH 全量亲读 = 仅事实状态修正 + §9 登记新增,六项冻结内容零改动 |
+| Task 2 | **Remote verification = FAIL**:reachable PASS / commit exists **FAIL**(origin/main = `69a6c0b`,本地领先 19 commits,`f4941ff` 未 push)/ content hash remote 比对 N/A。远端可复现性当前不成立 |
+| Task 3 | 证据链 Final Seal **PASS**:契约 §9.1 内嵌登记值与 DSH 工件逐项相符;五工件 sha256 复算 5/5 零漂移;链路 Contract → Step1 → Step2 → Verification → Final Check → Freeze Artifact 完整闭合 |
+| Task 4 | 输出 = 内容面 READY + remote 面 FAIL;**Remaining blockers = B-1(唯一,未 push)**;Implementation boundary = 五项 NOT IMPLEMENTED |
+| 纪律 | 零数据动作 / 零代码改动 / V3 仓只读 / 冻结范围未扩展 / 零新架构裁决 / 已裁四题未重开;diff 判定亲读非 Claude 自述 |
+| 结论 | 冻结对象内容面唯一且双侧一致;**B-1(Claude push)闭合前远端不可复现**——建议 Freeze 令与「push + DSH 远端复核(ls-remote HEAD == f4941ff + blob hash == 9c6b9063…)」并行或作为机械前置 |
 
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 

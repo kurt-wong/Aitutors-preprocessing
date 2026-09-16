@@ -340,6 +340,10 @@ decisions:
     statement: "Contract v0.2 Freeze Producer Final Audit(禁改 source bytes / IR / Question / schema / pipeline): Task1 Freeze Evidence Final Review(重确认 Step1 snapshot / Step2 backfill / Verification report / Final check 四者关联, 输出 artifact/commit/sha256/timestamp 最终证据链); Task2 Contract 一致性检查(source_content_sha256 / path non identity / 87·71·16 / Semantic Pending / bytes verification / fail closed); Task3 协助冻结对象确定(Producer 认可 Contract v0.2 Freeze Version 对应 repo/commit/document/hash, 避免版本歧义); Task4 输出 Freeze Recommendation(Producer Freeze Confirmation 格式)。建议流程: Claude 修正 F-1/F-2 → DSH 最终确认 → Owner Freeze 令 → Frozen → 进入 V3 Consumer Identity Verification 实现阶段。不再重开已裁四题(path identity / 命名 / 16 份重跑 / hash 唯一); 下一阶段 = V3 消费链 bytes → SHA256 → Manifest 验证 → IR 验证 → fail-closed。注: 本条为 DSH 侧编号, 与 V3 侧 DEC-029(Freeze Candidate Review)撞号, 已知 R5-03 面"
     authority: "用户裁定 2026-09-16(Contract v0.2 Freeze Producer Final Audit, 聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1undecies)"
     status: active
+  - id: DEC-030
+    statement: "Producer Final Freeze Object Verification(禁改数据/IR/source/扩大冻结范围): Task1 确认 Contract 实际冻结对象 repo/commit/document/sha256 且必须与 Claude 侧一致, Artifact commit != Registration commit 则分别记录; Task2 Verify Remote Availability(remote reachable / commit exists / content hash matches, 输出 PASS/FAIL); Task3 Evidence Chain Final Seal(Contract → Step1 snapshot → Step2 backfill → Verification → Freeze Artifact); Task4 输出 Producer Final Freeze Confirmation。阶段定位: 冻结前不扩展设计范围, 唯一待解 = 冻结对象唯一化 + remote 可复现性; 下一阶段 = V3 Identity Verification Implementation(raw bytes → SHA256 → Manifest 验证 → IR 验证 → fail-closed → Gate → Admission)。注: 本条为 DSH 侧编号, 与 V3 侧 DEC-030(Freeze Candidate Finalization)撞号, 已知 R5-03 面; 本轮核验对象 = V3 DEC-033(Consumer Freeze Finalization Audit)commit f4941ff"
+    authority: "用户裁定 2026-09-16(Producer Final Freeze Object Verification, 聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1duodecies)"
+    status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
 open_questions:
@@ -500,7 +504,7 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "DEC-029(Contract v0.2 Freeze Producer Final Audit)已执行完毕: Task1 证据链重推导(五工件 sha256 复算 5/5 相符, final check 重跑 C1-C9 全 PASS = VERIFIED 且字节 1:1 复现登记 sha); Task2 六项一致在 commit 化文本 c6e771c 上全部 PASS; Task3 冻结对象四元组钉死(AITutors-v3 @ c6e771c / PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md / sha256 c8d89586…1032; V3 工作树未跟踪文件均非冻结对象); Task4 输出 = READY FOR FREEZE(报告 = INTEGRATION/PREPROCESSING-CONTRACT-v0.2-FREEZE-RECOMMENDATION-v1.md)。F-2 本地 commit 已闭合(Claude 已 commit c6e771c); 残余 = F-1 契约状态注记仍为执行前时点 + 零工件引用(Claude, 文本同步) + F-2′ c6e771c 未 push(V3 origin/main = 69a6c0b, 领先 18 commits)。等 Owner: 正式 Freeze 令(建议一并处置 F-1/F-2′)。Decision ≠ Implementation: 五项 V3 能力全部 NOT IMPLEMENTED; 长开项 16 份 IR 再生成 / D-3 / D-4 / IR 字段名对齐 / 两层状态载体 / C.1 追认; 延期五项不处理; 已裁四题不重开"
+  next: "DEC-030(Producer Final Freeze Object Verification)已执行完毕: 冻结对象四元组更新为 f4941ff(V3 DEC-033; document sha256 = 9c6b9063…7528, 三方一致 = DSH 工作树 == commit blob == Claude 登记); Artifact commit f4941ff != Registration commit c6e771c(DEC-029 历史登记)已分别记录, 唯一有效 = f4941ff; Remote verification = FAIL(B-1 唯一 blocker: f4941ff 未 push, V3 origin/main = 69a6c0b, 领先 19 commits); Evidence Chain Final Seal = PASS(五工件 5/5 零漂移, 契约 §9.1 内嵌登记逐项相符); 报告 = INTEGRATION/PREPROCESSING-CONTRACT-v0.2-PRODUCER-FINAL-FREEZE-CONFIRMATION-v1.md。等 Claude: push f4941ff(B-1 闭合)。等 Owner: Freeze 令(建议与 push+DSH 远端复核并行或作为机械前置)。F-1 已由 V3 DEC-033 闭合。Decision ≠ Implementation: 五项 V3 能力 NOT IMPLEMENTED, 下一阶段 = V3 Identity Verification Implementation; 长开项与延期五项不变; 已裁四题不重开"
   owner_interface_revision:
     date: "2026-09-16"
     directive: "Interface Finalization Revision v1(统一任务指令;DSH = 五文档同步 / Claude = Consumer Alignment + Contract Draft + Gap Matrix)"
@@ -567,6 +571,17 @@ integration_contract:
     findings: "六项契约要素在 commit 化文本上零不一致; F-2 本地 commit 闭合; 残余 = F-1 状态注记仍为执行前时点 + 零工件引用(Claude)/ F-2′ c6e771c 未 push(origin/main = 69a6c0b, 领先 18 commits)"
     verdict: "Producer READY FOR FREEZE; 建议 Freeze 令一并处置 F-1(增补注记不改条款正文)与 F-2′(push 后以远端 commit+hash 复核)"
     discipline: "零数据动作 / 零代码改动 / V3 仓只读(fetch+ls-remote 仅读) / Freeze 范围未扩展 / 零新架构裁决 / 已裁四题未重开"
+  owner_freeze_object_verification:
+    date: "2026-09-16"
+    directive: "Producer Final Freeze Object Verification(DEC-030): Task1 冻结对象确认(Claude 侧一致, Artifact!=Registration 分别记录) / Task2 Remote Availability / Task3 Evidence Chain Final Seal / Task4 Final Freeze Confirmation; 禁改数据/IR/source/扩大范围"
+    confirmation: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-CONTRACT-v0.2-PRODUCER-FINAL-FREEZE-CONFIRMATION-v1.md"
+    freeze_artifact: "repo = kurt-wong/AITutors-v3; commit = f4941ff87c0130ee0b79ff6b807c4ec2826b8ff1(V3 DEC-033); document = Docs/COORDINATION/CONTRACTS/PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md; sha256 = 9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528(三方一致: DSH 工作树字节 == commit tree blob 重导 == Claude 登记 EB-009/§9.2)"
+    artifact_vs_registration: "Artifact commit f4941ff != Registration commit c6e771c(DEC-029 登记, sha c8d89586…1032) → 分别记录; c6e771c 四元组降级为历史, 唯一有效 = f4941ff; diff 全量亲读 = 仅事实状态修正 + §9 登记新增, 六项冻结内容零改动, 范围未扩展"
+    remote_verification: "FAIL: reachable PASS / commit exists FAIL(V3 origin/main = 69a6c0b, 本地领先 19 commits, f4941ff 未 push)/ content hash remote 比对 N/A; 远端可复现性当前不成立"
+    evidence_seal: "PASS: 契约 §9.1 内嵌登记值与 DSH 工件逐项相符; 五工件 sha256 复算 5/5 零漂移; 链路 Contract → Step1 → Step2 → Verification → Final Check → Freeze Artifact 完整"
+    verdict: "内容面 READY(唯一且双侧一致)+ remote 面 FAIL; Remaining blockers = B-1(唯一: Claude push f4941ff; push 后 DSH 远端复核 ls-remote HEAD + blob hash 即转 NONE)"
+    implementation_boundary: "NOT IMPLEMENTED(五项 V3 消费能力不变; 下一阶段 = V3 Identity Verification Implementation)"
+    discipline: "零数据动作 / 零代码改动 / V3 仓只读 / 冻结范围未扩展 / 零新架构裁决 / 已裁四题未重开"
   owner_interface_finalization:
     date: "2026-09-16"
     directive: "PREPROCESSING / V3 Interface Decision Finalization v1(统一版指令;DSH=Producer Alignment v4 / Claude=Consumer Alignment v2 + Contract v0.2 Frozen Candidate 起草)"
