@@ -1,6 +1,6 @@
 # PREPROCESSING-PRODUCER-GUARDIAN-PHASE2-CHECK-v1
 
-> **轮次登记**:本文件承载多轮 Guardian checkpoint —— **轮次 3 = DEC-039(最新,2026-09-16,Phase 2-M3 实现期间监护,G1~G6)**;轮次 2 = DEC-038(2026-09-16,G1~G6 编号体系建立);轮次 1 = DEC-037(2026-09-16,Phase 2 开工前锚点,M1~M6 旧编号,原文存档见**附录 A**)。每轮 Observed 各自独立成立,历史轮次仅存档引用。
+> **轮次登记**:本文件承载多轮 Guardian checkpoint —— **轮次 4 = DEC-040(最新,2026-09-16,Phase 2-M4 实现期间监护 + Authority Boundary 特别关注,G1~G6)**;轮次 3 = DEC-039(2026-09-16,Phase 2-M3 实现期间监护,IR 污染特别关注);轮次 2 = DEC-038(2026-09-16,G1~G6 编号体系建立);轮次 1 = DEC-037(2026-09-16,Phase 2 开工前锚点,M1~M6 旧编号,原文存档见**附录 A**)。每轮 Observed 各自独立成立,历史轮次仅存档引用。
 > Owner 指令(DEC-038):Consumer Phase 2 开发期间保持 Producer Frozen Baseline 完整性,执行 Guardian checkpoint G1~G6;检查体系改名 —— **G = Guardian Check,M = Consumer Module**(避免与 Consumer M1~M6 模块编号混淆);全程只读(hash 计算 / diff / 读取 / git 验证);报告严格区分 Observed / Historical;Consumer 新增代码不是违例,违例 = Frozen Producer baseline 字节变化;术语纪律(禁 "IR hash OK" 式模糊表述,须区分 Producer IR artifact / Consumer IR reader output / Derived verification result);异常协议 = 任一 mismatch 立即 STOP 仅报告,禁自动恢复 / 禁重新生成 / 禁覆盖旧工件;输出本文档并登记 state.yaml / CURRENT.md / log.md;Guardian only,不参与 Consumer 实现。
 > 限制:零代码修改 / 零数据修改 / 零 schema 修改。角色:Guardian only。
 
@@ -133,6 +133,58 @@
 - 检查性质:只读;零代码 / 零数据 / 零 schema;基线工件零覆盖;未修改 Consumer 实现,未提供代码补丁,未自行修复任何 mismatch(本轮无需修复);Guardian only。
 
 **结论:`BOUNDARY: HOLDING` —— Phase 2-M3 实现期间 Frozen Baseline 完整性保持,Guardian checkpoint(轮次 3)已登记。等待 Owner 下一步指令。**
+
+---
+
+## 轮次 4(DEC-040):Phase 2-M4 实现期间 Guardian 监护 + Authority Boundary 特别关注(2026-09-16)
+
+> Owner 指令(原文照录见 ODR §1bisvicies):继续保持 Guardian Mode(`GUARDIAN MODE = ACTIVE` / `BOUNDARY = HOLDING`);本轮 Consumer 将实现 **M4 Identity Verifier**。Guardian 目标 = 确保 M4 实现期间六类冻结对象(source bytes / Manifest / Producer IR artifact / Freeze evidence artifacts / corpus snapshots / Contract Freeze Artifact)完全不发生变化。本轮重点不是判断 Consumer 代码好不好,而是 **Authority Boundary** —— Consumer 是否试图修改、重写或重新生成 Producer 的身份/语义事实;特别检查:Producer IR 是否仅被读取 / Manifest 是否仅被读取 / source bytes 是否保持不变 / 是否出现任何"修复 IR / 回写 Manifest / 重生成 Producer artifact"的行为。判断纪律:新增 Consumer code / tests / documentation **均不是违规**,真正的 Guardian violation = **Frozen Producer Asset bytes changed**,不得因看到新的 M4 Python 文件就判违规。特别检查 duplicate/path:Consumer 不得因 same SHA + different locator 而要求 Producer 数据重新生成或修改(同一内容多个 locator 是合法情况,不得把 path uniqueness 当作 Producer integrity violation)。STOP 条件:仅出现实际冻结对象 mismatch 才 STOP —— 记录 Observed / 保留证据 / 不自行修复 / 不修改 Producer 数据 / 不提供 Consumer patch / 等待 Owner 裁决。输出:G1-G6 / Observed·Historical 分离 / 是否触发 STOP / Producer IR·Manifest·source bytes·Freeze Artifact 是否保持 immutable / Consumer 新增代码是否仅位于合法写面,并提交 Guardian 报告及三账登记。DSH = Producer Frozen Baseline Guardian,NOT Consumer implementer,不得参与 M4 代码实现。
+
+### 轮次 4 Observed(本轮实际执行,2026-09-16)
+
+#### G1~G6 状态(全部本轮重新执行,零写入散列比对法)
+
+| 类 | Guardian 检查对象 | 本轮实测 | 判定 |
+|---|---|---|---|
+| **G1 source bytes** | 接口面 87 份 source md | 177 锚定文件全量比对内逐文件 sha256 == 锚定值(md 计数 = 87) | **PASS** |
+| **G2 manifest** | 接口面 87 份 manifest + audit 快照自身 | 全量比对 checked=177 / missing=0 / **mismatch=0**(manifest 计数 = 87);快照自身 sha256 实测 = `2cb980c7ca421f5a2c3615053cd3308d5ad1aa078083928724af88d4663a4096` 相符 | **PASS** |
+| **G3 producer IR artifact** | `data/resolver_ref_r52/resolver_ir.json` | **Producer IR artifact hash unchanged**(实测 = `fbcf41ab025fd786614b52d63270160868a2f49ab63121f012905c79f65b04a5`) | **PASS** |
+| **G4 freeze evidence artifacts** | 六证据工件 + R50 辅助锚 | **7/7 match=True**(全部本轮重散列,全值同轮次 2 §1.2 表) | **PASS** |
+| **G5 corpus snapshots** | pre/post 双快照 `corpus_sha256` 字段 | pre = `4ad3458b…19160` 相符;post = `24af8f56…0a10` 相符 | **PASS** |
+| **G6 freeze artifact(跨仓)** | Contract v0.2 冻结对象四元组 | 字节重导 **bytes=92,197 sha256 = `9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528` MATCH=True** + is-ancestor `f4941ff` → origin/main TRUE(exit 0)+ `f4941ff..origin/main` 契约 diff = empty(空输出);临时重导文件即时删除,不落仓 | **PASS** |
+
+#### M4 Authority Boundary 特别检查(本轮重点,全部只读观察)
+
+- **Producer IR 是否仅被读取**:**是**。G3 实测 Producer IR artifact hash unchanged(`fbcf41ab…b04a5`,字节零变化);V3 本地 M3 reader(`ir_identity.py`)读取路径仅 `read_text`(轮次 3 亲读结论保持);本轮全库写路径排查(见下)未发现任何指向 Producer 数据目录的写路径;
+- **Manifest 是否仅被读取**:**是**。G1+G2 全量比对 mismatch=0(manifest 字节零变化);
+- **source bytes 是否保持不变**:**是**。87 份接口面 source md 逐文件 sha256 == 锚定值;
+- **是否出现"修复 IR / 回写 Manifest / 重生成 Producer artifact"行为**:**未出现**。只读排查(OBSERVED):对 V3 `backend/` 全树执行写路径模式检索(`write_text` / `write_bytes` / `open(...,'w'/'a')` / `json.dump` / `shutil.*` / `unlink` / `rename` / `mkdir`),命中项全部落在三类合法面 —— ① Consumer 测试文件(写入 pytest `tmp_path` 临时目录自造 fixtures,不接触任何 Producer 资产);② V3 既有 scripts(`evidence_replay` / `gate_b/*` / `preprocessing_consumer/*` 等,先于本轮存在,输出自有报告);③ V3 既有 app 模块(`import_service.py` 上传落自有 import 目录,与 Producer 数据无关)。**`backend/app/core/` 身份链三模块(`raw_bytes_identity.py` / `manifest_identity.py` / `ir_identity.py`)零写路径**;
+- **M4 模块状态(OBSERVED)**:V3 本地 `backend/app/core/` **尚无 `identity_verifier.py`** —— M4 模块本轮未落树;M4 目前仅存在于 Consumer 设计层:DESIGN v1.1 §4.5 定 M4 = **纯函数,零 IO,零副作用,不抛异常**(`verify_identity` 输入三方 sha 字符串,输出 `VerificationResult`),READINESS 表状态 = `IMPLEMENTATION READY`(REPORTED 级,属 Consumer 侧设计,不作 Producer 裁决);
+- **duplicate/path 特别检查(指令第五节)**:**未发现违规倾向**。V3 本地 READINESS 文档亲读:**F8a**「same content, different locator —— 同一 sha 值出现在多个 manifest 中,指向不同 path → **允许**:各文件独立进入验证链」;**F8b**「conflicting content for same identity —— 同一 path 声明 sha 与实际 bytes 计算不符 → FAILED,FAIL-CLOSED」。即 Consumer 设计把 **same SHA + different locator 明确判为合法情形**,与 Producer 侧已裁(path 非身份,identity key = `source_content_sha256`)一致;**未见任何要求 Producer 因多 locator 而重新生成/修改数据的表述**。附注:DESIGN v1 旧表 F8 措辞(同一 sha 对应多个不同文件 → FAIL-CLOSED)已被 DESIGN v1.1 / READINESS 的 F8a·F8b 二分细化取代,属 Consumer 侧设计演进,Guardian 仅记录不裁决;
+- **四项 immutable 分答(Owner 输出要求)**:**Producer IR artifact = immutable 保持**(G3);**Manifest = immutable 保持**(G2);**source bytes = immutable 保持**(G1);**Freeze Artifact = immutable 保持**(G6 字节重导 MATCH + 亲缘 TRUE + 契约 diff empty)。
+
+#### 双仓时点与 Consumer 提交影响判定
+
+- **本仓(canonical ledger)**:开工时 `HEAD` = `3916852`(== `origin/main`,`git status -sb` 同步,工作树干净;`3916852` = DEC-039 轮记账提交);
+- **V3 远端**:`git fetch origin` 首试 **FAIL**(沙箱拒绝 + `schannel SEC_E_NO_CREDENTIALS`,exit 255 —— 如实入账,未引用历史结果);宽模式重试 **OK**(exit 0);`git ls-remote origin main` = **`72af28d5854b56fc605e1897fb757703826a6233`**(remote reachable = TRUE);与 DEC-033~039 同值,**未前进**;远端仍无任何 Consumer 实现提交(全部 docs 提交);
+- **V3 本地工作树(本轮 OBSERVED 文件清单)**:较 DEC-039 轮**新增 3 件** = `backend/tests/test_ir_identity.py`、`backend/tests/test_adversarial_ir_identity.py`、`backend/tests/test_adversarial_ir_round2.py`(全部测试面,untracked);`backend/app/core/` 模块清单无变化(身份链仍 3 模块 + 既有 config/errors/hashing);untracked 文档面本轮实测 **9 件**(与 DEC-038 轮自述 10 件计数差 1,属 V3 合法写面内文档自整理,不影响任何冻结对象,如实入账不展开);V3 本地 main 与 origin/main tracked 面同步;
+- **REPORTED vs OBSERVED 分账**:Owner 宣告进入 Phase 2-M4(REPORTED);V3 本地出现 M3 测试补强文件(OBSERVED 文件清单);**M4 模块本身尚未落树(OBSERVED)**;完成度自述 = REPORTED 级(untracked 未 commit 未 push),不混写;
+- **Consumer 新增代码是否仅位于合法写面**:**是**。本轮新增 3 件全部位于 V3 仓 `backend/tests/`;G1~G6 实测五类冻结对象零变化;**零违例**(判违例标准 = 冻结对象字节变化,而非代码是否新增);
+- **本轮测试基线**:全量测试 **338 passed, 1 xfailed**(与登记基线一致)。
+
+### 轮次 4 Historical(仅存档引用,未混入本轮判定)
+
+轮次 3 / DEC-039(G1~G6 全 PASS,IR 无污染,本仓 `40c06c9`→`3916852` / V3 `72af28d`)· 轮次 2 / DEC-038(G1~G6 全 PASS,本仓 `056b6d6`→`40c06c9` / V3 `72af28d`)· 轮次 1 / DEC-037(M1~M6 全 PASS,`bebd9e1` / V3 `72af28d`)· DEC-036(`27727c4`)· DEC-035(`e1584bd`)· DEC-034 / DEC-033 / DEC-032(`4daecf0b`)。
+
+### 轮次 4 结论
+
+- **G1~G6 全 PASS,零 mismatch,零 missing,零 STOP 触发,零违例**;
+- **Authority Boundary = HOLDS**:Producer IR / Manifest / source bytes / Freeze Artifact 四项 immutable 实测保持;未出现任何"修复 IR / 回写 Manifest / 重生成 Producer artifact"行为;M4 模块未落树,设计层 = 零 IO 纯函数;
+- duplicate/path 特别检查:Consumer 设计(F8a)明确 same SHA + different locator = 合法独立进入验证链,不要求 Producer 重新生成/修改;
+- Trigger ②(post-Phase 1 recheck)继续 **ARMED**(实现仅存 V3 本地 untracked,远端无实现提交);本轮已对基线五类对象执行全量 G1~G6 复检(覆盖其检查面)全 PASS;
+- 检查性质:只读;零代码修改 / 零数据修改 / 零 schema 修改;基线工件零覆盖(G6 临时重导写系统临时目录并即时删除,不落仓);未修改 Consumer 实现 / 未提供代码补丁 / 未自行修复 mismatch;Guardian only,未参与 M4 代码实现。
+
+**结论:`BOUNDARY: HOLDING` —— Phase 2-M4 实现期间(至本轮检查时点)Frozen Baseline 完整性保持,Authority Boundary 无侵犯,Guardian checkpoint(轮次 4)已登记。等待 Owner 下一步指令。**
 
 ---
 
