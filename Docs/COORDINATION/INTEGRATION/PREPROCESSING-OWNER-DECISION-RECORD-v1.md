@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.16(2026-09-16,追加 §1septendecies Producer Frozen Baseline Guardian Mode:Consumer Implementation Boundary Audit + immutable monitoring checklist = BOUNDARY HOLDING / GUARDIAN MODE ACTIVE;v1.15 = §1sexdecies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-034]`(§1sexdecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized` / `.producer_baseline_archive_final`
+> Status: **v1.17(2026-09-16,追加 §1octodecies Producer Frozen Baseline Guardian During Consumer Phase 1:开工前 baseline snapshot = M1~M6 全 PASS 零 mismatch,Phase 1 完成后复检 armed;v1.16 = §1septendecies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-034]`(§1sexdecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-035]`(§1septendecies;与 V3 侧 DEC-035 撞号,已知 R5-03 面)+ `[DEC-036]`(§1octodecies;与 V3 侧 DEC-036 撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized` / `.producer_baseline_archive_final` / `.producer_baseline_guardian` / `.producer_guardian_phase1`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -595,6 +595,64 @@
 | ④ 输出 | `INTEGRATION/PREPROCESSING-PRODUCER-FROZEN-BASELINE-CONSUMER-BOUNDARY-CHECK-v1.md`(docs-only) |
 | Observed(本轮) | 本仓 `origin/main` = `e1584bd`(== HEAD);V3 `origin/main` = `72af28d`(reachable TRUE);测试 338 passed / 1 xfailed |
 | 纪律 | 只读检查;零代码 / 零数据 / 零 schema;基线工件零覆盖;零新架构裁决;已裁六项未重开;衔接 DEC-033/DEC-034 结论不重复不推翻 |
+
+### §1octodecies Producer Frozen Baseline Guardian During Consumer Phase 1(DEC-036,Owner 原文照录 2026-09-16)
+
+> Task:Producer Frozen Baseline Guardian During Consumer Phase 1。
+>
+> 状态:
+> Producer Baseline FINALIZED。
+> Consumer Implementation 即将开始。
+>
+> 保持 Guardian Mode。
+>
+> 执行:
+>
+> 1. Phase 1 开始前 baseline snapshot check。
+> 验证:
+> - source bytes hash
+> - manifest hash
+> - IR hash
+> - evidence artifact
+>
+> 2. Consumer Phase 1 完成后:
+> 执行只读检查:
+> 确认:
+> Consumer 代码提交没有修改:
+> - producer data
+> - manifest
+> - IR
+> - freeze artifact
+>
+> 3. 若发现:
+> 任何 hash mismatch
+> 立即:
+> STOP
+> 仅报告。
+> 禁止:
+> 自动修复。
+>
+> 4. 输出:
+> PREPROCESSING-PRODUCER-GUARDIAN-PHASE1-CHECK-v1.md
+>
+> 限制:
+> 零代码修改。
+> 零数据修改。
+> 零 schema 修改。
+>
+> 角色:
+> Guardian only。
+
+### §1octodecies 生产侧保守义(DSH 解释,非裁决;执行详件 = `PREPROCESSING-PRODUCER-GUARDIAN-PHASE1-CHECK-v1.md`)
+
+| 检查 | 结果 |
+|---|---|
+| ① Phase 1 开工前 baseline snapshot | **PASS 零 mismatch(OBSERVED 本轮)**:M1~M6 全量只读核验——177 锚定文件全量比对 checked=177 / missing=0 / mismatch=0(锚 = post-backfill audit files map,快照自身 sha = `2cb980c7…4096` 相符;md=87 / manifest=87);证据六工件 + R50 辅助锚 **7/7** match;M6 冻结对象跨仓字节重导 bytes=92,197 sha256 = **`9c6b9063…7528`** MATCH + is-ancestor `f4941ff` TRUE + `f4941ff..origin/main` 契约 diff empty(临时重导文件即时清理) |
+| ② Phase 1 完成后只读检查 | **ARMED 未执行**:触发 = V3 远端出现 Phase 1 实现提交(Owner 令复核或疑似接触事件);检查面 = producer data(M1)/ manifest(M2)/ IR(M3,`fbcf41ab…b04a5`)/ freeze artifact(M6)+ M4 辅助;判读纪律 = Consumer 侧新增代码提交本身非违例(合法写面 = V3 仓代码),违例仅指只读对象字节变化 |
+| ③ 偏差协议 | 任何 mismatch → **STOP 仅报告(对象/期望值/实测值),禁止自动修复**(不自修 / 不重写 / 不回滚 / 不改锚);处置权 = Owner(变化须 Owner 令 + 新配对快照) |
+| ④ 输出 | `INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-PHASE1-CHECK-v1.md`(docs-only) |
+| Observed(本轮) | 本仓 `origin/main` = `27727c4`(开工时工作树干净);V3 `origin/main` = `72af28d`(fetch 首试 Recv failure 重试 OK 后亲验;与 DEC-033/034 同值未前进,均为 docs 轮,**尚无 Consumer Phase 1 实现提交** → 本轮即开工前锚点);Observed/Historical 分账 |
+| 纪律 | 只读检查;零代码 / 零数据 / 零 schema;基线工件零覆盖;零新架构裁决;已裁六项未重开;DSH 不参与 Consumer 实现代码(Guardian only) |
 
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 
