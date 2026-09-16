@@ -2788,3 +2788,27 @@ NOT IMPLEMENTED
 **⑧ 输出与登记**:`INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-PHASE2-CHECK-v1.md` 轮次 4 节(docs-only);Guardian checkpoint 登记 = state.yaml(DEC-040 + `producer_guardian_phase2_m4` 块 + next 追加)/ CURRENT.md(更新头 + 快速恢复节 + 状态头 + DEC-040 块 + agent 表)/ log.md(本条)/ ODR **v1.21**(§1bisvicies 原文照录 + 生产侧保守义)。
 
 **结论**:`BOUNDARY: HOLDING(零违例)` / `PHASE 2-M4 GUARDIAN CHECK: PASSED(G1~G6,Authority Boundary HOLDS)` / `STOP: NOT TRIGGERED` / `POST-PHASE1 RECHECK: ARMED` / `GUARDIAN MODE: ACTIVE` / `CONSUMER IDENTITY: NOT IMPLEMENTED(远端口径,不变)`。输出八项分答:G1-G6 = 全 PASS;Observed/Historical 已分离;**STOP 未触发**;**Producer IR / Manifest / source bytes / Freeze Artifact 四项 immutable 实测保持**;**Consumer 新增代码仅位于合法写面**。纪律:只读检查;零代码 / 零数据 / 零 schema;基线工件零覆盖;未修改 Consumer 实现 / 未提供代码补丁 / 未自行修复 mismatch;零新架构裁决;已裁六项未重开;Guardian only,未参与 M4 代码实现。等待 Owner 下一步指令。
+
+## DEC-041 — 对 DEC-040 轮结果的第一性原理对抗性审查(2026-09-16)
+
+**指令**:从第一性原理出发,针对本轮结果开启一轮严格的对抗性审查,每个结论必须有真实测试作为证据。不要降低测试和验证标准,不要自我合理化任何问题,不要强行解释未通过测试的内容,不要靠推测输出结论。
+
+**审查对象**:DEC-040(Phase 2-M4 Guardian Check,commit `6a48d21`)全部结论。审查在该提交与 push 之后独立执行,不复用其测试输出;全程只读(docs-only 登记除外)。
+
+**① 总判定**:DEC-040 冻结对象结论(G1~G6 全 PASS / 四项 immutable 保持 / Authority Boundary HOLDS / 零违例)**全部经对抗性复测维持且加强**;**STOP 未触发**(审查全程零冻结对象字节变化)。
+
+**② 攻击 A(锚定面完备性)= 通过**:177 map 构成解剖 = 87 source md + 87 manifest + 3 工件(R50 json / step1 快照 / resolver_ir.json,Producer IR 在锚内双覆盖);step2 报告 / pre / post / final check / verification report 五件不在 177 内但由 G4 锚定,无覆盖空洞;177 全量复测 checked=177 / missing=0 / mismatch=0,快照自身 sha `2cb980c7…4096` 相符。
+
+**③ 攻击 B(语料快照真实强度)= 通过且加强;F-B 方法学弱点记录**:R50 基线工件内嵌 path→sha256 逐文件 map(356 条),**逐文件活测首次执行** —— 第一遍 mismatch=87(全部 manifest);判据检验(禁自我合理化):87 与 177 锚 manifest 名单**严格集合相等 SET_EQUAL=True**(双向零多余);键级抽验首/中/尾 3 份:活 manifest 均含回填键 `source_content_sha256`,Step2 报告实证 `n_keys_before=6 → n_keys_after=7, key_appended=source_content_sha256` —— 即已裁 Step-2 回填 DRIFT(恰 87,预期);第二遍层判据复测 = **match=269 / expected_manifest_drift=87 / unexpected=0**。方法学发现 F-B:DEC-040 的 G5 实为读快照 `corpus_sha256` 字段(依赖 G4 工件锚),活语料未实测,强度弱于名称所示 —— 本轮已升级为逐文件活测,常态化待 Owner 令。未复现项 F-C:`corpus_sha256` 聚合构造 7 种候选(排序/存储序 × 哈希拼接 / path+hash / 换行分隔 / 尾随换行 / 原始字节全拼接)均不等于 `795ee1e7…beb`,**如实挂账,不推测构造**;操作性锚 = 逐文件 map(已实测)。
+
+**④ 攻击 B2(原面 source_file 层,新检查面)= 通过**:定义 = "SHA256(original source bytes)";第一测试(构造错误,原样入账):以 reslice 面同名 md 比对 decl = **ok=0 / bad=87** —— 系审查方测错对象,非数据缺陷;第二测试(按定义):读 manifest `source_file` 指针、散列指针目标活文件、与 decl 及 Step2 报告三方比对 = **ok=87 / bad=0 / missing=0**。锚链 = 177 锚 manifest → decl → source_file 目标活字节,原面层自此具备可复跑活测方法。
+
+**⑤ 攻击 C(Authority Boundary)= 通过,证据升级**:扩展模式清扫(`subprocess|os.system|os.replace|shutil.copy|copyfile|to_csv|to_json|np.save|pickle.dump|.write(|open(`)覆盖 V3 `backend/` 全树 —— 命中全落既有 scripts(写自有 OUT/参数路径)与测试(读语料 + tmp 写),**零命中指向 Producer 资产,无 subprocess/os.system 命中**;Producer 路径引用检索(`Aitutors-preprocessing|resolver_ref|audit_snapshot|interface_scope|freeze_evidence|Project\Papers|Ocr-markdown`)命中全在既有语料读取器(读模式)与历史报告 JSON,身份链三模块与新增测试零命中;三模块全文亲读(`raw_bytes_identity.py` 54 行 / `manifest_identity.py` 78 行 / `ir_identity.py` 48 行)= **全部纯读,零写路径,零可写依赖**;`app/core/` 仍无 `identity_verifier.py`(M4 未落树)。duplicate/path 判定维持但按证据等级限定 = 设计层(REPORTED),M4 行为面证据尚不存在。
+
+**⑥ 攻击 E/F(环境与基线)= 全过**:`%TEMP%\freeze_g6_DEC040.md` 残留 = False;`merge-base --is-ancestor f4941ff origin/main` = TRUE(复测);`f4941ff..origin/main` 契约 diff = EMPTY(复测);V3 `HEAD` = `72af28d`(复测未前进);G4 再散列 **7/7**;测试独立第 3 次复跑 **338 passed / 1 xfailed**;写后 177/177 mismatch=0 + G3 `fbcf41ab…b04a5` 复验。
+
+**⑦ 攻击 D(V3 untracked 文档计数)= 证伪,F-A 更正登记**:本轮 untracked docs = 9 件,与 DEC-038 报告 §1.3 逐名列出的 9 件集合比对 **SET_EQUAL=True**(双向零多余)。**DEC-040"与 DEC-038 自述 10 件计数差 1,属 V3 文档自整理"为错误表述**:不存在任何文档增删;根因 = DEC-038 轮文本自称"10 份文档"但名单实列 9 件(历史计数错误),DEC-040 沿用错误基数并作无证据归因(违反"不靠推测输出结论")。更正(以审查报告为准):V3 untracked 文档面自 DEC-038 起即 9 件,至本轮零增删;该错误属 REPORTED 事实层记账错误,不涉冻结对象字节,不触发 STOP;历史报告 append-only 保留原文,更正由本条与审查报告承担。
+
+**⑧ 输出与登记**:`INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-M4-ADVERSARIAL-REVIEW-v1.md`(docs-only);三账登记 = state.yaml(DEC-041 + `producer_guardian_m4_adversarial` 块 + next 追加)/ CURRENT.md(更新头 + 快速恢复 + 状态头 + DEC-041 块 + agent 表)/ log.md(本条)/ ODR **v1.22**(§1tervicies 原文照录 + 生产侧保守义)。
+
+**结论**:`BOUNDARY: HOLDING` 维持;DEC-040 冻结对象结论全部经对抗性复测成立;**1 项 REPORTED 事实错误已更正(F-A)/ 1 项方法学弱点已升级修复(F-B)/ 1 项未复现项如实挂账(F-C)**;`STOP: NOT TRIGGERED`;`GUARDIAN MODE: ACTIVE`。纪律:失败测试原样入账,未降标准、未合理化、未强行解释、零推测结论;未修改 Consumer 实现 / 未修改 Producer 数据 / 未提供补丁 / 未自行修复;零新架构裁决;已裁六项未重开;Guardian only。等待 Owner 下一步指令。

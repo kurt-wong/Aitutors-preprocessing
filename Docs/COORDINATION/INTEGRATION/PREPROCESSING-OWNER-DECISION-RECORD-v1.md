@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.21(2026-09-16,追加 §1bisvicies Guardian During Phase 2-M4:G1~G6 全 PASS 零 mismatch 零违例,Authority Boundary HOLDS,STOP 未触发;v1.20 = §1semelvicies Phase 2-M3 轮次 3)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-034]`(§1sexdecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-035]`(§1septendecies;与 V3 侧 DEC-035 撞号,已知 R5-03 面)+ `[DEC-036]`(§1octodecies;与 V3 侧 DEC-036 撞号,已知 R5-03 面)+ `[DEC-037]`(§1undevicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-038]`(§1vicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-039]`(§1semelvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-040]`(§1bisvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized` / `.producer_baseline_archive_final` / `.producer_baseline_guardian` / `.producer_guardian_phase1`
+> Status: **v1.22(2026-09-16,追加 §1tervicies 对抗性审查 DEC-041:DEC-040 冻结对象结论全部维持且加强,1 项 REPORTED 事实错误更正,1 项方法学弱点修复,1 项未复现项挂账;v1.21 = §1bisvicies Phase 2-M4)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-034]`(§1sexdecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-035]`(§1septendecies;与 V3 侧 DEC-035 撞号,已知 R5-03 面)+ `[DEC-036]`(§1octodecies;与 V3 侧 DEC-036 撞号,已知 R5-03 面)+ `[DEC-037]`(§1undevicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-038]`(§1vicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-039]`(§1semelvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-040]`(§1bisvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-041]`(§1tervicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized` / `.producer_baseline_archive_final` / `.producer_baseline_guardian` / `.producer_guardian_phase1`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -839,6 +839,22 @@
 | ⑥ Consumer 新增代码写面 | **仅位于合法写面**:新增 3 件全在 V3 仓 `backend/tests/`;五类冻结对象实测零变化;零违例 |
 | ⑦ Guardian checkpoint | 已登记(state.yaml `producer_guardian_phase2_m4` 块 + DEC-040 + CURRENT.md + log.md + 本 ODR v1.21);测试 338 passed / 1 xfailed |
 | 纪律 | 只读检查;零代码 / 零数据 / 零 schema;基线工件零覆盖;未修改 Consumer 实现 / 未提供代码补丁 / 未自行修复 mismatch;零新架构裁决;已裁六项未重开;Guardian only,未参与 M4 代码实现 |
+
+### §1tervicies 对 DEC-040 轮结果的第一性原理对抗性审查(DEC-041,Owner 原文照录 2026-09-16)
+
+> 从第一性原理出发,针对本轮结果开启一轮严格的对抗性审查,每个结论必须有真实测试作为证据。不要降低测试和验证标准,不要自我合理化任何问题,不要强行解释未通过测试的内容,不要靠推测输出结论。
+
+### §1tervicies 生产侧保守义(DSH 解释,非裁决;执行详件 = `PREPROCESSING-PRODUCER-GUARDIAN-M4-ADVERSARIAL-REVIEW-v1.md`)
+
+| 检查 | 结果 |
+|---|---|
+| ① 总判定 | DEC-040 冻结对象结论(G1~G6 / 四项 immutable / Authority Boundary / 零违例)**全部经对抗性复测维持且加强**;STOP 未触发(审查全程零冻结对象字节变化) |
+| ② 覆盖面加强(新实测) | R50 356 逐文件活测首次执行 = **269 MATCH / 87 预期 DRIFT / 0 unexpected**(87 与 177 锚 manifest 名单 **SET_EQUAL=True**,键级抽验证实单键 `source_content_sha256` 追加 = 已裁 Step-2 回填);原面 source_file 层活测 = **87/87 decl == 活 sha == Step2 报告值**(三方比对);扩展写路径清扫 + Producer 路径引用检索 + 三身份模块全文亲读 = 全部纯读零写路径 |
+| ③ 发现 F-A(更正) | DEC-040"untracked 文档计数差 1"**证伪**:本轮 9 件与 DEC-038 名单 9 件 SET_EQUAL=True 零增删;真实来源 = DEC-038 自称 10 实列 9 的历史计数错误;更正登记 = 文档面自 DEC-038 起即 9 件零增删(REPORTED 事实层错误,不涉冻结对象字节) |
+| ④ 发现 F-B(方法学,已修复) | G5 原执行强度弱于名称所示(仅读快照 `corpus_sha256` 字段,活语料未实测),已升级为逐文件活测并建议常态化(待令) |
+| ⑤ 发现 F-C(未复现,挂账) | `corpus_sha256` 聚合构造 7 种候选(含原始字节全拼接)均未复现,如实挂账不推测;操作性锚 = 逐文件 map(已实测) |
+| ⑥ 证据纪律 | 两次失败测试原样入账:0/87 错路径比对(审查方构造错误,以 source_file 指针三方比对 87/87 纠正)+ digest 构造未复现;测试基线独立第 3 次复跑 338 passed / 1 xfailed;G4 7/7 复跑;G6 残留 False + 亲缘 TRUE + 契约 diff EMPTY |
+| 纪律 | 全程只读(docs-only 登记除外);未改 Consumer 实现 / 未改 Producer 数据 / 未提供补丁 / 未自行修复;零新架构裁决;已裁六项未重开 |
 
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 
