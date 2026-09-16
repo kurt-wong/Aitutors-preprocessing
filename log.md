@@ -2643,3 +2643,12 @@ ext 更新;CURRENT.md 顶部暂停横幅。Contract 保持 v0.1 DRAFT,语料零�
 **④ 结论**:`STATUS: CONTRACT FREEZE READY` / `B-1: CLOSED`——**Producer 侧 blocker 清零**;报告 = `INTEGRATION/PREPROCESSING-CONTRACT-v0.2-PRODUCER-FREEZE-FINAL-VERIFICATION-REPORT-v1.md`。
 **同步**:ODR v1.12(§1tredecies)/ state.yaml(DEC-031 + `owner_freeze_remote_verification` 块 + next)/ CURRENT。
 **终态**:冻结全部机械前置满足,**只等 Owner 正式 Freeze 令(= 五步序 Step 3)**;READY ≠ FROZEN;五项 V3 能力 NOT IMPLEMENTED 不变,下一阶段 = V3 Identity Verification Implementation。五类目标零修改、V3 仓只读、已裁六项未重开、零新架构裁决。
+
+## DEC-032 — Contract v0.2 Frozen 状态最终登记确认(2026-09-16)
+
+**指令**:完成 Contract v0.2 Frozen 状态最终登记确认(Freeze Event 后 Producer 侧账本一致);严格限制 = 不修改 producer 数据 / manifest / IR / schema / Contract Artifact;输出 `STATUS: CONTRACT FROZEN` + 明确 Freeze 不含三项实现;下一阶段 = V3 Consumer Identity Verification Implementation。
+**① Freeze Artifact 验证 = PASS**:`git ls-remote origin main` = **`4daecf0b97c4b3cdc4db9a9fbc008e8e3c80eadf`**(remote reachable = **TRUE**;`4daecf0b` = Claude DEC-035 文档轮,远端历史 `4daecf0b → 305bd81 → f4941ff → c6e771c`);`merge-base --is-ancestor f4941ff origin/main` = TRUE;`git show f4941ff:Docs/COORDINATION/CONTRACTS/PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` **字节级重导 sha256 = `9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528`** == 必须值(92,197 bytes,cmd 管道字节导出 + Get-FileHash);`f4941ff..origin/main` 契约文件 diff **零差异**。
+**② Producer 侧登记 = Contract v0.2: FROZEN**:state.yaml(DEC-032 入册 + `owner_contract_frozen` 块 + `integration_contract.next` 切换)/ CURRENT.md(状态头改写 = CONTRACT FROZEN)/ log.md(本条)三件同步;冻结对象四元组 = `kurt-wong/AITutors-v3` @ `f4941ff87c0130ee0b79ff6b807c4ec2826b8ff1` / `PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` / sha256 `9c6b9063…7528`(唯一有效;`c6e771c`/`c8d89586…1032` = 历史登记勿引用)。
+**③ 最终状态**:`STATUS: CONTRACT FROZEN`。**Freeze does not include**:bytes verification implementation / identity gate implementation / IR verification implementation(契约 REQUIREMENT 不得读作现状;五项 V3 消费能力全部 NOT IMPLEMENTED 不变)。
+**同步**:ODR **v1.13**(§1quaterdecies 原文照录)/ state.yaml / CURRENT / log。测试 338 passed / 1 xfailed;commit + push 后远端亲验 + CI 对账。
+**纪律**:五类目标(producer 数据 / manifest / IR / schema / Contract Artifact)全部零修改;V3 仓只读(fetch / ls-remote / show / diff);已裁六项未重开;零新架构裁决。下一阶段 = V3 Consumer Identity Verification Implementation;DSH 侧令前保持零新数据动作(Step 4 数据治理 / Step 5 图片恢复仍禁)。

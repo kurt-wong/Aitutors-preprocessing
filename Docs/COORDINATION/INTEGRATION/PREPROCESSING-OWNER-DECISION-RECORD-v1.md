@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.12(2026-09-16,追加 §1tredecies Freeze Artifact 最终远端复核:f4941ff 已入 origin/main + 文档 hash 相等 + 四元组确认 = CONTRACT FREEZE READY,B-1 CLOSED;v1.11 = §1duodecies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification`
+> Status: **v1.13(2026-09-16,追加 §1quaterdecies Contract v0.2 Frozen 状态最终登记确认:Freeze Artifact 复验 PASS + Producer 侧账本登记 FROZEN = STATUS: CONTRACT FROZEN;v1.12 = §1tredecies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -512,6 +512,26 @@
 | ③ 四元组 | **PASS**——repo / commit / document / sha256 四点互相钉死,远端可复现 |
 | ④ 结论 | **STATUS: CONTRACT FREEZE READY;B-1: CLOSED**——Producer 侧 blocker 清零;冻结令权在 Owner(READY ≠ FROZEN);Implementation boundary = NOT IMPLEMENTED 不变 |
 | 纪律 | 五类目标全部未修改;V3 仓只读;已裁六项未重开;零新架构裁决 |
+
+## 1quaterdecies. 分项裁决 — Contract v0.2 Frozen 状态最终登记确认(Owner 2026-09-16 第十五轮,原文照录;canonical 引用面)
+
+### 任务(原文照录要点)
+
+> 任务:完成 Contract v0.2 Frozen 状态最终登记确认。目标:确认 Freeze Event 后 Producer 侧账本一致。
+> 严格限制:①不修改 producer 数据 ②不修改 manifest ③不修改 IR ④不修改 schema ⑤不修改 Contract Artifact。
+> 执行:① 验证 Freeze Artifact——commit `f4941ff`,hash `9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528`,确认 remote reachable = TRUE;② 更新 Producer 侧登记——state.yaml / CURRENT.md / log,记录 Contract v0.2: **FROZEN**;③ 输出最终状态:`STATUS: CONTRACT FROZEN`。
+> 同时明确:Freeze does not include——bytes verification implementation / identity gate implementation / IR verification implementation。
+> 下一阶段:**V3 Consumer Identity Verification Implementation**。
+
+### §1quaterdecies 生产侧保守义(DSH 解释,非裁决;执行记录)
+
+| 检查 | 结果 |
+|---|---|
+| Freeze Artifact 验证 | **PASS**——`git ls-remote origin main` = `4daecf0b…`(remote reachable = TRUE);`merge-base --is-ancestor f4941ff origin/main` = TRUE(远端历史 `4daecf0b → 305bd81 → f4941ff → c6e771c`,新增 `4daecf0b` = V3 DEC-035 文档轮,契约零触碰);`git show f4941ff:<contract>` **字节级重导 sha256 = `9c6b9063…7528`** == 必须值(92,197 bytes);`f4941ff..origin/main` 契约文件 diff 零差异 |
+| Producer 侧登记 | **Contract v0.2: FROZEN**——state.yaml(DEC-032 + `owner_contract_frozen` 块)/ CURRENT.md / log.md 三件同步;冻结对象四元组 = `kurt-wong/AITutors-v3` @ `f4941ff87c0130ee0b79ff6b807c4ec2826b8ff1` / `Docs/COORDINATION/CONTRACTS/PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` / sha256 `9c6b9063…7528`(唯一有效;`c6e771c`/`c8d89586…1032` = 历史登记) |
+| Freeze 不含(明确登记) | bytes verification implementation / identity gate implementation / IR verification implementation(契约 REQUIREMENT ≠ 现状;五项 V3 消费能力仍全部 NOT IMPLEMENTED) |
+| 下一阶段 | **V3 Consumer Identity Verification Implementation**(bytes → SHA256 → Manifest 验证 → IR 验证 → fail-closed → Gate → Admission;实现排期属 V3 侧) |
+| 纪律 | 五类目标(producer 数据 / manifest / IR / schema / Contract Artifact)全部零修改;V3 仓只读(fetch / ls-remote / show / diff);已裁六项未重开;零新架构裁决 |
 
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 

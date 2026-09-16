@@ -1,20 +1,19 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**Freeze Artifact 最终远端复核(DEC-031)**:`f4941ff` 已入 V3 origin/main(HEAD = `305bd81`,含 V3 DEC-034)+ commit 内容重导 sha256 == `9c6b9063…7528` 必须值 + 四元组远端可复现 → **STATUS: CONTRACT FREEZE READY / B-1: CLOSED**;Producer 侧 blocker 清零;五类目标零修改、零新架构裁决)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**Contract v0.2 Frozen 状态最终登记确认(DEC-032)**:Freeze Artifact 复验 PASS(`origin/main` = `4daecf0b`,is-ancestor `f4941ff` = TRUE,字节级重导 sha256 == `9c6b9063…7528` 必须值,remote reachable = TRUE)→ Producer 侧账本登记 **Contract v0.2: FROZEN** → **STATUS: CONTRACT FROZEN**;Freeze 不含三项实现;五类目标零修改)· canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
-## ⏭ 当前状态:CONTRACT FREEZE READY(B-1 CLOSED)→ 只等 Owner 正式 Freeze 令(2026-09-16,DEC-031)
+## ⏭ 当前状态:CONTRACT FROZEN(2026-09-16,DEC-032)→ 下一阶段 = V3 Consumer Identity Verification Implementation
 
-**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.12**:… + §1duodecies DEC-030 + **§1tredecies DEC-031**)。
+**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.13**:… + §1tredecies DEC-031 + **§1quaterdecies DEC-032**)。
 
-**DEC-031 = Contract v0.2 Freeze Artifact 最终远端复核**(五类目标全部不修改):
-- **① 远端包含性 PASS**:`merge-base --is-ancestor f4941ff origin/main` = TRUE;V3 `origin/main` = **`305bd81`**(V3 DEC-034 Freeze Object Final Alignment);远端历史亲验 `305bd81 → f4941ff → c6e771c`;
-- **② 文档 hash PASS**:`git show f4941ff:<contract>` 重导 sha256 = **`9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528`** == 必须值;补充核验:`f4941ff..origin/main` 契约文件零差异(DEC-034 仅改协调文档);
-- **③ 四元组 PASS**:`kurt-wong/AITutors-v3` @ `f4941ff87c0130ee0b79ff6b807c4ec2826b8ff1` / `PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` / `9c6b9063…7528`——三点互相钉死,**任何第三方可从远端独立复现冻结对象**;
-- **④ 结论 = `STATUS: CONTRACT FREEZE READY` / `B-1: CLOSED`**;报告 = `INTEGRATION/PREPROCESSING-CONTRACT-v0.2-PRODUCER-FREEZE-FINAL-VERIFICATION-REPORT-v1.md`。
+**DEC-032 = Contract v0.2 Frozen 状态最终登记确认**(Freeze Event 后 Producer 侧账本一致):
+- **① Freeze Artifact 验证 PASS**:`git ls-remote origin main` = **`4daecf0b`**(remote reachable = TRUE;`4daecf0b` = V3 DEC-035 文档轮,`305bd81 → f4941ff → c6e771c` 链保持);`merge-base --is-ancestor f4941ff origin/main` = TRUE;`git show f4941ff:<contract>` **字节级重导 sha256 = `9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528`** == 必须值(92,197 bytes);`f4941ff..origin/main` 契约文件 diff 零差异;
+- **② Producer 侧登记 = Contract v0.2: FROZEN**:state.yaml(DEC-032 + `owner_contract_frozen` 块)/ CURRENT / log 三件同步;冻结对象四元组 = `kurt-wong/AITutors-v3` @ `f4941ff87c0130ee0b79ff6b807c4ec2826b8ff1` / `PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` / `9c6b9063…7528`(唯一有效;`c6e771c`/`c8d89586…1032` = 历史登记勿引用);
+- **③ 最终状态 = `STATUS: CONTRACT FROZEN`**。
 
-**等 Owner**:**正式 Freeze 令(= 五步序 Step 3)**——Producer 侧全部机械前置已满足,零 blocker。**READY ≠ FROZEN**,冻结令权在 Owner。
-**Decision ≠ Implementation**:五项 V3 消费能力全部 **NOT IMPLEMENTED**;下一阶段 = **V3 Identity Verification Implementation**(bytes → SHA256 → Manifest 验证 → IR 验证 → fail-closed → Gate → Admission);冻结前不扩展设计范围;**已裁六项(identity key / path / `source_version_id` / Semantic Pending / 87·71·16 / bytes requirement)不重开**;长开项与延期五项不变。
+**Freeze does not include(明确登记)**:bytes verification implementation / identity gate implementation / IR verification implementation——契约 REQUIREMENT 不得读作现状;五项 V3 消费能力(raw bytes acquisition / SHA256 独立验证 / Manifest identity verification / IR identity verification / identity gate)全部 **NOT IMPLEMENTED** 不变。
+**下一阶段**:**V3 Consumer Identity Verification Implementation**(bytes → SHA256 → Manifest 验证 → IR 验证 → fail-closed → Gate → Admission;实现排期属 V3 侧);**已裁六项(identity key / path / `source_version_id` / Semantic Pending / 87·71·16 / bytes requirement)不重开**;长开项与延期五项不变;DSH 侧令前保持零新数据动作(Step 4 数据治理 / Step 5 图片恢复仍禁)。
 
 ## 主线:preprocessing 内部收口(数据卫生,Owner 令)
 
@@ -27,8 +26,8 @@
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-031 远端复核完毕:CONTRACT FREEZE READY / B-1 CLOSED**(`f4941ff` 入 origin/main + hash 相等 + 四元组可复现);五类目标零修改,V3 仓只读 |
-| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | **已 push(DEC-034 Freeze Object Final Alignment,origin/main = `305bd81`)**;冻结对象 `f4941ff` 远端可复现;待办 = 随 Owner Freeze 令进入 V3 Identity Verification 实现阶段;遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version) | **DEC-032 Frozen 登记完毕:Contract v0.2 FROZEN**(Freeze Artifact 复验 PASS + 三件账本同步;五类目标零修改,V3 仓只读);令前保持零新数据动作 |
+| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | Freeze Artifact 已 push 且远端可复现(`4daecf0b` 含 `f4941ff`,DEC-035 文档轮契约零触碰);**下一阶段 = V3 Consumer Identity Verification Implementation**;遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 |
 
 ## P3.2 / EB-004 终局(VERIFIED)
 
