@@ -2704,3 +2704,7 @@ NOT IMPLEMENTED
 **④ 输出**:`INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-PHASE1-CHECK-v1.md`(docs-only)。本轮 Observed:本仓 `origin/main` = `27727c4`(开工时工作树干净,DEC-035 轮 push 后未动);V3 `origin/main` = **`72af28d`**(fetch 首试 `Recv failure: Connection was reset`,重试 OK 后亲验;与 DEC-033/034 同值未前进,远端提交均为 docs 轮,**尚无 Consumer Phase 1 实现提交 → 本轮即 Phase 1 开工前锚点**);Observed/Historical 分账,历史观测不混入。
 **同步**:ODR **v1.17**(§1octodecies 原文照录)/ state.yaml(DEC-036 + `producer_guardian_phase1` 块 + next 追加)/ CURRENT.md(状态头 + 快速恢复 + DEC-036 主体块 + agent 表)/ log.md(本条)。
 **结论**:`BOUNDARY: HOLDING` / `PHASE 1 SNAPSHOT: ANCHORED(零 mismatch)` / `POST-PHASE1 RECHECK: ARMED` / `GUARDIAN MODE: ACTIVE` / `CONSUMER IDENTITY: NOT IMPLEMENTED(不变)`。纪律:只读检查;零代码 / 零数据 / 零 schema;基线工件零覆盖;零新架构裁决;已裁六项未重开;Guardian only,不参与 Consumer 实现代码。等待 Phase 1 完成复检令或 Owner 下一步指令。
+
+## RS.MD 会话重启提示词刷新(2026-09-16,非决策性文档更新,Owner 令"更新 RS.MD,准备新建会话")
+
+**动作**:`RS.MD`(会话重启提示词)自 2026-09-15 P3.2 终局轮版本(main = `71e9257`,落后 7 轮)重写为 DEC-036 轮状态:固化 main = **`b4367e7`** / V3 `72af28d` / 冻结四元组 / 状态四行(CONTRACT FROZEN · BASELINE FINALIZED+ARCHIVED · CONSUMER IDENTITY NOT IMPLEMENTED · GUARDIAN MODE ACTIVE + PHASE1 SNAPSHOT ANCHORED)/ Guardian 任务面(含 Trigger ② armed 与判读纪律)/ 关键数字(166·87·71·16·79·356)/ 已裁六项与延期五项 / 待裁定优先序 / 恢复动作清单(含 Guardian 触发点自检步骤)。**零决策 / 零数据 / 零 schema**;冲突时以 log.md 与 state.yaml 为准(文件内已声明)。
