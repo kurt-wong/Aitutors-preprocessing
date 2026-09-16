@@ -372,6 +372,10 @@ decisions:
     statement: "Producer Frozen Baseline Archive Final Check(最终归档): ① 只读终检四项 immutable(source bytes / manifest / IR / evidence); ② 登记 state.yaml / CURRENT.md / log.md 记录 PRODUCER BASELINE FINALIZED; ③ 远端验证结果必须区分 Observed(本轮实际执行)与 Historical(之前验证结果), 禁混账; ④ 输出最终状态两行: PRODUCER BASELINE: FINALIZED / CONSUMER IDENTITY: NOT IMPLEMENTED, 并提交 Producer Baseline Archive Final Report。允许 = 只读验证 + 文档登记; 禁止 = 代码修改 / 数据修改 / Manifest 修改 / IR 修改。注: 本条为 DSH 侧编号, 与 V3 侧编号潜在撞号(R5-03 面, Owner 已延期统一)"
     authority: "用户裁定 2026-09-16(Producer Frozen Baseline Archive Final Check, 聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1sexdecies)"
     status: active
+  - id: DEC-035
+    statement: "Producer Frozen Baseline Guardian Mode(Consumer 实现阶段 Producer 侧守护): 阶段定位 = 风险已从设计错误转移到实现纪律, 验证链基准 = raw bytes → SHA256(raw bytes) → Manifest verification → IR consistency check → Consumer Identity Gate → existing Gate/Admission, 保持 Requirement≠Capability / Design≠Implementation / Consumer≠Producer; 下一阶段五禁 = 修改 producer 数据 / manifest / source bytes / IR / freeze artifact。执行: ① 建立 Consumer Implementation Boundary Audit(确认 Consumer implementation 不会改变 frozen baseline); ② 建立 immutable monitoring checklist(监控 source bytes hash / manifest hash / IR hash / evidence artifact hash); ③ 不参与 Consumer Identity Verification 代码实现; ④ 输出 PREPROCESSING-PRODUCER-FROZEN-BASELINE-CONSUMER-BOUNDARY-CHECK-v1.md。要求 = 只读检查 / 零代码 / 零数据 / 零 schema, 等待 Owner 后续指令。注: 本条为 DSH 侧编号, 与 V3 侧 DEC-035(文档轮)撞号, 已知 R5-03 面"
+    authority: "用户裁定 2026-09-16(Producer Frozen Baseline Guardian Mode, 聊天原文照录于 INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md §1septendecies)"
+    status: active
 
 # ---------- EB: 跨 Agent 开放工作项(状态机见 PROTOCOL §3) ----------
 open_questions:
@@ -532,7 +536,7 @@ integration_contract:
   scope: "Source Version(identity=sha256/immutable/无版本关系指针如实声明) + Semantic Annotation(manifest v2 + resolver-ir-0.1 逐字段实测;claim 身份=(sha,section_ref,question_numbers),unit_id 禁作键) + V3 消费要求(必须提供/允许为空/8 类必须阻断) + EB-008 跨边界四约束"
   evidence_anchor: "R50_input_baseline@sha256:795ee1e7...beb(88 份/356 文件); data/resolver_ref_r52/resolver_ir.json(resolver-ir-0.1: 71 ADMITTED/16 REJECTED_QC_FAIL/1 REJECTED_V1)"
   open_questions_registered: "OQ-1 source_version lineage 未建(R-4)/ OQ-2 unit_type 值域(实测 1 例拼写噪声)/ OQ-3 图片资产交付形态/ OQ-4 basis 值域校验 producer 侧未实施(R50 批准,排期③)"
-  next: "DEC-032(Frozen 状态最终登记确认)已执行完毕: Freeze Artifact 复验 PASS(remote reachable = TRUE, origin/main = 4daecf0b 含 f4941ff, 重导 sha256 = 9c6b9063…7528 == 必须值, 契约文件 f4941ff..origin/main 零差异)→ Producer 侧账本登记 Contract v0.2: FROZEN(见 owner_contract_frozen 块)。STATUS: CONTRACT FROZEN。Freeze does not include: bytes verification implementation / identity gate implementation / IR verification implementation(五项 V3 能力 NOT IMPLEMENTED 不变)。下一阶段 = V3 Consumer Identity Verification Implementation; 长开项与延期五项不变; 已裁六项不重开。DEC-033 追加: Frozen Baseline 保全复验 + 最终登记完成 = STATUS: PRODUCER BASELINE FINALIZED(见 producer_baseline_finalized 块; 四项 immutable 复验零漂移; 本轮远端实测 origin/main = 72af28d, f4941ff 亲缘 TRUE)。DEC-034 追加: Archive Final Check 完成, 基线进入归档终态(见 producer_baseline_archive_final 块; Observed/Historical 分账; 基线以工件表字节为准, 后续变化须 Owner 令 + 新配对快照)"
+  next: "DEC-032(Frozen 状态最终登记确认)已执行完毕: Freeze Artifact 复验 PASS(remote reachable = TRUE, origin/main = 4daecf0b 含 f4941ff, 重导 sha256 = 9c6b9063…7528 == 必须值, 契约文件 f4941ff..origin/main 零差异)→ Producer 侧账本登记 Contract v0.2: FROZEN(见 owner_contract_frozen 块)。STATUS: CONTRACT FROZEN。Freeze does not include: bytes verification implementation / identity gate implementation / IR verification implementation(五项 V3 能力 NOT IMPLEMENTED 不变)。下一阶段 = V3 Consumer Identity Verification Implementation; 长开项与延期五项不变; 已裁六项不重开。DEC-033 追加: Frozen Baseline 保全复验 + 最终登记完成 = STATUS: PRODUCER BASELINE FINALIZED(见 producer_baseline_finalized 块; 四项 immutable 复验零漂移; 本轮远端实测 origin/main = 72af28d, f4941ff 亲缘 TRUE)。DEC-034 追加: Archive Final Check 完成, 基线进入归档终态(见 producer_baseline_archive_final 块; Observed/Historical 分账; 基线以工件表字节为准, 后续变化须 Owner 令 + 新配对快照)。DEC-035 追加: Guardian Mode 启动 = BOUNDARY HOLDING / GUARDIAN MODE ACTIVE(见 producer_baseline_guardian 块; M1~M6 监控清单在位全 PASS; DSH 不参与 Consumer 实现代码; 等待 Owner 后续指令)"
   owner_interface_revision:
     date: "2026-09-16"
     directive: "Interface Finalization Revision v1(统一任务指令;DSH = 五文档同步 / Claude = Consumer Alignment + Contract Draft + Gap Matrix)"
@@ -648,6 +652,16 @@ integration_contract:
     archive_declaration: "基线以 Archive Final Report §1.1 工件表字节为准; 任何后续变化必须先有 Owner 令并产生新快照配对, 不得就地改写; R50 血统解释与长开项/延期五项不因归档而关闭"
     status: "PRODUCER BASELINE: FINALIZED / CONSUMER IDENTITY: NOT IMPLEMENTED"
     discipline: "零代码 / 零数据 / 零 Manifest / 零 IR 修改; 已登记工件零覆盖(复跑后再验 hash 不变); 测试 338 passed / 1 xfailed; Freeze 范围未扩展; 零新架构裁决"
+  producer_baseline_guardian:
+    date: "2026-09-16"
+    directive: "Producer Frozen Baseline Guardian Mode(DEC-035): Consumer Implementation Boundary Audit + immutable monitoring checklist + 不参与 Consumer 实现代码 + 输出 Boundary Check 文档; 只读 / 零代码 / 零数据 / 零 schema"
+    report: "Docs/COORDINATION/INTEGRATION/PREPROCESSING-PRODUCER-FROZEN-BASELINE-CONSUMER-BOUNDARY-CHECK-v1.md"
+    boundary_audit: "BOUNDARY HOLDING 零违例: Consumer 实现合法写面 = 仅 V3 仓代码, 对基线五类禁改对象全部只读; 六步链 S1~S6 逐项边界不变式登记, 五项能力全部 NOT IMPLEMENTED; 本轮证据 = post-backfill audit 177 锚定文件全量比对 checked=177 bad=0 + 六证据工件 6/6 + IR 工件 fbcf41ab…b04a5 相符"
+    monitoring_checklist: "M1 source bytes(87 md, 锚 = post-backfill audit files map)/ M2 manifest(87, 锚 = 同表 + C8 剥键不变式)/ M3 IR(resolver_ir.json = fbcf41ab025fd786614b52d63270160868a2f49ab63121f012905c79f65b04a5)/ M4 evidence 六工件登记 sha / M5 corpus 双值(pre 4ad3458b… → post 24af8f56…)/ M6 冻结对象四元组跨仓(9c6b9063…7528); 本轮 M1~M6 全 PASS; 触发点 = 每轮开工前 + Consumer 实现里程碑后 + 疑似接触事件后; 偏差协议 = 任一 mismatch → STOP 只报告不自修, 处置权 = Owner"
+    non_participation: "DSH 不参与 Consumer Identity Verification 代码实现(不写 V3 代码 / 不代写 / 不提供补丁); 角色 = Producer Frozen Baseline Guardian; 复核 ≠ 实现"
+    observed_this_round: "本仓 origin/main = e1584bd(== HEAD, 工作树干净); V3 origin/main = 72af28d(reachable TRUE); Get-FileHash × 7 + verification report da97a2f3…bb7c 全数相符; 177 文件全量比对 bad=0; 测试 338 passed / 1 xfailed"
+    status: "BOUNDARY: HOLDING / GUARDIAN MODE: ACTIVE / CONSUMER IDENTITY: NOT IMPLEMENTED"
+    discipline: "只读检查; 零代码 / 零数据 / 零 schema; 基线工件零覆盖(final check 脚本硬编码输出路径, 复跑须 scratch 重定向); 零新架构裁决; 已裁六项未重开; 衔接 DEC-033/034 不重复不推翻"
   owner_interface_finalization:
     date: "2026-09-16"
     directive: "PREPROCESSING / V3 Interface Decision Finalization v1(统一版指令;DSH=Producer Alignment v4 / Claude=Consumer Alignment v2 + Contract v0.2 Frozen Candidate 起草)"

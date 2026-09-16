@@ -1,6 +1,6 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.15(2026-09-16,追加 §1sexdecies Producer Frozen Baseline Archive Final Check:四项 immutable 归档终检 + 远端 Observed/Historical 分账 = PRODUCER BASELINE: FINALIZED / CONSUMER IDENTITY: NOT IMPLEMENTED;v1.14 = §1quindecies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Status: **v1.16(2026-09-16,追加 §1septendecies Producer Frozen Baseline Guardian Mode:Consumer Implementation Boundary Audit + immutable monitoring checklist = BOUNDARY HOLDING / GUARDIAN MODE ACTIVE;v1.15 = §1sexdecies)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
 > Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-034]`(§1sexdecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized` / `.producer_baseline_archive_final`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
@@ -574,6 +574,27 @@
 | ④ 最终状态 | `PRODUCER BASELINE: FINALIZED` / `CONSUMER IDENTITY: NOT IMPLEMENTED`(五项 V3 消费能力不变;Freeze 不含三项实现) |
 | 归档声明 | 基线以 Archive Final Report §1.1 工件表字节为准;任何后续变化必须先有 Owner 令并产生新快照配对,不得就地改写;R50 血统解释不变(drift == 恰 87 为预期);长开项与延期五项不因归档而关闭 |
 | 纪律 | 零代码 / 零数据 / 零 Manifest / 零 IR 修改;已登记工件零覆盖(复跑后再验 hash 不变);Freeze 范围未扩展;零新架构裁决;已裁六项未重开 |
+
+## 1septendecies. 分项裁决 — Producer Frozen Baseline Guardian Mode(Owner 2026-09-16 第十八轮,原文照录;canonical 引用面)
+
+### 任务(原文照录要点)
+
+> 阶段定位:已跨过 V3 Contract Design → Contract Freeze → Producer Baseline Freeze → Consumer Identity Design Freeze;下一阶段真正风险已从「设计错误」转移到「实现纪律」;重点不是继续讨论 Contract,而是确保实现严格满足:raw bytes → SHA256(raw bytes) → Manifest verification → IR consistency check → Consumer Identity Gate → existing Gate/Admission;并保持 Requirement ≠ Capability / Design ≠ Implementation / Consumer ≠ Producer。
+> 状态:Producer baseline 已 FINALIZED;Contract v0.2 已 FROZEN。
+> 下一阶段禁止:修改 producer 数据 / manifest / source bytes / IR / freeze artifact。
+> Task:Producer Frozen Baseline Guardian Mode。执行:① 建立 Consumer Implementation Boundary Audit(确认 Consumer implementation 不会改变 frozen baseline);② 建立 immutable monitoring checklist(监控 source bytes hash / manifest hash / IR hash / evidence artifact hash);③ 不参与 Consumer Identity Verification 代码实现;④ 输出 `PREPROCESSING-PRODUCER-FROZEN-BASELINE-CONSUMER-BOUNDARY-CHECK-v1.md`。
+> 要求:只读检查。零代码。零数据。零 schema。等待 Owner 后续指令。
+
+### §1septendecies 生产侧保守义(DSH 解释,非裁决;执行详件 = `PREPROCESSING-PRODUCER-FROZEN-BASELINE-CONSUMER-BOUNDARY-CHECK-v1.md`)
+
+| 检查 | 结果 |
+|---|---|
+| ① Consumer Implementation Boundary Audit | **通过(BOUNDARY HOLDING,零违例)**:边界模型 = Consumer 实现合法写面仅 V3 仓代码,对 Producer 基线五类禁改对象全部只读;六步链(S1 bytes / S2 SHA256 / S3 Manifest 验证 / S4 IR 对账 / S5 Identity Gate / S6 既有 Gate·Admission)逐项登记边界不变式,五项能力全部 NOT IMPLEMENTED;本轮证据 = post-backfill audit 177 锚定文件全量比对 **checked=177 bad=0** + 六证据工件 6/6 + IR 工件 `fbcf41ab…b04a5` 相符 |
+| ② Immutable Monitoring Checklist | **M1~M6 全 PASS**(source bytes / manifest / IR / evidence / 聚合指纹 corpus 双值 / 冻结对象四元组跨仓);期望值全值入册;触发点(每轮开工前 / Consumer 实现里程碑后 / 疑似接触事件后)+ 偏差协议(任一 mismatch → STOP 只报告不自修,处置权 = Owner)在位 |
+| ③ Non-Participation | DSH 不参与 Consumer Identity Verification 代码实现(不写 V3 代码、不代写、不提供补丁);角色 = Producer Frozen Baseline Guardian;复核 ≠ 实现 |
+| ④ 输出 | `INTEGRATION/PREPROCESSING-PRODUCER-FROZEN-BASELINE-CONSUMER-BOUNDARY-CHECK-v1.md`(docs-only) |
+| Observed(本轮) | 本仓 `origin/main` = `e1584bd`(== HEAD);V3 `origin/main` = `72af28d`(reachable TRUE);测试 338 passed / 1 xfailed |
+| 纪律 | 只读检查;零代码 / 零数据 / 零 schema;基线工件零覆盖;零新架构裁决;已裁六项未重开;衔接 DEC-033/DEC-034 结论不重复不推翻 |
 
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 
