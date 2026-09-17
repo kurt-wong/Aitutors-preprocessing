@@ -4,6 +4,11 @@
 - **审查方**:DSH(Producer Frozen Baseline Guardian / Adversarial Reviewer)——只审查、不替 Claude 实现、不自动修复、不修改 Producer、不改变冻结 Contract
 - **执行时间窗**:2026-09-16(V3 本地工作树处于 Claude 实时开发中,见 §1.3 移动目标登记)
 
+> **⚠ 勘误指针(DEC-044-S 追加,append-only,原文零删改)**:本报告以下两处表述已被 DEC-043 对抗性审查更正,引用时以更正为准:
+> ① §11 及相关处「ROOT CAUSE = 环境 DB 缺失」= **已撤回的超证据归因**(DEC-043 F-1;正确口径 = OBSERVED 按文件确定性分化 + ROOT CAUSE UNKNOWN);
+> ② §1.3「untracked = 10 docs(REPORT-PHASE2-M4 新增)+ 15 tests」= **已证伪**(DEC-043 F-3;实测 9 docs + 5 core + 14 tests = 28,REPORT-PHASE2-M4 零证据)。
+> 完整更正清单见 `PREPROCESSING-PRODUCER-GUARDIAN-M5-REVIEW-ADVERSARIAL-v1.md` §7 与 state.yaml `producer_guardian_m5_adversarial.corrections`。
+
 ---
 
 ## §0 结论总表(严格两分,不合并)

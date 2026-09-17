@@ -2864,3 +2864,34 @@ NOT IMPLEMENTED
 **⑧ 输出与登记**:`INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-M5-REVIEW-ADVERSARIAL-v1.md`(docs-only);四账登记 = state.yaml(DEC-043 + `producer_guardian_m5_adversarial` 块 + DEC-042 块 local_snapshot 更正 + next 追加)/ CURRENT.md(更新头 + 快速恢复 + 状态头 + DEC-043 块 + agent 表更正)/ log.md(本条)/ ODR **v1.24**(§1quinvicies 原文照录 + 生产侧保守义)。
 
 **结论**:`BOUNDARY: HOLDING` 维持;**DEC-042 结论全部维持且加强,伴随 4 项更正(F-1 撤回归因 / F-2 时效 / F-3 计数证伪 / F-4 巧合已解释)+ 1 项新 discrepancy(D5)**;`STOP: NOT TRIGGERED`;`GUARDIAN MODE: ACTIVE`。纪律:自我错误原样入账并撤回/更正,未降标准、未合理化、未强行解释、零推测归因(不可复现机制一律 UNKNOWN);未修改 Consumer 实现 / 未修改 Producer 数据 / 未提供补丁 / 未自行修复;零新架构裁决;已裁六项未重开。等待 Owner 下一步指令。
+
+---
+
+## 2026-09-16 — DEC-045:DSH 自身全任务对抗性自审(+ DEC-044 Closure Review 登记挂起)
+
+**Owner 指令(原文)**:「在等候claude的过程中,我们先完成自身全任务的对抗性审查。看是否仍有遗留问题。一切从项目文档和第一性原理出发。」(前序 Closure Review 指令同日下达,登记为 DEC-044 pending;本自审 = DEC-045。ODR v1.25 §1sexvicies/§1septenvicies。)
+
+**① 基线复测(全部本轮独立执行,自写确定性脚本,不信历史结论)**:G1+G2 = 177/177 checked·missing 0·**mismatch 0**;R50 356 逐文件活测 = 269 MATCH / 87 DRIFT / 0 missing,drift 集合与 177 锚 manifest 名单**双向 SET_EQUAL=True**(差集皆空);source_file 三方(manifest decl == 活字节 sha == Step2 报告值)= **87/87 ok·0 bad**;证据工件 Get-FileHash ×8 vs 登记锚 = **8/8 MATCH**(step1 `b4f14524…`/pre `b11874c4…`/step2 `d430cc2f…`/post `2cb980c7…`/R50 `963cd6b1…`/final-check `a707738e…`/verification-report `da97a2f3…`/resolver_ir `fbcf41ab…`);G6 = `git show f4941ff:<contract>` cmd 重定向字节重导 bytes=**92,197** sha=`9c6b9063…7528` **MATCH** + `merge-base --is-ancestor` f4941ff⊂`72af28d` TRUE + 契约 diff EMPTY + 临时残留删除;canonical pytest **338 passed / 1 xfailed** 独立 ×2;log.md append-only 亲验(`294c7fe` 24+/0-、`3e5b3b5` 28+/0-);git 卫生 = 0 tracked pyc、开工工作树干净、根目录无 stray。
+
+**② 发现清单(0 BLOCKER / 5 WARNING / 5 NOTE)**:
+- **S-1(WARNING)**:`python -m pytest tests attacks` 合并收集期 12 个 tests/ 文件 ImportError —— `attacks/conftest.py` 与 `tests/conftest.py` 顶层模块名冲突(`cannot import name 'make_repo' from 'conftest' (…attacks\conftest.py)` 亲读;单跑对照 12 passed);canonical(testpaths=tests)与 CI(`pytest tests/`)不受影响。处置 = 登记 + 落字,不重构(改名/import-mode 有 fixture 语义风险,待 Owner D-045-1)。
+- **S-2(WARNING)**:攻击套件需 `--asyncio-mode=auto`(pytest-asyncio 1.4.0 strict,裸 async def 无 marker,仓内无 ini);`EB008-IMPLEMENTATION-REVIEW-1.md` 称「复跑命令见套件文件头」但文件头无命令 = 复现文档缺口;加参数后 23/23 = `ConnectionRefusedError WinError 1225`(aitutor-postgres 未启动,环境性,原样入账)。处置 = 复跑命令落字 conftest docstring。
+- **S-3(NOTE,自我错误)**:本轮 G6 首次重导 = **假 MISMATCH**——pwsh `Out-File -Encoding utf8` 管道 BOM+解码污染(91,415B / `a788b07e…`),`git show --output=` 内不落盘(bytes=0);cmd 重导 = 92,197B / `9c6b9063…` MATCH。三次实测值全入账;该环境纪律 CURRENT.md 原有载,本轮亲证其必要性。
+- **S-4(WARNING)**:DEC-014 七章节 Completion Report 格式自裁决起**从未在报告文件落地**(EVIDENCE 7 件 + Guardian 3 件标记全 0 命中 = 系统性);实质内容一直在,缺强制结构。处置 = 本轮报告按七章节示范(D-045-2 待裁是否常态化)。
+- **S-5(NOTE)**:`294c7fe`(DEC-043 自身 commit)四账本零登记 = 结构性(账本先写后 commit),本轮指令链补登。
+- **R-1/R-2/R-6(WARNING,同族)**:报告 A 保留已撤回 F-1「ROOT CAUSE = 环境 DB 缺失」与已证伪 F-3 计数且全文零更正指针;state.yaml DEC-042 块 `test_evidence` 行同残留(同文件 `local_snapshot` 行已补 F-3,标准不一)。处置 = 报告 A 文首 append-only 勘误指针 + state.yaml 行内 F-1 指针 + CURRENT.md 两处行内划线指针(历史文本零删改)。
+- **L-10(WARNING)**:CURRENT.md 状态头「D1~D5」归属 DEC-042 标签漂移(应 = DEC-042:D1~D4;D5 属 DEC-043;总数各账本均正确)。处置 = 状态头已修正。
+- **R-3(证伪)**:子代理指控报告 B L66「4/4 全 passed(10 passed)」vs「5/5 全 error(10/10)」数字矛盾 = **误报**(两组数字分属两文件重复运行:raw_bytes 10 用例×4 跑全过 / hashing 10 用例×5 跑全错;与 L82 普查 raw_bytes=10 吻合);本人亲读驳回,仅存表述歧义 NOTE。
+- **R-4/5/7(NOTE)**:报告 B §3.3 证据降级实为第五项更正未编号 / 锚值仅 8 位前缀(全值在 state.yaml·FREEZE-EVIDENCE)/ L130 STATUS 行丢 `M5 PUSH: ABSENT` 限定语(§0 仍持,未违红线)。
+
+**③ 存量修复 5 处(living-docs/append-only,历史文本零删改)**:报告 A 文首勘误指针;state.yaml L773 F-1 行内指针;CURRENT.md 状态头归属 + DEC-042 两处行内划线;attacks/conftest.py 复跑命令落字;指令链补 `294c7fe`。
+
+**④ V3 本地漂移(仅 OBSERVED-LOCAL,零写入)**:`ls-remote origin main` = `72af28d…6233` 未前进(首试 SEC_E_NO_CREDENTIALS 如实入账,宽模式重试 OK);本地 HEAD 同;untracked = 28 件零增删;五模块漂移检出:`identity_gate.py` `f3636b35…`/4391B → **`13812a74…`/5707B**,`ir_identity.py` `9315c22e…`/1730B → **`1e9ab5fd…`/4306B**(新增 batch resolver IR 格式支持),其余三模块与 DEC-043 锚逐字节相等 —— 旧本地锚对前两模块失效,下轮新观测;再次实证 Owner「以 push commit 为对象」纪律。
+
+**⑤ 账面核查**:长开项(16 IR batch / D-3 / D-4 / IR 字段改名 / 两层状态载体 / C.1)全部保持 OPEN 无误关闭;`corpus_sha256` 聚合构造维持 F-C 挂账;四账本交叉一致性(双子代理独立逐行核对)= 除 L-10 外全一致(冻结四元组四处全等 / F-1~F-4 四处一致 / D5 四处一致 / 状态行一致 / ODR v1.24 引用一致)。
+
+**⑥ Owner Decision Points**:D-045-1 攻击套件治理(推荐 attacks 独立 ini)/ D-045-2 今后轮次强制七章节(推荐 是)/ D-045-3「更正必须回指被更正文本所在层」入 PROTOCOL(推荐 是)/ D-045-4 DB 恢复后攻击套件复验是否下令。
+
+**⑦ 输出与登记**:`INTEGRATION/PREPROCESSING-DSH-SELF-ADVERSARIAL-AUDIT-v1.md`(七章节示范);四账登记 = state.yaml(DEC-044 pending + DEC-045 + `producer_guardian_self_audit` 块 + next)/ CURRENT.md / log.md / ODR v1.25。scratch 轮末清理。
+
+**结论**:**数据面零遗留**(基线全部复测 PASS 零漂移);**流程面遗留 3 类已登记**(攻击套件复跑面 / DEC-014 格式缺口 / 更正回指机制)。`BOUNDARY: HOLDING`;DEC-044 Closure Review 挂起待 Claude push exact SHA(未 push 不判 Consumer Boundary Verified);`GUARDIAN MODE: ACTIVE`。纪律:V3 仓零写入;未改 Consumer 实现/未改 Producer 数据;自我错误(S-3)与子代理误报(R-3)原样入账;零推测。等待 Owner 裁决 D-045-1~4 与 Claude push。
