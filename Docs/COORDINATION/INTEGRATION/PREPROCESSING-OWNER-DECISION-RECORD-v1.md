@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.22(2026-09-16,追加 §1tervicies 对抗性审查 DEC-041:DEC-040 冻结对象结论全部维持且加强,1 项 REPORTED 事实错误更正,1 项方法学弱点修复,1 项未复现项挂账;v1.21 = §1bisvicies Phase 2-M4)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-034]`(§1sexdecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-035]`(§1septendecies;与 V3 侧 DEC-035 撞号,已知 R5-03 面)+ `[DEC-036]`(§1octodecies;与 V3 侧 DEC-036 撞号,已知 R5-03 面)+ `[DEC-037]`(§1undevicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-038]`(§1vicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-039]`(§1semelvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-040]`(§1bisvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-041]`(§1tervicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized` / `.producer_baseline_archive_final` / `.producer_baseline_guardian` / `.producer_guardian_phase1`
+> Status: **v1.23(2026-09-16,追加 §1quadvicies Consumer M5 Boundary Guardian Review DEC-042:M5 未 push 不宣布通过,本地快照语义电池 27/27 PASS + 4 项 discrepancy + 集成缺口,G1~G6 零漂移;v1.22 = §1tervicies 对抗性审查 DEC-041;v1.21 = §1bisvicies Phase 2-M4)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-034]`(§1sexdecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-035]`(§1septendecies;与 V3 侧 DEC-035 撞号,已知 R5-03 面)+ `[DEC-036]`(§1octodecies;与 V3 侧 DEC-036 撞号,已知 R5-03 面)+ `[DEC-037]`(§1undevicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-038]`(§1vicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-039]`(§1semelvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-040]`(§1bisvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-041]`(§1tervicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-042]`(§1quadvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized` / `.producer_baseline_archive_final` / `.producer_baseline_guardian` / `.producer_guardian_phase1`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -855,6 +855,41 @@
 | ⑤ 发现 F-C(未复现,挂账) | `corpus_sha256` 聚合构造 7 种候选(含原始字节全拼接)均未复现,如实挂账不推测;操作性锚 = 逐文件 map(已实测) |
 | ⑥ 证据纪律 | 两次失败测试原样入账:0/87 错路径比对(审查方构造错误,以 source_file 指针三方比对 87/87 纠正)+ digest 构造未复现;测试基线独立第 3 次复跑 338 passed / 1 xfailed;G4 7/7 复跑;G6 残留 False + 亲缘 TRUE + 契约 diff EMPTY |
 | 纪律 | 全程只读(docs-only 登记除外);未改 Consumer 实现 / 未改 Producer 数据 / 未提供补丁 / 未自行修复;零新架构裁决;已裁六项未重开 |
+
+### §1quadvicies Consumer M5 Boundary Guardian Review(DEC-042,Owner 原文照录 2026-09-16)
+
+> 进入下一轮:**Consumer M5 Boundary Guardian Review**。Claude 本轮将从 M4 转入 M5 Consumer Gate Integration。你的职责仍然保持 Guardian/Adversarial Reviewer 定位:**只审查,不替 Claude 实现;不自动修复;不修改 Producer;不改变冻结 Contract。**
+>
+> **一、审查对象必须是 Claude 实际 push 的 Consumer commit**:不要仅审查本地 untracked 文件,也不要用 Claude 报告中的测试结果作为证据。必须:1 获取 Claude 实际 push 的 V3 commit;2 记录 exact commit SHA;3 从该 commit 重新检查 Consumer implementation;4 独立运行必要测试;5 所有结论都以本轮真实证据收口。如果 Claude 尚未 push M5:**不要提前宣布 M5 通过。**
+> **二、继续执行 Producer Guardian 基线**:保留现有 G1–G6。重点确认 source bytes 未变化 / Manifest 未变化 / Producer IR 未变化 / evidence artifacts 未变化 / freeze artifacts 未变化 / Producer baseline hash·逐文件 map 未变化 / Contract freeze object 未被 Consumer 修改。任何 Producer 对象变化:**STOP。**
+> **三、重点审查 Consumer → Producer Boundary**:针对 M5 以及 M1–M4 全链路做静态 + 动态审查。确认 Consumer 只能 READ Producer artifacts,不能 WRITE / REWRITE / REGENERATE / NORMALIZE-IN-PLACE / DELETE / RENAME / TOUCH-MTIME。尤其搜索 open(..., "w") / write_bytes / write_text / os.replace / shutil.move / unlink / rename / tempfile + replace / pickle·np.save 等潜在落盘方式 / Producer path references / manifest mutation / IR mutation。继续保持"发现即登记,不自行修复"的纪律。
+> **四、必须新增 M5 语义边界攻击**:独立验证 Truth Table(FAILED+None→BLOCK;FAILED+PENDING→BLOCK;VERIFIED+PENDING→BLOCK;VERIFIED+AVAILABLE→PASS;VERIFIED+None→BLOCK)。最高优先级:**VERIFIED + PENDING → BLOCK**,必须有真实测试证据。
+> **五、重点攻击 stale IR**:构造 raw bytes = A / Manifest SHA = SHA(A) / IR source SHA = SHA(B),要求确认 Identity = VERIFIED / Semantic = PENDING / M5 = BLOCK,并继续检查 stale IR 是否有任何路径能够进入 Gate / Admission / semantic consumer。如果存在 bypass:**记录为 Consumer Boundary failure。不要修改代码。**
+> **六、攻击 Missing/Invalid Manifest**:分别测试 Manifest missing / source_content_sha256 missing / = null / = "" / invalid SHA / Manifest SHA != actual raw bytes。必须确认这些情况不会因为 M1 Reader 返回 None 而被错误解释成 Semantic PENDING 或者 Identity VERIFIED。
+> **七、攻击 Missing / Malformed IR**:区分 1 IR missing;2 IR source identity missing;3 IR source identity mismatch;4 malformed JSON;5 wrong type。不要自行规定语义。严格按照当前 Frozen Contract / Design v1.1 判断:哪些应该 PENDING;哪些应该 ERROR/BLOCK;哪些绝不能继续 semantic consumption。如果实现与 Contract 不一致:**登记为 discrepancy,不要替 Claude 修改。**
+> **八、检查"Identity Authority 不被 IR 劫持"**:验证 IR = arbitrary value 不能改变 Identity State。保持 M4 已建立的核心不变量:Identity ↑ Raw Bytes + Manifest;Semantic ↑ IR。不能反过来。
+> **九、检查真实调用链,而不是只检查 M5 返回值**:重点检查 M1→M2→M3→M4→M5→Gate→Admission。必须证明 M5 BLOCK 后面不会继续发生 semantic Gate / Compiler consumption / Admission / materialization / instance creation。尤其关注 runner_b2.py 以及任何实际入口。
+> **十、不要把 Producer Guardian 结论扩大解释**:Producer Guardian 可以证明 Producer unchanged / Producer boundary holds / Frozen artifacts unchanged;不能单独证明 M5 correct / Consumer semantics correct / IR correctly consumed / Admission safe。如果 Consumer code 审查证据不足,就明确写 NOT VERIFIED。不要用 Producer G1–G6 代替 Consumer correctness。
+> **十一、历史方法学改进继续保留**:逐文件活测(不只读 aggregate corpus_sha256)/ source_file 指针目标三方比对 / SET_EQUAL / 错误路径攻击原样入账 / 未复现问题原样登记 / 不做无证据归因。特别注意:不要因为测试失败就猜测根因;证据不足只写 OBSERVED / NOT REPRODUCED / ROOT CAUSE UNKNOWN。
+> **十二、最终报告必须给出**:1 exact Claude commit SHA;2 Producer baseline SHA;3 G1–G6;4 Producer immutable check;5 Consumer boundary check;6 M5 Truth Table 实测结果;7 stale IR attack;8 missing IR attack;9 invalid Manifest attack;10 bypass attack;11 full pytest result;12 STOP / NOT STOP;13 VERIFIED / NOT VERIFIED 项目清单。最终结论必须明确区分 PRODUCER BOUNDARY 和 CONSUMER SEMANTIC CORRECTNESS,不得合并成一个结论。Guardian 原则继续保持:**只读、独立、证据驱动、不替 Claude 修复、不修改 Producer。**
+
+### §1quadvicies 生产侧保守义(DSH 解释,非裁决;执行详件 = `PREPROCESSING-PRODUCER-GUARDIAN-M5-BOUNDARY-REVIEW-v1.md`)
+
+| 检查 | 结果 |
+|---|---|
+| ① 审查对象 | V3 `origin/main` = **`72af28d…6233`**(ls-remote 亲验,远端零新提交);`ls-tree`/`git grep` 证实该 commit **零身份链代码** —— **M5 未 push,不宣布 M5 通过**(NOT VERIFIED,无对象) |
+| ② Producer 基线 | G1~G6 **全 PASS 零漂移**(177/177 mismatch=0;R50 356 活测 269/87 SET_EQUAL/0 unexpected;source_file 三方 87/87;G6 重导 MATCH + 亲缘 TRUE + 契约 diff EMPTY);四项 immutable 全成立;**STOP NOT TRIGGERED** |
+| ③ Boundary 静态 | core 五模块写面清扫零命中(全纯读/纯函数);scripts 写点全部 V3 内部报告输出;Producer 路径引用全部只读 |
+| ④ Truth Table | 五格(含最高优先级 **VERIFIED+PENDING→BLOCK**)经真实文件链实测全符合;越域伪造值 6/6 fail-closed BLOCK;PASS 可达条件唯一 |
+| ⑤ stale IR | 函数层实测 VERIFIED/PENDING/**BLOCK** 唯一出口,无函数层 bypass;**真实链层面 M5 零集成(runner_b2 不调用 M1–M5)= '阻断下游' NOT VERIFIED(INTEGRATION PENDING)** |
+| ⑥ Manifest 6 变体 | 全部 fail-closed:None 路径只流向 FAILED/BLOCK,无一误读为 PENDING/VERIFIED;invalid 5 例全抛 ManifestReadError |
+| ⑦ IR 5 变体 | **D1 discrepancy(行为级)**:IR missing 实现抛 `IRReadError`,vs Design v1.1 §4.4/F5 = None(PENDING 正常态)与 Contract 16 份 Semantic Pending 语义 —— 登记不代改;其余 4 变体与 Design 一致 |
+| ⑧ IR 劫持 | 7 ir 变体 × 2 身份情形 = 14/14 不变量成立;M4 结构亲读确认单向 |
+| ⑨ 真实调用链 | runner.py / runner_b2.py / runner_b3.py / p32 全部零身份链调用;runner_b2 `input_identity` 无 sha —— 集成缺口登记,下轮必查 |
+| ⑩ 两结论分离 | **PRODUCER BOUNDARY = HOLDS(VERIFIED)**;**CONSUMER SEMANTIC CORRECTNESS = NOT VERIFIED(对 push commit 无对象;本地快照 = 语义电池 27/27 PASS + 4 discrepancy + 集成缺口)** |
+| ⑪ pytest | 全量 642 passed / 959 errors(全部 = 环境无 PostgreSQL 的 ConnectionRefused at setup,原样入账);身份链子集 642 passed / 122 errors(同因,Claude 新 M5 测试不可复验,ROOT CAUSE = 环境 DB 缺失);自建电池 27/27 |
+| ⑫ 移动目标 | 审查期间 `identity_gate.py` 3602→4391 B(+值域白名单 fail-closed)、两个新测试文件出现 —— 原样入账,动态结论锚定 `f3636b35…` 快照;此即"必须以 push commit 为对象"的实证 |
+| 纪律 | 全程只读(docs-only 登记除外);未改 Consumer 实现 / 未改 Producer 数据 / 未提供补丁 / 未自行修复 D1~D4;零新架构裁决;已裁六项未重开 |
 
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 
