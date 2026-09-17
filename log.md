@@ -2965,3 +2965,25 @@ NOT IMPLEMENTED
 **⑩ OBSERVATION(D-048-3,审查窗口内工作树未知删除事件)**:2026-09-17 15:09:26–29(目录 mtime 亲测),Papers 工作树 9 个 tracked 文件被删(data/bug24_*×3、data/r66_d5a_snapshot_check.json、data/reslice_pilot_qc.json、tests/samples/artifact×3、tests/samples/source×1);开工时 status 为净,事件发生于审查窗口内。排查:DSH 全部命令写面 = 仅 5 件 docs + 临时区,对上述路径零写;克隆全仓 grep 删除符号零命中;进程枚举唯一 python = 克隆 pytest;**行为者不可证,ROOT CAUSE UNKNOWN,不推断**。处置:均非 G1–G6 冻结对象(R50 复验仍 356/87/0),已 `git checkout --` 恢复 HEAD 字节态,工作树回正为仅本轮 5 件 docs;建议 Owner 排查并行会话/清理脚本。
 
 **结论**:`BOUNDARY: HOLDING` / `GUARDIAN: ACTIVE` / `PHASE 2.5 REVIEW: COMPLETE` / `REAL PASS PATH: VERIFIED (live)` / `STOP: NOT TRIGGERED`;下一步 = 等 Owner 对 D-048-1/2 与 D2/D3/D4 的处置指令。
+
+---
+
+## DEC-049 — D2/D3/D4 Decision Brief(Evidence First, No Self-Fix)(2026-09-17,Owner 令「暂停 D2/D3/D4 最终裁决,还原原始技术争议」)
+
+**① 指令性质**:Owner 明示当前并不知道 D2/D3/D4 各自代表什么问题,本轮**不得**再以「OWNER DECISION REQUIRED」作为结论,必须把三项争议的原始技术争议按 13 项证据结构(首次发现来源 / 原始 observation / Frozen Spec 章节原文 / Contract 章节原文 / Design 章节原文 / cc12d79 实现 / 对应测试 / 冲突本质 / 为何属 Owner Decision / 解释 A/B 全列 / 各解释影响 / Guardian conformance analysis / `Owner must decide` 明示句)逐项还原;禁止改代码/改 Frozen Spec/改 Producer/自选 A/B/以测试通过充当裁决/以名称代替问题定义。
+
+**② 对象与证据锁定(本轮亲验)**:本地 V3 HEAD = `cc12d79e9a22f6274100ea0bb61f92493ba88509`;M1–M5 五模块 sha256 与 DEC-048 锚逐一 MATCH(`1ca33a45…`/`803c4ed8…`/`f960b513…`/`1306105c…`/`8a5d267e…`);Frozen Contract 本地副本亲验 = `9c6b9063…7528`/92,197B MATCH;`git ls-files`(cc12d79)证实 Design v1.1/v1 **不在 git 追踪集**(untracked 工作树文档)。
+
+**③ 关键还原(三 D 共同根源)**:唯一 Owner 冻结对象 Contract v0.2 对 M1–M5 的 **Python 级签名零规定**(`SourceBytes|raw_bytes|bytes_source` grep = 0 命中)——它钉能力与行为(§0.1⑥/§2.3/§5.6.2),不钉函数名/字段名/异常类;D2/D3/D4 所称「冻结」实为 **Design v1.1 §4.7 的 V3 侧自述冻结**(「任何修改须 Owner 另行下令」)。故三项均非 implementation defect(行为 fail-closed 三轮实测成立),而是「实现 vs 自述冻结设计文档」的 **authority 收口选择**,只有 Owner 能定改文档还是改代码。
+
+**④ D2(M2 接口形状)**:原始争议 = `RawBytesIdentity` 是否保留 `raw_bytes` + `SourceBytes*` 自定义异常 vs 现行 `(bytes_source, sha256)` + 裸 `FileNotFoundError/OSError`(§4.3 vs `raw_bytes_identity.py` `803c4ed8…`);行为方向无分歧(两边 fail-closed);runner_b2 L81 现接内建异常。解释 A = Design v1.2 追认实现;解释 B = 按 §4.3 改实现(保留 bytes + 自定义异常);混合变体同列。
+
+**⑤ D3(M3 内部字段名)**:原始争议 = `IRIdentity` 字段 Design 钉 `source_sha256`(镜像 producer 域字段)vs 实现用 `source_content_sha256`(镜像 Contract §5.6.2 正文表述);Contract 自身双名域并存(§1.2a 接口键 + L128 producer 域「不变」),对内部 dataclass 零规定;值/算法/行为零分歧。已裁六项命名(接口键 `source_content_sha256`)两方案下均不重开。
+
+**⑥ D4(M5 接口面 + 文本面 + OQ-21)**:语义部分(VERIFIED+PENDING→BLOCK)= Owner Truth Table 已裁六轮,实现与测试均按此,但 Design §1.2/§1.3/§3.1 F13/§4.6 四处旧语义文本待 v1.2;接口四偏离(路径 `app/core/` / 函数名 `evaluate_identity_gate` / 增 `gate` 字段(runner_b2 L113 已耦合)/ `mismatches: tuple`)未裁;**新还原的 authority 张力 = Contract §1.6「标记 pending」+ OQ-21(呈现字段未裁)与 BLOCK 语义的调和无任何权威文本**——解释 C(语义回退 Design)仅在 Owner 显式重开 Truth Table 时才在桌上。
+
+**⑦ 结论句(每 D 各一,填空式)**:详件 `PREPROCESSING-D2-D3-D4-DECISION-BRIEF-v1.md` §D2.13/§D3.13/§D4.13 —— D2:Owner must decide 接口面 A/B/混合 + 执行者与验收;D3:Owner must decide 字段名 A/B + 双名域分离不动的确认;D4:Owner must decide (i) 接口 A/B (ii) Design v1.2 修订令归属 (iii) OQ-21 pending 呈现载体。三项证据全部充分,无 "Insufficient evidence" 项。
+
+**⑧ 纪律**:全程只读(docs-only 登记除外);V3 仓零写入(仅只读查询);Frozen Contract/Producer 未动;零代码修改;未自选 A/B;未以 canonical 1780 passed 充当任何裁决依据;NO SELF-FIX;未重开已裁六项。
+
+**结论**:`BOUNDARY: HOLDING` / `GUARDIAN: ACTIVE` / `D2/D3/D4: DECISION BRIEF DELIVERED(裁决暂停,证据还原完毕)` / `STOP: NOT TRIGGERED`;下一步 = 等 Owner 按 Brief 三处 `Owner must decide` 逐项下裁。
