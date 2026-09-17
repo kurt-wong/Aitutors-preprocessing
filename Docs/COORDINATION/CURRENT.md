@@ -1,13 +1,13 @@
 # CURRENT — 跨 Agent 协调快照(人 + Agent 快速阅读)
 
 > 机器可读状态见 `state.yaml`;协议见 `PROTOCOL.md`。本文件是镜像快照,**权威以 state.yaml 为准**。
-> 更新:2026-09-16(**DEC-042 Consumer M5 Boundary Guardian Review**:**M5 未 push**(V3 `origin/main` 仍 `72af28d…6233`,`ls-tree`/`git grep` 证实该 commit 零身份链代码)—— 按 Owner 指令**不宣布 M5 通过**;本地 untracked 快照(锚 `f3636b35…`,审查期间移动目标入账)语义电池 **27/27 PASS**(Truth Table 五格含 VERIFIED+PENDING→BLOCK / stale IR 唯一出口 BLOCK / IR 劫持 14/14 免疫 / Manifest 6 变体 fail-closed)+ **4 项 discrepancy**(D1 行为级 = M3 IR missing 抛错 vs Design None 正常态)+ **真实链零集成**(runner_b2 不调用 M1–M5,'BLOCK 阻断下游' NOT VERIFIED);G1~G6 全 PASS 零漂移;**STOP 未触发**;两结论严格分离 = PRODUCER BOUNDARY **HOLDS** / CONSUMER SEMANTIC CORRECTNESS **NOT VERIFIED**)· 前轮 = DEC-041 对抗性审查 / DEC-040 轮次 4 / DEC-039 轮次 3 / DEC-038 轮次 2 / DEC-037 轮次 1 · canonical ledger = kurt-wong/Aitutors-preprocessing(main)
+> 更新:2026-09-16(**DEC-043 对 DEC-042 轮的对抗性审查**:**结论全部维持且加强**(G1~G6 独立重跑全 PASS;push commit 零身份链三法证实;电池 27/27 ×2 + 盲区 13/13);**4 项自我更正**:F-1 撤回「ROOT CAUSE = 环境 DB 缺失」超证据归因(实测 migrated_db 按文件确定性分化,机制 UNKNOWN)/ F-2 errors 计数非基线(959→1036,收集面变化)/ F-3 untracked 计数证伪(10 docs/15 tests → 实测 9/14;REPORT-PHASE2-M4 零证据)/ F-4 642==642 非巧合(普查证实全部来自身份链文件);**1 项新 discrepancy D5**(M5 None 输入抛异常 vs「不抛异常」冻结表述);**STOP 未触发**)· 前轮 = DEC-042 M5 Boundary Review / DEC-041 对抗性审查 / DEC-040 轮次 4 · canonical ledger = kurt-wong/Aitutors-preprocessing(main)
 
 ## 🧭 新会话快速恢复(新会话先读本节,30 秒回到工作状态)
 
-**一句话状态**:Contract v0.2 = **FROZEN**(DEC-032);Frozen Baseline = **PRODUCER BASELINE FINALIZED + ARCHIVED**(DEC-033/034);**GUARDIAN MODE ACTIVE — BOUNDARY HOLDING**;**DEC-042 M5 Boundary Guardian Review 完成(2026-09-16):M5 未 push 不宣布通过;本地快照语义 27/27 PASS + 4 discrepancy + 集成缺口;G1~G6 零漂移,STOP 未触发**;V3 远端仍零实现提交(全部身份链 = 本地 untracked,审查期间仍在变化);Trigger ② 继续 ARMED;DSH 令前保持零新数据动作,**不参与 Consumer 代码实现(含 M4/M5)**,等 Owner 下一步指令。
+**一句话状态**:Contract v0.2 = **FROZEN**(DEC-032);Frozen Baseline = **PRODUCER BASELINE FINALIZED + ARCHIVED**(DEC-033/034);**GUARDIAN MODE ACTIVE — BOUNDARY HOLDING**;**DEC-043 对抗性审查完成(2026-09-16):DEC-042 结论全部维持且加强,4 项自我更正(撤回 DB 根因归因/计数证伪等)+ 新 discrepancy D5,STOP 未触发**;V3 远端仍零实现提交(全部身份链 = 本地 untracked);累计 discrepancy D1~D5 待 V3 收口;Trigger ② 继续 ARMED;DSH 令前保持零新数据动作,**不参与 Consumer 代码实现(含 M4/M5)**,等 Owner 下一步指令。
 
-- **指令链末端**:… → DEC-039(`3916852`)→ DEC-040(`6a48d21`)→ DEC-041(`9cffd0f`)→ **DEC-042(M5 Boundary Review,本轮)**;ODR = **v1.23**(§1quadvicies 原文照录);工作树干净(提交后);
+- **指令链末端**:… → DEC-040(`6a48d21`)→ DEC-041(`9cffd0f`)→ DEC-042(`3e5b3b5`)→ **DEC-043(对抗性审查,本轮)**;ODR = **v1.24**(§1quinvicies 原文照录);工作树干净(提交后);
 - **冻结对象(唯一有效四元组)**:`kurt-wong/AITutors-v3` @ `f4941ff87c0130ee0b79ff6b807c4ec2826b8ff1` / `Docs/COORDINATION/CONTRACTS/PREPROCESSING-V3-CONTRACT-v0.2-DRAFT.md` / sha256 **`9c6b9063e81fb2a66d85794b280c9d931f1b0074b39abf472033218149b17528`**(92,197 bytes)。`c6e771c` / `c8d89586…1032` = 历史登记,**勿引用**。V3 远端 main 观测值 = `4daecf0b`(DEC-032 时点;Claude 可能继续推进,一切以 fetch/ls-remote 实测为准);
 - **关键数字**:manifest 166 / 接口面 87(87/87 携 `source_content_sha256`,unique 87 · dups 0)/ IR 71 ADMITTED(1,664 单元,71/71 对账零漂移)/ 16 Semantic Pending / v1 legacy 79(隔离,C-IN-1 下必拒)/ R50 基线 356(**DRIFT = 恰 87 为预期**,承接者 = pre/post audit 双快照 `b11874c4…` / `2cb980c7…`);
 - **Frozen Baseline 归档终态(DEC-034)**:四项 immutable 终检全过——source bytes 零漂移(87/87 vs Step1+R50)/ manifest 差异恰 = 追加一键 / IR 71·71 零漂移 / 证据六工件登记 sha 6/6 相符 + 复跑字节级复现(`a707738e…5c33`);归档报告 = `INTEGRATION/PREPROCESSING-PRODUCER-BASELINE-ARCHIVE-FINAL-REPORT-v1.md`;**基线以工件表字节为准,后续变化须 Owner 令 + 新配对快照,不得就地改写**;**CONSUMER IDENTITY: NOT IMPLEMENTED 不变**;
@@ -22,12 +22,21 @@
 - **边界纪律(新会话必守)**:①Freeze 不含三项实现——bytes verification / identity gate / IR verification;五项 V3 消费能力全部 **NOT IMPLEMENTED**,契约 REQUIREMENT ≠ 现状(Decision ≠ Implementation);②已裁六项(identity key / path / `source_version_id` / Semantic Pending / 87·71·16 / bytes requirement)**不重开**;③DSH 令前零新数据动作——Step 4 数据治理 / Step 5 图片恢复 / IR 重生成 / schema 变更 / daemon 仍禁;④case id 不重编号;REPORTED ≠ OBSERVED;转述层会漂移,引用必须回到证据文件;
 - **下一阶段**:V3 Consumer Identity Verification Implementation(bytes → SHA256 → Manifest 验证 → IR 验证 → fail-closed → Gate → Admission)——实现排期属 V3 侧;若 Owner 令 DSH 复核实现,核验基准 = 契约 §2.3/§5.6.2 验证链 + 五项 NOT IMPLEMENTED 边界不得因 FROZEN 松动;
 - **长开项(不阻塞 FROZEN,须令才动)**:16 份 IR 再生成批次 / D-3 存量 1 例 `andalone_question` / D-4 两份三重成员 / IR 字段名对齐(`source_sha256` → `source_content_sha256`)/ 两层状态载体 + reviewable record / C.1 载体正文引用形态追认;延期五项(legacy 79 披露 / 17 拒收 / OCR-PDF 扩展 / DEC 编号统一(R5-03)/ bytes 传输方式)不处理;
-- **环境纪律**:`PYTHONIOENCODING=utf-8`;PowerShell `>` 重定向写 UTF-16(字节级导出用 `cmd /c "git show … > file"` + `Get-FileHash`);push / gh 需 `sandbox_permissions: danger-full-access` + justification;push 后必须 `git ls-remote origin main` 亲验 + `gh run list` 对账;测试基线 = **338 passed / 1 xfailed**(DEC-037~041 时点);DEC-042 起 = **642 passed / 1 skipped / 1 xfailed + 959 DB-fixture errors**(Guardian 环境无 PostgreSQL;身份链子集 642 passed);DSH 自建动态电池 27/27;
-- **阅读顺序**(PROTOCOL §5):state.yaml(权威)→ 本文件 → ODR v1.23 → log.md 尾部 → 最新 HANDOFF;裁决原文全集 = `INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`。
+- **环境纪律**:`PYTHONIOENCODING=utf-8`;PowerShell `>` 重定向写 UTF-16(字节级导出用 `cmd /c "git show … > file"` + `Get-FileHash`);push / gh 需 `sandbox_permissions: danger-full-access` + justification;push 后必须 `git ls-remote origin main` 亲验 + `gh run list` 对账;测试基线 = **338 passed / 1 xfailed**(DEC-037~041 时点);DEC-042 起 = **642 passed / 1 skipped / 1 xfailed + DB-fixture errors**(errors 计数非基线:959→1036 随收集面变化〔DEC-043 F-2〕;`migrated_db` 按文件确定性分化机制 UNKNOWN〔F-1〕;passed=642 全部来自身份链文件〔F-4〕);DSH 自建动态电池 27/27 + 盲区 13/13;
+- **阅读顺序**(PROTOCOL §5):state.yaml(权威)→ 本文件 → ODR v1.24 → log.md 尾部 → 最新 HANDOFF;裁决原文全集 = `INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`。
 
-## ⏭ 当前状态:GUARDIAN MODE ACTIVE — M5 BOUNDARY REVIEW COMPLETE(DEC-042:M5 PUSH ABSENT / LOCAL SNAPSHOT SEMANTICS PASS + 4 DISCREPANCIES + INTEGRATION PENDING)/ BOUNDARY HOLDING / POST-PHASE1 RECHECK ARMED(2026-09-16;前状态 = DEC-041 ADVERSARIAL REVIEW / DEC-040 M4 PASSED / DEC-039 M3 PASSED / DEC-038 ROUND 2 PASSED / DEC-032 CONTRACT FROZEN)→ 下一阶段 = V3 M5 Gate Integration 落地 + push 后以 commit 为对象复审(集成缺口 = 下轮必查)
+## ⏭ 当前状态:GUARDIAN MODE ACTIVE — ADVERSARIAL REVIEW COMPLETE(DEC-043:DEC-042 CONCLUSIONS UPHELD + 4 CORRECTIONS + 1 NEW DISCREPANCY D5)/ M5 BOUNDARY REVIEW COMPLETE(DEC-042:M5 PUSH ABSENT / LOCAL SNAPSHOT SEMANTICS PASS + D1~D5 + INTEGRATION PENDING)/ BOUNDARY HOLDING / POST-PHASE1 RECHECK ARMED(2026-09-16;前状态 = DEC-042 / DEC-041 / DEC-040 M4 PASSED / DEC-032 CONTRACT FROZEN)→ 下一阶段 = V3 M5 Gate Integration 落地 + push 后以 commit 为对象复审(集成缺口 = 下轮必查;D1~D5 待 V3 收口)
 
-**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.23**:… + §1tervicies DEC-041 + **§1quadvicies DEC-042**)。
+**裁决基准**:`INTEGRATION/PREPROCESSING-OWNER-DECISION-RECORD-v1.md`(**v1.24**:… + §1quadvicies DEC-042 + **§1quinvicies DEC-043**)。
+
+**DEC-043 = 对 DEC-042 轮的对抗性审查(每结论真实测试;自我错误原样入账)**:
+- **① 维持且加强**:G1~G6 独立重跑全 PASS(177/177 mismatch=0;R50 356 = 269/87 SET_EQUAL/0 unexpected;source_file 三方 87/87;G6 MATCH + 亲缘 TRUE + diff EMPTY + 残留 False);push commit 零身份链代码**换方法三重证实**(`ls-tree -r` 434 文件 / 全仓 `git grep` / preprocessing_consumer 枚举);v2 电池 **27/27 复现 ×2**;盲区补测 **13/13**(manifest 顶层非对象/目录/BOM/前后空白全 fail-closed;IR 嵌套键不读;链确定性 5x);本地快照五模块散列与 DEC-042 锚逐项相等;
+- **② F-1(撤回)**:DEC-042「ROOT CAUSE = 环境 DB 缺失」= 超证据归因 —— port 5432 不监听(事实),但同进程内 `migrated_db` **按文件确定性分化**(`test_hashing` 5/5 全错 / `test_raw_bytes` 4/4 全过,顺序无关,--setup-show 亲证 fixture 归属)→ 更正为 **OBSERVED 分化 + ROOT CAUSE UNKNOWN**;
+- **③ F-2(时效)**:errors 959→1036(总用例 1603→1680,增量相容 `m5_round2` 被收集);errors 计数**非基线**,passed=642 三轮稳定;子集 122/122 errors 全量普查唯一异常 = ConnectionRefusedError at setup(证实);全量面 = 抽样级证据(如实标注);
+- **④ F-3(证伪)**:DEC-042 untracked 记「10 docs(REPORT-PHASE2-M4 新增)+ 15 tests」错误 → 实测 **9 docs + 5 core + 14 tests = 28**(docs 与已裁 9 件名单 SET_EQUAL=True);REPORT-PHASE2-M4 全部工具输出零记录,不推测来源;
+- **⑤ F-4(升级)**:「642==642 巧合」→ 已解释:verbose 普查全量 passed 642 **精确来自 10 个身份链文件合计 642**;`test_identity_gate` / `m5_integration` / `m5_round1` 三文件 0 passed 全 error;
+- **⑥ D5(新 discrepancy)**:M5 对 None/无 identity 对象输入抛 `AttributeError`,与 M5 docstring 及 Design v1.1 §4.6「不抛异常」矛盾(M4 正常输出不可达;失败方向 = raise 非 bypass);登记不代改;**累计 D1~D5**;
+- **⑦ STOP:NOT TRIGGERED**;详件 = `INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-M5-REVIEW-ADVERSARIAL-v1.md`(docs-only)。
 
 **DEC-042 = Consumer M5 Boundary Guardian Review(以 push commit 为对象;PRODUCER BOUNDARY 与 CONSUMER SEMANTIC CORRECTNESS 两结论严格分离)**:
 - **① 审查对象**:V3 `origin/main` = **`72af28d5854b56fc605e1897fb757703826a6233`**(远端零新提交);`ls-tree 72af28d backend/app/core/` = 仅 4 个既有文件,`git grep` 身份链符号 = 空 —— **push commit 内不存在 M1–M5 任何代码;不宣布 M5 通过**;
@@ -120,8 +129,8 @@
 
 | Agent | 仓库 | 角色 | 最近动作 |
 |---|---|---|---|
-| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version)+ **Frozen Baseline Guardian** | **DEC-042 Consumer M5 Boundary Guardian Review:M5 未 push 不宣布通过;本地快照语义电池 27/27 PASS + 4 discrepancy + 真实链零集成;G1~G6 零漂移,STOP 未触发**(只读,零代码/零数据/零 schema;错误路径与不可复验项原样入账;Guardian only,不参与 M4/M5 代码实现);令前保持零新数据动作 |
-| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | V3 `origin/main` = **`72af28d`**(本轮亲验,未前进,远端零身份链代码);**V3 本地工作树 = untracked Consumer 实现**(core 五模块 M1–M5 全落树:`manifest_identity` / `raw_bytes_identity` / `ir_identity` / `identity_verifier` / `identity_gate`;测试 15 件含 `test_adversarial_m5_round1/round2.py`;本轮窗口内 M5 3602→4391 B + 两新测试 + `REPORT-PHASE2-M4` 文档,untracked docs 9→10;合法写面);**M5 未集成真实链(runner_b2 零调用)**;遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 |
+| **DSH** | kurt-wong/Aitutors-preprocessing | Source Evidence Producer(输入事实生产:OCR/Annotation/Source Version)+ **Frozen Baseline Guardian** | **DEC-043 对 DEC-042 的对抗性审查:结论全部维持且加强,4 项自我更正(撤回 DB 根因归因/errors 非基线/计数证伪/642 巧合已解释)+ 新 discrepancy D5,STOP 未触发**(只读;自我错误原样入账并撤回/更正;不可复现机制写 UNKNOWN;Guardian only,不参与 M4/M5 代码实现);令前保持零新数据动作 |
+| **Claude** | kurt-wong/AITutors-v3 | 教学系统构建(Resolver/IR/Authority/Admission) | V3 `origin/main` = **`72af28d`**(DEC-043 亲验,未前进,远端零身份链代码);**V3 本地工作树 = untracked Consumer 实现**(core 五模块 M1–M5 全落树;测试 14 件含 `test_adversarial_m5_round1/round2.py`;untracked 实测 **9 docs + 5 core + 14 tests = 28**〔DEC-043 F-3 更正 DEC-042 计数〕;合法写面);**M5 未集成真实链(runner_b2 零调用)**;设计/接口偏离待收口 = D1~D5;遗留:R5-03 DEC 编号冲突 + DEC-017/018 同步 |
 
 ## P3.2 / EB-004 终局(VERIFIED)
 

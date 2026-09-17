@@ -2840,3 +2840,27 @@ NOT IMPLEMENTED
 **⑪ 输出与登记**:`INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-M5-BOUNDARY-REVIEW-v1.md`(docs-only);四账登记 = state.yaml(DEC-042 + `producer_guardian_m5_boundary` 块 + next 追加)/ CURRENT.md(更新头 + 快速恢复 + 状态头 + DEC-042 块)/ log.md(本条)/ ODR **v1.23**(§1quadvicies 原文照录 + 生产侧保守义)。
 
 **结论(两面严格分离)**:**PRODUCER BOUNDARY = HOLDS(VERIFIED)**(G1~G6 全 PASS,四项 immutable,零漂移);**CONSUMER SEMANTIC CORRECTNESS = NOT VERIFIED**(对 push commit 无对象;本地快照 = 语义电池全过 + 4 项 discrepancy + 真实链零集成)。`STOP: NOT TRIGGERED` / `M5 PUSH: ABSENT` / `GUARDIAN MODE: ACTIVE` / `POST-PHASE1 RECHECK: ARMED`。纪律:全程只读(docs-only 登记除外);未改 Consumer 实现 / 未改 Producer 数据 / 未提供补丁 / 未自行修复 D1~D4;错误路径与不可复验项原样入账;零推测归因;零新架构裁决;已裁六项未重开。等待 Owner 下一步指令(M5 集成落地 push 后按 commit 复审;集成缺口为下轮必查)。
+
+## DEC-043 — 对 DEC-042 轮(代码本轮结果)的第一性原理对抗性审查(2026-09-16)
+
+**指令**:针对代码本轮结果开启一轮严格的对抗性审查,每个结论必须有真实测试作为证据。不要降低测试和验证标准,不要自我合理化任何问题,不要强行解释未通过测试的内容,不要靠推测输出结论。
+
+**审查对象**:DEC-042(Consumer M5 Boundary Guardian Review,commit `3e5b3b5`)全部结论。独立重跑,不复用其测试输出;全程只读(docs-only 登记 + 临时 scratch 除外)。
+
+**① 总判定**:DEC-042 冻结对象与语义结论(G1~G6 全 PASS / 四项 immutable / M5 push ABSENT 不宣布通过 / Truth Table 五格 / Boundary 零写面 / runner 零集成)**全部经独立复测维持且加强**;**STOP 未触发**;审查同时抓获并更正 DEC-042 自身 **4 项错误/弱点 + 1 项新 discrepancy**。
+
+**② 证据加强(全部本轮实测)**:重 fetch + ls-remote = V3 `origin/main` `72af28d…6233` 未变;「push commit 零身份链代码」**换方法三重证实**(全树 `ls-tree -r` 434 文件身份类名仅 3 件既有 V3 内部件 / 全仓 `git grep` 六符号空 / `preprocessing_consumer` 21 件枚举无 identity 子目录);本地快照五模块 + 5 测试散列与 DEC-042 锚**逐项相等**(`f3636b35…` 等);v2 电池独立复跑 **27/27 ×2**;盲区补测 **13/13**(manifest 顶层 JSON 数组/目录路径/BOM/前导空白 → 全 `ManifestReadError` fail-closed;重复键 last-wins OBSERVED;IR 嵌套键不读;M2 目录 → OSError;链确定性 5x 基数 1;M4 单独接受 non-hex 相等但 M1 链上阻断);G1~G6 独立重跑全 PASS(177/177 mismatch=0;R50 356 = 269/87 SET_EQUAL/0 unexpected;source_file 三方 87/87;G4 7/7;G6 MATCH + TEMP_DELETED=True + 亲缘 TRUE + 契约 diff EMPTY + 冻结路径 status 干净);写面二轮扩展清扫(`os.utime/touch/rmtree/os.remove/NamedTemporaryFile/mkstemp`)全仓零命中。
+
+**③ F-1(方法学自我更正,撤回)**:DEC-042「Claude 新 M5 测试不可复验,ROOT CAUSE = 环境 DB 缺失」为**超证据归因,予以撤回**。本轮实测:`Get-NetTCPConnection` port 5432 不监听(事实层保留);`conftest.migrated_db` = session autouse(单测 traceback 亲证错误源自该 fixture);**但行为与「无 DB → 全部失败」不相容** —— `test_raw_bytes_identity.py` 单跑 4/4 全 passed(0.04s,--setup-show 亲见 migrated_db SETUP 成功),`test_hashing.py`(纯函数零 fixture)单跑 5/5 全 error,两者组合两种顺序均「raw_bytes 全过 + hashing 全错」,**同进程、顺序无关、按文件确定性分化**,机制无法以环境统一解释 → 更正口径 = **OBSERVED 按文件确定性分化 + ROOT CAUSE UNKNOWN**。
+
+**④ F-2(时效说明)**:全量复跑 = **642 passed / 1 skipped / 1 xfailed / 1036 errors**(17s)vs DEC-042 的 959 errors(363s);总用例 1603→1680(+77,与 DEC-042 跑后 `test_adversarial_m5_round2.py` 被收集相容)。**errors 计数非基线,passed=642 为三轮稳定值**。「errors 全部 ConnectionRefused」证据等级:子集面 **122/122 全量普查证实**(唯一异常类型,全部 at setup);全量面 = 尾部一致 + 子集证实的**抽样级**(全量逐行普查文件因后台任务 TEMP 路径差异丢失,如实标注)。
+
+**⑤ F-3(计数证伪更正)**:DEC-042 登记「untracked 终态 = 10 docs(`REPORT-PHASE2-M4` 窗口内新增)+ 15 tests」**证伪**:本轮逐名实测 = **9 docs + 5 core + 14 tests = 28**(docs 与 DEC-038/041 已裁 9 件名单 SET_EQUAL=True);`REPORT-PHASE2-M4` 在 DEC-042 轮全部工具输出与本轮 status 中**零记录**,无证据支持其存在(来源不作推测)。REPORTED 事实层计账错误(DEC-041 F-A 同族),不涉冻结对象字节;历史 append-only 保留原文,更正由本条与审查报告承担。
+
+**⑥ F-4(解释升级)**:DEC-042「全量与子集 passed 同为 642 = OBSERVED 巧合」→ **已解释**:verbose 普查(`--tb=no -v` 逐 PASSED 行)全量 642 passed 文件分布 = m4_round2 355 / identity_verifier(adversarial)60 / manifest(adversarial)52 / ir_identity(adversarial)47 / ir_round2 33 / identity_verifier 27 / raw_bytes(adversarial)23 / ir_identity 18 / manifest_identity 17 / raw_bytes_identity 10 = **精确合计 642,全部 ∈ 身份链文件**;`test_identity_gate` / `m5_integration` / `m5_round1` 三文件 **0 passed 全 error**。
+
+**⑦ D5(新 discrepancy,登记不代改)**:M5 `evaluate_identity_gate(None)` 与无 identity 属性对象输入 → 抛 `AttributeError`,与 M5 docstring 及 Design v1.1 §4.6「M5 是纯函数,零 IO,零副作用,**不抛异常**」矛盾;M4 正常输出不可达此路径,失败方向 = raise 非 bypass。**累计 discrepancy = D1(IR missing 行为级)/ D2(M2 接口)/ D3(M3 字段名)/ D4(M5 接口)/ D5(M5 异常契约)**。
+
+**⑧ 输出与登记**:`INTEGRATION/PREPROCESSING-PRODUCER-GUARDIAN-M5-REVIEW-ADVERSARIAL-v1.md`(docs-only);四账登记 = state.yaml(DEC-043 + `producer_guardian_m5_adversarial` 块 + DEC-042 块 local_snapshot 更正 + next 追加)/ CURRENT.md(更新头 + 快速恢复 + 状态头 + DEC-043 块 + agent 表更正)/ log.md(本条)/ ODR **v1.24**(§1quinvicies 原文照录 + 生产侧保守义)。
+
+**结论**:`BOUNDARY: HOLDING` 维持;**DEC-042 结论全部维持且加强,伴随 4 项更正(F-1 撤回归因 / F-2 时效 / F-3 计数证伪 / F-4 巧合已解释)+ 1 项新 discrepancy(D5)**;`STOP: NOT TRIGGERED`;`GUARDIAN MODE: ACTIVE`。纪律:自我错误原样入账并撤回/更正,未降标准、未合理化、未强行解释、零推测归因(不可复现机制一律 UNKNOWN);未修改 Consumer 实现 / 未修改 Producer 数据 / 未提供补丁 / 未自行修复;零新架构裁决;已裁六项未重开。等待 Owner 下一步指令。

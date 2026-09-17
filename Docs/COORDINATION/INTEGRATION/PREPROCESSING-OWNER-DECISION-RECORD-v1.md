@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.23(2026-09-16,追加 §1quadvicies Consumer M5 Boundary Guardian Review DEC-042:M5 未 push 不宣布通过,本地快照语义电池 27/27 PASS + 4 项 discrepancy + 集成缺口,G1~G6 零漂移;v1.22 = §1tervicies 对抗性审查 DEC-041;v1.21 = §1bisvicies Phase 2-M4)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-034]`(§1sexdecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-035]`(§1septendecies;与 V3 侧 DEC-035 撞号,已知 R5-03 面)+ `[DEC-036]`(§1octodecies;与 V3 侧 DEC-036 撞号,已知 R5-03 面)+ `[DEC-037]`(§1undevicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-038]`(§1vicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-039]`(§1semelvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-040]`(§1bisvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-041]`(§1tervicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-042]`(§1quadvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized` / `.producer_baseline_archive_final` / `.producer_baseline_guardian` / `.producer_guardian_phase1`
+> Status: **v1.24(2026-09-16,追加 §1quinvicies 对 DEC-042 轮的对抗性审查 DEC-043:结论全部维持且加强,4 项自我更正(含撤回 DB 根因归因),1 项新 discrepancy D5;v1.23 = §1quadvicies M5 Boundary Review DEC-042;v1.22 = §1tervicies DEC-041;v1.21 = §1bisvicies Phase 2-M4)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-034]`(§1sexdecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-035]`(§1septendecies;与 V3 侧 DEC-035 撞号,已知 R5-03 面)+ `[DEC-036]`(§1octodecies;与 V3 侧 DEC-036 撞号,已知 R5-03 面)+ `[DEC-037]`(§1undevicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-038]`(§1vicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-039]`(§1semelvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-040]`(§1bisvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-041]`(§1tervicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-042]`(§1quadvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-043]`(§1quinvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized` / `.producer_baseline_archive_final` / `.producer_baseline_guardian` / `.producer_guardian_phase1`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -890,6 +890,23 @@
 | ⑪ pytest | 全量 642 passed / 959 errors(全部 = 环境无 PostgreSQL 的 ConnectionRefused at setup,原样入账);身份链子集 642 passed / 122 errors(同因,Claude 新 M5 测试不可复验,ROOT CAUSE = 环境 DB 缺失);自建电池 27/27 |
 | ⑫ 移动目标 | 审查期间 `identity_gate.py` 3602→4391 B(+值域白名单 fail-closed)、两个新测试文件出现 —— 原样入账,动态结论锚定 `f3636b35…` 快照;此即"必须以 push commit 为对象"的实证 |
 | 纪律 | 全程只读(docs-only 登记除外);未改 Consumer 实现 / 未改 Producer 数据 / 未提供补丁 / 未自行修复 D1~D4;零新架构裁决;已裁六项未重开 |
+
+### §1quinvicies 对 DEC-042 轮(代码本轮结果)的第一性原理对抗性审查(DEC-043,Owner 原文照录 2026-09-16)
+
+> 针对代码本轮结果开启一轮严格的对抗性审查,每个结论必须有真实测试作为证据。不要降低测试和验证标准,不要自我合理化任何问题,不要强行解释未通过测试的内容,不要靠推测输出结论。
+
+### §1quinvicies 生产侧保守义(DSH 解释,非裁决;执行详件 = `PREPROCESSING-PRODUCER-GUARDIAN-M5-REVIEW-ADVERSARIAL-v1.md`)
+
+| 检查 | 结果 |
+|---|---|
+| ① 总判定 | DEC-042 冻结对象与语义结论(G1~G6 / 四项 immutable / M5 push ABSENT / Truth Table 五格 / 零写面 / runner 零集成)**全部复测维持且加强**;STOP 未触发 |
+| ② 证据加强 | push commit 零身份链代码换方法三重证实(`ls-tree -r` 434 文件 / 全仓 `git grep` / preprocessing_consumer 枚举);v2 电池 27/27 复现 ×2;盲区补测 13/13(manifest 顶层非对象/目录/BOM/前后空白全 fail-closed;IR 嵌套键不读;链确定性 5x);本地快照五模块散列与 DEC-042 锚逐项相等 |
+| ③ F-1(撤回) | DEC-042「ROOT CAUSE = 环境 DB 缺失」= **超证据归因,撤回**:实测 port 5432 不监听(事实),但同进程内 `migrated_db` 按文件确定性分化(`test_hashing` 5/5 全错 / `test_raw_bytes` 4/4 全过,顺序无关,--setup-show 亲证 fixture 归属),机制不可复现 → 更正为 **OBSERVED 分化 + ROOT CAUSE UNKNOWN** |
+| ④ F-2(时效) | errors 959→1036(总用例 1603→1680,增量相容 `m5_round2` 被收集);errors 计数**非基线**,passed=642 三轮稳定;子集 122/122 errors 全量普查唯一异常类型 = ConnectionRefusedError at setup(证实),全量面维持抽样级证据 |
+| ⑤ F-3(证伪) | DEC-042 untracked 记「10 docs(REPORT-PHASE2-M4 新增)+ 15 tests」错误:实测 **9 docs + 5 core + 14 tests = 28**(docs 与已裁 9 件名单 SET_EQUAL=True);REPORT-PHASE2-M4 在全部工具输出零记录,不推测来源 |
+| ⑥ F-4(升级) | 「642==642 巧合 OBSERVED」→ 已解释:verbose 普查全量 passed 642 **精确来自 10 个身份链文件合计 642**(m4_round2 355 等;m5_integration/m5_round1/identity_gate 三文件 0 passed 全 error) |
+| ⑦ D5(新 discrepancy) | M5 对 None/无 identity 对象输入抛 `AttributeError`,与 M5 docstring 及 Design v1.1 §4.6「不抛异常」矛盾(M4 正常输出不可达;失败方向 = raise 非 bypass);登记不代改;累计 D1~D5 |
+| 纪律 | 全程只读(docs-only 登记 + 临时 scratch 除外,轮末清理);未改 Consumer 实现 / 未改 Producer 数据 / 未提供补丁 / 未自行修复;自我错误原样入账并撤回/更正;不可复现机制写 UNKNOWN 零推测;已裁六项未重开 |
 
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 
