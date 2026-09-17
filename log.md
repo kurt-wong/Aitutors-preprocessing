@@ -2915,3 +2915,27 @@ NOT IMPLEMENTED
 **⑥ 输出与登记**:纯 docs 轮;四账登记 = ODR **v1.26**(§1octovicies 原文照录 + 生产侧保守义表)/ state.yaml(decisions DEC-046 + `producer_guardian_self_audit.owner_ruling/status` + next 追加)/ CURRENT.md(更新头 + 快速恢复 + 指令链 + 状态头 + DEC-046 块 + D-045 ⑤ 标注)/ log.md(本条)。commit SHA 提交后回填惯例(结构性,DEC-045 S-5 同族)。
 
 **结论**:`BOUNDARY: HOLDING` / `GUARDIAN: ACTIVE` / `OWNER ATTENTION: WAIT` / `NO SELF-FIX`;D-045-1~4 = DEFERRED;DEC-044 Closure Review 挂起待 Claude push exact SHA(本地五模块 hash 不作最终审计对象);`STOP: NOT APPLICABLE`。纪律:本轮零执行动作、零修复、零 Consumer/Producer 触碰;DSH 推荐未被采纳不构成遗留——裁定本身即终态。等待 Claude push。
+
+---
+
+## 2026-09-17 · DEC-047 = DEC-044 Consumer Boundary Closure Guardian Review 执行完成(ODR v1.27 §1noviesvicies)
+
+**Owner 指令(原文要点)**:『Exact V3 commit SHA: 6c4e3ff,进入下一轮:**Consumer Boundary Closure Guardian Review**。本轮重点从 Producer-only Guardian 扩展到:在 Claude 实际提交的 V3 Consumer commit 上,独立验证 Producer Boundary + Consumer Semantic Boundary。仍然保持:只读;独立复测;不替 Claude 修改;不修改 Producer;不修改 Frozen Contract;不用 Claude 的测试输出代替自己的证据;无证据不得推断 root cause。』+ 十项执行要点(亲验 / G1–G6 / M3 专项 / M5-D5 专项 / 真实 Runner / bypass A–F / 四不变量 / Authority 分离 / mutation 双证据 / 严格分层)。关键问题 = 真实 V3 执行链中,任何未经 Identity+Semantic 双重验证的数据,是否绝对无法进入 semantic Gate/Admission。
+
+**① 对象锁定**:ls-remote 亲验 V3 `refs/heads/main` = **`6c4e3ffd65db50d9522a62db094cf26d3b9cab30`**;独立临时克隆审查(V3 工作区零写入,不用本地 untracked 作最终证据);commit = M1–M5 五模块 + **runner_b2.py 集成** + 16 测试(21 files/+6,058);五模块 hash == DEC-045 本地观察锚(gate `13812a74e12b3fe9`/5707B · ir `1e9ab5fdd7e1fd5f`/4306B · verifier `1306105c6c3d2b8b` · manifest `1ca33a45a101de8c` · raw `803c4ed8a93f59b5`)—— 漂移解除,本地终态即 push 终态;Frozen Contract 从 `f4941ff` cmd 重导 = 92,197B / `9c6b9063…7528` MATCH;`f4941ff ⊂ 6c4e3ff` TRUE;契约 diff EMPTY。
+
+**② Producer G1–G6(独立复测)**:C1–C9 全 PASS overall **VERIFIED**(canonical final-check scratch 重跑);R50 356 活测 = **269 MATCH / 87 DRIFT(SET_EQUAL)/ 0 missing**;工件 4/4 MATCH(step1 `b4f14524…`/step2 `d430cc2f…`/R50 `963cd6b1…`/final-check `a707738e…`)+ G3 resolver_ir `fbcf41ab…b04a5`;canonical pytest **338 passed / 1 xfailed**;source_file 87/87;四项 immutable 成立。
+
+**③ M1–M5(全部 DSH 自采证据)**:M1/M3 行为矩阵(M1 9 项 / M3 20 项)全 fail-closed;**malformed IR → IRReadError → runner 记 ir_error + ir_sha=None → PENDING → 最终闸门 BLOCK**(核对 Contract §5.6.2 fail-closed,Owner「不默认接受 PENDING 归类」专项应答 = 闸门结果为 BLOCK);M4 str/None 域 343 组合零抛异常;M5 Truth Table 五格 + 对抗 19 项(None/缺属性/错型×5/白名单外/伪枚举/非 str custom `__eq__`/恒 True EvilStr/mismatches 畸形)全 BLOCK 或受控 PASS + 混沌 100 零抛 —— **D1 CLOSED、D5 CLOSED**;D2(D2 接口面)/D3(命名)/D4(接口面;语义部分 Owner Truth Table 生效,design §4.6 文本被超越待 v1.2 收口)**OPEN 不代改**。
+
+**④ 真实链攻击(spy 计数,攻击 run_corpus 真实入口)**:A manifest mismatch / B raw bytes mismatch / C IR missing / D IR stale / E IR malformed / F sha 缺失 = **六攻击全 BLOCK**;spy(`async_session_maker`/`_run_full_chain`/`Compiler`/`IRBuilder.build`/`evaluate`/`build_payload`/`SnapshotRepository`)**全 0**;PASS 控制组(三方全匹配)= gate PASS + session=1 + full_chain=1,证明门为下游唯一通道;四不变量五格独立复现全 ✅;IR mismatch → VERIFIED+PENDING→BLOCK 无 bypass ✅;Authority 分离(IR 不进 identity 轴 / path 不进 M1 / 同字节异路径同 sha)全 ✅。真实语料:`reslice-p2-b1` 38/38 identity_blocked(无 IR / 真实 resolver IR 双跑);接口面三目录 88/88 blocked(87 = VERIFIED+PENDING,1 = FAILED 恰为面外第 88 份)。
+
+**⑤ 新登记**:D-044-1 **WARNING-hardening** = 选择性 `__eq__` 的 str 子类实测可伪造 M5 PASS(garbage 值过白名单;真实链输入源 = M4 字面常量,威胁有限;建议 `type(x) is str`;登记不代修);D-044-2 NOTE = batch IR `files` 非 list 静默 None(非 IRReadError,outcome 仍 BLOCK);**O-1 OBSERVATION** = resolver IR 绝对路径 locator(`reslice-batch-C\…`)与 manifest `source_file`(`Ocr-markdown\会考\…`)不一致 → 真实数据 semantic availability 不可达(71 ADMITTED 全落 PENDING)—— fail-closed 安全侧、无 bypass,可用性归 Claude 处置,不猜其余根因。
+
+**⑥ Producer Mutation**:静态 = `app/core/` 写操作符号零命中、consumer 面仅 4 处报告输出(全落 DSH 临时区);动态 = R50 356 键面 + p2-b1 114 树三轮真实链执行前后 **drift 0 / 增删 0**;Papers 工作树前后干净;canonical pytest 复跑零写。
+
+**⑦ 分层结论**:Producer Boundary **VERIFIED** / M1 **VERIFIED** / M2 **VERIFIED**(D2 接口面 OPEN)/ M3 **VERIFIED**(D3 OPEN)/ M4 **VERIFIED** / M5 **VERIFIED**(D4 接口面 OPEN + D-044-1)/ Consumer System Boundary **VERIFIED(scoped = runner_b2 语料摄入链;runner.py 报告器 / runner_b3 实验 / p32 实验 / gate_b 探针未门控 = NOTE,非语料摄入链)** / Real Runner Bypass **PASS** / Producer Mutation **PASS** / **STOP NOT TRIGGERED**(Producer 与 Frozen Boundary 零破坏;遗留全为 Consumer correctness/接口面,严格分账)。关键问题应答 = **是**(spy 计数证据)。环境限制如实登记:PASS 路径 DB 层实际执行未活体验证(DB down,S-2 既有);D-045-4 维持 DEFERRED。
+
+**⑧ 登记与输出**:详件 = `Docs/COORDINATION/INTEGRATION/PREPROCESSING-CONSUMER-BOUNDARY-CLOSURE-REVIEW-v1.md`;四账 = ODR **v1.27**(§1noviesvicies)/ state.yaml(decisions DEC-044 execution + **DEC-047** + next)/ CURRENT.md(头 + 快速恢复 + 指令链 + 观测值 + 状态头 + DEC-047 块 + Closure 行)/ log.md(本条);schema 测试 9 passed。纪律:全程只读(docs-only 登记除外);未修改 Producer / V3 Consumer / Frozen Contract;未提供补丁;NO SELF-FIX;已裁六项未重开;DSH 攻击产物仅落临时区不入 Producer 面。commit SHA 提交后回填惯例(结构性)。
+
+**结论**:`BOUNDARY: HOLDING` / `GUARDIAN: ACTIVE` / `DEC-044 CLOSURE REVIEW: COMPLETE` / `CONSUMER SYSTEM BOUNDARY: VERIFIED (scoped)` / `STOP: NOT TRIGGERED`;下一步 = 等 Owner/Claude 对 D2/D3/D4 接口面、D-044-1/2、O-1 的处置指令。
