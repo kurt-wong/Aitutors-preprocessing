@@ -2895,3 +2895,23 @@ NOT IMPLEMENTED
 **⑦ 输出与登记**:`INTEGRATION/PREPROCESSING-DSH-SELF-ADVERSARIAL-AUDIT-v1.md`(七章节示范);四账登记 = state.yaml(DEC-044 pending + DEC-045 + `producer_guardian_self_audit` 块 + next)/ CURRENT.md / log.md / ODR v1.25。scratch 轮末清理。
 
 **结论**:**数据面零遗留**(基线全部复测 PASS 零漂移);**流程面遗留 3 类已登记**(攻击套件复跑面 / DEC-014 格式缺口 / 更正回指机制)。`BOUNDARY: HOLDING`;DEC-044 Closure Review 挂起待 Claude push exact SHA(未 push 不判 Consumer Boundary Verified);`GUARDIAN MODE: ACTIVE`。纪律:V3 仓零写入;未改 Consumer 实现/未改 Producer 数据;自我错误(S-3)与子代理误报(R-3)原样入账;零推测。等待 Owner 裁决 D-045-1~4 与 Claude push。
+
+---
+
+## 2026-09-16 — DEC-046:Owner 对 DEC-045 自审结果的裁定与执行冻结(原文照录 ODR v1.26 §1octovicies)
+
+**Owner 指令(原文要点)**:『本轮 DSH 自审结果已收到。当前裁定:**暂不修复 D-045-1～D-045-4。** 原因不是这些问题不存在,而是当前均不构成 Consumer Boundary Closure 的阻塞项;现在修改审计基础设施会干扰正在进行的 Claude Consumer 集成审查。』;D-045-4 另记『DEFERRED,保留待执行,不影响当前 Producer Guardian 结论』;末尾钉四行:`BOUNDARY: HOLDING` / `GUARDIAN: ACTIVE` / `OWNER ATTENTION: WAIT` / `NO SELF-FIX`。
+
+**① 裁定内容(全部照录入册,DSH 零自选动作)**:D-045-1 attacks 独立 ini —— 暂缓;D-045-2 今后轮次强制七章节 —— 暂缓;D-045-3 更正回指规则入 PROTOCOL —— 暂缓;D-045-4 DB 恢复后攻击套件复验 —— 登记 DEFERRED 保留待执行。DSH DEC-045 轮推荐项(C/是/是)未成为执行令,登记保留不实施。
+
+**② 维持状态(Owner 明列)**:Guardian Mode = ACTIVE;Producer Boundary = HOLDING;Producer frozen objects = READ ONLY;不修改 Producer;不修改 V3 Consumer;不提供补丁;**不自行修复 discrepancy(NO SELF-FIX)**。本轮为纯登记轮:零代码、零数据动作、零 Consumer 写入、零冻结对象字节变化(STOP = NOT APPLICABLE)。
+
+**③ Producer 核心证据继续有效(Owner 明列)**:G1/G2 177/177;R50 356 活测;source_file 87/87;evidence 8/8;G6 PASS;canonical 338 passed / 1 xfailed;Producer mutation = 0 —— 即 DEC-045 全部基线复测结论经 Owner 确认有效。
+
+**④ 唯一优先任务(Owner 十一步清单照录)**:等待 Claude 完成 Consumer Boundary Closure 并 push exact V3 commit;收到后:1 ls-remote 亲验;2 以该 commit 为唯一 Consumer 审查对象;3 重执行 Producer G1–G6;4 检查 Producer immutable;5 审查 M1–M5;6 重点攻击真实 Runner;7 验证 M5 BLOCK 后 Compiler/Gate/Admission/Materialization 均不执行;8 验证 `VERIFIED + PENDING = BLOCK`;9 验证 stale IR / missing IR / invalid Manifest / raw bytes mismatch;10 检查 Consumer 是否存在 Producer 写路径;11 明确区分 Producer Boundary 与 Consumer Semantic Boundary。
+
+**⑤ 本地锚纪律(Owner 特别注意)**:『不得使用当前本地 V3 五模块 hash 作为最终审计对象』——DSH 已检出本地 `identity_gate`/`ir_identity` 与历史锚漂移(DEC-045 ④),此为『Consumer 审计必须以 Claude push 后的 exact remote commit 为对象』的再实证;Claude push 之前,不做 Consumer Closure 结论。
+
+**⑥ 输出与登记**:纯 docs 轮;四账登记 = ODR **v1.26**(§1octovicies 原文照录 + 生产侧保守义表)/ state.yaml(decisions DEC-046 + `producer_guardian_self_audit.owner_ruling/status` + next 追加)/ CURRENT.md(更新头 + 快速恢复 + 指令链 + 状态头 + DEC-046 块 + D-045 ⑤ 标注)/ log.md(本条)。commit SHA 提交后回填惯例(结构性,DEC-045 S-5 同族)。
+
+**结论**:`BOUNDARY: HOLDING` / `GUARDIAN: ACTIVE` / `OWNER ATTENTION: WAIT` / `NO SELF-FIX`;D-045-1~4 = DEFERRED;DEC-044 Closure Review 挂起待 Claude push exact SHA(本地五模块 hash 不作最终审计对象);`STOP: NOT APPLICABLE`。纪律:本轮零执行动作、零修复、零 Consumer/Producer 触碰;DSH 推荐未被采纳不构成遗留——裁定本身即终态。等待 Claude push。

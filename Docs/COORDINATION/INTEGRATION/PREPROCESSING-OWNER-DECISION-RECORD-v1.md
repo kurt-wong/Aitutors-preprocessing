@@ -1,7 +1,7 @@
 # OWNER DECISION RECORD v1 — Integration Contract B1/B2/B3
 
-> Status: **v1.25(2026-09-16,追加 §1sexvicies Closure Guardian Review DEC-044(登记挂起待 push)+ §1septenvicies DSH 自身全任务对抗性自审 DEC-045(完成:基线全 PASS 零漂移 + 0 BLOCKER/5 WARNING/5 NOTE + 存量修复 5 处);v1.24 = §1quinvicies DEC-043;v1.23 = §1quadvicies DEC-042;v1.22 = §1tervicies DEC-041)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
-> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-034]`(§1sexdecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-035]`(§1septendecies;与 V3 侧 DEC-035 撞号,已知 R5-03 面)+ `[DEC-036]`(§1octodecies;与 V3 侧 DEC-036 撞号,已知 R5-03 面)+ `[DEC-037]`(§1undevicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-038]`(§1vicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-039]`(§1semelvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-040]`(§1bisvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-041]`(§1tervicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-042]`(§1quadvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-043]`(§1quinvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-044]`(§1sexvicies;Closure Review,登记挂起待 push)+ `[DEC-045]`(§1septenvicies;DSH 自审)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized` / `.producer_baseline_archive_final` / `.producer_baseline_guardian` / `.producer_guardian_phase1`
+> Status: **v1.26(2026-09-16,追加 §1octovicies DEC-046 自审裁定与执行冻结:D-045-1~4 全部暂缓 + NO SELF-FIX + 唯一优先任务 = 等 Claude push 后 DEC-044;v1.25 = §1sexvicies DEC-044 + §1septenvicies DEC-045;v1.24 = §1quinvicies DEC-043;v1.23 = §1quadvicies DEC-042;v1.22 = §1tervicies DEC-041)** · Authority: Owner 直接指令(聊天原文,DSH 自记)
+> Ledger anchor: `state.yaml.decisions[DEC-019]`(总纲)+ `[DEC-020]`(DEC-B1 分项)+ `[DEC-021]`(§1ter)+ `[DEC-022]`(§1quater)+ `[DEC-023]`(§1quinquies)+ `[DEC-024]`(§1sexies)+ `[DEC-025]`(§1septies)+ `[DEC-026]`(§1octies)+ `[DEC-027]`(§1novies)+ `[DEC-028]`(§1decies)+ `[DEC-029]`(§1undecies)+ `[DEC-030]`(§1duodecies)+ `[DEC-031]`(§1tredecies;与 V3 侧 DEC-031 撞号,已知 R5-03 面)+ `[DEC-032]`(§1quaterdecies;与 V3 侧 DEC-032 撞号,已知 R5-03 面)+ `[DEC-033]`(§1quindecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-034]`(§1sexdecies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-035]`(§1septendecies;与 V3 侧 DEC-035 撞号,已知 R5-03 面)+ `[DEC-036]`(§1octodecies;与 V3 侧 DEC-036 撞号,已知 R5-03 面)+ `[DEC-037]`(§1undevicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-038]`(§1vicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-039]`(§1semelvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-040]`(§1bisvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-041]`(§1tervicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-042]`(§1quadvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-043]`(§1quinvicies;与 V3 侧编号潜在撞号,已知 R5-03 面)+ `[DEC-044]`(§1sexvicies;Closure Review,登记挂起待 push)+ `[DEC-045]`(§1septenvicies;DSH 自审)+ `[DEC-046]`(§1octovicies;自审裁定/执行冻结)+ `state.yaml.integration_contract.owner_decision_b1b3` / `.owner_interface_finalization` / `.owner_interface_revision` / `.owner_contract_freeze_review` / `.owner_contract_freeze_finalization` / `.owner_step1_step2_execution` / `.owner_contract_freeze_closeout` / `.owner_freeze_confirmation` / `.owner_freeze_final_audit` / `.owner_freeze_object_verification` / `.owner_freeze_remote_verification` / `.owner_contract_frozen` / `.producer_baseline_finalized` / `.producer_baseline_archive_final` / `.producer_baseline_guardian` / `.producer_guardian_phase1`
 > Purpose: 裁决原文固化,作为 Producer Readiness / Implementation Gap List / Execution Dependency Map 的唯一裁决基准。本文件不新增裁决内容;凡本文件未载,均为未裁。
 > 分项裁决计划:Owner 以 DEC-B1 / DEC-B2 / DEC-B3 分项下达,依序追加于本文件 §1bis 起。
 
@@ -946,6 +946,110 @@
 | 存量修复 | 5 处(报告 A 勘误指针 / state.yaml 行内 F-1 指针 / CURRENT.md 归属修正 / conftest 复跑命令落字 / 指令链补 294c7fe);历史文本零删改 |
 | Owner Decision Points | D-045-1 攻击套件治理(推荐 attacks 独立 ini)/ D-045-2 今后轮次强制七章节(推荐 是)/ D-045-3 更正回指规则入 PROTOCOL(推荐 是)/ D-045-4 DB 恢复后攻击套件复验是否下令 |
 | 纪律 | V3 仓零写入;未改 Consumer 实现 / Producer 数据;自我错误与子代理误报原样入账;不可复现机制写 UNKNOWN |
+
+### §1octovicies DEC-045 自审裁定与执行冻结(DEC-046,Owner 原文照录 2026-09-16)
+
+> 本轮 DSH 自审结果已收到。
+>
+> 当前裁定:
+>
+> **暂不修复 D-045-1～D-045-4。**
+>
+> 原因不是这些问题不存在,而是当前均不构成 Consumer Boundary Closure 的阻塞项;现在修改审计基础设施会干扰正在进行的 Claude Consumer 集成审查。
+>
+> ## 当前状态
+>
+> 继续保持:
+>
+> * Guardian Mode = ACTIVE
+> * Producer Boundary = HOLDING
+> * Producer frozen objects = READ ONLY
+> * 不修改 Producer
+> * 不修改 V3 Consumer
+> * 不提供补丁
+> * 不自行修复 discrepancy
+>
+> 本轮 Producer 核心证据继续有效:
+>
+> * G1/G2 177/177
+> * R50 356 活测
+> * source_file 87/87
+> * evidence 8/8
+> * G6 PASS
+> * canonical 338 passed / 1 xfailed
+> * Producer mutation = 0
+>
+> ## 对 D-045-1～D-045-4 的处理
+>
+> ### D-045-1 attacks 独立 ini
+>
+> 暂缓。
+>
+> ### D-045-2 今后轮次强制七章节
+>
+> 暂缓。
+>
+> ### D-045-3 更正回指规则进入 PROTOCOL
+>
+> 暂缓。
+>
+> ### D-045-4 DB 恢复后攻击套件复验
+>
+> 登记为 DEFERRED,保留待执行,不影响当前 Producer Guardian 结论。
+>
+> ## 当前唯一优先任务
+>
+> 等待 Claude 完成 **Consumer Boundary Closure** 并 push exact V3 commit。
+>
+> 收到 exact commit 后:
+>
+> 1. ls-remote 亲验;
+> 2. 以该 commit 为唯一 Consumer 审查对象;
+> 3. 重新执行 Producer G1–G6;
+> 4. 检查 Producer immutable;
+> 5. 审查 M1–M5;
+> 6. 重点攻击真实 Runner;
+> 7. 验证 M5 BLOCK 后 Compiler/Gate/Admission/Materialization 均不执行;
+> 8. 验证 `VERIFIED + PENDING = BLOCK`;
+> 9. 验证 stale IR / missing IR / invalid Manifest / raw bytes mismatch;
+> 10. 检查 Consumer 是否存在 Producer 写路径;
+> 11. 明确区分 Producer Boundary 与 Consumer Semantic Boundary。
+>
+> 特别注意:
+>
+> **不得使用当前本地 V3 五模块 hash 作为最终审计对象。**
+>
+> DSH 已经发现本地:
+>
+> * identity_gate
+> * ir_identity
+>
+> 与历史锚存在漂移。
+>
+> 这进一步证明:
+>
+> > **Consumer 审计必须以 Claude push 后的 exact remote commit 为对象。**
+>
+> 在 Claude push 之前,不做 Consumer Closure 结论。
+>
+> 当前保持:
+>
+> `BOUNDARY: HOLDING`
+> `GUARDIAN: ACTIVE`
+> `OWNER ATTENTION: WAIT`
+> `NO SELF-FIX`
+
+### §1octovicies 生产侧保守义(DSH 解释,非裁决)
+
+| 项 | 结果 |
+|---|---|
+| D-045-1~3 | **暂缓(DEFERRED,不修复)**——理由照录:非 Consumer Boundary Closure 阻塞项;现在修改审计基础设施会干扰正在进行的 Claude Consumer 集成审查。DSH 推荐(C/是/是)未被采纳为执行令,登记保留 |
+| D-045-4 | **登记 DEFERRED,保留待执行**(DB 恢复后攻击套件复验);不影响当前 Producer Guardian 结论 |
+| 维持状态 | Guardian Mode ACTIVE / Boundary HOLDING / frozen objects READ ONLY / 不修改 Producer / 不修改 V3 Consumer / 不提供补丁 / **NO SELF-FIX(不自行修复 discrepancy)** |
+| Producer 证据有效性 | DEC-045 核心证据全部继续有效:177/177 · R50 356 活测 · source_file 87/87 · evidence 8/8 · G6 PASS · canonical 338/1 · Producer mutation = 0 |
+| 唯一优先任务 | 等 Claude push exact V3 commit 后执行 DEC-044 Closure Review(十一步清单照录:ls-remote 亲验 → exact commit 唯一审查对象 → G1–G6 → Producer immutable → M1–M5 → 真实 Runner 攻击 → BLOCK 后 Compiler/Gate/Admission/Materialization 均不执行 → `VERIFIED+PENDING=BLOCK` → stale/missing IR、invalid Manifest、raw bytes mismatch → Consumer 无 Producer 写路径 → 两 Boundary 严格分层) |
+| 本地锚纪律 | 当前本地 V3 五模块 hash(gate/ir 已漂移)**不得作为最终审计对象**;push 前不做 Consumer Closure 结论 —— DEC-042「以 push commit 为对象」纪律的再确认与实证 |
+| STOP | NOT APPLICABLE(本轮为登记性裁定,零执行动作,零冻结对象字节变化) |
 
 ## 2. 生产侧责任解释边界(非裁决,DSH 自我约束声明)
 
