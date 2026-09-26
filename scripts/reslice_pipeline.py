@@ -3,7 +3,7 @@ r"""LLM 重切流水线（试点版）。
 流程：
   源 md（Ocr-markdown\{grade}\{subject}\，非 v6）
   → 行号化（[L0001] 前缀，供 LLM 受控引用，不转录正文）
-  → LLM（mimo-x-pro-preview）按确认规则输出 semantic_units（仅行号引用+角色声明）
+  → LLM（正式 MIMO V2.6 PRO = mimo-v2.6-pro，见 llm_provider）按确认规则输出 semantic_units（仅行号引用+角色声明）
   → 确定性校验（行区间合法、题号覆盖、答案存在、composite 材料齐全）
   → 双格式产出：
       ① manifest JSON（V3 semantic_units 形态，无正文，供 Resolver/入库）
@@ -33,42 +33,28 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from prereview_check import (parse_answer_tables, parse_range_answers,  # noqa: E402
                              parse_inline_answers, normalize_qnum)
+import llm_provider  # noqa: E402
 
 # ROOT 不再硬编码开发机绝对路径(H-01):RESLICE_ROOT 环境变量可覆盖,
 # 默认取本仓库根(scripts/ 的上一级)——任何 checkout 在任意机器上都成立。
 ROOT = Path(os.environ.get("RESLICE_ROOT") or Path(__file__).resolve().parents[1])
-CFG_PATH = ROOT / "data/.llm_config"   # 2026-09-10 自 finetune 归档时移出
+CFG_PATH = llm_provider.legacy_config_path(ROOT)   # legacy fallback; formal uses env vars
 OUT_ROOT = ROOT / "Ocr-markdown/resliced-pilot"
 SRC_ROOT = ROOT / "Ocr-markdown"
 
-DEFAULT_MODEL = "mimo-x-pro-preview"   # 仅产物元数据兜底标签;真实调用以配置为准
+# Formal MIMO V2.6 PRO (verified via /v1/models).
+# mimo-x-pro-preview is LEGACY TEST MODEL CONFIG (live API rejects it).
+DEFAULT_MODEL = llm_provider.MIMO_V26_PRO_MODEL
 
 
 def load_cfg():
-    """读 LLM 配置(惰性:只在真正调 LLM 时执行,H-01)。
-
-    配置缺失必须在调用点显式失败——import 期不读配置,
-    确定性路径(渲染/校验/QC/fix 链)不依赖私有配置文件。
-    """
-    if not CFG_PATH.exists():
-        raise FileNotFoundError(
-            f"LLM 配置缺失: {CFG_PATH}。只有 LLM 调用需要该文件;"
-            "渲染/校验/QC 等确定性路径不需要。")
-    cfg = {}
-    for line in CFG_PATH.read_text(encoding="utf-8").splitlines():
-        if "=" in line:
-            k, v = line.strip().split("=", 1)
-            cfg[k.strip()] = v.strip()
-    return cfg
+    """Resolve LLM config (lazy). Formal path is llm_provider.resolve; fail-closed if missing."""
+    return llm_provider.resolve(ROOT)
 
 
 def model_tag():
-    """产物元数据里的模型名。元数据标签非机密、非功能性:配置缺失时用默认名。
-    真正的 LLM 调用(call_llm)不走此函数,缺配置仍显式失败。"""
-    try:
-        return load_cfg().get("model", DEFAULT_MODEL)
-    except FileNotFoundError:
-        return DEFAULT_MODEL
+    """Metadata model tag only; real LLM calls use resolve()."""
+    return llm_provider.default_model_tag(ROOT)
 
 # （v2.1：call_llm 直接返回 usage，为并发执行消除共享全局状态）
 
