@@ -76,4 +76,4 @@ def test_write_outputs_offline_without_config(workdir):
     assert "synth.annotated.md" in r.stdout
     assert "synth.manifest.json" in r.stdout
     assert "synth.md" in r.stdout
-    assert "mimo-x-pro-preview" in r.stdout   # 默认元数据标签,无配置也成立
+    assert "mimo-v2.6-pro" in r.stdout   # formal default metadata tag (no config still works)
