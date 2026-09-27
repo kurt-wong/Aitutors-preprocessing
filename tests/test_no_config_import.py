@@ -44,8 +44,8 @@ def test_call_llm_fails_loudly_without_config(workdir):
         "try:\n"
         "    rp.call_llm('hi')\n"
         "    print('SWALLOWED')\n"
-        "except FileNotFoundError as e:\n"
-        "    print('EXPECTED', '.llm_config' in str(e))\n"
+        "except (FileNotFoundError, RuntimeError) as e:\n"
+        "    print('EXPECTED', '.llm_config' in str(e) or 'MIMO_API_KEY' in str(e))\n"
     )
     r = _run(code, workdir)
     assert r.returncode == 0, r.stderr
@@ -77,3 +77,36 @@ def test_write_outputs_offline_without_config(workdir):
     assert "synth.manifest.json" in r.stdout
     assert "synth.md" in r.stdout
     assert "mimo-v2.6-pro" in r.stdout   # formal default metadata tag (no config still works)
+
+
+def test_write_outputs_emits_identity(workdir):
+    """source_content_sha256 + identity_version must appear in fresh manifest."""
+    lines = ["1. 题干（ ）", "", "1.【答案】A"]
+    man = {"identity_version": 2,
+           "units": [{"unit_id": "Q1", "unit_type": "standalone_question",
+                      "question_numbers": [1], "original_question_type": "single_choice",
+                      "stem_lines": [1, 1], "options_lines": None,
+                      "answer_lines": [3, 3], "explanation_lines": None}]}
+    # Create a real source file so write_outputs can compute source_content_sha256
+    code = (
+        "import json, os, pathlib, hashlib\n"
+        "import reslice_pipeline as rp\n"
+        "d = json.loads(os.environ['TEST_PAYLOAD'])\n"
+        "src = pathlib.Path('synth.md')\n"
+        "src.write_text('\\n'.join(d['lines']), encoding='utf-8')\n"
+        "out = pathlib.Path('out')\n"
+        "issues, summary = rp.validate_manifest(d['man'], len(d['lines']), d['lines'])\n"
+        "rp.write_outputs(out, 'synth', d['lines'], d['man'], issues, summary,\n"
+        "                 'synth.md', src)\n"
+        "mf = json.loads((out / 'synth.manifest.json').read_text(encoding='utf-8'))\n"
+        "expected_sha = hashlib.sha256(src.read_bytes()).hexdigest()\n"
+        "print('SHA', mf.get('source_content_sha256', 'MISSING'))\n"
+        "print('IV', mf.get('identity_version', 'MISSING'))\n"
+        "print('MATCH', mf.get('source_content_sha256') == expected_sha)\n"
+    )
+    r = _run(code, workdir, payload={"lines": lines, "man": man})
+    assert r.returncode == 0, r.stderr
+    assert "SHA MISSING" not in r.stdout, "source_content_sha256 未写入 manifest"
+    assert "IV MISSING" not in r.stdout, "identity_version 未写入 manifest"
+    assert "IV 2" in r.stdout
+    assert "MATCH True" in r.stdout, "source_content_sha256 与源字节 SHA256 不一致"

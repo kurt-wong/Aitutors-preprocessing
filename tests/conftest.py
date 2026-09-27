@@ -55,6 +55,7 @@ SYNTH_LINES = [
 ]
 
 SYNTH_MAN = {
+    "identity_version": 1,
     "units": [
         {"unit_id": "Q1", "unit_type": "standalone_question",
          "question_numbers": [1], "original_question_type": "single_choice",

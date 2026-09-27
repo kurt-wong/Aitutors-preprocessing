@@ -21,6 +21,7 @@ r"""LLM 重切流水线（试点版）。
   python reslice_pipeline.py --file <src.md>  # 单文件
 """
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -45,6 +46,14 @@ SRC_ROOT = ROOT / "Ocr-markdown"
 # Formal MIMO V2.6 PRO (verified via /v1/models).
 # mimo-x-pro-preview is LEGACY TEST MODEL CONFIG (live API rejects it).
 DEFAULT_MODEL = llm_provider.MIMO_V26_PRO_MODEL
+
+
+def _redact(text: str) -> str:
+    """Strip API keys / bearer tokens from any string before logging."""
+    text = re.sub(r"Bearer\s+[A-Za-z0-9_\-\.]{8,}", "Bearer [REDACTED]", text)
+    text = re.sub(r"sk-[A-Za-z0-9]{8,}", "sk-[REDACTED]", text)
+    text = re.sub(r"['\"]api_key['\"]:\s*['\"][^'\"]+['\"]", "'api_key': '[REDACTED]'", text)
+    return text
 
 
 def load_cfg():
@@ -91,12 +100,15 @@ def call_llm(prompt, max_tokens=50000, temperature=0.1, retries=4):
                 # 限流/服务端错误:指数退避(30/60/120/240s),不做无谓短重试
                 wait = 30 * (2 ** attempt)
                 time.sleep(wait)
+            elif 400 <= e.code < 500:
+                # 4xx (non-429): immediate failure — retrying cannot fix a client error
+                raise RuntimeError(_redact(f"LLM 调用失败 (HTTP {e.code}): {e.reason}"))
             else:
                 time.sleep(5 * (attempt + 1))
         except Exception as e:
             last_err = e
             time.sleep(5 * (attempt + 1))
-    raise RuntimeError(f"LLM 调用失败: {last_err}")
+    raise RuntimeError(_redact(f"LLM 调用失败: {last_err}"))
 
 
 def extract_json(text):
@@ -676,9 +688,14 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
                             "warnings": summary.get("warnings", [])},
         "units": man["units"],
     }
+    # Identity v2: source_content_sha256 = SHA256(source md raw bytes).
+    # Contract: PREPROCESSING-V3-CONTRACT-v0.2-DRAFT §0.1 ① — path is locator only.
+    if src_path is not None and Path(src_path).is_file():
+        manifest["source_content_sha256"] = hashlib.sha256(
+            Path(src_path).read_bytes()).hexdigest()
     # QuestionIdentity v2(R34):身份字段随 manifest 落盘,write_outputs
     # 不得自组装丢弃(否则回填/校验建立的身份在重编译时被静默洗掉)。
-    for k in ("identity_version", "sections"):
+    for k in ("identity_version", "sections", "source_content_sha256"):
         if k in man:
             manifest[k] = man[k]
     (out_dir / f"{stem}.manifest.json").write_text(
@@ -731,6 +748,9 @@ def process_file(src_path: Path, log):
 
     issues, summary = validate_manifest(man, len(lines), lines)
     summary.setdefault("warnings", []).extend(fix_notes)
+    # Identity v2: fresh formal pipeline output carries identity_version = 2.
+    if "identity_version" not in man:
+        man["identity_version"] = 2
     log(f"[{src_path.name}] units={summary['units']} 覆盖题号={summary['covered_questions']} "
         f"校验问题={len(issues)} 警告={len(summary.get('warnings', []))}")
     for i in issues[:10]:
