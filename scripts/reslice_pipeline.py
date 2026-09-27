@@ -61,6 +61,52 @@ def load_cfg():
     return llm_provider.resolve(ROOT)
 
 
+# Option label detection (source-grounded, no fabrication).
+_OPT_LABEL_RE = re.compile(r"(?<![\w])([A-Ha-h])\s*[.．、:)）]")
+
+
+def _detect_option_labels(lines, start, end):
+    """Detect option label markers in source lines [start, end] (1-based).
+
+    Returns list of (label, start_line, end_line) in source order.
+    Only labels that actually appear as markers in the source text are returned.
+    """
+    labels = []
+    for line_no in range(start, min(end + 1, len(lines) + 1)):
+        text = lines[line_no - 1] if isinstance(lines[line_no - 1], str) else str(lines[line_no - 1])
+        for m in _OPT_LABEL_RE.finditer(text):
+            lab = m.group(1).upper()
+            if lab not in [l for l, _, _ in labels]:
+                labels.append((lab, line_no, line_no))
+    return labels
+
+
+def _expand_option_spans(man, lines):
+    """Expand options_lines range into per-option label spans.
+
+    Adds `options: [{label, start_line, end_line}]` to units that have
+    options_lines but no per-option data. Source-grounded: labels are detected
+    from actual markers in the source text, not fabricated.
+    """
+    notes = []
+    for u in man.get("units", []):
+        if u.get("options") or not u.get("options_lines"):
+            continue
+        opts = u.get("options_lines")
+        if not isinstance(opts, (list, tuple)) or len(opts) != 2:
+            continue
+        start, end = int(opts[0]), int(opts[1])
+        if start < 1 or end > len(lines) or start > end:
+            continue
+        spans = _detect_option_labels(lines, start, end)
+        if spans:
+            u["options"] = [{"label": lab, "start_line": s, "end_line": e}
+                            for lab, s, e in spans]
+        else:
+            notes.append(f"{u.get('unit_id')}: options_lines=[{start},{end}] but no labels detected")
+    return notes
+
+
 def model_tag():
     """Metadata model tag only; real LLM calls use resolve()."""
     return llm_provider.default_model_tag(ROOT)
@@ -745,6 +791,11 @@ def process_file(src_path: Path, log):
             nxt += 1
     # 确定性兜底：行号越界截断 + 倒置归一化（逻辑见 clamp_intervals，可单测）
     fix_notes.extend(clamp_intervals(man, len(lines)))
+
+    # Option span expansion: options_lines range → per-option label spans.
+    # Source-grounded detection (no fabrication): labels must appear as markers
+    # in the source text within the declared options region.
+    fix_notes.extend(_expand_option_spans(man, lines))
 
     issues, summary = validate_manifest(man, len(lines), lines)
     summary.setdefault("warnings", []).extend(fix_notes)
