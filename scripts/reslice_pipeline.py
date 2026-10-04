@@ -62,7 +62,14 @@ def load_cfg():
 
 
 # Option label detection (source-grounded, no fabrication).
-_OPT_LABEL_RE = re.compile(r"(?<![\w])([A-Ha-h])\s*[.．、:)）]")
+# Lookbehind is Latin-only: tight-packed geography form `A.①②B. ①④C. ②③D. ③④`
+# has enclosed digits ①② immediately before B/C/D — those are Unicode word
+# chars and would block `(?<![\w])`. We only need to reject Latin identifiers
+# (e.g. `DAB.` / `x+y`), not CJK/enclosed-digit neighbours.
+_OPT_LABEL_RE = re.compile(r"(?<![A-Za-z0-9_])([A-Ha-h])\s*[.．、:)）]")
+
+# Choice types that require options evidence (same set as V3 annotation_adapter).
+_CHOICE_TYPES = frozenset({"single_choice", "multiple_choice", "true_false"})
 
 
 def _detect_option_labels(lines, start, end):
@@ -104,6 +111,51 @@ def _expand_option_spans(man, lines):
                             for lab, s, e in spans]
         else:
             notes.append(f"{u.get('unit_id')}: options_lines=[{start},{end}] but no labels detected")
+    return notes
+
+
+def _expand_composite_option_spans(man, lines):
+    """Declare per-option spans for choice-type composite units from source text.
+
+    Composite prompt schema historically omitted options_lines/options even when
+    the questions region contains A/B/C/D markers (geography shared-stimulus
+    choice blocks). V3 maps the unit 1:1 onto a single sub whose content.options
+    is fed from ManifestUnit.options — without those declarations IR hits
+    `options missing for choice type` despite real source evidence.
+
+    Detection is the same source-grounded `_detect_option_labels` used for
+    standalone options_lines expansion: only labels that actually appear as
+    markers in the declared region are recorded. Range preference:
+      1. options_lines (if the LLM declared it)
+      2. questions_lines (composite body that carries the option markers)
+
+    Multi-question composites (question_numbers = [1,2]): first occurrence of
+    each label is kept — that is the options of question_numbers[0], which is
+    the question the single sub represents. No sub-question decomposition is
+    invented here.
+    """
+    notes = []
+    for u in man.get("units", []):
+        if u.get("unit_type") != "composite_question":
+            continue
+        if u.get("options") or u.get("options_lines"):
+            continue
+        if u.get("original_question_type") not in _CHOICE_TYPES:
+            continue
+        rg = u.get("questions_lines")
+        if not isinstance(rg, (list, tuple)) or len(rg) != 2:
+            continue
+        start, end = int(rg[0]), int(rg[1])
+        if start < 1 or end > len(lines) or start > end:
+            continue
+        spans = _detect_option_labels(lines, start, end)
+        if spans:
+            u["options"] = [{"label": lab, "start_line": s, "end_line": e}
+                            for lab, s, e in spans]
+            notes.append(
+                f"{u.get('unit_id')}: composite options declared from questions_lines="
+                f"[{start},{end}] labels={[lab for lab, _, _ in spans]}"
+            )
     return notes
 
 
@@ -311,6 +363,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    "original_question_type": "reading",
    "material_lines": [起始行号, 结束行号],
    "questions_lines": [起始行号, 结束行号],
+   "options_lines": [起始行号, 结束行号] 或 null,
    "answer_lines": [起始行号, 结束行号] 或 null,
    "answer_evidence": {"type": "answer_lines|inline_in_explanation|answer_table|range_string|absent", "lines": [起始行号, 结束行号] 或 null, "value": "答案值原文" 或 null, "shared": true 或 false},
    "explanation_lines": [起始行号, 结束行号] 或 null
@@ -328,6 +381,9 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
   就是题目，文章到首个选项行之间都算 material；阅读题的 material 是文章，各小题在文章之后
   （仍在 questions 区内）。answer_lines 是这道综合题整体的答案区。
   不要输出 sub_questions 之类逐空/逐小问的细粒度结构。
+- 综合题若含选择题选项（共享材料后多道小题各自有 A/B/C/D），仍须声明 options_lines：
+  圈住该综合题 questions 区内实际出现的选项行范围（可覆盖多小题选项）。
+  非选择题综合题（简答/阅读表达等）填 null。
 - 所有题目必须出现且只出现在一个单元里；题号连续覆盖全卷。
 - 试卷末尾的标题行、页眉页脚不纳入。
 - 综合题的 question_numbers 填这道大题本身的题号（如完形填空是第11题就填 [11]）。
@@ -418,6 +474,7 @@ def validate_manifest(man, n_lines, lines=None):
         if u.get("unit_type") == "composite_question":
             chk_range(u.get("material_lines"), "material", uid)
             chk_range(u.get("questions_lines"), "questions", uid)
+            chk_range(u.get("options_lines"), "options", uid)
             # 综合题整块一道题：material + questions 两个区间
             if u.get("material_lines") is None and u.get("questions_lines") is None:
                 issues.append(f"{uid}: 综合题缺 material_lines/questions_lines")
@@ -796,6 +853,9 @@ def process_file(src_path: Path, log):
     # Source-grounded detection (no fabrication): labels must appear as markers
     # in the source text within the declared options region.
     fix_notes.extend(_expand_option_spans(man, lines))
+    # Composite options transport: choice-type composite units whose questions
+    # region carries A/B/C/D markers but whose manifest omitted options.
+    fix_notes.extend(_expand_composite_option_spans(man, lines))
 
     issues, summary = validate_manifest(man, len(lines), lines)
     summary.setdefault("warnings", []).extend(fix_notes)
