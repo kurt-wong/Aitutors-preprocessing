@@ -66,7 +66,9 @@ def load_cfg():
 # has enclosed digits ①② immediately before B/C/D — those are Unicode word
 # chars and would block `(?<![\w])`. We only need to reject Latin identifiers
 # (e.g. `DAB.` / `x+y`), not CJK/enclosed-digit neighbours.
-_OPT_LABEL_RE = re.compile(r"(?<![A-Za-z0-9_])([A-Ha-h])\s*[.．、:)）]")
+# Separators include fullwidth comma/period: real corpus `C. 水土流失 D，物种减少`
+# (geography U44-46) — missing `，` made first-D land on the next question.
+_OPT_LABEL_RE = re.compile(r"(?<![A-Za-z0-9_])([A-Ha-h])\s*[.．、:，。)）]")
 
 # Choice types that require options evidence (same set as V3 annotation_adapter).
 _CHOICE_TYPES = frozenset({"single_choice", "multiple_choice", "true_false"})
