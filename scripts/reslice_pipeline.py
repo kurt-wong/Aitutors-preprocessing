@@ -380,6 +380,36 @@ def rel_out(f, root):
         return Path(f.name)
 
 
+def grade_subject_from_rel_path(rel_path):
+    """Producer grade/subject 映射（Owner 定稿封闭）。
+
+    输入：源 md 完整相对路径（等价于台账 output_rel），如 会考/化学/xxx.md。
+    subject = 路径第二段，直接取用。
+    grade 规则按序命中；五年级按真值输出、不进兜底，便于导入层过滤器拦截。
+    返回 (grade, subject, grade_source)。
+    """
+    p = str(rel_path).replace("\\", "/")
+    parts = [x for x in p.split("/") if x]
+    subject = parts[1] if len(parts) >= 2 else None
+
+    if "高一" in p:
+        return "高一", subject, "path_keyword:高一"
+    if "高二" in p:
+        return "高二", subject, "path_keyword:高二"
+    if "高三" in p:
+        return "高三", subject, "path_keyword:高三"
+    if any(k in p for k in ("会考", "合格考", "学业水平考试")):
+        return "高一", subject, "path_keyword:会考/合格考/学业水平考试"
+    if "高考真题" in p or "高考" in p:
+        return "高三", subject, "path_keyword:高考"
+    if any(k in p for k in ("竞赛自招", "强基", "博雅", "领军", "自招")):
+        return "高三", subject, "path_keyword:竞赛自招/强基/博雅/领军/自招"
+    # 五年级真值输出（禁止并入 fallback → 高三），由导入层按 {高一,高二,高三} 剔除
+    if "五年级" in p:
+        return "五年级", subject, "path_keyword:五年级"
+    return "高三", subject, "fallback"
+
+
 def number_lines(text):
     lines = text.splitlines()
     numbered = "\n".join(f"[L{i+1:04d}] {l}" for i, l in enumerate(lines))
@@ -939,6 +969,18 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
     for k in ("identity_version", "sections", "source_content_sha256"):
         if k in man:
             manifest[k] = man[k]
+    # grade/subject（Owner 定稿）：路径映射，不进身份 hash。
+    # 优先 man 已带值（重编译不洗掉）；否则从相对路径确定性推导。
+    if "grade" in man or "subject" in man:
+        for k in ("grade", "subject", "grade_source"):
+            if k in man:
+                manifest[k] = man[k]
+    else:
+        rel = rel_out(Path(src_path), SRC_ROOT) if src_path else Path(f"{stem}.md")
+        grade, subject, grade_source = grade_subject_from_rel_path(rel)
+        manifest["grade"] = grade
+        manifest["subject"] = subject
+        manifest["grade_source"] = grade_source
     (out_dir / f"{stem}.manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=1),
         encoding="utf-8", newline="\n")
