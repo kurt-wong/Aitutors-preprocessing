@@ -994,10 +994,35 @@ def package_image_assets(src_path, out_dir, lines):
             dest_dir = Path(out_dir) / "_imgs"
             dest_dir.mkdir(parents=True, exist_ok=True)
             dest = dest_dir / rel_name
-            if str(dest) not in seen:
-                if not dest.exists():
+            src_hash = hashlib.sha256(abs_src.read_bytes()).hexdigest()
+            if str(dest) in seen:
+                # 同一 artifact 文件名：允许同一源重复引用（去重）
+                if seen[str(dest)]["sha256"] != src_hash:
+                    # 不同源实体同 basename 且内容不同 — 禁止静默合并
+                    assets.append(
+                        {
+                            "src": src,
+                            "line_no": i,
+                            "resolved": False,
+                            "reason": "basename_collision",
+                            "conflict_with": seen[str(dest)].get("first_src"),
+                            "existing_sha256": seen[str(dest)]["sha256"],
+                            "incoming_sha256": src_hash,
+                        }
+                    )
+                    continue
+            else:
+                # 缺陷2修复：目标已存在时若字节不同则刷新，禁止沿用旧文件
+                if dest.exists():
+                    dest_hash = hashlib.sha256(dest.read_bytes()).hexdigest()
+                    if dest_hash != src_hash:
+                        shutil.copy2(abs_src, dest)
+                else:
                     shutil.copy2(abs_src, dest)
-                seen[str(dest)] = hashlib.sha256(dest.read_bytes()).hexdigest()
+                seen[str(dest)] = {
+                    "sha256": hashlib.sha256(dest.read_bytes()).hexdigest(),
+                    "first_src": src,
+                }
             assets.append(
                 {
                     "src": src,
@@ -1005,7 +1030,7 @@ def package_image_assets(src_path, out_dir, lines):
                     "resolved": True,
                     "resolved_from": str(abs_src),
                     "artifact_path": f"_imgs/{rel_name}",
-                    "sha256": seen[str(dest)],
+                    "sha256": seen[str(dest)]["sha256"],
                     "bytes": dest.stat().st_size,
                 }
             )
