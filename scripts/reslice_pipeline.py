@@ -25,6 +25,7 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import sys
 import time
 import urllib.error
@@ -940,6 +941,77 @@ def compile_anchor(lines, man, src_name, src_path, model=DEFAULT_MODEL):
     return "\n".join(out) + "\n"
 
 
+IMG_SRC_RE = re.compile(r'src="([^"]+)"')
+
+
+def package_image_assets(src_path, out_dir, lines):
+    """Phase C O1：把源 md 引用的图像实体打进 artifact（out_dir/_imgs）。
+
+    路径解析顺序：源 md 相对 → SRC_ROOT/Ocr-markdown 相对（打包后 md 被移位时）。
+    只收录**可解析实体**；找不到文件时记 resolved=false，禁止生成悬空 figure_ref。
+    返回 image_assets 清单（src / 行号 / artifact_path / sha256）。
+    """
+    if src_path is None:
+        return []
+    src_dir = Path(src_path).parent
+    search_roots = [src_dir]
+    for extra in (SRC_ROOT, SRC_ROOT.parent):
+        if extra not in search_roots:
+            search_roots.append(extra)
+
+    def _resolve(src: str) -> Path | None:
+        norm = str(src).replace("\\", "/")
+        # 1) 相对源 md / SRC_ROOT 原样
+        for root in search_roots:
+            cand = (root / src).resolve()
+            if cand.is_file():
+                return cand
+        # 2) 打包后 md 移位：从 `_imgs/` 起拼到 SRC_ROOT（真实资源在
+        #    Ocr-markdown/_imgs/…，md 内写的是 ../../_imgs/…）
+        marker = "_imgs/"
+        if marker in norm:
+            tail = norm.split(marker, 1)[1]
+            for root in search_roots:
+                cand = (root / "_imgs" / tail).resolve()
+                if cand.is_file():
+                    return cand
+        return None
+
+    assets = []
+    seen = {}
+    for i, line in enumerate(lines, 1):
+        for src in IMG_SRC_RE.findall(line):
+            if not src or src.startswith(("http://", "https://", "data:")):
+                continue
+            abs_src = _resolve(src)
+            if abs_src is None:
+                assets.append(
+                    {"src": src, "line_no": i, "resolved": False,
+                     "reason": "file_not_found"}
+                )
+                continue
+            rel_name = Path(src).name
+            dest_dir = Path(out_dir) / "_imgs"
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            dest = dest_dir / rel_name
+            if str(dest) not in seen:
+                if not dest.exists():
+                    shutil.copy2(abs_src, dest)
+                seen[str(dest)] = hashlib.sha256(dest.read_bytes()).hexdigest()
+            assets.append(
+                {
+                    "src": src,
+                    "line_no": i,
+                    "resolved": True,
+                    "resolved_from": str(abs_src),
+                    "artifact_path": f"_imgs/{rel_name}",
+                    "sha256": seen[str(dest)],
+                    "bytes": dest.stat().st_size,
+                }
+            )
+    return assets
+
+
 def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path,
                   model=DEFAULT_MODEL):
     """三产出：① manifest JSON（无正文）② 锚点批注版源 md（本质产物）
@@ -981,6 +1053,8 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
         manifest["grade"] = grade
         manifest["subject"] = subject
         manifest["grade_source"] = grade_source
+    # Phase C O1：图像实体随 artifact 交付（只记可解析文件，禁悬空 figure_ref）
+    manifest["image_assets"] = package_image_assets(src_path, out_dir, lines)
     (out_dir / f"{stem}.manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=1),
         encoding="utf-8", newline="\n")

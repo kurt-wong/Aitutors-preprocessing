@@ -35,7 +35,10 @@ from fix_bug22_renumber import SECTION_RE  # noqa: E402
 
 SUB_Q = re.compile(r"^\s*[（(]\s*\d{1,3}\s*[）)]|^\s*[①②③④⑤⑥⑦⑧⑨⑩]")
 LINE_REF = re.compile(r"L(\d+)")
-PRINTED_LINE = re.compile(r"^\s*(\d{1,3})\s*[\.、．]")
+# 印刷题号行首：半角 `.`、顿号、全角 `．`，以及 OCR 转义点 `\\.`（如 `1\\. 2017年…`）。
+# 与 _NUM_PREFIX / r55_r45_audit.NUM_PREFIX 对齐；缺转义分支曾导致 7 单元
+# printed_number=NULL、provenance=unknown（Phase B-R1 O2 根因）。
+PRINTED_LINE = re.compile(r"^\s*(\d{1,3})\s*\\?\s*[\.、．]")
 
 # ── BUG-24(R37)分节标题排除器:两阶段结构角色识别 ─────────────────────────
 # 旧缺陷:答案|解析|评分 对**整行**子串匹配 → 标题尾部 note 含"答案"的真实
