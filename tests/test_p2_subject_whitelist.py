@@ -164,3 +164,106 @@ class TestPreserveLogic:
         )
         # 推导依据是 rel_out(src_path, SRC_ROOT) = 高一/数学/test.md
         assert m["subject"] == "数学"
+
+
+class TestRecompileRelativePath:
+    """P2-FIX — recompile_outputs 真实调用链：相对 source_file 必须正确解析。
+
+    不直接测 grade_subject_from_rel_path，而是走 recompile_outputs 全链路，
+    覆盖 manifest.source_file 为相对路径时的实际形态。
+    """
+
+    def _setup_recompile(self, tmp_path, rel_under_root="Ocr-markdown/会考/物理/test.md",
+                         source_file_value=None):
+        """构造 ROOT/Ocr-markdown/... 源文件 + manifest，返回 (recompile_outputs, out_root, ROOT)。"""
+        import reslice_pipeline as rp
+
+        root = tmp_path
+        src = root / rel_under_root
+        src.parent.mkdir(parents=True, exist_ok=True)
+        src.write_text("[L0001] 题干\n[L0002] 答案\n", encoding="utf-8")
+
+        out_root = root / "out" / "会考" / "物理"
+        out_root.mkdir(parents=True, exist_ok=True)
+        sf = source_file_value or rel_under_root  # relative by default
+        manifest = {
+            "source_file": sf,
+            "model": "test-model",
+            "annotation_meta": {"prompt_version": "test-v1",
+                                "validation_issues": [], "warnings": []},
+            "units": [{
+                "unit_id": "Q1", "unit_type": "standalone_question",
+                "question_numbers": [1], "original_question_type": "short_answer",
+                "stem_lines": [1, 1], "answer_lines": [2, 2],
+            }],
+            "subject": None,
+            "grade": None,
+        }
+        mf = out_root / "test.manifest.json"
+        mf.write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
+
+        # Monkey-patch ROOT and SRC_ROOT to tmp_path
+        old_root, old_src_root = rp.ROOT, rp.SRC_ROOT
+        rp.ROOT = root
+        rp.SRC_ROOT = root / "Ocr-markdown"
+        try:
+            n = rp.recompile_outputs(out_root)
+        finally:
+            rp.ROOT = old_root
+            rp.SRC_ROOT = old_src_root
+        return json.loads(mf.read_text(encoding="utf-8")), n
+
+    def test_relative_source_file_backfills_subject(self, tmp_path):
+        """相对 source_file + 会考/物理 → subject=物理。"""
+        m, n = self._setup_recompile(tmp_path)
+        assert n == 1
+        assert m["subject"] == "物理"
+        assert m["grade"] == "高一"
+
+    def test_relative_source_file_chemistry(self, tmp_path):
+        m, _ = self._setup_recompile(
+            tmp_path,
+            rel_under_root="Ocr-markdown/合格考/化学/test.md",
+            source_file_value="Ocr-markdown/合格考/化学/test.md",
+        )
+        assert m["subject"] == "化学"
+
+    def test_absolute_source_file_still_works(self, tmp_path):
+        """绝对路径行为不回退。"""
+        src_abs = tmp_path / "Ocr-markdown" / "高一" / "数学" / "test.md"
+        m, _ = self._setup_recompile(
+            tmp_path,
+            rel_under_root="Ocr-markdown/高一/数学/test.md",
+            source_file_value=str(src_abs),
+        )
+        assert m["subject"] == "数学"
+
+    def test_relative_variants(self, tmp_path):
+        """不同相对形态（./ 前缀、反斜杠）都正确解析。"""
+        m, _ = self._setup_recompile(
+            tmp_path,
+            rel_under_root="Ocr-markdown/会考/生物/test.md",
+            source_file_value="Ocr-markdown\\会考\\生物\\test.md",
+        )
+        assert m["subject"] == "生物"
+
+    def test_missing_source_raises(self, tmp_path):
+        """源文件不存在 → 明确失败，不静默生成错误元数据。"""
+        import reslice_pipeline as rp
+
+        out_root = tmp_path / "out"
+        out_root.mkdir(parents=True)
+        mf = out_root / "test.manifest.json"
+        mf.write_text(json.dumps({
+            "source_file": "Ocr-markdown/会考/物理/nonexistent.md",
+            "annotation_meta": {"prompt_version": "t", "validation_issues": [], "warnings": []},
+            "units": [],
+        }), encoding="utf-8")
+
+        old_root = rp.ROOT
+        rp.ROOT = tmp_path
+        try:
+            with pytest.raises(FileNotFoundError):
+                rp.recompile_outputs(out_root)
+        finally:
+            rp.ROOT = old_root

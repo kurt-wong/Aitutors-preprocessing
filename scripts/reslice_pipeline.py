@@ -1210,6 +1210,14 @@ def recompile_outputs(out_root):
     for mf in sorted(out_root.rglob("*.manifest.json")):
         man_full = json.loads(mf.read_text(encoding="utf-8"))
         src = Path(man_full["source_file"])
+        # P2-FIX: manifest.source_file 可能是相对路径（如 Ocr-markdown\会考\物理\x.md）。
+        # 统一规范化为绝对路径，后续 read_text 与 write_outputs 的 rel_out 都用同一个 src。
+        if not src.is_absolute():
+            src = ROOT / src
+        if not src.is_file():
+            raise FileNotFoundError(
+                f"recompile source not found: {src} (from {mf.name})"
+            )
         text = re.sub(r"<!--\s*META:[^>]*-->\n?", "",
                       src.read_text(encoding="utf-8", errors="replace"))
         lines = text.splitlines()
