@@ -48,6 +48,12 @@ SRC_ROOT = ROOT / "Ocr-markdown"
 # mimo-x-pro-preview is LEGACY TEST MODEL CONFIG (live API rejects it).
 DEFAULT_MODEL = llm_provider.MIMO_V26_PRO_MODEL
 
+# P2: 可接受的学科值域（复用语料目录层级既有值，不另造分类体系）。
+# 理综/文综是综合科目，不是单一学科，不入白名单。
+VALID_SUBJECTS = frozenset({
+    "化学", "历史", "地理", "政治", "数学", "物理", "生物", "英语", "语文",
+})
+
 
 def _redact(text: str) -> str:
     """Strip API keys / bearer tokens from any string before logging."""
@@ -382,16 +388,18 @@ def rel_out(f, root):
 
 
 def grade_subject_from_rel_path(rel_path):
-    """Producer grade/subject 映射（Owner 定稿封闭）。
+    """Producer grade/subject 映射（Owner 定稿封闭 + P2 白名单）。
 
     输入：源 md 完整相对路径（等价于台账 output_rel），如 会考/化学/xxx.md。
-    subject = 路径第二段，直接取用。
-    grade 规则按序命中；五年级按真值输出、不进兜底，便于导入层过滤器拦截。
+    subject = 路径第二段，仅在白名单内才取用；否则 None。
+    grade 规则按序命中；无法判定时返回 None（不兜底写高三）。
     返回 (grade, subject, grade_source)。
     """
     p = str(rel_path).replace("\\", "/")
     parts = [x for x in p.split("/") if x]
-    subject = parts[1] if len(parts) >= 2 else None
+    raw_subject = parts[1] if len(parts) >= 2 else None
+    # P2: 白名单校验 — 会考/合格考/run-xxx/Project 等层级不得误判为学科
+    subject = raw_subject if raw_subject in VALID_SUBJECTS else None
 
     if "高一" in p:
         return "高一", subject, "path_keyword:高一"
@@ -408,7 +416,8 @@ def grade_subject_from_rel_path(rel_path):
     # 五年级真值输出（禁止并入 fallback → 高三），由导入层按 {高一,高二,高三} 剔除
     if "五年级" in p:
         return "五年级", subject, "path_keyword:五年级"
-    return "高三", subject, "fallback"
+    # P2: 无法判定时不写错值
+    return None, subject, "fallback"
 
 
 def number_lines(text):
@@ -1066,18 +1075,16 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
     for k in ("identity_version", "sections", "source_content_sha256"):
         if k in man:
             manifest[k] = man[k]
-    # grade/subject（Owner 定稿）：路径映射，不进身份 hash。
-    # 优先 man 已带值（重编译不洗掉）；否则从相对路径确定性推导。
-    if "grade" in man or "subject" in man:
-        for k in ("grade", "subject", "grade_source"):
-            if k in man:
-                manifest[k] = man[k]
-    else:
-        rel = rel_out(Path(src_path), SRC_ROOT) if src_path else Path(f"{stem}.md")
-        grade, subject, grade_source = grade_subject_from_rel_path(rel)
-        manifest["grade"] = grade
-        manifest["subject"] = subject
-        manifest["grade_source"] = grade_source
+    # grade/subject（Owner 定稿 + P2）：路径映射，不进身份 hash。
+    # 非 None 已有值 → 保留；显式 None 或缺失 → 从规范化相对路径推导。
+    # 推导只用 rel_out(src_path, SRC_ROOT)，不解析 manifest.source_file 字符串。
+    rel = rel_out(Path(src_path), SRC_ROOT) if src_path else Path(f"{stem}.md")
+    derived_grade, derived_subject, derived_source = grade_subject_from_rel_path(rel)
+    for key, derived in (("grade", derived_grade),
+                         ("subject", derived_subject),
+                         ("grade_source", derived_source)):
+        existing = man.get(key)
+        manifest[key] = existing if existing is not None else derived
     # Phase C O1：图像实体随 artifact 交付（只记可解析文件，禁悬空 figure_ref）
     manifest["image_assets"] = package_image_assets(src_path, out_dir, lines)
     (out_dir / f"{stem}.manifest.json").write_text(
@@ -1266,6 +1273,44 @@ def main():
         OUT_ROOT = Path(args.out)
     elif args.batch:
         OUT_ROOT = SRC_ROOT / "reslice-batch-C"
+
+    # 并发守卫：同一规范化输出目录仅允许一个活跃 reslice 进程。
+    # 规则：lock 文件记录 PID；PID 仍在运行 → 拒绝；PID 已死 → 清理旧锁后继续。
+    import json as _json_for_lock
+    _tag_for_lock = Path(args.out).name if args.out else (args.batch and "batch-C" or "pilot")
+    _lock_path = ROOT / "data" / f"reslice_{_tag_for_lock}.lock"
+    _lock_path.parent.mkdir(parents=True, exist_ok=True)
+    if _lock_path.exists():
+        try:
+            _lock_data = _json_for_lock.loads(_lock_path.read_text(encoding="utf-8-sig"))
+            _old_pid = _lock_data.get("pid")
+            _old_out = _lock_data.get("out", "")
+            if _old_pid:
+                try:
+                    import ctypes
+                    _kernel32 = ctypes.windll.kernel32
+                    _h = _kernel32.OpenProcess(0x1000, False, int(_old_pid))  # PROCESS_QUERY_LIMITED_INFORMATION
+                    if _h:
+                        _kernel32.CloseHandle(_h)
+                        sys.exit(
+                            f"CONCURRENT RESLICE DETECTED (PID {_old_pid} still alive).\n"
+                            f"  lock: {_lock_path}\n"
+                            f"  out:  {_old_out}\n"
+                            f"  Aborting to prevent concurrent writes to the same output directory."
+                        )
+                except (ValueError, OSError):
+                    pass  # PID invalid or process gone
+            # PID dead → stale lock, clean up
+            _lock_path.unlink(missing_ok=True)
+        except Exception:
+            _lock_path.unlink(missing_ok=True)  # corrupt lock → clean up
+    # Acquire lock (PID + output dir for diagnostics)
+    _lock_path.write_text(
+        _json_for_lock.dumps({"pid": os.getpid(), "out": str(OUT_ROOT), "ts": time.time()}),
+        encoding="utf-8",
+    )
+    import atexit as _atexit_for_lock
+    _atexit_for_lock.register(lambda: _lock_path.unlink(missing_ok=True))
 
     # 账目/日志：--out 一律派生隔离（BUG-21），默认账目只在正式跑时写
     log_path, result_path = derive_run_paths(args.out, bool(args.batch))
