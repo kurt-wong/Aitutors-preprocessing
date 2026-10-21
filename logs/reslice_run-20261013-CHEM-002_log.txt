@@ -1,0 +1,21 @@
+===== [1/1] 2020北京高中合格考化学（第二次）（教师版）(1).md =====
+[2020北京高中合格考化学（第二次）（教师版）(1).md] 507 行, prompt 31093 字
+===== [1/1] 2020北京高中合格考化学（第二次）（教师版）(1).md =====
+[2020北京高中合格考化学（第二次）（教师版）(1).md] 507 行, prompt 31093 字
+===== [1/1] 2020北京高中合格考化学（第二次）（教师版）(1).md =====
+[2020北京高中合格考化学（第二次）（教师版）(1).md] 507 行, prompt 31093 字
+===== [1/1] 2020北京高中合格考化学（第二次）（教师版）(1).md =====
+[2020北京高中合格考化学（第二次）（教师版）(1).md] 507 行, prompt 31093 字
+[2020北京高中合格考化学（第二次）（教师版）(1).md] units=34 覆盖题号=34 校验问题=0 警告=4
+    ~ Q14: options_lines=[112,112] but no labels detected
+    ~ Q25: options_lines=[233,233] but no labels detected
+    ~ U32: options_lines=[352,367] but no labels detected
+    ~ U31: composite options declared from questions_lines=[317,338] labels=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+===== 完成：1/1 无校验问题 =====
+[2020北京高中合格考化学（第二次）（教师版）(1).md] units=34 覆盖题号=34 校验问题=0 警告=5
+    ~ Q14: options_lines=[112,112] but no labels detected
+    ~ Q25: options_lines=[233,233] but no labels detected
+    ~ Q27: options_lines=[253,268] but no labels detected
+    ~ Q32: options_lines=[352,367] but no labels detected
+    ~ Q31: composite options declared from questions_lines=[317,338] labels=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+===== 完成：1/1 无校验问题 =====
