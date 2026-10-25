@@ -366,6 +366,57 @@ def _unique_answer_conclusion(text: str) -> str | None:
     return None
 
 
+# 小问标记：仅认 （Ⅰ）（Ⅱ）/ 行首（1）（2）。
+# 不得匹配：数学式 f(1)/g(x)；也不得匹配命题序号 ①②③④（Q16/17/22 单选
+# 解析里用①②判断命题真伪，不是多问）。
+_PART_MARKER_RE = re.compile(
+    r"[（(]\s*(?:[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]|[IVX]{1,4})\s*[）)]"
+    r"|^[（(]\s*\d{1,2}\s*[）)]",
+    re.MULTILINE,
+)
+
+
+def _looks_incomplete_multipart(block: str) -> bool:
+    """解析块含 ≥2 个小问标记时，单值结论不得代表整题答案。
+
+    T16 Q26/28/29：（Ⅰ）（Ⅱ）多问 + 文末一个 故答案为，只覆盖其中一小问。
+    """
+    if not block:
+        return False
+    marks = _PART_MARKER_RE.findall(block)
+    distinct = set(m.strip() for m in marks)
+    return len(distinct) >= 2
+
+
+# T19 确定性 fill_in 形态（本轮已验证范围，超出 fail-closed）
+_FILL_IN_INT_RE = re.compile(r"^[+-]?\d+(?:\.\d+)?$")
+_FILL_IN_ASSIGN_RE = re.compile(r"^[A-Za-zα-ω\\][A-Za-z0-9_α-ω\\{}^]*\s*=\s*\S+$")
+_FILL_IN_LATEX_RE = re.compile(r"^\$.+\$$", re.S)
+_FILL_IN_MULTIVAL_RE = re.compile(r"^\S+\s*或\s*\S+$")
+_FILL_IN_INTERVAL_RE = re.compile(r"^\$\s*[\(\[].+[\)\]]\s*\$$", re.S)
+
+
+def verify_fill_in_form(answer_text: str) -> bool:
+    """T19：5 种已验证填空形态的确定性检查（非 grammar / 不开 auto）。
+
+    形态：整数 | 赋值 x = -1 | LaTeX $...$ | 多值 1或2 | 区间 $(-1,0)$。
+    仅表示形式合法；语义正确性与 source-span 一致性由调用方另验。
+    超出范围 → False（fail-closed）。
+    """
+    t = (answer_text or "").strip()
+    if not t or len(t) > 80:
+        return False
+    if _FILL_IN_INT_RE.match(t):
+        return True
+    if _FILL_IN_LATEX_RE.match(t) or _FILL_IN_INTERVAL_RE.match(t):
+        return True
+    if _FILL_IN_MULTIVAL_RE.match(t):
+        return True
+    if _FILL_IN_ASSIGN_RE.match(t):
+        return True
+    return False
+
+
 def _normalize_inline_answer_evidence(man, lines):
     """确定性兜底（T17/T18）：解析块内唯一答案结论 → v2.7 inline_in_explanation 证据。
 
@@ -394,6 +445,15 @@ def _normalize_inline_answer_evidence(man, lines):
         except (TypeError, ValueError):
             continue
         if a0 < 1 or a1 > n or a0 > a1:
+            continue
+        # T19: multi-part incompleteness guard. 解析块含 （Ⅰ）（Ⅱ）/①② 等
+        # 多个小问标记时，单个 故答案为 不得当成整题答案（T16 Q26/28/29）。
+        block = "\n".join(lines[a0 - 1 : a1])
+        if _looks_incomplete_multipart(block):
+            notes.append(
+                f"{uid}: skip inline ae — incomplete multi-part "
+                f"(part markers in answer_lines=[{a0},{a1}])"
+            )
             continue
         # 跨行收集全部结论标记（同行冲突已在 _unique_answer_conclusion 处理）
         seen: list[tuple[int, str]] = []

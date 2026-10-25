@@ -12,9 +12,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from reslice_pipeline import (  # noqa: E402
+    _looks_incomplete_multipart,
     _normalize_inline_answer_evidence,
     _unique_answer_conclusion,
     _unique_choice_marker,
+    verify_fill_in_form,
 )
 
 
@@ -185,3 +187,60 @@ def test_normalize_requires_valid_range():
     before = copy.deepcopy(man)
     assert _normalize_inline_answer_evidence(man, lines) == []
     assert man == before
+
+
+# ---- T19: fill_in 形态 + 多问不完整保护 ----
+
+
+def test_fill_in_five_validated_forms():
+    d = "$"
+    assert verify_fill_in_form("x = -1") is True
+    assert verify_fill_in_form(f"{d} 2\\sqrt{{2}} {d}") is True
+    assert verify_fill_in_form(f"{d} (-1,0) {d}") is True
+    assert verify_fill_in_form("1或2") is True
+    assert verify_fill_in_form("1464") is True
+
+
+def test_fill_in_form_fail_closed_out_of_scope():
+    assert verify_fill_in_form("") is False
+    assert verify_fill_in_form("【解答】很长的过程") is False
+    assert verify_fill_in_form("这是一个自然语言长答案" * 5) is False
+    assert verify_fill_in_form("故选：A") is False
+
+
+def test_multipart_block_detected():
+    assert _looks_incomplete_multipart("（Ⅰ）foo（Ⅱ）bar 故答案为：x") is True
+    assert _looks_incomplete_multipart("（1）第一问\n（2）第二问") is True
+    assert _looks_incomplete_multipart("（Ⅰ）a\n（Ⅱ）b\n（Ⅲ）c") is True
+
+
+def test_statement_circled_numbers_not_multipart():
+    """①②③④ 是命题序号，不是小问（T19 Q16/17/22）。"""
+    assert _looks_incomplete_multipart("判断①正确；判断②错误 故选：D.") is False
+    assert _looks_incomplete_multipart("①a正确 ②b错误 ③c正确 ④d错误") is False
+
+
+def test_math_f1gx_not_multipart():
+    """f(1)/g(x)/(1) 出现在公式中时不得误判为多问（T19 Q6/Q8）。"""
+    assert _looks_incomplete_multipart("g(1)=3 f(1)=1 g(-1)=-f(1)+2") is False
+    assert _looks_incomplete_multipart("f(x) 在区间 [1,5] 上 f (1) = 2-1 =1") is False
+
+
+def test_single_part_not_blocked():
+    assert _looks_incomplete_multipart("故答案为：x = -1。") is False
+    assert _looks_incomplete_multipart("11.【分析】略 故答案为：1464.") is False
+
+
+def test_multipart_unit_does_not_extract_single_value():
+    """T16 Q28 形态：（Ⅰ）（Ⅱ）+ 文末一个故答案为 → 不得抽成单值整题答案。"""
+    d = "$"
+    lines = [
+        "28.",
+        "（Ⅰ）第一问结论",
+        "（Ⅱ）第二问结论",
+        f"故答案为： {d}\\frac{{\\sqrt{{2}}}}{{2}} {d}。",
+    ]
+    man = {"units": [_unit(uid="Q28", al=[1, 4], qtype="short_answer")]}
+    notes = _normalize_inline_answer_evidence(man, lines)
+    assert man["units"][0].get("answer_evidence") is None
+    assert any("multi-part" in n for n in notes)
