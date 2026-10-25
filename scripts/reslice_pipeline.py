@@ -388,6 +388,80 @@ def _looks_incomplete_multipart(block: str) -> bool:
     return len(distinct) >= 2
 
 
+def _answer_completeness_from_evidence(u: dict, lines: list) -> str:
+    """T20-BF：整段答案完整性声明（full|partial|unknown）。
+
+    语义（只描述答案范围是否完整覆盖本题答案内容，不判学科对错）：
+      - full：有明文 answer_evidence.value + 源行，且非「多问却单值」；
+      - partial：可证实截断/遗漏，或多问块仅能抽出单值结论却当作整题答案；
+      - unknown：证据不足（仅有区间、启发式未命中、缺字段）。
+    禁止把「未触发启发式」直接写成 full。旧产物缺字段 → unknown（不伪造）。
+    """
+    ae = u.get("answer_evidence") if isinstance(u.get("answer_evidence"), dict) else {}
+    val = (ae.get("value") or "").strip() if isinstance(ae, dict) else ""
+    ae_lines = ae.get("lines") if isinstance(ae, dict) else None
+    al = u.get("answer_lines")
+    block = ""
+    a0 = a1 = None
+    rng = al if isinstance(al, (list, tuple)) and len(al) == 2 else ae_lines
+    if isinstance(rng, (list, tuple)) and len(rng) == 2:
+        try:
+            a0, a1 = int(rng[0]), int(rng[1])
+            if 1 <= a0 <= a1 <= len(lines):
+                block = "\n".join(lines[a0 - 1 : a1])
+        except (TypeError, ValueError):
+            a0 = a1 = None
+
+    # 可证实截断
+    if block:
+        if block.count("$") % 2 == 1:
+            return "partial"
+        if re.search(r"\\frac\{[^}]*$", block.strip()):
+            return "partial"
+
+    multipart = _looks_incomplete_multipart(block) if block else False
+
+    if val and ae_lines and a0 is not None:
+        # 值须落在源行内（源行内容一致性）
+        val_in_src = val in block or val.replace(" ", "") in block.replace(" ", "")
+        if multipart and len(val) <= 40 and "\n" not in val:
+            # 多问 + 短单值：单值不能代表整题 → 明确不完整
+            return "partial"
+        if val_in_src and not multipart:
+            return "full"
+        if val_in_src and multipart:
+            # 多问但声明了值且值在源行：仍不能确认覆盖全部小问
+            return "unknown"
+        return "unknown"
+
+    if multipart:
+        # 启发式命中多问却无安全单值 → 无法确认完整（不得写 full）
+        return "unknown"
+
+    if val and not ae_lines:
+        # 有值无源行：来源不足
+        return "unknown"
+
+    if block and not val:
+        # 仅有区间、无明文值：范围存在但完整性未证实
+        return "unknown"
+
+    return "unknown"
+
+
+def _assign_answer_completeness(man, lines):
+    """为每个 unit 写入 answer_completeness（T20-BF Producer 声明）。"""
+    notes = []
+    for u in man.get("units", []):
+        uid = u.get("unit_id")
+        prev = u.get("answer_completeness")
+        comp = _answer_completeness_from_evidence(u, lines)
+        u["answer_completeness"] = comp
+        if prev != comp:
+            notes.append(f"{uid}: answer_completeness={comp} (was {prev!r})")
+    return notes
+
+
 # T19 确定性 fill_in 形态（本轮已验证范围，超出 fail-closed）
 _FILL_IN_INT_RE = re.compile(r"^[+-]?\d+(?:\.\d+)?$")
 _FILL_IN_ASSIGN_RE = re.compile(r"^[A-Za-zα-ω\\][A-Za-z0-9_α-ω\\{}^]*\s*=\s*\S+$")
@@ -450,10 +524,13 @@ def _normalize_inline_answer_evidence(man, lines):
         # 多个小问标记时，单个 故答案为 不得当成整题答案（T16 Q26/28/29）。
         block = "\n".join(lines[a0 - 1 : a1])
         if _looks_incomplete_multipart(block):
+            # T20-BF：结论显式落盘，不只靠跳过 + null 让下游猜。
             notes.append(
                 f"{uid}: skip inline ae — incomplete multi-part "
                 f"(part markers in answer_lines=[{a0},{a1}])"
             )
+            u.setdefault("answer_completeness", "unknown")
+            u["_multipart_guard"] = True
             continue
         # 跨行收集全部结论标记（同行冲突已在 _unique_answer_conclusion 处理）
         seen: list[tuple[int, str]] = []
@@ -666,6 +743,10 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
      源文无明文答案值就填 null。绝不推断、绝不补全一个看似合理的答案。
    - shared:证据行区内含有**不属于本单元题号**的答案（整张答案表、多题连写答案串
      如"21\. B 22\. C 23\. A"、多题共用一行）时必须 true;区内只有本单元答案时填 false。
+   4c. 答案完整性："answer_completeness"："full"|"partial"|"unknown"。
+   - full：答案范围完整覆盖本题原卷答案内容（有明文值+源行，或范围已确认覆盖全部作答要求）；
+   - partial：有证据表明截断/遗漏/只覆盖部分小问；
+   - unknown：证据不足以确认完整。禁止把「没发现不完整」写成 full。
      shared=true 时 value 必须给出本单元各题的明文答案值（逐题定位,如多小题 "21.B 22.C 23.A"）。
 4c. 答案边界（硬性,P2.1-e 答案区间污染修复）：
    - answer_lines 只圈本单元实际需要消费的答案证据:绝不圈题干/材料,绝不圈只属于他题的答案行。
@@ -718,6 +799,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    "extra_lines": [起始行号, 结束行号] 或 null,
    "answer_lines": [起始行号, 结束行号] 或 null,
    "answer_evidence": {"type": "answer_lines|inline_in_explanation|answer_table|range_string|absent", "lines": [起始行号, 结束行号] 或 null, "value": "答案值原文" 或 null, "shared": true 或 false},
+   "answer_completeness": "full|partial|unknown",
    "explanation_lines": [起始行号, 结束行号] 或 null
   },
   {
@@ -732,6 +814,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    "options_lines": [起始行号, 结束行号] 或 null,
    "answer_lines": [起始行号, 结束行号] 或 null,
    "answer_evidence": {"type": "answer_lines|inline_in_explanation|answer_table|range_string|absent", "lines": [起始行号, 结束行号] 或 null, "value": "答案值原文" 或 null, "shared": true 或 false},
+   "answer_completeness": "full|partial|unknown",
    "explanation_lines": [起始行号, 结束行号] 或 null
   }
  ]
@@ -882,6 +965,10 @@ def validate_manifest(man, n_lines, lines=None):
                         issues.append(f"{uid}: answer_evidence.shared=true 必须给本题明文 value(逐题定位)")
         if u.get("answer_lines") is None and not ae_locates:
             issues.append(f"{uid}: 无 answer_lines（题号 {nums}）")
+        # T20-BF: answer_completeness 缺失 ≠ full；非法值入校验问题。
+        ac = u.get("answer_completeness")
+        if ac is not None and ac not in ("full", "partial", "unknown"):
+            issues.append(f"{uid}: answer_completeness 非法 {ac!r}")
         # R11 入库的是 question 不是 paper：试卷级结构行不得进入任何单元区间
         if lines is not None:
             rgs = [u.get("material_lines"), u.get("questions_lines"), u.get("stem_lines"),
@@ -1333,6 +1420,8 @@ def process_file(src_path: Path, log):
     # T17: unique inline answer marker (故选：D) → v2.7 answer_evidence.
     # v2.1-era LLM dumped solution blocks into answer_lines without evidence.
     fix_notes.extend(_normalize_inline_answer_evidence(man, lines))
+    # T20-BF: declare answer_completeness (full|partial|unknown) for every unit.
+    fix_notes.extend(_assign_answer_completeness(man, lines))
 
     issues, summary = validate_manifest(man, len(lines), lines)
     summary.setdefault("warnings", []).extend(fix_notes)
@@ -1416,6 +1505,8 @@ def recompile_outputs(out_root):
         # (no LLM). Keeps originals on disk until write_outputs overwrites
         # THIS run's out_root copy only.
         _normalize_inline_answer_evidence(man_full, lines)
+        # T20-BF: completeness declaration on recompile path too.
+        _assign_answer_completeness(man_full, lines)
         meta = man_full.get("annotation_meta", {})
         write_outputs(mf.parent, mf.stem.replace(".manifest", ""), lines,
                       man_full,
