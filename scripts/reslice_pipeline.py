@@ -310,30 +310,74 @@ def _unique_choice_marker(text: str) -> str | None:
     与 V3 grammar._extract_unique_choice_marker 同语义：多标记/缺失/冲突
     一律不抽取。只读源文，不推断。
     """
+    hits = _answer_conclusion_hits(text)
+    letters = [v for _, v in hits if re.fullmatch(r"[A-D]", v)]
+    if len(set(letters)) == 1 and letters and len(letters) == len(hits):
+        return letters[0]
+    return None
+
+
+# 结论标记后的填空/简答明文值：故答案为：X / 答案为X / 答案：X
+# 不匹配「得到答案」这类叙述，也不匹配「故选项A正确」。
+_ANSWER_VALUE_RE = re.compile(
+    r"(?:故)?答案(?:为|是)\s*[：:]?\s*(\S.*?)\s*[。．.]?\s*$"
+    r"|答案\s*[：:]\s*(\S.*?)\s*[。．.]?\s*$"
+)
+# 选项结论字母（故选：D / 答案：B），与 _ANSWER_VALUE_RE 并行收集
+_ANSWER_LETTER_RE = re.compile(
+    r"故选\s*[：:]?\s*([A-Da-d])"
+    r"|(?:故)?答案(?:为|是)?\s*[：:]\s*([A-Da-d])(?![A-Za-z0-9])"
+)
+
+
+def _answer_conclusion_hits(text: str) -> list[tuple[str, str]]:
+    """收集行内全部答案结论（kind, value）。kind ∈ {letter, value}。
+
+    同行多个标记会全部返回，由调用方做唯一性/冲突判定——绝不静默挑一个。
+    """
     if not text:
+        return []
+    hits: list[tuple[str, str]] = []
+    for m in _ANSWER_LETTER_RE.finditer(text):
+        val = (m.group(1) or m.group(2) or "").upper()
+        if val:
+            hits.append(("letter", val))
+    for m in _ANSWER_VALUE_RE.finditer(text):
+        raw = (m.group(1) or m.group(2) or "").strip()
+        raw = raw.rstrip("。．.，,、；;").strip()
+        if not raw:
+            continue
+        # 已作为字母结论计入的短 token 不重复记为 value
+        if re.fullmatch(r"[A-Da-d]", raw):
+            continue
+        hits.append(("value", raw))
+    return hits
+
+
+def _unique_answer_conclusion(text: str) -> str | None:
+    """行内唯一答案结论值；同行冲突/无标记 → None。"""
+    hits = _answer_conclusion_hits(text)
+    if not hits:
         return None
-    hits = [m.group(1).upper() for m in re.finditer(r"故选\s*[：:]?\s*([A-Da-d])", text)]
-    hits += [
-        m.group(1).upper()
-        for m in re.finditer(r"(?:故)?答案(?:为|是)?\s*[：:]\s*([A-Da-d])", text)
-    ]
-    if len(set(hits)) == 1 and hits:
-        return hits[0]
+    vals = {v for _, v in hits}
+    if len(vals) == 1 and len(hits) == 1:
+        return hits[0][1]
+    # 同行多标记：即使值相同也不迁移（T18 冲突边界：不得只挑一个干净标记）
     return None
 
 
 def _normalize_inline_answer_evidence(man, lines):
-    """确定性兜底（T17）：解析块内唯一答案标记 → v2.7 inline_in_explanation 证据。
+    """确定性兜底（T17/T18）：解析块内唯一答案结论 → v2.7 inline_in_explanation 证据。
 
     首次生成错误：v2.1 LLM 把【分析】【解答】整块写入 answer_lines 且不输出
     answer_evidence，下游 V3 按 B3c-A 绑整块、grammar 拒非 token 形态。
 
     规则（仅源文证据，不绑定具体题号/卷名）：
-      - answer_lines 区间内存在**唯一**「故选/答案」结论字母时：
-          answer_evidence = {type:inline_in_explanation, lines:[结论行], value:字母}
+      - answer_lines 区间内存在**唯一**结论（故选：D / 故答案为：1464 / 答案为 x=-1 等）：
+          answer_evidence = {type:inline_in_explanation, lines:[结论行], value:明文值}
           answer_lines = null（v2.7 契约）
           解释正文归 explanation_lines（若未声明）
-      - 无标记 / 多标记 / 已有 answer_evidence.value → 不动、不猜
+      - 无标记 / 同行或跨行冲突标记 / 已有 answer_evidence.value → 不动、不猜
     """
     notes = []
     n = len(lines)
@@ -351,17 +395,27 @@ def _normalize_inline_answer_evidence(man, lines):
             continue
         if a0 < 1 or a1 > n or a0 > a1:
             continue
-        # 整区间唯一结论标记
-        marker_line = None
-        marker_val = None
-        seen_vals = []
+        # 跨行收集全部结论标记（同行冲突已在 _unique_answer_conclusion 处理）
+        seen: list[tuple[int, str]] = []
+        conflict = False
         for i in range(a0 - 1, a1):
-            val = _unique_choice_marker(lines[i])
-            if val is not None:
-                seen_vals.append((i + 1, val))
-        if len(seen_vals) != 1:
+            line = lines[i]
+            hits = _answer_conclusion_hits(line)
+            if not hits:
+                continue
+            line_val = _unique_answer_conclusion(line)
+            if line_val is None:
+                # 同行冲突或多标记 → 整段 fail-closed
+                conflict = True
+                break
+            seen.append((i + 1, line_val))
+        if conflict or not seen:
             continue
-        marker_line, marker_val = seen_vals[0]
+        vals = {v for _, v in seen}
+        if len(vals) != 1:
+            # 跨行冲突标记 → 不迁移
+            continue
+        marker_line, marker_val = seen[0]
         u["answer_evidence"] = {
             "type": "inline_in_explanation",
             "lines": [marker_line, marker_line],
