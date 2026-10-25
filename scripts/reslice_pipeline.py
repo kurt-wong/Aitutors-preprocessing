@@ -304,6 +304,80 @@ def _expand_composite_option_spans(man, lines):
     return notes
 
 
+def _unique_choice_marker(text: str) -> str | None:
+    """唯一、明文的答案结论字母（故选：D / 答案：B）；否则 None。
+
+    与 V3 grammar._extract_unique_choice_marker 同语义：多标记/缺失/冲突
+    一律不抽取。只读源文，不推断。
+    """
+    if not text:
+        return None
+    hits = [m.group(1).upper() for m in re.finditer(r"故选\s*[：:]?\s*([A-Da-d])", text)]
+    hits += [
+        m.group(1).upper()
+        for m in re.finditer(r"(?:故)?答案(?:为|是)?\s*[：:]\s*([A-Da-d])", text)
+    ]
+    if len(set(hits)) == 1 and hits:
+        return hits[0]
+    return None
+
+
+def _normalize_inline_answer_evidence(man, lines):
+    """确定性兜底（T17）：解析块内唯一答案标记 → v2.7 inline_in_explanation 证据。
+
+    首次生成错误：v2.1 LLM 把【分析】【解答】整块写入 answer_lines 且不输出
+    answer_evidence，下游 V3 按 B3c-A 绑整块、grammar 拒非 token 形态。
+
+    规则（仅源文证据，不绑定具体题号/卷名）：
+      - answer_lines 区间内存在**唯一**「故选/答案」结论字母时：
+          answer_evidence = {type:inline_in_explanation, lines:[结论行], value:字母}
+          answer_lines = null（v2.7 契约）
+          解释正文归 explanation_lines（若未声明）
+      - 无标记 / 多标记 / 已有 answer_evidence.value → 不动、不猜
+    """
+    notes = []
+    n = len(lines)
+    for u in man.get("units", []):
+        uid = u.get("unit_id")
+        ae = u.get("answer_evidence")
+        if isinstance(ae, dict) and (ae.get("value") or ae.get("type") == "absent"):
+            continue
+        al = u.get("answer_lines")
+        if not isinstance(al, (list, tuple)) or len(al) != 2:
+            continue
+        try:
+            a0, a1 = int(al[0]), int(al[1])
+        except (TypeError, ValueError):
+            continue
+        if a0 < 1 or a1 > n or a0 > a1:
+            continue
+        # 整区间唯一结论标记
+        marker_line = None
+        marker_val = None
+        seen_vals = []
+        for i in range(a0 - 1, a1):
+            val = _unique_choice_marker(lines[i])
+            if val is not None:
+                seen_vals.append((i + 1, val))
+        if len(seen_vals) != 1:
+            continue
+        marker_line, marker_val = seen_vals[0]
+        u["answer_evidence"] = {
+            "type": "inline_in_explanation",
+            "lines": [marker_line, marker_line],
+            "value": marker_val,
+            "shared": False,
+        }
+        u["answer_lines"] = None
+        if not u.get("explanation_lines"):
+            u["explanation_lines"] = [a0, a1]
+        notes.append(
+            f"{uid}: inline answer marker {marker_val!r} @L{marker_line} "
+            f"→ answer_evidence (was answer_lines=[{a0},{a1}])"
+        )
+    return notes
+
+
 def model_tag():
     """Metadata model tag only; real LLM calls use resolve()."""
     return llm_provider.default_model_tag(ROOT)
@@ -1142,6 +1216,9 @@ def process_file(src_path: Path, log):
     # Composite options transport: choice-type composite units whose questions
     # region carries A/B/C/D markers but whose manifest omitted options.
     fix_notes.extend(_expand_composite_option_spans(man, lines))
+    # T17: unique inline answer marker (故选：D) → v2.7 answer_evidence.
+    # v2.1-era LLM dumped solution blocks into answer_lines without evidence.
+    fix_notes.extend(_normalize_inline_answer_evidence(man, lines))
 
     issues, summary = validate_manifest(man, len(lines), lines)
     summary.setdefault("warnings", []).extend(fix_notes)
@@ -1221,6 +1298,10 @@ def recompile_outputs(out_root):
         text = re.sub(r"<!--\s*META:[^>]*-->\n?", "",
                       src.read_text(encoding="utf-8", errors="replace"))
         lines = text.splitlines()
+        # T17: upgrade legacy manifests through the same Producer fallback
+        # (no LLM). Keeps originals on disk until write_outputs overwrites
+        # THIS run's out_root copy only.
+        _normalize_inline_answer_evidence(man_full, lines)
         meta = man_full.get("annotation_meta", {})
         write_outputs(mf.parent, mf.stem.replace(".manifest", ""), lines,
                       man_full,
