@@ -1350,6 +1350,20 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
     for k in ("identity_version", "sections", "source_content_sha256"):
         if k in man:
             manifest[k] = man[k]
+    # T20BF-CLOSURE: Producer provenance / original-identity fields must
+    # survive recompile. write_outputs rebuilds locators only (source_file,
+    # image_assets, grade/subject). original_file / original_sha256 /
+    # t179_* lineage stay byte-identical to the Producer declaration —
+    # original_sha256 is the V3 documents identity domain and is verified in
+    # preprocessing_import._verify_package_identity (missing → check skipped).
+    _REBUILT = {
+        "source_file", "model", "annotation_meta", "units",
+        "source_content_sha256", "identity_version", "sections",
+        "grade", "subject", "grade_source", "image_assets",
+    }
+    for k, v in man.items():
+        if k not in _REBUILT:
+            manifest[k] = v
     # grade/subject（Owner 定稿 + P2）：路径映射，不进身份 hash。
     # 非 None 已有值 → 保留；显式 None 或缺失 → 从规范化相对路径推导。
     # 推导只用 rel_out(src_path, SRC_ROOT)，不解析 manifest.source_file 字符串。
