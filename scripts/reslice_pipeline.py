@@ -139,15 +139,25 @@ def _detect_option_labels(lines, start, end):
     seen = set()
     last_line = start - 1
 
-    # Pass 1: clean labels (unchanged).
+    # Pass 1: clean labels.
+    # Mid-line labels need non-whitespace content between them and the previous
+    # label match on the same line. Rejects letter-form body text that only
+    # looks like a label: `C. F、Mg` (F is option-C content), `B. H: O: H`
+    # (H is electron-dot content). Line-start labels are unaffected.
     for line_no in range(start, min(end + 1, len(lines) + 1)):
         text = _text_at(lines, line_no)
+        prev_end = None
         for m in _OPT_LABEL_RE.finditer(text):
             lab = m.group(1).upper()
+            if prev_end is not None and not text[prev_end:m.start()].strip():
+                # glued to previous label — body text, not a new option label
+                prev_end = m.end()
+                continue
             if lab not in seen:
                 labels.append((lab, line_no, line_no))
                 seen.add(lab)
                 last_line = max(last_line, line_no)
+            prev_end = m.end()
 
     # Pass 2: Rule B digit-glue (sequential: letter must be next after highest seen,
     # or fill an exact gap in A..max). Rejects `2\cos…` (no separator after letter)
@@ -198,6 +208,14 @@ def _detect_option_labels(lines, start, end):
             continue
         if _OPT_SPACE_SEP_RE.search(text):
             continue
+        # Full A-D already located → trailing unlabeled content is a line-wrap
+        # continuation of the last option (e.g. Q20 D「涉及了氧」+「还原反应」),
+        # not a new label E. Keeps body/continuation text with its option.
+        if {"A", "B", "C", "D"} <= seen and labels:
+            lab, s0, _e0 = labels[-1]
+            labels[-1] = (lab, s0, line_no)
+            last_line = line_no
+            continue
         lab = _next_seq_letter(seen)
         if lab is None:
             break
@@ -241,6 +259,25 @@ def _expand_option_spans(man, lines):
             continue
         # P1.4-B: fill MISSING labels on partial option lists (Q23/Q4/Q29).
         # Never drop/reorder Producer-declared labels; never invent content.
+        # EXCEPTION (主线 A1): phantom labels that source detection rejects
+        # (`C. F、Mg`→F, `B. H: O: H`→H, trailing continuation→E) are pruned
+        # when detection yields a contiguous A..N run. The detected run is the
+        # source-grounded truth; the extra letter is letter-form body text.
+        det_labs = [lab for lab, _, _ in spans]
+        seq_ok = det_labs == [chr(ord("A") + i) for i in range(len(det_labs))]
+        # Only prune when detection found a full A-D (or longer) contiguous run.
+        # A shorter run (A,B,C) cannot prove a declared D is phantom.
+        if seq_ok and len(det_labs) >= 4 and existing_labs - set(det_labs):
+            phantom = sorted(existing_labs - set(det_labs))
+            u["options"] = [
+                {"label": lab, "start_line": s, "end_line": e}
+                for lab, s, e in spans
+            ]
+            notes.append(
+                f"{u.get('unit_id')}: pruned phantom option labels {phantom} "
+                f"(not source markers); kept {det_labs}"
+            )
+            continue
         added = []
         for lab, s, e in spans:
             if lab in existing_labs:
@@ -301,6 +338,123 @@ def _expand_composite_option_spans(man, lines):
                 f"{u.get('unit_id')}: composite options declared from questions_lines="
                 f"[{start},{end}] labels={[lab for lab, _, _ in spans]}"
             )
+    return notes
+
+
+# PHY Q16 shape: `<div><img …></div>` then bare `<div>A</div>` (letter only).
+# Labels are literally in the source; the preceding image is the option body.
+_IMG_LETTER_DIV_RE = re.compile(
+    r"<div[^>]*>\s*([A-Ha-h])\s*</div>", re.I
+)
+_IMG_TAG_RE = re.compile(r"<img\b", re.I)
+
+
+def _expand_image_letter_option_spans(man, lines):
+    """Declare options for image+letter units (PHY Q16) from source labels.
+
+    Only fires when the unit is choice-type, has no options declared, and its
+    stem range contains a sequential A..D set of bare HTML letter labels each
+    preceded by an `<img>` row. Splits stem so the option region is no longer
+    swallowed into the stem. Never invents labels that are not in the source.
+    """
+    notes = []
+    for u in man.get("units", []):
+        if u.get("options") or u.get("options_lines"):
+            continue
+        if u.get("original_question_type") not in _CHOICE_TYPES:
+            continue
+        rg = u.get("stem_lines")
+        if not isinstance(rg, (list, tuple)) or len(rg) != 2:
+            continue
+        s0, s1 = int(rg[0]), int(rg[1])
+        if s0 < 1 or s1 > len(lines) or s0 > s1:
+            continue
+        # collect bare letter labels + their preceding image rows in stem range
+        hits = []  # (label, img_line, label_line)
+        last_img = None
+        for line_no in range(s0, s1 + 1):
+            text = lines[line_no - 1]
+            if _IMG_TAG_RE.search(text):
+                last_img = line_no
+                continue
+            m = _IMG_LETTER_DIV_RE.search(text)
+            if m:
+                lab = m.group(1).upper()
+                if last_img is not None:
+                    hits.append((lab, last_img, line_no))
+                    last_img = None
+        if len(hits) < 2:
+            continue
+        labs = [h[0] for h in hits]
+        # require a clean sequential A.. set (A,B,C,D or A,B,C…)
+        expect = [chr(ord("A") + i) for i in range(len(labs))]
+        if labs != expect:
+            continue
+        u["options"] = [
+            {"label": lab, "start_line": img, "end_line": lab_ln}
+            for lab, img, lab_ln in hits
+        ]
+        u["options_lines"] = [hits[0][1], hits[-1][2]]
+        # stem keeps only the text before the first option image
+        first_img = hits[0][1]
+        if first_img > s0:
+            u["stem_lines"] = [s0, first_img - 1]
+        else:
+            u["stem_lines"] = None
+        notes.append(
+            f"{u.get('unit_id')}: image-letter options declared "
+            f"labels={labs} spans="
+            f"{[(lab, img, ln) for lab, img, ln in hits]}"
+        )
+    return notes
+
+
+def _expand_orphan_table_into_stem(man, lines):
+    """Pull a stem-referenced table that fell outside stem_lines back into stem.
+
+    BIO Q30 shape: stem says 「下表…」 but the following `<table>` row was left
+    out of stem_lines. Source-grounded: the stem text references a table and a
+    table block sits before the next unit's start. Never touches option labels.
+    """
+    notes = []
+    unit_starts = []
+    for u in man.get("units", []):
+        rg = u.get("stem_lines")
+        if isinstance(rg, (list, tuple)) and len(rg) == 2:
+            unit_starts.append((u, int(rg[0]), int(rg[1])))
+    unit_starts.sort(key=lambda x: x[1])
+    for idx, (u, s0, s1) in enumerate(unit_starts):
+        if u.get("options") and u.get("options_lines"):
+            continue
+        if u.get("original_question_type") not in _CHOICE_TYPES:
+            continue
+        stem_text = "\n".join(lines[s0 - 1:s1])
+        if not re.search(r"下表|如表|见表|下图.*表", stem_text):
+            continue
+        # next unit start bounds the look-ahead
+        nxt_start = unit_starts[idx + 1][1] if idx + 1 < len(unit_starts) else len(lines) + 1
+        table_end = None
+        for line_no in range(s1 + 1, min(nxt_start, len(lines) + 1)):
+            if "<table" in lines[line_no - 1]:
+                # single-line table or table start; extend to </table> if needed
+                if "</table>" in lines[line_no - 1]:
+                    table_end = line_no
+                else:
+                    for line_no2 in range(line_no, min(nxt_start, len(lines) + 1)):
+                        if "</table>" in lines[line_no2 - 1]:
+                            table_end = line_no2
+                            break
+                break
+            t = lines[line_no - 1].strip()
+            if t and not t.startswith("<!--"):
+                break  # non-blank non-table before the table — stop
+        if table_end is None:
+            continue
+        u["stem_lines"] = [s0, table_end]
+        notes.append(
+            f"{u.get('unit_id')}: stem expanded to include referenced table "
+            f"L{s1 + 1}-{table_end}"
+        )
     return notes
 
 
@@ -565,6 +719,114 @@ def _normalize_inline_answer_evidence(man, lines):
         notes.append(
             f"{uid}: inline answer marker {marker_val!r} @L{marker_line} "
             f"→ answer_evidence (was answer_lines=[{a0},{a1}])"
+        )
+    return notes
+
+
+def _parse_labeled_answer_table(block: str) -> dict[int, str]:
+    """OCR 真实答案表：首列「题号/答案/分数」标签 + 数字行/字母行成对。
+
+    与 prereview_check.parse_answer_tables 分离：后者是 F1 控制组基线契约，
+    不得因标签表支持而改变。本函数仅供 answer_table 证据抽取。
+    """
+    mapping: dict[int, str] = {}
+    labels = {"题号", "答案", "分数", "分值"}
+    for tb in re.findall(r"<table[^>]*>(.*?)</table>", block, re.S):
+        rows = []
+        for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", tb, re.S):
+            cells = [re.sub(r"<[^>]+>", "", c).strip()
+                     for c in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)]
+            rows.append(cells)
+        for i in range(len(rows) - 1):
+            a, b = rows[i], rows[i + 1]
+            if len(a) != len(b) or len(a) < 3:
+                continue
+            nums_ok = any(c.isdigit() for c in a if c and c not in labels)
+            ans_ok = any(re.fullmatch(r"[A-DＡ-Ｄ]{1,4}", c)
+                         for c in b if c and c not in labels)
+            if not (nums_ok and ans_ok):
+                continue
+            for num, ans in zip(a, b):
+                num = (num or "").strip()
+                ans = (ans or "").strip()
+                if num.isdigit() and re.fullmatch(r"[A-DＡ-Ｄ]{1,4}", ans):
+                    mapping[int(num)] = ans
+    return mapping
+
+
+def _normalize_answer_table_evidence(man, lines):
+    """T20BF 主线：共享答案表 → answer_evidence(type=answer_table)。
+
+    仅源文事实搬运，不猜：
+      - 已有 answer_evidence.value / type=absent → 不动
+      - answer_lines 必须指向含 <table> 的源行
+      - 仅当本单元 question_numbers 全部能取到**唯一单字母** A–D 才写入
+      - 多题号/自由文本/解析失败 → 保持无证据（unknown，不伪造 full）
+    形状对齐既有 chem 定点产物：
+      {type: answer_table, lines: [L,L], value: "D", shared: true}
+    """
+    notes = []
+    n = len(lines)
+    fw = str.maketrans("ＡＢＣＤ", "ABCD")
+    for u in man.get("units", []):
+        uid = u.get("unit_id")
+        ae = u.get("answer_evidence") if isinstance(u.get("answer_evidence"), dict) else {}
+        if (ae.get("value") or "").strip() or ae.get("type") == "absent":
+            continue
+        al = u.get("answer_lines")
+        if not isinstance(al, (list, tuple)) or len(al) != 2:
+            continue
+        try:
+            a0, a1 = int(al[0]), int(al[1])
+        except (TypeError, ValueError):
+            continue
+        if a0 < 1 or a1 > n or a0 > a1:
+            continue
+        block = "\n".join(lines[a0 - 1 : a1])
+        if "<table" not in block:
+            continue
+        mapping = _parse_labeled_answer_table(block)
+        if not mapping:
+            continue
+        qns = u.get("question_numbers") or []
+        if not qns:
+            continue
+        vals: list[str] = []
+        raws: list[str] = []
+        ok = True
+        for q in qns:
+            try:
+                key = int(q)
+            except (TypeError, ValueError):
+                ok = False
+                break
+            raw = (mapping.get(key) or "").strip()
+            if not re.fullmatch(r"[A-DＡ-Ｄ]", raw):
+                ok = False
+                break
+            raws.append(raw)
+            vals.append(raw.translate(fw))
+        if not ok or not vals:
+            continue
+        # 仅单题号 + 单字母可作整题完整答案；多题号复合保持 unknown。
+        if len(vals) != 1:
+            continue
+        value = vals[0]
+        raw_val = raws[0]
+        # 值必须落在源行内（与 completeness 规则一致）。
+        # 全角字母先折叠再比对：源文可能是「Ｂ」，证据值是「B」。
+        if (value not in block and raw_val not in block
+                and value not in block.replace(" ", "")):
+            continue
+        u["answer_evidence"] = {
+            "type": "answer_table",
+            "lines": [a0, a1],
+            "value": value,
+            "shared": True,
+        }
+        notes.append(
+            f"{uid}: answer_table value={value!r} @L{a0}-{a1} "
+            f"→ answer_evidence (shared table)"
         )
     return notes
 
@@ -1431,9 +1693,15 @@ def process_file(src_path: Path, log):
     # Composite options transport: choice-type composite units whose questions
     # region carries A/B/C/D markers but whose manifest omitted options.
     fix_notes.extend(_expand_composite_option_spans(man, lines))
+    # PHY Q16: image+letter options (bare <div>A</div> after <img>).
+    fix_notes.extend(_expand_image_letter_option_spans(man, lines))
+    # BIO Q30: stem-referenced table left out of stem_lines.
+    fix_notes.extend(_expand_orphan_table_into_stem(man, lines))
     # T17: unique inline answer marker (故选：D) → v2.7 answer_evidence.
     # v2.1-era LLM dumped solution blocks into answer_lines without evidence.
     fix_notes.extend(_normalize_inline_answer_evidence(man, lines))
+    # T20BF 主线：共享答案表 → answer_evidence(type=answer_table)。
+    fix_notes.extend(_normalize_answer_table_evidence(man, lines))
     # T20-BF: declare answer_completeness (full|partial|unknown) for every unit.
     fix_notes.extend(_assign_answer_completeness(man, lines))
 
@@ -1518,7 +1786,14 @@ def recompile_outputs(out_root):
         # T17: upgrade legacy manifests through the same Producer fallback
         # (no LLM). Keeps originals on disk until write_outputs overwrites
         # THIS run's out_root copy only.
+        # Option spans (same fallbacks as process_file): image-letter (PHY Q16),
+        # orphan table (BIO Q30), and phantom-label prune (CHEM Q2/Q17/Q20).
+        _expand_option_spans(man_full, lines)
+        _expand_composite_option_spans(man_full, lines)
+        _expand_image_letter_option_spans(man_full, lines)
+        _expand_orphan_table_into_stem(man_full, lines)
         _normalize_inline_answer_evidence(man_full, lines)
+        _normalize_answer_table_evidence(man_full, lines)
         # T20-BF: completeness declaration on recompile path too.
         _assign_answer_completeness(man_full, lines)
         meta = man_full.get("annotation_meta", {})
