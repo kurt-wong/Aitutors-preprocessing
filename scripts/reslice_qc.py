@@ -35,6 +35,15 @@ TBL_ROW = re.compile(r"^\s*\|.*\|\s*$|<table|</tr>")
 BOILER = re.compile(r"本大题共|请将答案.{0,10}答题卡|在答题卡上|答题卡指定区域|考试时间\s*\d|注意事项")
 # 与卷面指令同处一行的作答必需要求：整行应保留，不算卷面指令混入
 ESSENTIAL = re.compile(r"任选|不少于|不超过|按要求作答|保留.{0,4}小数|写一篇|自拟")
+# 题目自身的大题作答指导语（题型作答方法），不算卷面指令。BOILER 中
+# 仅在答题卡上 一词兼有两义：作答动作的地点状语（完形填空「…选出最佳
+# 选项，并在答题卡上将该项涂黑。」）与考务要求（「请将答案写在答题卡
+# 上」）。故该短语单独命中时先判是否指导语；其余卷面指令模式不适用豁免。
+GUIDANCE = re.compile(
+    r"选出.{0,10}(选项|答案)"
+    r"|(涂黑|填涂|填写)该项|将该项.{0,6}(涂黑|填涂|填写)"
+    r"|填入.{0,12}(单词|空白|空格|表格)"
+    r"|完成下列各题|完成题目|根据要求写作")
 # C9 试卷级结构行（入库的是 question 不是 paper）
 PAPER_LINE = re.compile(
     r"^#{1,4}\s*\d{4}\s*北京"
@@ -170,11 +179,15 @@ def check(md_path: Path):
     if lost_tbl:
         issues.append(f"C6 {len(lost_tbl)} 个表格行未被任何单元覆盖: {lost_tbl[:10]}")
 
-    # C7 卷面指令（忽略混有必需作答要求的行）
+    # C7 卷面指令（忽略混有必需作答要求的行；题目自身的大题作答
+    # 指导语不是卷面指令——仅当整行只命中歧义短语在答题卡上且属
+    # 题型作答方法时豁免，不做关键词全局豁免）
     boiler = []
     for ln in text.splitlines():
         b = BOILER.findall(ln)
         if b and not ESSENTIAL.search(ln):
+            if all(h == "在答题卡上" for h in b) and GUIDANCE.search(ln):
+                continue
             boiler.extend(b)
     if boiler:
         issues.append(f"C7 含卷面指令: {list(dict.fromkeys(boiler))[:5]}")

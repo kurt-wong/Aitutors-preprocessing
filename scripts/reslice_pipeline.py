@@ -530,6 +530,50 @@ _PART_MARKER_RE = re.compile(
 )
 
 
+# T81 非答案占位语：源卷答案位只指向解析/声明无答案，不构成可发布答案。
+# 仅描述「值本身是不是答案内容」，不改写源文、不发明新状态。
+_PLACEHOLDER_PHRASES = (
+    "答案见解析", "答案见详解", "答案见上文", "答案见下文", "答案见图", "答案见答案",
+    "图像见解析", "图见解析", "见解析图", "证明见解析", "过程见解析", "理由见解析",
+    "详见解析", "详见详解",
+    "见解析", "见详解", "见答案", "见上文", "见下文", "无答案", "答案略",
+)
+_PLACEHOLDER_WHOLE = {"略", "无", "同上", "答案略", "无答案"}
+_PLACEHOLDER_RESIDUE_JUNK = re.compile(
+    r"[（(\[【]?[0-9０-９一二三四五六七八九十ⅠⅡⅢⅣⅤⅥ①②③④⑤⑥⑦⑧⑨⑩]+[）)\]】]?"
+    r"|[。．\.、，,；;：:！!？\?…—－\-]"
+)
+
+
+def _answer_value_placeholder_class(val: str) -> str:
+    """非答案占位语分类：none | pure | partial。
+
+    - pure：整段值只是占位语（答案见解析 / 无答案 / 略 …）→ 无答案内容；
+    - partial：含占位语且另有真实内容（（1）见解析；（2）X）→ 覆盖不完整；
+    - none：无占位语，交由原完整性判据。
+    禁止把 pure/partial 声明为 full（T20-BF「未知≠完整」）。
+    """
+    raw = (val or "").strip()
+    if not raw:
+        return "none"
+    compact = re.sub(r"\s+", "", raw)
+    core = compact.rstrip("。．.、，,；;：:！!？?…")
+    if core in _PLACEHOLDER_WHOLE:
+        return "pure"
+    residue = compact
+    hit = False
+    for p in sorted(_PLACEHOLDER_PHRASES, key=len, reverse=True):
+        if p in residue:
+            hit = True
+            residue = residue.replace(p, "")
+    if not hit:
+        return "none"
+    residue = _PLACEHOLDER_RESIDUE_JUNK.sub("", residue)
+    # 去掉粘连在占位语旁的承词（理由/图像 等已在短语表内）
+    residue = residue.strip("，,、；;：:的")
+    return "pure" if not residue else "partial"
+
+
 def _looks_incomplete_multipart(block: str) -> bool:
     """解析块含 ≥2 个小问标记时，单值结论不得代表整题答案。
 
@@ -543,16 +587,29 @@ def _looks_incomplete_multipart(block: str) -> bool:
 
 
 def _answer_completeness_from_evidence(u: dict, lines: list) -> str:
-    """T20-BF：整段答案完整性声明（full|partial|unknown）。
+    """T20-BF：整段答案完整性规则推导值（full|partial|unknown）。
+
+    注意（B3-4R 语义校准）：这是本函数按证据规则推导出的值，不是 Producer
+    权威声明。真实 Producer 产物 answer_completeness 出现率 0/5067；写入
+    manifest 时属于「推导值」，下游 V3 不得当上游声明权威消费。
 
     语义（只描述答案范围是否完整覆盖本题答案内容，不判学科对错）：
-      - full：有明文 answer_evidence.value + 源行，且非「多问却单值」；
-      - partial：可证实截断/遗漏，或多问块仅能抽出单值结论却当作整题答案；
-      - unknown：证据不足（仅有区间、启发式未命中、缺字段）。
-    禁止把「未触发启发式」直接写成 full。旧产物缺字段 → unknown（不伪造）。
+      - full：有明文 answer_evidence.value + 源行，且非「多问却单值」、非占位语；
+      - partial：可证实截断/遗漏，或多问块仅能抽出单值结论却当作整题答案，
+        或值含非答案占位语且另有真实内容；
+      - unknown：证据不足（仅有区间、启发式未命中、缺字段），或值只是占位语
+        （答案见解析/无答案/略…）。
+    禁止把「未触发启发式」或占位语直接写成 full。旧产物缺字段 → unknown（不伪造）。
     """
     ae = u.get("answer_evidence") if isinstance(u.get("answer_evidence"), dict) else {}
     val = (ae.get("value") or "").strip() if isinstance(ae, dict) else ""
+    # T81：占位语不得声明 full。pure=无答案内容→unknown；partial=覆盖不完整→partial。
+    # 仍以源文值本身为准，不改写答案字符串、不触碰 Gate。
+    ph = _answer_value_placeholder_class(val)
+    if ph == "pure":
+        return "unknown"
+    if ph == "partial":
+        return "partial"
     ae_lines = ae.get("lines") if isinstance(ae, dict) else None
     al = u.get("answer_lines")
     block = ""
@@ -603,8 +660,35 @@ def _answer_completeness_from_evidence(u: dict, lines: list) -> str:
     return "unknown"
 
 
+def _snapshot_llm_semantic_completeness(man):
+    """TASK-QCC-ANSWER-SEMANTICS-1 轴S：LLM 语义完整性声明即时快照。
+
+    prompt 4c 让 LLM 对每单元声明 answer_completeness（答案范围是否完整覆盖
+    本题原卷答案内容/小问）——这是**语义判断**，与后续证据规则推导（轴E）是
+    两类问题。必须在任何确定性 fixer（T19 setdefault 等）触碰该字段之前
+    快照到独立字段，避免被推导值/默认值静默覆盖或污染归因。
+    """
+    n = 0
+    for u in man.get("units", []):
+        v = u.get("answer_completeness")
+        if isinstance(v, str) and v.strip().lower() in ("full", "partial", "unknown"):
+            u["answer_completeness_semantic"] = v.strip().lower()
+            u["answer_completeness_semantic_source"] = "llm_declared"
+            n += 1
+    return n
+
+
 def _assign_answer_completeness(man, lines):
-    """为每个 unit 写入 answer_completeness（T20-BF Producer 声明）。"""
+    """为每个 unit 写入 answer_completeness（规则推导值，非 Producer 权威声明）。
+
+    B3-4R：该值来自 _answer_completeness_from_evidence 的证据规则推导。
+    不得以「T20-BF Producer 声明」名义写入；下游按推导值消费并自行区分
+    与原始 answer_evidence 声明的权威层级。
+
+    TASK-QCC-ANSWER-SEMANTICS-1：本函数只写轴E（证据推导）。轴S（LLM 语义
+    声明）由 _snapshot_llm_semantic_completeness 在解析点快照到
+    answer_completeness_semantic——两类判断分离，互不覆盖。
+    """
     notes = []
     for u in man.get("units", []):
         uid = u.get("unit_id")
@@ -1231,6 +1315,10 @@ def validate_manifest(man, n_lines, lines=None):
         ac = u.get("answer_completeness")
         if ac is not None and ac not in ("full", "partial", "unknown"):
             issues.append(f"{uid}: answer_completeness 非法 {ac!r}")
+        # SEMANTICS-1：语义完整性字段同枚举校验（保留声明，不参与门槛）。
+        acs = u.get("answer_completeness_semantic")
+        if acs is not None and acs not in ("full", "partial", "unknown"):
+            issues.append(f"{uid}: answer_completeness_semantic 非法 {acs!r}")
         # R11 入库的是 question 不是 paper：试卷级结构行不得进入任何单元区间
         if lines is not None:
             rgs = [u.get("material_lines"), u.get("questions_lines"), u.get("stem_lines"),
@@ -1346,21 +1434,35 @@ def compile_slices(lines, man, src_name, src_path, model=DEFAULT_MODEL):
     tbl_ans = parse_answer_tables("\n".join(lines))
     rng_ans = parse_range_answers("\n".join(lines))
     inl_ans = parse_inline_answers("\n".join(lines))
+    copies = _divergent_answer_copies(lines, man)
     slices = []
-    for u in man["units"]:
+    for ui, u in enumerate(man["units"]):
         out = []
         if u["unit_type"] == "composite_question":
             # 综合题整块一道题：material 嵌套在 questions 内。
-            # 切片渲染时 questions 须去掉与 material 重叠的前段，避免嵌套导致内容重复。
+            # 切片渲染 questions 时只去掉与 material 重叠的交集（set 差集），
+            # material 之前的引导行/子题头与之后的尾段都必须原样回引——
+            # 旧实现取 rem_start=max(qs, mat[1]+1) 会吞掉 [qs, mat[0]-1] 前缀
+            # （FIDELITY-02 实证 85 行引导行丢失：CHN-02/13/17/24/27、CHM-03 等）。
             out.append("“题干区开始”")
             mat = u.get("material_lines")
             que = u.get("questions_lines")
-            out.append(span_text(lines, mat))
             if que:
                 qs, qe = que
-                rem_start = max(qs, (mat[1] + 1) if mat else qs)
-                if rem_start <= qe:
-                    out.append(span_text(lines, [rem_start, qe]))
+                if mat:
+                    ms, me = mat
+                    if qs < ms:
+                        pe = min(qe, ms - 1)
+                        if qs <= pe:
+                            out.append(span_text(lines, [qs, pe]))
+                    out.append(span_text(lines, mat))
+                    suf = max(qs, me + 1)
+                    if suf <= qe:
+                        out.append(span_text(lines, [suf, qe]))
+                else:
+                    out.append(span_text(lines, que))
+            else:
+                out.append(span_text(lines, mat))
             out.append(span_text(lines, u.get("extra_lines")))
             out.append("“题干区结束”")
         else:
@@ -1403,6 +1505,10 @@ def compile_slices(lines, man, src_name, src_path, model=DEFAULT_MODEL):
             val = f" 值={ae['value']}" if ae.get("value") else ""
             sh = " shared=true" if ae.get("shared") else ""
             out.append(f"<!-- 答案证据 type={ae.get('type')} {loc}{val}{sh}(源文行区间引用,非生成) -->")
+        for ln_no, txt in copies.get(ui, []):
+            out.append(f"<!-- 答案区差异副本 L{ln_no:04d}"
+                       f"（与正本不一致，原样保留供对照/自愈） -->")
+            out.append(txt)
         out.append("“答案区结束”")
         exp = span_text(lines, u.get("explanation_lines"))
         if exp:
@@ -1488,6 +1594,159 @@ def compile_anchor(lines, man, src_name, src_path, model=DEFAULT_MODEL):
 
 
 IMG_SRC_RE = re.compile(r'src="([^"]+)"')
+
+
+def _norm_sim_line(t: str) -> str:
+    t = re.sub(r"\s+", "", t)
+    for a, b in (("（", "("), ("）", ")"), ("，", ","), ("。", "."), ("．", "."),
+                 ("：", ":"), ("；", ";"), ("、", ","), ("“", '"'), ("”", '"'),
+                 ("％", "%"), ("＋", "+"), ("－", "-"), ("＝", "="), ("·", "")):
+        t = t.replace(a, b)
+    # 排版记号归一（非语义）：Unicode 上下标→ASCII、强调/样式包裹展开为内层内容、
+    # $/^/_/{}/间距命令剥离——纯排版差异由此归一为完全一致（按去重设计丢弃）
+    for a, b in (("₀", "0"), ("₁", "1"), ("₂", "2"), ("₃", "3"), ("₄", "4"),
+                 ("₅", "5"), ("₆", "6"), ("₇", "7"), ("₈", "8"), ("₉", "9"),
+                 ("⁰", "0"), ("¹", "1"), ("²", "2"), ("³", "3"), ("⁴", "4"),
+                 ("⁵", "5"), ("⁶", "6"), ("⁷", "7"), ("⁸", "8"), ("⁹", "9"),
+                 ("⁺", "+"), ("⁻", "-")):
+        t = t.replace(a, b)
+    t = re.sub(r"\\(?:underline|underdot|overline|dot|overset\{[^{}]*\}"
+               r"|underset\{[^{}]*\})\{([^{}]*)\}", r"\1", t)
+    t = re.sub(r"\\(?:mathrm|text|mathbf|mathit|rm|displaystyle|left|right|ce)"
+               r"\{([^{}]*)\}", r"\1", t)
+    t = re.sub(r"\\(?:quad|qquad|cdot|times|,|;|!| |%|\$)", "", t)
+    for ch in ("$", "^", "_", "{", "}", "\\"):
+        t = t.replace(ch, "")
+    return t
+
+
+def _copy_coverage(a: str, b: str) -> float:
+    """两条源行的归一化重合度 = 匹配块长度/较短行长度。
+
+    =1.0 表示纯冗余副本（按去重设计丢弃）；落在 (低阈值, 1.0) 表示
+    副本与正本存在差异——唯一正确内容可能只在副本里（CHM-02 L701 苯胺式、
+    CHN-20 L831 引文实证），必须保留可见。
+    """
+    from difflib import SequenceMatcher
+    na, nb = _norm_sim_line(a), _norm_sim_line(b)
+    if not na or not nb:
+        return 0.0
+    matched = sum(bl.size for bl in SequenceMatcher(None, na, nb).get_matching_blocks())
+    return matched / min(len(na), len(nb))
+
+
+# 差异副本判定窗口：重合度过低=非副本（不猜）；≥上限=纯冗余副本（去重设计丢弃）
+_COPY_SIM_LOW = 0.62
+_COPY_SIM_HIGH = 0.995
+_COPY_MIN_NORM_LEN = 12
+_QNUM_LINE_RE = re.compile(r"^\s*(\d{1,3})\s*[.．、]")
+_ANS_SPAN_KEYS = ("answer_lines", "explanation_lines")
+_QSIDE_SPAN_KEYS = ("stem_lines", "options_lines", "material_lines", "questions_lines")
+
+
+def _divergent_answer_copies(lines, man):
+    """答案区缝隙中的差异副本 → {unit_index: [(line_no, text)]}。
+
+    只收两类约束同时满足的孤儿行：①位于该单元答案块前缘缝隙（以题号行为锚）
+    或该单元答案区间内部缝隙；②与本单元题目区某行重合度落在差异窗口内，
+    且对该单元的重合度不低于对其他任何单元。仅在切片展示视图原样回引；
+    manifest 区间不动（不重猜人工审核结构）。
+    """
+    units = man.get("units", [])
+    n_lines = len(lines)
+    covered = set()
+    qside = []   # [(unit_idx, [(line_no, text)])]
+    ans_rg = []  # [(unit_idx, [(start, end)])]
+    for i, u in enumerate(units):
+        qs = []
+        for k in _QSIDE_SPAN_KEYS:
+            rg = u.get(k)
+            if rg:
+                for ln in range(rg[0], rg[1] + 1):
+                    covered.add(ln)
+                    if ln <= n_lines:
+                        qs.append((ln, lines[ln - 1]))
+        qside.append((i, qs))
+        ars = [u.get(k) for k in _ANS_SPAN_KEYS if u.get(k)]
+        ans_rg.append((i, ars))
+
+    def is_orphan_range(lo, hi):
+        return all(ln not in covered for ln in range(lo, hi + 1))
+
+    # 每单元候选孤儿窗口
+    windows = {}  # unit_idx -> set(line_no)
+    for i, ars in ans_rg:
+        if not ars:
+            continue
+        wins = set()
+        first_start = min(a[0] for a in ars)
+        # ①答案块前缘缝隙：上一块覆盖终点 → first_start-1，锚定题号行起
+        prev_end = 0
+        for ln in covered:
+            if ln < first_start and ln > prev_end:
+                prev_end = ln
+        if prev_end + 1 <= first_start - 1 and is_orphan_range(prev_end + 1, first_start - 1):
+            nums = {str(n) for n in (units[i].get("question_numbers") or [])}
+            anchor = None
+            for ln in range(prev_end + 1, first_start):
+                m = _QNUM_LINE_RE.match(lines[ln - 1])
+                if m and m.group(1) in nums:
+                    anchor = ln
+                    break
+            if anchor:
+                wins.update(range(anchor, first_start))
+        # ②单元自身答案区间内部缝隙
+        srs = sorted({(a[0], a[1]) for a in ars})
+        for (s1, e1), (s2, e2) in zip(srs, srs[1:]):
+            if e1 + 1 <= s2 - 1 and is_orphan_range(e1 + 1, s2 - 1):
+                wins.update(range(e1 + 1, s2))
+        if wins:
+            windows[i] = wins
+
+    out = {}
+    for i, wins in windows.items():
+        for ln in sorted(wins):
+            txt = lines[ln - 1]
+            # HTML 行（img/div/table）不参与文本差异副本匹配：div 样板会造成
+            # 假高重合；图片分歧属资产轨道（image_assets/artifact_path）
+            if txt.lstrip().startswith("<"):
+                continue
+            if len(_norm_sim_line(txt)) < _COPY_MIN_NORM_LEN:
+                continue
+            best = (0.0, None)
+            for j, qs in qside:
+                for _, qt in qs:
+                    if qt.lstrip().startswith("<"):
+                        continue
+                    c = _copy_coverage(txt, qt)
+                    if c > best[0]:
+                        best = (c, j)
+            c, j = best
+            if not (_COPY_SIM_LOW <= c <= _COPY_SIM_HIGH):
+                continue
+            if j != i:
+                continue  # 只保留归属于本单元的差异副本，保守跳过跨单元近似
+            out.setdefault(i, []).append((ln, txt))
+    return out
+
+
+def _rewrite_img_srcs(md_text, assets):
+    """切片展示视图 img src 重定位到 manifest.artifact_path（CHM-05 补救：
+    按交付布局 _imgs/<basename> 相对切片文件即可解析）。annotated/IR 保持
+    原样（契约：figure 引用按行锚+相对路径原样搬运）。
+    """
+    mapping = {}
+    for a in assets:
+        if a.get("resolved") and a.get("artifact_path"):
+            mapping[a["src"]] = a["artifact_path"]
+    if not mapping:
+        return md_text
+
+    def repl(m):
+        s = m.group(1)
+        return f'src="{mapping.get(s, s)}"'
+
+    return re.sub(r'src="([^"]+)"', repl, md_text)
 
 
 def package_image_assets(src_path, out_dir, lines):
@@ -1591,6 +1850,11 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
     anchor = compile_anchor(lines, man, src_name, src_path, model=model)
     (out_dir / f"{stem}.annotated.md").write_text(anchor, encoding="utf-8")
     md, _ = compile_slices(lines, man, src_name, src_path, model=model)
+    # Phase C O1：图像实体随 artifact 交付（只记可解析文件，禁悬空 figure_ref）
+    assets = package_image_assets(src_path, out_dir, lines)
+    # CHM-05：切片展示视图按 artifact_path 重定位引用（相对切片文件可解析）；
+    # annotated/IR 原文逐行不动（figure 引用原样搬运契约）。
+    md = _rewrite_img_srcs(md, assets)
     (out_dir / f"{stem}.md").write_text(md, encoding="utf-8")
     manifest = {
         "source_file": str(src_path),
@@ -1637,7 +1901,7 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
         existing = man.get(key)
         manifest[key] = existing if existing is not None else derived
     # Phase C O1：图像实体随 artifact 交付（只记可解析文件，禁悬空 figure_ref）
-    manifest["image_assets"] = package_image_assets(src_path, out_dir, lines)
+    manifest["image_assets"] = assets
     (out_dir / f"{stem}.manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=1),
         encoding="utf-8", newline="\n")
@@ -1673,6 +1937,9 @@ def process_file(src_path: Path, log):
     if man is None:
         raise RuntimeError(f"JSON 提取失败(2次均失败): {last_exc}")
     elapsed = time.time() - t0
+
+    # TASK-QCC-ANSWER-SEMANTICS-1：LLM 语义完整性声明在 fixer 触碰前快照。
+    _snapshot_llm_semantic_completeness(man)
 
     # 确定性兜底：无题号单元（多为卷末作文）按全卷顺序顺延补号
     used = {n for u in man.get("units", []) for n in (u.get("question_numbers") or [])}

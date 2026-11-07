@@ -147,9 +147,33 @@ def decide_skip(*, output_md, source_pdf, pdf_root, output_root, manifest):
     (显式原因入日志,绝不猜测"可能已经处理过")。
     记录输出的现状(present / missing-or-moved)只入 detail 供日志留证,
     不参与决策(见模块头设计裁定)。
+
+    ISOLATION-01 唯一增量:期望输出在位时,若台账在册且 size/sha256 与
+    当前 source 不符(SOURCE_CHANGED),不得被 EXISTS 短路掩盖——同名文件
+    不能在"源已换"时充当本轮产物。台账无记录时保持 R25 既有 EXISTS 语义
+    (完整产物按名复用,处置权在人)。
     """
-    # 既有行为原样保留(R25 冻结语义):期望输出存在且 >100B → skip
+    # 期望输出存在且 >100B(R25 冻结语义):期望输出存在且 >100B → skip
     if os.path.exists(output_md) and os.path.getsize(output_md) > 100:
+        try:
+            rel = normalize_rel(os.path.relpath(source_pdf, pdf_root))
+        except ValueError as e:
+            return False, "SOURCE_UNVERIFIABLE", {"error": repr(e)}
+        entry = manifest.get(rel)
+        if entry is not None:
+            try:
+                size = os.path.getsize(source_pdf)
+            except OSError as e:
+                return False, "SOURCE_UNVERIFIABLE", {"source_rel": rel,
+                                                      "error": repr(e)}
+            if size != entry["source_size"]:
+                return False, "SOURCE_CHANGED", {
+                    "source_rel": rel, "current_size": size,
+                    "recorded_size": entry["source_size"]}
+            sha = file_sha256(source_pdf)
+            if sha != entry["source_sha256"]:
+                return False, "SOURCE_CHANGED", {
+                    "source_rel": rel, "detail": "sha256 不一致(size 相同)"}
         return True, "EXISTS", {}
 
     try:
