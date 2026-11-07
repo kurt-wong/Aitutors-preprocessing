@@ -49,18 +49,11 @@ OPTIONAL_PAYLOAD = {
 
 
 def load_token() -> str:
-    t = None
     import os
     t = os.environ.get("OCR_API_TOKEN")
     if t:
         return t.strip()
-    cfg = ROOT / "data" / ".ocr_config"
-    for line in cfg.read_text(encoding="utf-8").splitlines():
-        if "=" in line:
-            k, v = line.strip().split("=", 1)
-            if k.strip() == "token":
-                return v.strip()
-    sys.exit("缺少 OCR API token")
+    sys.exit("缺少 OCR API token: 请设置环境变量 OCR_API_TOKEN")
 
 
 TOKEN = load_token()

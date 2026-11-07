@@ -11,8 +11,50 @@
 /reports/
 
 # --- 敏感配置(API key 等,绝不入库)---
+/data/.ocr_config
 /data/.llm_config
 *llm_config*
+*ocr_config*
+*.pem
+*.key
+*.p12
+.env
+.env.*
+
+# --- 试卷数据(绝不新增入库)---
+*.pdf
+*.PDF
+*.manifest.json
+*_imgs/
+*_images/
+Ocr-markdown/
+original/
+maintainess/
+_split/
+split_*/
+
+# --- 页面图片/题目图片/答案图片 ---
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.bmp
+*.tiff
+*.tif
+
+# --- 数据库 ---
+*.db
+*.sqlite
+*.sqlite3
+*.duckdb
+
+# --- 批量处理输出/运行产物 ---
+*.jsonl
+*.bak
+*.orig
+*.swp
+*~
 
 # --- 运行时产物 ---
 /logs/reslice_debug/

@@ -26,22 +26,15 @@ JOB_URL = "https://paddleocr.aistudio-app.com/api/v2/ocr/jobs"
 BASE = r"D:\Project\Papers"
 
 def _load_token():
-    """OCR API token: 优先环境变量, 其次 data/.ocr_config (与 .llm_config 同款, 勿外泄)。"""
+    """OCR API token: 仅从环境变量 OCR_API_TOKEN 读取。不再从文件读取(防凭据泄露)。"""
     t = os.environ.get("OCR_API_TOKEN")
     if t:
         return t.strip()
-    cfgp = os.path.join(BASE, "data", ".ocr_config")
-    if os.path.exists(cfgp):
-        for line in open(cfgp, encoding="utf-8"):
-            if "=" in line:
-                k, v = line.strip().split("=", 1)
-                if k.strip() == "token":
-                    return v.strip()
     return None
 
 TOKEN = _load_token()
 if not TOKEN:
-    sys.exit("缺少 OCR API token: 请设环境变量 OCR_API_TOKEN 或写入 data/.ocr_config")
+    sys.exit("缺少 OCR API token: 请设置环境变量 OCR_API_TOKEN")
 MODEL = "PaddleOCR-VL-1.6"
 
 DAILY_PAGE_LIMIT = 20000
