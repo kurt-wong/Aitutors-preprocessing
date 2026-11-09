@@ -14,31 +14,40 @@ import sys
 import tempfile
 import time
 import urllib3
+import uuid
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # R66 D5-A(用户 R65 裁定限定解冻):输出清单 R-OHM-1,governance/rule_registry.md §7。
 # 仅新增 skip 判定与记账接线;process_pdf 主体与 OCR API 语义不变。
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from output_manifest import (ManifestError, append_entry, decide_skip,  # noqa: E402
-                             load_manifest, make_entry)
+                             load_manifest, make_entry, normalize_rel)
 
 JOB_URL = "https://paddleocr.aistudio-app.com/api/v2/ocr/jobs"
-BASE = r"D:\Project\Papers"
+# QCORE-E2E-01 阻断修复(同 H-01 模式):旧绝对路径 D:\Project\Papers 已迁移,
+# 根目录改由脚本位置解析,任何 checkout 位置均成立。
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def _load_token():
-    """OCR API token: 仅从环境变量 OCR_API_TOKEN 读取。不再从文件读取(防凭据泄露)。"""
+    """OCR API token: 环境变量 OCR_API_TOKEN 优先, 其次用户主目录 ~/.aitutors/ocr_token (仓库外私有配置)。"""
     t = os.environ.get("OCR_API_TOKEN")
     if t:
         return t.strip()
+    cfgp = os.path.join(os.path.expanduser("~"), ".aitutors", "ocr_token")
+    if os.path.isfile(cfgp):
+        with open(cfgp, encoding="utf-8-sig") as f:
+            t = f.read().strip()
+        if t:
+            return t
     return None
 
 TOKEN = _load_token()
 if not TOKEN:
-    sys.exit("缺少 OCR API token: 请设置环境变量 OCR_API_TOKEN")
+    sys.exit("缺少 OCR API token: 请设置环境变量 OCR_API_TOKEN 或在 ~/.aitutors/ocr_token 写入 token")
 MODEL = "PaddleOCR-VL-1.6"
 
 DAILY_PAGE_LIMIT = 20000
-PAGE_USAGE_FILE = r"D:\Project\Papers\data\ocr_page_usage.json"
+PAGE_USAGE_FILE = os.path.join(BASE, "data", "ocr_page_usage.json")
 
 optional_payload = {
     "useDocOrientationClassify": False,
@@ -46,16 +55,16 @@ optional_payload = {
     "useChartRecognition": False,
 }
 
-PDF_ROOT = r"D:\Project\Papers\maintainess\PDF"
-OUTPUT_ROOT = r"D:\Project\Papers\Ocr-markdown"
-LOG_FILE = r"D:\Project\Papers\logs\ocr_batch_log.txt"
-MANIFEST_FILE = r"D:\Project\Papers\data\ocr_output_manifest.jsonl"
+PDF_ROOT = os.path.join(BASE, "maintainess", "PDF")
+OUTPUT_ROOT = os.path.join(BASE, "Ocr-markdown")
+LOG_FILE = os.path.join(BASE, "logs", "ocr_batch_log.txt")
+MANIFEST_FILE = os.path.join(BASE, "data", "ocr_output_manifest.jsonl")
 
 session = requests.Session()
 session.verify = False
 session.proxies = {
-    "http": "http://127.0.0.1:55219",
-    "https": "http://127.0.0.1:55219",
+    "http": "http://127.0.0.1:58182",
+    "https": "http://127.0.0.1:58182",
 }
 
 def log(msg):
@@ -624,6 +633,19 @@ def main():
                 log(f"[IMG-MIGRATE] 强制重处理图片不完整产物: {filename[:50]}")
                 skip_now = False
             else:
+                # PREPROCESSING-OCR-JSON-01-R2 G2:json_status 非 complete 时
+                # 不可复用,显式阻断(不自动重跑,同 IMG-INCOMPLETE-BLOCKED 模式)
+                try:
+                    _rel = normalize_rel(os.path.relpath(file_path, PDF_ROOT))
+                    _prev = manifest.get(_rel)
+                    _js = (_prev or {}).get("json_status")
+                except Exception:
+                    _js = None
+                if _js is not None and _js != "complete":
+                    log(f"[JSON-INCOMPLETE-BLOCKED] {filename[:50]} 台账 json_status={_js};"
+                        f"不复用,不自动重跑,等待人工处置")
+                    fail += 1
+                    continue
                 skip += 1
                 continue
 
@@ -635,20 +657,36 @@ def main():
         result, pages = process_pdf(file_path, output_dir, filename, page_usage)
         
         if result:
-            success += 1
-            pages_used_today += pages
-            save_page_usage(pages_used_today)
-            # R-OHM-1:成功写出即记账(先校验后写;清单故障 = FATAL,禁止静默失账)
+            # PREPROCESSING-OCR-JSON-01-R2 G2:JSON 完整性检查后再计成功
+            output_json = os.path.join(output_dir, f"{base_name}.ocr_raw.jsonl")
+            ocr_run_id = str(uuid.uuid4())
             try:
                 entry = make_entry(source_pdf=file_path, pdf_root=PDF_ROOT,
                                    output_md=output_md, output_root=OUTPUT_ROOT,
                                    pages=pages,
-                                   written_at=time.strftime("%Y-%m-%d %H:%M:%S"))
+                                   written_at=time.strftime("%Y-%m-%d %H:%M:%S"),
+                                   output_json=output_json,
+                                   ocr_run_id=ocr_run_id,
+                                   ocr_model=MODEL,
+                                   ocr_params=optional_payload)
                 append_entry(MANIFEST_FILE, entry)
                 manifest[entry["source_rel"]] = entry
             except ManifestError as e:
                 log(f"[FATAL] 输出清单写入失败,拒绝静默继续(R-OHM-1): {e}")
                 raise SystemExit(2)
+            # G2:json_status 非 complete → 不计成功,显式阻断(不自动重跑)
+            js = entry.get("json_status")
+            if js == "complete":
+                success += 1
+                pages_used_today += pages
+                save_page_usage(pages_used_today)
+            else:
+                fail += 1
+                log(f"  [JSON-BLOCKED] json_status={js}: {base_name} "
+                    f"(records={entry.get('json_record_count')}, "
+                    f"json_pages={entry.get('json_page_count')}, "
+                    f"pdf_pages={entry.get('pdf_page_count')}, "
+                    f"check={entry.get('json_page_check')}) — 不计成功,等待人工处置")
         else:
             fail += 1
 

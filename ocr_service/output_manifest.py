@@ -59,18 +59,109 @@ def file_sha256(path):
 
 
 def make_entry(*, source_pdf, pdf_root, output_md, output_root, pages,
-               written_at):
-    """构造一次成功 OCR 的清单记录(路径相对各自根,正斜杠归一)。"""
+               written_at, output_json=None, ocr_run_id=None,
+               ocr_model=None, ocr_params=None):
+    """构造一次成功 OCR 的清单记录(路径相对各自根,正斜杠归一)。
+
+    PREPROCESSING-OCR-JSON-01 / R2:可选 JSON 双输出字段。
+    output_json 传入时记录 JSON 路径、SHA-256、完整性检查及 json_status;
+    不传时行为与旧版完全一致(历史条目无 JSON 字段亦通过校验)。
+    """
     entry = {
         "source_rel": normalize_rel(os.path.relpath(source_pdf, pdf_root)),
         "source_size": os.path.getsize(source_pdf),
         "source_sha256": file_sha256(source_pdf),
         "output_rel": normalize_rel(os.path.relpath(output_md, output_root)),
+        "output_md_sha256": file_sha256(output_md),
         "written_at": written_at,
         "pages": pages,
     }
+    if output_json is not None:
+        entry["output_json_rel"] = normalize_rel(
+            os.path.relpath(output_json, output_root))
+        if os.path.isfile(output_json):
+            entry["output_json_sha256"] = file_sha256(output_json)
+        # G1:读 PDF 实际页数,与 JSON 页数核对(非自证)
+        pdf_pc = get_pdf_page_count(source_pdf)
+        entry.update(check_json_integrity(output_json, pages, pdf_page_count=pdf_pc))
+    else:
+        entry["json_status"] = "absent"
+    if ocr_run_id is not None:
+        entry["ocr_run_id"] = ocr_run_id
+    if ocr_model is not None:
+        entry["ocr_model"] = ocr_model
+    if ocr_params is not None:
+        entry["ocr_params"] = ocr_params
     validate_entry(entry)
     return entry
+
+
+def check_json_integrity(json_path, expected_pages, pdf_page_count=None):
+    """PREPROCESSING-OCR-JSON-01-R2 F2/G1:JSON 完整性检查。
+
+    逐行解析 JSONL,统计 layoutParsingResults 页面数(非行数),
+    与 PDF 实际页数(pdf_page_count)交叉核对。
+    pdf_page_count 为 None 或读取失败 → json_page_check = not_verifiable。
+    不修改 JSON 内容。
+    返回 json_status / json_record_count / json_parse_ok /
+    json_page_count / json_page_check / pdf_page_count 字典。
+    """
+    result = {
+        "json_status": "absent",
+        "json_record_count": 0,
+        "json_parse_ok": False,
+        "json_page_count": None,
+        "json_page_check": "unknown",
+        "pdf_page_count": pdf_page_count,
+    }
+    if not os.path.isfile(json_path):
+        return result
+    result["json_status"] = "invalid"
+    parsed = 0
+    page_total = 0
+    parse_ok = True
+    try:
+        with open(json_path, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    obj = json.loads(line)
+                    parsed += 1
+                    lpr = (obj.get("result") or {}).get("layoutParsingResults") or []
+                    page_total += len(lpr)
+                except (ValueError, TypeError):
+                    parse_ok = False
+    except OSError:
+        return result
+    result["json_record_count"] = parsed
+    result["json_parse_ok"] = parse_ok
+    result["json_page_count"] = page_total if parse_ok else None
+    if not parse_ok:
+        result["json_page_check"] = "not_verifiable"
+        return result
+    # G1:与 PDF 实际页数核对(非自证)
+    if pdf_page_count is not None and isinstance(pdf_page_count, int):
+        result["json_page_check"] = "match" if page_total == pdf_page_count else "mismatch"
+    else:
+        result["json_page_check"] = "not_verifiable"
+    result["json_status"] = "complete" if (
+        parsed > 0 and parse_ok and result["json_page_check"] in ("match", "not_verifiable")
+    ) else "invalid"
+    return result
+
+
+def get_pdf_page_count(pdf_path):
+    """读 PDF 实际页数。读取失败返回 None(不猜)。"""
+    try:
+        import pypdfium2
+        doc = pypdfium2.PdfDocument(pdf_path)
+        n = len(doc)
+        doc.close()
+        return n
+    except Exception:
+        return None
 
 
 def validate_entry(entry):
@@ -98,6 +189,42 @@ def validate_entry(entry):
     for k in ("source_sha256", "written_at"):
         if not isinstance(entry[k], str) or not entry[k]:
             raise ManifestError(f"{k} 必须是非空字符串: {entry[k]!r}")
+    # PREPROCESSING-OCR-JSON-01:可选 JSON 双输出字段校验(存在才检,历史条目不受影响)
+    if "output_json_rel" in entry:
+        if not isinstance(entry["output_json_rel"], str) or not entry["output_json_rel"]:
+            raise ManifestError(f"output_json_rel 必须是非空字符串: {entry['output_json_rel']!r}")
+    if "output_json_sha256" in entry:
+        if not isinstance(entry["output_json_sha256"], str) or not entry["output_json_sha256"]:
+            raise ManifestError(f"output_json_sha256 必须是非空字符串: {entry['output_json_sha256']!r}")
+    if "ocr_run_id" in entry:
+        if not isinstance(entry["ocr_run_id"], str) or not entry["ocr_run_id"]:
+            raise ManifestError(f"ocr_run_id 必须是非空字符串: {entry['ocr_run_id']!r}")
+    # PREPROCESSING-OCR-JSON-01-R2 F1:ocr_model / ocr_params 校验
+    if "ocr_model" in entry:
+        if not isinstance(entry["ocr_model"], str) or not entry["ocr_model"]:
+            raise ManifestError(f"ocr_model 必须是非空字符串: {entry['ocr_model']!r}")
+    if "ocr_params" in entry:
+        if not isinstance(entry["ocr_params"], dict):
+            raise ManifestError(f"ocr_params 必须是字典: {type(entry['ocr_params']).__name__}")
+        try:
+            json.dumps(entry["ocr_params"])
+        except (TypeError, ValueError) as e:
+            raise ManifestError(f"ocr_params 必须可 JSON 序列化: {e}")
+    # PREPROCESSING-OCR-JSON-01-R2 F2:output_md_sha256 校验
+    if "output_md_sha256" in entry:
+        if not isinstance(entry["output_md_sha256"], str) or not entry["output_md_sha256"]:
+            raise ManifestError(f"output_md_sha256 必须是非空字符串: {entry['output_md_sha256']!r}")
+    # PREPROCESSING-OCR-JSON-01-R2 F5:json_status 校验
+    if "json_status" in entry:
+        _VALID_JSON_STATUS = ("complete", "invalid", "absent", "not_checked")
+        if entry["json_status"] not in _VALID_JSON_STATUS:
+            raise ManifestError(
+                f"json_status 必须是 {_VALID_JSON_STATUS} 之一: {entry['json_status']!r}")
+    # PREPROCESSING-OCR-JSON-01-R2 G1:pdf_page_count 校验(可选,int 或 None)
+    if "pdf_page_count" in entry:
+        if entry["pdf_page_count"] is not None:
+            if not isinstance(entry["pdf_page_count"], int) or isinstance(entry["pdf_page_count"], bool):
+                raise ManifestError(f"pdf_page_count 必须是整数或 null: {entry['pdf_page_count']!r}")
     return entry
 
 
