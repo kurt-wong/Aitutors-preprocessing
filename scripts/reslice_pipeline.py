@@ -36,6 +36,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from prereview_check import (parse_answer_tables, parse_range_answers,  # noqa: E402
                              parse_inline_answers, normalize_qnum)
 import llm_provider  # noqa: E402
+import answer_binding  # noqa: E402  (R-02: 答案值源文绑定,见 answer_binding 模块)
 
 # ROOT 不再硬编码开发机绝对路径(H-01):RESLICE_ROOT 环境变量可覆盖,
 # 默认取本仓库根(scripts/ 的上一级)——任何 checkout 在任意机器上都成立。
@@ -978,10 +979,18 @@ def extract_json(text):
     if not cands:
         raise ValueError("回复中未找到 JSON")
     last_err = None
+
+    def _insert_missing_commas(s: str) -> str:
+        """确定性修复 LLM 常见漏逗号（token 跨行相邻）。不改字符串内内容（JSON
+        字符串不允许裸换行，prompt 已约束）。"""
+        return re.sub(r'([}\]"\d])\s*\n\s*(["{\[])', r'\1,\2', s)
+
     for c in cands:
         for s in (c,
                   re.sub(r",\s*([}\]])", r"\1", c),          # 去尾逗号
-                  re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", c)):  # 去控制字符
+                  re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", c),  # 去控制字符
+                  _insert_missing_commas(c),
+                  _insert_missing_commas(re.sub(r",\s*([}\]])", r"\1", c))):
             try:
                 return json.loads(s)
             except json.JSONDecodeError as e:
@@ -1064,14 +1073,27 @@ def clamp_intervals(man, n_lines):
     return notes
 
 
-PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版试卷的 OCR Markdown（每行前有行号 [Lxxxx]）。
-你的任务：识别出全部"完整题目单元"，输出 JSON。只引用行号，不要转录任何题目正文。
+PROMPT_VERSION = "v3.2-answer-binding-20261112"
+
+PROMPT_HEAD = r"""你是试题切片专家。这是一份高中教师版试卷的 OCR Markdown（每行前有行号 [Lxxxx]）。
+你的任务：识别出全部"完整题目单元"，输出 JSON。只引用行号，不要转录任何题目正文（答案结构化字段除外）。
+
+【最高规则：PDF 是唯一事实源】
+0. 你的职责是忠实理解并结构化源文，不是纠错：
+   - 源文（含 OCR 文本）中的错字、病句、答案错误、缺图、内容矛盾，一律照实保留，绝不按常识或教材知识"改正"。
+   - 源文不同区域（答案区/解析区/选项区/题干）对同一内容给出不同文字时，**两边都保留**，
+     在 answer_conflicts 中登记各自版本和行号，绝不自行选择"正确"的一个。
+   - 答案只能来自源文明文写出的内容。绝不推断、绝不补全看似合理的答案。
+   - 若某处疑似 OCR 失真（如化学式电荷丢失），在对应条目的 note 里标注"疑似 OCR 失真"，
+     但 value_text 仍抄录 OCR 文本原样，不得替换。
 
 【根本规则】
 1. 入库单元=完整可解的题：题干+选项（选择题）+配图/配表格（如有）+标准答案。详解如有也纳入。
-2. 凡若干小题共享同一段前置材料/前提条件（文言文、现代文阅读、英语阅读/完形/语法填空/七选五、
+2. 凡若干小题共享同一段前置材料/前提条件（文言文、现代文阅读、英语阅读/完形/七选五、
    理化实验题、工艺流程题、材料题等——脱离材料无法作答），必须整合为一个"综合题"单元：
    材料+全部子题+全部子题的答案。
+   **共享"同一段"材料才算综合题**：各自独立成篇的多段材料（如语法填空的 A/B/C 三段短文、
+   彼此独立的几首古诗）不共享前置材料，必须按印刷分篇各自成单元，绝不并成一个单元。
 3. 无共享材料的独立题各自成单元。切勿把不相干的独立题合并。
 4. 每个子题都必须有答案。答案可能有多种形态：逐题标注、区间连写（如"1-5 ACDBA"）、
    答案表格（数字行/字母行成对）、【答案】标记段——全部识别出来并归属到对应题目。
@@ -1101,6 +1123,62 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
      （优先卷末答案区）,另一处不圈入任何区间。
    - 答案表/连写答案串为多题共享时,answer_lines 允许圈整个共享区,但 answer_evidence 必须
      shared=true 且 value 给本题明文答案值。绝不为了"只圈自己的"把共享答案表切碎。
+4d. 结构化答案全集 answers[]（必填，本轮核心）：
+   每个题目单元必须输出 "answers" 数组，逐答案单元登记（一个填空空位=一个条目；一个简答小问=一个条目）：
+   {
+     "sub_label": "(1)"（小问印刷标签）或 null（独立题/整题答案），
+     "slot_id": "(1)#1"（小问内第 1 空）/ "ans#1"（独立题多空位第 1 空）/ null（单答案无空位语义）,
+     "value_text": "答案原文（抄录源文）" 或 null（图片答案/争议空位时为 null）,
+     "asset_ref": "canonical asset_id（如 img_in_image_box_150_396_396_557，不带扩展名；文件=asset_id+\".jpg\"）" 或 null,
+     "form": "verbatim|compressed|combined|descriptive",
+     "source_region": "answer_area|answer_table|explanation_area|stem_area|material|unknown（题干/选项区文字用 stem_area）",
+     "evidence_lines": [起始行号, 结束行号] 或 null,
+     "status": "resolved|disputed|missing|unattributed",
+     "missing_reason": "extraction_gap|source_not_provided|null",
+     "note": "..." 或 null
+   }
+   - **答案全集自检**：composite 单元的小问数、每小问空位数（题干 ___ 数量）必须与 answers 条目数对齐；
+     源文答案区的编号集合（如 (1)-(8)）必须逐条被 answers 覆盖。对不上的必须如实标 status，
+     绝不静默少条目，也绝不多造条目。
+   - 归属不得靠"字符串相邻"或"按分号切分"猜定：答案↔小问/空位的关系必须由题面语义和源文排版确定；
+     确定不了就填 status=unattributed 并保留内容。
+   - 答案出现在解析区（如"故选 A"）时，它仍是正式答案：status=resolved，
+     source_region=explanation_area，不得因为不在答案区而漏掉。
+   - source_region 只描述内容在源文档中的**区域身份**，不描述其功能角色：
+     【解答】【详解】块内的范文/高分句型/结论一律 source_region=explanation_area
+     （此时 answer_lines 填 null、answer_evidence.type=inline_in_explanation），
+     即使它是"参考答案"性质的范文；教师版题干内已填的空答案属于 stem_area。
+   - 图片答案（答案本体是结构式/图表截图）：value_text=null，asset_ref 填 canonical
+     asset_id（不带扩展名，如 img_in_image_box_150_396_396_557）；
+     文字+图片混合（如"有 6 种，结构简式见图"）拆成两个条目（各自 slot_id）。
+     普通题干插图不得写入 answers。
+   - 图片归属按版面坐标判断（图片行附有〔p页 box x0,y0-x1,y1〕）：
+     ①同一 y 带（y 区间基本重叠）的多张图构成一行图栏，与该行上/下最近的编号标签行按 x 左右位置对应；
+     ②图片常排在所属编号文字的正上方或右侧——当图片行夹在折行文字之间（前文词中截断、
+     后文续接并出现编号）时，归属**折行处的那个编号**，不得并入折行前的编号；
+     ③图片 box 的 y 远离某编号所在行带（如在另一页页首、紧邻解析文字）时，它是解析配图/内联结构，
+     不得当作答案图；
+     ④仍无法判断时 status=unattributed，note 写明"图片归属歧义"及坐标。
+   - 争议空位（答案区与解析区不一致）：该条目 status=disputed、value_text=null，
+     两区版本写入 answer_conflicts（见下）。
+   - 源文确实没给答案：status=missing、missing_reason=source_not_provided；
+     答案应该存在但源文没找到：status=missing、missing_reason=extraction_gap。两者不得混用。
+   - 作文/写作题：范文、高分句型、立意提示都算答案内容（form=verbatim 或 compressed，
+     source_region 如实填写），note 注明"essay/reference-answer 候选（Contract 口径待定）"，不得丢弃。
+4e. 源内冲突登记 answer_conflicts（存在冲突时必填）：
+   [{"sub_label": "(2)", "slot_id": "(2)#2", "versions": [
+       {"value_text": "王五", "source_region": "answer_area", "evidence_lines": [1143,1143]},
+       {"value_text": "王玉", "source_region": "explanation_area", "evidence_lines": [1135,1135]}]}]
+   - versions[].value_text 只存源文文字**本体**（选项词/公式/答案文字），禁止包装
+     "选项 D 文字：wandered（题区选项 L0053）"这类描述前缀或定位后缀——定位写 evidence_lines。
+   - versions[].source_region 如实填写：题区选项文字用 stem_area、解析区用 explanation_area、
+     卷末答案区用 answer_area、答案表格用 answer_table；禁止用 unknown 逃避定位
+     （确不可判定时才用 unknown 并在 note 说明）。
+   冲突两边都保留，不裁定、不纠正、不排除题目。
+4f. value_text 是你的「声明」：系统会按你给的 evidence_lines 从源文确定性抽取答案文本并逐字核验。
+   - form=verbatim 声明 = 该值应与源文抽取结果逐字一致（含源文中的 \ ^ $ 等标记原样，不要改写为箭头、纯文本或其他记法）。
+   - 核验不一致时以源文抽取为准并记录 mismatch，你的原文保留为声明记录；不要为通过核验而猜测、润色或自行转写。
+   - 无法逐字抄录时如实使用 compressed/combined/descriptive 并保留 evidence_lines，不要把压缩/转写声明为 verbatim。
 5. 题干中与解题无关的卷面指令（"本大题共3小题，共12分""请将答案填涂在答题卡上"
    "考试时间""注意事项"）不纳入任何单元的行区间。但解题必需的要求（"任选三小题作答"
    "结果保留两位小数""不少于100词"）属于题干。
@@ -1146,10 +1224,16 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    "answer_lines": [起始行号, 结束行号] 或 null,
    "answer_evidence": {"type": "answer_lines|inline_in_explanation|answer_table|range_string|absent", "lines": [起始行号, 结束行号] 或 null, "value": "答案值原文" 或 null, "shared": true 或 false},
    "answer_completeness": "full|partial|unknown",
+   "answers": [
+     {"sub_label": null, "slot_id": null, "value_text": "答案原文", "asset_ref": null,
+      "form": "verbatim", "source_region": "answer_area", "evidence_lines": [起,止],
+      "status": "resolved", "missing_reason": null, "note": null}
+   ],
+   "answer_conflicts": [],
    "explanation_lines": [起始行号, 结束行号] 或 null
   },
   {
-   "unit_id": "U2-5",
+   "unit_id": "U2",
    "unit_type": "composite_question",
    "section": "三、阅读理解",
    "printed_number": "2",
@@ -1161,6 +1245,15 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
    "answer_lines": [起始行号, 结束行号] 或 null,
    "answer_evidence": {"type": "answer_lines|inline_in_explanation|answer_table|range_string|absent", "lines": [起始行号, 结束行号] 或 null, "value": "答案值原文" 或 null, "shared": true 或 false},
    "answer_completeness": "full|partial|unknown",
+   "answers": [
+     {"sub_label": "(1)", "slot_id": "(1)#1", "value_text": "…", "asset_ref": null,
+      "form": "verbatim", "source_region": "answer_area", "evidence_lines": [起,止],
+      "status": "resolved", "missing_reason": null, "note": null},
+     {"sub_label": "(1)", "slot_id": "(1)#2", "value_text": null, "asset_ref": "img_xxx",
+      "form": "descriptive", "source_region": "answer_area", "evidence_lines": [起,止],
+      "status": "resolved", "missing_reason": null, "note": "图片答案"}
+   ],
+   "answer_conflicts": [],
    "explanation_lines": [起始行号, 结束行号] 或 null
   }
  ]
@@ -1175,11 +1268,14 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
   **material 嵌套在 questions 内部**（material ⊆ questions）。完形填空里带空格的文章本身
   就是题目，文章到首个选项行之间都算 material；阅读题的 material 是文章，各小题在文章之后
   （仍在 questions 区内）。answer_lines 是这道综合题整体的答案区。
-  不要输出 sub_questions 之类逐空/逐小问的细粒度结构。
+  不要输出 sub_questions 之类把小问拆成独立单元的结构——但 answers[] 数组必须按小问/空位逐条登记
+  （见 4d），答案的细粒度归属放在 answers 里，不放在单元切分上。
 - 综合题若含选择题选项（共享材料后多道小题各自有 A/B/C/D），仍须声明 options_lines：
   圈住该综合题 questions 区内实际出现的选项行范围（可覆盖多小题选项）。
   非选择题综合题（简答/阅读表达等）填 null。
 - 所有题目必须出现且只出现在一个单元里；题号连续覆盖全卷。
+- unit_id 用**稳定顺序编号**：按单元出现顺序命名 U1、U2、U3…（或 Q1、Q2、Q3…），
+  严禁用题号区间命名（如 "U2-5"）或按题号重编号——unit_id 是入库身份，须与卷面单元顺序一一对应。
 - 试卷末尾的标题行、页眉页脚不纳入。
 - 综合题的 question_numbers 填这道大题本身的题号（如完形填空是第11题就填 [11]）。
 - 【题号身份规则(R33 审查后 v2.3)】question_numbers 是入库题目身份,必须是全卷唯一编号:
@@ -1203,7 +1299,8 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份北京高中教师版�
 
 def build_prompt(doc_meta, numbered):
     meta = f"文档元数据：{doc_meta}\n" if doc_meta else ""
-    return PROMPT_HEAD + "\n" + meta + "\n【试卷内容】\n" + numbered + "\n\n请输出 JSON。"
+    return (f"[prompt_version={PROMPT_VERSION}]\n" + PROMPT_HEAD + "\n" + meta
+            + "\n【试卷内容】\n" + numbered + "\n\n请输出 JSON。")
 
 
 PAPER_LINE = re.compile(
@@ -1907,35 +2004,191 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
         encoding="utf-8", newline="\n")
 
 
+#: answers[] 合法枚举（4d 契约；校验只查结构，不做语义改写）
+_ANS_FORMS = {"verbatim", "compressed", "combined", "descriptive"}
+_ANS_REGIONS = {"answer_area", "answer_table", "explanation_area",
+                "stem_area", "material", "unknown"}
+_ANS_STATUS = {"resolved", "disputed", "missing", "unattributed"}
+_ANS_MISSING_REASONS = {"extraction_gap", "source_not_provided"}
+_SLOT_ID_RE = re.compile(r"^.+#\d+$")
+
+
+def _validate_answer_items(man: dict, n_lines: int) -> list:
+    """QCORE-ANSWER-FIDELITY-02：answers[]/answer_conflicts 结构校验（确定性）。
+
+    只校验：字段齐全、枚举合法、行号在界、slot 形态、disputed 与 conflicts 呼应、
+    asset_ref 与 value_text 互斥。不改写、不补全、不猜归属。
+    """
+    problems = []
+    for u in man.get("units", []):
+        uid = u.get("unit_id", "?")
+        items = u.get("answers")
+        conflicts = u.get("answer_conflicts")
+        ev = u.get("answer_evidence") or {}
+        if items is None:
+            problems.append(f"{uid}: 缺 answers 数组（4d 必填）")
+            continue
+        if not isinstance(items, list):
+            problems.append(f"{uid}: answers 非数组")
+            continue
+        if conflicts is None:
+            problems.append(f"{uid}: 缺 answer_conflicts 数组（无冲突时为 []）")
+            continue
+        # 答案证据声明有值但 answers 为空 → 覆盖缺口（warning 语义由上层归类）
+        if not items and ev.get("value"):
+            problems.append(f"{uid}: answer_evidence.value 有值但 answers=[]（答案全集缺口）")
+        for i, it in enumerate(items):
+            tag = f"{uid}.answers[{i}]"
+            if not isinstance(it, dict):
+                problems.append(f"{tag}: 非对象")
+                continue
+            for k in ("sub_label", "slot_id", "value_text", "asset_ref", "form",
+                      "source_region", "evidence_lines", "status", "missing_reason"):
+                if k not in it:
+                    problems.append(f"{tag}: 缺字段 {k}")
+            if it.get("form") not in _ANS_FORMS:
+                problems.append(f"{tag}: form 非法 {it.get('form')!r}")
+            if it.get("source_region") not in _ANS_REGIONS:
+                problems.append(f"{tag}: source_region 非法 {it.get('source_region')!r}")
+            if it.get("status") not in _ANS_STATUS:
+                problems.append(f"{tag}: status 非法 {it.get('status')!r}")
+            mr = it.get("missing_reason")
+            if mr is not None and mr not in _ANS_MISSING_REASONS:
+                problems.append(f"{tag}: missing_reason 非法 {mr!r}")
+            sid = it.get("slot_id")
+            if sid is not None and not _SLOT_ID_RE.match(str(sid)):
+                problems.append(f"{tag}: slot_id 形态非法 {sid!r}（应为 '<槽>#<序号>'）")
+            el = it.get("evidence_lines")
+            if el is not None:
+                if (not isinstance(el, list) or len(el) != 2
+                        or not all(isinstance(x, int) for x in el)
+                        or el[0] < 1 or el[1] > n_lines or el[1] < el[0]):
+                    problems.append(f"{tag}: evidence_lines 越界/形态非法 {el!r}")
+            if it.get("asset_ref") and it.get("value_text") and it.get("form") != "combined":
+                problems.append(f"{tag}: asset_ref 与 value_text 不得同时非空"
+                                "（form=combined 的文字+图片混合答案除外）")
+            if it.get("status") == "disputed":
+                if it.get("value_text"):
+                    problems.append(f"{tag}: disputed 条目 value_text 必须为 null（不选边）")
+        # conflicts 结构
+        for j, c in enumerate(conflicts if isinstance(conflicts, list) else []):
+            tag = f"{uid}.answer_conflicts[{j}]"
+            if not isinstance(c, dict) or not isinstance(c.get("versions"), list) or len(c["versions"]) < 2:
+                problems.append(f"{tag}: versions 必须为 ≥2 条的数组")
+                continue
+            for v in c["versions"]:
+                el = v.get("evidence_lines")
+                if el is not None and (not isinstance(el, list) or len(el) != 2
+                                       or el[0] < 1 or el[1] > n_lines):
+                    problems.append(f"{tag}: versions.evidence_lines 越界 {el!r}")
+                if v.get("source_region") not in _ANS_REGIONS:
+                    problems.append(f"{tag}: versions.source_region 非法 {v.get('source_region')!r}")
+    return problems
+
+
+def _save_llm_trace(src_path: Path, attempt_no: int, prompt: str, reply: str,
+                    usage: dict, ok: bool, err: str | None = None) -> Path:
+    """QCORE-ANSWER-FIDELITY-02 G：每次 LLM 调用必落审计痕迹（不再只存失败回复）。
+
+    落盘内容：原始回复全文、prompt 全文与哈希、prompt_version、模型名、usage、
+    解析成败与错误、生成时 pipeline 代码 SHA-256。**绝不落 api_key**。
+    输出目录 = OUT_ROOT/_llm_raw/（随本轮运行目录隔离）。
+    文件名含时间戳（<stem>.<ts>.attemptN），重跑不覆盖历史痕迹。
+    """
+    trace_dir = OUT_ROOT / "_llm_raw"
+    trace_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        cfg_model = load_cfg().get("model")
+    except Exception:
+        cfg_model = model_tag()
+    stem = src_path.stem
+    ts = time.strftime("%Y%m%d-%H%M%S")
+    reply_path = trace_dir / f"{stem}.{ts}.attempt{attempt_no}.reply.txt"
+    reply_path.write_text(reply, encoding="utf-8")
+    prompt_path = trace_dir / f"{stem}.{ts}.attempt{attempt_no}.prompt.txt"
+    prompt_path.write_text(prompt, encoding="utf-8")
+    try:
+        pipeline_sha256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    except Exception:
+        pipeline_sha256 = None
+    meta = {
+        "source_file": src_path.name,
+        "attempt": attempt_no,
+        "prompt_version": PROMPT_VERSION,
+        "model": cfg_model,
+        "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+        "prompt_chars": len(prompt),
+        "prompt_path": prompt_path.name,
+        "pipeline_sha256": pipeline_sha256,
+        "reply_chars": len(reply),
+        "usage": usage or {},
+        "json_extract_ok": ok,
+        "json_extract_error": err,
+        "reply_path": reply_path.name,
+        "recorded_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+    }
+    meta_path = trace_dir / f"{stem}.{ts}.attempt{attempt_no}.meta.json"
+    meta_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
+    return meta_path
+
+
+_IMG_BOX_RE = re.compile(
+    r"img_in_(?:image|chart|table|formula)_box_(\d+)_(\d+)_(\d+)_(\d+)")
+
+
+def annotate_img_boxes(text: str) -> str:
+    """QCORE-ANSWER-FIDELITY-02：给图片行注入版面坐标（确定性输入增强）。
+
+    图像文件名内嵌布局框 (x0_y0_x1_y1)；md 以 ``---`` 分页。注入
+    ``〔p<页> box x0,y0-x1,y1〕`` 供 LLM 做版面归属判断（不改图、不改文）。
+    """
+    out = []
+    page = 1
+    for ln in text.splitlines():
+        if ln.strip() == "---":
+            page += 1
+            out.append(ln)
+            continue
+        m = _IMG_BOX_RE.search(ln)
+        if m and "〔p" not in ln:
+            x0, y0, x1, y1 = (int(g) for g in m.groups())
+            ln = ln + f" 〔p{page} box {x0},{y0}-{x1},{y1}〕"
+        out.append(ln)
+    return "\n".join(out)
+
+
 def process_file(src_path: Path, log):
     text = src_path.read_text(encoding="utf-8", errors="replace")
     # 去掉 v6 META 标记（如果源是 v6 的话）；正源无标记
     text = re.sub(r"<!--\s*META:[^>]*-->\n?", "", text)
+    text = annotate_img_boxes(text)
     lines, numbered = number_lines(text)
     doc_meta = ""
     prompt = build_prompt(doc_meta, numbered)
     log(f"[{src_path.name}] {len(lines)} 行, prompt {len(prompt)} 字")
 
     t0 = time.time()
-    # JSON 解析失败 → 重调 LLM（共 2 次尝试）；网络类重试已在 call_llm 内
+    # JSON 解析失败 → 重调 LLM（共 3 次尝试）；网络类重试已在 call_llm 内
     man, usage = None, {}
     last_exc = None
-    for attempt in range(2):
+    for attempt in range(3):
         reply, u2 = call_llm(prompt)
         # R4 复审：重试时 token 累加计账（覆盖会漏掉失败那次的成本）
         usage["prompt_tokens"] = (usage.get("prompt_tokens") or 0) + (u2.get("prompt_tokens") or 0)
         usage["completion_tokens"] = (usage.get("completion_tokens") or 0) + (u2.get("completion_tokens") or 0)
         try:
             man = extract_json(reply)
+            _save_llm_trace(src_path, attempt + 1, prompt, reply, u2, ok=True)
             break
         except Exception as e:
             last_exc = e
+            _save_llm_trace(src_path, attempt + 1, prompt, reply, u2, ok=False, err=str(e))
             dbg = ROOT / "logs/reslice_debug"
             dbg.mkdir(parents=True, exist_ok=True)
             (dbg / f"{src_path.stem}.reply.attempt{attempt+1}.txt").write_text(reply, encoding="utf-8")
             log(f"[{src_path.name}] JSON 提取失败(尝试{attempt+1}): {e}")
     if man is None:
-        raise RuntimeError(f"JSON 提取失败(2次均失败): {last_exc}")
+        raise RuntimeError(f"JSON 提取失败(3次均失败): {last_exc}")
     elapsed = time.time() - t0
 
     # TASK-QCC-ANSWER-SEMANTICS-1：LLM 语义完整性声明在 fixer 触碰前快照。
@@ -1971,8 +2224,19 @@ def process_file(src_path: Path, log):
     fix_notes.extend(_normalize_answer_table_evidence(man, lines))
     # T20-BF: declare answer_completeness (full|partial|unknown) for every unit.
     fix_notes.extend(_assign_answer_completeness(man, lines))
+    # R-02（QCORE-PREPROCESSING-LLM-FIDELITY-01）：答案值源文绑定——
+    # canonical=按封闭规则从 evidence_lines 抽取的源文；模型声明降级 model_value_text。
+    fix_notes.extend(answer_binding.bind_answers(man, lines))
 
     issues, summary = validate_manifest(man, len(lines), lines)
+    issues.extend(_validate_answer_items(man, len(lines)))
+    # R-02 mismatch 必须显性化（不静默）：逐条入 issues，canonical 已由绑定决定
+    for _u in man.get("units", []):
+        for _it in _u.get("answers") or []:
+            _b = (_it or {}).get("value_binding") or {}
+            if _b.get("mismatch_class"):
+                issues.append(f"{_u.get('unit_id')}: R02-BIND mismatch "
+                              f"{_b['mismatch_class']} tier={_b.get('tier')}")
     summary.setdefault("warnings", []).extend(fix_notes)
     # Identity v2: fresh formal pipeline output carries identity_version = 2.
     if "identity_version" not in man:

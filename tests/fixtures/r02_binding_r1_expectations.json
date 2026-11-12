@@ -1,0 +1,236 @@
+{
+ "fixture_version": "r02-v2",
+ "source_workspace": "Question Core/runs/qcore_s2q_repair_01_r1 (sealed, not in git)",
+ "note": "哈希+ID only；测试读取封存工作区复算绑定并逐条比对；工作区缺失→skip",
+ "aggregates": {
+  "items_total": 141,
+  "tier_counts": {
+   "rule_candidate": 71,
+   "source_substring": 55,
+   "mismatch_withheld": 13,
+   "not_applicable": 3,
+   "compressed_weak": 1,
+   "compressed_strong": 1
+  },
+  "mismatch_class_counts": {
+   "outside_region": 8,
+   "absent_from_doc": 3,
+   "in_region_edit": 2
+  },
+  "mismatch_total": 13,
+  "value_changed_count": 14,
+  "structure_unchanged": true
+ },
+ "watch_entries": [
+  {
+   "paper": "chemistry",
+   "unit": "Q9",
+   "idx": 4,
+   "form": "verbatim",
+   "expect_tier": "mismatch_withheld",
+   "expect_mismatch_class": "outside_region",
+   "sha_model_value": "6f39dfca3ed75e49",
+   "sha_value_after_16": "e3b0c44298fc1c14",
+   "slice_lines": [
+    558,
+    558
+   ]
+  },
+  {
+   "paper": "chemistry",
+   "unit": "Q9",
+   "idx": 5,
+   "form": "verbatim",
+   "expect_tier": "mismatch_withheld",
+   "expect_mismatch_class": "outside_region",
+   "sha_model_value": "b4c871160d935d24",
+   "sha_value_after_16": "e3b0c44298fc1c14",
+   "slice_lines": [
+    558,
+    558
+   ]
+  },
+  {
+   "paper": "chemistry",
+   "unit": "Q9",
+   "idx": 6,
+   "form": "verbatim",
+   "expect_tier": "mismatch_withheld",
+   "expect_mismatch_class": "outside_region",
+   "sha_model_value": "d3472a4dd1a9eb92",
+   "sha_value_after_16": "e3b0c44298fc1c14",
+   "slice_lines": [
+    558,
+    558
+   ]
+  },
+  {
+   "paper": "chemistry",
+   "unit": "Q10",
+   "idx": 0,
+   "form": "compressed",
+   "expect_tier": "mismatch_withheld",
+   "expect_mismatch_class": "absent_from_doc",
+   "sha_model_value": "7d69e33777f24cf4",
+   "sha_value_after_16": "e3b0c44298fc1c14",
+   "slice_lines": [
+    614,
+    614
+   ]
+  },
+  {
+   "paper": "chemistry",
+   "unit": "Q10",
+   "idx": 2,
+   "form": "verbatim",
+   "expect_tier": "mismatch_withheld",
+   "expect_mismatch_class": "absent_from_doc",
+   "sha_model_value": "e574beccfb42afb8",
+   "sha_value_after_16": "e3b0c44298fc1c14",
+   "slice_lines": [
+    614,
+    614
+   ]
+  },
+  {
+   "paper": "chemistry",
+   "unit": "Q10",
+   "idx": 3,
+   "form": "compressed",
+   "expect_tier": "compressed_weak",
+   "expect_mismatch_class": null,
+   "sha_model_value": "58e905b4feed7d49",
+   "sha_value_after_16": "58e905b4feed7d49",
+   "slice_lines": [
+    614,
+    618
+   ]
+  },
+  {
+   "paper": "chemistry",
+   "unit": "Q10",
+   "idx": 4,
+   "form": "compressed",
+   "expect_tier": "mismatch_withheld",
+   "expect_mismatch_class": "outside_region",
+   "sha_model_value": "b4ed7e4f622b0084",
+   "sha_value_after_16": "e3b0c44298fc1c14",
+   "slice_lines": [
+    616,
+    616
+   ]
+  },
+  {
+   "paper": "chemistry",
+   "unit": "Q10",
+   "idx": 5,
+   "form": "compressed",
+   "expect_tier": "mismatch_withheld",
+   "expect_mismatch_class": "outside_region",
+   "sha_model_value": "1c1ce83ddda6c1e9",
+   "sha_value_after_16": "e3b0c44298fc1c14",
+   "slice_lines": [
+    616,
+    616
+   ]
+  },
+  {
+   "paper": "chemistry",
+   "unit": "Q11",
+   "idx": 2,
+   "form": "verbatim",
+   "expect_tier": "source_substring",
+   "expect_mismatch_class": null,
+   "sha_model_value": "0f20114b966388c5",
+   "sha_value_after_16": "a38f983e8daed712",
+   "slice_lines": [
+    675,
+    677
+   ]
+  },
+  {
+   "paper": "chemistry",
+   "unit": "Q11",
+   "idx": 5,
+   "form": "verbatim",
+   "expect_tier": "mismatch_withheld",
+   "expect_mismatch_class": "outside_region",
+   "sha_model_value": "73d03906a17e9166",
+   "sha_value_after_16": "e3b0c44298fc1c14",
+   "slice_lines": [
+    675,
+    677
+   ]
+  },
+  {
+   "paper": "chemistry",
+   "unit": "Q11",
+   "idx": 7,
+   "form": "verbatim",
+   "expect_tier": "mismatch_withheld",
+   "expect_mismatch_class": "outside_region",
+   "sha_model_value": "7a4190404c6df8d5",
+   "sha_value_after_16": "e3b0c44298fc1c14",
+   "slice_lines": [
+    675,
+    677
+   ]
+  },
+  {
+   "paper": "chemistry",
+   "unit": "Q12",
+   "idx": 3,
+   "form": "compressed",
+   "expect_tier": "mismatch_withheld",
+   "expect_mismatch_class": "outside_region",
+   "sha_model_value": "10fbbdc52a62731f",
+   "sha_value_after_16": "e3b0c44298fc1c14",
+   "slice_lines": [
+    739,
+    744
+   ]
+  },
+  {
+   "paper": "chinese",
+   "unit": "Q11",
+   "idx": 1,
+   "form": "compressed",
+   "expect_tier": "mismatch_withheld",
+   "expect_mismatch_class": "absent_from_doc",
+   "sha_model_value": "85974a3ad4055480",
+   "sha_value_after_16": "e3b0c44298fc1c14",
+   "slice_lines": [
+    1061,
+    1077
+   ]
+  },
+  {
+   "paper": "english",
+   "unit": "U10",
+   "idx": 0,
+   "form": "verbatim",
+   "expect_tier": "mismatch_withheld",
+   "expect_mismatch_class": "in_region_edit",
+   "sha_model_value": "ee180095e084ad72",
+   "sha_value_after_16": "e3b0c44298fc1c14",
+   "slice_lines": [
+    885,
+    901
+   ]
+  },
+  {
+   "paper": "english",
+   "unit": "U11",
+   "idx": 0,
+   "form": "verbatim",
+   "expect_tier": "mismatch_withheld",
+   "expect_mismatch_class": "in_region_edit",
+   "sha_model_value": "1c86fd37ed93d90f",
+   "sha_value_after_16": "e3b0c44298fc1c14",
+   "slice_lines": [
+    939,
+    946
+   ]
+  }
+ ]
+}
