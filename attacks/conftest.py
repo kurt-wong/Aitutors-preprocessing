@@ -1,38 +1,30 @@
-"""DSH EB-008 Implementation Adversarial Review — 攻击测试基座。
+"""DSH EB-008 Implementation Adversarial Review — 攻击测试基座（V3 冻结件）。
 
-只读使用 V3 backend 代码(sys.path 指向 D:\\Project\\AITutors-v3\\backend),
-不修改 V3 仓库任何文件。DB = V3 测试库(localhost aitutors),每测试 rollback 隔离。
+【本文件已隔离，不可执行】QCORE-GENERIC-EXECUTION-CHAIN-01 · 2026-11-14（V3 残留隔离）。
 
-复跑命令(DEC-045 自审 S-2 落字;历史报告曾称"见套件文件头"但缺失,以本行为准):
-    python -m pytest attacks --asyncio-mode=auto
-说明:本套件用例为裸 async def 无 marker,pytest-asyncio 1.x strict 模式下必须
-显式 --asyncio-mode=auto;另勿与 tests/ 合并收集(tests/ 内 `from conftest import …`
-会解析到本文件 = 顶层模块名冲突,S-1 known issue)。依赖 aitutor-postgres(5432),
-容器未启动时全部 ConnectionRefused = 环境性,非代码回归。
+历史行为（隔离前，仅存档说明）：
+- sys.path 注入 V3 backend（原 `D:\\Project\\AITutors-v3\\backend`，已归档 `ARCHIVE\\AITutors-v3`，原路径不存在）；
+- 默认 DATABASE_URL = `postgresql+asyncpg://aitutors:change-me@localhost:5432/aitutors`（**共享库**）；
+- 依赖 V3 `app.db.session` / 旧 Gate 模块；每测试 rollback 隔离；
+- 复跑命令（历史）：`python -m pytest attacks --asyncio-mode=auto`。
+
+隔离理由（DSH 复核 + Owner 裁决）：
+1. V3 已正式废弃——旧测试不得作为当前生产代码的测试依赖；
+2. 默认共享库连接有误执行风险（aitutors）；
+3. V3 backend 路径已失效（归档），运行必然 ImportError。
+
+隔离方式：**import 级 fail-closed 硬阻断**——任何收集/执行尝试立即报错中止。
+历史证据保全：`test_eb008_impl_attack.py`（32KB 攻击用例）原样保留，本文件仅替换基座；
+本目录不参与默认测试发现（pytest.ini testpaths=tests + norecursedirs=attacks）。
 """
 
-import os
-import sys
+import pytest
 
-os.environ.setdefault("APP_ENV", "test")
-os.environ.setdefault(
-    "DATABASE_URL",
-    "postgresql+asyncpg://aitutors:change-me@localhost:5432/aitutors",
+raise pytest.UsageError(
+    "FROZEN V3 SUITE (EB-008 adversarial) — execution blocked by "
+    "QCORE-GENERIC-EXECUTION-CHAIN-01 V3-residue isolation. "
+    "Targets deprecated V3 backend + shared aitutors database; "
+    "preserved as historical evidence only "
+    "(test_eb008_impl_attack.py untouched). "
+    "See V3_RESIDUE_ISOLATION_REPORT.md."
 )
-# 攻击运行自带合法长度 secret(与 V3 conftest 同语义;B-5 攻击单独 monkeypatch 置空)
-os.environ.setdefault("APP_SECRET", "dsh-attack-secret-32-bytes-minimum!!!")
-
-V3_BACKEND = r"D:\Project\AITutors-v3\backend"
-if V3_BACKEND not in sys.path:
-    sys.path.insert(0, V3_BACKEND)
-
-import pytest_asyncio  # noqa: E402
-
-
-@pytest_asyncio.fixture
-async def session():
-    from app.db.session import async_session_maker
-
-    async with async_session_maker() as s:
-        yield s
-        await s.rollback()
