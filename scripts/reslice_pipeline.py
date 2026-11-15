@@ -37,6 +37,8 @@ from prereview_check import (parse_answer_tables, parse_range_answers,  # noqa: 
                              parse_inline_answers, normalize_qnum)
 import llm_provider  # noqa: E402
 import answer_binding  # noqa: E402  (R-02: 答案值源文绑定,见 answer_binding 模块)
+import json_evidence_map  # noqa: E402  (G2-A 方案 A: 确定性 MD↔OCR-JSON 证据映射)
+import json_struct_verify  # noqa: E402  (G2-A 方案 A: 生成后强制双源验证门禁)
 
 # ROOT 不再硬编码开发机绝对路径(H-01):RESLICE_ROOT 环境变量可覆盖,
 # 默认取本仓库根(scripts/ 的上一级)——任何 checkout 在任意机器上都成立。
@@ -1963,6 +1965,13 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
                             "warnings": summary.get("warnings", [])},
         "units": man["units"],
     }
+    # G2-A 方案 A：JSON 证据指针随 annotation_meta 透传（只追加既有键，不改结构）。
+    _je = (man.get("annotation_meta") or {}).get("json_evidence")
+    if _je is not None:
+        manifest["annotation_meta"]["json_evidence"] = _je
+    _jv = (man.get("annotation_meta") or {}).get("json_struct_verification")
+    if _jv is not None:
+        manifest["annotation_meta"]["json_struct_verification"] = _jv
     # Identity v2: source_content_sha256 = SHA256(source md raw bytes).
     # Contract: PREPROCESSING-V3-CONTRACT-v0.2-DRAFT §0.1 ① — path is locator only.
     if src_path is not None and Path(src_path).is_file():
@@ -2161,8 +2170,20 @@ def process_file(src_path: Path, log):
     text = src_path.read_text(encoding="utf-8", errors="replace")
     # 去掉 v6 META 标记（如果源是 v6 的话）；正源无标记
     text = re.sub(r"<!--\s*META:[^>]*-->\n?", "", text)
+    # G2-A 方案 A（Owner 2026-11-15 裁决）：生成期双源——确定性 JSON 证据映射
+    # 注入行级证据列（〔j pN bID box …〕）供结构判断；同目录 *.ocr_raw.jsonl
+    # 缺失即 fail-closed（§13.3：生成期不得只消费 Markdown）。
+    jsonl_path = src_path.parent / f"{src_path.stem}.ocr_raw.jsonl"
+    if not jsonl_path.is_file():
+        raise FileNotFoundError(
+            f"OCR-JSON 缺失：{jsonl_path} —— 生成期双源前置不成立（G2-A §13.3 fail-closed）")
+    ev_map = json_evidence_map.build_line_evidence(text, jsonl_path)
     text = annotate_img_boxes(text)
-    lines, numbered = number_lines(text)
+    # 证据列只进 prompt（LLM 结构判断依据），不进输出产物——C8"批注不动源
+    # 内容"原则：annotated.md/切片/manifest 文本与源逐行一致；两版行号同源。
+    prompt_text = json_evidence_map.annotate_json_evidence(text, ev_map)
+    lines, _n = number_lines(text)
+    _, numbered = number_lines(prompt_text)
     doc_meta = ""
     prompt = build_prompt(doc_meta, numbered)
     log(f"[{src_path.name}] {len(lines)} 行, prompt {len(prompt)} 字")
@@ -2241,6 +2262,31 @@ def process_file(src_path: Path, log):
     # Identity v2: fresh formal pipeline output carries identity_version = 2.
     if "identity_version" not in man:
         man["identity_version"] = 2
+    # G2-A 方案 A：JSON 证据指针入 annotation_meta（仅来源定位，不复制 OCR 原文）。
+    man.setdefault("annotation_meta", {})
+    man["annotation_meta"]["json_evidence"] = {
+        "map_sha256": json_evidence_map.evidence_digest(ev_map),
+        "jsonl_file": jsonl_path.name,
+        "page_count_md": ev_map["page_count_md"],
+        "page_count_json": ev_map["page_count_json"],
+        "page_split_consistent": ev_map["page_split_consistent"],
+        "match_counts": ev_map["match_counts"],
+        "unmapped_lines": ev_map["unmapped_lines"],
+        "unmapped_blocks": ev_map["unmapped_blocks"],
+        "evidence_marker_count": numbered.count("〔j p"),
+        "units": json_evidence_map.unit_evidence_pointers(ev_map, man.get("units", [])),
+        "md_sha256": hashlib.sha256(Path(src_path).read_bytes()).hexdigest(),
+        "json_sha256": hashlib.sha256(jsonl_path.read_bytes()).hexdigest(),
+        "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+    }
+    # G2-A 方案 A：生成后强制门禁（只读校验；结果写 annotation_meta，不改 units）。
+    # 验证失败 → verdict=FAIL，本卷/受影响单元不得进 G2-B（run 结果随 summary 带出）。
+    _gate = json_struct_verify.run_generation_gate(
+        man=man, ev_map=ev_map, md_text=text, jsonl_path=jsonl_path,
+        recorded=man["annotation_meta"]["json_evidence"],
+        prompt_text=numbered, mode="generation")
+    man["annotation_meta"]["json_struct_verification"] = _gate
+    summary["json_struct_gate"] = _gate["verdict"]
     log(f"[{src_path.name}] units={summary['units']} 覆盖题号={summary['covered_questions']} "
         f"校验问题={len(issues)} 警告={len(summary.get('warnings', []))}")
     for i in issues[:10]:
@@ -2328,6 +2374,22 @@ def recompile_outputs(out_root):
         # T20-BF: completeness declaration on recompile path too.
         _assign_answer_completeness(man_full, lines)
         meta = man_full.get("annotation_meta", {})
+        # G2-A 方案 A：recompile 旁路同样过门禁（DSH 预检）。json_evidence
+        # 缺失/JSONL 缺失 → verdict=FAIL 落盘：recompile 产物不得进 G2-B。
+        _jl = src.parent / f"{src.stem}.ocr_raw.jsonl"
+        _ev = None
+        if _jl.is_file():
+            try:
+                _ev = json_evidence_map.build_line_evidence(text, _jl)
+            except Exception:
+                _ev = None
+        _gate = json_struct_verify.run_generation_gate(
+            man=man_full, ev_map=_ev, md_text=text, jsonl_path=_jl,
+            recorded=meta.get("json_evidence"),
+            prompt_sha256=(meta.get("json_evidence") or {}).get("prompt_sha256"),
+            mode="recompile")
+        man_full.setdefault("annotation_meta", {})
+        man_full["annotation_meta"]["json_struct_verification"] = _gate
         write_outputs(mf.parent, mf.stem.replace(".manifest", ""), lines,
                       man_full,
                       meta.get("validation_issues", []),
