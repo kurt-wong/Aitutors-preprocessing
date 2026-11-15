@@ -73,8 +73,62 @@ SYNTH_MAN = {
 }
 
 
+def attach_json_evidence(man, src_path):
+    """E-1 后 recompile/门禁需合法双源输入：同目录 jsonl + 一致性 json_evidence。
+
+    按源 md 逐非空行造块并计算映射/摘要/单元指针（与正式链同构），
+    写入 man.annotation_meta.json_evidence 并返回 jsonl 路径。
+    """
+    import hashlib
+    import json_evidence_map
+
+    src_path = Path(src_path)
+    lines = src_path.read_text(encoding="utf-8", errors="replace").splitlines()
+    blocks, bid = [], 0
+    for i, ln in enumerate(lines):
+        if not ln.strip():
+            continue
+        blocks.append({
+            "block_label": "text", "block_content": ln,
+            "block_bbox": json.dumps([10, 20 + i * 10, 500, 30 + i * 10]),
+            "block_id": bid, "block_order": bid + 1, "group_id": bid,
+            "block_polygon_points": "[]",
+        })
+        bid += 1
+    jl = src_path.parent / f"{src_path.stem}.ocr_raw.jsonl"
+    jl.write_text(json.dumps({
+        "logId": "fixture", "errorCode": 0, "errorMsg": "Success",
+        "result": {"layoutParsingResults": [{
+            "prunedResult": {"width": 1000, "height": 1400,
+                             "parsing_res_list": blocks,
+                             "layout_det_res": {"boxes": []}},
+            "markdown": {"text": "", "images": {}}}],
+            "dataInfo": {"numPages": 1}},
+    }, ensure_ascii=False), encoding="utf-8")
+    ev = json_evidence_map.build_line_evidence("\n".join(lines), jl)
+    man.setdefault("annotation_meta", {})
+    man["annotation_meta"]["json_evidence"] = {
+        "map_sha256": json_evidence_map.evidence_digest(ev),
+        "jsonl_file": jl.name,
+        "page_count_md": ev["page_count_md"],
+        "page_count_json": ev["page_count_json"],
+        "page_split_consistent": ev["page_split_consistent"],
+        "match_counts": ev["match_counts"],
+        "unmapped_lines": ev["unmapped_lines"],
+        "unmapped_blocks": ev["unmapped_blocks"],
+        "skipped_blocks": ev["skipped_blocks"],
+        "evidence_marker_count": 0,
+        "units": json_evidence_map.unit_evidence_pointers(ev, man.get("units", [])),
+        "md_sha256": hashlib.sha256(src_path.read_bytes()).hexdigest(),
+        "json_sha256": hashlib.sha256(jl.read_bytes()).hexdigest(),
+        "prompt_sha256": "fixture-no-prompt-run-anchor",
+    }
+    return jl
+
+
 def make_repo(tmp_path, lines=None, man=None, src_name="synthetic.md"):
-    """在 tmp_path 生成与生产同构的产物:源 md + manifest + annotated + 切片。
+    """在 tmp_path 生成与生产同构的产物:源 md + 同目录 ocr_raw.jsonl + manifest
+    + annotated + 切片（E-1 后 recompile 需合法双源输入，夹具同构补齐）。
 
     返回 (src_path, manifest_path, out_dir)。
     """
@@ -82,6 +136,7 @@ def make_repo(tmp_path, lines=None, man=None, src_name="synthetic.md"):
     man = json.loads(json.dumps(man if man is not None else SYNTH_MAN))
     src = tmp_path / src_name
     src.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="")
+    attach_json_evidence(man, src)
     out_dir = tmp_path / "out"
     out_dir.mkdir(exist_ok=True)
     stem = src.stem

@@ -53,8 +53,12 @@ def _sha(p):
     return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
 
-def _make_world(tmp_path):
-    """两页合成卷：p1 题干+材料，p2 跨页续+图行。"""
+def _make_world(tmp_path, img_unmapped=False, omit_lines=()):
+    """两页合成卷：p1 题干+材料，p2 跨页续+图行。
+
+    img_unmapped=True 时页面无任何图块证据 → 图行不可归属 → 单元不可靠
+    （E-2 整卷 FAIL 用例）；默认图块存在（结构配对可归属）→ 全可靠。
+    """
     lines = [
         "材料甲乙丙。",            # L1
         "1. 题干一（ ）",          # L2
@@ -65,11 +69,14 @@ def _make_world(tmp_path):
     ]
     md = "\n".join(lines)
     jl = _write_jsonl(tmp_path / "t.ocr_raw.jsonl", [
-        [_block(0, 1, "材料甲乙丙。", [0, 0, 10, 10]),
-         _block(1, 2, "1. 题干一（ ）", [0, 11, 10, 20]),
-         _block(2, 3, "A. 甲", [0, 21, 10, 30])],
+        [b for b in (
+            _block(0, 1, "材料甲乙丙。", [0, 0, 10, 10]),
+            _block(1, 2, "1. 题干一（ ）", [0, 11, 10, 20]),
+            _block(2, 3, "A. 甲", [0, 21, 10, 30])) if b["block_id"] not in omit_lines],
+        [_block(0, 1, "2. 题干二（ ）", [0, 0, 10, 10])] if img_unmapped else
         [_block(0, 1, "2. 题干二（ ）", [0, 0, 10, 10]),
-         _block(1, 2, "", [0, 11, 10, 30], label="image")],
+         _block(1, 2, "img_in_image_box_10_10_20_20.jpg",
+                [0, 11, 10, 30], label="image")],
     ])
     units = [
         {"unit_id": "U01", "stem_lines": [2, 2], "options_lines": [3, 3],
@@ -197,17 +204,19 @@ class TestCoverageAndEvidence:
         assert cov["status"] == "pass"
 
     def test_image_line_unmapped_flagged(self, tmp_path):
-        w = _make_world(tmp_path)
-        # 图行 L6 映射到 image 空块会被 skip → 无块映射 → G5 warn + U02 不可靠
+        w = _make_world(tmp_path, img_unmapped=True)
+        # 图行 L6 所在页无任何图块证据 → G5 warn + U02 不可靠 → E-2 整卷 FAIL
         g = _run(w)
         img_chk = next(c for c in g["checks"] if c["id"] == "G5_image_attribution")
         assert img_chk["status"] == "warn"
         assert g["unit_flags"]["U02"]["reliable"] is False
+        assert g["verdict"] == "FAIL"
+        assert g["unreliable_units"] == ["U02"]
 
     def test_divergence_register_populated(self, tmp_path):
         w = _make_world(tmp_path)
         g = _run(w)
-        assert "unmapped_lines" in g["divergence_register"]
+        assert "text_unmapped_lines" in g["divergence_register"]
         assert g["divergence_register"]["note"].startswith("仅描述证据差异")
 
     def test_prompt_markers_referenced_blocks_exist(self, tmp_path):
@@ -241,3 +250,58 @@ class TestRecompileMode:
         w["recorded"]["units"] = {}
         g = _run(w, prompt_text=None, mode="recompile")
         assert g["verdict"] == "FAIL"
+
+
+class TestE2VolumeRules:
+    """E-2（Owner 裁决）：unit_flags.reliable=false → 整卷 FAIL；WARN 语义不误升级。"""
+
+    def test_all_reliable_passes(self, tmp_path):
+        w = _make_world(tmp_path)
+        g = _run(w)
+        assert g["verdict"] == "PASS"
+        assert g["unreliable_units"] == []
+
+    def test_unreliable_unit_fails_volume_even_if_rest_pass(self, tmp_path):
+        w = _make_world(tmp_path, img_unmapped=True)
+        g = _run(w)
+        # G1/G2/G7 均 pass，但 U02 不可靠 → 整卷 FAIL（其他 PASS 不可覆盖）
+        assert g["verdict"] == "FAIL"
+        g8 = next(c for c in g["checks"] if c["id"] == "G8_volume_reliability")
+        assert g8["status"] == "fail"
+        assert "U02" in g8["detail"]
+
+    def test_unreliable_plus_warn_fails_volume(self, tmp_path):
+        w = _make_world(tmp_path, img_unmapped=True)
+        # 再加一个单位外噪声行 → G3 warn；U02 仍不可靠 → 整卷 FAIL
+        w2 = dict(w)
+        w2["md"] = w["md"] + "\n卷外噪声行XYZ"
+        g = _run(w2)
+        assert g["verdict"] == "FAIL"
+
+    def test_plain_warn_all_reliable_stays_warn(self, tmp_path):
+        w = _make_world(tmp_path)
+        # 单位区间外的未映射文本行 → G3 warn 但不株连单元 → verdict=WARN（不升级）
+        import hashlib
+        w2 = dict(w)
+        w2["md"] = w["md"] + "\n卷外噪声行XYZ"
+        w2["ev"] = build_line_evidence(w2["md"], w["jl"])
+        w2["prompt"] = annotate_json_evidence(w2["md"], w2["ev"])
+        rec = dict(w["recorded"])
+        rec["map_sha256"] = evidence_digest(w2["ev"])
+        rec["units"] = unit_evidence_pointers(w2["ev"], w["man"]["units"])
+        rec["prompt_sha256"] = hashlib.sha256(w2["prompt"].encode("utf-8")).hexdigest()
+        w2["recorded"] = rec
+        g = _run(w2)
+        assert g["verdict"] == "WARN", g["checks"]
+        assert g["unreliable_units"] == []
+
+    def test_multiple_unreliable_units_all_listed(self, tmp_path):
+        # 稳定世界：U01 题干行（L2，块 id 1）缺块 + U02 页面无图块 → 两个不可靠单元
+        w = _make_world(tmp_path, img_unmapped=True, omit_lines=(1,))
+        g = _run(w)
+        assert g["verdict"] == "FAIL"
+        assert set(g["unreliable_units"]) >= {"U01", "U02"}
+        assert all(g["unit_flags"][u]["reliable"] is False for u in g["unreliable_units"])
+        # 全部不可靠单元都进诊断（不止第一个）
+        g8 = next(c for c in g["checks"] if c["id"] == "G8_volume_reliability")
+        assert "U01" in g8["detail"] and "U02" in g8["detail"]

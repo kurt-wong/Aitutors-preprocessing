@@ -200,6 +200,9 @@ class TestRecompileRelativePath:
             "grade": None,
         }
         mf = out_root / "test.manifest.json"
+        # E-1：recompile 需合法双源输入（jsonl + 一致性 json_evidence）
+        from conftest import attach_json_evidence
+        attach_json_evidence(manifest, src)
         mf.write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
 
         # Monkey-patch ROOT and SRC_ROOT to tmp_path

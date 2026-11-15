@@ -736,7 +736,8 @@ def run_generation_gate(
         _check("G2_binding", "fail", "ev_map 不可构建（OCR-JSON 缺失或不可解析）")
         return {
             "verdict": "FAIL", "gate_version": GATE_VERSION, "checks": checks,
-            "unit_flags": {}, "divergence_register": {}, "consumption_proof": {},
+            "unit_flags": {}, "unreliable_units": [],
+            "divergence_register": {}, "consumption_proof": {},
             "mode": mode,
         }
 
@@ -746,7 +747,8 @@ def run_generation_gate(
                "annotation_meta.json_evidence 缺失——无法证明 JSON 参与生成（含 --recompile 旧产物）")
         return {
             "verdict": "FAIL", "gate_version": GATE_VERSION, "checks": checks,
-            "unit_flags": {}, "divergence_register": {}, "consumption_proof": {},
+            "unit_flags": {}, "unreliable_units": [],
+            "divergence_register": {}, "consumption_proof": {},
         }
     _check("G1_evidence_presence", "pass", "json_evidence 存在")
 
@@ -769,15 +771,49 @@ def run_generation_gate(
            "; ".join(binding_fail) if binding_fail else "jsonl/map 摘要一致")
 
     # ---- G3 双向映射完整性 ----
+    # 分流（Owner E-2"不得误升级"）：文本行（规范化后非空）未映射=证据缺口；
+    # 标记行（原始非空、规范化为空，如 <div><img/></div>）是结构性行，走 G5 配对；
+    # 结构性块（image/chart/table/formula 标签）未文本映射属预期，不株连单元。
     _jem2 = _jem_mod
-    empty_lines = {i for i, ln in enumerate(md_text.splitlines(), 1) if not ln.strip()}
-    real_unmapped_lines = [n for n in ev_map.get("unmapped_lines", []) if n not in empty_lines]
-    content_unmapped_blocks = ev_map.get("unmapped_blocks", [])
+    raw_lines = md_text.splitlines()
+    _STRUCTURAL_LABELS = {"image", "chart", "table", "formula"}
+    _segments = _jem2.split_md_pages(md_text)
+    _pages_inv = _jem2.load_ocr_pages(jsonl_path)
+
+    def _is_markup_only(n):
+        raw = raw_lines[n - 1] if 0 < n <= len(raw_lines) else ""
+        return bool(raw.strip()) and not _normalize_text(raw)
+
+    blank_lines = {i for i, ln in enumerate(raw_lines, 1) if not ln.strip()}
+    # 分页符行（独立 ---，与 split_md_pages/annotate_img_boxes 同规则）是结构性行，
+    # 不属文本内容，不计未映射。
+    sep_lines = {i for i, ln in enumerate(raw_lines, 1) if ln.strip() == "---"}
+    _raw_unmapped = [n for n in ev_map.get("unmapped_lines", [])
+                     if n not in blank_lines and n not in sep_lines
+                     and not _is_markup_only(n)]
+    # 重复文本分流（E-2"不得误升级"）：行内容在 JSON 块中存在但因同文首匹配
+    # 歧义未挂上 → 内容证据在，仅位置归属不唯一，不株连单元；内容完全缺失才算缺口。
+    _block_norms = {_normalize_text(b.get("content"))
+                    for p in _pages_inv for b in p["blocks"]}
+    text_unmapped_lines = [n for n in _raw_unmapped
+                           if _normalize_text(raw_lines[n - 1]) not in _block_norms]
+    unmapped_duplicate_content = [n for n in _raw_unmapped
+                                  if _normalize_text(raw_lines[n - 1]) in _block_norms]
+    markup_lines = [n for n in range(1, len(raw_lines) + 1)
+                    if _is_markup_only(n)]
+    all_unmapped_blocks = ev_map.get("unmapped_blocks", [])
+    structural_unmapped_blocks = [b for b in all_unmapped_blocks
+                                 if b.get("block_label") in _STRUCTURAL_LABELS]
+    content_unmapped_blocks = [b for b in all_unmapped_blocks
+                               if b.get("block_label") not in _STRUCTURAL_LABELS]
     mc = ev_map.get("match_counts", {})
-    _check("G3_bidirectional", "pass" if not (real_unmapped_lines or content_unmapped_blocks) else "warn",
+    _check("G3_bidirectional",
+           "pass" if not (text_unmapped_lines or content_unmapped_blocks) else "warn",
            f"mapped_exact={mc.get('mapped_exact')} folded={mc.get('mapped_folded')} "
-           f"unmapped_lines={len(real_unmapped_lines)}(空行除外) "
-           f"unmapped_blocks={len(content_unmapped_blocks)} skipped={mc.get('skipped_blocks')}")
+           f"text_unmapped_lines={len(text_unmapped_lines)} "
+           f"dup_content_lines={len(unmapped_duplicate_content)} markup_lines={len(markup_lines)} "
+           f"content_unmapped_blocks={len(content_unmapped_blocks)} "
+           f"structural_unmapped_blocks={len(structural_unmapped_blocks)} skipped={mc.get('skipped_blocks')}")
 
     # ---- 单元可靠性标记（未映射落在哪个单元区间）----
     def _units_of_line(n):
@@ -792,7 +828,7 @@ def run_generation_gate(
                         break
         return out
 
-    for n in real_unmapped_lines:
+    for n in text_unmapped_lines:
         for uid in _units_of_line(n):
             unit_flags.setdefault(str(uid), {"reliable": True, "reasons": []})
             unit_flags[str(uid)]["reliable"] = False
@@ -823,8 +859,42 @@ def run_generation_gate(
     _check("G4_cross_page_coverage", "fail" if page_missing else "pass",
            f"单元页证据缺口: {page_missing}" if page_missing else "全部单元页均有 JSON 证据")
 
-    # ---- G5 图像归属证据（图行必须有块映射或 bbox 注解）----
+    # ---- G5 图像/标记行归属证据（多路确定性配对，禁止语义认领）----
+    # (a) 文本块映射；(b) 标记行 ↔ 同页结构块（image/chart/table/formula 或空内容块）
+    # 结构配对；(c) 文件名内嵌 box / 〔pN box …〕 注解 ↔ 同页块坐标。
     import re as _re
+    _BOX_FN_RE = _re.compile(r"(?:img_in_)?(?:image|chart|table|formula)?_?box_(\d+)_(\d+)_(\d+)_(\d+)")
+    _BOX_ANN_RE = _re.compile(r"〔p(\d+) box (\d+),(\d+)-(\d+),(\d+)〕")
+
+    def _page_blocks(pg):
+        for pd in _pages_inv:
+            if pd.get("page_no") == pg:
+                return pd.get("blocks") or []
+        return []
+
+    def _attributable(n):
+        rec = (ev_map.get("lines") or {}).get(n)
+        if rec and rec.get("block_ids"):
+            return "block_mapped"
+        raw = raw_lines[n - 1] if 0 < n <= len(raw_lines) else ""
+        pg = rec.get("page") if rec else None
+        if pg is None:
+            seg = next((s for s in _segments if s["start_line"] <= n <= s["end_line"]), None)
+            pg = seg["page_no"] if seg else None
+        blocks = _page_blocks(pg) if pg else []
+        box = None
+        m = _BOX_FN_RE.search(raw) or _BOX_ANN_RE.search(raw)
+        if m:
+            box = tuple(int(x) for x in m.groups()[-4:])
+        if box and any(tuple(b.get("bbox") or []) == box for b in blocks):
+            return "spatial_bbox_match"
+        if _is_markup_only(n) and any(
+                (b.get("block_label") in _STRUCTURAL_LABELS)
+                or not _normalize_text(b.get("content"))
+                for b in blocks):
+            return "structural_pairing"
+        return None
+
     img_unconfirmed = []
     for u in units:
         uid = str(u.get("unit_id"))
@@ -833,29 +903,34 @@ def run_generation_gate(
             if not (isinstance(sp, list) and len(sp) == 2):
                 continue
             for n in range(max(1, sp[0]), sp[1] + 1):
-                ln = md_text.splitlines()[n - 1] if n - 1 < len(md_text.splitlines()) else ""
-                if _re.search(r"<img\s", ln):
-                    rec = (ev_map.get("lines") or {}).get(n)
-                    if not rec or not rec.get("block_ids"):
-                        img_unconfirmed.append(f"{uid}@L{n}")
-                        unit_flags.setdefault(uid, {"reliable": True, "reasons": []})
-                        unit_flags[uid]["reliable"] = False
-                        unit_flags[uid]["reasons"].append(f"img line L{n} 无 JSON 块映射")
+                raw = raw_lines[n - 1] if 0 < n <= len(raw_lines) else ""
+                if not (_re.search(r"<img\s", raw) or _is_markup_only(n)):
+                    continue
+                if not _attributable(n):
+                    img_unconfirmed.append(f"{uid}@L{n}")
+                    unit_flags.setdefault(uid, {"reliable": True, "reasons": []})
+                    unit_flags[uid]["reliable"] = False
+                    unit_flags[uid]["reasons"].append(f"img/markup line L{n} 无可定位 JSON 证据")
     _check("G5_image_attribution", "warn" if img_unconfirmed else "pass",
-           f"未确认图行: {img_unconfirmed}" if img_unconfirmed else "图行均有块映射/坐标注解依据")
+           f"未确认图行: {img_unconfirmed}" if img_unconfirmed
+           else "标记行均有块映射/结构配对/坐标证据")
 
     # ---- G6 差异登记（只记录不修正）----
     divergence = {
         "folded_matches": mc.get("mapped_folded", 0),
-        "unmapped_lines": real_unmapped_lines,
+        "text_unmapped_lines": text_unmapped_lines,
+        "unmapped_duplicate_content_lines": unmapped_duplicate_content,
+        "markup_lines": markup_lines,
         "unmapped_blocks": content_unmapped_blocks,
+        "structural_unmapped_blocks": structural_unmapped_blocks,
         "skipped_blocks": mc.get("skipped_blocks", 0),
         "page_split_consistent": ev_map.get("page_split_consistent"),
         "note": "仅描述证据差异，不修正源文件、不生成替代文本",
     }
     _check("G6_divergence_register", "pass",
-           f"folded={mc.get('mapped_folded')} unmapped_lines={len(real_unmapped_lines)} "
-           f"unmapped_blocks={len(content_unmapped_blocks)}")
+           f"folded={mc.get('mapped_folded')} text_unmapped={len(text_unmapped_lines)} "
+           f"content_unmapped_blocks={len(content_unmapped_blocks)} "
+           f"structural_unmapped_blocks={len(structural_unmapped_blocks)}")
 
     # ---- G7 消费证明（逐页标记/标记溯源/指针一致/同 run 锚）----
     cons_fail = []
@@ -876,7 +951,6 @@ def run_generation_gate(
     elif prompt_text is None:
         cons_fail.append("未提供 prompt_text，无法证明证据列进入生成")
     else:
-        segs = _jem2.split_md_pages(md_text)
         marked_pages = set()
         marker_blocks = set()
         for m in _MARKER_RE.finditer(prompt_text):
@@ -885,12 +959,12 @@ def run_generation_gate(
                 if tok.isdigit():
                     marker_blocks.add(int(tok))
         proof["marked_pages"] = sorted(marked_pages)
-        pages_with_text = {s["page_no"] for s in segs
+        pages_with_text = {s["page_no"] for s in _segments
                            if any(ln.strip() for ln in s["lines"])}
         missing_marks = sorted(pages_with_text - marked_pages)
         if missing_marks:
             cons_fail.append(f"页缺证据标记: {missing_marks}")
-        known_blocks = {b.get("block_id") for p in _jem2.load_ocr_pages(jsonl_path) for b in p["blocks"]}
+        known_blocks = {b.get("block_id") for p in _pages_inv for b in p["blocks"]}
         ghost = sorted(b for b in marker_blocks if b not in known_blocks)
         if ghost:
             cons_fail.append(f"标记引用了 JSONL 不存在的块: {ghost}")
@@ -908,13 +982,34 @@ def run_generation_gate(
     _check("G7_consumption_proof", "fail" if cons_fail else "pass",
            "; ".join(cons_fail) if cons_fail else "逐页标记/块溯源/指针一致/同 run 锚成立")
 
-    verdict = "FAIL" if any(c["status"] == "fail" for c in checks) else "PASS"
+    # E-2（Owner 2026-11-15 裁决）：任意 reliable=false 单元 → 整卷 FAIL，
+    # 即使其他检查 PASS；普通 WARN 且全部单元可靠 → WARN（保留继续）；
+    # 不得把无差别 WARN 升级为 FAIL。
+    unreliable = {uid: fl for uid, fl in unit_flags.items() if not fl.get("reliable", True)}
+    has_fail = any(c["status"] == "fail" for c in checks)
+    has_warn = any(c["status"] == "warn" for c in checks)
+    if unreliable:
+        checks.append({
+            "id": "G8_volume_reliability", "status": "fail",
+            "detail": f"整卷阻断：{len(unreliable)} 个不可靠单元 {sorted(unreliable)}（全部列入 unit_flags）",
+        })
+        has_fail = True
+    elif has_warn:
+        checks.append({
+            "id": "G8_volume_reliability", "status": "warn",
+            "detail": "无不可靠单元；保留既有警告继续",
+        })
+    else:
+        checks.append({"id": "G8_volume_reliability", "status": "pass",
+                       "detail": "全部单元 reliable=true"})
+    verdict = "FAIL" if has_fail else ("WARN" if has_warn else "PASS")
     return {
         "verdict": verdict,
         "gate_version": GATE_VERSION,
         "mode": mode,
         "checks": checks,
         "unit_flags": unit_flags,
+        "unreliable_units": sorted(unreliable),
         "divergence_register": divergence,
         "consumption_proof": proof,
     }

@@ -58,6 +58,11 @@ VALID_SUBJECTS = frozenset({
 })
 
 
+class GenerationGateError(RuntimeError):
+    """E-1（Owner 2026-11-15 裁决）：JSON 双源门禁 FAIL —— 阻断正式 Manifest
+    生成。失败卷不得进入 G2-B 输入清单；诊断以 *.gate_failure.json 留痕。"""
+
+
 def _redact(text: str) -> str:
     """Strip API keys / bearer tokens from any string before logging."""
     text = re.sub(r"Bearer\s+[A-Za-z0-9_\-\.]{8,}", "Bearer [REDACTED]", text)
@@ -1941,6 +1946,73 @@ def package_image_assets(src_path, out_dir, lines):
     return assets
 
 
+def _resume_can_skip(manifest_path: Path, src_path: Path) -> tuple[bool, str]:
+    """E-1 残留防线（Owner 2026-11-15）：--resume 三条件同时成立才可跳过。
+
+    (1) manifest 存在且可解析（崩溃半截文件不算）；
+    (2) annotation_meta.json_struct_verification.verdict == "PASS"；
+    (3) source_content_sha256 == 当前源 md 字节哈希。
+    返回 (can_skip, reason)。任一不满足 → 重跑，不把旧产物当本轮结果。
+    """
+    if not manifest_path.is_file():
+        return False, "no manifest"
+    try:
+        man = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except Exception as e:
+        return False, f"manifest unreadable/corrupt ({type(e).__name__})"
+    verdict = ((man.get("annotation_meta") or {})
+               .get("json_struct_verification") or {}).get("verdict")
+    if verdict != "PASS":
+        return False, f"gate verdict={verdict!r} != 'PASS'"
+    try:
+        cur = hashlib.sha256(Path(src_path).read_bytes()).hexdigest()
+    except Exception as e:
+        return False, f"source unreadable ({type(e).__name__})"
+    if (man.get("source_content_sha256") or "") != cur:
+        return False, "source_content_sha256 mismatch (source changed)"
+    return True, "ok"
+
+
+def _quarantine_stale_manifest(out_dir: Path, stem: str) -> bool:
+    """E-1 残留处理：失败卷输出目录中的旧 manifest 改名隔离（保留字节、不删除、
+    不触其他 run），防止被误当本次成功产物，也防止 --resume 据旧文件误跳过。"""
+    mf = out_dir / f"{stem}.manifest.json"
+    if not mf.is_file():
+        return False
+    ts = time.strftime("%Y%m%d-%H%M%S")
+    mf.rename(out_dir / f"{stem}.manifest.json.superseded-gatefail-{ts}")
+    return True
+
+
+def _record_gate_failure(out_dir: Path, src_path: Path, gate: dict) -> Path:
+    """失败卷明确失败状态（不能只靠 manifest 是否存在判断）。
+
+    Owner 口径：写 ``{stem}.gate.json``（run_id + verdict + 原因）供清单/续跑
+    判定；不删不覆盖历史 run 的文件（本轮诊断按时间戳命名留痕）。
+    """
+    out_dir.mkdir(parents=True, exist_ok=True)
+    ts = time.strftime("%Y%m%d-%H%M%S")
+    run_id = f"{out_dir.name}-{ts}-pid{os.getpid()}"
+    reason = "; ".join(c.get("detail", "") for c in gate.get("checks", [])
+                       if c.get("status") == "fail")
+    p = out_dir / f"{src_path.stem}.gate.json"
+    record = {
+        "run_id": run_id,
+        "verdict": gate.get("verdict"),
+        "reason": reason,
+        "source_file": str(src_path),
+        "failed_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "gate": gate,
+        "note": ("E-1 阻断：正式 Manifest 未生成；目录内陈旧 manifest 已改名 "
+                 ".superseded-gatefail-*；本卷不得进入 G2-B 输入清单"),
+    }
+    if p.is_file():
+        # 不覆盖历史诊断：旧记录按时间戳留档
+        p.rename(out_dir / f"{src_path.stem}.gate-{ts}-prev.json")
+    p.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
+    return p
+
+
 def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path,
                   model=DEFAULT_MODEL):
     """三产出：① manifest JSON（无正文）② 锚点批注版源 md（本质产物）
@@ -2008,9 +2080,13 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
         manifest[key] = existing if existing is not None else derived
     # Phase C O1：图像实体随 artifact 交付（只记可解析文件，禁悬空 figure_ref）
     manifest["image_assets"] = assets
-    (out_dir / f"{stem}.manifest.json").write_text(
+    # E-1 残留防线：临时文件 + 原子替换——防崩溃半截文件被 exists()/resume 采信。
+    _mf_final = out_dir / f"{stem}.manifest.json"
+    _mf_tmp = out_dir / f"{stem}.manifest.json.tmp-{os.getpid()}"
+    _mf_tmp.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=1),
         encoding="utf-8", newline="\n")
+    os.replace(_mf_tmp, _mf_final)
 
 
 #: answers[] 合法枚举（4d 契约；校验只查结构，不做语义改写）
@@ -2279,12 +2355,20 @@ def process_file(src_path: Path, log):
         "json_sha256": hashlib.sha256(jsonl_path.read_bytes()).hexdigest(),
         "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
     }
-    # G2-A 方案 A：生成后强制门禁（只读校验；结果写 annotation_meta，不改 units）。
-    # 验证失败 → verdict=FAIL，本卷/受影响单元不得进 G2-B（run 结果随 summary 带出）。
+    # G2-A 方案 A + E-1（Owner 2026-11-15 裁决）：生成后强制门禁。
+    # FAIL → 真阻断：不写正式 Manifest、不正常返回；诊断落 *.gate_failure.json，
+    # 目录内陈旧 manifest 改名 .superseded-gatefail-*（防误判/防 resume 误跳过）。
     _gate = json_struct_verify.run_generation_gate(
         man=man, ev_map=ev_map, md_text=text, jsonl_path=jsonl_path,
         recorded=man["annotation_meta"]["json_evidence"],
         prompt_text=numbered, mode="generation")
+    if _gate["verdict"] == "FAIL":
+        _out_dir = OUT_ROOT / rel_out(src_path, SRC_ROOT).parent
+        _diag = _record_gate_failure(_out_dir, src_path, _gate)
+        _quarantine_stale_manifest(_out_dir, src_path.stem)
+        raise GenerationGateError(
+            f"{src_path.name}: JSON 双源门禁 FAIL，正式 Manifest 已阻断（不得进 G2-B）；"
+            f"诊断 {_diag.name}")
     man["annotation_meta"]["json_struct_verification"] = _gate
     summary["json_struct_gate"] = _gate["verdict"]
     log(f"[{src_path.name}] units={summary['units']} 覆盖题号={summary['covered_questions']} "
@@ -2346,6 +2430,7 @@ def recompile_outputs(out_root):
     units 内,单独存在不足以支撑 v2 判定。
     """
     n = 0
+    n_blocked = 0
     for mf in sorted(out_root.rglob("*.manifest.json")):
         man_full = json.loads(mf.read_text(encoding="utf-8"))
         src = Path(man_full["source_file"])
@@ -2389,6 +2474,15 @@ def recompile_outputs(out_root):
             prompt_sha256=(meta.get("json_evidence") or {}).get("prompt_sha256"),
             mode="recompile")
         man_full.setdefault("annotation_meta", {})
+        # E-1：recompile 同一门禁——FAIL 不写出可用 Manifest（write_outputs 不调用），
+        # 陈旧 manifest 改名隔离 + 失败标记落盘。
+        if _gate["verdict"] == "FAIL":
+            man_full["annotation_meta"]["json_struct_verification"] = _gate
+            _diag = _record_gate_failure(mf.parent, src, _gate)
+            _quarantine_stale_manifest(mf.parent, mf.stem.replace(".manifest", ""))
+            n_blocked += 1
+            print(f"[recompile][GATE-FAIL] {mf.name} —— 正式产物未写出，诊断 {_diag.name}")
+            continue
         man_full["annotation_meta"]["json_struct_verification"] = _gate
         write_outputs(mf.parent, mf.stem.replace(".manifest", ""), lines,
                       man_full,
@@ -2397,6 +2491,8 @@ def recompile_outputs(out_root):
                       model=man_full.get("model", DEFAULT_MODEL))
         n += 1
         print(f"[recompile] {mf.stem.replace('.manifest', '')}")
+    if n_blocked:
+        print(f"[recompile] 门禁阻断 {n_blocked} 份（不得进 G2-B）")
     return n
 
 
@@ -2517,9 +2613,17 @@ def main():
     for i, f in enumerate(files):
         rel = rel_out(f, SRC_ROOT)
         manifest_path = OUT_ROOT / rel.parent / f"{f.stem}.manifest.json"
-        if args.resume and manifest_path.exists():
-            log(f"===== [{i+1}/{len(files)}] {f.name} —— 已有输出，跳过 =====")
+        # E-1 残留防线：resume 三条件（存在且可解析 + 门禁 PASS + 源哈希一致）
+        # 才跳过；旧/半截/门禁未过产物一律重跑，不被误当本轮成功。
+        _can_skip, _skip_reason = (False, "resume not requested")
+        if args.resume:
+            _can_skip, _skip_reason = _resume_can_skip(manifest_path, f)
+        if args.resume and _can_skip:
+            log(f"===== [{i+1}/{len(files)}] {f.name} —— 已有合格输出（门禁 PASS+哈希一致），跳过 =====")
             results.append(prev.get(str(f), {"file": str(f), "skipped": True}))
+        elif args.resume and manifest_path.exists():
+            log(f"===== [{i+1}/{len(files)}] {f.name} —— 存在旧 manifest 但不合格（{_skip_reason}），重跑 =====")
+            todo.append((i, f))
         else:
             todo.append((i, f))
 
@@ -2527,6 +2631,9 @@ def main():
         log(f"===== [{i+1}/{len(files)}] {f.name} =====")
         try:
             return process_file(f, log)
+        except GenerationGateError as e:
+            log(f"[GATE-FAIL] {f.name}: {e}")
+            return {"file": str(f), "error": str(e), "gate_failed": True}
         except Exception as e:
             log(f"[FAIL] {f.name}: {type(e).__name__} {e}")
             return {"file": str(f), "error": str(e)}
@@ -2575,6 +2682,10 @@ def main():
             "n_files": len(results),
             "n_ok": ok,
             "n_error": sum(1 for r in results if r.get("error")),
+            "n_gate_failed": sum(1 for r in results if r.get("gate_failed")),
+            "gate_failed_files": [r.get("file") for r in results if r.get("gate_failed")],
+            "g2b_input_excluded": [r.get("file") for r in results
+                                   if r.get("error") or r.get("skipped")],
             "n_no_issues": ok,
             "total_src_bytes": sum(r.get("src_bytes") or 0 for r in done),
             "total_prompt_tokens": tot_p,
