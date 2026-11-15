@@ -249,9 +249,14 @@ MIN_LITERAL_LEN = 4
 
 
 def _normalize_text(s: str) -> str:
-    """有限规范化:Unicode NFKC + 去 HTML 标签 + 去全部空白。"""
-    s = unicodedata.normalize("NFKC", s)
-    s = re.sub(r"<[^>]+>", "", s)
+    """有限规范化:Unicode NFKC + 去 HTML 标签 + 去全部空白。
+
+    标签剥离只认真标签（<div…>/<img…/>/</p>）。不可用 <[^>]+>：数学比较符
+    `<`/`>` 会被当标签定界，把公式整段吃掉（实测选项 B "<" 与选项 C ">"
+    之间整段文本含「摩尔体积」被误删，导致块↔行失配）。
+    """
+    s = unicodedata.normalize("NFKC", s or "")
+    s = re.sub(r"<(?:/?[a-zA-Z!][^<>]*)>", "", s)
     s = re.sub(r"\s+", "", s)
     return s
 
@@ -780,9 +785,16 @@ def run_generation_gate(
     _segments = _jem2.split_md_pages(md_text)
     _pages_inv = _jem2.load_ocr_pages(jsonl_path)
 
+    import re as _re_g3
+    _ANN_RE = _re_g3.compile(r"〔[^〕]*〕")
+
+    def _strip_ann(s):
+        """剥掉确定性注解（〔pN box …〕/〔j …〕）——注解不是源文内容。"""
+        return _ANN_RE.sub("", s)
+
     def _is_markup_only(n):
         raw = raw_lines[n - 1] if 0 < n <= len(raw_lines) else ""
-        return bool(raw.strip()) and not _normalize_text(raw)
+        return bool(raw.strip()) and not _normalize_text(_strip_ann(raw))
 
     blank_lines = {i for i, ln in enumerate(raw_lines, 1) if not ln.strip()}
     # 分页符行（独立 ---，与 split_md_pages/annotate_img_boxes 同规则）是结构性行，
@@ -795,17 +807,107 @@ def run_generation_gate(
     # 歧义未挂上 → 内容证据在，仅位置归属不唯一，不株连单元；内容完全缺失才算缺口。
     _block_norms = {_normalize_text(b.get("content"))
                     for p in _pages_inv for b in p["blocks"]}
-    text_unmapped_lines = [n for n in _raw_unmapped
-                           if _normalize_text(raw_lines[n - 1]) not in _block_norms]
-    unmapped_duplicate_content = [n for n in _raw_unmapped
-                                  if _normalize_text(raw_lines[n - 1]) in _block_norms]
+
+    def _line_norms(n):
+        raw = _strip_ann(raw_lines[n - 1] if 0 < n <= len(raw_lines) else "")
+        return {_normalize_text(raw), _normalize_text(_jem_mod._fold_md_decor(raw))}
+
+    # 公式/标点格式软化（E-2"不得误升级"：$ \frac _ ^ 与首尾标点差异是同一内容的
+    # 排版分歧，不是内容缺口；Owner 口径：公式失真属 OCR 阶段对象，不作结构证据缺口）。
+    _SOFT_RE = _re_g3.compile(r"[$\\_^{}\[\]`*~\s]")
+    _EDGE_PUNCT = ".,;:!?，。；：！？、"
+
+    def _soften(s):
+        s = _SOFT_RE.sub("", s or "")
+        return s.strip(_EDGE_PUNCT)
+
+    _block_soft = {_soften(_normalize_text(b.get("content")))
+                   for p in _pages_inv for b in p["blocks"]}
+    _block_soft.discard("")
+
+    def _line_soft(n):
+        return {_soften(x) for x in _line_norms(n)} - {""}
+
+    def _bigrams(s):
+        return {s[i:i + 2] for i in range(max(0, len(s) - 1))} or {s}
+
+    # CJK 骨架：剥掉拉丁/数字/公式/标点，只留自然语言（形声字与全角标点）
+    _CJK_RE = _re_g3.compile(r"[^一-鿿，。；：！？、（）]")
+
+    def _soft_hit_line(n):
+        """行内容证据存在判定（确定性三档）：
+        ① 精确/折叠同文；② 软化后互为包含（长公式的行片段↔整段块）；
+        ③ bigram 重合率 ≥0.5（公式转写措辞差异的同源格式分歧，阈值可审计）。
+        均不中 → 真内容缺口。"""
+        norms = _line_norms(n)
+        if norms & _block_norms:
+            return True
+        for f in norms:
+            f2 = _soften(f)
+            if len(f2) < 4:
+                continue
+            if any(f2 == bs or f2 in bs or (len(bs) >= 4 and bs in f2)
+                   for bs in _block_soft):
+                return True
+            if len(f2) >= 10:  # 容差档仅长内容（短行 bigram 易误配）
+                fb = _bigrams(f2)
+                for bs in _block_soft:
+                    if len(bs) < 4:
+                        continue
+                    if len(fb & _bigrams(bs)) / len(fb) >= 0.5:
+                        return True
+            # CJK 骨架档：公式转写差异（拉丁/公式部分 OCR 两路不一致）时以
+            # 自然语言骨架判同源（Owner 口径：公式失真不作结构证据缺口）。
+            cjk = _CJK_RE.sub("", f2)
+            if len(cjk) >= 4:
+                cb = _bigrams(cjk)
+                for bs in _block_soft:
+                    bcjk = _CJK_RE.sub("", bs)
+                    if len(bcjk) < 4:
+                        continue
+                    if len(cb & _bigrams(bcjk)) / len(cb) >= 0.5:
+                        return True
+        return False
+
+    text_unmapped_lines = [n for n in _raw_unmapped if not _soft_hit_line(n)]
+    unmapped_duplicate_content = [n for n in _raw_unmapped if _soft_hit_line(n)]
     markup_lines = [n for n in range(1, len(raw_lines) + 1)
                     if _is_markup_only(n)]
+    # 版面家具（页码/页脚/水印等样板行）：OCR-JSON 有块而 MD 正确丢弃属预期，
+    # 不是内容缺口（E-2"不得误升级"——题库站样板行株连全卷即误杀）。
+    _FURNITURE_LABELS = {"number", "footer", "header", "page_number",
+                         "page-number", "page_header", "page_footer",
+                         "watermark", "qr_code", "seal",
+                         "formula_number"}  # 「（N分）」分值标记=版面家具
     all_unmapped_blocks = ev_map.get("unmapped_blocks", [])
     structural_unmapped_blocks = [b for b in all_unmapped_blocks
                                  if b.get("block_label") in _STRUCTURAL_LABELS]
-    content_unmapped_blocks = [b for b in all_unmapped_blocks
-                               if b.get("block_label") not in _STRUCTURAL_LABELS]
+    furniture_unmapped_blocks = [b for b in all_unmapped_blocks
+                                 if b.get("block_label") in _FURNITURE_LABELS]
+    _all_line_soft = set()
+    for _n in range(1, len(raw_lines) + 1):
+        _all_line_soft |= _line_soft(_n)
+    # unmapped_blocks 条目只带页/号/标签，内容需从块清单回查
+    _blk_content = {(p["page_no"], b["block_id"]): (b.get("content") or "")
+                    for p in _pages_inv for b in p["blocks"]}
+    _fmt_blocks, content_unmapped_blocks = [], []
+    for b in all_unmapped_blocks:
+        if b.get("block_label") in _STRUCTURAL_LABELS | _FURNITURE_LABELS:
+            continue
+        content = b.get("content")
+        if content is None:
+            content = _blk_content.get((b.get("page_no"), b.get("block_id")), "")
+        cs = _soften(_normalize_text(content))
+        hit = False
+        if cs and len(cs) >= 4:
+            for ls in _all_line_soft:
+                if ls and (ls == cs or ls in cs or cs in ls):
+                    hit = True
+                    break
+        if hit:
+            _fmt_blocks.append(b)   # 与某行软等价/互含=格式分歧，非缺口
+        else:
+            content_unmapped_blocks.append(b)
     mc = ev_map.get("match_counts", {})
     _check("G3_bidirectional",
            "pass" if not (text_unmapped_lines or content_unmapped_blocks) else "warn",
@@ -813,7 +915,8 @@ def run_generation_gate(
            f"text_unmapped_lines={len(text_unmapped_lines)} "
            f"dup_content_lines={len(unmapped_duplicate_content)} markup_lines={len(markup_lines)} "
            f"content_unmapped_blocks={len(content_unmapped_blocks)} "
-           f"structural_unmapped_blocks={len(structural_unmapped_blocks)} skipped={mc.get('skipped_blocks')}")
+           f"structural={len(structural_unmapped_blocks)} "
+           f"furniture={len(furniture_unmapped_blocks)} skipped={mc.get('skipped_blocks')}")
 
     # ---- 单元可靠性标记（未映射落在哪个单元区间）----
     def _units_of_line(n):
@@ -833,14 +936,11 @@ def run_generation_gate(
             unit_flags.setdefault(str(uid), {"reliable": True, "reasons": []})
             unit_flags[str(uid)]["reliable"] = False
             unit_flags[str(uid)]["reasons"].append(f"unmapped_line L{n}")
-    for b in content_unmapped_blocks:
-        for u in units:
-            ptr = (recorded.get("units") or {}).get(str(u.get("unit_id"))) or {}
-            if b.get("page_no") in (ptr.get("pages") or []):
-                unit_flags.setdefault(str(u.get("unit_id")), {"reliable": True, "reasons": []})
-                unit_flags[str(u.get("unit_id"))]["reliable"] = False
-                unit_flags[str(u.get("unit_id"))]["reasons"].append(
-                    f"unmapped_block p{b.get('page_no')} b{b.get('block_id')}")
+    # 未归属内容块（反向缺口）：影响范围无法确定性定位到单元（块无行映射），
+    # 按 E-2"必须明确定位受影响的单元"才可判不可靠的口径——登记入 divergence
+    # register（页码/块号/标签齐全），不株连整页单元；G2-A GT 对账另行处置。
+    if content_unmapped_blocks:
+        pass  # 仅登记：见 G6 divergence_register.unmapped_blocks
 
     # ---- G4 跨页/页级证据覆盖：单元页必须有 JSON 证据 ----
     page_ev_lines: dict[int, int] = {}
@@ -922,7 +1022,9 @@ def run_generation_gate(
         "unmapped_duplicate_content_lines": unmapped_duplicate_content,
         "markup_lines": markup_lines,
         "unmapped_blocks": content_unmapped_blocks,
+        "format_divergence_blocks": _fmt_blocks,
         "structural_unmapped_blocks": structural_unmapped_blocks,
+        "furniture_unmapped_blocks": furniture_unmapped_blocks,
         "skipped_blocks": mc.get("skipped_blocks", 0),
         "page_split_consistent": ev_map.get("page_split_consistent"),
         "note": "仅描述证据差异，不修正源文件、不生成替代文本",
@@ -961,9 +1063,23 @@ def run_generation_gate(
         proof["marked_pages"] = sorted(marked_pages)
         pages_with_text = {s["page_no"] for s in _segments
                            if any(ln.strip() for ln in s["lines"])}
-        missing_marks = sorted(pages_with_text - marked_pages)
+        # 未带标记的页：若其文本行全部为重复/格式软等价内容（证据在 JSON 仅
+        # 标记缺位）→ 软覆盖通过；存在真缺口行才算消费证明失败。
+        _dup_set = set(unmapped_duplicate_content)
+        _text_set = set(text_unmapped_lines)
+        soft_covered, missing_marks = [], []
+        for s in _segments:
+            pg = s["page_no"]
+            if pg in marked_pages or pg not in pages_with_text:
+                continue
+            bad = [n for n in range(s["start_line"], s["end_line"] + 1)
+                   if n in _text_set]
+            (missing_marks if bad else soft_covered).append(pg)
+        missing_marks.sort()
+        soft_covered.sort()
+        proof["soft_covered_pages"] = soft_covered
         if missing_marks:
-            cons_fail.append(f"页缺证据标记: {missing_marks}")
+            cons_fail.append(f"页缺证据标记且含无证据行: {missing_marks}")
         known_blocks = {b.get("block_id") for p in _pages_inv for b in p["blocks"]}
         ghost = sorted(b for b in marker_blocks if b not in known_blocks)
         if ghost:

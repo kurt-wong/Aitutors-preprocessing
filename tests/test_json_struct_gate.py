@@ -305,3 +305,119 @@ class TestE2VolumeRules:
         # 全部不可靠单元都进诊断（不止第一个）
         g8 = next(c for c in g["checks"] if c["id"] == "G8_volume_reliability")
         assert "U01" in g8["detail"] and "U02" in g8["detail"]
+    def test_furniture_blocks_do_not_taint(self, tmp_path):
+        """题库站样板（页码/页脚）在 JSON 有块而 MD 丢弃属预期，不得株连单元。"""
+        jl = _write_jsonl(tmp_path / "t.ocr_raw.jsonl", [
+            [_block(0, 1, "题干文本", [0, 0, 10, 10]),
+             _block(1, 2, "第1页/共2页", [0, 90, 10, 95], label="number"),
+             _block(2, 3, "更多资料", [0, 96, 10, 99], label="footer")],
+        ])
+        md = "题干文本"
+        ev = build_line_evidence(md, jl)
+        import hashlib
+        prompt = annotate_json_evidence(md, ev)
+        recorded = {
+            "map_sha256": evidence_digest(ev),
+            "json_sha256": hashlib.sha256(jl.read_bytes()).hexdigest(),
+            "units": unit_evidence_pointers(ev, [{"unit_id": "U01", "stem_lines": [1, 1]}]),
+            "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+        }
+        g = run_generation_gate(
+            man={"units": [{"unit_id": "U01", "stem_lines": [1, 1]}]},
+            ev_map=ev, md_text=md, jsonl_path=jl,
+            recorded=recorded, prompt_text=prompt)
+        assert g["verdict"] == "PASS", g["checks"]
+        assert g["unreliable_units"] == []
+        div = g["divergence_register"]
+        assert len(div["furniture_unmapped_blocks"]) == 2
+        assert div["unmapped_blocks"] == []
+    def test_score_marker_blocks_do_not_taint(self, tmp_path):
+        """formula_number「（N分）」分值标记=版面家具，不株连单元。"""
+        jl = _write_jsonl(tmp_path / "t.ocr_raw.jsonl", [
+            [_block(0, 1, "题干甲", [0, 0, 10, 10]),
+             _block(1, 2, "（10分）", [0, 11, 10, 15], label="formula_number")],
+        ])
+        md = "题干甲"
+        ev = build_line_evidence(md, jl)
+        import hashlib
+        prompt = annotate_json_evidence(md, ev)
+        man = {"units": [{"unit_id": "U01", "stem_lines": [1, 1]}]}
+        recorded = {
+            "map_sha256": evidence_digest(ev),
+            "json_sha256": hashlib.sha256(jl.read_bytes()).hexdigest(),
+            "units": unit_evidence_pointers(ev, man["units"]),
+            "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+        }
+        g = run_generation_gate(man=man, ev_map=ev, md_text=md, jsonl_path=jl,
+                                recorded=recorded, prompt_text=prompt)
+        assert g["verdict"] == "PASS", g["checks"]
+        assert g["unreliable_units"] == []
+        assert len(g["divergence_register"]["furniture_unmapped_blocks"]) == 1
+
+    def test_formula_format_divergence_not_gap(self, tmp_path):
+        """公式排版分歧（$/\\_/^ 与首尾标点）同内容 → 不判内容缺口。"""
+        jl = _write_jsonl(tmp_path / "t.ocr_raw.jsonl", [
+            [_block(0, 1, "因为 k > 0，所以 x2 < -1。", [0, 0, 10, 10])],
+        ])
+        md = "因为  $ k > 0 $，所以  $ x_2 < -1 $。"
+        ev = build_line_evidence(md, jl)
+        import hashlib
+        prompt = annotate_json_evidence(md, ev)
+        man = {"units": [{"unit_id": "U01", "stem_lines": [1, 1]}]}
+        recorded = {
+            "map_sha256": evidence_digest(ev),
+            "json_sha256": hashlib.sha256(jl.read_bytes()).hexdigest(),
+            "units": unit_evidence_pointers(ev, man["units"]),
+            "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+        }
+        g = run_generation_gate(man=man, ev_map=ev, md_text=md, jsonl_path=jl,
+                                recorded=recorded, prompt_text=prompt)
+        assert g["verdict"] == "PASS", g["checks"]
+        assert g["unreliable_units"] == []
+        div = g["divergence_register"]
+        assert len(div["unmapped_duplicate_content_lines"]) == 1
+        assert div["text_unmapped_lines"] == []
+
+    def test_unattributed_block_registered_not_tainted(self, tmp_path):
+        """反向缺口（块无法定位到行）只登记 divergence，不按整页株连单元。"""
+        jl = _write_jsonl(tmp_path / "t.ocr_raw.jsonl", [
+            [_block(0, 1, "题干甲", [0, 0, 10, 10]),
+             _block(1, 2, "独立内容块无对应行", [0, 11, 10, 15])],
+        ])
+        md = "题干甲"
+        ev = build_line_evidence(md, jl)
+        import hashlib
+        prompt = annotate_json_evidence(md, ev)
+        man = {"units": [{"unit_id": "U01", "stem_lines": [1, 1]}]}
+        recorded = {
+            "map_sha256": evidence_digest(ev),
+            "json_sha256": hashlib.sha256(jl.read_bytes()).hexdigest(),
+            "units": unit_evidence_pointers(ev, man["units"]),
+            "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+        }
+        g = run_generation_gate(man=man, ev_map=ev, md_text=md, jsonl_path=jl,
+                                recorded=recorded, prompt_text=prompt)
+        # 反向缺口登记 + G3 warn（WARN 语义：保留警告继续，不株连单元）
+        assert g["verdict"] == "WARN", g["checks"]
+        assert g["unreliable_units"] == []
+        assert len(g["divergence_register"]["unmapped_blocks"]) == 1
+    def test_math_angle_brackets_not_eaten_as_html(self, tmp_path):
+        """公式比较符 </> 不得被当 HTML 标签定界吃掉内容（S03/S10 实战回归）。"""
+        jl = _write_jsonl(tmp_path / "t.ocr_raw.jsonl", [
+            [_block(0, 1, "B. 溶度积：A < B\nC. 摩尔体积：Vm(1) > Vm(0)", [0, 0, 10, 10])],
+        ])
+        md = "B. 溶度积：A < B\nC. 摩尔体积：Vm(1) > Vm(0)"
+        ev = build_line_evidence(md, jl)
+        import hashlib
+        prompt = annotate_json_evidence(md, ev)
+        man = {"units": [{"unit_id": "U01", "stem_lines": [1, 2]}]}
+        recorded = {
+            "map_sha256": evidence_digest(ev),
+            "json_sha256": hashlib.sha256(jl.read_bytes()).hexdigest(),
+            "units": unit_evidence_pointers(ev, man["units"]),
+            "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+        }
+        g = run_generation_gate(man=man, ev_map=ev, md_text=md, jsonl_path=jl,
+                                recorded=recorded, prompt_text=prompt)
+        assert g["verdict"] == "PASS", g["checks"]
+        assert g["unreliable_units"] == []
