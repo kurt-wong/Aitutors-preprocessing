@@ -34,7 +34,7 @@ __all__ = [
     "evidence_digest",
 ]
 
-_HTML_RE = re.compile(r"<[^>]+>")
+_HTML_RE = re.compile(r"<(?:/?[a-zA-Z!][^<>]*)>")  # M-4/K-3：只认真标签，勿吞公式比较符（同 json_struct_verify 口径）
 _MD_DECOR_RE = re.compile(r"[#*`|]")
 _MD_DECOR_LINE_RE = re.compile(r"^\s{0,3}(#{1,6}\s+|>\s?|[-*+]\s+|\d+\.\s+)")
 
