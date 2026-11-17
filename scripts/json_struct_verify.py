@@ -706,8 +706,562 @@ if __name__ == "__main__":
 # 跨 run 混用/删指针）由摘要比对与逐页消费证明捕获。
 # ---------------------------------------------------------------------------
 
-GATE_VERSION = "g2a-json-gate-v1"
+GATE_VERSION = "g2a-json-gate-v2"  # v2 = 增 G9-STRUCT（G3-B B1，absent/malformed 三态）
 _MARKER_RE = re.compile(r"〔j p(\d+) b([\d,\-]+)(?: box [\d,\-]+)?〕")
+
+
+# ---------------------------------------------------------------------------
+# G9 STRUCT：G3 新结构字段完整性门禁（QC0RE-PHASE3-G3-B · B1）
+#
+# 三态判定（DSH B1 放行条件①）：
+#   absent  —— 新结构字段全部缺位（旧 v3.2 Manifest）→ 非错误，G9 记 na，不 FAIL；
+#   present —— 任一新字段出现 → 全量校验；present but malformed → FAIL。
+# 确定性结构错误（区间倒置/越界/交叉、引用断裂、文本改写、N-2 枚举违规）→ FAIL；
+# 「不得伪装完整」族（小问缺失/边界重叠/层级错误/答案关联冲突/组合指令未表达/
+# 最小可答项不一致）与显式 uncertainty → reliable=false（E-2 整卷阻断），不是 G9 FAIL。
+# 新字段禁止 clamp（静默修正=伪装完整）；uncertainty 原样保留——只登记，不改写。
+# 纯校验、只读：不修改 man。语义依据：金标准 GS-xx + 实施计划 §7.2/§8（F-3）。
+# ---------------------------------------------------------------------------
+
+G9_STRUCT_VERSION = "g9-struct-v1"
+G9_TRIAGE_VALUES = ("shared_dependency", "explicit_grouping", "section_count_only")
+G9_BASIS_VALUES = ("A", "B", "D")  # N-2：printed_atomicity 不是 basis 取值
+G9_CLS_UNIT_TYPES = ("composite", "standalone", "unknown")
+G9_LABEL_KINDS = ("printed_number", "sub_label", "composite_label", "unlabeled")
+G9_NEW_UNIT_KEYS = ("classification", "grouping_statements", "sub_questions",
+                    "materials", "figures", "uncertainty")
+G9_UNIT_TYPE_EXPECT = {"composite": "composite_question",
+                       "standalone": "standalone_question"}
+G9_INTERVAL_ROLES = ("stem_lines", "options_lines", "answer_lines",
+                     "explanation_lines", "extra_lines", "material_lines",
+                     "questions_lines")
+
+
+def _g9_is_int(x):
+    return isinstance(x, int) and not isinstance(x, bool)
+
+
+def _g9_unit_hull(u):
+    bounds = []
+    for role in G9_INTERVAL_ROLES:
+        v = u.get(role)
+        if isinstance(v, list) and len(v) == 2 and all(_g9_is_int(x) for x in v):
+            bounds.append((v[0], v[1]))
+    return (min(b[0] for b in bounds), max(b[1] for b in bounds)) if bounds else None
+
+
+# G9-F1（DSH G9 专项）：题面区 = 区间角色并集去掉 answer_lines/explanation_lines。
+# hull 含答案区（语文版式题面 [21,105] / 答案 [402,432] → hull=[21,432]），
+# 小问⊆hull 在真实版式上等于失效——小问包含校验改以题面区为界，hull 语义不动
+# （materials 仍走 hull）。
+G9_FACE_ROLES = ("stem_lines", "options_lines", "extra_lines",
+                 "material_lines", "questions_lines")
+
+
+def _g9_unit_face(u):
+    bounds = []
+    for role in G9_FACE_ROLES:
+        v = u.get(role)
+        if isinstance(v, list) and len(v) == 2 and all(_g9_is_int(x) for x in v):
+            bounds.append((v[0], v[1]))
+    return (min(b[0] for b in bounds), max(b[1] for b in bounds)) if bounds else None
+
+
+def _g9_answer_side(u):
+    """unit 自身的答案/解析区间（小问区间不得与之相交——答案文本不得进题面）。"""
+    out = []
+    for role in ("answer_lines", "explanation_lines"):
+        v = u.get(role)
+        if isinstance(v, list) and len(v) == 2 and all(_g9_is_int(x) for x in v):
+            out.append((v[0], v[1], role))
+    return out
+
+
+def _g9_loc(obj, n_lines, what, issues, uid):
+    """区间合法性（{line_start,line_end} 或既有 [a,b] 形态）。只报不改（禁 clamp）。
+    返回合法 (start,end)，否则 None。"""
+    if isinstance(obj, dict):
+        s, e = obj.get("line_start"), obj.get("line_end")
+    elif isinstance(obj, list) and len(obj) == 2:
+        s, e = obj[0], obj[1]
+    else:
+        issues.append(f"{uid}/{what}: 区间形态非法 {obj!r}")
+        return None
+    if not (_g9_is_int(s) and _g9_is_int(e)):
+        issues.append(f"{uid}/{what}: 行号非整数 start={s!r} end={e!r}")
+        return None
+    if s > e:
+        issues.append(f"{uid}/{what}: 行区间倒置 [{s},{e}]（禁 clamp，不静默修正）")
+        return None
+    if s < 1 or e > n_lines:
+        issues.append(f"{uid}/{what}: 行区间越界 [{s},{e}] n_lines={n_lines}")
+        return None
+    return (s, e)
+
+
+def _g9_refs(val, what, issues, uid):
+    """引用列表形态：必须为非空字符串列表。None→空集；非法→None。"""
+    if val is None:
+        return set()
+    if not isinstance(val, list) or any(not isinstance(x, str) or not x for x in val):
+        issues.append(f"{uid}/{what}: 引用列表形态非法 {val!r}")
+        return None
+    return set(val)
+
+
+def _g9_resolve(refs, universe, what, issues, uid):
+    if not refs:
+        return
+    dangling = sorted(r for r in refs if r not in universe)
+    if dangling:
+        issues.append(f"{uid}/{what}: 引用无法解析 {dangling}")
+
+
+def _g9_verbatim_ok(needle, hay):
+    """§8 文本保真：needle 必须在 hay 原样存在（允许全半角 Unicode 等价；
+    空白差异与 MD 转义反斜线（如源行 "1\\." 印刷形态 "1."）属排版/转义噪音，
+    不算改写）。"""
+    import unicodedata as _ud
+
+    def _n(s):
+        s = _ud.normalize("NFKC", s or "")
+        s = _re_md_escape(s)  # 折叠 MD 转义（\+标点 → 标点）
+        return "".join(s.split())
+
+    n, h = _n(needle), _n(hay)
+    return bool(n) and n in h
+
+
+def _re_md_escape(s):
+    import re as _re
+    return _re.sub(r"\\([^\w])", r"\1", s)
+
+
+def _norm_lab(s):
+    """标签格式归一（NFKC + 去空白）——sub_ref/sub_label 归属一致性比对用。"""
+    import unicodedata as _ud
+    return "".join(_ud.normalize("NFKC", str(s or "")).split())
+
+
+def check_struct_integrity(man, n_lines, lines=None, known_block_ids=None):
+    """G9-STRUCT 检查器（单一语义源：run_generation_gate 的 G9 与
+    validate_manifest 的新字段 issues 共用，禁止第二套判定）。
+
+    返回 {version, structure_contract∈{absent,present}, status∈{na,pass,fail},
+          issues[], soft[], uncertain_units[], field_states{}}：
+    issues → G9 FAIL（E-1 阻断）；soft → reliable=false（E-2 整卷阻断）。
+    """
+    issues = []
+    soft = []
+    soft_units = {}
+    notes = []
+    uncertain = []
+
+    def _soft(uid, msg):
+        """soft（不得伪装完整族）：消息照存 + 按单元归档。
+        门禁消费 soft_units 归因，不再从文案反解 uid（G9-F1 观察项②）。"""
+        soft.append(msg)
+        soft_units.setdefault(uid, []).append(msg)
+
+    units = man.get("units") or []
+    field_states = {k: 0 for k in G9_NEW_UNIT_KEYS}
+    field_states["answers.sub_ref"] = 0
+
+    present = False
+    for u in units:
+        for k in G9_NEW_UNIT_KEYS:
+            if u.get(k) is not None:
+                field_states[k] += 1
+                present = True
+        for a in u.get("answers") or []:
+            if isinstance(a, dict) and "sub_ref" in a:
+                field_states["answers.sub_ref"] += 1
+                present = True
+        for f in u.get("figures") or []:
+            if isinstance(f, dict) and "applies_to" in f:
+                present = True
+    if not present:
+        return {"version": G9_STRUCT_VERSION, "structure_contract": "absent",
+                "status": "na", "issues": [], "soft": [], "soft_units": {},
+                "notes": [], "uncertain_units": [], "field_states": field_states,
+                "note": "旧 v3.2 结构（无 G3 新字段）——absent 非错误，G9 不判 FAIL"}
+
+    for u in units:
+        uid = str(u.get("unit_id", "?"))
+        hull = _g9_unit_hull(u)
+        face = _g9_unit_face(u)
+        ans_side = _g9_answer_side(u)
+
+        # ---- classification（N-2：basis∈{A,B,D}，unit_type 与外层自洽）----
+        basis_list = []
+        cls = u.get("classification")
+        if cls is not None:
+            if not isinstance(cls, dict):
+                issues.append(f"{uid}/classification: 非对象 {type(cls).__name__}")
+            else:
+                ct = cls.get("unit_type")
+                if ct is not None:
+                    if ct not in G9_CLS_UNIT_TYPES:
+                        issues.append(f"{uid}/classification.unit_type 非法 {ct!r}"
+                                      f"（域 {G9_CLS_UNIT_TYPES}）")
+                    elif ct == "unknown":
+                        _soft(uid, f"{uid}: unit_type=unknown（不确定声明，不伪装确定）")
+                    else:
+                        outer = u.get("unit_type")
+                        if outer is not None and outer != G9_UNIT_TYPE_EXPECT[ct]:
+                            issues.append(f"{uid}: classification.unit_type={ct} 与 "
+                                          f"unit_type={outer!r} 不一致（期望 "
+                                          f"{G9_UNIT_TYPE_EXPECT[ct]}）")
+                basis = cls.get("basis")
+                if basis is not None:
+                    if not isinstance(basis, list) or not basis:
+                        issues.append(f"{uid}/classification.basis 必须非空数组 {basis!r}")
+                    else:
+                        basis_list = [b for b in basis if isinstance(b, str)]
+                        for b in basis:
+                            if b not in G9_BASIS_VALUES:
+                                issues.append(
+                                    f"{uid}/classification.basis 含非法值 {b!r}"
+                                    f"（N-2：只允许 A/B/D；printed_atomicity 不是取值）")
+
+        # ---- sub_questions（实体/区间/层级）----
+        sqs = u.get("sub_questions")
+        sub_iv = {}
+        valid_parents = {}
+        sub_entry_cnt = {}
+        if sqs is not None:
+            if not isinstance(sqs, list):
+                issues.append(f"{uid}/sub_questions: 非数组")
+                sqs = []
+            for i, sq in enumerate(sqs):
+                if not isinstance(sq, dict):
+                    issues.append(f"{uid}/sub_questions[{i}]: 非对象")
+                    continue
+                sid = sq.get("sub_id")
+                if not isinstance(sid, str) or not sid:
+                    issues.append(f"{uid}/sub_questions[{i}]: 缺合法 sub_id {sid!r}")
+                    continue
+                if sid in sub_iv:
+                    issues.append(f"{uid}: sub_id 重复 {sid!r}")
+                    continue
+                lk = sq.get("label_kind")
+                if lk is not None and lk not in G9_LABEL_KINDS:
+                    issues.append(f"{uid}/{sid}/label_kind 非法 {lk!r}")
+                s0, e0 = sq.get("line_start"), sq.get("line_end")
+                iv = None
+                if not (_g9_is_int(s0) and _g9_is_int(e0)):
+                    issues.append(f"{uid}/{sid}: 缺合法行区间 "
+                                  f"line_start={s0!r} line_end={e0!r}")
+                elif s0 > e0:
+                    issues.append(f"{uid}/{sid}: 行区间倒置 [{s0},{e0}]（禁 clamp）")
+                elif s0 < 1 or e0 > n_lines:
+                    issues.append(f"{uid}/{sid}: 行区间越界 [{s0},{e0}] n_lines={n_lines}")
+                else:
+                    iv = (s0, e0)
+                    if hull is not None and not (hull[0] <= s0 and e0 <= hull[1]):
+                        issues.append(f"{uid}/{sid}: 小问区间 {list(iv)} "
+                                      f"越出单元区间 {list(hull)}")
+                    # G9-F1：小问 ⊆ 题面区（B1-2 项 5 的有效界；hull 含答案区
+                    # 在真实版式上会架空包含校验）+ 答案/解析区相交独立规则。
+                    if face is not None and not (face[0] <= s0 and e0 <= face[1]):
+                        issues.append(f"{uid}/{sid}: 小问区间 {list(iv)} 越出题面区 "
+                                      f"{list(face)}（小问⊆Question 题面，"
+                                      f"答案区不得计入）")
+                    for a0, a1, arole in ans_side:
+                        if not (e0 < a0 or s0 > a1):
+                            issues.append(f"{uid}/{sid}: 小问区间 {list(iv)} 与 "
+                                          f"{arole} {a0},{a1} 相交（答案/解析文本"
+                                          f"不得进入题面）")
+                sub_iv[sid] = iv
+                if lines is not None and iv is not None:
+                    lab = sq.get("label")
+                    if isinstance(lab, str) and lab.strip():
+                        hay = "".join(lines[iv[0] - 1:iv[1]])
+                        if not _g9_verbatim_ok(lab, hay):
+                            issues.append(f"{uid}/{sid}: label 未在小问行区间原样出现"
+                                          f"（判定 LLM 改写，§8 文本保真）")
+                p = sq.get("parent_sub_id")
+                if p is not None:
+                    if not isinstance(p, str) or not p:
+                        issues.append(f"{uid}/{sid}: parent_sub_id 形态非法 {p!r}")
+                    elif p == sid:
+                        issues.append(f"{uid}/{sid}: parent_sub_id 自指")
+                    elif p not in {s.get("sub_id") for s in sqs
+                                   if isinstance(s, dict)}:
+                        issues.append(f"{uid}/{sid}: parent_sub_id {p!r} 无法解析")
+                    else:
+                        valid_parents[sid] = p
+                ec = sq.get("answer_entry_count")
+                if ec is not None:
+                    # 0 合法：无自身答案的父/聚合小问（答案挂子小问）——
+                    # 与 4g 定义「= 归属本小问的 answers 条目数」一致；负数/非整数才非法
+                    if not _g9_is_int(ec) or ec < 0:
+                        issues.append(f"{uid}/{sid}: answer_entry_count 非法 {ec!r}"
+                                      f"（须为 ≥0 整数）")
+                    else:
+                        sub_entry_cnt[sid] = ec
+            for sid in valid_parents:
+                seen, cur = {sid}, sid
+                while cur in valid_parents:
+                    cur = valid_parents[cur]
+                    if cur in seen:
+                        issues.append(f"{uid}: parent_sub_id 链成环（{sid} 起）")
+                        break
+                    seen.add(cur)
+            for sid, p in valid_parents.items():
+                iv, piv = sub_iv.get(sid), sub_iv.get(p)
+                if iv and piv and not (piv[0] <= iv[0] and iv[1] <= piv[1]):
+                    issues.append(f"{uid}/{sid}: 子小问区间 {list(iv)} 未包含于"
+                                  f"父小问 {p} {list(piv)}")
+
+            def _ancestor(a, b):
+                cur = b
+                while cur in valid_parents:
+                    cur = valid_parents[cur]
+                    if cur == a:
+                        return True
+                return False
+
+            ids = [s for s in sub_iv if sub_iv[s]]
+            for x in range(len(ids)):
+                for y in range(x + 1, len(ids)):
+                    a, b = ids[x], ids[y]
+                    ai, bi = sub_iv[a], sub_iv[b]
+                    if ai[0] <= bi[0]:
+                        lo_id, lo_iv, hi_id, hi_iv = a, ai, b, bi
+                    else:
+                        lo_id, lo_iv, hi_id, hi_iv = b, bi, a, ai
+                    if lo_iv[1] < hi_iv[0]:
+                        continue
+                    if hi_iv[1] <= lo_iv[1]:
+                        if not _ancestor(lo_id, hi_id):
+                            if lo_iv[0] == hi_iv[0] and lo_iv[1] == hi_iv[1]:
+                                # 同区间多空位（一行多空/选词填空格子）是真实版式：
+                                # 完全重合本身非冲突，槽位身份对/entry_count 一致性
+                                # 另行检查——只记 note，不伪装完整判定不在此处。
+                                notes.append(
+                                    f"{uid}: {lo_id} 与 {hi_id} 区间完全重合"
+                                    f"（同区间多空位形态，槽位绑定另行核对）")
+                            else:
+                                _soft(uid, f"{uid}: {lo_id} 与 {hi_id} 区间"
+                                           f"包含但未声明父子"
+                                           f"（层级错误/边界重叠族，不伪装完整）")
+                    else:
+                        issues.append(f"{uid}: {lo_id} 区间 {list(lo_iv)} 与 {hi_id} "
+                                      f"区间 {list(hi_iv)} 交叉（交叉/倒挂族 → FAIL）")
+
+        # ---- materials（实体 M:N 归属的引用宇宙）----
+        mats = u.get("materials")
+        mat_ids = set()
+        if mats is not None:
+            if not isinstance(mats, list):
+                issues.append(f"{uid}/materials: 非数组")
+                mats = []
+            for i, m in enumerate(mats):
+                if not isinstance(m, dict):
+                    issues.append(f"{uid}/materials[{i}]: 非对象")
+                    continue
+                mid = m.get("material_id")
+                if not isinstance(mid, str) or not mid:
+                    issues.append(f"{uid}/materials[{i}]: 缺合法 material_id")
+                    continue
+                if mid in mat_ids:
+                    issues.append(f"{uid}: material_id 重复 {mid!r}")
+                    continue
+                mat_ids.add(mid)
+                s0, e0 = m.get("line_start"), m.get("line_end")
+                if not (_g9_is_int(s0) and _g9_is_int(e0)):
+                    issues.append(f"{uid}/{mid}: 缺合法行区间")
+                elif s0 > e0:
+                    issues.append(f"{uid}/{mid}: 行区间倒置 [{s0},{e0}]（禁 clamp）")
+                elif s0 < 1 or e0 > n_lines:
+                    issues.append(f"{uid}/{mid}: 行区间越界 [{s0},{e0}] n_lines={n_lines}")
+                elif hull is not None and not (hull[0] <= s0 and e0 <= hull[1]):
+                    issues.append(f"{uid}/{mid}: 材料区间 {s0},{e0} "
+                                  f"越出单元区间 {list(hull)}")
+
+        # ---- answers（sub_ref 显式绑定 + 既有 evidence_lines 合法性）----
+        answers = [a for a in (u.get("answers") or []) if isinstance(a, dict)]
+        slot_ids = {a.get("slot_id") for a in answers
+                    if isinstance(a.get("slot_id"), str) and a.get("slot_id")}
+        sub_ref_owners = {}
+        slot_pair_owners = {}
+        label_owner = {}
+        for i, sq0 in enumerate(sqs or []):
+            if isinstance(sq0, dict):
+                lb = sq0.get("label")
+                if isinstance(lb, str) and lb.strip():
+                    label_owner.setdefault(_norm_lab(lb), set()).add(
+                        sq0.get("sub_id"))
+        for i, a in enumerate(answers):
+            sr = None
+            if "sub_ref" in a:
+                sr = a.get("sub_ref")
+                if sr is not None:
+                    if not isinstance(sr, str) or not sr:
+                        issues.append(f"{uid}/answers[{i}]/sub_ref 形态非法 {sr!r}")
+                        sr = None
+                    elif sr not in sub_iv:
+                        issues.append(f"{uid}/answers[{i}]/sub_ref {sr!r} 无法解析")
+                        sr = None
+                    else:
+                        sub_ref_owners.setdefault(sr, []).append(i)
+            sl = a.get("slot_id")
+            sbl = a.get("sub_label")
+            if isinstance(sl, str) and sl:
+                # 槽位身份 = (身份锚, slot_id) 对——身份锚 = sub_ref，缺省回落
+                # sub_label；双缺时槽位冲突不可判定（P-14 风格：不猜、不硬判）。
+                _scope = sr or (_norm_lab(sbl) if isinstance(sbl, str) and sbl.strip() else None)
+                if _scope:
+                    slot_pair_owners.setdefault((_scope, sl), []).append(i)
+            if sr and isinstance(sbl, str) and sbl.strip():
+                owners = label_owner.get(_norm_lab(sbl))
+                if owners and sr not in owners:
+                    _soft(uid, f"{uid}: 答案关联冲突——answers[{i}] sub_ref={sr!r} "
+                               f"与 sub_label={sbl!r}（标签归属 {sorted(owners)}）矛盾")
+            if a.get("evidence_lines") is not None:
+                _g9_loc(a.get("evidence_lines"), n_lines,
+                        f"answers[{i}]/evidence_lines", issues, uid)
+        for pair, owners in slot_pair_owners.items():
+            if len(owners) > 1:
+                _soft(uid, f"{uid}: 答案关联冲突——槽位 {pair[1]!r}@{pair[0]} "
+                           f"被 answers{owners} 重复登记（同一槽位身份）")
+        for sid, ec in sub_entry_cnt.items():
+            got = len(sub_ref_owners.get(sid, []))
+            if got != ec:
+                _soft(uid, f"{uid}/{sid}: answer_entry_count={ec} 与实际绑定"
+                           f"答案数 {got} 不一致（最小可答项不一致族）")
+
+        # ---- figures（applies_to → sub；evidence 合法）----
+        figs = u.get("figures")
+        fig_ids = set()
+        if figs is not None:
+            if not isinstance(figs, list):
+                issues.append(f"{uid}/figures: 非数组")
+                figs = []
+            for i, f in enumerate(figs):
+                if not isinstance(f, dict):
+                    issues.append(f"{uid}/figures[{i}]: 非对象")
+                    continue
+                fid = f.get("figure_id") or f.get("asset_ref")
+                if isinstance(fid, str) and fid:
+                    fig_ids.add(fid)
+                if f.get("evidence") is not None:
+                    _g9_loc(f.get("evidence"), n_lines,
+                            f"figures[{i}]/evidence", issues, uid)
+                if f.get("applies_to") is not None:
+                    refs = _g9_refs(f.get("applies_to"),
+                                    f"figures[{i}]/applies_to", issues, uid)
+                    _g9_resolve(refs, set(sub_iv),
+                                f"figures[{i}]/applies_to", issues, uid)
+
+        # ---- sub 级引用（materials_used/answer_refs/figure_refs）----
+        for sq in (sqs or []):
+            if not isinstance(sq, dict):
+                continue
+            sid = sq.get("sub_id")
+            if not isinstance(sid, str) or not sid:
+                continue
+            refs = _g9_refs(sq.get("materials_used"), "materials_used", issues, uid)
+            _g9_resolve(refs, mat_ids, "materials_used", issues, uid)
+            refs = _g9_refs(sq.get("answer_refs"), "answer_refs", issues, uid)
+            _g9_resolve(refs, slot_ids, "answer_refs", issues, uid)
+            refs = _g9_refs(sq.get("figure_refs"), "figure_refs", issues, uid)
+            _g9_resolve(refs, fig_ids, "figure_refs", issues, uid)
+
+        # ---- grouping_statements（B 完整表达 + §8 保真）----
+        gss = u.get("grouping_statements")
+        has_explicit_grouping = False
+        if gss is not None:
+            if not isinstance(gss, list):
+                issues.append(f"{uid}/grouping_statements: 非数组")
+                gss = []
+            seen_gs = set()
+            for i, gs in enumerate(gss):
+                if not isinstance(gs, dict):
+                    issues.append(f"{uid}/grouping_statements[{i}]: 非对象")
+                    continue
+                gid = gs.get("statement_id")
+                if not isinstance(gid, str) or not gid:
+                    issues.append(f"{uid}/grouping_statements[{i}]: "
+                                  f"缺合法 statement_id")
+                    continue
+                if gid in seen_gs:
+                    issues.append(f"{uid}: statement_id 重复 {gid!r}")
+                    continue
+                seen_gs.add(gid)
+                tri = gs.get("triage")
+                if tri not in G9_TRIAGE_VALUES:
+                    issues.append(f"{uid}/{gid}/triage 非法 {tri!r}（N-2 三值 "
+                                  f"{G9_TRIAGE_VALUES}；gt_conflict 是独立登记"
+                                  f"状态，不是 triage 取值）")
+                elif tri == "explicit_grouping":
+                    has_explicit_grouping = True
+                gc = gs.get("gt_conflict")
+                if gc is not None and not isinstance(gc, bool):
+                    issues.append(f"{uid}/{gid}/gt_conflict 必须布尔/缺省 {gc!r}"
+                                  f"（独立冲突登记状态，非 triage 值）")
+                loc = gs.get("evidence_locator")
+                iv = None
+                if loc is None:
+                    issues.append(f"{uid}/{gid}: 缺 evidence_locator（B 判定必须"
+                                  f"保存证据位置，GS-B Manifest 表达要求）")
+                else:
+                    iv = _g9_loc(loc, n_lines, f"{gid}/evidence_locator", issues, uid)
+                    if (known_block_ids is not None and isinstance(loc, dict)
+                            and loc.get("json_block_ids") is not None):
+                        bids = loc.get("json_block_ids")
+                        if not isinstance(bids, list):
+                            issues.append(f"{uid}/{gid}/json_block_ids 非数组 {bids!r}")
+                        else:
+                            ghost = sorted(str(b) for b in bids
+                                           if str(b) not in {str(k)
+                                                             for k in known_block_ids})
+                            if ghost:
+                                issues.append(f"{uid}/{gid}/json_block_ids 无法解析 "
+                                              f"{ghost}（引用断裂）")
+                refs = _g9_refs(gs.get("covered_sub_ids"),
+                                f"{gid}/covered_sub_ids", issues, uid)
+                _g9_resolve(refs, set(sub_iv), f"{gid}/covered_sub_ids", issues, uid)
+                bt = gs.get("basis_text")
+                if (lines is not None and iv is not None
+                        and isinstance(bt, str) and bt.strip()):
+                    hay = "".join(lines[iv[0] - 1:iv[1]])
+                    if not _g9_verbatim_ok(bt, hay):
+                        issues.append(f"{uid}/{gid}: basis_text 未在证据行区间原样"
+                                      f"出现（判定 LLM 改写，§8 文本保真）")
+
+        if "B" in basis_list and not has_explicit_grouping:
+            _soft(uid, f"{uid}: 组合指令未表达——basis=B 但无 "
+                       f"triage=explicit_grouping 的 grouping_statements")
+        if u.get("unit_type") == "composite_question" and not sqs:
+            _soft(uid, f"{uid}: 小问缺失——composite_question 无 sub_questions"
+                       f"（不伪装完整）")
+
+        # ---- uncertainty（原样保留：只登记，不改写、不 clamp）----
+        unc = u.get("uncertainty")
+        if unc is not None:
+            if not isinstance(unc, (dict, list)):
+                issues.append(f"{uid}/uncertainty: 形态非法 {type(unc).__name__}")
+            else:
+                uncertain.append(uid)
+                items = unc if isinstance(unc, list) else [unc]
+                for j, it in enumerate(items):
+                    if not isinstance(it, dict):
+                        issues.append(f"{uid}/uncertainty[{j}]: 非对象")
+                        continue
+                    for key in ("evidence_locator", "evidence", "lines"):
+                        if it.get(key) is not None:
+                            _g9_loc(it.get(key), n_lines,
+                                    f"uncertainty[{j}]/{key}", issues, uid)
+
+    return {"version": G9_STRUCT_VERSION, "structure_contract": "present",
+            "status": "fail" if issues else "pass",
+            "issues": issues, "soft": soft, "soft_units": soft_units,
+            "notes": notes,
+            "uncertain_units": sorted(set(uncertain)),
+            "field_states": field_states}
+
 
 
 def run_generation_gate(
@@ -1098,6 +1652,65 @@ def run_generation_gate(
     _check("G7_consumption_proof", "fail" if cons_fail else "pass",
            "; ".join(cons_fail) if cons_fail else "逐页标记/块溯源/指针一致/同 run 锚成立")
 
+    # ---- G9 STRUCT（G3-B B1）：新结构字段完整性——absent/na · malformed/FAIL ----
+    # 三态（DSH B1 放行条件①）：旧 v3.2 无新字段=absent 非错误；任一新字段出现
+    # 即全量校验，present but malformed → FAIL → 既有 E-1 阻断路径。
+    # uncertainty 原样保留；soft（不得伪装完整族）→ reliable=false → E-2 整卷阻断。
+    _known_block_ids = {b.get("block_id") for p in _pages_inv for b in p["blocks"]}
+    g9 = check_struct_integrity(man, len(raw_lines), lines=raw_lines,
+                                known_block_ids=_known_block_ids)
+    for _uid in g9.get("uncertain_units") or []:
+        unit_flags.setdefault(str(_uid), {"reliable": True, "reasons": []})
+        unit_flags[str(_uid)]["reliable"] = False
+        unit_flags[str(_uid)]["reasons"].append(
+            "explicit_uncertainty（结构不确定声明，不伪装确定）")
+    for _uid, _msgs in (g9.get("soft_units") or {}).items():
+        unit_flags.setdefault(str(_uid), {"reliable": True, "reasons": []})
+        unit_flags[str(_uid)]["reliable"] = False
+        unit_flags[str(_uid)]["reasons"].extend(_msgs)
+    if g9["structure_contract"] == "absent":
+        _check("G9_struct_integrity", "na",
+               "structure_contract=absent（旧 v3.2 结构，无 G3 新字段）——非错误，不判 FAIL")
+    elif g9["status"] == "fail":
+        _check("G9_struct_integrity", "fail",
+               f"{len(g9['issues'])} 项结构缺陷（present but malformed）: "
+               + "; ".join(g9["issues"][:8]))
+    else:
+        _check("G9_struct_integrity", "pass",
+               f"新结构字段校验通过（field_states={g9['field_states']}）")
+
+    # ---- C2→E-2（P-09/§7.1）：子问标记覆盖缺口 → reliable=false → 整卷阻断 ----
+    # 复用既有 C2 检测器（detect_structural_risks，不建第二套）。
+    # 载体校准：C2 的输入是 answer_evidence.value（旧载体）。v4 载体下完整性由
+    # answers[].sub_ref 逐条登记承载（4d 答案全集自检），实缺口由 G9-STRUCT 的
+    # answer_entry_count 不一致 soft 检查——v4 单元不再重复计缺口（否则评分
+    # 噪声「1分」等被 _SUBQ_RE 误识别为子问标记，必然假阳性）。
+    c2_detected: list[str] = []
+    try:
+        _c2 = detect_structural_risks(man, parse_json_blocks(jsonl_path), raw_lines)
+        for _u in _c2.get("units", []):
+            _gap = _u.get("c2_sub_question_gap") or {}
+            if not _gap.get("detected"):
+                continue
+            _uid = str(_u.get("unit_id"))
+            _unit_obj = next((x for x in units if str(x.get("unit_id")) == _uid), {})
+            _v4_carrier = any(isinstance(a, dict) and a.get("sub_ref")
+                              for a in (_unit_obj.get("answers") or []))
+            if _v4_carrier:
+                continue  # v4 载体在位：value 缺口不重复计（entry_count soft 兜真缺口）
+            c2_detected.append(_uid)
+            unit_flags.setdefault(_uid, {"reliable": True, "reasons": []})
+            unit_flags[_uid]["reliable"] = False
+            unit_flags[_uid]["reasons"].append(
+                f"C2 sub_question_gap missing_in_value="
+                f"{_gap.get('missing_in_value')}（旧载体单元）")
+    except Exception as _c2_exc:  # 检测器异常不得静默吞掉
+        c2_detected.append(f"detector_error:{_c2_exc}")
+    _check("C2_sub_question_gap",
+           "warn" if c2_detected else "pass",
+           f"子问标记覆盖缺口单元: {c2_detected}" if c2_detected
+           else "value 子问标记覆盖答案区（或无声明值，C2 不适用）")
+
     # E-2（Owner 2026-11-15 裁决）：任意 reliable=false 单元 → 整卷 FAIL，
     # 即使其他检查 PASS；普通 WARN 且全部单元可靠 → WARN（保留继续）；
     # 不得把无差别 WARN 升级为 FAIL。
@@ -1128,4 +1741,5 @@ def run_generation_gate(
         "unreliable_units": sorted(unreliable),
         "divergence_register": divergence,
         "consumption_proof": proof,
+        "g9_struct": g9,
     }

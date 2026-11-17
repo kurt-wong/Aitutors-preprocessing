@@ -1059,12 +1059,15 @@ INTERVAL_ROLES = ("stem_lines", "options_lines", "answer_lines", "explanation_li
 # P2.1-c 答案证据类型词表(prompt v2.4;absent=源卷确无答案,不猜测)
 AE_TYPES = ("answer_lines", "inline_in_explanation", "answer_table", "range_string", "absent")
 
-PROMPT_VERSION = "reslice-pilot-v2.7"
-
 
 def clamp_intervals(man, n_lines):
     """确定性行号兜底（R24-A3/R7）：越界截断到 [1, n_lines]，倒置交换。
-    LLM 偶发多报/写反行号 → 锚点错乱（C10 不配对）。返回修复记录列表。"""
+    LLM 偶发多报/写反行号 → 锚点错乱（C10 不配对）。返回修复记录列表。
+
+    G3-B B1（F-3）：**新结构字段禁止 clamp**——sub_questions 行区间、materials
+    行区间、grouping_statements/figures/uncertainty 的行号引用**不在本函数范围**
+    （INTERVAL_ROLES 只含旧行为字段）；越界/倒置只由 G9-STRUCT 报 issue 阻断，
+    绝不静默修正（静默 clamp = 把结构错误伪装成合法数据）。"""
     notes = []
     for u in man.get("units", []):
         for role in INTERVAL_ROLES:
@@ -1080,7 +1083,7 @@ def clamp_intervals(man, n_lines):
     return notes
 
 
-PROMPT_VERSION = "v3.2-answer-binding-20261112"
+PROMPT_VERSION = "v4-g3-structure-20261116"
 
 PROMPT_HEAD = r"""你是试题切片专家。这是一份高中教师版试卷的 OCR Markdown（每行前有行号 [Lxxxx]）。
 你的任务：识别出全部"完整题目单元"，输出 JSON。只引用行号，不要转录任何题目正文（答案结构化字段除外）。
@@ -1096,12 +1099,28 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份高中教师版试卷�
 
 【根本规则】
 1. 入库单元=完整可解的题：题干+选项（选择题）+配图/配表格（如有）+标准答案。详解如有也纳入。
-2. 凡若干小题共享同一段前置材料/前提条件（文言文、现代文阅读、英语阅读/完形/七选五、
-   理化实验题、工艺流程题、材料题等——脱离材料无法作答），必须整合为一个"综合题"单元：
-   材料+全部子题+全部子题的答案。
-   **共享"同一段"材料才算综合题**：各自独立成篇的多段材料（如语法填空的 A/B/C 三段短文、
-   彼此独立的几首古诗）不共享前置材料，必须按印刷分篇各自成单元，绝不并成一个单元。
-3. 无共享材料的独立题各自成单元。切勿把不相干的独立题合并。
+2. 【综合题判定】unit_type=composite_question 的成立依据 basis ∈ {A, B, D}（可多值并存，
+   逐项记入 classification.basis）。**material_lines 是否存在不是综合题的必要或排除条件**：
+   - A 共享前提与材料依赖：题目间存在实质性共同前提/共享材料/实验过程/统一图表/共同情境，
+     小问须依赖共用信息才能完整正确解答。小问能分别给答案 ≠ 能脱离共享材料独立解答。
+     混合依存（部分小问涉前提、部分可独立）保留在组内并标注 uncertainty，不拆不并；
+     链式依赖（"(2) 用 (1) 结果"）算共用前提。
+   - B 明确的共同题目任务单元：命题者以题目本身的指令/组织结构把若干题组织成同一任务
+     （如"阅读下面材料，回答第 9—11 题"）。**即使各题可独立作答也不推翻组合关系**。
+     题号连续/版面相邻/同题型/同分值/同分节标题、"本大题共 N 小题"等纯计数、选考任选
+     指令，**均不能单独**建立组题关系。
+   - D 印刷原子性：**单个印刷题号单元（single printed number）**内含小问/最小可答项
+     （如 "1." 下 (1)(2)(3)；15 空的完形）→ 1 个 Question。分节标题与"本大题共 N 小题"
+     不是印刷题号单元，不得凭连续编号推断合并或拆分。
+   无材料而 B/D 成立的照样是综合题（如"解答下列问题：(1)…(2)…"、印刷大题内多小问）。
+   各自独立成篇的多段材料（语法填空 A/B/C 三段短文、彼此独立的几首古诗）不共享前提，
+   按印刷分篇各自成单元，绝不并成一个单元。
+3. 【独立题判定】能独立解答只是独立题的必要前置，不是充分条件——A/B/D 均不成立且各题
+   独立可解，才是 standalone_question。切勿把不相干的独立题合并。
+   【同措辞三语义，按上下文判定】完形填空 N 空 = 1 题（文章即题）；数学"本题共 N 小题"
+   = N 道独立题；一段材料下 N 个印刷题号 = 1 道综合题。
+   【听力成组】每段对话/独白音频即共用前提：同一段音频承载 ≥2 题 → 成组为 1 个综合题；
+   单题音频（一段短对话只对应 1 题）按独立题记录，不并入全节。
 4. 每个子题都必须有答案。答案可能有多种形态：逐题标注、区间连写（如"1-5 ACDBA"）、
    答案表格（数字行/字母行成对）、【答案】标记段——全部识别出来并归属到对应题目。
    独立的【答案】行（如 "2.【答案】D"、"5. 【答案】B"）本身必须落在 answer_lines
@@ -1133,6 +1152,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份高中教师版试卷�
 4d. 结构化答案全集 answers[]（必填，本轮核心）：
    每个题目单元必须输出 "answers" 数组，逐答案单元登记（一个填空空位=一个条目；一个简答小问=一个条目）：
    {
+     "sub_ref": "所属小问的 sub_id（见 4g）" 或 null（独立题/整题答案）——答案归属的显式绑定键，
      "sub_label": "(1)"（小问印刷标签）或 null（独立题/整题答案），
      "slot_id": "(1)#1"（小问内第 1 空）/ "ans#1"（独立题多空位第 1 空）/ null（单答案无空位语义）,
      "value_text": "答案原文（抄录源文）" 或 null（图片答案/争议空位时为 null）,
@@ -1186,6 +1206,53 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份高中教师版试卷�
    - form=verbatim 声明 = 该值应与源文抽取结果逐字一致（含源文中的 \ ^ $ 等标记原样，不要改写为箭头、纯文本或其他记法）。
    - 核验不一致时以源文抽取为准并记录 mismatch，你的原文保留为声明记录；不要为通过核验而猜测、润色或自行转写。
    - 无法逐字抄录时如实使用 compressed/combined/descriptive 并保留 evidence_lines，不要把压缩/转写声明为 verbatim。
+4g. 【结构标注 sub_questions[]】（composite_question 至少 1 条；standalone 无小问填 []）
+   这是**结构标注不是拆题**——单元仍是一道题：
+   [{"sub_id": "S1"（unit 内唯一稳定 id）, "label": "（1）"（印刷小问标签**照抄源文形态**，
+   无编号填 null）, "label_kind": "printed_number|sub_label|composite_label|unlabeled",
+   "parent_sub_id": "父小问 sub_id"（无父填 null；"(2)(ⅰ)" 型嵌套时 (2)(ⅰ) 的 parent 是 (2)）,
+   "order": 1, "line_start": 起, "line_end": 止（小问**题面**行区间——绝不含答案/解析行）,
+   "materials_used": ["M01"]（本小问依赖的材料 id；不依赖填 []，多对多）,
+   "answer_refs": ["(1)#1"]（指向 answers[].slot_id，可多条）,
+   "figure_refs": ["F1"]（指向 figures[].figure_id）,
+   "answer_entry_count": 1（本小问最小可答项数 = 归属本小问的 answers 条目数；
+   无自身答案的父/聚合小问填 0；一问多空位 = 同一 sub_ref 对应多条 answers，逐空登记）,
+   "uncertainty": null 或 {"object": "...", "reason": "..."}}]
+   - 行区间必须在本单元**题面区**内（不含 answer_lines/explanation_lines）；
+     子小问区间 ⊆ 父小问；层级由 parent_sub_id 显式声明，不得依赖标签正则事后猜。
+   - label 必须能在 [line_start,line_end] 源行内**原样找到**（允许全半角差异）。
+4h. 【判据与声明的完整表达】
+   classification（每单元必填）：
+   {"unit_type": "composite|standalone|unknown"（与外层 unit_type 对应：composite↔
+   composite_question、standalone↔standalone_question；**判定不确定填 unknown** 并在
+   uncertainty 说明，绝不伪装确定）, "basis": ["A","B","D"]（composite 必填非空数组，
+   只写 A/B/D；standalone 填 null）, "independent_solvability": "yes|partial|no|unknown",
+   "evidence_refs": [[起,止], ...]（判定所依据的行号，可多段）}
+   grouping_statements[]（B 判据证据，逐条声明登记；无相关声明填 []）：
+   {"statement_id": "GS1", "basis_text": "声明原文**照抄源文**", "evidence_locator":
+   {"line_start": 起, "line_end": 止}, "covered_range": "9—11"（照抄声明的覆盖范围，
+   无范围填 null）, "covered_sub_ids": ["S1","S2"], "triage": "explicit_grouping|
+   shared_dependency|section_count_only", "gt_conflict": false, "reason": "判定理由",
+   "excluded_counterexample": "排除的反例或 null"}
+   - triage 语义（单值）：explicit_grouping=确有共同任务单元（允许合并）；
+     shared_dependency=只声明共享材料/前提**未点名覆盖范围**（不单独构成 B）；
+     section_count_only=纯计数/分节说明（如"本大题共 N 小题"，**不得合并**）。
+   - **tie-break**：声明同时建立共用前提且点名覆盖范围（"阅读下面材料，回答第 9—11 题"）
+     → triage=explicit_grouping。gt_conflict 是独立冲突登记状态（与题库 GT 边界冲突时置
+     true），**不是** triage 取值。
+   materials[]（unit 内多材料；一问多料/多问一料/不同问不同料/无料均可）：
+   [{"material_id": "M01", "label": "材料一" 或 null, "line_start": 起, "line_end": 止}]
+   ——material_lines 照旧必填（兼容投影 = materials 并集），小问归属用
+   sub_questions[].materials_used 显式引用。
+   figures[]（本单元图表清单；无图填 []）：
+   [{"figure_id": "F1", "asset_ref": "img_xxx" 或 null, "evidence": {"line_start": 起,
+   "line_end": 止}, "applies_to": ["S1"]（关联小问 sub_id；关联整题填 []）}]
+   uncertainty（结构不确定时必填；确定时省略或 null）：
+   [{"object": "不确定的对象", "reason": "原因", "affects": ["S1"],
+   "evidence_locator": {"line_start": 起, "line_end": 止} 或 null}]
+   ——不确定**如实标注**，绝不伪装确定。
+   answers[].sub_ref（每条答案必填）："sub_ref": "所属小问 sub_id"（整题/独立题答案填
+   null）——答案归属靠它显式绑定，不得靠标签字符串猜配。
 5. 题干中与解题无关的卷面指令（"本大题共3小题，共12分""请将答案填涂在答题卡上"
    "考试时间""注意事项"）不纳入任何单元的行区间。但解题必需的要求（"任选三小题作答"
    "结果保留两位小数""不少于100词"）属于题干。
@@ -1221,6 +1288,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份高中教师版试卷�
   {
    "unit_id": "Q1",
    "unit_type": "standalone_question",
+   "classification": {"unit_type": "standalone", "basis": null, "independent_solvability": "yes", "evidence_refs": [[6,9]]},
    "section": "一、选择题",
    "printed_number": "1",
    "question_numbers": [1],
@@ -1228,11 +1296,15 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份高中教师版试卷�
    "stem_lines": [起始行号, 结束行号],
    "options_lines": [起始行号, 结束行号] 或 null,
    "extra_lines": [起始行号, 结束行号] 或 null,
+   "materials": [],
+   "sub_questions": [],
+   "figures": [],
+   "grouping_statements": [],
    "answer_lines": [起始行号, 结束行号] 或 null,
    "answer_evidence": {"type": "answer_lines|inline_in_explanation|answer_table|range_string|absent", "lines": [起始行号, 结束行号] 或 null, "value": "答案值原文" 或 null, "shared": true 或 false},
    "answer_completeness": "full|partial|unknown",
    "answers": [
-     {"sub_label": null, "slot_id": null, "value_text": "答案原文", "asset_ref": null,
+     {"sub_ref": null, "sub_label": null, "slot_id": null, "value_text": "答案原文", "asset_ref": null,
       "form": "verbatim", "source_region": "answer_area", "evidence_lines": [起,止],
       "status": "resolved", "missing_reason": null, "note": null}
    ],
@@ -1242,6 +1314,7 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份高中教师版试卷�
   {
    "unit_id": "U2",
    "unit_type": "composite_question",
+   "classification": {"unit_type": "composite", "basis": ["A","B"], "independent_solvability": "partial", "evidence_refs": [[16,22]]},
    "section": "三、阅读理解",
    "printed_number": "2",
    "question_numbers": [2,3,4,5],
@@ -1249,14 +1322,28 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份高中教师版试卷�
    "material_lines": [起始行号, 结束行号],
    "questions_lines": [起始行号, 结束行号],
    "options_lines": [起始行号, 结束行号] 或 null,
+   "materials": [{"material_id": "M01", "label": null, "line_start": 起, "line_end": 止}],
+   "sub_questions": [
+     {"sub_id": "S1", "label": "(1)", "label_kind": "sub_label", "parent_sub_id": null,
+      "order": 1, "line_start": 起, "line_end": 止, "materials_used": ["M01"],
+      "answer_refs": ["(1)#1", "(1)#2"], "figure_refs": [], "answer_entry_count": 2,
+      "uncertainty": null}
+   ],
+   "figures": [{"figure_id": "F1", "asset_ref": null, "evidence": {"line_start": 起, "line_end": 止}, "applies_to": ["S1"]}],
+   "grouping_statements": [
+     {"statement_id": "GS1", "basis_text": "阅读下面的材料，完成下列各题。",
+      "evidence_locator": {"line_start": 16, "line_end": 16}, "covered_range": null,
+      "covered_sub_ids": ["S1"], "triage": "shared_dependency", "gt_conflict": false,
+      "reason": "只声明共享材料，未点名题号范围", "excluded_counterexample": null}
+   ],
    "answer_lines": [起始行号, 结束行号] 或 null,
    "answer_evidence": {"type": "answer_lines|inline_in_explanation|answer_table|range_string|absent", "lines": [起始行号, 结束行号] 或 null, "value": "答案值原文" 或 null, "shared": true 或 false},
    "answer_completeness": "full|partial|unknown",
    "answers": [
-     {"sub_label": "(1)", "slot_id": "(1)#1", "value_text": "…", "asset_ref": null,
+     {"sub_ref": "S1", "sub_label": "(1)", "slot_id": "(1)#1", "value_text": "…", "asset_ref": null,
       "form": "verbatim", "source_region": "answer_area", "evidence_lines": [起,止],
       "status": "resolved", "missing_reason": null, "note": null},
-     {"sub_label": "(1)", "slot_id": "(1)#2", "value_text": null, "asset_ref": "img_xxx",
+     {"sub_ref": "S1", "sub_label": "(1)", "slot_id": "(1)#2", "value_text": null, "asset_ref": "img_xxx",
       "form": "descriptive", "source_region": "answer_area", "evidence_lines": [起,止],
       "status": "resolved", "missing_reason": null, "note": "图片答案"}
    ],
@@ -1275,8 +1362,8 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份高中教师版试卷�
   **material 嵌套在 questions 内部**（material ⊆ questions）。完形填空里带空格的文章本身
   就是题目，文章到首个选项行之间都算 material；阅读题的 material 是文章，各小题在文章之后
   （仍在 questions 区内）。answer_lines 是这道综合题整体的答案区。
-  不要输出 sub_questions 之类把小问拆成独立单元的结构——但 answers[] 数组必须按小问/空位逐条登记
-  （见 4d），答案的细粒度归属放在 answers 里，不放在单元切分上。
+  **必须输出 sub_questions[] 结构标注**（见 4g）：小问实体+层级+区间+归属——这是结构标注，
+  不是拆题，单元仍是一道题；answers[] 仍按小问/空位逐条登记并用 sub_ref 显式归属（见 4d/4h）。
 - 综合题若含选择题选项（共享材料后多道小题各自有 A/B/C/D），仍须声明 options_lines：
   圈住该综合题 questions 区内实际出现的选项行范围（可覆盖多小题选项）。
   非选择题综合题（简答/阅读表达等）填 null。
@@ -1493,8 +1580,19 @@ def validate_manifest(man, n_lines, lines=None):
                         issues.append(f"{uid}: 答案区含他题答案(题号{sorted(foreign)})但未标 answer_evidence.shared")
                     elif not ae.get("value"):
                         issues.append(f"{uid}: shared 答案区必须给本题明文 value(逐题定位)")
+    # G3-B B1（P-10/F-3）：G3 新结构字段校验与 G9-STRUCT 同源共用检查器
+    # （json_struct_verify.check_struct_integrity）——issues 升 G9 输入判据，
+    # 不是只打日志的建议；新字段禁止 clamp（clamp_intervals 不触碰新字段）。
+    _g9 = json_struct_verify.check_struct_integrity(man, n_lines, lines=lines)
+    _g9_state = {"structure_contract": _g9["structure_contract"],
+                 "status": _g9["status"], "issues": len(_g9["issues"]),
+                 "soft": len(_g9["soft"])}
+    if _g9["structure_contract"] == "present":
+        issues.extend(f"G9-STRUCT: {m}" for m in _g9["issues"])
+        warns.extend(f"G9-STRUCT(soft): {m}" for m in _g9["soft"])
     return issues, {"units": len(units), "covered_questions": len({n for _, n in covered}),
-                    "covered_sorted": sorted({n for _, n in covered}), "warnings": warns}
+                    "covered_sorted": sorted({n for _, n in covered}), "warnings": warns,
+                    "g9_struct": _g9_state}
 
 
 def contamination_report(man, lines):
