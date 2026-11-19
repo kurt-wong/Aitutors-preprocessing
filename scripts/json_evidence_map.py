@@ -108,6 +108,9 @@ def load_ocr_pages(jsonl_path: str | Path) -> list[dict]:
                 "width": pr.get("width"),
                 "height": pr.get("height"),
                 "blocks": blocks,
+                # OCR-JSON 的 markdown.images 是页内图片引用 → URL 的原始映射；
+                # 供布局/内联图证据使用，不进入文本行映射。
+                "images": (lpr.get("markdown") or {}).get("images") or {},
             })
     return pages
 

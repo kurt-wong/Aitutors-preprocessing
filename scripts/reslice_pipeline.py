@@ -39,6 +39,7 @@ import llm_provider  # noqa: E402
 import answer_binding  # noqa: E402  (R-02: 答案值源文绑定,见 answer_binding 模块)
 import json_evidence_map  # noqa: E402  (G2-A 方案 A: 确定性 MD↔OCR-JSON 证据映射)
 import json_struct_verify  # noqa: E402  (G2-A 方案 A: 生成后强制双源验证门禁)
+import ocr_layout  # noqa: E402  (QCORE-OCR-EXTRACTION-FIDELITY-01: 版面/图位证据)
 
 # ROOT 不再硬编码开发机绝对路径(H-01):RESLICE_ROOT 环境变量可覆盖,
 # 默认取本仓库根(scripts/ 的上一级)——任何 checkout 在任意机器上都成立。
@@ -1279,6 +1280,16 @@ PROMPT_HEAD = r"""你是试题切片专家。这是一份高中教师版试卷�
      该选项的图排在字母行之后。此时 options_lines 必须**延伸覆盖到末选项的配图行**——
      选项区的终点是最后一个选项（含其配图）的最后一行，而不是最后一个字母行。
      切勿让配图落在 options_lines 之外变成无人认领的行。
+8c. 【布局证据使用边界（QCORE-OCR-EXTRACTION-FIDELITY-01）】：
+    prompt 中的 `〔L pN bID rel=inline|block_before|block_after textL=… bbox=…〕`
+    与 `〔RISK …〕` 只是**来源定位与图文关系证据**，不是题目正文，不是新的题目内容。
+    - 不得依据这些标记生成、补写、改写、翻译或补全任何题干、选项、答案、图中文字或化学结构；
+    - 不得把 bbox 重叠直接当作 Unit 归属的充分证据；仍需题干引用语义、Unit 边界和源文行证据；
+      证据不足时填 uncertainty / unattributed，不得猜配；
+    - `math_echo_without_image` 表示 OCR 只有文字回声、没有图像资产：不得据此生成或合成结构图，
+      只能如实标注缺失；
+    - `multi_image_groups` 只是同页同带的分组证据：不得自动推断为表格、选项组或固定网格；
+    - 不新增额外的图片归属字段；图片归属仍写入既有 stem/questions/material 行区间。
 9. 【评分标准】类行并入该题答案区间。
 10. 详解区（【分析】【解答】【点评】【详解】等）如有，单独一个行区间。
 
@@ -2142,6 +2153,9 @@ def write_outputs(out_dir, stem, lines, man, issues, summary, src_name, src_path
     _jv = (man.get("annotation_meta") or {}).get("json_struct_verification")
     if _jv is not None:
         manifest["annotation_meta"]["json_struct_verification"] = _jv
+    _il = (man.get("annotation_meta") or {}).get("image_layout")
+    if _il is not None:
+        manifest["annotation_meta"]["image_layout"] = _il
     # Identity v2: source_content_sha256 = SHA256(source md raw bytes).
     # Contract: PREPROCESSING-V3-CONTRACT-v0.2-DRAFT §0.1 ① — path is locator only.
     if src_path is not None and Path(src_path).is_file():
@@ -2352,10 +2366,15 @@ def process_file(src_path: Path, log):
         raise FileNotFoundError(
             f"OCR-JSON 缺失：{jsonl_path} —— 生成期双源前置不成立（G2-A §13.3 fail-closed）")
     ev_map = json_evidence_map.build_line_evidence(text, jsonl_path)
+    # QCORE-OCR-EXTRACTION-FIDELITY-01：同时消费 JSON 的 block_bbox/
+    # block_label/block_order/markdown.images，记录图-文行内关系与显式风险。
+    # 只读证据；不移动 Markdown 行、不重画图、不改源。
+    layout_ev = ocr_layout.build_layout_evidence(text, jsonl_path)
     text = annotate_img_boxes(text)
     # 证据列只进 prompt（LLM 结构判断依据），不进输出产物——C8"批注不动源
     # 内容"原则：annotated.md/切片/manifest 文本与源逐行一致；两版行号同源。
     prompt_text = json_evidence_map.annotate_json_evidence(text, ev_map)
+    prompt_text = ocr_layout.annotate_layout_evidence(prompt_text, layout_ev)
     lines, _n = number_lines(text)
     _, numbered = number_lines(prompt_text)
     doc_meta = ""
@@ -2452,6 +2471,15 @@ def process_file(src_path: Path, log):
         "md_sha256": hashlib.sha256(Path(src_path).read_bytes()).hexdigest(),
         "json_sha256": hashlib.sha256(jsonl_path.read_bytes()).hexdigest(),
         "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+    }
+    # QCORE-OCR-EXTRACTION-FIDELITY-01：图位证据 + 显式风险入 Manifest；
+    # 下游可审计，不改变已有 unit/文本/答案结构。
+    man["annotation_meta"]["image_layout"] = {
+        "digest": ocr_layout.layout_digest(layout_ev),
+        "summary": layout_ev["summary"],
+        "risks": layout_ev["risks"],
+        "placements": layout_ev["placements"],
+        "multi_image_groups": layout_ev["multi_image_groups"],
     }
     # G2-A 方案 A + E-1（Owner 2026-11-15 裁决）：生成后强制门禁。
     # FAIL → 真阻断：不写正式 Manifest、不正常返回；诊断落 *.gate_failure.json，
@@ -2561,17 +2589,30 @@ def recompile_outputs(out_root):
         # 缺失/JSONL 缺失 → verdict=FAIL 落盘：recompile 产物不得进 G2-B。
         _jl = src.parent / f"{src.stem}.ocr_raw.jsonl"
         _ev = None
+        _layout = None
         if _jl.is_file():
             try:
                 _ev = json_evidence_map.build_line_evidence(text, _jl)
             except Exception:
                 _ev = None
+            try:
+                _layout = ocr_layout.build_layout_evidence(text, _jl)
+            except Exception:
+                _layout = None
         _gate = json_struct_verify.run_generation_gate(
             man=man_full, ev_map=_ev, md_text=text, jsonl_path=_jl,
             recorded=meta.get("json_evidence"),
             prompt_sha256=(meta.get("json_evidence") or {}).get("prompt_sha256"),
             mode="recompile")
         man_full.setdefault("annotation_meta", {})
+        if _layout is not None:
+            man_full["annotation_meta"]["image_layout"] = {
+                "digest": ocr_layout.layout_digest(_layout),
+                "summary": _layout["summary"],
+                "risks": _layout["risks"],
+                "placements": _layout["placements"],
+                "multi_image_groups": _layout["multi_image_groups"],
+            }
         # E-1：recompile 同一门禁——FAIL 不写出可用 Manifest（write_outputs 不调用），
         # 陈旧 manifest 改名隔离 + 失败标记落盘。
         if _gate["verdict"] == "FAIL":
